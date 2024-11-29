@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Evaluate, Deploy and Test the decision table | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/get-started/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/get-started/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
+  <link rel="canonical" href="/get-started/dmn/deploy/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/">
+      <img src="/get-started/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  class="active"  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+<div class="version">
+  
+</div>
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/get-started/quick-start/" >Quick Start (Java / JS)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/service-task/" >Executable Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/deploy/" >Deploy the Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/user-task/" >Involve Humans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/gateway/" >Make It Dynamic</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/decision-automation/" >Decision Automation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/spring-boot/" >Spring Boot</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/model/" >Model a Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/dmn/" >DMN</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/model/" >Create a Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/deploy/" >Evaluate and Deploy the Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/apache-maven/" >Maven Coordinates</a>
+    
+  </li>
+
+  
+</ul>
+
+
+<div class="meta">
+  <h4 class="header">
+    <span class="toggle glyphicon glyphicon-chevron-up"></span>
+    Options
+  </h4>
+
+  <div class="content">
+    <label for="version-select">Version:</label>
+    <select id="version-select" data-basepath="/get-started" base-url="/get-started/">
+      
+    </select>
+  </div>
+</div>
+
+
+
+</nav>
+
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Evaluate, Deploy and Test the decision table</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>In this step, we use Java Code to evaluate the decision table. Then we deploy the web application to Apache Tomcat and verify the result in Cockpit.</p>
+<h1 id="evaluate-the-decision-table">Evaluate the Decision Table</h1>
+<p>To directly evaluate the decision table after deployment, add the following method to your Application class:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">de.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ProcessApplication</span><span class="p">(</span><span class="s">&#34;Dinner App DMN&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DinnerApplication</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServletProcessApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">LOGGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">DinnerApplication</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@PostDeploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">evaluateDecisionTable</span><span class="p">(</span><span class="n">ProcessEngine</span><span class="w"> </span><span class="n">processEngine</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DecisionService</span><span class="w"> </span><span class="n">decisionService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getDecisionService</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">VariableMap</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Variables</span><span class="p">.</span><span class="na">createVariables</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">&#34;season&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Spring&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">putValue</span><span class="p">(</span><span class="s">&#34;guestCount&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DmnDecisionTableResult</span><span class="w"> </span><span class="n">dishDecisionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">decisionService</span><span class="p">.</span><span class="na">evaluateDecisionTableByKey</span><span class="p">(</span><span class="s">&#34;dish&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">desiredDish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dishDecisionResult</span><span class="p">.</span><span class="na">getSingleEntry</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">INFO</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;\n\nDesired dish: {0}\n\n&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">desiredDish</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<div class="panel-group gs-download-step-panel" id="gitStep-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <div class="pull-right">
+        <a class="btn btn-success gs-download-step-btn" href="https://github.com/cibseven/cibseven-get-started-dmn/archive/Step-4.zip">
+          <span i class="glyphicon glyphicon-download-alt"></span>
+          Source Code Step-4
+        </a>
+      </div>
+      <h4>Catch up: Get the Sources of Step-4.</h4>
+      <p class="text-muted">
+        <a href="https://github.com/cibseven/cibseven-get-started-dmn/archive/Step-4.zip">Download as .zip</a>
+        or checkout the corresponding tag with <a class="toggle-instructions">Git</a>.
+      </p>
+    </div>
+    <div class="panel-body">
+      <p>You can checkout the current state from the <a href="https://github.com/cibseven/cibseven-get-started-dmn">GitHub repository</a>.</p>
+      <p>If you have not cloned the repository yet, please execute the following command:
+      <pre class="console">git clone https://github.com/cibseven/cibseven-get-started-dmn.git</pre>
+      </p>
+      <p>
+      To checkout the current state of the process application please execute the following command:
+      <pre class="console">git checkout -f Step-4</pre>
+      Or download as archive from <a href="https://github.com/cibseven/cibseven-get-started-dmn/releases/tag/Step-4">here</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<h1 id="build-the-web-application-with-maven">Build the Web Application with Maven</h1>
+<p>Select the <code>pom.xml</code> in the Package Explorer, perform a right-click and select <code>Run As / Maven Install</code>. This will generate a WAR file named <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> in the <code>target/</code> folder of your Maven project.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Hint</h3>
+  <p>If the <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> file is not visible after having performed the Maven build, you need to refresh the project (F5) in eclipse.</p>
+</div>
+
+<h1 id="deploy-to-apache-tomcat">Deploy to Apache Tomcat</h1>
+<p>In order to deploy the process application, copy-paste the <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> from your Maven project to the <code>$CIBSEVEN_HOME/server/apache-tomcat/webapps</code> folder.</p>
+<p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
+<pre class="console">
+INFO org.camunda.commons.logging.BaseLogger.logInfo
+ENGINE-07015 Detected @ProcessApplication class 'de.cibseven.getstarted.dish.DishApplication'
+INFO org.camunda.commons.logging.BaseLogger.logInfo
+ENGINE-08024 Found processes.xml file at ../webapps/dinner-dmn-0.1.0-SNAPSHOT/WEB-INF/classes/META-INF/processes.xml
+INFO org.camunda.commons.logging.BaseLogger.logInfo
+ENGINE-08023 Deployment summary for process archive 'dinner-dmn':
+
+        dinnerDecisions.dmn
+
+INFO de.cibseven.getstarted.dmn.DinnerApplication.evaluateDecisionTable 
+
+Desired dish: Stew
+
+INFO org.camunda.commons.logging.BaseLogger.logInfo
+ENGINE-08050 Process application Dinner App DMN successfully deployed
+</pre>
+<h1 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h1>
+<p>Now, use Cockpit to check if the decision table is successfully deployed. Go to <a href="http://localhost:8080/camunda/app/cockpit">http://localhost:8080/camunda/app/cockpit</a>. Log in with <em>demo / demo</em>. Go to &ldquo;Decisions&rdquo; section. Your decision table <em>Dish</em> should be listed as deployed decision definition.</p>
+<figure class="image">
+  <span><img
+      src="../img/cockpit-dish-dmn.png"
+       /></span>
+</figure>
+
+<h1 id="verify-the-evaluation-with-cockpit">Verify the Evaluation with Cockpit</h1>
+<p>Click on the decision <em>Dish</em>. This opens a dialog where you see when the decision table was evaluated.</p>
+<figure class="image">
+  <span><img
+      src="../img/cockpit-decision-overview-dish-dmn.png"
+       /></span>
+</figure>
+
+<p>If you click on the id, you can see the historic data of the evaluation. The matched rules are highlighted and the input and output values are listed in the table below.</p>
+<figure class="image">
+  <span><img
+      src="../img/cockpit-decision-history-dish-dmn.png"
+       /></span>
+</figure>
+
+<p>Verify that the 5th rule was matched and the output value for the desired dish is &ldquo;Stew&rdquo;.</p>
+<h1 id="next-steps">Next Steps</h1>
+<p>Congratulations, you have now successfully set up a project with your first DMN decision table.</p>
+<p>Next,</p>
+<ul>
+<li>see how you can evaluate the decision using the <a href="/manual/reference/rest/decision-definition/post-evaluate/">REST API</a>,</li>
+<li>learn more about DMN by reading the <a href="/manual/reference/dmn/">DMN Reference</a>,</li>
+<li>learn more about the <a href="/manual/user-guide/process-engine/decisions/">Decision API exposed by CIB seven Process Engine</a>,</li>
+<li>check how you can invoke the decision from a <a href="/manual/reference/bpmn20/tasks/business-rule-task/">BPMN Business Rule Task</a>,</li>
+<li>Bonus Step: <a href="../drg">Decision Requirements Graph</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents"></nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/get-started/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+</body>
+</html>
+

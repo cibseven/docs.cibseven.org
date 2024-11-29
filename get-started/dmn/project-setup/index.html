@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Setup a Java Project for DMN | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/get-started/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/get-started/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
+  <link rel="canonical" href="/get-started/dmn/project-setup/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/">
+      <img src="/get-started/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  class="active"  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+<div class="version">
+  
+</div>
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/get-started/quick-start/" >Quick Start (Java / JS)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/service-task/" >Executable Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/deploy/" >Deploy the Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/user-task/" >Involve Humans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/gateway/" >Make It Dynamic</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/decision-automation/" >Decision Automation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/spring-boot/" >Spring Boot</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/model/" >Model a Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/dmn/" >DMN</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/model/" >Create a Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/deploy/" >Evaluate and Deploy the Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/apache-maven/" >Maven Coordinates</a>
+    
+  </li>
+
+  
+</ul>
+
+
+<div class="meta">
+  <h4 class="header">
+    <span class="toggle glyphicon glyphicon-chevron-up"></span>
+    Options
+  </h4>
+
+  <div class="content">
+    <label for="version-select">Version:</label>
+    <select id="version-select" data-basepath="/get-started" base-url="/get-started/">
+      
+    </select>
+  </div>
+</div>
+
+
+
+</nav>
+
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Setup a Java Project for DMN</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>Now you are ready to set up your first process application project in the IDE of your choice, the following description uses Eclipse.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Terminology - Process vs. Decisions</h3>
+  <p>DMN is a modeling language for <em>decisions</em>, whereas BPMN is a language for <em>processes</em>. This tutorial is about decisions. However, due to BPMN-focused heritage of CIB seven, the Java project contains classes and files with names like <code>ProcessApplication</code> and <code>processes.xml</code>. These are in fact generally applicable and can be used with both processes and decisions.</p>
+</div>
+
+<h1 id="create-a-new-maven-project">Create a new Maven Project</h1>
+
+<div class="note bg-info docs-info">
+  <h3>Fancy to save work and use a project template instead?</h3>
+  <p>You don&rsquo;t have to setup the project manually but can also use a Maven Archetype (which is like a project template), see <a href="/manual/latest/user-guide/process-applications/maven-archetypes/">Maven Archetypes</a> for details. The archetype will create a project according to our best practices.</p>
+</div>
+
+<p>In Eclipse, go to <code>File / New / Other ...</code>. This opens the <em>New Project Wizard</em>. In the <em>New Project Wizard</em> select <code>Maven / Maven Project</code>. Click Next.</p>
+<figure class="image">
+  <span><img
+      src="../img/eclipse-new-project.png"
+       /></span>
+</figure>
+
+<p>On the first page of the <em>New Maven Project Wizard</em> select <em>Create a simple project (skip archetype selection)</em>. Click Next.</p>
+<p>On the second page (see screenshot), configure the Maven coordinates for the project. Since we are setting up a WAR Project, make sure to select <code>Packaging: war</code>.</p>
+<p>When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the <em>Project Explorer</em> View.</p>
+<h1 id="add-cib-seven-maven-dependencies">Add CIB seven Maven Dependencies</h1>
+<p>The next step consists of setting up the Maven dependencies for your new process application. Add the following dependencies to the <code>pom.xml</code> file of your project:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>de.cibseven.getstarted<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>dinner-dmn<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>0.1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;packaging&gt;</span>war<span class="nt">&lt;/packaging&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cibseven.version&gt;</span>7.22.0-cibseven<span class="nt">&lt;/cibseven.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;maven.compiler.release&gt;</span>11<span class="nt">&lt;/maven.compiler.release&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>mvn-cibseven-public<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;name&gt;</span>CIB seven Public Repository<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;url&gt;</span>https://artifacts.cibseven.de/repository/public<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repositories&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependencyManagement&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.camunda.bpm<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>camunda-bom<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependencyManagement&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.camunda.bpm<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>camunda-engine<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>jakarta.servlet<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>jakarta.servlet-api<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>5.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;build&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>3.11.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>maven-war-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>3.3.2<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;failOnMissingWebXml&gt;</span>false<span class="nt">&lt;/failOnMissingWebXml&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/plugins&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/build&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
+</span></span></code></pre></div><p>Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a right-click and select <code>Run As / Maven Install</code>.</p>
+
+<div class="panel-group gs-download-step-panel" id="gitStep-1">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <div class="pull-right">
+        <a class="btn btn-success gs-download-step-btn" href="https://github.com/cibseven/cibseven-get-started-dmn/archive/Step-1.zip">
+          <span i class="glyphicon glyphicon-download-alt"></span>
+          Source Code Step-1
+        </a>
+      </div>
+      <h4>Catch up: Get the Sources of Step-1.</h4>
+      <p class="text-muted">
+        <a href="https://github.com/cibseven/cibseven-get-started-dmn/archive/Step-1.zip">Download as .zip</a>
+        or checkout the corresponding tag with <a class="toggle-instructions">Git</a>.
+      </p>
+    </div>
+    <div class="panel-body">
+      <p>You can checkout the current state from the <a href="https://github.com/cibseven/cibseven-get-started-dmn">GitHub repository</a>.</p>
+      <p>If you have not cloned the repository yet, please execute the following command:
+      <pre class="console">git clone https://github.com/cibseven/cibseven-get-started-dmn.git</pre>
+      </p>
+      <p>
+      To checkout the current state of the process application please execute the following command:
+      <pre class="console">git checkout -f Step-1</pre>
+      Or download as archive from <a href="https://github.com/cibseven/cibseven-get-started-dmn/releases/tag/Step-1">here</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<h1 id="add-a-process-application-class">Add a Process Application Class</h1>
+<p>Next, you need to create a package, e.g., <code>de.cibseven.getstarted.dmn</code> and add a Process Application class to it. The Process Application class constitutes the interface between your application and the process engine.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">de.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.camunda.bpm.application.ProcessApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.camunda.bpm.application.impl.ServletProcessApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ProcessApplication</span><span class="p">(</span><span class="s">&#34;Dinner App DMN&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DinnerApplication</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServletProcessApplication</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">//empty implementation</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h1 id="add-a-meta-infprocessesxml-deployment-descriptor">Add a META-INF/processes.xml Deployment Descriptor</h1>
+<p>The last step to set up the process application is to add the <code>META-INF/processes.xml</code> deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) this process application makes to the process engine.</p>
+<p>This file needs to be added to the <code>src/main/resources/META-INF</code> folder of the Maven project.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;process-application</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/ProcessApplication&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;process-archive</span> <span class="na">name=</span><span class="s">&#34;dinner-dmn&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;process-engine&gt;</span>default<span class="nt">&lt;/process-engine&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;isDeleteUponUndeploy&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;isScanForProcessDefinitions&#34;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-archive&gt;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-application&gt;</span>  
+</span></span></code></pre></div><p>At this point you have successfully set up the process application and you can start modeling your first decision table.</p>
+
+<div class="panel-group gs-download-step-panel" id="gitStep-2">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <div class="pull-right">
+        <a class="btn btn-success gs-download-step-btn" href="https://github.com/cibseven/cibseven-get-started-dmn/archive/Step-2.zip">
+          <span i class="glyphicon glyphicon-download-alt"></span>
+          Source Code Step-2
+        </a>
+      </div>
+      <h4>Catch up: Get the Sources of Step-2.</h4>
+      <p class="text-muted">
+        <a href="https://github.com/cibseven/cibseven-get-started-dmn/archive/Step-2.zip">Download as .zip</a>
+        or checkout the corresponding tag with <a class="toggle-instructions">Git</a>.
+      </p>
+    </div>
+    <div class="panel-body">
+      <p>You can checkout the current state from the <a href="https://github.com/cibseven/cibseven-get-started-dmn">GitHub repository</a>.</p>
+      <p>If you have not cloned the repository yet, please execute the following command:
+      <pre class="console">git clone https://github.com/cibseven/cibseven-get-started-dmn.git</pre>
+      </p>
+      <p>
+      To checkout the current state of the process application please execute the following command:
+      <pre class="console">git checkout -f Step-2</pre>
+      Or download as archive from <a href="https://github.com/cibseven/cibseven-get-started-dmn/releases/tag/Step-2">here</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents"></nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/get-started/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+</body>
+</html>
+

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Security Policy | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/security/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/security/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
+  <link rel="canonical" href="/security/security-policy/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/">
+      <img src="/security/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+<div class="version">
+  
+</div>
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/security/security-policy/" >Security Policy</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/security/operations/" >Operating CIB seven Securely</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/security/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/security/report-vulnerability/" >Report a Vulnerability</a>
+    
+  </li>
+
+  
+</ul>
+
+
+<div class="meta">
+  <h4 class="header">
+    <span class="toggle glyphicon glyphicon-chevron-up"></span>
+    Options
+  </h4>
+
+  <div class="content">
+    <label for="version-select">Version:</label>
+    <select id="version-select" data-basepath="/security" base-url="/security/">
+      
+    </select>
+  </div>
+</div>
+
+
+
+</nav>
+
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Security Policy</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>As a core infrastructure component of our customers, the security of CIB seven Platform (also referred to as the &lsquo;software&rsquo;) takes top priority and is maintained constantly.</p>
+<p>Since CIB seven is based on Camunda Engine, security test done there apply to CIB seven as well.</p>
+<h2 id="penetration-testing">Penetration Testing</h2>
+<p>Camunda has contracted an independent, external security advisor to regularly conduct penetration tests of the software. The advisor operates according to industry best practices recommended by the OWASP organization such as the <a href="https://www.owasp.org/images/1/19/OTGv4.pdf">OWASP Testing Guide</a>. The tools used for testing include <a href="https://portswigger.net/burp">Burp Suite</a> and <a href="https://www.defensecode.com/thunderscan.php">DefenseCode Thunderscan</a></p>
+<p>Any vulnerabilities detected are handled according to our <a href="https://camunda.com/security#security-issue-management">process for security issue management</a>.</p>
+<p>Test history:</p>
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Test Focus</th>
+    <th>Result Summary</th>
+  </tr>
+  <tr>
+    <td><p>April 2023</p></td>
+    <td>
+      <p>Camunda Automation Platform Version: 7.19.0-ee</p>
+      <p>External security assessment using the graybox approach to test the Camunda Automation Platform web applications and REST API.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Three lesser vulnerabilities were detected and submitted for treatment to our security issue process:
+      <ul>
+        <li>One issues has been fixed.</li>
+        <li>One issues has been partially fixed, work in progress.</li>
+        <li>One issue was given as general security advice.</li>
+      </ul> 
+      </p>       
+    </td>
+  </tr>
+  <tr>
+    <td><p>June 2022</p></td>
+    <td>
+      <p>Camunda Automation Platform Version: 7.17.0-ee Camunda Optimize Version 3.8.0</p>
+      <p>External security assessment using the graybox approach to test the Camunda Automation Platform web applications and REST API plus Camunda Optimize.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Two lesser vulnerabilities were detected and submitted for treatment to our security issue process:
+      <ul>
+        <li>One issues have been fixed.</li>
+        <li>One issues have been partially fixed, work in progress.</li>
+      </ul>        
+      </p>
+      <p>One general security advice was given.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>December 2021</p></td>
+    <td>
+      <p>Camunda Automation Platform Version: 7.16.0-ee Camunda Optimize Version 3.6.0</p>
+      <p>Whitebox test with focus on (but not limited to) the Camunda Automation Platform web applications and REST API plus Camunda Optimize.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Two lesser vulnerabilities were detected and submitted for treatment to our security issue process.</p>
+      <p>Two issues have been partially fixed, work in progress.</p>
+    </td> 
+  </tr>
+  <tr>
+    <td><p>December 2021</p></td>
+    <td>
+      <p>Cawemo</p>
+      <p>Whitebox test with focus on (but not limited to) the Cawemo application and the underlying infrastructure.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Seven lesser vulnerabilities were detected and submitted for treatment to our security issue process.</p>
+      <p>Seven issues have been partially fixed, work in progress.</p>
+    </td> 
+  </tr>   
+  <tr>
+    <td><p>June 2021</p></td>
+    <td>
+      <p>Cawemo</p>
+      <p>Whitebox test with focus on (but not limited to) the Cawemo application and the underlying infrastructure.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Five lesser vulnerabilities were detected and submitted for treatment to our security issue process.</p>
+      <p>Five issues have been partially fixed, work in progress.</p>
+    </td> 
+  </tr>  
+  <tr>
+    <td><p>March 2021</p></td>
+    <td>
+      <p>Camunda Platform Version: 7.14.5-ee Camunda Optimize Version 3.3.0</p>
+      <p>Whitebox test with focus on (but not limited to) Camunda Platform web applications and REST API.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Three lesser vulnerabilities were detected and submitted for treatment to our security issue process.</p>
+      <p>Three issues have been partially fixed, work in progress.</p>
+    </td> 
+  </tr>
+  <tr>
+    <td><p>January 2020</p></td>
+    <td>
+      <p>Camunda Platform Version: 7.12.1-ee Camunda Optimize Version 2.7.0</p>
+      <p>Whitebox test with focus on (but not limited to) Camunda Platform web applications and REST API.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Seven lesser vulnerabilities were detected and submitted for treatment to our security issue process.</p>
+      <p>Two issues have been fixed. </p>
+      <p>Five issues have been partially fixed, work in progress.</p>
+    </td>
+  </tr>  
+  <tr>
+    <td><p>January 2019</p></td>
+    <td>
+      <p>Camunda Platform version: 7.10.1</p>
+      <p>Whitebox test with focus on (but not limited to) Camunda Platform web applications and REST API.</p>
+    </td>
+    <td>
+      <p>No critical vulnerabilities were detected.</p>
+      <p>Five lesser vulnerabilities were detected and submitted for treatment to our security issue process.</p>
+      <p>Two issues have been fixed. </p>
+      <p>Three issues have been partially fixed. </p>
+    </td>
+  </tr> 
+</table>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#penetration-testing">Penetration Testing</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/security/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+</body>
+</html>
+

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Deploy the Process (3/6) | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/get-started/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/get-started/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
+  <link rel="canonical" href="/get-started/quick-start/deploy/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/">
+      <img src="/get-started/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  class="active"  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+<div class="version">
+  
+</div>
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/get-started/quick-start/" >Quick Start (Java / JS)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/service-task/" >Executable Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/deploy/" >Deploy the Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/user-task/" >Involve Humans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/gateway/" >Make It Dynamic</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/decision-automation/" >Decision Automation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/spring-boot/" >Spring Boot</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/model/" >Model a Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/dmn/" >DMN</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/model/" >Create a Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/deploy/" >Evaluate and Deploy the Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/apache-maven/" >Maven Coordinates</a>
+    
+  </li>
+
+  
+</ul>
+
+
+<div class="meta">
+  <h4 class="header">
+    <span class="toggle glyphicon glyphicon-chevron-up"></span>
+    Options
+  </h4>
+
+  <div class="content">
+    <label for="version-select">Version:</label>
+    <select id="version-select" data-basepath="/get-started" base-url="/get-started/">
+      
+    </select>
+  </div>
+</div>
+
+
+
+</nav>
+
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Deploy the Process (3/6)</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>In the next step, you&rsquo;ll deploy the Process and start a new instance so you can see that your simple process is working correctly.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Deployment Support</h3>
+  <p>BPMN diagrams must be created for the process engine they intend to be deployed on. You cannot run a BPMN diagram modeled for Camunda Platform in Camunda Cloud, or vice versa, at this time.</p>
+</div>
+
+<h1 id="use-the-camunda-modeler-to-deploy-the-process">Use the Camunda Modeler to Deploy the Process</h1>
+<p>In order to deploy the Process, click on the deploy button in the Camunda Modeler, then give it the Deployment Name &ldquo;Payment Retrieval&rdquo; and click the Deploy button. From version 3.0.0 on, you will be required to provide an URL for an Endpoint Configuration along with Deployment Details. This can be either the root endpoint to the REST API (e.g. <code>http://localhost:8080/engine-rest</code>) or an exact endpoint to the deployment creation method (e.g. <code>http://localhost:8080/engine-rest/deployment/create</code>).</p>
+<p><figure class="image">
+  <span><img
+      src="../img/modeler-deploy1.png"
+       /></span>
+</figure>
+
+<figure class="image">
+  <span><img
+      src="../img/modeler-deploy2.png"
+       /></span>
+</figure>
+
+You should see a success message in the Camunda Modeler:
+<figure class="image">
+  <span><img
+      src="../img/modeler-deploy3.png"
+       /></span>
+</figure>
+</p>
+<p>More details regarding the deployment from Camunda Modeler you can find <a href="https://blog.camunda.com/post/2019/01/camunda-modeler-3.0.0-0-released/#completely-reworked-deployment-tool">here</a>. For Camunda Modeler 2.2.4 and earlier, read <a href="https://blog.camunda.com/post/2018/03/camunda-modeler-1120-alpha-3-released/">this blog post</a>.</p>
+<h1 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h1>
+<p>Next, use Cockpit to see if the process was successfully deployed. Go to <a href="http://localhost:8080/camunda/app/cockpit/">http://localhost:8080/camunda/app/cockpit/</a> and log in with the credentials demo / demo. Your process <em>Payment Retrieval</em> should be visible on the dashboard.</p>
+<figure class="image">
+  <span><img
+      src="../img/cockpit-payment-retrieval.png"
+       /></span>
+</figure>
+
+<h1 id="start-a-process-instance">Start a Process Instance</h1>
+<p>In Camunda, there are different ways to start a new process instance.
+You can leverage the Camunda REST API to start a new process instance by sending a POST Request.</p>
+<h2 id="a-curl">a) curl</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -X POST -d <span class="s1">&#39;{&#34;variables&#34;: {&#34;amount&#34;: {&#34;value&#34;:555,&#34;type&#34;:&#34;integer&#34;}, &#34;item&#34;: {&#34;value&#34;:&#34;item-xyz&#34;} } }&#39;</span> http://localhost:8080/engine-rest/process-definition/key/payment-retrieval/start
+</span></span></code></pre></div><p>In your worker, you should now see the output in your console.
+This means you have successfully started and executed your first simple process.</p>
+<h2 id="b-rest-client">b) REST Client</h2>
+<p>If you don&rsquo;t feel comfortable using curl for the REST request, you can instead make use of any REST client.</p>
+<p>Make a POST request to the following endpoint:
+<code>http://localhost:8080/engine-rest/process-definition/key/payment-retrieval/start</code></p>
+<p>The JSON Body should look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;amount&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;value&#34;</span><span class="p">:</span><span class="mi">555</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;type&#34;</span><span class="p">:</span><span class="s2">&#34;integer&#34;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;item&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;item-xyz&#34;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><em>Hint:</em> Make sure you are setting the headers correctly to <code>Content-Type: application/json</code></p>
+<p>Here&rsquo;s what the request might look like in Postman:
+<figure class="image">
+  <span><img
+      src="../img/postman-start-instance.png"
+       /></span>
+</figure>
+</p>
+<p>In your worker console (which we started in the previous section), you should now see an output.
+This means you have successfully started and executed your first simple process.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Next Step</h3>
+  <p>In some cases, we&rsquo;ll want to involve humans in our process. Move onto the next step to <a href="/get-started/quick-start/user-task/">learn how you can involve humans in your process</a>.</p>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-curl">a) curl</a></li>
+    <li><a href="#b-rest-client">b) REST Client</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/get-started/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+</body>
+</html>
+

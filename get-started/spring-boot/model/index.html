@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Modeling a BPMN 2.0 Process | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/get-started/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/get-started/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
+  <link rel="canonical" href="/get-started/spring-boot/model/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/">
+      <img src="/get-started/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  class="active"  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+<div class="version">
+  
+</div>
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/get-started/quick-start/" >Quick Start (Java / JS)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/service-task/" >Executable Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/deploy/" >Deploy the Process</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/user-task/" >Involve Humans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/gateway/" >Make It Dynamic</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/quick-start/decision-automation/" >Decision Automation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/spring-boot/" >Spring Boot</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/spring-boot/model/" >Model a Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/dmn/" >DMN</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/install/" >Download and Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/project-setup/" >Project Setup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/model/" >Create a Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/deploy/" >Evaluate and Deploy the Decision Table</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/get-started/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/get-started/apache-maven/" >Maven Coordinates</a>
+    
+  </li>
+
+  
+</ul>
+
+
+<div class="meta">
+  <h4 class="header">
+    <span class="toggle glyphicon glyphicon-chevron-up"></span>
+    Options
+  </h4>
+
+  <div class="content">
+    <label for="version-select">Version:</label>
+    <select id="version-select" data-basepath="/get-started" base-url="/get-started/">
+      
+    </select>
+  </div>
+</div>
+
+
+
+</nav>
+
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Modeling a BPMN 2.0 Process</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>In this section we learn how to deploy a process and invoke a Spring Bean from a BPMN 2.0 Service Task.</p>
+<h1 id="deploy-and-invoke-bpmn-process">Deploy and Invoke BPMN Process</h1>
+<p>Now that we know how to bootstrap the process engine within a Spring Boot Application, we can add a BPMN 2.0 process
+model and interact with the process from inside our Spring beans. In this section, we will</p>
+<ol>
+<li>Model an executable BPMN 2.0 process.</li>
+<li>Use Spring Boot Starter auto-deployment for BPMN 2.0 processes.</li>
+<li>Create a process application.</li>
+<li>Start a process instance from our process application.</li>
+</ol>
+<h2 id="model-an-executable-bpmn-20-process-and-deploy-it">Model an Executable BPMN 2.0 Process and Deploy It</h2>
+<p>Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.</p>
+<figure class="image">
+  <span><img
+      src="../img/loanApproval.png"
+       /></span>
+</figure>
+
+
+<div class="note bg-info docs-info">
+  <h3>Hint</h3>
+  <p>If you are unfamiliar with modeling an executable process, you can read the
+<a href="/get-started/quick-start/service-task/">Model a Process</a> section of the <em>Quick Start</em> tutorial.</p>
+</div>
+
+<p>When you are done, save the process model in the <code>src/main/resources</code> folder of your Eclipse project. Make sure to refresh the Eclipse project afterwards.</p>
+<p>Once it is saved in the application classpath, it will be automatically deployed on engine startup.</p>
+<h2 id="create-process-application">Create Process Application</h2>
+<p>We recommend to declare the process application in your CIB seven Spring Boot application, which gives additional configuration possibilities and will help us in the current demo
+to catch the &ldquo;post-deploy&rdquo; event to start the process instance at that point.</p>
+<p>To declare the process application, just add the <code>@EnableProcessApplication</code> annotation on your <code>WebappExampleProcessApplication</code> class and put the empty <code>processes.xml</code> file in the
+<code>src/main/resources/META-INF</code> folder. The file is required by the CIB seven engine for every process application, but in our case it will stay empty.</p>
+<h2 id="start-a-process-instance-after-process-application-has-been-deployed">Start a Process Instance after Process Application has been Deployed</h2>
+<p>The next step consists of starting a process instance from our process application class. For this, we will process <code>PostDeployEvent</code>, which is fired as soon as
+our process application has been deployed to the CIB seven engine.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@EventListener</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processPostDeploy</span><span class="p">(</span><span class="n">PostDeployEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">startProcessInstanceByKey</span><span class="p">(</span><span class="s">&#34;loanApproval&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
+</span></span></span></code></pre></div><p>Note that we can easily inject the CIB seven engine service via the <code>@Autowired</code> annotation.</p>
+<h2 id="rebuild-and-test">Rebuild and test</h2>
+<p>If you rebuild and restart the application, you should see the task &ldquo;Check the request&rdquo; in Tasklist under the &ldquo;All tasks&rdquo; filter:</p>
+<figure class="image">
+  <span><img
+      src="../img/tasklist.png"
+       /></span>
+</figure>
+
+
+<div class="panel-group gs-download-step-panel" id="gitStep-3">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <div class="pull-right">
+        <a class="btn btn-success gs-download-step-btn" href="https://github.com/cibseven/cibseven-get-started-spring-boot/archive/Step-3.zip">
+          <span i class="glyphicon glyphicon-download-alt"></span>
+          Source Code Step-3
+        </a>
+      </div>
+      <h4>Catch up: Get the Sources of Step-3.</h4>
+      <p class="text-muted">
+        <a href="https://github.com/cibseven/cibseven-get-started-spring-boot/archive/Step-3.zip">Download as .zip</a>
+        or checkout the corresponding tag with <a class="toggle-instructions">Git</a>.
+      </p>
+    </div>
+    <div class="panel-body">
+      <p>You can checkout the current state from the <a href="https://github.com/cibseven/cibseven-get-started-spring-boot">GitHub repository</a>.</p>
+      <p>If you have not cloned the repository yet, please execute the following command:
+      <pre class="console">git clone https://github.com/cibseven/cibseven-get-started-spring-boot.git</pre>
+      </p>
+      <p>
+      To checkout the current state of the process application please execute the following command:
+      <pre class="console">git checkout -f Step-3</pre>
+      Or download as archive from <a href="https://github.com/cibseven/cibseven-get-started-spring-boot/releases/tag/Step-3">here</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#model-an-executable-bpmn-20-process-and-deploy-it">Model an Executable BPMN 2.0 Process and Deploy It</a></li>
+    <li><a href="#create-process-application">Create Process Application</a></li>
+    <li><a href="#start-a-process-instance-after-process-application-has-been-deployed">Start a Process Instance after Process Application has been Deployed</a></li>
+    <li><a href="#rebuild-and-test">Rebuild and test</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/get-started/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+</body>
+</html>
+

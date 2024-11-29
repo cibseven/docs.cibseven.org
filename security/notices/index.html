@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Security Notices | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/security/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/security/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
+  <link rel="canonical" href="/security/notices/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/">
+      <img src="/security/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+<div class="version">
+  
+</div>
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/security/security-policy/" >Security Policy</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/security/operations/" >Operating CIB seven Securely</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/security/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/security/report-vulnerability/" >Report a Vulnerability</a>
+    
+  </li>
+
+  
+</ul>
+
+
+<div class="meta">
+  <h4 class="header">
+    <span class="toggle glyphicon glyphicon-chevron-up"></span>
+    Options
+  </h4>
+
+  <div class="content">
+    <label for="version-select">Version:</label>
+    <select id="version-select" data-basepath="/security" base-url="/security/">
+      
+    </select>
+  </div>
+</div>
+
+
+
+</nav>
+
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Security Notices</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>On this page, we publish security notices <em>after</em> fixes are available.
+Fixes are available as alpha or minor releases of the CIB seven platform.</p>
+<h1 id="notices">Notices</h1>
+<h2 id="notice-120">Notice 120</h2>
+<p><strong>Publication Date: October 18th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-8096">https://nvd.nist.gov/vuln/detail/CVE-2024-8096</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.21 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerability</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the 1.9.22 release for the <code>cawemo-websockets</code> Docker image which contains a fix for the above-mentioned CVE.</p>
+<h2 id="notice-119">Notice 119</h2>
+<p><strong>Publication Date: October 14th, 2024</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda Tomcat distribution, Camunda Run, and transitively pulled in by the Camunda Spring Boot starter had the following vulnerability:</p>
+<ul>
+<li><a href="https://lists.apache.org/thread/8xm50bvr6rhbjkdtbxl5x4d20dpfy83p">CVE-2024-38286</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda 7 Tomcat is used or Camunda 7 Run is used or Camunda 7 Spring Boot Starter is used.</li>
+<li>See the NIST link above for detailed description of the circumstances required to exploit the vulnerability.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.15, 7.20.8, 7.21.4, 7.22.0-alpha5 which contain a fix.</p>
+<h2 id="notice-118">Notice 118</h2>
+<p><strong>Publication Date: October 7th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>libcrypto3</code>, <code>libssl3</code>, and <code>openssl</code> shipped with <code>cawemo-restapi</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6119">https://nvd.nist.gov/vuln/detail/CVE-2024-6119</a></li>
+</ul>
+<p>The version of <code>spring-webmvc</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-38816">https://nvd.nist.gov/vuln/detail/CVE-2024-38816</a></li>
+</ul>
+<p>The version of <code>path-to-regexp</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-9wv6-86v2-598j">https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-9wv6-86v2-598j</a></li>
+</ul>
+<p>The version of <code>@sentry/browser</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://github.com/getsentry/sentry-javascript/security/advisories/GHSA-593m-55hh-j8gv">https://github.com/getsentry/sentry-javascript/security/advisories/GHSA-593m-55hh-j8gv</a></li>
+</ul>
+<p>The version of <code>@cookie</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://github.com/jshttp/cookie/security/advisories/GHSA-pxg6-pf52-xh8x">https://github.com/jshttp/cookie/security/advisories/GHSA-pxg6-pf52-xh8x</a></li>
+</ul>
+<p>The versions of <code>libcrypto3</code>, <code>libssl3</code>, and <code>openssl</code> shipped with <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6119">https://nvd.nist.gov/vuln/detail/CVE-2024-6119</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.20 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.21 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-117">Notice 117</h2>
+<p><strong>Publication Date: September 16th, 2024</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda Tomcat distribution, Camunda Run, and transitively pulled in by the Camunda Spring Boot starter had the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-34750">https://nvd.nist.gov/vuln/detail/CVE-2024-34750</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda 7 Tomcat is used or Camunda 7 Run is used or Camunda 7 Spring Boot Starter is used.</li>
+<li>See the NIST link above for detailed description of the circumstances required to exploit the vulnerability.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.22.0-alpha5, 7.21.4, 7.20.8, 7.19.15 which contain a fix.</p>
+<h2 id="notice-116">Notice 116</h2>
+<p><strong>Publication Date: August 30th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the Java runtime shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21147">https://nvd.nist.gov/vuln/detail/CVE-2024-21147</a></li>
+</ul>
+<p>The version of <code>spring-security-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-38810">https://nvd.nist.gov/vuln/detail/CVE-2024-38810</a></li>
+</ul>
+<p>The version of <code>axios</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-39338">https://nvd.nist.gov/vuln/detail/CVE-2024-39338</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-7264">https://nvd.nist.gov/vuln/detail/CVE-2024-7264</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.19 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.20 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-115">Notice 115</h2>
+<p><strong>Publication Date: August 6th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code> and <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-5535">https://nvd.nist.gov/vuln/detail/CVE-2024-5535</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-5535">https://nvd.nist.gov/vuln/detail/CVE-2024-5535</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6197">https://nvd.nist.gov/vuln/detail/CVE-2024-6197</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6874">https://nvd.nist.gov/vuln/detail/CVE-2024-6874</a></li>
+</ul>
+<p>The version of <code>spring-web</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2016-1000027">https://nvd.nist.gov/vuln/detail/CVE-2016-1000027</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.18 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.19 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-114">Notice 114</h2>
+<p><strong>Publication Date: July 1st, 2024</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>angular-translate</code>, included in the Camunda web applications, had a cross-site scripting (XSS) vulnerability:</p>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-33665">https://nvd.nist.gov/vuln/detail/CVE-2024-33665</a></p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda 7 web applications.</li>
+<li>You use a custom plugin that introduces custom translation strings.</li>
+<li>An attacker can provide forged input to the custom plugin that passes it to the <code>angular-translate</code> library.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.22.0-alpha3, 7.21.3, 7.20.7, 7.19.14 which contain a fix.</p>
+<h2 id="notice-113">Notice 113</h2>
+<p><strong>Publication Date: July 1st, 2024</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda Tomcat distribution, Camunda Run, and transitively pulled in by the Camunda Spring Boot starter had the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-23672">https://nvd.nist.gov/vuln/detail/CVE-2024-23672</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-24549">https://nvd.nist.gov/vuln/detail/CVE-2024-24549</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda 7 Tomcat is used or Camunda 7 Run is used or Camunda 7 Spring Boot Starter is used.</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.22.0-alpha3, 7.21.3, 7.20.7, 7.19.14 which contain a fix.</p>
+<h2 id="notice-112">Notice 112</h2>
+<p><strong>Publication Date: June 28th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code> and <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-4603">https://nvd.nist.gov/vuln/detail/CVE-2024-4603</a></li>
+</ul>
+<p>The versions of <code>busybox</code>, <code>busybox-binsh</code> and <code>ssl_client</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code> and <code>cawemo-websockets</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-42363">https://nvd.nist.gov/vuln/detail/CVE-2023-42363</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-42364">https://nvd.nist.gov/vuln/detail/CVE-2023-42364</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-42365">https://nvd.nist.gov/vuln/detail/CVE-2023-42365</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-42366">https://nvd.nist.gov/vuln/detail/CVE-2023-42366</a></li>
+</ul>
+<p>The version of <code>undertow-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6162">https://nvd.nist.gov/vuln/detail/CVE-2024-6162</a></li>
+</ul>
+<p>The version of <code>libxml2</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-34459">https://nvd.nist.gov/vuln/detail/CVE-2024-34459</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-4603">https://nvd.nist.gov/vuln/detail/CVE-2024-4603</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.17 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.18 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-111">Notice 111</h2>
+<p><strong>Publication Date: June 12th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact:</strong></p>
+<p>Camunda <a href="https://docs.camunda.io/docs/guides/utilizing-forms/">Forms</a> contained a Regular Expression Denial of Service (ReDoS) vulnerability, which could render the page unresponsive.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You are using Camunda <a href="https://docs.camunda.io/docs/guides/utilizing-forms/">Forms</a>.</li>
+<li>An attacker can deploy a specially crafted Camunda Form.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases, which contain a fix:
+Camunda 7.19.13, 7.20.6, 7.21.2, 7.22.0-alpha2.</p>
+<h2 id="notice-110">Notice 110</h2>
+<p><strong>Publication Date: May 14th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the MySQL JDBC connector included in the Camunda 7 Docker images had a vulnerability:</p>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-22102">https://nvd.nist.gov/vuln/detail/CVE-2023-22102</a></p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform 7 Docker containers are used.</li>
+<li>MySQL is used for the database connection.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:
+Camunda 7.19.12, 7.20.5, 7.21.1, 7.22.0-alpha1</p>
+<h2 id="notice-109">Notice 109</h2>
+<p><strong>Publication Date: May 13th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code> and <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-2511">https://nvd.nist.gov/vuln/detail/CVE-2024-2511</a></li>
+</ul>
+<p>The version of <code>undertow-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-1459">https://nvd.nist.gov/vuln/detail/CVE-2024-1459</a></li>
+</ul>
+<p>The version of <code>spring-web</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22262">https://nvd.nist.gov/vuln/detail/CVE-2024-22262</a></li>
+</ul>
+<p>The version of <code>xnio-api</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5685">https://nvd.nist.gov/vuln/detail/CVE-2023-5685</a></li>
+</ul>
+<p>The version of <code>formidable</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-29622">https://nvd.nist.gov/vuln/detail/CVE-2022-29622</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-2511">https://nvd.nist.gov/vuln/detail/CVE-2024-2511</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.16 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.17 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-108">Notice 108</h2>
+<p><strong>Publication Date: May 3rd, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of AngularJS, included in the Camunda web applications, had a backtracking vulnerability:</p>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21490">https://nvd.nist.gov/vuln/detail/CVE-2024-21490</a></p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda 7 web applications.</li>
+<li>You use a custom plugin that utilizes the AngularJS <code>ng-srcset</code> directive.</li>
+<li>An attacker can provide forged input to the custom plugin that passes it to the <code>ng-srcset</code> directive.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:
+Camunda 7.19.12, 7.20.5, 7.21.0-alpha3.</p>
+<h2 id="notice-107">Notice 107</h2>
+<p><strong>Publication Date: May 3rd, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the PostgreSQL JDBC driver used in the Camunda Platform 7 Docker images had a vulnerability:</p>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-1597">https://nvd.nist.gov/vuln/detail/CVE-2024-1597</a></p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda 7 Docker images.</li>
+<li>You connect to a PostgreSQL database.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:
+Camunda 7.19.12, 7.20.5, 7.21.0-alpha4</p>
+<h2 id="notice-106">Notice 106</h2>
+<p><strong>Publication Date: April 08th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>netty-coded-http</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-29025">https://nvd.nist.gov/vuln/detail/CVE-2024-29025</a></li>
+</ul>
+<p>The version of <code>spring-web</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22259">https://nvd.nist.gov/vuln/detail/CVE-2024-22259</a></li>
+</ul>
+<p>The version of <code>spring-security-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22257">https://nvd.nist.gov/vuln/detail/CVE-2024-22257</a></li>
+</ul>
+<p>The version of <code>c-ares</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-25629">https://nvd.nist.gov/vuln/detail/CVE-2024-25629</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.15 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.16 releases for the <code>cawemo-restapi</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-105">Notice 105</h2>
+<p><strong>Publication Date: March 15th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>spring-web</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22243">https://nvd.nist.gov/vuln/detail/CVE-2024-22243</a></li>
+</ul>
+<p>The version of <code>postgresql</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-1597">https://nvd.nist.gov/vuln/detail/CVE-2024-1597</a></li>
+</ul>
+<p>The version of <code>jose</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-28176">https://nvd.nist.gov/vuln/detail/CVE-2024-28176</a></li>
+</ul>
+<p>The version of <code>follow-redirects</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-28849">https://nvd.nist.gov/vuln/detail/CVE-2024-28849</a></li>
+</ul>
+<p>The version of <code>libxml2</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-25062">https://nvd.nist.gov/vuln/detail/CVE-2024-25062</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.14 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.15 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-104">Notice 104</h2>
+<p><strong>Publication Date: March 1st, 2024</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of <code>follow-redirects</code>, included in the Camunda Run SwaggerUI had an Improper Input Validation vulnerability:</p>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-26159">https://nvd.nist.gov/vuln/detail/CVE-2023-26159</a></p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>You expose Camunda Run SwaggerUI publicly by operating it without the <code>--production</code> flag or in combination with the <code>--swaggerui</code> flag.</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.21.0-alpha3, 7.20.4, 7.19.11, 7.18.15, which contain a fix.</p>
+<h2 id="notice-103">Notice 103</h2>
+<p><strong>Publication Date: February 12th, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6129">https://nvd.nist.gov/vuln/detail/CVE-2023-6129</a></li>
+<li>CVE-2023-6237</li>
+</ul>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-webapp</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6129">https://nvd.nist.gov/vuln/detail/CVE-2023-6129</a></li>
+<li>CVE-2023-6237</li>
+</ul>
+<p>The version of <code>follow-redirects</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-26159">https://nvd.nist.gov/vuln/detail/CVE-2023-26159</a></li>
+</ul>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-websockets</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6129">https://nvd.nist.gov/vuln/detail/CVE-2023-6129</a></li>
+<li>CVE-2023-6237</li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.12 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.13 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-102">Notice 102</h2>
+<p><strong>Publication Date: February 12th, 2024</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of Logback shipped with Camunda Run, Camunda RPA Bridge, and transitively pulled in by the Camunda Spring Boot Starter had a denial-of-service vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6378">https://nvd.nist.gov/vuln/detail/CVE-2023-6378</a></li>
+</ul>
+<p>Logback versions 1.3.12 and 1.4.12 already tried to fix <code>CVE-2023-6378</code> but were still affected by:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6481">https://nvd.nist.gov/vuln/detail/CVE-2023-6481</a></li>
+</ul>
+<p>The Camunda releases listed under the <strong>Solution</strong> section fix both CVEs <code>CVE-2023-6378</code> as well as <code>CVE-2023-6481</code>.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda RPA Bridge, Camunda Run or Camunda Spring Boot Starter is used <strong>AND</strong> the <code>logback-receiver</code> component is enabled and also reachable by the attacker.</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.21.0-alpha3, 7.20.3, 7.19.10, 7.18.14, and RPA Bridge 1.1.11, which contain a fix.</p>
+<h2 id="notice-101">Notice 101</h2>
+<p><strong>Publication Date: January 3rd, 2024</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>ch.qos.logback:logback-classic</code> and <code>ch.qos.logback:logback-core</code> shipped with <code>cawemo-restapi</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6378">https://nvd.nist.gov/vuln/detail/CVE-2023-6378</a></li>
+</ul>
+<p>The version of <code>ch.qos.logback:logback-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-6481">https://nvd.nist.gov/vuln/detail/CVE-2023-6481</a></li>
+</ul>
+<p>The version of <code>org.springframework.boot:spring-boot</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34055">https://nvd.nist.gov/vuln/detail/CVE-2023-34055</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-46218">https://nvd.nist.gov/vuln/detail/CVE-2023-46218</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-46219">https://nvd.nist.gov/vuln/detail/CVE-2023-46219</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.11 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.12 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-100">Notice 100</h2>
+<p><strong>Publication Date: December 11th, 2023</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of <code>axios</code>, included in the Camunda Run SwaggerUI, had a Cross-Site Request Forgery (CSRF) vulnerability:</p>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-45857">https://nvd.nist.gov/vuln/detail/CVE-2023-45857</a></p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>You expose Camunda Run SwaggerUI publicly by operating it without the <code>--production</code> flag or in combination with the <code>--swaggerui</code> flag.</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.21.0-alpha2, 7.20.2, 7.19.9, 7.18.13 which contain a fix.</p>
+<h2 id="notice-99">Notice 99</h2>
+<p><strong>Publication Date: December 11th, 2023</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact</strong></p>
+<p>Camunda Spring Boot Starter and Camunda Run had an <a href="https://cwe.mitre.org/data/definitions/532.html">Insertion of Sensitive Information into Log File</a> vulnerability that allowed an attacker, for example, to read information about the admin user (user id, first name, last name, and email) which could lead to a targeted brute-force attack to guess the password of the admin user or to send phishing emails to the admin user.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use Camunda Spring Boot Starter or Camunda Run.</li>
+<li>Your application logs logging statements on severity <code>INFO</code>.</li>
+<li>An attacker has access to your application logs.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.21.0-alpha2, 7.20.2, 7.19.9, 7.18.13 which contain a fix.</p>
+<h2 id="notice-98">Notice 98</h2>
+<p><strong>Publication Date: November 14th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code> and <code>cawemo-websockets</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5363">https://nvd.nist.gov/vuln/detail/CVE-2023-5363</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5678">https://nvd.nist.gov/vuln/detail/CVE-2023-5678</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5363">https://nvd.nist.gov/vuln/detail/CVE-2023-5363</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5678">https://nvd.nist.gov/vuln/detail/CVE-2023-5678</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38039">https://nvd.nist.gov/vuln/detail/CVE-2023-38039</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38545">https://nvd.nist.gov/vuln/detail/CVE-2023-38545</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38546">https://nvd.nist.gov/vuln/detail/CVE-2023-38546</a></li>
+</ul>
+<p>The version of <code>nghttp2-libs</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-44487">https://nvd.nist.gov/vuln/detail/CVE-2023-44487</a></li>
+</ul>
+<p>The version of <code>zod</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-4316">https://nvd.nist.gov/vuln/detail/CVE-2023-4316</a></li>
+</ul>
+<p>The version of <code>axios</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-45857">https://nvd.nist.gov/vuln/detail/CVE-2023-45857</a></li>
+</ul>
+<p>The version of <code>@babel/traverse</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-45133">https://nvd.nist.gov/vuln/detail/CVE-2023-45133</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.10 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.11 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-97">Notice 97</h2>
+<p><strong>Publication Date: November 13th, 2023</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda Tomcat distribution, Camunda Run, and transitively pulled in by the Camunda Spring Boot starter had the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-41080">https://nvd.nist.gov/vuln/detail/CVE-2023-41080</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-45648">https://nvd.nist.gov/vuln/detail/CVE-2023-45648</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-44487">https://nvd.nist.gov/vuln/detail/CVE-2023-44487</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-42795">https://nvd.nist.gov/vuln/detail/CVE-2023-42795</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-42794">https://nvd.nist.gov/vuln/detail/CVE-2023-42794</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used or Camunda Platform Run is used or Camunda Platform Spring Boot Starter is used.</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.21.0-alpha1, 7.20.1, 7.19.8, 7.18.12, and RPA Bridge 1.1.10 which contain a fix.</p>
+<h2 id="notice-96">Notice 96</h2>
+<p><strong>Publication Date: October 3rd, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Desktop Modeler</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>libwebp</code> shipped with Camunda Desktop Modeler was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-4863">https://nvd.nist.gov/vuln/detail/CVE-2023-4863</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Modeler 5.15.1 or lower is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following release which contains a fix:</p>
+<ul>
+<li><a href="https://downloads.camunda.cloud/release/camunda-modeler/5.15.2/">Camunda Desktop Modeler 5.15.2</a></li>
+</ul>
+<h2 id="notice-95">Notice 95</h2>
+<p><strong>Publication Date: September 14th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code> and <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://avd.aquasec.com/nvd/cve-2023-3817">https://avd.aquasec.com/nvd/cve-2023-3817</a></li>
+</ul>
+<p>The version of <code>busybox</code>, <code>busybox-binsh</code> and <code>ssl_client</code> shipped with <code>cawemo-restapi</code> and <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://avd.aquasec.com/nvd/cve-2022-48174">https://avd.aquasec.com/nvd/cve-2022-48174</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.9 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.10 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-94">Notice 94</h2>
+<p><strong>Publication Date: August 8th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Swagger UI included in Camunda Platform Run had a number of third-party library vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-15168">https://nvd.nist.gov/vuln/detail/CVE-2020-15168</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3664">https://nvd.nist.gov/vuln/detail/CVE-2021-3664</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3801">https://nvd.nist.gov/vuln/detail/CVE-2021-3801</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-23648">https://nvd.nist.gov/vuln/detail/CVE-2021-23648</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-32723">https://nvd.nist.gov/vuln/detail/CVE-2021-32723</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0235">https://nvd.nist.gov/vuln/detail/CVE-2022-0235</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0512">https://nvd.nist.gov/vuln/detail/CVE-2022-0512</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0639">https://nvd.nist.gov/vuln/detail/CVE-2022-0639</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0686">https://nvd.nist.gov/vuln/detail/CVE-2022-0686</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0691">https://nvd.nist.gov/vuln/detail/CVE-2022-0691</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-1365">https://nvd.nist.gov/vuln/detail/CVE-2022-1365</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24999">https://nvd.nist.gov/vuln/detail/CVE-2022-24999</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25927">https://nvd.nist.gov/vuln/detail/CVE-2022-25927</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use Camunda Platform Run</li>
+<li>Swagger UI is activated in your deployment of Run</li>
+<li>An attacker has access to Swagger UI or can influence a user of Swagger UI</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.20.0-alpha4, 7.19.5, 7.18.10, 7.17.15 which contain a fix.</p>
+<h2 id="notice-93">Notice 93</h2>
+<p><strong>Publication Date: August 1st, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>spring-security-config</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34034">https://nvd.nist.gov/vuln/detail/CVE-2023-34034</a></li>
+</ul>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2975">https://nvd.nist.gov/vuln/detail/CVE-2023-2975</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-3446">https://nvd.nist.gov/vuln/detail/CVE-2023-3446</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2975">https://nvd.nist.gov/vuln/detail/CVE-2023-2975</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-3446">https://nvd.nist.gov/vuln/detail/CVE-2023-3446</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.8 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.9 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-92">Notice 92</h2>
+<p><strong>Publication Date: June 27th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>netty-handler</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34462">https://nvd.nist.gov/vuln/detail/CVE-2023-34462</a></li>
+</ul>
+<p>The version of <code>spring-boot-autoconfigure</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-20883">https://nvd.nist.gov/vuln/detail/CVE-2023-20883</a></li>
+</ul>
+<p>The version of <code>semver</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25883">https://nvd.nist.gov/vuln/detail/CVE-2022-25883</a></li>
+</ul>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-1255">https://nvd.nist.gov/vuln/detail/CVE-2023-1255</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2650">https://nvd.nist.gov/vuln/detail/CVE-2023-2650</a></li>
+</ul>
+<p>The version of <code>react/http</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-26044">https://nvd.nist.gov/vuln/detail/CVE-2023-26044</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-28319">https://nvd.nist.gov/vuln/detail/CVE-2023-28319</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-28320">https://nvd.nist.gov/vuln/detail/CVE-2023-28320</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-28321">https://nvd.nist.gov/vuln/detail/CVE-2023-28321</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-28322">https://nvd.nist.gov/vuln/detail/CVE-2023-28322</a></li>
+</ul>
+<p>The versions of <code>ncurses-libs</code> and <code>ncurses-terminfo-base</code> shipped with <code>cawemo-websockets</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-29491">https://nvd.nist.gov/vuln/detail/CVE-2023-29491</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-1255">https://nvd.nist.gov/vuln/detail/CVE-2023-1255</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2650">https://nvd.nist.gov/vuln/detail/CVE-2023-2650</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.7 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.8 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-91">Notice 91</h2>
+<p><strong>Publication Date: June 6th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The Camunda web applications had a <a href="https://owasp.org/www-community/attacks/Path_Traversal">path traversal vulnerability</a> that allowed an attacker to read files from the JVM&rsquo;s classpath (e.g. classes, configuration files, BPMN models - depending on use) and the Camunda web applications&rsquo; directory (e.g. web.xml deployment descriptor). In addition, on IBM Websphere 9, an attacker could read files from the file system that the system user running the JVM process could access.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda web applications</li>
+<li>An attacker has access to the REST API endpoints exposed by the Camunda web application backend</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.20.0-alpha2, 7.19.3, 7.18.9, 7.17.14 which contain a fix. Note that the fix introduces a change that <a href="https://docs.camunda.org/manual/7.19/update/patch-level/#7-19-2-to-7-19-3-7-18-8-to-7-18-9-7-17-13-to-7-17-14">requires migrating Java-based web application plugins</a>.</p>
+<h2 id="notice-90">Notice 90</h2>
+<p><strong>Publication Date: June 6th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of AngularJS, included in the Camunda web applications, had a Regular Expression Denial of Service (ReDoS) vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-26116">https://nvd.nist.gov/vuln/detail/CVE-2023-26116</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda web applications</li>
+<li>An attacker can make a victim provide forged input to the web application</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.20.0-alpha2, 7.19.2, 7.18.8, 7.17.13 which contain a fix.</p>
+<h2 id="notice-89">Notice 89</h2>
+<p><strong>Publication Date: June 6th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Tomcat, included in the Camunda Tomcat distribution, had one vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-28708">https://nvd.nist.gov/vuln/detail/CVE-2023-28708</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Tomcat distribution</li>
+<li>You configure the servlet filter <code>RemoteIpFilter</code> in Tomcat and/or a deployed web application</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.20.0-alpha2, 7.19.2, 7.18.8, 7.17.13 which contain a fix.</p>
+<h2 id="notice-88">Notice 88</h2>
+<p><strong>Publication Date: April 21st, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>spring-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-20861">https://nvd.nist.gov/vuln/detail/CVE-2023-20861</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-20863">https://nvd.nist.gov/vuln/detail/CVE-2023-20863</a></li>
+</ul>
+<p>The version of <code>snakeyaml</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-1471">https://nvd.nist.gov/vuln/detail/CVE-2022-1471</a></li>
+</ul>
+<p>The version of <code>@sideway/formula</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-25166">https://nvd.nist.gov/vuln/detail/CVE-2023-25166</a></li>
+</ul>
+<p>The version of <code>guzzlehttp/psr7</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-29197">https://nvd.nist.gov/vuln/detail/CVE-2023-29197</a></li>
+</ul>
+<p>The versions of <code>libcrypto3</code> and <code>libssl3</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4203">https://nvd.nist.gov/vuln/detail/CVE-2022-4203</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4304">https://nvd.nist.gov/vuln/detail/CVE-2022-4304</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4450">https://nvd.nist.gov/vuln/detail/CVE-2022-4450</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0215">https://nvd.nist.gov/vuln/detail/CVE-2023-0215</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0216">https://nvd.nist.gov/vuln/detail/CVE-2023-0216</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0217">https://nvd.nist.gov/vuln/detail/CVE-2023-0217</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0286">https://nvd.nist.gov/vuln/detail/CVE-2023-0286</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0401">https://nvd.nist.gov/vuln/detail/CVE-2023-0401</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0464">https://nvd.nist.gov/vuln/detail/CVE-2023-0464</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0465">https://nvd.nist.gov/vuln/detail/CVE-2023-0465</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0466">https://nvd.nist.gov/vuln/detail/CVE-2023-0466</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-23914">https://nvd.nist.gov/vuln/detail/CVE-2023-23914</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-23915">https://nvd.nist.gov/vuln/detail/CVE-2023-23915</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-23916">https://nvd.nist.gov/vuln/detail/CVE-2023-23916</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-27533">https://nvd.nist.gov/vuln/detail/CVE-2023-27533</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-27534">https://nvd.nist.gov/vuln/detail/CVE-2023-27534</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-27535">https://nvd.nist.gov/vuln/detail/CVE-2023-27535</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-27536">https://nvd.nist.gov/vuln/detail/CVE-2023-27536</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-27537">https://nvd.nist.gov/vuln/detail/CVE-2023-27537</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-27538">https://nvd.nist.gov/vuln/detail/CVE-2023-27538</a></li>
+</ul>
+<p>The version of <code>libxml2</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-28484">https://nvd.nist.gov/vuln/detail/CVE-2023-28484</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-29469">https://nvd.nist.gov/vuln/detail/CVE-2023-29469</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.6 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.7 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-87">Notice 87</h2>
+<p><strong>Publication Date: April 11th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the Quarkus Dev UI, part of Camunda&rsquo;s supported version of the Quarkus framework, had two vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4116">https://nvd.nist.gov/vuln/detail/CVE-2022-4116</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4147">https://nvd.nist.gov/vuln/detail/CVE-2022-4147</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Quarkus extension</li>
+<li>You use the <a href="https://quarkus.io/guides/dev-ui">Quarkus Dev UI</a></li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the release 7.19.0 which contains a fix.</p>
+<h2 id="notice-86">Notice 86</h2>
+<p><strong>Publication Date: March 29th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda Tomcat distribution, Camunda Run, and transitively pulled in by the Camunda Spring Boot starter had a vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-24998">https://nvd.nist.gov/vuln/detail/CVE-2023-24998</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter is used</li>
+<li>See the NIST link above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.0-alpha4, 7.18.6, 7.17.11, 7.16.18 which contain a fix.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-85">Notice 85</h2>
+<p><strong>Publication Date: March 29th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>In previous versions of Camunda, it was possible that a user remained logged in to the web applications (Cockpit, Tasklist, Admin) after their account was deleted.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda web applications (Cockpit, Tasklist, Admin)</li>
+<li>The attacker is an authenticated user of the system</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.0-alpha5, 7.18.6, 7.17.11, 7.16.18 which contain a fix.</p>
+<p>You can find details on the solution and how to configure it in <a href="https://docs.camunda.org/manual/7.18/user-guide/security/#authentication-cache">our security guide</a>.</p>
+<h2 id="notice-84">Notice 84</h2>
+<p><strong>Publication Date: March 14th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson shipped with the Camunda distributions had two vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42003">https://nvd.nist.gov/vuln/detail/CVE-2022-42003</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42004">https://nvd.nist.gov/vuln/detail/CVE-2022-42004</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use a Camunda installation with variables of type <code>json</code> or object variables that are serialized as JSON</li>
+<li>You use a custom <code>DataFormatConfigurator</code> that activates the deserialization feature <code>UNWRAP_SINGLE_VALUE_ARRAYS</code> on the Jackson ObjectMapper</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.0-alpha4, 7.18.5, 7.17.10, 7.16.17 which contain a fix.</p>
+<h2 id="notice-83">Notice 83</h2>
+<p><strong>Publication Date: February 14th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The Camunda Spring Boot starter and Camunda Run could write the hashed password of the administrator user to the application log on startup.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spring Boot starter <em>or</em> Camunda Run is used</li>
+<li>The configuration property <code>camunda.bpm.admin-user.id</code> or <code>camunda.bpm.admin-user.password</code> is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.0-alpha3, 7.18.3, 7.17.9, 7.16.16 which contain a fix.</p>
+<h2 id="notice-82">Notice 82</h2>
+<p><strong>Publication Date: February 14th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions, RPA Bridge, and transitively pulled in by the Camunda Spring Boot starter had three vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-43980">https://nvd.nist.gov/vuln/detail/CVE-2021-43980</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42252">https://nvd.nist.gov/vuln/detail/CVE-2022-42252</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-45143">https://nvd.nist.gov/vuln/detail/CVE-2022-45143</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter <em>or</em> Camunda RPA Bridge is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.0-alpha3, 7.18.2, 7.17.8, 7.16.15, RPA Bridge 1.1.9 which contain a fix.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-81">Notice 81</h2>
+<p><strong>Publication Date: February 8th, 2023</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>io.netty:netty-codec-http</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-41915">https://nvd.nist.gov/vuln/detail/CVE-2022-41915</a></li>
+</ul>
+<p>The version of <code>postgresql</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-41946">https://nvd.nist.gov/vuln/detail/CVE-2022-41946</a></li>
+</ul>
+<p>The version of <code>json5</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-46175">https://nvd.nist.gov/vuln/detail/CVE-2022-46175</a></li>
+</ul>
+<p>The version of <code>qs</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24999">https://nvd.nist.gov/vuln/detail/CVE-2022-24999</a></li>
+</ul>
+<p>The version of <code>symfony/http-kernel</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24894">https://nvd.nist.gov/vuln/detail/CVE-2022-24894</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://avd.aquasec.com/nvd/cve-2022-43551">https://avd.aquasec.com/nvd/cve-2022-43551</a></li>
+<li><a href="https://avd.aquasec.com/nvd/cve-2022-43552">https://avd.aquasec.com/nvd/cve-2022-43552</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.5 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.6 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-80">Notice 80</h2>
+<p><strong>Publication Date: December 15th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Scala shipped with the FEEL engine in Camunda Platform 7 was vulnerable to an object deserialization flaw. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-36944">https://nvd.nist.gov/vuln/detail/CVE-2022-36944</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The engine configuration property <code>javaSerializationFormatEnabled</code> is set to <code>true</code> (default <code>false</code>)</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.19.0-alpha2, 7.18.1, 7.17.7, and 7.16.14 which contain a fix.</p>
+<h2 id="notice-79">Notice 79</h2>
+<p><strong>Publication Date: December 1st, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the Got library used by the Javascript external task client was vulnerable to a redirect attack. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-33987">https://nvd.nist.gov/vuln/detail/CVE-2022-33987</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use <a href="https://github.com/camunda/camunda-external-task-client-js">camunda-external-task-client-js</a></li>
+<li>An attacker is able modify the response of a HTTP request issued by the external task client</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 2.3.1 and 2.2.1 of the External Task Client Javascript which contain a fix.</p>
+<h2 id="notice-78">Notice 78</h2>
+<p><strong>Publication Date: November 17th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>jackson-databind</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42003">https://nvd.nist.gov/vuln/detail/CVE-2022-42003</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42004">https://nvd.nist.gov/vuln/detail/CVE-2022-42004</a></li>
+</ul>
+<p>The version of <code>spring-security-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31692">https://nvd.nist.gov/vuln/detail/CVE-2022-31692</a></li>
+</ul>
+<p>The version of <code>undertow-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-1259">https://nvd.nist.gov/vuln/detail/CVE-2022-1259</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-2764">https://nvd.nist.gov/vuln/detail/CVE-2022-2764</a></li>
+</ul>
+<p>The version of <code>deep-object-diff</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-41713">https://nvd.nist.gov/vuln/detail/CVE-2022-41713</a></li>
+</ul>
+<p>The version of <code>minimatch</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-3517">https://nvd.nist.gov/vuln/detail/CVE-2022-3517</a></li>
+</ul>
+<p>The version of <code>react/http</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-36032">https://nvd.nist.gov/vuln/detail/CVE-2022-36032</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42915">https://nvd.nist.gov/vuln/detail/CVE-2022-42915</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42916">https://nvd.nist.gov/vuln/detail/CVE-2022-42916</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.4 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.5 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-77">Notice 77</h2>
+<p><strong>Publication Date: October 12th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The H2 console application included in the Camunda Tomcat and Wildfly distributions was vulnerable to remote code execution.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Tomcat or Wildfly distribution</li>
+<li>An attacker can make a localhost connection to the H2 console application (note that the H2 console application refuses remote requests)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.18.0, 7.17.6, 7.16.13, and 7.15.19</li>
+</ul>
+<p>As an alternative solution, you can remove the h2 web application from your Tomcat or Wildfly server.</p>
+<h2 id="notice-76">Notice 76</h2>
+<p><strong>Publication Date: September 15th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>postgresql</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31197">https://nvd.nist.gov/vuln/detail/CVE-2022-31197</a></li>
+</ul>
+<p>The version of <code>snakeyaml</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-38752">https://nvd.nist.gov/vuln/detail/CVE-2022-38752</a></li>
+</ul>
+<p>The version of <code>undertow-core</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-2053">https://nvd.nist.gov/vuln/detail/CVE-2022-2053</a></li>
+</ul>
+<p>The versions of <code>libcrypto1.1</code>, and <code>libssl1.1</code> shipped with <code>cawemo-restapi</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-2097">https://nvd.nist.gov/vuln/detail/CVE-2022-2097</a></li>
+</ul>
+<p>The version of <code>zlib</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-37434">https://nvd.nist.gov/vuln/detail/CVE-2022-37434</a></li>
+</ul>
+<p>The version of <code>moment</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31129">https://nvd.nist.gov/vuln/detail/CVE-2022-31129</a></li>
+</ul>
+<p>The version of <code>passport</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25896">https://nvd.nist.gov/vuln/detail/CVE-2022-25896</a></li>
+</ul>
+<p>The versions of <code>libcrypto1.1</code>, and <code>libssl1.1</code> shipped with <code>cawemo-webapp</code> were affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-2097">https://nvd.nist.gov/vuln/detail/CVE-2022-2097</a></li>
+</ul>
+<p>The version of <code>zlib</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-37434">https://nvd.nist.gov/vuln/detail/CVE-2022-37434</a></li>
+</ul>
+<p>The version of <code>guzzlehttp/guzzle</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31042">https://nvd.nist.gov/vuln/detail/CVE-2022-31042</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31043">https://nvd.nist.gov/vuln/detail/CVE-2022-31043</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31091">https://nvd.nist.gov/vuln/detail/CVE-2022-31091</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-31090">https://nvd.nist.gov/vuln/detail/CVE-2022-31090</a></li>
+</ul>
+<p>The version of <code>busybox</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-30065">https://nvd.nist.gov/vuln/detail/CVE-2022-30065</a></li>
+</ul>
+<p>The versions of <code>openssl</code>, <code>libcrypto1.1</code>, and <code>libssl1.1</code> shipped with <code>cawemo-websockets</code> were affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-2097">https://nvd.nist.gov/vuln/detail/CVE-2022-2097</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-32205">https://nvd.nist.gov/vuln/detail/CVE-2022-32205</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-32206">https://nvd.nist.gov/vuln/detail/CVE-2022-32206</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-32207">https://nvd.nist.gov/vuln/detail/CVE-2022-32207</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-32208">https://nvd.nist.gov/vuln/detail/CVE-2022-32208</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-35252">https://nvd.nist.gov/vuln/detail/CVE-2022-35252</a></li>
+</ul>
+<p>The version of <code>libxml2</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-3209">https://nvd.nist.gov/vuln/detail/CVE-2022-3209</a></li>
+</ul>
+<p>The version of <code>ssl_client</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-30065">https://nvd.nist.gov/vuln/detail/CVE-2022-30065</a></li>
+</ul>
+<p>The version of <code>zlib</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-37434">https://nvd.nist.gov/vuln/detail/CVE-2022-37434</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.3 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.4 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-75">Notice 75</h2>
+<p><strong>Publication Date: August 9th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The H2 console application included in the Camunda Tomcat and Wildfly distributions was vulnerable to remote code execution.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Tomcat or Wildfly distribution</li>
+<li>An attacker can make a localhost connection to the H2 console application (note that the H2 console application refuses remote requests)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.18.0-alpha4 and 7.17.3</li>
+</ul>
+<p>As an alternative solution, you can remove the h2 web application from your Tomcat or Wildfly server.</p>
+<h2 id="notice-74">Notice 74</h2>
+<p><strong>Publication Date: August 9th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The Docker images for Camunda Platform 7 contained system libraries with reported vulnerabilities.</p>
+<p>libcurl:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-32206">https://nvd.nist.gov/vuln/detail/CVE-2022-32206</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Docker images</li>
+<li>Due to the low-level nature of these vulnerabilities, we cannot reliably assess if Camunda installations are practically affected. We generally recommend to update for this reason.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.18.0-alpha4, 7.17.3, 7.16.10, and 7.15.16</li>
+</ul>
+<h2 id="notice-73">Notice 73</h2>
+<p><strong>Publication Date: June 2nd, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>async</code> shipped with <code>cawemo-webapp</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-43138">https://nvd.nist.gov/vuln/detail/CVE-2021-43138</a></li>
+</ul>
+<p>The version of <code>moment</code> shipped with <code>cawemo-webapp</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24785">https://nvd.nist.gov/vuln/detail/CVE-2022-24785</a></li>
+</ul>
+<p>The version of <code>netty-codec-http</code> shipped with <code>cawemo-restapi</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24823">https://nvd.nist.gov/vuln/detail/CVE-2022-24823</a></li>
+</ul>
+<p>The version of <code>spring-security-core</code> shipped with <code>cawemo-restapi</code> was affected by the
+following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22978">https://nvd.nist.gov/vuln/detail/CVE-2022-22978</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22976">https://nvd.nist.gov/vuln/detail/CVE-2022-22976</a></li>
+</ul>
+<p>The version of <code>spring-core</code> shipped with <code>cawemo-restapi</code> was affected by the
+following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22970">https://nvd.nist.gov/vuln/detail/CVE-2022-22970</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22971">https://nvd.nist.gov/vuln/detail/CVE-2022-22971</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22968">https://nvd.nist.gov/vuln/detail/CVE-2022-22968</a></li>
+</ul>
+<p>The version of <code>libcurl</code> shipped with <code>cawemo-websockets</code> was affected by the
+following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22576">https://nvd.nist.gov/vuln/detail/CVE-2022-22576</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-27774">https://nvd.nist.gov/vuln/detail/CVE-2022-27774</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-27776">https://nvd.nist.gov/vuln/detail/CVE-2022-27776</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-27775">https://nvd.nist.gov/vuln/detail/CVE-2022-27775</a></li>
+</ul>
+<p>The version of <code>libxml2</code> shipped with <code>cawemo-websockets</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-29824">https://nvd.nist.gov/vuln/detail/CVE-2022-29824</a></li>
+</ul>
+<p>The version of <code>xz-libs</code> shipped with <code>cawemo-websockets</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-1271">https://nvd.nist.gov/vuln/detail/CVE-2022-1271</a></li>
+</ul>
+<p>The version of <code>guzzlehttp/guzzle</code> shipped with <code>cawemo-websockets</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-29248">https://nvd.nist.gov/vuln/detail/CVE-2022-29248</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.2 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.3 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-72">Notice 72</h2>
+<p><strong>Publication Date: May 31st, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson included in Camunda Platform 7 was vulnerable to denial of service attacks. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-36518">https://nvd.nist.gov/vuln/detail/CVE-2020-36518</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>One of the following modules is used:
+<ul>
+<li>Web applications</li>
+<li>REST API</li>
+<li>Camunda Spin</li>
+</ul>
+</li>
+<li>An attacker can submit a very large JSON payload to any of the modules&rsquo; APIs</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.18.0-alpha1, 7.17.2, 7.16.9, 7.15.15 which contain a fix.</p>
+<h2 id="notice-71">Notice 71</h2>
+<p><strong>Publication Date: May 31st, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Groovy included in the Camunda Platform 7 Run, Tomcat, Weblogic,  Websphere, Wildfly distributions had a local privilege escalation vulnerability. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-20289">https://nvd.nist.gov/vuln/detail/CVE-2021-20289</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>One of the Camunda Platform 7 Run, Tomcat, Weblogic,  Websphere, Wildfly distributions is used</li>
+<li>An attacker can make control the content of a Groovy script in a process</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.18.0-alpha1, 7.17.2, 7.16.9, 7.15.15 which contain a fix.</p>
+<h2 id="notice-70">Notice 70</h2>
+<p><strong>Publication Date: May 10th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Resteasy used by the Camunda Platform 7 REST API and web applications had an information disclosure vulnerability. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-20289">https://nvd.nist.gov/vuln/detail/CVE-2021-20289</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform 7 Tomcat distribution is used</li>
+<li>An attacker can make requests to the REST API or web application endpoints</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.18.0-alpha1, 7.17.1, 7.16.8, 7.15.14 which contain a fix.</p>
+<h2 id="notice-69">Notice 69</h2>
+<p><strong>Publication Date: May 10th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the MySQL JDBC connector included in the Camunda Platform 7 Docker images had two known vulnerabilities. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-2471">https://nvd.nist.gov/vuln/detail/CVE-2021-2471</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-21363">https://nvd.nist.gov/vuln/detail/CVE-2022-21363</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform 7 Docker containers are used</li>
+<li>MySQL is used for the database connection</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.18.0-alpha1, 7.17.1, 7.16.8, 7.15.14 which contain a fix.</p>
+<h2 id="notice-68">Notice 68</h2>
+<p><strong>Publication Date: May 10th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the Spring Framework used by various Camunda components was vulnerable to remote code execution attacks. This vulnerability is known as <em>Spring4Shell</em>. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22965">https://nvd.nist.gov/vuln/detail/CVE-2022-22965</a></li>
+<li><a href="https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement">https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform 7 is not directly affected by this vulnerability (see our <a href="https://forum.camunda.io/t/spring-remote-code-execution-rce-vulnerability-spring4shell/33848">forum announcement</a>). We are making this announcement due to the high popularity of the vulnerability.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.18.0-alpha1, 7.17.1, 7.16.8, 7.15.14, 7.14.20, RPA Bridge 1.1.7 that update Spring to a version that is not vulnerable.</p>
+<h2 id="notice-67">Notice 67</h2>
+<p><strong>Publication Date: May 10th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache HTTP Client used by the Java external task client was vulnerable to an attack that a malformed request URL was interpreted incorrectly, which could lead the client to make a request against a different host. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-13956">https://nvd.nist.gov/vuln/detail/CVE-2020-13956</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Java external task client is used</li>
+<li>An attacker can manipulate the request URL</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.18.0-alpha1, 7.17.1, 7.16.8, 7.15.14 which contain a fix.</p>
+<h2 id="notice-66">Notice 66</h2>
+<p><strong>Publication Date: May 2nd, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the Spring Framework used in Camunda Platform 7 was vulnerable to log entry insertion:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22096">https://nvd.nist.gov/vuln/detail/CVE-2021-22096</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22060">https://nvd.nist.gov/vuln/detail/CVE-2021-22060</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use any of the following modules:
+<ul>
+<li>Standalone web applications</li>
+<li>Weblogic integration</li>
+<li>Websphere integration</li>
+<li>RPA Bridge</li>
+</ul>
+</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.17.0, 7.16.6, 7.15.12, and 7.14.18</li>
+<li>RPA Bridge 1.1.6</li>
+</ul>
+<h2 id="notice-65">Notice 65</h2>
+<p><strong>Publication Date: April 7th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>spring-webmvc</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22965">https://nvd.nist.gov/vuln/detail/CVE-2022-22965</a></li>
+</ul>
+<p>However, as of now, we were not able to identify a possible exploit of this vulnerability in Cawemo via the particular
+exploit described in the <a href="https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement">official blog post</a>.</p>
+<p>At least two of the prerequisites do not apply to Cawemo: &ldquo;Apache Tomcat as the Servlet container&rdquo; and &ldquo;Packaged as a
+traditional WAR (in contrast to a Spring Boot executable jar)&rdquo; (Cawemo is packaged as an executable jar with an embedded
+Undertow).</p>
+<p>Nevertheless, we updated Cawemo to Spring Boot 2.6.6 / Spring MVC 5.3.18 (which includes a fix for the CVE).</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.1 or lower is used</li>
+<li>See the linked blog post above for a detailed description of the circumstances required to exploit the vulnerability</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the 1.9.2 release for the <code>cawemo-restapi</code> Docker image which contains a fix.</p>
+<h2 id="notice-64">Notice 64</h2>
+<p><strong>Publication Date: April 7th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of <code>busybox</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-28391">https://nvd.nist.gov/vuln/detail/CVE-2022-28391</a></li>
+</ul>
+<p>The version of <code>openssl</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0778">https://nvd.nist.gov/vuln/detail/CVE-2022-0778</a></li>
+</ul>
+<p>The version of <code>zlib</code> shipped with <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> was affected by the
+following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-25032">https://nvd.nist.gov/vuln/detail/CVE-2018-25032</a></li>
+</ul>
+<p>The version of <code>jackson-databind</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-36518">https://nvd.nist.gov/vuln/detail/CVE-2020-36518</a></li>
+</ul>
+<p>The version of <code>postgresql</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-21724">https://nvd.nist.gov/vuln/detail/CVE-2022-21724</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-26520">https://nvd.nist.gov/vuln/detail/CVE-2022-26520</a></li>
+</ul>
+<p>The version of <code>ansi-regex</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3807">https://nvd.nist.gov/vuln/detail/CVE-2021-3807</a></li>
+</ul>
+<p>The version of <code>minimist</code> shipped with <code>cawemo-webapp</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44906">https://nvd.nist.gov/vuln/detail/CVE-2021-44906</a></li>
+</ul>
+<p>The version of <code>libxml2</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-23308">https://nvd.nist.gov/vuln/detail/CVE-2022-23308</a></li>
+</ul>
+<p>The version of <code>guzzlehttp/psr7</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-24775">https://nvd.nist.gov/vuln/detail/CVE-2022-24775</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.1 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.2 releases for the <code>cawemo-restapi</code>, <code>cawemo-webapp</code>, and <code>cawemo-websockets</code> Docker images
+which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-63">Notice 63</h2>
+<p><strong>Publication Date: April 1st, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the PostgreSQL JDBC driver used in the Camunda Platform 7 Docker images had multiple vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-10936">https://nvd.nist.gov/vuln/detail/CVE-2018-10936</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-13692">https://nvd.nist.gov/vuln/detail/CVE-2020-13692</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-21724">https://nvd.nist.gov/vuln/detail/CVE-2022-21724</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Docker images</li>
+<li>You connect to a PostgreSQL database</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.17.0-alpha5, 7.16.7, 7.15.13, and 7.14.19</li>
+</ul>
+<h2 id="notice-62">Notice 62</h2>
+<p><strong>Publication Date: April 1st, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions, RPA Bridge, and transitively pulled in by the Camunda Spring Boot starter had two vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42340">https://nvd.nist.gov/vuln/detail/CVE-2021-42340</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-23181">https://nvd.nist.gov/vuln/detail/CVE-2022-23181</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter <em>or</em> Camunda RPA Bridge is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.17.0-alpha6, 7.16.7, 7.15.13, 7.14.19, RPA Bridge 1.1.6 which contain a fix.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-61">Notice 61</h2>
+<p><strong>Publication Date: April 1st, 2022 (updated April 11th, 2022)</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The Docker images for Camunda Platform 7 contained system libraries with reported vulnerabilities.</p>
+<p>libexpat:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25235">https://nvd.nist.gov/vuln/detail/CVE-2022-25235</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25236">https://nvd.nist.gov/vuln/detail/CVE-2022-25236</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25313">https://nvd.nist.gov/vuln/detail/CVE-2022-25313</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25314">https://nvd.nist.gov/vuln/detail/CVE-2022-25314</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25315">https://nvd.nist.gov/vuln/detail/CVE-2022-25315</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-23852">https://nvd.nist.gov/vuln/detail/CVE-2022-23852</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-23990">https://nvd.nist.gov/vuln/detail/CVE-2022-23990</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-45960">https://nvd.nist.gov/vuln/detail/CVE-2021-45960</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-46143">https://nvd.nist.gov/vuln/detail/CVE-2021-46143</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22822">https://nvd.nist.gov/vuln/detail/CVE-2022-22822</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22823">https://nvd.nist.gov/vuln/detail/CVE-2022-22823</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22824">https://nvd.nist.gov/vuln/detail/CVE-2022-22824</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22825">https://nvd.nist.gov/vuln/detail/CVE-2022-22825</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22826">https://nvd.nist.gov/vuln/detail/CVE-2022-22826</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22827">https://nvd.nist.gov/vuln/detail/CVE-2022-22827</a></li>
+</ul>
+<p>openssl:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0778">https://nvd.nist.gov/vuln/detail/CVE-2022-0778</a></li>
+</ul>
+<p>libxml2:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-23308">https://nvd.nist.gov/vuln/detail/CVE-2022-23308</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Docker images</li>
+<li>Due to the low-level nature of these vulnerabilities, we cannot reliably assess if Camunda installations are practically affected. We generally recommend to update for this reason.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.17.0-alpha6, 7.16.7, 7.15.13, and 7.14.19</li>
+</ul>
+<h2 id="notice-60">Notice 60</h2>
+<p><strong>Publication Date: March 9th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The Tomcat and Wildfly distributions include the H2 console web application that is vulnerable to remote code execution attacks.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use either the Tomcat or Wildfly distribution</li>
+<li>An attacker can access the h2 console path (e.g. <code>https://&lt;host&gt;/h2</code> by default)</li>
+<li>Note that this is independent if h2 is actually used as the Camunda database</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix, as of which the h2 console is only accessible for localhost connections:</p>
+<ul>
+<li>Camunda Platform 7.17.0-alpha5, 7.16.6, 7.15.12, and 7.14.18</li>
+</ul>
+<p>As an alternative solution on lower versions, you can remove the h2 web application from the application server.</p>
+<h2 id="notice-59">Notice 59</h2>
+<p><strong>Publication Date: March 9th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson used by Camunda Platform 7 was vulnerable to Denial of Service attacks.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use the Camunda Platform 7 REST API</li>
+<li>An attacker is able to submit process variables</li>
+<li>The Java serialization format for variables is enabled</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.17.0-alpha5, 7.16.6, 7.15.12, and 7.14.18</li>
+</ul>
+<h2 id="notice-58">Notice 58</h2>
+<p><strong>Publication Date: March 2nd, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The version of netty-tcnative-classes shipped with cawemo-restapi was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-43797">https://nvd.nist.gov/vuln/detail/CVE-2021-43797</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-16869">https://nvd.nist.gov/vuln/detail/CVE-2019-16869</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2015-2156">https://nvd.nist.gov/vuln/detail/CVE-2015-2156</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-37136">https://nvd.nist.gov/vuln/detail/CVE-2021-37136</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2014-3488">https://nvd.nist.gov/vuln/detail/CVE-2014-3488</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-37137">https://nvd.nist.gov/vuln/detail/CVE-2021-37137</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-20445">https://nvd.nist.gov/vuln/detail/CVE-2019-20445</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-20444">https://nvd.nist.gov/vuln/detail/CVE-2019-20444</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-21295">https://nvd.nist.gov/vuln/detail/CVE-2021-21295</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-21409">https://nvd.nist.gov/vuln/detail/CVE-2021-21409</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-21290">https://nvd.nist.gov/vuln/detail/CVE-2021-21290</a></li>
+</ul>
+<p>The version of min-dash shipped with cawemo-webapp was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-23460">https://nvd.nist.gov/vuln/detail/CVE-2021-23460</a></li>
+</ul>
+<p>The version of node-fetch shipped with cawemo-webapp was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0235">https://nvd.nist.gov/vuln/detail/CVE-2022-0235</a></li>
+</ul>
+<p>The version of follow-redirects shipped with cawemo-webapp was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0155">https://nvd.nist.gov/vuln/detail/CVE-2022-0155</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.9.0 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.9.1 releases for the cawemo-restapi and cawemo-webapp Docker images which contain fixes for the above-mentioned CVEs.</p>
+<h2 id="notice-57">Notice 57</h2>
+<p><strong>Publication Date: February 8th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform 7</p>
+<p><strong>Impact:</strong></p>
+<p>When connected to LDAP, Camunda Platform Run logged sensitive LDAP connection configuration options during startup.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You use Camunda Platform Run</li>
+<li>You connect Camunda Platform Run to LDAP for user management</li>
+<li>An attacker has access to the log output</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.17.0-alpha4, 7.16.5, 7.15.11, and 7.14.17</li>
+</ul>
+<h2 id="notice-56">Notice 56</h2>
+<p><strong>Publication Date: January 21th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, IAM</p>
+<p><strong>Impact:</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, and IAM bundle log4j libraries for which the following CVE
+has been published:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44832">https://nvd.nist.gov/vuln/detail/CVE-2021-44832</a></li>
+</ul>
+<p>Similar to the <a href="#notice-54">security notice 54</a> on Dec 23rd, 2021, <strong>the products do not bundle the log4j-core library</strong>
+which contains the vulnerability referred to by the CVE. As a result, Camunda does not consider Camunda Run,
+Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM to be affected by the vulnerability.</p>
+<p>Still, Camunda recommends applying fixes as mentioned in Solutions below.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>You are using Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM.</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.17.0-alpha3, 7.16.5, 7.15.11, and 7.14.17</li>
+<li>Camunda RPA Bridge 1.1.5</li>
+<li>Camunda Optimize 3.7.0</li>
+<li>Cawemo 1.9.0</li>
+<li>IAM 1.1.12</li>
+</ul>
+<h2 id="notice-55">Notice 55</h2>
+<p><strong>Publication Date: January 14th, 2022</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>Camunda Spin was vulnerable to XML external entity (XXE) attacks when XML variables were used.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spin is on the classpath
+<ul>
+<li>Camunda distributions are used (e.g. Run, Tomcat, Wildfly)</li>
+<li>Spin is used as a project dependency</li>
+</ul>
+</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.17.0-alpha3, 7.16.4, 7.15.10, 7.14.16 which contain a fix.</p>
+<h2 id="notice-54">Notice 54</h2>
+<p><strong>Publication Date: December 23rd, 2021</strong></p>
+<p><strong>Product components affected:</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, IAM</p>
+<p><strong>Impact:</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, and IAM bundle log4j libraries for which the following CVE
+has been published:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-45105">https://nvd.nist.gov/vuln/detail/CVE-2021-45105</a></li>
+</ul>
+<p>Similar to the <a href="#notice-52">security notice 52</a> on Dec 17th, 2021, <strong>the products do not bundle the log4j-core library</strong>
+which contains the vulnerability referred to by the CVE. As a result, Camunda does not consider Camunda Run,
+Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM to be affected by the vulnerability.</p>
+<p>Still, Camunda recommends applying fixes as mentioned in Solutions below.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>You are using Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM.</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Automation Platform 7.17.0-alpha3, 7.16.4, 7.15.10, and 7.14.16</li>
+<li>Camunda RPA Bridge 1.1.4</li>
+<li>Camunda Optimize 3.6.5</li>
+<li>Cawemo 1.8.4</li>
+<li>IAM 1.1.11</li>
+</ul>
+<h2 id="notice-53">Notice 53</h2>
+<p><strong>Publication Date: December 21st, 2021</strong></p>
+<p><strong>Product affected</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact</strong></p>
+<p>The version of <code>netty-codec-http</code> shipped with <code>cawemo-restapi</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-43797">https://nvd.nist.gov/vuln/detail/CVE-2021-43797</a></li>
+</ul>
+<p>The version of <code>laravel/framework</code> shipped with <code>cawemo-websockets</code> was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-43808">https://nvd.nist.gov/vuln/detail/CVE-2021-43808</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.8.3 or lower is used.</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.8.4 releases for the <code>cawemo-restapi</code> and <code>cawemo-websockets</code> Docker images which contain fixes
+for the above-mentioned CVEs.</p>
+<h2 id="notice-52">Notice 52</h2>
+<p><strong>Publication Date: December 17th, 2021</strong></p>
+<p><strong>Product components affected</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, IAM.</p>
+<p><strong>Impact</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, and Camunda Optimize and IAM bundle log4j libraries for which the following CVEs have been published:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">https://nvd.nist.gov/vuln/detail/CVE-2021-44228</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-45046">https://nvd.nist.gov/vuln/detail/CVE-2021-45046</a></li>
+</ul>
+<p>Specifically, the products bundle log4j-api and log4j-to-slf4j. However, <strong>the products do not bundle the log4j-core
+library</strong> which contains the vulnerability referred to by the CVE. As a result, Camunda does not consider Camunda Run,
+Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM to be affected by the vulnerability.</p>
+<p>If you make use of any Camunda Optimize Demo Distribution, be aware that the bundled Elasticsearch is also affected by
+this CVE. However, according to Elastic no remote code execution is possible on Elasticsearch nodes, see the <a href="https://discuss.elastic.co/t/apache-log4j2-remote-code-execution-rce-vulnerability-cve-2021-44228-esa-2021-31/291476/1">Elastic Security Announcement</a>.</p>
+<p>If you are using any of the Camunda Spring Boot Starters and <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.logging.log4j">switched the default logging system to Log4J2</a>, make
+sure to either update your version of Log4J as described in the following <a href="https://spring.io/blog/2021/12/10/log4j2-vulnerability-and-spring-boot">Spring Boot article</a> or switch to a
+different logging implementation as described in the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.logging">Spring Boot guide</a>.</p>
+<p>Still, Camunda recommends applying fixes as mentioned in Solutions below.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>You are using Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM.</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix</p>
+<ul>
+<li>Camunda Platform Runtime 7.17.0-alpha3, 7.16.3, 7.15.9, and 7.14.15</li>
+<li>Camunda RPA Bridge 1.1.3</li>
+<li>Camunda Optimize 3.6.4</li>
+<li>Cawemo 1.8.3</li>
+<li>IAM 1.1.10</li>
+</ul>
+<h2 id="notice-51">Notice 51</h2>
+<p><strong>Publication Date: December 17th, 2021</strong></p>
+<p><strong>Product components affected</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, IAM</p>
+<p><strong>Impact</strong></p>
+<p>Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo and IAM bundle logback libraries for which the following vulnerability was reported:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42550">https://nvd.nist.gov/vuln/detail/CVE-2021-42550</a></li>
+</ul>
+<p>Camunda recommends applying fixes as mentioned in Solutions below.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>You are using Camunda Run, Camunda RPA Bridge, Camunda Optimize, Cawemo, or IAM.</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix</p>
+<ul>
+<li>Camunda Platform Runtime 7.17.0-alpha3, 7.16.3, 7.15.9, and 7.14.15</li>
+<li>Camunda RPA Bridge 1.1.3</li>
+<li>Camunda Optimize 3.6.4</li>
+<li>Cawemo 1.8.3</li>
+<li>IAM 1.1.10</li>
+</ul>
+<h2 id="notice-50">Notice 50</h2>
+<p><strong>Publication Date: December 14th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The Camunda Platform web applications did not set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite">SameSite attribute</a> on the session cookie. This enabled Cross-Site Request Forgery (CSRF) attacks if the <a href="https://docs.camunda.org/manual/7.16/webapps/shared-options/csrf-prevention/">token-based CSRF prevention mechanism</a> was compromised (e.g. by another cross-site scripting vulnerability). Adding the <code>SameSite</code> attribute to the session cookie hardens Camunda against CSRF attacks.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You are using the Camunda Platform web applications (Cockpit, Tasklist, Admin)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.17.0-alpha2, 7.16.2, 7.15.8, 7.14.14 which contain a fix.</p>
+<p>Note that on the servers Oracle Weblogic, IBM Websphere, and JBoss EAP/Wildfly, the <code>SameSite</code> attribute is not enabled by default and needs server configuration as described in the guides on <a href="https://docs.camunda.org/manual/7.16/webapps/shared-options/cookie-security/#session-cookie">how to configure the session cookie</a>.</p>
+<h2 id="notice-49">Notice 49</h2>
+<p><strong>Publication Date: November 30th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of busybox and ssl_client shipped with cawemo-restapi, cawemo-webapp and cawemo-websockets were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42374">https://nvd.nist.gov/vuln/detail/CVE-2021-42374</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42375">https://nvd.nist.gov/vuln/detail/CVE-2021-42375</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42378">https://nvd.nist.gov/vuln/detail/CVE-2021-42378</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42379">https://nvd.nist.gov/vuln/detail/CVE-2021-42379</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42380">https://nvd.nist.gov/vuln/detail/CVE-2021-42380</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42381">https://nvd.nist.gov/vuln/detail/CVE-2021-42381</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42382">https://nvd.nist.gov/vuln/detail/CVE-2021-42382</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42383">https://nvd.nist.gov/vuln/detail/CVE-2021-42383</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42384">https://nvd.nist.gov/vuln/detail/CVE-2021-42384</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42385">https://nvd.nist.gov/vuln/detail/CVE-2021-42385</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-42386">https://nvd.nist.gov/vuln/detail/CVE-2021-42386</a></li>
+</ul>
+<p>The versions of org.springframework:spring-core, org.springframework:spring-tx and io.netty:netty-transport shipped with cawemo-restapi were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22096">https://nvd.nist.gov/vuln/detail/CVE-2021-22096</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-37136">https://nvd.nist.gov/vuln/detail/CVE-2021-37136</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-37137">https://nvd.nist.gov/vuln/detail/CVE-2021-37137</a></li>
+</ul>
+<p>The version of json-schema shipped with cawemo-webapp was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3918">https://nvd.nist.gov/vuln/detail/CVE-2021-3918</a></li>
+</ul>
+<p>The version of symfony/http-kernel shipped with cawemo-websockets was affected by the following vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-41267">https://nvd.nist.gov/vuln/detail/CVE-2021-41267</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.8.0 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.8.1 releases for the cawemo-restapi, cawemo-webapp and cawemo-websockets Docker images which contain fixes for the above-mentioned CVE.</p>
+<h2 id="notice-48">Notice 48</h2>
+<p><strong>Publication Date: September 20th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The Camunda Platform web applications were vulnerable to cross-site-scripting attacks via AngularJS template injection. An attacker could craft Camunda URLs that if opened by a victim would run arbitrary Javascript code in the browsing context of the victim. For example, this would allow the attacker to make requests against the Camunda API with the permissions of the victim.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You are using the Camunda Platform web applications (Cockpit, Tasklist, Admin)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.16.0-alpha5, 7.15.6, 7.14.12, 7.13.18 which contain a fix.</p>
+<h2 id="notice-47">Notice 47</h2>
+<p><strong>Publication Date: September 20th, 2021 (updated May 2nd, 2022)</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions, shipped with the Camunda RPA Bridge, and transitively pulled in by the Camunda Spring Boot starter had various vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-41079">https://nvd.nist.gov/vuln/detail/CVE-2021-41079</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-30639">https://nvd.nist.gov/vuln/detail/CVE-2021-30639</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-30640">https://nvd.nist.gov/vuln/detail/CVE-2021-30640</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-33037">https://nvd.nist.gov/vuln/detail/CVE-2021-33037</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter is used <em>or</em> Camunda RPA Bridge is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.16.0-alpha5, 7.15.6, 7.14.12, 7.13.18, RPA Bridge 1.1.6 which contain a fix.</p>
+<p>The Camunda Spring Boot starter versions 7.13 work with Spring Boot 2.2 and 2.3, for which no patches are available that resolve this problem. We recommend to either update the Tomcat dependencies manually or moving to a higher version of Spring Boot in accordance with <a href="https://docs.camunda.org/manual/7.15/user-guide/spring-boot-integration/version-compatibility/">Camunda&rsquo;s compatibility matrix</a>.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-46">Notice 46</h2>
+<p><strong>Publication Date: August 31st, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of apk-tools, libcrypto1.1 and libssl1.1 shipped with cawemo-restapi, cawemo-webapp and cawemo-websockets were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3712">https://nvd.nist.gov/vuln/detail/CVE-2021-3712</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3711">https://nvd.nist.gov/vuln/detail/CVE-2021-3711</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-36159">https://nvd.nist.gov/vuln/detail/CVE-2021-36159</a></li>
+</ul>
+<p>The version of libcurl shipped with cawemo-websockets was affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22922">https://nvd.nist.gov/vuln/detail/CVE-2021-22922</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22923">https://nvd.nist.gov/vuln/detail/CVE-2021-22923</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22924">https://nvd.nist.gov/vuln/detail/CVE-2021-22924</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22925">https://nvd.nist.gov/vuln/detail/CVE-2021-22925</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.7.0 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.7.1 releases for the cawemo-restapi, cawemo-webapp and cawemo-websockets Docker images which contain fixes for the above-mentioned CVE.</p>
+<h2 id="notice-45">Notice 45</h2>
+<p><strong>Publication Date: June 7th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of lodash shipped with Camunda Cockpit, Tasklist, and Admin was vulnerable to command injection:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-23337">https://nvd.nist.gov/vuln/detail/CVE-2021-23337</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform web applications are used (Cockpit, Tasklist, Admin)</li>
+<li>Embedded task forms or custom plugins are used</li>
+<li>The forms and plugins make use of lodash&rsquo;s <code>template</code> function with untrusted input</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.16.0-alpha2, 7.15.2, 7.14.8, 7.13.14, 7.12.21 which contain a fix.</p>
+<h2 id="notice-44">Notice 44</h2>
+<p><strong>Publication Date: June 1st, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Cawemo On-Premises</p>
+<p><strong>Impact:</strong></p>
+<p>The versions of the dependencies io.netty:netty-codec-http2 and net.minidev:json-smart shipped with cawemo-restapi were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-21409">https://nvd.nist.gov/vuln/detail/CVE-2021-21409</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-27568">https://nvd.nist.gov/vuln/detail/CVE-2021-27568</a></li>
+</ul>
+<p>The dependencies jose, lodash and browserslist shipped with cawemo-webapp were affected by the following vulnerabilities:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-29443">https://nvd.nist.gov/vuln/detail/CVE-2021-29443</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-23337">https://nvd.nist.gov/vuln/detail/CVE-2021-23337</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-23364">https://nvd.nist.gov/vuln/detail/CVE-2021-23364</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Cawemo On-Premises 1.6.2 or lower is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided 1.6.3 releases for the cawemo-restapi and cawemo-webapp Docker images which contain fixes for the above-mentioned CVE.</p>
+<h2 id="notice-43">Notice 43</h2>
+<p><strong>Publication Date: April 13th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions and transitively pulled in by the Camunda Spring Boot starter was vulnerable to requests getting a response belonging to a different request and contained an incomplete fix for a previously addressed vulnerability:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-25122">https://nvd.nist.gov/vuln/detail/CVE-2021-25122</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-25329">https://nvd.nist.gov/vuln/detail/CVE-2021-25329</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0, 7.14.6, 7.13.12, 7.12.19 which contain a fix.</p>
+<p>The Camunda Spring Boot starter versions 7.13 and 3.4 work with Spring Boot 2.2, for which no patch is available that resolves this problem. We recommend to either update the Tomcat dependencies manually or moving to a higher version of Spring Boot in accordance with <a href="https://docs.camunda.org/manual/7.15/user-guide/spring-boot-integration/version-compatibility/">Camunda&rsquo;s compatibility matrix</a>.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-42">Notice 42</h2>
+<p><strong>Publication Date: March 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The solution to <a href="#notice-39">Notice 39</a> was not applied to the web application artifacts of the Camunda enterprise edition, meaning that they contained a vulnerable version of Apache Commons Codec.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform web applications are used</li>
+<li>Camunda Enterprise edition is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha4, 7.14.5, 7.13.11, 7.12.18 which contain a fix.</p>
+<h2 id="notice-41">Notice 41</h2>
+<p><strong>Publication Date: February 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of the MySQL JDBC driver used by the Camunda Platform Docker container was vulnerable to various attacks. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-3523">https://nvd.nist.gov/vuln/detail/CVE-2017-3523</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-3589">https://nvd.nist.gov/vuln/detail/CVE-2017-3589</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-3258">https://nvd.nist.gov/vuln/detail/CVE-2018-3258</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform Docker container is used</li>
+<li>MySQL is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha3, 7.14.4, 7.13.10, 7.12.17 which contain a fix.</p>
+<p>Please have a look at the patch update guide for the potential implications of using a higher version of the MySQL JDBC driver: <a href="https://docs.camunda.org/manual/7.14/update/patch-level/#update-of-mysql-jdbc-driver-in-camunda-docker-images">https://docs.camunda.org/manual/7.14/update/patch-level/#update-of-mysql-jdbc-driver-in-camunda-docker-images</a>.</p>
+<h2 id="notice-40">Notice 40</h2>
+<p><strong>Publication Date: February 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson used by Camunda Spin was vulnerable to XML external entity (XXE) attacks. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-25649">https://nvd.nist.gov/vuln/detail/CVE-2020-25649</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spin is on the classpath
+<ul>
+<li>Camunda distributions are used (e.g. Run, Tomcat, Wildfly)</li>
+<li>Spin is used as a project dependency</li>
+</ul>
+</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+<li>The recommended configuration for type whitelisting is not applied: <a href="https://docs.camunda.org/manual/7.14/user-guide/security/#variable-values-from-untrusted-sources">https://docs.camunda.org/manual/7.14/user-guide/security/#variable-values-from-untrusted-sources</a></li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha3, 7.14.4, 7.13.10, 7.12.17 which contain a fix.</p>
+<h2 id="notice-39">Notice 39</h2>
+<p><strong>Publication Date: February 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Commons Codec used by Camunda Connect was vulnerable to improper input validation. Details:</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/CODEC-134">https://issues.apache.org/jira/browse/CODEC-134</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The process engine is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha3, 7.14.4, 7.13.10, 7.12.17 which contain a fix.</p>
+<h2 id="notice-38">Notice 38</h2>
+<p><strong>Publication Date: February 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache HTTP Client used by Camunda Connect was vulnerable to an attack that a malformed request URL was interpreted incorrectly, which could lead the client to make a request against a different host. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-13956">https://nvd.nist.gov/vuln/detail/CVE-2020-13956</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The process engine is used</li>
+<li>Connector service tasks are used in a process and an attacker can manipulate the request URL</li>
+<li>Telemetry is used and an attacker can manipulate the request URL</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha3, 7.14.4, 7.13.10, 7.12.17 which contain a fix.</p>
+<h2 id="notice-37">Notice 37</h2>
+<p><strong>Publication Date: February 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Resteasy used by the Camunda Tomcat distributions was vulnerable to an attack that an illegal header could be injected into the HTTP response with a crafted request. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-1695">https://nvd.nist.gov/vuln/detail/CVE-2020-1695</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Tomcat distribution is used (Camunda Run is not affected)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha3, 7.14.4, 7.13.10, 7.12.17 which contain a fix.</p>
+<h2 id="notice-36">Notice 36</h2>
+<p><strong>Publication Date: February 9th, 2021</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions and transitively pulled in by the Camunda Spring Boot starter was vulnerable to unauthorized exposure of file resources and information leaks between HTTP requests:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-17527">https://nvd.nist.gov/vuln/detail/CVE-2020-17527</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-24122">https://nvd.nist.gov/vuln/detail/CVE-2021-24122</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.15.0-alpha3, 7.14.4, 7.13.10, 7.12.17 which contain a fix.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-35">Notice 35</h2>
+<p><strong>Publication Date: September 29th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>It was possible to submit requests to the Camunda REST API that result in errors that disclose SQL statements. Attackers can learn about the database schema and vendor in use and can focus further attacking attempts accordingly.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You are using the Camunda Platform REST API or web applications</li>
+<li>An attacker has access to the system as an authenticated user</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.14.0-alpha4, 7.13.5, 7.12.11, 7.11.18 which contain a fix. With these versions, Camunda returns a generic error message for any persistence-related errors.</p>
+<h2 id="notice-34">Notice 34</h2>
+<p><strong>Publication Date: August 13th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>It was possible to deploy BPMN XML models with <code>ELEMENT</code> and <code>ENTITY</code> declarations successfully. When querying for or starting the corresponding process definitions, a validation exception was raised. This enables a partial denial of service attack for these functions.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You are using the Camunda Platform process engine</li>
+<li>An attacker is able to deploy BPMN models</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.14.0-alpha2, 7.13.2, 7.12.8, 7.11.15 which contain a fix. With these versions, BPMN models with the characteristics described in the <em>Impact</em> section are rejected during deployment.</p>
+<h2 id="notice-33">Notice 33</h2>
+<p><strong>Publication Date: July 20th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Angular JS shipped with the Camunda web applications was vulnerable to cross-site-scripting attacks:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-7676">https://nvd.nist.gov/vuln/detail/CVE-2020-7676</a></li>
+</ul>
+<p>The vulnerability does not affect the Camunda web applications (Cockpit, Tasklist, Admin) directly because they do not use the vulnerable functionality. However, custom tasklist forms or web application plugins may be affected.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>You are using the Camunda Platform web applications (Cockpit, Tasklist, Admin)</li>
+<li>You have embedded task forms or web application plugins</li>
+<li>See the NIST link above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.14.0-alpha1, 7.13.2, 7.12.8, 7.11.15 which contain a fix.</p>
+<h2 id="notice-32">Notice 32</h2>
+<p><strong>Publication Date: July 14th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Optimize</p>
+<p><strong>Impact:</strong></p>
+<p>It was possible to collect valid usernames by interacting with the &ldquo;Add User to Collection&rdquo; modal of Optimize, which displayed all available Optimize users. This vulnerability could have been used to increase the efficiency of brute force attacks.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Optimize 3.0.0 or lower is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda Optimize 3.1.0 has been released which contains a fix. Optimize 3.1.0 now ensures that user and group related permissions are taken into account when displaying user information in Optimize. This way only information which the current user is authorized to see is being revealed.</p>
+<h2 id="notice-31">Notice 31</h2>
+<p><strong>Publication Date: July 14th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Optimize</p>
+<p><strong>Impact:</strong></p>
+<p>Over time, various client-side security mechanisms have been developed to protect web applications from various attacks. Some of these security mechanisms are only activated if the web application sends the corresponding HTTP headers in its server responses to activate these security mechanisms. So far, Optimize did not make use of all these features. Not using these mechanisms does not in itself pose a security risk but may encourage the exploitation of other (previously undetected) vulnerabilities.</p>
+<p>Headers added to the request responses:</p>
+<ul>
+<li>X-XSS-Protection (Additional protection against Cross-Site Scripting attacks; Header field: X-XSS Protection)</li>
+<li>HTTP Strict Transport Security (Additional protection against man-in-the-middle attacks; Header field: Strict-Transport-Security)</li>
+<li>Content Security Policy (Additional protection against Cross-Site Scripting attacks and clickjacking attacks; Header field: Content-Security-Policy)</li>
+<li>X-Content-Type-Options (Protection against attacks based on mix-ups of MIME types; Header field: X-Content-Type-Options)</li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Optimize 3.0.0 or lower is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda Optimize 3.1.0 has been released which contains a fix.</p>
+<h2 id="notice-30">Notice 30</h2>
+<p><strong>Publication Date: July 6th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions and transitively pulled in by the Camunda Spring Boot starter was vulnerable to denial-of-service attacks and remote code execution:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-11996">https://nvd.nist.gov/vuln/detail/CVE-2020-11996</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-9484">https://nvd.nist.gov/vuln/detail/CVE-2020-9484</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Run is used <em>or</em> Camunda Platform Spring Boot Starter is used</li>
+<li>See the NIST links above for detailed descriptions of the circumstances required to exploit the vulnerabilities</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.14.0-alpha1, 7.13.1, 7.12.7, 7.11.14, Spring Boot Starter 3.4.4, Spring Boot Starter 3.3.10 which contain a fix.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+</ul>
+<h2 id="notice-29">Notice 29</h2>
+<p><strong>Publication Date: June 2nd, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>In the case where <a href="https://docs.camunda.org/manual/7.12/user-guide/process-engine/authorization-service/#default-read-variable-permissions">variable-specific permissions</a> were enabled, it was possible for a user to access historic variable details having only the <code>READ_HISTORY</code> permission. The check for <code>READ_HISTORY_VARIABLE</code> was not enforced.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform is used with enabled authorization check and enabled variable-specific permissions (configuration flag <code>enforceSpecificVariablePermission</code> set to <code>true</code>)</li>
+<li>An attacker is a known user in the system that has the <code>READ_HISTORY</code> permission on a process definition.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.13.0, 7.12.5, 7.11.12 which contain a fix.</p>
+<h2 id="notice-28">Notice 28</h2>
+<p><strong>Publication Date: April 6th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Apache Tomcat shipped with the Camunda distributions for Tomcat and transitively pulled in by the Camunda Spring Boot starter was vulnerable to remote code execution:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-1938">https://nvd.nist.gov/vuln/detail/CVE-2020-1938</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform Tomcat is used <em>or</em> Camunda Platform Spring Boot Starter is used</li>
+<li>The Tomcat AJP connector is enabled (this is the default configuration in Tomcat)</li>
+<li>An attacker is able to access the AJP endpoint</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.13.0-alpha3, 7.12.4, 7.11.11, 7.10.17, Spring Boot Starter 3.4.2, Spring Boot Starter 3.3.8, Spring Boot Starter 3.2.10 which contain a fix.</p>
+<p>Other solutions:</p>
+<ul>
+<li>Tomcat and Spring Boot can be updated independently of Camunda to the latest patch level</li>
+<li>The AJP connector in Tomcat can be disabled in the <code>server.xml</code> configuration file. See also <a href="https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html">https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html</a>.</li>
+</ul>
+<h2 id="notice-27">Notice 27</h2>
+<p><strong>Publication Date: April 6th, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>Camunda Optimize is a product module that uses a separate REST API to fetch data from the Camunda Platform runtime platform for export. Using this API, it was possible for a user to access history data of tenants they are not permitted to access.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda REST API is used.</li>
+<li>An attacker is a known user in the system that has full history read permission on decision and process definitions but not on tenants.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.13.0-alpha3, 7.12.4, 7.11.11, 7.10.17 which contain a fix.</p>
+<h2 id="notice-26">Notice 26</h2>
+<p><strong>Publication Date: March 3rd, 2020</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>When declaring a Maven dependency to a Camunda Platform artifact, it was possible that its dependencies would be resolved from a remote repository via HTTP protocol. HTTP is susceptible to man in the middle attacks that would allow an attacker to intercept the request and manipulate the delivered artifact, potentially leading to remote code execution in your build system. Details of this vulnerability can be found at <a href="https://medium.com/bugbountywriteup/want-to-take-over-the-java-ecosystem-all-you-need-is-a-mitm-1fc329d898fb">https://medium.com/bugbountywriteup/want-to-take-over-the-java-ecosystem-all-you-need-is-a-mitm-1fc329d898fb</a>.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda artifacts are used as a dependency in your own Java project (e.g. Maven)</li>
+<li>The build attempts to resolve a dependency from the repository <a href="http://repository.springsource.com/maven/bundles/external">http://repository.springsource.com/maven/bundles/external</a></li>
+<li>An attacker is able to intercept this request</li>
+</ul>
+<p>Note: For example, you are not affected by this problem if your company uses a mirror for all Maven artifacts and you access the mirror safely (e.g. via HTTPS).</p>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.13.0-alpha2, 7.12.3, 7.11.10, 7.10.16 which contain a fix.</p>
+<h2 id="notice-25">Notice 25</h2>
+<p><strong>Publication Date: December 9th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>Camunda Platform&rsquo;s APIs are susceptible to object deserialization vulnerabilities. If an attacker can submit a serialized variable of type Object, they can exploit so-called <em>serialization gadgets</em>, i.e. classes that run vulnerable code during deserialization. For details, see <a href="https://www.owasp.org/index.php/Deserialization_of_untrusted_data">OWASP&rsquo;s description of Deserialization of untrusted data</a>.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda REST API or web applications are used</li>
+<li>An attacker has access to the REST API or web applications to submit variables</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.12.0, v7.11.7, v7.10.13 and 7.9.19 which contain a feature to whitelist allowed classes for object values.</p>
+<p>We strongly recommend to activate whitelisting in any Camunda installation that is accessible by untrusted parties. See the user guide for details: <a href="https://docs.camunda.org/manual/7.12/user-guide/security/#variable-values-from-untrusted-sources">https://docs.camunda.org/manual/7.12/user-guide/security/#variable-values-from-untrusted-sources</a></p>
+<h2 id="notice-24">Notice 24</h2>
+<p><strong>Publication Date: December 9th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>A user could send an unlimited query to the Camunda REST API or web applications which loads the entire result data into main memory. This can exhaust the server&rsquo;s resources if the query result is large, resulting in a denial of service scenario.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda REST API or web applications are used</li>
+<li>An attacker has access and permissions to load a large number of Camunda entities (e.g. tasks)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.12.0, v7.11.7, v7.10.13 and 7.9.19 which contain a feature to enforce pagination of queries.</p>
+<p>We strongly recommend to activate the pagination limit in any Camunda installation that is accessible by untrusted parties. See the user guide for details: <a href="https://docs.camunda.org/manual/7.12/user-guide/security/#maximum-results-limit-in-queries">https://docs.camunda.org/manual/7.12/user-guide/security/#maximum-results-limit-in-queries</a></p>
+<h2 id="notice-23">Notice 23</h2>
+<p><strong>Publication Date: December 9th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson shipped with the Camunda EAR for Websphere was vulnerable to object deserialization flaws. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.6.3">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.6.3</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda is used on IBM Websphere 8.5 or 9</li>
+<li>The Camunda EAR is installed</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.12.0, v7.11.7 and v7.10.13 which contain a fix.</p>
+<h2 id="notice-22">Notice 22</h2>
+<p><strong>Publication Date: December 9th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The login endpoint of the Camunda web applications (Cockpit, Tasklist, Admin) did not require a valid CSRF token. This allowed an attacker to trick a user to log into these applications without their knowing.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>An attacker cann access the Camunda web applications</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.12.0, v7.11.5, v7.10.11 and 7.9.17, as well as Spring Boot Starter 3.4.0, 3.3.6, 3.2.8, 3.1.8, 3.0.8 which contain a fix.</p>
+<h2 id="notice-21">Notice 21</h2>
+<p><strong>Publication Date: November 4th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform and Spring Boot Starter</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson used by Camunda Spin was vulnerable to object deserialization flaws. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.9.9.3">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.9.9.3</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spin is on the classpath</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+<li>One of the following artifacts is on the classpath: <code>com.zaxxer:HikariCP</code>, <code>com.zaxxer:HikariCP-java6</code>, <code>commons-dbcp:commons-dbcp</code>, <code>p6spy:p6spy</code>, <code>org.ehcache:ehcache</code>, <code>log4j:apache-log4j-extra</code></li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.5, v7.10.11, v7.9.17 and 7.12.0-alpha5 which contain a fix.</p>
+<p>For users of the Camunda Spring Boot Starter, we recommend to explicitly override the version of <code>com.fasterxml.jackson.core:jackson-databind</code> to the latest.</p>
+<p><strong>Update 9th of November</strong>: For the Camunda Spring Boot Starter, Camunda has provided the releases 3.4.0, 3.3.5 and 3.2.7 which contain a fix.</p>
+<h2 id="notice-20">Notice 20</h2>
+<p><strong>Publication Date: November 4th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform and Spring Boot Starter</p>
+<p><strong>Impact:</strong></p>
+<p>If a  user&rsquo;s password is incorrectly entered multiple times, the user account is locked for a period of time before another login attempt can be made. The error message in the Camunda web applications described this situation, confirming that the user exists. This behavior is a <a href="https://www.gnucitizen.org/blog/username-enumeration-vulnerabilities/">username enumeration vulnerability</a>, allowing an attacker to learn which user names are valid and focussing password cracking attempts accordingly.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform web applications (Cockpit, Tasklist, Admin) are used</li>
+<li>An attacker is able to access the applications&rsquo; login screen</li>
+<li>Users are managed in the Camunda database tables (i.e. setups using LDAP-managed users are not affected)</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.5, v7.10.11, v7.9.17 and 7.12.0-alpha5 which contain a fix.</p>
+<h2 id="notice-19">Notice 19</h2>
+<p><strong>Publication Date: September 30th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Tomcat used by the Camunda Platform Tomcat distribution is subject to various vulnerabilities. Details:</p>
+<ul>
+<li>Camunda 7.11 with Tomcat 9.0.19: <a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Aapache&amp;cpe_product=cpe%3A%2F%3Aapache%3Atomcat&amp;cpe_version=cpe%3A%2F%3Aapache%3Atomcat%3A9.0.19">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Aapache&amp;cpe_product=cpe%3A%2F%3Aapache%3Atomcat&amp;cpe_version=cpe%3A%2F%3Aapache%3Atomcat%3A9.0.19</a></li>
+<li>Camunda 7.10 with Tomcat 9.0.12: <a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Aapache&amp;cpe_product=cpe%3A%2F%3Aapache%3Atomcat&amp;cpe_version=cpe%3A%2F%3Aapache%3Atomcat%3A9.0.12">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Aapache&amp;cpe_product=cpe%3A%2F%3Aapache%3Atomcat&amp;cpe_version=cpe%3A%2F%3Aapache%3Atomcat%3A9.0.12</a></li>
+<li>Camunda 7.9 with Tomcat 9.0.5: <a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Aapache&amp;cpe_product=cpe%3A%2F%3Aapache%3Atomcat&amp;cpe_version=cpe%3A%2F%3Aapache%3Atomcat%3A9.0.5">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Aapache&amp;cpe_product=cpe%3A%2F%3Aapache%3Atomcat&amp;cpe_version=cpe%3A%2F%3Aapache%3Atomcat%3A9.0.5</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda Platform Tomcat distribution is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.4, v7.10.10, v7.9.16 and 7.12.0-alpha4 which contain a fix.</p>
+<p>In addition, users can update their Tomcat installation to the latest version.</p>
+<h2 id="notice-18">Notice 18</h2>
+<p><strong>Publication Date: September 2nd, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform and Spring Boot Starter</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson used by Camunda Spin was vulnerable to object deserialization flaws. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.9.9.1">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.9.9.1</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spin is on the classpath</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+<li>One of the following artifacts is on the classpath: <code>net.sf.ehcache:ehcache</code>, <code>ch.qos.logback:logback-core</code></li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.3, v7.10.9, v7.9.15 and 7.12.0-alpha3 which contain a fix.</p>
+<p>For users of the Camunda Spring Boot Starter, we recommend to explicitly override the version of <code>com.fasterxml.jackson.core:jackson-databind</code> to the latest, as there currently is no Spring Boot release available yet that provides the latest Jackson version.</p>
+<h2 id="notice-17">Notice 17</h2>
+<p><strong>Publication Date: August 6th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>Java&rsquo;s <a href="https://docs.oracle.com/javase/tutorial/jaxp/properties/backgnd.html">Secure-Processing Feature</a> for XML documents was not activated in the process engine&rsquo;s XML parsers, meaning that no default resource limits were applied during parsing (e.g. regarding the number of attributes an XML element may have). With default JVM configurations, this allowed an attacker to deploy XML documents of arbitrary size as a denial-of-service attack.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>An attacker has access to a process deployment endpoint (e.g. REST API or Camunda web applications)</li>
+<li>An attacker is authorized to perform deployments</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.2, v7.10.8, v7.9.14 and 7.12.0-alpha2 which contain a fix.</p>
+<p>Note that with older versions, XML processing limits can already be enforced via system properties in the JVM, see <a href="https://docs.oracle.com/javase/tutorial/jaxp/limits/limits.html">https://docs.oracle.com/javase/tutorial/jaxp/limits/limits.html</a> and <a href="https://docs.oracle.com/javase/tutorial/jaxp/properties/properties.html">https://docs.oracle.com/javase/tutorial/jaxp/properties/properties.html</a>.</p>
+<p><strong>Related Documentation</strong></p>
+<ul>
+<li><a href="https://docs.camunda.org/manual/7.11/user-guide/security/#xml-security">Security Instructions for XML Processing</a></li>
+</ul>
+<h2 id="notice-16">Notice 16</h2>
+<p><strong>Publication Date: August 6th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>In some cases of server-side exceptions in the Camunda REST API and Camunda Platform web applications, a stacktrace could be disclosed to the client. This allows an attacker to gain insights about the structure and source code of server-side components.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Web Applications or REST API are used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.2, v7.10.8, v7.9.14 and 7.12.0-alpha2 which contain a fix.</p>
+<h2 id="notice-15">Notice 15</h2>
+<p><strong>Publication Date: August 6th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>The version of dmn-js used by Camunda Platform was vulnerable to HTML Injection / Cross-site scripting flaws. Details:</p>
+<ul>
+<li><a href="https://bpmn.io/blog/posts/2019-html-injection-vulnerabilities-fixed.html">https://bpmn.io/blog/posts/2019-html-injection-vulnerabilities-fixed.html</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Cockpit and DMN Live Editing is used</li>
+<li>An attacker is able to trick a victim to paste crafted input into the DMN editor</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.2, v7.10.8, v7.9.14 and 7.12.0-alpha2 which contain a fix.</p>
+<h2 id="notice-14">Notice 14</h2>
+<p><strong>Publication Date: August 6th, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform and Spring Boot Starter</p>
+<p><strong>Impact:</strong></p>
+<p>The version of Jackson used by Camunda Spin was vulnerable to object deserialization flaws. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.9.8">https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;results_type=overview&amp;search_type=all&amp;cpe_vendor=cpe%3A%2F%3Afasterxml&amp;cpe_product=cpe%3A%2F%3A%3Ajackson-databind&amp;cpe_version=cpe%3A%2F%3Afasterxml%3Ajackson-databind%3A2.9.8</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spin is on the classpath</li>
+<li>An attacker is able to access the REST API or web applications and has permissions to submit process variables</li>
+<li>One of the following artifacts is on the classpath: <code>mysql:mysql-connector-java</code> (8.0.14 or earlier), <code>org.jdom:jdom</code>, <code>org.jdom:jdom2</code>, <code>ch.qos.logback:logback-core</code></li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.11.2, v7.10.8, v7.9.14 and 7.12.0-alpha2 which contain a fix.</p>
+<p>For users of the Camunda Spring Boot Starter, we recommend to explicitly override the version of <code>com.fasterxml.jackson.core:jackson-databind</code> to the latest, as there currently is no Spring Boot release available yet that provides the latest Jackson version.</p>
+<h2 id="notice-13">Notice 13</h2>
+<p><strong>Publication Date: July 1st, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform and Spring Boot Starter</p>
+<p><strong>Impact:</strong></p>
+<p>Previous Camunda releases have no possibility to enable the cookie flags <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies">Secure and HttpOnly</a> for the session and CSRF cookies that the Camunda web applications use. This in itself is not a vulnerability, however can increase the impact of other vulnerabilities. For example in combination with a cross-site scripting vulnerability, the absence of those flags would allow an attacker to obtain a user&rsquo;s session id. We therefore recommend to apply the solution explained below.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The Camunda web applications (Cockpit, Tasklist, Admin) are used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the following releases which contain a fix:</p>
+<ul>
+<li>Camunda Platform 7.12.0-alpha1, 7.11.1, 7.10.7, 7.9.13</li>
+<li>Camunda Spring Boot Starter 3.3.2, 3.2.4, 3.1.4, 3.0.4</li>
+</ul>
+<p>Please see the <a href="https://docs.camunda.org/manual/7.11/webapps/shared-options/cookie-security/">Cookie Security documentation</a> for details and configuration required to activate both flags.</p>
+<h2 id="notice-12">Notice 12</h2>
+<p><strong>Publication Date: May 31st, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform Spring Boot Starter</p>
+<p><strong>Impact:</strong></p>
+<p>When using the Camunda web applications via the Camunda Spring Boot Starter, no CSRF token was required for modifying requests (HTTP POST, PUT, DELETE). This made Camunda&rsquo;s defense against <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request forgery</a> attacks ineffective.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>The application uses Camunda Spring Boot Starter</li>
+<li>The application uses the dependency <code>camunda-bpm-spring-boot-starter-webapp</code> or <code>camunda-bpm-spring-boot-starter-webapp-ee</code></li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 3.3.1, 3.2.3, 3.1.3, 3.0.3 and 2.3.2 of the Spring Boot Starter which contain a fix. Note that for Spring Boot Starter 2.3 and 3.0, this requires to use Camunda versions &gt;= 7.8.8 or &gt;= 7.9.2.</p>
+<h2 id="notice-11">Notice 11</h2>
+<p><strong>Publication Date: May 31st, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>No authorizations were required to submit a license key or to read a license key&rsquo;s metadata (not the key itself) via Camunda Admin.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Platform enterprise edition is used</li>
+<li>Camunda Admin is used</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.11.0, 7.10.6, 7.9.12 and 7.8.14 which contain a fix.</p>
+<h2 id="notice-10">Notice 10</h2>
+<p><strong>Publication Date: May 31st, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>A <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a> vulnerability in Camunda Tasklist was resolved that would allow an attacker to run arbitrary Javascript in the victim&rsquo;s browser.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Tasklist is used</li>
+<li>One of the following applies:
+<ul>
+<li>An attacker is able to make a deployment</li>
+<li>A BPMN process or CMMN case uses an expression in a user task name and an attacker can control the expression&rsquo;s result</li>
+</ul>
+</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.11.0, 7.10.6, 7.9.12 and 7.8.14 which contain a fix.</p>
+<h2 id="notice-9">Notice 9</h2>
+<p><strong>Publication Date: May 31st, 2019</strong></p>
+<p><strong>Product affected:</strong></p>
+<p>Camunda Platform</p>
+<p><strong>Impact:</strong></p>
+<p>A <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a> vulnerability in Camunda Cockpit was resolved that would allow an attacker to run arbitrary Javascript in the victim&rsquo;s browser.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Cockpit is used</li>
+<li>An attacker is able to deploy a BPMN process or CMMN case</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases 7.11.0, 7.10.6, 7.9.12 and 7.8.14 which contain a fix.</p>
+<h2 id="notice-8">Notice 8</h2>
+<p><strong>Publication Date: May 3rd, 2019</strong></p>
+<p>Optimize stores a users session token in a cookie to maintain the session. While this approach simplifies user session handling, it is also vulnerable to <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">cross-site request forgery</a> attacks. To mitigate this problem, Optimize will set the <a href="https://www.owasp.org/index.php/SameSite">SameSite</a> cookie flag to reduce the risk of cross-origin information leakage. Read all the details about the attack and how the cookie flag prevents it from happening in the article <a href="https://dzone.com/articles/using-the-same-site-cookie-attribute-to-prevent-cs">Using the SameSite Cookie Attribute to Prevent CSRF Attacks</a>.</p>
+<p>Camunda has provided a fix (<a href="https://app.camunda.com/jira/browse/OPT-2105">OPT-2105</a>) with the Optimize release v2.5.0, which will be release end of June 2019.</p>
+<h2 id="notice-7">Notice 7</h2>
+<p><strong>Publication Date: March 29th, 2019</strong></p>
+<p>In the last months there have been several security audits, which revealed a couple of risks that could allow the theft of a user session in the Camunda extension Optimize. There a cookie is used to handle the user session and following problems were detected:</p>
+<ul>
+<li>The cookie <em>secure</em> flag was not set: This is an option that can be set server-side to make sure that a cookie is only send if the connection is encrypted using HTTPS. Whenever the HTTP connection is disabled in Optimize, this flag is now set. The purpose is to prevent unauthorized access from other parties. Read more about that in the dedicated OWASP <a href="https://www.owasp.org/index.php/SecureFlag">SecureFlag</a> guide.</li>
+<li>The cookie <em>httpOnly</em> flag was not set: This is an option that prohibits the access through client side scripts if the browser supports this flag. As a result, an attacker cannot obtain the session from the cookie, even if a cross-site scripting (XSS) flaw is present. Read more about that in the dedicated OWASP <a href="https://www.owasp.org/index.php/HttpOnly">HttpOnly</a> guide.</li>
+<li>The HTTP connection could not be disabled: HTTP is the protocol used to transfer data between the browser and the server. By design, HTTP does not encrypt the data which is being sent. This allows unauthorized third parties to intercept the communication (Man-in-the-middle attack) to gather data that is being passed between the two systems. This could among exposure of sensible data allow an attacker to steal the user session. Hence, it is crucial to be able to disable this insecure communication and use it only for testing. In production environments only HTTPS should be used.</li>
+</ul>
+<p>Camunda has provided a fix (<a href="https://app.camunda.com/jira/browse/OPT-1996">OPT-1996</a>) with the Optimize release v2.4.0.</p>
+<h2 id="notice-6">Notice 6</h2>
+<p><strong>Publication Date: March 21st, 2019</strong></p>
+<p>The version of Jackson used by Camunda Spin was vulnerable to object deserialization flaws. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/search/results?adv_search=true&amp;cpe=cpe%3a%2fa%3afasterxml%3ajackson-databind%3a2.9.7">https://nvd.nist.gov/vuln/search/results?adv_search=true&amp;cpe=cpe%3a%2fa%3afasterxml%3ajackson-databind%3a2.9.7</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Spin is on the classpath</li>
+<li>An attacker is able to access the REST API and has permissions to submit process variables</li>
+<li>One of the following artifacts is on the classpath: axis2-transport-jms, openjpa, jboss-commons-core</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.10.3 and 7.11.0-alpha2 which contain a fix.</p>
+<h2 id="notice-5">Notice 5</h2>
+<p><strong>Publication Date: March 21st, 2019</strong></p>
+<p>The version of Apache http-components used by Camunda Connect was vulnerable to denial-of-service and man-in-the-middle attacks. Details:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/search/results?adv_search=true&amp;cpe=cpe%3a%2fa%3aapache%3ahttpclient%3a4.3.3">https://nvd.nist.gov/vuln/search/results?adv_search=true&amp;cpe=cpe%3a%2fa%3aapache%3ahttpclient%3a4.3.3</a></li>
+</ul>
+<p><strong>How to determine if the installation is affected</strong></p>
+<ul>
+<li>Camunda Connect is on the classpath</li>
+<li>Connector service tasks are used in a process</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the releases v7.10.3 and 7.11.0-alpha2 which contain a fix.</p>
+<h2 id="notice-4">Notice 4</h2>
+<p><strong>Publication Date: November 30th, 2018</strong></p>
+<p>The Camunda Platform has obtained a security fix related to XML eXternal Entity (XXE) Processing. A BPMN Model (XML) can be uploaded containing a reference to an external entity. When processed by a weakly configured XML parser, this attack may lead to the disclosure of confidential data, denial of service, server side request forgery etc.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>There is a single usage scenario which is affected:</p>
+<ul>
+<li>When uploading a BPMN Model (XML) that contains a reference to an external entity, a <code>ProcessEngineException</code> will be thrown. The exception message will contain the content of the external entity (ex. <code>/etc/passwd</code>).</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the patches v7.10.0, v7.9.7, v7.8.12, v7.7.10 which provide the fix:</p>
+<ul>
+<li><a href="https://app.camunda.com/jira/browse/CAM-9285">CAM-9285</a>: Prevention of External Entity Processing.
+This fixes the security vulnerability described <a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing">here</a>. Further configuration options are documented <a href="https://docs.camunda.org/manual/latest/reference/deployment-descriptors/tags/process-engine/#configuration-properties">here</a>.</li>
+</ul>
+<h2 id="notice-3">Notice 3</h2>
+<p><strong>Publication Date: September 19th, 2018</strong></p>
+<p>The Camunda Platform has obtained security fixes related to the prevention of CSRF attacks, and support for providing <em>whitelist patterns</em> for User, Group and Tenant IDs.</p>
+<p>Using the Camunda Webapps, it is possible for a user to execute unwanted actions by sumbitting a malicious request (CSRF) provided by an attacker. Furthermore, a Camunda user, with the appropriate permissions, may create new users, groups or tenant IDs with arbitrary values and lengths.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>There are two usage scenarios which are affected:</p>
+<ul>
+<li>Regarding the CSRF security vulnerability, the HTTP Request Headers of the Camunda Webapps won&rsquo;t provide a custom <code>X-XSRF-TOKEN</code> header.</li>
+<li>Regarding the Whitelist Patterns security vulnerability, a user with User/Group/Tenant Create permissions will be able to create users/groups/tenants with arbitrary ID values.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the patches v7.10.0, v7.9.2, v7.8.8, v7.7.9 which provide two fixes:</p>
+<ul>
+<li><a href="https://app.camunda.com/jira/browse/CAM-9107">CAM-9107</a>: Prevention of Cross-Site-Request-Forgery
+This fixes the security vulnerability described <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">here</a>. Further configuration options are documented <a href="https://docs.camunda.org/manual/latest/update/minor/79-to-710/#support-for-csrf-prevention-in-the-webapps">here</a>.</li>
+<li><a href="https://app.camunda.com/jira/browse/CAM-9109">CAM-9109</a>: When a user, group, or tenant is created, the given id is validated against a whitelist.
+This provides support for defining custom regular expression patterns for whitelisting User/Group/Tenant ID values. Further configuration options can be found <a href="https://docs.camunda.org/manual/latest/reference/deployment-descriptors/tags/process-engine/#resource-whitelist-pattern-parameters">here</a>.</li>
+</ul>
+<h2 id="notice-2">Notice 2</h2>
+<p><strong>Publication Date: March 5th, 2018</strong></p>
+<p>Camunda support is alerting customers to a potential risk with the Camunda Platform product. A vulnerability exists that can possibly allow an attacker to perform remote execution of code.</p>
+<p>Using Camunda&rsquo;s API, it is possible to submit a file as a variable value in serialized form. Inside Camunda, the serialized file is deserialized which allows attackers to exploit a security vulnerability in Apache <a href="https://blog.akquinet.de/2017/06/15/commons-fileupload-1-3-3-resolves-deserialisation-vulnerability-cve-2016-1000031/">Commons-Fileupload</a> which allows injecting malicious code which is executed upon deserialization.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>There is one usage scenario which is affected:</p>
+<ul>
+<li>Installation has Apache Commons-Fileupload on the classpath</li>
+<li>AND The attacker has direct network access to the Rest API or a Camunda Webapplication (Cockpit, Admin, Tasklist)</li>
+<li>AND the attacker is able to authenticate/login with the Camunda Rest API or a Camunda Webapplication (ie. the attacker has a valid username + password).</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>Camunda has provided the patches v7.9.0, v7.8.2, v7.7.7, v7.6.12 which provide one fix:</p>
+<ul>
+<li><a href="https://app.camunda.com/jira/browse/CAM-8728">CAM-8728</a>: Upgrade Apache Commons-Fileupload to &gt;= 1.3.3
+This fix updates the Apache Commons-Fileupload patch level version to a version which does not exhibit <a href="https://blog.akquinet.de/2017/06/15/commons-fileupload-1-3-3-resolves-deserialisation-vulnerability-cve-2016-1000031/">the vulnerability described in this article</a>.</li>
+</ul>
+<p>Customers are advised to apply these patches, particularly if they use Camunda in one for the scenarios described above.</p>
+<h2 id="notice-1">Notice 1</h2>
+<p><strong>Publication Date: Feb 2nd, 2018</strong></p>
+<p>Camunda support is alerting customers to a potential risk with the Camunda Platform product. A vulnerability exists that can possibly allow an attacker to perform remote execution of code.</p>
+<p>Using Camunda&rsquo;s API, it is possible to submit a Java object value as a variable value in serialized form. Inside Camunda, the object is deserialized which allows attackers to exploit a <a href="https://www.thezdi.com/blog/2017/12/19/apache-groovy-deserialization-a-cunning-exploit-chain-to-bypass-a-patch">security vulnerability in Groovy</a> which allows injecting malicious code in a groovy serialized object which is executed upon deserialization.</p>
+<p><strong>How to determine if the installation is affected</strong></p>
+<p>There are two usage scenarios which are affected:</p>
+<p>Scenario 1:</p>
+<ul>
+<li>Installation has Groovy on the classpath</li>
+<li>AND the attacker has direct network access to the Rest API or a Camunda Webapplication (Cockpit, Admin, Tasklist)</li>
+<li>AND the attacker is able to authenticate/login with the Camunda Rest API or a Camunda Webapplication (ie. the attacker has a valid username + password).</li>
+</ul>
+<p>Scenario 2:</p>
+<ul>
+<li>Installation has Groovy on the classpath</li>
+<li>AND Customer has embedded the CIB seven engine (Java Library) in their own application.</li>
+<li>AND the attacker has access to customer application and without prior checks is able to supply a serialized representation of a Java Object to the Customer&rsquo;s application which is passed directly to the process engine without prior inspection.</li>
+</ul>
+<p>Note that while this particular vulnerability affects Groovy, java serialization has security issues in general and different exploits are possible. Camunda has also provided a patch which allows users to configure the product such that it prevents submission of Java Objects in serialized form all together (see &ldquo;Solution&rdquo;).</p>
+<p><strong>Solution</strong></p>
+<p>The following fixes are provided by the patches v7.8.1, v7.7.6, v7.6.11 and the v7.9.0-alpha1 release:</p>
+<ul>
+<li>
+<p><a href="https://app.camunda.com/jira/browse/CAM-8703">CAM-8703</a>: Upgrade Groovy to patch version 2.4.13
+This fix updates the Groovy patch level version to a version which does not exhibit <a href="https://www.thezdi.com/blog/2017/12/19/apache-groovy-deserialization-a-cunning-exploit-chain-to-bypass-a-patch">the vulnerability described in this article</a>.</p>
+</li>
+<li>
+<p><a href="https://app.camunda.com/jira/browse/CAM-8704">CAM-8704</a>: Configuration to prevent submission of Java Object values in serialized form.
+This fix allows configuring the process engine in a way that it completely prevents submission of Java Object values in serialized form. <a href="https://docs.camunda.org/manual/7.8/update/patch-level/#7-6-10-to-7-6-11-7-7-5-to-7-7-6-7-8-0-to-7-8-1">The documentation explains how to use this option</a>.
+Note that upcoming version of Camunda (7.9+) will prevent submission of serialized java objects by default (while allowing users to explicitly enable it for backwards compatibility).</p>
+</li>
+</ul>
+<p>Customers are advised to apply these patches, particularly if they use Camunda in one for the scenarios described above.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#notice-120">Notice 120</a></li>
+    <li><a href="#notice-119">Notice 119</a></li>
+    <li><a href="#notice-118">Notice 118</a></li>
+    <li><a href="#notice-117">Notice 117</a></li>
+    <li><a href="#notice-116">Notice 116</a></li>
+    <li><a href="#notice-115">Notice 115</a></li>
+    <li><a href="#notice-114">Notice 114</a></li>
+    <li><a href="#notice-113">Notice 113</a></li>
+    <li><a href="#notice-112">Notice 112</a></li>
+    <li><a href="#notice-111">Notice 111</a></li>
+    <li><a href="#notice-110">Notice 110</a></li>
+    <li><a href="#notice-109">Notice 109</a></li>
+    <li><a href="#notice-108">Notice 108</a></li>
+    <li><a href="#notice-107">Notice 107</a></li>
+    <li><a href="#notice-106">Notice 106</a></li>
+    <li><a href="#notice-105">Notice 105</a></li>
+    <li><a href="#notice-104">Notice 104</a></li>
+    <li><a href="#notice-103">Notice 103</a></li>
+    <li><a href="#notice-102">Notice 102</a></li>
+    <li><a href="#notice-101">Notice 101</a></li>
+    <li><a href="#notice-100">Notice 100</a></li>
+    <li><a href="#notice-99">Notice 99</a></li>
+    <li><a href="#notice-98">Notice 98</a></li>
+    <li><a href="#notice-97">Notice 97</a></li>
+    <li><a href="#notice-96">Notice 96</a></li>
+    <li><a href="#notice-95">Notice 95</a></li>
+    <li><a href="#notice-94">Notice 94</a></li>
+    <li><a href="#notice-93">Notice 93</a></li>
+    <li><a href="#notice-92">Notice 92</a></li>
+    <li><a href="#notice-91">Notice 91</a></li>
+    <li><a href="#notice-90">Notice 90</a></li>
+    <li><a href="#notice-89">Notice 89</a></li>
+    <li><a href="#notice-88">Notice 88</a></li>
+    <li><a href="#notice-87">Notice 87</a></li>
+    <li><a href="#notice-86">Notice 86</a></li>
+    <li><a href="#notice-85">Notice 85</a></li>
+    <li><a href="#notice-84">Notice 84</a></li>
+    <li><a href="#notice-83">Notice 83</a></li>
+    <li><a href="#notice-82">Notice 82</a></li>
+    <li><a href="#notice-81">Notice 81</a></li>
+    <li><a href="#notice-80">Notice 80</a></li>
+    <li><a href="#notice-79">Notice 79</a></li>
+    <li><a href="#notice-78">Notice 78</a></li>
+    <li><a href="#notice-77">Notice 77</a></li>
+    <li><a href="#notice-76">Notice 76</a></li>
+    <li><a href="#notice-75">Notice 75</a></li>
+    <li><a href="#notice-74">Notice 74</a></li>
+    <li><a href="#notice-73">Notice 73</a></li>
+    <li><a href="#notice-72">Notice 72</a></li>
+    <li><a href="#notice-71">Notice 71</a></li>
+    <li><a href="#notice-70">Notice 70</a></li>
+    <li><a href="#notice-69">Notice 69</a></li>
+    <li><a href="#notice-68">Notice 68</a></li>
+    <li><a href="#notice-67">Notice 67</a></li>
+    <li><a href="#notice-66">Notice 66</a></li>
+    <li><a href="#notice-65">Notice 65</a></li>
+    <li><a href="#notice-64">Notice 64</a></li>
+    <li><a href="#notice-63">Notice 63</a></li>
+    <li><a href="#notice-62">Notice 62</a></li>
+    <li><a href="#notice-61">Notice 61</a></li>
+    <li><a href="#notice-60">Notice 60</a></li>
+    <li><a href="#notice-59">Notice 59</a></li>
+    <li><a href="#notice-58">Notice 58</a></li>
+    <li><a href="#notice-57">Notice 57</a></li>
+    <li><a href="#notice-56">Notice 56</a></li>
+    <li><a href="#notice-55">Notice 55</a></li>
+    <li><a href="#notice-54">Notice 54</a></li>
+    <li><a href="#notice-53">Notice 53</a></li>
+    <li><a href="#notice-52">Notice 52</a></li>
+    <li><a href="#notice-51">Notice 51</a></li>
+    <li><a href="#notice-50">Notice 50</a></li>
+    <li><a href="#notice-49">Notice 49</a></li>
+    <li><a href="#notice-48">Notice 48</a></li>
+    <li><a href="#notice-47">Notice 47</a></li>
+    <li><a href="#notice-46">Notice 46</a></li>
+    <li><a href="#notice-45">Notice 45</a></li>
+    <li><a href="#notice-44">Notice 44</a></li>
+    <li><a href="#notice-43">Notice 43</a></li>
+    <li><a href="#notice-42">Notice 42</a></li>
+    <li><a href="#notice-41">Notice 41</a></li>
+    <li><a href="#notice-40">Notice 40</a></li>
+    <li><a href="#notice-39">Notice 39</a></li>
+    <li><a href="#notice-38">Notice 38</a></li>
+    <li><a href="#notice-37">Notice 37</a></li>
+    <li><a href="#notice-36">Notice 36</a></li>
+    <li><a href="#notice-35">Notice 35</a></li>
+    <li><a href="#notice-34">Notice 34</a></li>
+    <li><a href="#notice-33">Notice 33</a></li>
+    <li><a href="#notice-32">Notice 32</a></li>
+    <li><a href="#notice-31">Notice 31</a></li>
+    <li><a href="#notice-30">Notice 30</a></li>
+    <li><a href="#notice-29">Notice 29</a></li>
+    <li><a href="#notice-28">Notice 28</a></li>
+    <li><a href="#notice-27">Notice 27</a></li>
+    <li><a href="#notice-26">Notice 26</a></li>
+    <li><a href="#notice-25">Notice 25</a></li>
+    <li><a href="#notice-24">Notice 24</a></li>
+    <li><a href="#notice-23">Notice 23</a></li>
+    <li><a href="#notice-22">Notice 22</a></li>
+    <li><a href="#notice-21">Notice 21</a></li>
+    <li><a href="#notice-20">Notice 20</a></li>
+    <li><a href="#notice-19">Notice 19</a></li>
+    <li><a href="#notice-18">Notice 18</a></li>
+    <li><a href="#notice-17">Notice 17</a></li>
+    <li><a href="#notice-16">Notice 16</a></li>
+    <li><a href="#notice-15">Notice 15</a></li>
+    <li><a href="#notice-14">Notice 14</a></li>
+    <li><a href="#notice-13">Notice 13</a></li>
+    <li><a href="#notice-12">Notice 12</a></li>
+    <li><a href="#notice-11">Notice 11</a></li>
+    <li><a href="#notice-10">Notice 10</a></li>
+    <li><a href="#notice-9">Notice 9</a></li>
+    <li><a href="#notice-8">Notice 8</a></li>
+    <li><a href="#notice-7">Notice 7</a></li>
+    <li><a href="#notice-6">Notice 6</a></li>
+    <li><a href="#notice-5">Notice 5</a></li>
+    <li><a href="#notice-4">Notice 4</a></li>
+    <li><a href="#notice-3">Notice 3</a></li>
+    <li><a href="#notice-2">Notice 2</a></li>
+    <li><a href="#notice-1">Notice 1</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/security/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+</body>
+</html>
+
