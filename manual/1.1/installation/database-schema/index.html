@@ -102,8 +102,6 @@
 
     <span class="number"><a>1.1</a>
       
-        (1.1)
-      
     </span>
   
 </div>
@@ -3177,9 +3175,9 @@ The <a href="#update">update</a> paragraph provides more details on this topic.<
 <h2 id="liquibase-installation">Liquibase installation</h2>
 <p>CIB seven comes with a maintained changelog file that Liquibase can consume.
 This changelog defines which SQL statements to execute on a database.
-You can find the changelog and its referenced resources on our <a href="https://artifacts.cibseven.org/#browse/browse:public:/org/cibseven/bpm/distro/camunda-sql-scripts/">Artifact Repository</a>.
+You can find the changelog and its referenced resources on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
 Select the respective version (<code>$PLATFORM_VERSION</code>) and download the resources as a <code>zip</code> or <code>tar.gz</code> file.
-Open the <code>camunda-sql-scripts-$PLATFORM_VERSION/liquibase</code> folder to find the changelog.
+Open the <code>cibseven-sql-scripts-$PLATFORM_VERSION/liquibase</code> folder to find the changelog.
 In case you are using a <a href="/manual/1.1/introduction/downloading-cibseven/#full-distribution">pre-packaged distribution</a>, the Liquibase resources already reside in the <code>sql/liquibase</code> folder of the distribution.</p>
 <p>The <code>liquibase</code> folder contains the following resources:</p>
 <ul>
@@ -3208,9 +3206,9 @@ Consult the <a href="/manual/1.1/installation/full/">manual installation guide</
 
 <h2 id="manual-installation">Manual installation</h2>
 <p>To install the database schema required for CIB seven, we provide a set of scripts with prepared DDL statements.
-Those scripts create all required tables and default indices. You can find the provided SQL scripts on our <a href="https://artifacts.cibseven.org/#browse/browse:public:/org/cibseven/bpm/distro/camunda-sql-scripts/">Artifact Repository</a>.
+Those scripts create all required tables and default indices. You can find the provided SQL scripts on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
 Select the respective version (<code>$PLATFORM_VERSION</code>) and download the scripts as a <code>zip</code> or <code>tar.gz</code> file.
-Open the <code>camunda-sql-scripts-$PLATFORM_VERSION/create</code> folder to find all available scripts.
+Open the <code>cibseven-sql-scripts-$PLATFORM_VERSION/create</code> folder to find all available scripts.
 In case you are using a <a href="/manual/1.1/introduction/downloading-cibseven/#full-distribution">pre-packaged distribution</a>, the SQL scripts already reside in the <code>sql/create</code> folder of the distribution.</p>
 <p>The <code>create</code> folder contains the following SQL scripts:</p>
 <ul>
@@ -3241,8 +3239,8 @@ This changelog helps Liquibase to keep track of the changes that have been made 
 Based on that changelog and the tracking tables, Liquibase determines which changes it needs to apply when you instruct it to update your schema.</p>
 <p>Perform the following steps to update the database schema on your database instance:</p>
 <ol>
-<li>Select the respective version you want to update to (<code>$Y</code>) on our <a href="https://artifacts.cibseven.org/#browse/browse:public:/org/cibseven/bpm/distro/camunda-sql-scripts/">Artifact Repository</a> and download the resources as a <code>zip</code> or <code>tar.gz</code> file.
-Open the <code>camunda-sql-scripts-$Y/liquibase</code> folder to find the changelog file.
+<li>Select the respective version you want to update to (<code>$Y</code>) on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a> and download the resources as a <code>zip</code> or <code>tar.gz</code> file.
+Open the <code>cibseven-sql-scripts-$Y/liquibase</code> folder to find the changelog file.
 In case you are using a <a href="/manual/1.1/introduction/downloading-cibseven/#full-distribution">pre-packaged distribution</a>, the Liquibase resources already reside in the <code>sql/liquibase</code> folder of the distribution with version <code>$Y</code>.</li>
 <li>Run Liquibase&rsquo;s <a href="https://docs.liquibase.com/commands/community/update.html">update command</a> referencing the new <code>camunda-changelog.xml</code> of version <code>$Y</code>.
 Liquibase takes care of determining the necessary changes and applying them to your database according to the new changelog.
@@ -3276,9 +3274,9 @@ Follow the outlined procedure to perform this update:</p>
 <ol>
 <li>
 <p>Check for <a href="#patch-level-update%22">available database patch scripts</a> for your database that are within the bounds of your update path.
-You can find the scripts on our <a href="https://artifacts.cibseven.org/#browse/browse:public:/org/cibseven/bpm/distro/camunda-sql-scripts/">Artifact Repository</a>.
+You can find the scripts on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
 Select the respective version you want to update to (<code>$Y</code>) and download the scripts as a <code>zip</code> or <code>tar.gz</code> file.
-Open the <code>camunda-sql-scripts-$Y/upgrade</code> folder to find all available scripts.
+Open the <code>cibseven-sql-scripts-$Y/upgrade</code> folder to find all available scripts.
 In case you are using a <a href="/manual/1.1/introduction/downloading-cibseven/#full-distribution">pre-packaged distribution</a>, the SQL scripts already reside in the <code>sql/upgrade</code> folder of the distribution with version <code>$Y</code>.
 We highly recommend executing these patches before updating.
 Execute those related to your database type (<code>$DATABASENAME</code>) in ascending order by version number.
@@ -3726,9 +3724,9 @@ This changelog helps Liquibase to keep track of the changes that have been made 
 Based on that changelog and the tracking tables, Liquibase determines which changes it needs to apply when instructing it to update your schema.
 Therefore, the procedure for patch-level updates is equivalent to that for <a href="#liquibase-update">minor version updates</a>.</p>
 <h3 id="manual-patch-level-update">Manual patch level update</h3>
-<p>You can find the necessary scripts on our <a href="https://artifacts.cibseven.org/#browse/browse:public:/org/cibseven/bpm/distro/camunda-sql-scripts/">Artifact Repository</a>.
+<p>You can find the necessary scripts on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
 Select the respective patch version you want to update to (<code>$Y</code>) and download the scripts as a <code>zip</code> or <code>tar.gz</code> file.
-Open the <code>camunda-sql-scripts-$Y/upgrade</code> folder to find all available patch scripts.
+Open the <code>cibseven-sql-scripts-$Y/upgrade</code> folder to find all available patch scripts.
 In case you are using a <a href="/manual/1.1/introduction/downloading-cibseven/#full-distribution">pre-packaged distribution</a>, the SQL scripts reside in the <code>sql/upgrade</code> folder of the distribution you want to update to.</p>
 <p>The patch scripts are named <code>$DATABASENAME_engine_$MINOR_patch_$A_to_$B</code>, with <code>$A</code> being the patch level version to update from, <code>$B</code> the patch level to update to, and <code>$MINOR</code> the minor version they are on, e.g., <code>7.16</code>.
 If you do choose to apply a database patch, then you must apply all patch scripts that are within the bounds of your update path. This means if your current patch version is <code>X.X.1</code> and you update to <code>X.X.5</code> you have to execute all patch scripts first where <code>$A</code> ≥ <code>X.X.1</code> and <code>$B</code> ≤ <code>X.X.5</code>.</p>

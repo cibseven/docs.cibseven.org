@@ -102,8 +102,6 @@
 
     <span class="number"><a>1.1</a>
       
-        (1.1)
-      
     </span>
   
 </div>
@@ -3240,9 +3238,9 @@ class would provide a method named</p>
   <p><p>If you configure the process engine in <code>standalone.xml</code> and provide a custom configuration class packaged inside an own module, the camunda-wildfly-subsystem module needs to have a module dependency on the module providing the class.</p>
 <p>If you fail to do this, you will see the following error log:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Caused by: org.cibseven.bpm.engine.ProcessEngineException: Could not load &#39;foo.bar&#39;: the class must be visible from the camunda-wildfly-subsystem module.
-</span></span></span><span class="line"><span class="cl"><span class="go">    at org.cibseven.bpm.container.impl.jboss.service.MscManagedProcessEngineController.createProcessEngineConfiguration(MscManagedProcessEngineController.java:187) [camunda-wildfly-subsystem-1.1.jar:]
-</span></span></span><span class="line"><span class="cl"><span class="go">    at org.cibseven.bpm.container.impl.jboss.service.MscManagedProcessEngineController.startProcessEngine(MscManagedProcessEngineController.java:138) [camunda-wildfly-subsystem-1.1.jar:]
-</span></span></span><span class="line"><span class="cl"><span class="go">    at org.cibseven.bpm.container.impl.jboss.service.MscManagedProcessEngineController$3.run(MscManagedProcessEngineController.java:126) [camunda-wildfly-subsystem-1.1.jar:]
+</span></span></span><span class="line"><span class="cl"><span class="go">    at org.cibseven.bpm.container.impl.jboss.service.MscManagedProcessEngineController.createProcessEngineConfiguration(MscManagedProcessEngineController.java:187) [camunda-wildfly-subsystem-1.1.0.jar:]
+</span></span></span><span class="line"><span class="cl"><span class="go">    at org.cibseven.bpm.container.impl.jboss.service.MscManagedProcessEngineController.startProcessEngine(MscManagedProcessEngineController.java:138) [camunda-wildfly-subsystem-1.1.0.jar:]
+</span></span></span><span class="line"><span class="cl"><span class="go">    at org.cibseven.bpm.container.impl.jboss.service.MscManagedProcessEngineController$3.run(MscManagedProcessEngineController.java:126) [camunda-wildfly-subsystem-1.1.0.jar:]
 </span></span></span></code></pre></div></p>
 </div>
 

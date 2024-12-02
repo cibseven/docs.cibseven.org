@@ -102,8 +102,6 @@
 
     <span class="number"><a>1.1</a>
       
-        (1.1)
-      
     </span>
   
 </div>
@@ -3151,7 +3149,7 @@
 
     <div class="col-xs-12 content-text">
       <h1 id="transaction-integration-by-example">Transaction Integration by Example</h1>
-<p>The following explains the <a href="https://github.com/camunda/camunda-bpm-platform/blob/1.1/engine-spring/core/src/test/java/org/cibseven/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest.java">SpringTransactionIntegrationTest</a> of the core codebase step by step. Below is the Spring configuration file that we use in this example (you can find it in <a href="https://github.com/cibseven/cibseven/blob/1.1/engine-spring/core/src/test/resources/org/cibseven/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest-context.xml">SpringTransactionIntegrationTest-context.xml</a>). The section shown below contains the <code>dataSource</code>, <code>transactionManager</code>, <code>processEngine</code> and the process engine services.</p>
+<p>The following explains the <a href="https://github.com/camunda/camunda-bpm-platform/blob/1.1.0/engine-spring/core/src/test/java/org/cibseven/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest.java">SpringTransactionIntegrationTest</a> of the core codebase step by step. Below is the Spring configuration file that we use in this example (you can find it in <a href="https://github.com/cibseven/cibseven/blob/1.1.0/engine-spring/core/src/test/resources/org/cibseven/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest-context.xml">SpringTransactionIntegrationTest-context.xml</a>). The section shown below contains the <code>dataSource</code>, <code>transactionManager</code>, <code>processEngine</code> and the process engine services.</p>
 <p>When passing the DataSource to the <code>SpringProcessEngineConfiguration</code> (using property &ldquo;dataSource&rdquo;), the CIB seven engine uses a <code>org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy</code> internally, which wraps the passed DataSource. This is done to make sure the SQL connections retrieved from the DataSource and the Spring transactions play well together. This implies that it&rsquo;s no longer needed to proxy the dataSource yourself in Spring configuration, although it&rsquo;s still allowed to pass a <code>TransactionAwareDataSourceProxy</code> into the <code>SpringProcessEngineConfiguration</code>. In this case no additional wrapping will occur.</p>
 <p>Make sure when declaring a <code>TransactionAwareDataSourceProxy</code> in Spring configuration yourself, that you don&rsquo;t use it for resources that are already aware of Spring-transactions (e.g., <code>DataSourceTransactionManager</code> and <code>JPATransactionManager</code> need the un-proxied dataSource).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>

@@ -102,8 +102,6 @@
 
     <span class="number"><a>1.1</a>
       
-        (1.1)
-      
     </span>
   
 </div>
@@ -3150,7 +3148,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>This section describes how you can install CIB seven and its components on a vanilla <a href="http://tomcat.apache.org/">Apache Tomcat</a>, if you are not able to use the pre-packaged Tomcat distribution. In addition, download a <a href="https://cibseven.de/download/">Tomcat distribution</a> to fetch the required CIB seven modules.</p>
+      <p>This section describes how you can install CIB seven and its components on a vanilla <a href="http://tomcat.apache.org/">Apache Tomcat</a>, if you are not able to use the pre-packaged Tomcat distribution. In addition, download a <a href="https://cibseven.org/download/">Tomcat distribution</a> to fetch the required CIB seven modules.</p>
 
 <div class="note bg-info docs-info">
   <h3>Reading the Guide</h3>
@@ -3269,15 +3267,15 @@ into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 <p>The following steps are required to deploy the applications:</p>
 <ol>
 <li>
-<p>Download the CIB seven web application that contains both applications from our <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/webapp/camunda-webapp-tomcat/1.1/">Artifact Repository</a>.
-Choose the correct version named <code>camunda-engine-rest-1.1-tomcat.war</code>.</p>
+<p>Download the CIB seven web application that contains both applications from our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-tomcat/1.1.0/">Artifact Repository</a>.
+Choose the correct version named <code>cibseven-engine-rest-1.1.0-tomcat.war</code>.</p>
 <ul>
-<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/camunda-engine-rest-jakarta/1.1/">Tomcat 10</a>, the name of the artifact is <code>camunda-engine-rest-jakarta-1.1-tomcat.war</code>.</li>
-<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/camunda-engine-rest/1.1/">Tomcat 9</a>, the name of the artifact is <code>camunda-engine-rest-1.1-tomcat.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest-jakarta/1.1.0/">Tomcat 10</a>, the name of the artifact is <code>cibseven-engine-rest-jakarta-1.1.0-tomcat.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/1.1.0/">Tomcat 9</a>, the name of the artifact is <code>cibseven-engine-rest-1.1.0-tomcat.war</code>.</li>
 </ul>
 </li>
 <li>
-<p>Copy the war file to <code>$TOMCAT_HOME/webapps/camunda.war</code>.
+<p>Copy the war file to <code>$TOMCAT_HOME/webapps/cibseven.war</code>.
 Optionally you may name it differently or extract it to a folder to deploy it to a different context path.</p>
 </li>
 <li>
@@ -3290,7 +3288,7 @@ Optionally you may name it differently or extract it to a folder to deploy it to
 <h2 id="rest-api">REST API</h2>
 <p>The following steps are required to deploy the REST API:</p>
 <ol>
-<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/camunda-engine-rest/1.1/">Artifact Repository</a>.</li>
+<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/1.1.0/">Artifact Repository</a>.</li>
 <li>Copy the war file to <code>$TOMCAT_HOME/webapps</code>.
 Optionally you may rename it or extract it to a folder to deploy it to a specific context like <code>/engine-rest</code>.</li>
 <li>Startup Tomcat.</li>
@@ -3298,13 +3296,13 @@ Optionally you may rename it or extract it to a folder to deploy it to a specifi
 For example, http://localhost:8080/engine-rest/engine should return the names of all engines of the platform, provided that you deployed the application in the context <code>/engine-rest</code>.</li>
 <li>Enable authentication as described in the <a href="/manual/latest/reference/rest/overview/authentication/">REST API documentation</a></li>
 </ol>
-<h2 id="camunda-connect-plugin">Camunda Connect Plugin</h2>
+<h2 id="cib-seven-connect-plugin">CIB seven Connect Plugin</h2>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
-<li><code>camunda-engine-plugin-connect-$PLATFORM_VERSION.jar</code></li>
-<li><code>camunda-commons-utils-$PLATFORM_VERSION.jar</code></li>
+<li><code>cibseven-engine-plugin-connect-$PLATFORM_VERSION.jar</code></li>
+<li><code>cibseven-commons-utils-$PLATFORM_VERSION.jar</code></li>
 </ul>
-<p>In order to activate Camunda Connect functionality for a process engine, a process engine plugin has to be registered in <code>$TOMCAT_HOME/conf/bpm-platform.xml</code> as follows:</p>
+<p>In order to activate CIB seven Connect functionality for a process engine, a process engine plugin has to be registered in <code>$TOMCAT_HOME/conf/bpm-platform.xml</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="err">...</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;process-engine</span> <span class="na">name=</span><span class="s">&#34;default&#34;</span><span class="nt">&gt;</span>
@@ -3319,15 +3317,15 @@ For example, http://localhost:8080/engine-rest/engine should return the names of
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
-</span></span></code></pre></div><h2 id="camunda-spin">Camunda Spin</h2>
+</span></span></code></pre></div><h2 id="spin">Spin</h2>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
-<li><code>camunda-spin-dataformat-all-$PLATFORM_VERSION.jar</code></li>
-<li><code>camunda-spin-core-$PLATFORM_VERSION.jar</code></li>
-<li><code>camunda-engine-plugin-spin-$PLATFORM_VERSION.jar</code></li>
-<li><code>camunda-commons-utils-$PLATFORM_VERSION.jar</code></li>
+<li><code>cibseven-spin-dataformat-all-$PLATFORM_VERSION.jar</code></li>
+<li><code>cibseven-spin-core-$PLATFORM_VERSION.jar</code></li>
+<li><code>cibseven-engine-plugin-spin-$PLATFORM_VERSION.jar</code></li>
+<li><code>cibseven-commons-utils-$PLATFORM_VERSION.jar</code></li>
 </ul>
-<p>In order to activate Camunda Spin functionality for a process engine, a process engine plugin has to be registered in <code>$TOMCAT_HOME/conf/bpm-platform.xml</code> as follows:</p>
+<p>In order to activate Spin functionality for a process engine, a process engine plugin has to be registered in <code>$TOMCAT_HOME/conf/bpm-platform.xml</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="err">...</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
@@ -3392,8 +3390,8 @@ For example, http://localhost:8080/engine-rest/engine should return the names of
   <ul>
     <li><a href="#cockpit-tasklist-and-admin">Cockpit, Tasklist and Admin</a></li>
     <li><a href="#rest-api">REST API</a></li>
-    <li><a href="#camunda-connect-plugin">Camunda Connect Plugin</a></li>
-    <li><a href="#camunda-spin">Camunda Spin</a></li>
+    <li><a href="#cib-seven-connect-plugin">CIB seven Connect Plugin</a></li>
+    <li><a href="#spin">Spin</a></li>
     <li><a href="#groovy-scripting">Groovy Scripting</a></li>
     <li><a href="#freemarker-integration">Freemarker Integration</a></li>
     <li><a href="#graalvm-javascript-integration">GraalVM JavaScript Integration</a></li>

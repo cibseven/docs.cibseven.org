@@ -102,8 +102,6 @@
 
     <span class="number"><a>1.1</a>
       
-        (1.1)
-      
     </span>
   
 </div>
@@ -3165,8 +3163,8 @@
 
 <h2 id="setup">Setup</h2>
 <ul>
-<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/webapp/camunda-webapp-wildfly/1.1/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>camunda-webapp-wildfly-1.1.war</code>.</li>
-<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/webapp/camunda-webapp-jboss/1.1/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>camunda-webapp-jboss-1.1.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-wildfly/1.1.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-webapp-wildfly-1.1.0.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-jboss/1.1.0/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>cibseven-webapp-jboss-1.1.0.war</code>.</li>
 </ul>
 <h3 id="copy-modules">Copy Modules</h3>
 <p>Copy the modules from the <code>modules/</code> folder of the CIB seven distribution, or extract the <code>camunda-wildfly-modules</code> archive, to the <code>$WILDFLY_HOME/modules/</code> of your WildFly application server.</p>
@@ -3279,8 +3277,8 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 <ol>
 <li>Download the REST API web application archive from our Maven Artifactory.
 <ul>
-<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/camunda-engine-rest-jakarta/1.1/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>camunda-engine-rest-jakarta-1.1-wildfly.war</code>.</li>
-<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/camunda-engine-rest/1.1/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>camunda-engine-rest-1.1-wildfly.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest-jakarta/1.1.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-engine-rest-jakarta-1.1.0-wildfly.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/1.1.0/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>cibseven-engine-rest-1.1.0-wildfly.war</code>.</li>
 </ul>
 </li>
 <li>Optionally, you may change the context path to which the REST API will be deployed (default is <code>/engine-rest</code>).
@@ -3291,13 +3289,13 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 For example, <a href="http://localhost:8080/engine-rest/engine">http://localhost:8080/engine-rest/engine</a> should return the names of all engines of the platform,
 provided that you deployed the application in the context <code>/engine-rest</code>.</li>
 </ol>
-<h3 id="camunda-connect-plugin">Camunda Connect Plugin</h3>
+<h3 id="cib-seven-connect-plugin">CIB seven Connect Plugin</h3>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
-<li><code>org/cibseven/bpm/camunda-engine-plugin-connect</code></li>
-<li><code>org/cibseven/commons/camunda-commons-utils</code></li>
+<li><code>org/cibseven/bpm/cibseven-engine-plugin-connect</code></li>
+<li><code>org/cibseven/commons/cibeven-commons-utils</code></li>
 </ul>
-<p>To activate Camunda Connect functionality for a process engine, a process engine plugin has to be registered in <code>$WILDFLY_HOME/standalone/configuration/standalone.xml</code> as follows:</p>
+<p>To activate CIB seven Connect functionality for a process engine, a process engine plugin has to be registered in <code>$WILDFLY_HOME/standalone/configuration/standalone.xml</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;subsystem</span> <span class="na">xmlns=</span><span class="s">&#34;urn:org.cibseven.bpm.jboss:1.1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;process-engines&gt;</span>
@@ -3314,31 +3312,31 @@ provided that you deployed the application in the context <code>/engine-rest</co
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engines&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subsystem&gt;</span>
-</span></span></code></pre></div><h3 id="camunda-spin">Camunda Spin</h3>
-<p>You can use the Camunda Spin plugin to extend the engine functionality to de-/serialize object variables from and to JSON and XML. For more information, see the <a href="/manual/1.1/reference/spin/">Spin Reference</a>.</p>
+</span></span></code></pre></div><h3 id="spin">Spin</h3>
+<p>You can use the Spin plugin to extend the engine functionality to de-/serialize object variables from and to JSON and XML. For more information, see the <a href="/manual/1.1/reference/spin/">Spin Reference</a>.</p>
 <h4 id="setup-spin">Setup Spin</h4>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
-<li><code>org/cibseven/spin/camunda-spin-core</code></li>
-<li><code>org/cibseven/spin/camunda-spin-dataformat-json-jackson</code></li>
-<li><code>org/cibseven/spin/camunda-spin-dataformat-xml-dom-jakarta</code>
+<li><code>org/cibseven/spin/cibseven-spin-core</code></li>
+<li><code>org/cibseven/spin/cibseven-spin-dataformat-json-jackson</code></li>
+<li><code>org/cibseven/spin/cibseven-spin-dataformat-xml-dom-jakarta</code>
 <ul>
 <li><strong>Heads-up:</strong> add this module only for WildFly ≥27 / JBoss EAP 8.</li>
 </ul>
 </li>
-<li><code>org/cibseven/spin/camunda-spin-dataformat-xml-dom</code>
+<li><code>org/cibseven/spin/cibseven-spin-dataformat-xml-dom</code>
 <ul>
 <li><strong>Heads-up:</strong> add this module only for WildFly ≤26 / JBoss EAP 7.</li>
 </ul>
 </li>
-<li><code>org/cibseven/bpm/camunda-engine-plugin-spin</code></li>
-<li><code>org/cibseven/commons/camunda-commons-utils</code></li>
+<li><code>org/cibseven/bpm/cibseven-engine-plugin-spin</code></li>
+<li><code>org/cibseven/commons/cibseven-commons-utils</code></li>
 <li><code>com/fasterxml/jackson/core/jackson-core</code></li>
 <li><code>com/fasterxml/jackson/core/jackson-databind</code></li>
 <li><code>com/fasterxml/jackson/core/jackson-annotations</code></li>
 <li><code>com/jayway/jsonpath/json-path</code></li>
 </ul>
-<p>In order to activate Camunda Spin functionality for a process engine, a process engine plugin has to be registered in <code>$WILDFLY_HOME/standalone/configuration/standalone.xml</code> as follows:</p>
+<p>In order to activate Spin functionality for a process engine, a process engine plugin has to be registered in <code>$WILDFLY_HOME/standalone/configuration/standalone.xml</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;subsystem</span> <span class="na">xmlns=</span><span class="s">&#34;urn:org.cibseven.bpm.jboss:1.1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;process-engines&gt;</span>
@@ -3356,14 +3354,14 @@ provided that you deployed the application in the context <code>/engine-rest</co
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subsystem&gt;</span>
 </span></span></code></pre></div><h4 id="problems-with-jackson-annotations">Problems with Jackson Annotations</h4>
-<p>The usage of Jackson annotations on WildFly together with the Camunda Spin JSON serialization can lead to problems.
+<p>The usage of Jackson annotations on WildFly together with the Spin JSON serialization can lead to problems.
 WildFly implicitly adds the JAX-RS subsystem to each new deployment, if JAX-RS annotations are present (see the WildFly <a href="https://docs.wildfly.org/23/Developer_Guide.html#Implicit_module_dependencies_for_deployments">documentation</a> for more information).
-This JAX-RS subsystem includes the Jackson library, the version of which does not match with the version used by the Camunda SPIN Plugin.
+This JAX-RS subsystem includes the Jackson library, the version of which does not match with the version used by the SPIN Plugin.
 As a result, Jackson annotations will be ignored. Note that this problem does not necessarily have to emerge upon direct usage of Spin.
-The Spin plugin also comes into play when JSON variables are set or read by the Camunda Process Engine.</p>
+The Spin plugin also comes into play when JSON variables are set or read by the CIB seven Process Engine.</p>
 <p>See one of the following ways to fix this:</p>
 <ol>
-<li>Change the Jackson <code>main</code> slot to the version which is used by the Camunda Spin Plugin.</li>
+<li>Change the Jackson <code>main</code> slot to the version which is used by the Spin Plugin.</li>
 </ol>
 <ul>
 <li>Make sure that Resteasy can work with this Jackson version, as we cannot give any guarantees on this.</li>
@@ -3373,12 +3371,12 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
 </ol>
 <ul>
 <li>Add a <code>jboss-deployment-structure.xml</code> file to you application in the WEB-INF folder.</li>
-<li>Exclude the JAX-RS subsystem and add the Jackson dependencies, with the version which is used by the Camunda Spin Plugin.</li>
-<li>This solution is also shown in the <a href="https://github.com/camunda/camunda-bpm-examples/blob/master/wildfly/jackson-annotations">Jackson Annotation Example for WildFly</a> in the Camunda example repository.</li>
+<li>Exclude the JAX-RS subsystem and add the Jackson dependencies, with the version which is used by the Spin Plugin.</li>
+<li>This solution is also shown in the <a href="https://github.com/camunda/camunda-bpm-examples/blob/master/wildfly/jackson-annotations">Jackson Annotation Example for WildFly for Camunda</a> in the Camunda example repository.</li>
 </ul>
 <p>See this <a href="https://forum.camunda.io/t/camunda-json-marshalling-and-jsonignore/271/19">Camunda Forum Post</a> for other approaches and information.</p>
 <h4 id="problem-with-deployments-using-the-rest-api">Problem With Deployments Using the REST API</h4>
-<p>Camunda Spin is not available in scripts if a process definition is deployed via REST API. Because WildFly handles dependencies using its module system and CIB seven engine module has no module dependency on the spin module.</p>
+<p>Spin is not available in scripts if a process definition is deployed via REST API. Because WildFly handles dependencies using its module system and CIB seven engine module has no module dependency on the spin module.</p>
 <h3 id="groovy-scripting">Groovy Scripting</h3>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
@@ -3387,10 +3385,10 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
 <h3 id="freemarker-integration">Freemarker Integration</h3>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
-<li><code>org/cibseven/template-engines/camunda-template-engines-freemarker</code></li>
+<li><code>org/cibseven/template-engines/cibseven-template-engines-freemarker</code></li>
 <li><code>org/freemarker/freemarker</code></li>
-<li><code>org/cibseven/commons/camunda-commons-logging</code></li>
-<li><code>org/cibseven/commons/camunda-commons-utils</code></li>
+<li><code>org/cibseven/commons/cibseven-commons-logging</code></li>
+<li><code>org/cibseven/commons/cibseven-commons-utils</code></li>
 </ul>
 <h3 id="graalvm-javascript-integration">GraalVM JavaScript Integration</h3>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
@@ -3423,8 +3421,8 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
       <ul>
         <li><a href="#cockpit-tasklist-and-admin">Cockpit, Tasklist, and Admin</a></li>
         <li><a href="#rest-api">REST API</a></li>
-        <li><a href="#camunda-connect-plugin">Camunda Connect Plugin</a></li>
-        <li><a href="#camunda-spin">Camunda Spin</a></li>
+        <li><a href="#cib-seven-connect-plugin">CIB seven Connect Plugin</a></li>
+        <li><a href="#spin">Spin</a></li>
         <li><a href="#groovy-scripting">Groovy Scripting</a></li>
         <li><a href="#freemarker-integration">Freemarker Integration</a></li>
         <li><a href="#graalvm-javascript-integration">GraalVM JavaScript Integration</a></li>

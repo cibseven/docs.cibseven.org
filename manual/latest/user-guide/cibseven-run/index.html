@@ -102,8 +102,6 @@
 
     <span class="number"><a>1.1</a>
       
-        (1.1)
-      
     </span>
   
 </div>
@@ -3168,7 +3166,7 @@
 <li><a href="#example-application">An example application</a></li>
 </ul>
 <h1 id="starting-with-cib-seven-run">Starting with CIB seven Run</h1>
-<p>To start with CIB seven Run, download the <a href="https://cibseven.de/downloads/">distribution</a> and unpacking it. You will find the following structure:</p>
+<p>To start with CIB seven Run, download the <a href="https://cibseven.org/downloads/">distribution</a> and unpacking it. You will find the following structure:</p>
 <pre tabindex="0"><code>cibseven-run
 ├── configuration/
 │   ├── keystore/
@@ -3285,7 +3283,7 @@ However, we do not recommended to use the example application in production.</p>
 </ol>
 <h2 id="deploy-bpmn-models">Deploy BPMN Models</h2>
 <p>In the unpacked distro, you will find a <code>resources</code> folder. All files (including BPMN, DMN, CMMN, form, and script files) will be deployed when you start CIB seven Run.</p>
-<p>You can reference forms and scripts in the BPMN diagram with <code>embedded:deployment:/my-form.html</code>, <code>camunda-forms:deployment:/myform.form</code>, or <code>deployment:/my-script.js</code>. The deployment requires adding an extra <code>/</code> as a prefix to the filename.</p>
+<p>You can reference forms and scripts in the BPMN diagram with <code>embedded:deployment:/my-form.html</code>, <code>cibseven-forms:deployment:/myform.form</code>, or <code>deployment:/my-script.js</code>. The deployment requires adding an extra <code>/</code> as a prefix to the filename.</p>
 <p>Deployments via the <a href="/manual/latest/reference/rest/specification/#tag/Deployment/operation/createDeployment">REST API</a> are still possible.</p>
 <h1 id="configure-cib-seven-run">Configure CIB seven Run</h1>
 <p>Just like all the other distros, you can tailor CIB seven Run to your needs. To do this, you only have to edit one of the <a href="#choose-between-default-and-production-configuration">configuration files</a> that you can find in the configuration folder.</p>
