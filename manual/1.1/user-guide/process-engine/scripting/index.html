@@ -2328,14 +2328,6 @@
   </li>
 
         
-          
-  <li>
-    
-      <a href="/manual/1.1/reference/forms/camunda-forms/" >Camunda Forms</a>
-    
-  </li>
-
-        
       </ul>
     
   </li>
@@ -3154,9 +3146,9 @@ it is necessary to add the corresponding jar to the classpath.</p>
 
 <div class="note bg-info docs-info">
   <h3></h3>
-  <p><p>We include <strong>GraalVM JavaScript</strong> in the pre-packaged Camunda distributions.
+  <p><p>We include <strong>GraalVM JavaScript</strong> in the pre-packaged CIB seven distributions.
 Consult <a href="#javascript-considerations">JavaScript Considerations</a> for further information.</p>
-<p>We include <strong>Groovy</strong> in the pre-packaged Camunda distributions.</p>
+<p>We include <strong>Groovy</strong> in the pre-packaged CIB seven distributions.</p>
 </p>
 </div>
 
@@ -3310,7 +3302,7 @@ process variable which is available inside the script.</p>
 </span></span><span class="line"><span class="cl">      <span class="na">camunda:resource=</span><span class="s">&#34;org/cibseven/bpm/condition.groovy&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/sequenceFlow&gt;</span>
 </span></span></code></pre></div><h1 id="use-scripts-as-inputoutput-parameters">Use Scripts as inputOutput Parameters</h1>
-<p>With the Camunda <code>inputOutput</code> extension element you can map an <code>inputParameter</code> or <code>outputParameter</code>
+<p>With the CIB seven <code>inputOutput</code> extension element you can map an <code>inputParameter</code> or <code>outputParameter</code>
 with a script. The following example process uses the Groovy script from the previous example to assign
 the Groovy variable <code>sum</code> to the process variable <code>x</code> for a Java delegate.</p>
 
@@ -3438,7 +3430,7 @@ Note that the supported options can differ between versions of the script engine
 <p>You can set system properties either programmatically through <code>System.setProperty(parameter, value)</code> or as JVM arguments,
 for example upon application start on command line via <code>-Dparameter=value</code>. Most application servers like Wildfly,
 Tomcat, Websphere, and Weblogic support providing JVM arguments via environment variables <code>JAVA_OPTS</code> or <code>JAVA_OPTIONS</code>.
-Consult your application server&rsquo;s documentation to learn how to pass on JVM arguments. Camunda Run supports setting
+Consult your application server&rsquo;s documentation to learn how to pass on JVM arguments. CIB seven Run supports setting
 JVM arguments via the <code>JAVA_OPTS</code> environment variable as well.</p>
 <h2 id="custom-scriptengineresolver">Custom ScriptEngineResolver</h2>
 <p>You can provide a custom <code>ScriptEngineResolver</code> implementation to configure script engines. Depending on the specifc script engine to configure,
@@ -3522,7 +3514,7 @@ interface which means that it can be used to get and set variables or access pro
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">taskDefinitionKey</span><span class="p">(</span><span class="s">&#34;task&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">singleResult</span><span class="p">()</span><span class="w">
 </span></span></span></code></pre></div><h1 id="accessing-process-engine-services-using-scripts">Accessing Process Engine Services using Scripts</h1>
-<p>Camunda&rsquo;s Java API provides access to Camunda&rsquo;s process engine services; these services can be accessed using Scripts:</p>
+<p>CIB seven&rsquo;s Java API provides access to CIB seven&rsquo;s process engine services; these services can be accessed using Scripts:</p>
 <p><a href="/javadoc/cibseven/1.1/org/cibseven/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
  \</p>
 <a href="/javadoc/cibseven/1.1/org/cibseven/bpm/engine/package-summary.html">Public Java API of CIB seven Engine</a>
@@ -3604,7 +3596,7 @@ script task.</p>
 section of the <a href="/manual/1.1/reference/bpmn20/custom-extensions/">Custom Extensions</a> chapter.</p>
 <h1 id="javascript-considerations">JavaScript Considerations</h1>
 <p>JavaScript code execution is part of the Java Runtime (JRE) with the <strong>Nashorn</strong> script engine until Java 14 and thus only there available out of the box.
-We include <strong>GraalVM JavaScript</strong> in the pre-packaged Camunda distributions as a replacement regardless of the JRE version.
+We include <strong>GraalVM JavaScript</strong> in the pre-packaged CIB seven distributions as a replacement regardless of the JRE version.
 JavaScript code executes on GraalVM JavaScript with preference in the process engine context if this script engine is available.
 If this script engine cannot be found, the process engine defaults to let the JVM select an appropriate script engine.</p>
 <p>You can set the default JavaScript engine to use for languages <code>javascript</code> and <code>ecmascript</code> with the process engine configuration property named <code>scriptEngineNameJavaScript</code>.

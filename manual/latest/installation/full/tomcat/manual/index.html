@@ -2328,14 +2328,6 @@
   </li>
 
         
-          
-  <li>
-    
-      <a href="/manual/latest/reference/forms/camunda-forms/" >Camunda Forms</a>
-    
-  </li>
-
-        
       </ul>
     
   </li>
@@ -3219,12 +3211,12 @@ To resolve this, move the weld library away from the war and place it into the <
 into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">     <span class="nt">&lt;Resource</span> <span class="na">name=</span><span class="s">&#34;global/camunda-bpm-platform/process-engine/ProcessEngineService!org.cibseven.bpm.ProcessEngineService&#34;</span> <span class="na">auth=</span><span class="s">&#34;Container&#34;</span>
 </span></span><span class="line"><span class="cl">              <span class="na">type=</span><span class="s">&#34;org.cibseven.bpm.ProcessEngineService&#34;</span>
-</span></span><span class="line"><span class="cl">              <span class="na">description=</span><span class="s">&#34;Camunda Platform Process Engine Service&#34;</span>
+</span></span><span class="line"><span class="cl">              <span class="na">description=</span><span class="s">&#34;CIB seven Platform Process Engine Service&#34;</span>
 </span></span><span class="line"><span class="cl">              <span class="na">factory=</span><span class="s">&#34;org.cibseven.bpm.container.impl.jndi.ProcessEngineServiceObjectFactory&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;Resource</span> <span class="na">name=</span><span class="s">&#34;global/camunda-bpm-platform/process-engine/ProcessApplicationService!org.cibseven.bpm.ProcessApplicationService&#34;</span> <span class="na">auth=</span><span class="s">&#34;Container&#34;</span>
 </span></span><span class="line"><span class="cl">              <span class="na">type=</span><span class="s">&#34;org.cibseven.bpm.ProcessApplicationService&#34;</span>
-</span></span><span class="line"><span class="cl">              <span class="na">description=</span><span class="s">&#34;Camunda Platform Process Application Service&#34;</span>
+</span></span><span class="line"><span class="cl">              <span class="na">description=</span><span class="s">&#34;CIB seven Platform Process Application Service&#34;</span>
 </span></span><span class="line"><span class="cl">              <span class="na">factory=</span><span class="s">&#34;org.cibseven.bpm.container.impl.jndi.ProcessApplicationServiceObjectFactory&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><h2 id="add-required-libraries">Add Required Libraries</h2>
 <p>Copy all libraries from the <code>$TOMCAT_DISTRIBUTION/lib/</code> folder to the Tomcat library folder <code>$TOMCAT_HOME/lib</code>:</p>

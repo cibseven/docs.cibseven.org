@@ -2328,14 +2328,6 @@
   </li>
 
         
-          
-  <li>
-    
-      <a href="/manual/1.1/reference/forms/camunda-forms/" >Camunda Forms</a>
-    
-  </li>
-
-        
       </ul>
     
   </li>
@@ -3294,13 +3286,13 @@ If a variable supposed to store the user selection for multi-select components (
 </span></span></code></pre></div><p>If you are about to prototype your application, you can also use the shortcut format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">[</span><span class="s2">&#34;Dynamic Value 2&#34;</span><span class="p">,</span> <span class="s2">&#34;Dynamic Value 2&#34;</span><span class="p">]</span>
 </span></span></code></pre></div><h2 id="deployment">Deployment</h2>
-<p>If you want to include your Camunda Form as part of the <code>deployment</code>, then you need to deploy the <code>.form</code> file in the same deployment as the respective <code>.bpmn</code> diagram - for example using the Camunda Modeler (since Modeler Version 5.0.0).</p>
+<p>If you want to include your CIB seven Form as part of the <code>deployment</code>, then you need to deploy the <code>.form</code> file in the same deployment as the respective <code>.bpmn</code> diagram - for example using the Camunda Modeler (since Modeler Version 5.0.0).</p>
 
 <div class="note bg-warning docs-warning">
   <h3>Automatic deployment</h3>
-  <p>Camunda Forms are not automatically deployed as part of a <a href="/manual/1.1/reference/deployment-descriptors/tags/process-archive/">process archive</a> by default.
+  <p>CIB seven Forms are not automatically deployed as part of a <a href="/manual/1.1/reference/deployment-descriptors/tags/process-archive/">process archive</a> by default.
 You need to configure it accordingly by adding it as a resource directly or by adding <code>form</code> to the list of <code>additionalResourceSuffixes</code>.
-Using <a href="/manual/1.1/user-guide/cibseven-run/#starting-with-cibseven-run">Camunda Run</a>, all additional resources - including Camunda Forms -
+Using <a href="/manual/1.1/user-guide/cibseven-run/#starting-with-cibseven-run">CIB seven Run</a>, all additional resources - including CIB seven Forms -
 placed inside the <code>configuration/resources/</code> directory are automatically deployed.</p>
 </div>
 
@@ -3308,15 +3300,15 @@ placed inside the <code>configuration/resources/</code> directory are automatica
   <span><img
       src="img/deploy-form.png"
       
-          title="Deploy your Camunda Form file"
+          title="Deploy your CIB seven Form file"
        /></span>
 </figure>
 
-<p>You can also include Camunda Forms from other deployments by using <a href="#form-reference">form references</a>.</p>
+<p>You can also include CIB seven Forms from other deployments by using <a href="#form-reference">form references</a>.</p>
 <h1 id="external-task-forms">External Task Forms</h1>
 
 <div class="note bg-info docs-info">
-  <h3>Using Task Forms outside of Camunda Tasklist</h3>
+  <h3>Using Task Forms outside of CIB seven Tasklist</h3>
   <p>When embedding the process engine into a custom application, you can use any value in the form key property as a reference to your custom form. This way, your front-end can ensure to render the correct form for each user task.</p>
 </div>
 
@@ -3351,11 +3343,11 @@ After hitting the <em>Complete</em> button, the process instance contains the en
 <h2 id="generated-task-forms">Generated Task Forms</h2>
 
 <div class="note bg-info docs-info">
-  <h3>Camunda Forms or Generated Task Forms?</h3>
-  <p>The feature set of Camunda Forms and Generated Task Forms are similar. For new projects, we recommend to use Camunda Forms, as they offer more flexibility and are easier to create.</p>
+  <h3>CIB seven Forms or Generated Task Forms?</h3>
+  <p>The feature set of CIB seven Forms and Generated Task Forms are similar. For new projects, we recommend to use CIB seven Forms, as they offer more flexibility and are easier to create.</p>
 </div>
 
-<p>The Camunda process engine supports generating HTML task forms based on Form Data Metadata provided in the BPMN 2.0 XML. Form Data Metadata is a set of BPMN 2.0 vendor extensions provided by Camunda, allowing you to define form fields directly in the BPMN 2.0 XML:</p>
+<p>The CIB seven process engine supports generating HTML task forms based on Form Data Metadata provided in the BPMN 2.0 XML. Form Data Metadata is a set of BPMN 2.0 vendor extensions provided by CIB seven, allowing you to define form fields directly in the BPMN 2.0 XML:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;usertask&#34;</span> <span class="na">name=</span><span class="s">&#34;Task&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;camunda:formData&gt;</span>

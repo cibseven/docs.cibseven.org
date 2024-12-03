@@ -2328,14 +2328,6 @@
   </li>
 
         
-          
-  <li>
-    
-      <a href="/manual/1.1/reference/forms/camunda-forms/" >Camunda Forms</a>
-    
-  </li>
-
-        
       </ul>
     
   </li>
@@ -3148,7 +3140,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Authentication means verifying a user&rsquo;s identity against the Camunda web apps.</p>
+      <p>Authentication means verifying a user&rsquo;s identity against the CIB seven web apps.</p>
 <p>A user authenticates against the web apps on the login page by providing a username and password. If the
 authentication is successful, the user gets access to the web apps and can work on tasks
 in Tasklist or perform operations in Cockpit, for example.</p>
@@ -3160,7 +3152,7 @@ in Tasklist or perform operations in Cockpit, for example.</p>
 <li>Tenant memberships</li>
 <li>Authorized applications (Tasklist, Cockpit, Admin)</li>
 </ul>
-<p>The Camunda web apps correlate the authentication information against <a href="/manual/1.1/user-guide/process-engine/authorization-service/">authorizations</a> to determine
+<p>The CIB seven web apps correlate the authentication information against <a href="/manual/1.1/user-guide/process-engine/authorization-service/">authorizations</a> to determine
 what data the user can query for and which operations the user can perform.</p>
 <p>We implemented authentication with the help of a Java EE/Jakarta <code>ServletFilter</code>.</p>
 <h2 id="cache">Cache</h2>
@@ -3199,7 +3191,7 @@ they recreate it and query for the authentication information again from the dat
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;dispatcher&gt;</span>REQUEST<span class="nt">&lt;/dispatcher&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
 </span></span></code></pre></div><h2 id="container-based-authentication">Container-Based Authentication</h2>
-<p>Camunda supports a broad range of containers, including Tomcat, Wildfly, IBM WebSphere and Oracle WebLogic. Using Container-Based Authentication, it is possible to move the authentication action to the container level, which will then make the authentication result available to the Camunda Web Applications.</p>
+<p>CIB seven supports a broad range of containers, including Tomcat, Wildfly. Using Container-Based Authentication, it is possible to move the authentication action to the container level, which will then make the authentication result available to the CIB seven Web Applications.</p>
 
 <div class="note bg-info docs-info">
   <h3>Heads-up!</h3>
@@ -3223,7 +3215,7 @@ they recreate it and query for the authentication information again from the dat
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;dispatcher&gt;</span>REQUEST<span class="nt">&lt;/dispatcher&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/filter-mapping&gt;</span>
 </span></span></code></pre></div><h3 id="container-based-authentication-for-single-sign-on">Container-Based Authentication for Single Sign-On</h3>
-<p>The Camunda Web Applications can also integrate with a <a href="https://en.wikipedia.org/wiki/List_of_single_sign-on_implementations">Single Sign-On implementation</a> when the Container-Based Authentication servlet filter is enabled.</p>
+<p>The CIB seven Web Applications can also integrate with a <a href="https://en.wikipedia.org/wiki/List_of_single_sign-on_implementations">Single Sign-On implementation</a> when the Container-Based Authentication servlet filter is enabled.</p>
 
     </div>
   </div>

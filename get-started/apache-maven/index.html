@@ -278,7 +278,8 @@
 
     <div class="col-xs-12 content-text">
       <p>This page lists the most commonly used Apache Maven Coordinates for CIB seven.</p>
-<p>CIB seven relies on Sonatype Nexus Repository to provide all artifacts to users at <a href="https://artifacts.cibseven.org/">artifacts.cibseven.org</a>.</p>
+<p>Since version 1.1.0 CIB seven artifacts are available at <a href="https://central.sonatype.com/search?q=org.cibseven">Maven Central</a>. And extra tweaks of <code>pom.xml</code> or <code>settings.xml</code> are no longer essential.</p>
+<p>However you can use our public Sonatype Nexus Repository with all artifacts at <a href="https://artifacts.cibseven.org/">artifacts.cibseven.org</a>.</p>
 <p>Extra repository should be added to <code>settings.xml</code> or to the POM file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;repositories&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;repository&gt;</span>
@@ -287,7 +288,7 @@
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;url&gt;</span>https://artifacts.cibseven.org/repository/public/<span class="nt">&lt;/url&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repository&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repositories&gt;</span>
-</span></span></code></pre></div><p>Publishing to any public repositories is pending.</p>
+</span></span></code></pre></div><p>This repository will be essential if you want to use <code>7.22.0-cibseven</code> (<code>1.0</code>) transitional version of CIB seven. It is not available at Maven Cental repository.</p>
 <h1 id="cib-seven-bom-bill-of-materials">CIB seven BOM (Bill of Materials)</h1>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencyManagement&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependencies&gt;</span>
@@ -352,7 +353,7 @@ It is not needed when using <code>cibseven-engine</code> because that already co
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><h1 id="browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</h1>
 <p>In order to browse the CIB seven artifacts, here are the link you can use.</p>
-<p><a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/">https://artifacts.cibseven.org/service/rest/repository/browse/public/</a></p>
+<p><a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/">https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/</a></p>
 <h1 id="other-cib-seven-modules">Other CIB seven Modules:</h1>
 <ul>
 <li><a href="/manual/latest/user-guide/dmn-engine/embed/#maven-coordinates">DMN Engine</a></li>
