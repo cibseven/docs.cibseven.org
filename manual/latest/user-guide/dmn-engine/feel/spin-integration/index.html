@@ -3140,12 +3140,12 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>This page documents how Camunda Spin can be used together with the Scala FEEL Engine. Furthermore,
+      <p>This page documents how CIB seven Spin can be used together with the Scala FEEL Engine. Furthermore,
 it is shown how Spin data types are mapped to FEEL data types, as well as some rules when the
 former data structures are transformed into the latter.</p>
 <h2 id="where-can-the-spin-integration-be-found">Where can the Spin integration be found</h2>
 <p>The Spin integration for the FEEL Engine is implemented into the
-<a href="/manual/latest/user-guide/data-formats/configuring-spin-integration/#camunda-engine-plugin-spin">Spin Process Engine Plugin</a> since it is expected that the Process Engine should be
+<a href="/manual/latest/user-guide/data-formats/configuring-spin-integration/#cib-seven-engine-plugin-spin">Spin Process Engine Plugin</a> since it is expected that the Process Engine should be
 capable of using Spin, if another component of CIB seven (here, the FEEL Engine)
 supports its usage.</p>
 <p>In the case of a standalone DMN Engine setup, the Spin Process Engine Plugin would need to be added
@@ -3155,7 +3155,7 @@ FEEL Engine integration.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-plugin-spin<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${camunda.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><h2 id="how-does-the-spin-integration-work">How does the Spin integration work</h2>
 <p>The Spin integration consists of a Spin &ldquo;Data Types&rdquo;-dedicated implementation of the FEEL Engine
@@ -3177,7 +3177,7 @@ appropriate FEEL data type. Below, you can find an example of how this can be do
 </span></span></span></code></pre></div><h2 id="what-is-the-feel-data-type-mapping-of-jsonxml-variables">What is the FEEL data type mapping of JSON/XML variables</h2>
 <p>When converting JSON/XML variables to a FEEL data type, the provided JSON/XML structure will be
 mapped to a <code>Context</code> FEEL type. The actual values contained in the data structure will be mapped
-to the supported FEEL data types documented in the external FEEL documentation <a href="https://camunda.github.io/feel-scala/1.11/feel-data-types">here</a>.</p>
+to the supported FEEL data types documented in the external FEEL documentation <a href="https://docs.camunda.io/docs/components/modeler/feel/language-guide/feel-data-types/">here</a>.</p>
 <h3 id="spin-json">Spin JSON</h3>
 <p>Variables of type <code>SpinJsonNode</code> are transformed into an equal context, meaning that no
 transformation happens, it&rsquo;s basically the JSON structure.</p>

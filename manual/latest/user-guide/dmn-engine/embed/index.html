@@ -3140,16 +3140,16 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The Camunda DMN engine can be used as a library in a custom application. To achieve this,
-add the <code>camunda-engine-dmn</code> artifact to the classpath of the application and then
+      <p>The CIB seven DMN engine can be used as a library in a custom application. To achieve this,
+add the <code>cibseven-engine-dmn</code> artifact to the classpath of the application and then
 configure and build a decision engine instance. This section provides the
 required maven coordinates to add the DMN engine as a dependency to your
 project. It then shows how to configure and build a new DMN engine instance.</p>
 <h1 id="maven-coordinates">Maven Coordinates</h1>
-<p>The Camunda DMN engine is released to Maven Central.</p>
-<p>Start by importing the <a href="/get-started/apache-maven/#camunda-dmn-engine-bom"><code>camunda-engine-dmn</code> BOM</a>
+<p>The CIB seven DMN engine is released to Maven Central.</p>
+<p>Start by importing the <a href="/get-started/apache-maven/#cib-seven-dmn-engine-bom"><code>cibseven-engine-dmn</code> BOM</a>
 to ensure correct dependency management.</p>
-<p>Next, include the <a href="/get-started/apache-maven/#camunda-dmn"><code>camunda-engine-dmn</code></a>
+<p>Next, include the <a href="/get-started/apache-maven/#cib-seven-dmn"><code>cibseven-engine-dmn</code></a>
 artifact in the <code>dependencies</code> section.</p>
 <h1 id="building-a-dmn-engine">Building a DMN Engine</h1>
 <p>To build a new DMN engine, create a DMN engine configuration.
@@ -3250,7 +3250,7 @@ transformed. The listener can modify the transformed object.</p>
 <p>While the transform listener allows modifying of the transformed objects, it does not support instantiating custom subclasses.
 This can be achieved using a custom <a href="/javadoc/cibseven/1.1/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnElementTransformHandler.html">transform handler</a>
 .</p>
-<p>A transform handler is registered for a given <a href="https://github.com/camunda/camunda-dmn-model">DMN model API</a> type like a <code>DecisionTable</code>.</p>
+<p>A transform handler is registered for a given <a href="https://github.com/cibseven/cibseven/tree/master/model-api/dmn-model">DMN model API</a> type like a <code>DecisionTable</code>.</p>
 <p>First, implement a transform handler which can transform a <a href="/javadoc/cibseven/1.1/?org/cibseven/bpm/model/dmn/instance/DecisionTable.html">decision table</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w">  </span><span class="kd">class</span> <span class="nc">MyDecisionTableHandler</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">DmnElementTransformHandler</span><span class="o">&lt;</span><span class="n">DecisionTable</span><span class="p">,</span><span class="w"> </span><span class="n">MyDecisionTableImpl</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3379,7 +3379,7 @@ DMN engine configuration. To use another implementation of the Unified Expressio
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// set custom script engine resolver</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">configuration</span><span class="p">.</span><span class="na">setScriptEngineResolver</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyScriptEngineResolver</span><span class="p">());</span><span class="w">
 </span></span></span></code></pre></div><h1 id="logging">Logging</h1>
-<p>The DMN engine uses <a href="http://www.slf4j.org/">SLF4J</a> as logging API. The <code>camunda-dmn-engine</code> artifact
+<p>The DMN engine uses <a href="http://www.slf4j.org/">SLF4J</a> as logging API. The <code>cibseven-dmn-engine</code> artifact
 does not have a dependency to any of the existing <a href="http://www.slf4j.org/">SLF4J</a> backends. This means that
 you can choose which backend you want to use. One example would be <a href="http://logback.qos.ch/">LOGBack</a>, or
 if you want to use Java util logging, you could use the <code>slf4j-jdk14</code> artifact.

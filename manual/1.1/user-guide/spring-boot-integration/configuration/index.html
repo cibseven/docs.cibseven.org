@@ -3158,10 +3158,10 @@
 <h3 id="defaultprocessengineconfiguration"><code>DefaultProcessEngineConfiguration</code></h3>
 <p>Sets the process engine name and automatically adds all <code>ProcessEnginePlugin</code> beans to the configuration.</p>
 <h3 id="defaultdatasourceconfiguration"><code>DefaultDatasourceConfiguration</code></h3>
-<p>Configures the Camunda data source and enables <a href="/manual/1.1/user-guide/spring-framework-integration/transactions/">transaction integration</a>. By default, the primary <code>DataSource</code> and <code>PlatformTransactionManager</code> beans are wired with the process engine configuration.</p>
+<p>Configures the CIB seven data source and enables <a href="/manual/1.1/user-guide/spring-framework-integration/transactions/">transaction integration</a>. By default, the primary <code>DataSource</code> and <code>PlatformTransactionManager</code> beans are wired with the process engine configuration.</p>
 <p>If you want to <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-two-datasources">configure more than one datasource</a>
 and don&rsquo;t want to use the <code>@Primary</code> one for the process engine, then you can create a separate
-data source with name <code>camundaBpmDataSource</code> that will be automatically wired with Camunda instead.</p>
+data source with name <code>camundaBpmDataSource</code> that will be automatically wired with CIB seven instead.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Bean</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Primary</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ConfigurationProperties</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">&#34;datasource.primary&#34;</span><span class="p">)</span><span class="w">
@@ -3190,7 +3190,7 @@ source used for Camunda (either <code>@Primary</code> or <code>camundaBpmDataSou
 </span></span></span></code></pre></div>
 <div class="note bg-warning docs-warning">
   <h3></h3>
-  <p>The wired data source and transaction manager beans must match, i.e. make sure that the transaction manager actually manages the Camunda data source. If that is not the case, the process engine will use auto-commit mode for the data source connection, potentially leading to inconsistencies in the database.</p>
+  <p>The wired data source and transaction manager beans must match, i.e. make sure that the transaction manager actually manages the CIB seven data source. If that is not the case, the process engine will use auto-commit mode for the data source connection, potentially leading to inconsistencies in the database.</p>
 </div>
 
 <h3 id="defaulthistoryconfiguration"><code>DefaultHistoryConfiguration</code></h3>
@@ -3201,7 +3201,7 @@ If you want to use a custom <code>HistoryEventHandler</code>, you just have to p
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CustomHistoryEventHanlder</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><h3 id="defaulthistorylevelautohandlingconfiguration"><code>DefaultHistoryLevelAutoHandlingConfiguration</code></h3>
-<p>As camunda version &gt;= 7.4 supports <code>history-level auto</code>, this configuration adds support for versions &lt;= 7.3.</p>
+<p>Prefer usage of <code>history-level auto</code>, this configuration adds support for older Camunda versions &lt;= 7.3.</p>
 <p>To have more control over the handling, you can provide your own</p>
 <ul>
 <li><code>org.cibseven.bpm.spring.boot.starter.jdbc.HistoryLevelDeterminator</code> with name <code>historyLevelDeterminator</code></li>
@@ -3219,13 +3219,13 @@ If you want to use a custom <code>HistoryEventHandler</code>, you just have to p
 This is done after the spring context successfully loaded (see <code>org.cibseven.bpm.spring.boot.starter.runlistener</code>).</p>
 <h3 id="defaultdeploymentconfiguration"><code>DefaultDeploymentConfiguration</code></h3>
 <p>If auto deployment is enabled (this is the case by default), all processes found in the classpath are deployed.
-The resource pattern can be changed using properties (see <a href="#camunda-engine-properties">properties</a>).</p>
+The resource pattern can be changed using properties (see <a href="#cib-seven-engine-properties">properties</a>).</p>
 <h3 id="defaultauthorizationconfiguration"><code>DefaultAuthorizationConfiguration</code></h3>
 <p>Applies the authorization configuration to the process engine. If not configured, the <code>camunda</code> default values are used (see <a href="#camunda-engine-properties">properties</a>).</p>
 <h2 id="overriding-the-default-configuration">Overriding the Default Configuration</h2>
 <p>Provide a bean implementing one of the marker interfaces. For example to customize the datasource configuration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyCamundaConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Bean</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">CamundaDatasourceConfiguration</span><span class="w"> </span><span class="nf">camundaDatasourceConfiguration</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3240,7 +3240,7 @@ The configurations are applied ordered using the spring ordering mechanism (<cod
 So if you want your configuration to be applied before the default configurations, add a <code>@Order(Ordering.DEFAULT_ORDER - 1)</code> annotation to your class.
 If you want your configuration to be applied after the default configurations, add a <code>@Order(Ordering.DEFAULT_ORDER + 1)</code> annotation to your class.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyCamundaConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Bean</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Order</span><span class="p">(</span><span class="n">Ordering</span><span class="p">.</span><span class="na">DEFAULT_ORDER</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w">
@@ -3291,7 +3291,7 @@ can be found in the <a href="/get-started/spring-boot/configuration/">Spring Boo
 <tr><td colspan="4"><b>General</b></td></tr>
 <tr><td rowspan="15"><code>camunda.bpm</code></td>
 <td><code>.enabled</code></td>
-<td>Switch to disable the Camunda auto-configuration. Use to exclude Camunda in integration tests.</td>
+<td>Switch to disable the CIB seven auto-configuration. Use to exclude CIB seven in integration tests.</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -3316,12 +3316,12 @@ can be found in the <a href="/get-started/spring-boot/configuration/">Spring Boo
 </tr>
 <tr>
 <td><code>.history-level</code></td>
-<td>Camunda history level</td>
+<td>CIB seven history level</td>
 <td>FULL</td>
 </tr>
 <tr>
 <td><code>.history-level-default</code></td>
-<td>Camunda history level to use when <code>history-level</code> is <code>auto</code>, but the level can not determined automatically</td>
+<td>CIB seven history level to use when <code>history-level</code> is <code>auto</code>, but the level can not determined automatically</td>
 <td>FULL</td>
 </tr>
 <tr>
@@ -3445,7 +3445,7 @@ can be found in the <a href="/get-started/spring-boot/configuration/">Spring Boo
 </tr>
 <tr>
 <td><code>.table-prefix</code></td>
-<td>Prefix of the camunda database tables. Attention: The table prefix will <b>not</b> be applied if you  are using <code>schema-update</code>!</td>
+<td>Prefix of the CIB seven database tables. Attention: The table prefix will <b>not</b> be applied if you  are using <code>schema-update</code>!</td>
 <td><i>Camunda default value</i></td>
 </tr>
 <tr>
@@ -3490,7 +3490,7 @@ See the <a href="/manual/1.1/user-guide/spring-boot-integration/the-spring-event
 <tr>
 <td><code>camunda.bpm.management</code></td>
 <td><code>.health.camunda.enabled</code></td>
-<td>Enables default camunda health indicators</td>
+<td>Enables default CIB seven health indicators</td>
 <td><code>true</code></td>
 </tr>
 <tr><td colspan="4"><b>Metrics</b></td></tr>
@@ -3509,12 +3509,12 @@ See the <a href="/manual/1.1/user-guide/spring-boot-integration/the-spring-event
 <tr>
 <td rowspan="3"><code>camunda.bpm.webapp</code></td>
 <td><code>.enabled</code></td>
-<td>Switch to disable the Camunda Webapp auto-configuration.</td>
+<td>Switch to disable the CIB seven Webapp auto-configuration.</td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>.index-redirect-enabled</code></td>
-<td>Registers a redirect from <code>/</code> to camunda's bundled <code>index.html</code>.
+<td>Registers a redirect from <code>/</code> to CIB seven's bundled <code>index.html</code>.
 <br/>
 If this property is set to <code>false</code>, the
 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-welcome-page">default</a>
@@ -3525,7 +3525,7 @@ Spring Boot behaviour is taken into account.</td>
 <td><code>.application-path</code></td>
 <td>Changes the application path of the webapp.
 <br/>
-When setting to <code>/</code>, the legacy behavior of Camunda Spring Boot Starter <= 3.4.x is restored.
+When setting to <code>/</code>, the legacy behavior of CIB seven Spring Boot Starter <= 3.4.x is restored.
 </td>
 <td><code>/camunda</code></td>
 </tr>
@@ -3910,13 +3910,7 @@ can only be overridden with their exposed identifier.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enable-password-policy</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span></code></pre></div><h2 id="session-cookie">Session Cookie</h2>
 <p>You can configure the <strong>Session Cookie</strong> for the Spring Boot application via the <code>application.yaml</code> configuration file.</p>
-<p>Camunda Spring Boot Starter versions &lt;= 2.3 (Spring Boot version 1.x)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">session</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cookie</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">secure</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">http-only</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Not possible for versions before 1.5.14</span><span class="w">
-</span></span></span></code></pre></div><p>Camunda Spring Boot Starter versions &gt;= 3.0 (Spring Boot version 2.x)</p>
+<p>CIB seven Spring Boot Starter versions &gt;= 3.0 (Spring Boot version 2.x)</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w">
@@ -3926,10 +3920,10 @@ can only be overridden with their exposed identifier.</p>
 </span></span></span></code></pre></div><p>Further details of the session cookie like the <code>SameSite</code> flag can be configured via
 <a href="/manual/1.1/user-guide/spring-boot-integration/configuration/#session-cookie">camunda.bpm.webapp.session-cookie</a> in the <code>application.yaml</code>.</p>
 <h1 id="configuring-spin-dataformats">Configuring Spin DataFormats</h1>
-<p>The Camunda Spring Boot Starter auto-configures the Spin Jackson Json DataFormat when the
-<code>camunda-spin-dataformat-json-jackson</code> dependency is detected on the classpath. To include a
+<p>The CIB seven Spring Boot Starter auto-configures the Spin Jackson Json DataFormat when the
+<code>cibseven-spin-dataformat-json-jackson</code> dependency is detected on the classpath. To include a
 <code>DataFormatConfigurator</code> for the desired Jackson Java 8 module, the appropriate dependency needs
-to be included on the classpath as well. Note that <code>camunda-engine-plugin-spin</code>
+to be included on the classpath as well. Note that <code>cibseven-engine-plugin-spin</code>
 needs to be included as a dependency as well for the auto-configurators to work.</p>
 <p>Auto-configuration is currently supported for the following <a href="https://github.com/FasterXML/jackson-modules-java8">Jackson Java 8 modules</a>:</p>
 <ol>
@@ -3941,9 +3935,9 @@ needs to be included as a dependency as well for the auto-configurators to work.
 <div class="note bg-warning docs-warning">
   <h3>Heads Up!</h3>
   <p>The Spin Jackson Json DataFormat auto-configuration is disabled when using
-<code>camunda-spin-dataformat-all</code> as a dependency. The <code>camunda-spin-dataformat-all</code> artifact shades the
+<code>cibseven-spin-dataformat-all</code> as a dependency. The <code>cibseven-spin-dataformat-all</code> artifact shades the
 Jackson libraries, which breaks compatibility with the regular Jackson modules. If usage of
-<code>camunda-spin-dataformat-all</code> is necessary, please use the standard method for
+<code>cibseven-spin-dataformat-all</code> is necessary, please use the standard method for
 <a href="/manual/1.1/reference/spin/extending-spin/#custom-dataformats">Spin Custom DataFormat configuration</a>.</p>
 </div>
 

@@ -3148,13 +3148,13 @@
 <p>The following sections go into the details of integrating Spin with the process engine. Note that when you use a pre-built Camunda distribution, Spin is already integrated.</p>
 <h1 id="artifacts">Artifacts</h1>
 <p>There are three types of Spin artifacts as follows.</p>
-<h2 id="camunda-spin-core">camunda-spin-core</h2>
-<p><code>camunda-spin-core</code> is a jar that contains only the core Spin classes. It can be combined with single data format artifacts. Camunda provides the artifacts <code>camunda-spin-dataformat-json-jackson</code> and <code>camunda-spin-dataformat-xml-dom</code> (<code>camunda-spin-dataformat-xml-dom-jakarta</code> for Jakarta XML Binding 4.0 support) that implement JSON and XML processing. These artifacts transitively pull in libraries they need. For example, <code>camunda-spin-dataformat-json-jackson</code> has a dependency to <code>jackson-databind</code>.</p>
-<h2 id="camunda-spin-dataformat-all">camunda-spin-dataformat-all</h2>
-<p><code>camunda-spin-dataformat-all</code> is a fat jar that contains <code>camunda-spin-core</code>, <code>camunda-spin-dataformat-json-jackson</code> and <code>camunda-spin-dataformat-xml-dom</code> as well as all their dependencies. The dependencies are shaded into the <code>spinjar</code> package namespace.</p>
-<p>Note that the package relocation means that you cannot develop against the original namespaces. Example: <code>camunda-spin-dataformat-json-jackson</code> uses <code>jackson-databind</code> for object (de-)serialization. A common use case is declaring Jackson annotations in custom classes to finetune JSON handling. With relocated dependencies, annotations in the <code>com.fasterxml.jackson</code> namespace will not be recognized by Spin. In that case, consider using <code>camunda-spin-core</code>. Keep in mind the implications this may have as described in the <a href="#integration-use-cases">Integration Use Cases</a> section.</p>
-<h2 id="camunda-engine-plugin-spin">camunda-engine-plugin-spin</h2>
-<p><code>camunda-engine-plugin-spin</code> is a process engine plugin that integrates Spin with a process engine. For example, it
+<h2 id="cibseven-spin-core">cibseven-spin-core</h2>
+<p><code>cibseven-spin-core</code> is a jar that contains only the core Spin classes. It can be combined with single data format artifacts. CIB seven provides the artifacts <code>cibseven-spin-dataformat-json-jackson</code> and <code>cibseven-spin-dataformat-xml-dom</code> (<code>cibseven-spin-dataformat-xml-dom-jakarta</code> for Jakarta XML Binding 4.0 support) that implement JSON and XML processing. These artifacts transitively pull in libraries they need. For example, <code>cibseven-spin-dataformat-json-jackson</code> has a dependency to <code>jackson-databind</code>.</p>
+<h2 id="cibseven-spin-dataformat-all">cibseven-spin-dataformat-all</h2>
+<p><code>cibseven-spin-dataformat-all</code> is a fat jar that contains <code>cibseven-spin-core</code>, <code>cibseven-spin-dataformat-json-jackson</code> and <code>cibseven-spin-dataformat-xml-dom</code> as well as all their dependencies. The dependencies are shaded into the <code>spinjar</code> package namespace.</p>
+<p>Note that the package relocation means that you cannot develop against the original namespaces. Example: <code>cibseven-spin-dataformat-json-jackson</code> uses <code>jackson-databind</code> for object (de-)serialization. A common use case is declaring Jackson annotations in custom classes to finetune JSON handling. With relocated dependencies, annotations in the <code>com.fasterxml.jackson</code> namespace will not be recognized by Spin. In that case, consider using <code>cibseven-spin-core</code>. Keep in mind the implications this may have as described in the <a href="#integration-use-cases">Integration Use Cases</a> section.</p>
+<h2 id="cibseven-engine-plugin-spin">cibseven-engine-plugin-spin</h2>
+<p><code>cibseven-engine-plugin-spin</code> is a process engine plugin that integrates Spin with a process engine. For example, it
 registers variable serializers that enable the process engine to store Java objects as JSON.</p>
 <h3 id="configuration-properties-of-the-spin-plugin">Configuration properties of the Spin plugin</h3>
 <p>The Spin process engine plugin provides the following configuration options:</p>
@@ -3179,7 +3179,7 @@ registers variable serializers that enable the process engine to store Java obje
 </table>
 <h2 id="maven-coordinates">Maven coordinates</h2>
 <p>Import the <a href="/get-started/apache-maven/">CIB seven BOM</a> to ensure that you use the right version of Spin that is tested to work with your version of the process engine.</p>
-<p>All Spin artifacts have the group id <code>org.cibseven.spin</code>, so in order to import <code>camunda-spin-core</code>, we can write:</p>
+<p>All Spin artifacts have the group id <code>org.cibseven.spin</code>, so in order to import <code>cibseven-spin-core</code>, we can write:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.spin<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-spin-core<span class="nt">&lt;/artifactId&gt;</span>
@@ -3187,23 +3187,23 @@ registers variable serializers that enable the process engine to store Java obje
 </span></span></span><span class="line"><span class="cl"><span class="c">    Declare a concrete version if you do not use the BOM --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><h1 id="integration-use-cases">Integration Use Cases</h1>
-<p>Depending on the application and process engine setup, it is recommended to use either <code>camunda-engine-plugin-spin</code> and <code>camunda-spin-core</code> (plus individual data formats) or <code>camunda-engine-plugin-spin</code> and <code>camunda-spin-dataformat-all</code>. The following sections explain when to use which for the most common use cases.</p>
+<p>Depending on the application and process engine setup, it is recommended to use either <code>cibseven-engine-plugin-spin</code> and <code>cibseven-spin-core</code> (plus individual data formats) or <code>cibseven-engine-plugin-spin</code> and <code>cibseven-spin-dataformat-all</code>. The following sections explain when to use which for the most common use cases.</p>
 <h2 id="embedded-process-engine">Embedded Process Engine</h2>
-<p>If your application manages its own process engine, then using <code>camunda-engine-plugin-spin</code> with <code>camunda-spin-core</code> is the recommended approach. Declare the dependencies in the <code>compile</code> scope so that the Spin libraries and their dependencies are added to your application when you bundle it. Configure <code>org.cibseven.spin.plugin.impl.SpinProcessEnginePlugin</code> as a process engine plugin according to the <a href="/manual/latest/user-guide/process-engine/process-engine-plugins/">process engine plugin documentation</a>.</p>
+<p>If your application manages its own process engine, then using <code>cibseven-engine-plugin-spin</code> with <code>cibseven-spin-core</code> is the recommended approach. Declare the dependencies in the <code>compile</code> scope so that the Spin libraries and their dependencies are added to your application when you bundle it. Configure <code>org.cibseven.spin.plugin.impl.SpinProcessEnginePlugin</code> as a process engine plugin according to the <a href="/manual/latest/user-guide/process-engine/process-engine-plugins/">process engine plugin documentation</a>.</p>
 <h2 id="application-with-camunda-spring-boot-starter">Application with Camunda Spring Boot Starter</h2>
-<p>Add the dependencies to <code>camunda-engine-plugin-spin</code> and <code>camunda-spin-core</code> (along with <code>camunda-spin-dataformat-json-jackson</code> and <code>camunda-spin-dataformat-xml-dom</code> as needed) to your application. If you need to use Jakarta XML Binding 4.0 (e.g. Springboot version 3.x.x), use <code>camunda-spin-dataformat-xml-dom-jakarta</code> instead of <code>camunda-spin-dataformat-xml-dom</code>.
+<p>Add the dependencies to <code>cibseven-engine-plugin-spin</code> and <code>cibseven-spin-core</code> (along with <code>cibseven-spin-dataformat-json-jackson</code> and <code>cibseven-spin-dataformat-xml-dom</code> as needed) to your application. If you need to use Jakarta XML Binding 4.0 (e.g. Springboot version 3.x.x), use <code>cibseven-spin-dataformat-xml-dom-jakarta</code> instead of <code>cibseven-spin-dataformat-xml-dom</code>.
 The Spin process engine plugin will be automatically registered with the process engine.</p>
 <h2 id="shared-process-engine">Shared Process Engine</h2>
 <p>If you use a shared process engine, Spin is usually installed as a shared library in the application server. Check the <a href="/manual/latest/installation/full/">installation guide</a> for your application server for how to set up Spin with a shared engine. When using a pre-built distribution of CIB seven, Spin is already pre-configured.</p>
-<p>Depending on the type of application server, <code>camunda-engine-plugin-spin</code> should be used with either <code>camunda-spin-core</code> or <code>camunda-spin-dataformat-all</code>. In the pre-packaged distributions, the following artifacts are used:</p>
+<p>Depending on the type of application server, <code>cibseven-engine-plugin-spin</code> should be used with either <code>cibseven-spin-core</code> or <code>cibseven-spin-dataformat-all</code>. In the pre-packaged distributions, the following artifacts are used:</p>
 <ul>
-<li>Tomcat: <code>camunda-spin-dataformat-all</code> is provided in Tomcat&rsquo;s shared library path. Using <code>camunda-spin-dataformat-all</code> avoids classpath pollution with Spin&rsquo;s dependencies. For example, this ensures that applications are not forced to use Spin&rsquo;s version of Jackson.</li>
-<li>Wildfly: <code>camunda-spin-core</code> (along with <code>camunda-spin-dataformat-json-jackson</code> and <code>camunda-spin-dataformat-xml-dom</code>) are deployed as modules. Thanks to Wildfly&rsquo;s module system, classpath pollution is not an issue. Whenever a process application is deployed, it receives an implicit module dependency to <code>camunda-spin-core</code>.</li>
+<li>Tomcat: <code>cibseven-spin-dataformat-all</code> is provided in Tomcat&rsquo;s shared library path. Using <code>cibseven-spin-dataformat-all</code> avoids classpath pollution with Spin&rsquo;s dependencies. For example, this ensures that applications are not forced to use Spin&rsquo;s version of Jackson.</li>
+<li>Wildfly: <code>cibseven-spin-core</code> (along with <code>cibseven-spin-dataformat-json-jackson</code> and <code>cibseven-spin-dataformat-xml-dom</code>) are deployed as modules. Thanks to Wildfly&rsquo;s module system, classpath pollution is not an issue. Whenever a process application is deployed, it receives an implicit module dependency to <code>cibseven-spin-core</code>.</li>
 </ul>
 <p>If you want to program against the Spin APIs in your process application, you need to declare a dependency to Spin in your application. As Spin is provided by the application server, the following is important:</p>
 <ul>
 <li>Make sure to set the dependencies to scope <code>provided</code>. This avoids that a copy of the dependencies is packaged with your application, resulting in various classloading problems at runtime.</li>
-<li>Make sure to depend on the same Spin artifacts that the application server provides, i.e. either <code>camunda-spin-core</code> or <code>camunda-spin-dataformat-all</code>.</li>
+<li>Make sure to depend on the same Spin artifacts that the application server provides, i.e. either <code>cibseven-spin-core</code> or <code>cibseven-spin-dataformat-all</code>.</li>
 </ul>
 
     </div>
@@ -3214,9 +3214,9 @@ The Spin process engine plugin will be automatically registered with the process
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#camunda-spin-core">camunda-spin-core</a></li>
-    <li><a href="#camunda-spin-dataformat-all">camunda-spin-dataformat-all</a></li>
-    <li><a href="#camunda-engine-plugin-spin">camunda-engine-plugin-spin</a>
+    <li><a href="#cibseven-spin-core">cibseven-spin-core</a></li>
+    <li><a href="#cibseven-spin-dataformat-all">cibseven-spin-dataformat-all</a></li>
+    <li><a href="#cibseven-engine-plugin-spin">cibseven-engine-plugin-spin</a>
       <ul>
         <li><a href="#configuration-properties-of-the-spin-plugin">Configuration properties of the Spin plugin</a></li>
       </ul>

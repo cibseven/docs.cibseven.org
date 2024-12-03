@@ -3140,7 +3140,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The <code>camunda-engine-cdi</code> and <code>camunda-engine-cdi-jakarta</code> libraries expose CDI beans via Expression Language,
+      <p>The <code>cibseven-engine-cdi</code> and <code>cibseven-engine-cdi-jakarta</code> libraries expose CDI beans via Expression Language,
 using a custom resolver. This makes it possible to reference beans from the process:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;authorizeBusinessTrip&#34;</span> <span class="na">name=</span><span class="s">&#34;Authorize Business Trip&#34;</span>
 </span></span><span class="line"><span class="cl">                        <span class="na">camunda:assignee=</span><span class="s">&#34;#{authorizingManager.account.username}&#34;</span> <span class="nt">/&gt;</span>

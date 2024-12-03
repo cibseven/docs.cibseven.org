@@ -3234,12 +3234,12 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 <p>Add an additional engine plugin as a module to the folder $WILDFLY_HOME/modules/</p>
 </li>
 <li>
-<p>Add the module dependency to the file <code>$WILDFLY_HOME/modules/org/cibseven/bpm/camunda-engine-plugins/main/module.xml</code> and set the attribute <code>export=&quot;true&quot;</code> to make sure that the module is visible in the classpath of Camunda&rsquo;s subsystem</p>
+<p>Add the module dependency to the file <code>$WILDFLY_HOME/modules/org/cibseven/bpm/cibseven-engine-plugins/main/module.xml</code> and set the attribute <code>export=&quot;true&quot;</code> to make sure that the module is visible in the classpath of Camunda&rsquo;s subsystem</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;module</span> <span class="na">xmlns=</span><span class="s">&#34;urn:jboss:module:1.0&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="na">name=</span><span class="s">&#34;org.cibseven.bpm.camunda-engine-plugins&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">name=</span><span class="s">&#34;org.cibseven.bpm.cibseven-engine-plugins&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;module</span> <span class="na">name=</span><span class="s">&#34;org.cibseven.bpm.camunda-custom-engine-plugin&#34;</span> <span class="na">export=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;module</span> <span class="na">name=</span><span class="s">&#34;org.cibseven.bpm.SOME-SPECIAL-PLUGIN-NAME&#34;</span> <span class="na">export=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/module&gt;</span>
 </span></span></code></pre></div><p>The <code>module.xml</code> file is included in the CIB seven distribution. If you install CIB seven on a vanilla WildFly container, this file needs to be created manually.</p>

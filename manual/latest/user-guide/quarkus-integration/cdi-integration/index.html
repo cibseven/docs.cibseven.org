@@ -3143,25 +3143,25 @@
       <p>Quarkus comes with a built-in solution for CDI (short for &ldquo;Context and Dependency Injection&rdquo;) called ArC,
 which is based on the <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html">Java CDI 4.0 standard</a>. Quarkus ArC does not entirely cover
 the CDI 4.0 standard but only implements a subset of it.</p>
-<p>The CIB seven engine offers CDI 4 integration with the <code>camunda-engine-cdi-jakarta</code> module. This module is integrated
+<p>The CIB seven engine offers CDI 4 integration with the <code>cibseven-engine-cdi-jakarta</code> module. This module is integrated
 directly into the Quarkus Extension. You can learn more about the features and the programming model
 at <a href="/manual/latest/user-guide/cdi-java-ee-integration/">CDI and Java EE Integration</a>.</p>
 <h2 id="limitations">Limitations</h2>
 <p>Since Quarkus ArC does not aim to implement CDI 4.0 fully, you cannot use the full range of features
-the <code>camunda-engine-cdi-jakarta</code> module provides. Some features documented under
+the <code>cibseven-engine-cdi-jakarta</code> module provides. Some features documented under
 <a href="/manual/latest/user-guide/cdi-java-ee-integration/">CDI and Java EE Integration</a> are unsupported or only work with restrictions.
 The limitations and differences are explained in more detail below.</p>
 
 <div class="note bg-info docs-info">
   <h3>Heads-up!</h3>
   <p>Quarkus ArC has more limitations not described in this section, as only those restrictions are highlighted
-that affect the functionality of the <code>camunda-engine-cdi-jakarta</code> module. For your individual application development,
+that affect the functionality of the <code>cibseven-engine-cdi-jakarta</code> module. For your individual application development,
 we highly recommend you consider the <a href="https://quarkus.io/guides/cdi-reference#limitations">limitations</a> and
 <a href="https://quarkus.io/guides/cdi-reference#supported_features">supported features</a> of the Quarkus version you are using.</p>
 </div>
 
 <h3 id="limited-support-of-juel-expression-resolution">Limited support of JUEL Expression Resolution</h3>
-<p>The <code>camunda-engine-cdi-jakarta</code> module allows referencing CDI beans and calling methods on CDI beans in
+<p>The <code>cibseven-engine-cdi-jakarta</code> module allows referencing CDI beans and calling methods on CDI beans in
 model expression properties (e.g., <code>camunda:expression</code>, <code>camunda:delegateExpression</code>, etc.).
 Quarkus ArC currently doesn&rsquo;t support the CDI API method <code>javax.enterprise.inject.spi.BeanManager#getELResolver</code>,
 which the engine uses to resolve method calls on CDI beans. This is why currently, only referencing
@@ -3172,11 +3172,11 @@ CDI beans is supported.</p>
 <li>Unsupported Expression: <code>${myService.checkCondition('foo')}</code></li>
 </ul>
 <h3 id="limited-support-of-scopes-in-the-contextual-programming-model">Limited support of scopes in the Contextual Programming Model</h3>
-<p>While the <code>camunda-engine-cdi-jakarta</code> module supports associating a process instance with
+<p>While the <code>cibseven-engine-cdi-jakarta</code> module supports associating a process instance with
 <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#conversation_context_ee">Conversational Scope</a> or <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#request_context_ee">Request Scope</a>, Quarkus ArC
 only supports the <strong>Request Scope</strong>.</p>
 <h3 id="configure-quarkus-to-allow-setting-variables-when-a-startprocess-annotated-method-is-called">Configure Quarkus to allow setting variables when a <code>@StartProcess</code> annotated method is called</h3>
-<p>The <code>camunda-engine-cdi-jakarta</code> module allows setting variables when assigning a value to a class field
+<p>The <code>cibseven-engine-cdi-jakarta</code> module allows setting variables when assigning a value to a class field
 annotated with <code>@ProcessVariableTyped</code> or <code>@ProcessVariable</code> inside a method annotated
 with <code>@StartProcess</code>, as shown in the following example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Dependent</span><span class="w">
@@ -3209,7 +3209,7 @@ Read more about it in the <a href="https://quarkus.io/guides/cdi-reference#quark
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><h3 id="businessprocessscoped-beans"><code>@BusinessProcessScoped</code> Beans</h3>
-<p>The <code>camunda-engine-cdi-jakarta</code> module stores <a href="/manual/latest/user-guide/cdi-java-ee-integration/contextual-programming-model/#work-with-businessprocessscoped-beans"><code>@BusinessProcessScoped</code></a> beans as
+<p>The <code>cibseven-engine-cdi-jakarta</code> module stores <a href="/manual/latest/user-guide/cdi-java-ee-integration/contextual-programming-model/#work-with-businessprocessscoped-beans"><code>@BusinessProcessScoped</code></a> beans as
 process variables in the context of the current process instance.</p>
 <h4 id="passivation-is-unsupported">Passivation is unsupported</h4>
 <p>Quarkus does not support <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#passivating_scope">Passivation and passivating scopes</a>.
