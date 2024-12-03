@@ -3142,15 +3142,15 @@
     <div class="col-xs-12 content-text">
       <p>This page provides information about logging in CIB seven.</p>
 <h1 id="slf4j">SLF4J</h1>
-<p>Most Camunda modules, including the CIB seven engine, use <a href="http://www.slf4j.org/">slf4j</a> as logging &ldquo;facade&rdquo;. This allows users to direct logging output to the logging &ldquo;backend&rdquo; of their choice, such as <a href="http://logback.qos.ch/">logback</a> or <a href="http://logging.apache.org/log4j/">log4j</a>.</p>
+<p>Most CIB seven modules, including the CIB seven engine, use <a href="http://www.slf4j.org/">slf4j</a> as logging &ldquo;facade&rdquo;. This allows users to direct logging output to the logging &ldquo;backend&rdquo; of their choice, such as <a href="http://logback.qos.ch/">logback</a> or <a href="http://logging.apache.org/log4j/">log4j</a>.</p>
 <h2 id="preconfigured-logging-with-a-shared-process-engine">Preconfigured Logging with a Shared Process Engine</h2>
-<p>When installing Camunda as a shared process engine in an application server, Camunda logging is pre-configured.</p>
+<p>When installing CIB seven as a shared process engine in an application server, CIB seven logging is pre-configured.</p>
 <p>On all application servers except Wildfly, logging is pre-configured using the slf4j-jdk14 bridge.
-This means that Camunda effectively re-directs all its logging to Java Util Logging.
+This means that CIB seven effectively re-directs all its logging to Java Util Logging.
 Both SLF4J API and the slf4j-jdk14 bridge are available in a shared classpath which means that they are available in the classpath of all applications deployed on these servers.</p>
 <p>On Wildfly, logging is directed to the JBoss logging infrastructure. The SLF4J API is not available in the classpath of custom applications by default.</p>
 <h2 id="adding-a-logging-backend-for-embedded-use">Adding a Logging Backend for Embedded Use</h2>
-<p>When using the Camunda Maven modules in a custom application, only the <a href="http://www.slf4j.org/">slf4j</a> API is pulled in transitively.
+<p>When using the CIB seven Maven modules in a custom application, only the <a href="http://www.slf4j.org/">slf4j</a> API is pulled in transitively.
 If you do not provide any backend, nothing will actually be logged.</p>
 <p>In the following, we provide two alternative examples of how to set up logging. See the <a href="http://www.slf4j.org/manual.html#projectDep">SLF4J Documentation</a> for more detailed information on how to add a logging backend.</p>
 <h3 id="example-using-java-util-logging">Example Using Java Util Logging</h3>
@@ -3180,7 +3180,7 @@ maven dependency:</p>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/encoder&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/appender&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- camunda --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- cibseven --&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&#34;org.cibseven&#34;</span> <span class="na">level=</span><span class="s">&#34;info&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- common dependencies --&gt;</span>
@@ -3353,14 +3353,14 @@ Please refer to the manual of your logging framework for further information on 
   </tr>
   <tr>
     <td><code>org.cibseven.bpm.webapp</code></td>
-    <td>logs events from the Camunda web apps (Cockpit, Tasklist, and Admin), like user-initiated log in and log out events and cache validation time information.</td>
+    <td>logs events from the CIB seven web apps (Cockpit, Tasklist, and Admin), like user-initiated log in and log out events and cache validation time information.</td>
   </tr>
 </table>
 <p>By default, the engine output contains logs with level <code>ERROR</code>, <code>WARNING</code>, and <code>INFO</code>. To enable more log output, e.g. for the purpose of debugging, configure the level of a logger to <code>DEBUG</code> or <code>TRACE</code>.</p>
 
 <div class="note bg-warning docs-warning">
   <h3>Heads Up!</h3>
-  <p>The output of loggers can change with newer Camunda versions.</p>
+  <p>The output of loggers can change with newer CIB seven versions.</p>
 </div>
 
 
@@ -3456,17 +3456,17 @@ Here is a sample of what traces the server log file will contain when increasing
 </span></span><span class="line"><span class="cl">25-Nov-2019 16:00:50.737 FINE [thread-1] o.c.c.l.BaseLogger.logDebug ENGINE-13006 Finishing command -------------------- RemoveExecutionVariablesCmd ----------------------
 </span></span></code></pre></div><p>The snippet contains the start and of <code>RemoveExecutionVariablesCmd</code>, the flush summary of the operation, and the database statements of the variable instance.</p>
 <h1 id="legacy-java-util-logging">Legacy: Java Util Logging</h1>
-<p>Some Camunda modules still use Java Util Logging directly.
+<p>Some CIB seven modules still use Java Util Logging directly.
 The use of Java Util Logging in these modules is considered deprecated and will be gradually migrated to <a href="http://www.slf4j.org/">slf4j</a> in future releases.</p>
 <p>List of modules still using Java Util Logging:</p>
 <ul>
-<li>camunda-ejb-service</li>
-<li>camunda-ejb-client</li>
-<li>camunda-jobexecutor-ra</li>
-<li>camunda-jobexecutor-rar</li>
-<li>camunda-engine-cdi</li>
-<li>camunda-engine-spring</li>
-<li>camunda-engine-rest</li>
+<li>cibseven-ejb-service</li>
+<li>cibseven-ejb-client</li>
+<li>cibseven-jobexecutor-ra</li>
+<li>cibseven-jobexecutor-rar</li>
+<li>cibseven-engine-cdi</li>
+<li>cibseven-engine-spring</li>
+<li>cibseven-engine-rest</li>
 <li>Wildfly Subsystems</li>
 </ul>
 
