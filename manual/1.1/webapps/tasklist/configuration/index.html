@@ -3172,7 +3172,7 @@ object must be strings representing date formats in accordance with
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h1 id="localization">Localization</h1>
-<p>Tasklist can be localized. Camunda maintains English and German translation files.
+<p>Tasklist can be localized. CIB seven maintains English and German translation files.
 You can find and download community maintained translation files at the <a href="https://github.com/camunda/camunda-webapp-translations">Camunda webapp translations repository</a>.</p>
 <p>The localization of Tasklist is contained in the <code>app/tasklist/locales/</code> directory. This
 directory contains a separate localization file for every available language. The file name
@@ -3202,7 +3202,7 @@ custom frontend module. Tasklist shares the frontend module structure with <a hr
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">customScripts</span><span class="o">:</span> 
 </span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;custom-module/module.js&#39;</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/tasklist</code> folder in the Camunda webapp .war file.</p>
+</span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/tasklist</code> folder in the CIB seven webapp .war file.</p>
 <p>You can find a complete example about how to use <code>customScripts</code> to develop a Tasklist Plugin in the <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/tasklist/cats-plugin">CIB seven examples repository</a>.</p>
 <h1 id="shortcuts">Shortcuts</h1>
 <p>If you want to change the keyboard shortcuts for certain tasklist operations, you can change the key-combination and the description of the shortcuts in the <code>shortcuts</code> section of the config file.</p>
@@ -3213,7 +3213,7 @@ custom frontend module. Tasklist shares the frontend module structure with <a hr
 <code>app/tasklist/styles/user-styles.css</code>. This file contains CSS which is loaded into Tasklist
 and can override the standard styles.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-brand</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c">/* hides the &#34;Camunda Tasklist&#34; text */</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* hides the &#34;Tasklist&#34; text */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">text-indent</span><span class="p">:</span> <span class="mi">-999</span><span class="kt">em</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">/* put your logo */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">./path/to/the/logo.png</span><span class="p">);</span>
@@ -3225,7 +3225,7 @@ and can override the standard styles.</p>
 </span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">cam-widget-header</span><span class="o">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">border-bottom-color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><strong>Note:</strong> you can also change the app name (<em>Tasklist</em>) and vendor (<em>Camunda</em>)
+</span></span></code></pre></div><p><strong>Note:</strong> you can also change the app name (<em>Tasklist</em>) and vendor (<em>CIB seven</em>)
 by changing the <code>app/tasklist/scripts/config.js</code> configuration file as follow:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
@@ -3244,7 +3244,7 @@ can change the name of the CSRF cookie in the <code>config.js</code> file as fol
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p><strong>Note:</strong> Please make sure to change the CSRF cookie name also on <a href="/manual/1.1/webapps/shared-options/csrf-prevention/#cookie-name">server-side</a>.</p>
 <h1 id="disable-welcome-message-for-new-users">Disable Welcome Message for new Users</h1>
-<p>First-time visitors are shown a message directing them to the camunda welcome page. If you do
+<p>First-time visitors are shown a message directing them to the CIB seven welcome page. If you do
 not want this message to be shown, you can disable it by adjusting the <code>config.js</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
@@ -3273,7 +3273,7 @@ defines the original Bootstrap variables</li>
 overrides some Bootstrap variables (above) and add some custom ones</li>
 </ul>
 <h2 id="compiling-with-grunt">Compiling with Grunt</h2>
-<p>From within the <code>camunda-bpm-webapp</code> directory:</p>
+<p>From within the <code>cibseven-bpm-webapp</code> directory:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">grunt build:tasklist
 </span></span></code></pre></div><p>The command will build the frontend assets (of Tasklist), styles included.</p>
 

@@ -18,7 +18,7 @@
     
   
 
-  <title>Camunda Connector Reference | docs.cibseven.org</title>
+  <title>CIB seven Connector Reference | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/latest/img/favicon.ico" type="image/x-icon" />
@@ -3144,15 +3144,15 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Camunda Connector Reference</h1>
+      <h1 class="page-title">CIB seven Connector Reference</h1>
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Camunda Connect provides a simple API for connecting HTTP services and other
+      <p>CIB seven Connect provides a simple API for connecting HTTP services and other
 things. It aims at two usage scenarios: usage in a generic system such as the
 CIB seven process engine and standalone usage via API.</p>
 <h1 id="connectors">Connectors</h1>
-<p>Camunda Connect provides a HTTP and a SOAP HTTP connector. If you want to
+<p>CIB seven Connect provides a HTTP and a SOAP HTTP connector. If you want to
 add an own connector to Connect please have a look at the <a href="/manual/latest/reference/connect/extending-connect/">extending Connect</a>
 section. This section also describes the usage of a <code>ConnectorConfigurator</code> to
 configure the connector instances.</p>
@@ -3165,7 +3165,7 @@ every request of this connector.</p>
 dependency to your <code>pom.xml</code> file:</p>
 
 <div class="note bg-info docs-info">
-  <h3>Camunda BOM</h3>
+  <h3>CIB seven BOM</h3>
   <p>If you use other CIB seven projects please import the
 <a href="/get-started/apache-maven/">CIB seven BOM</a>
 to ensure correct versions for every CIB seven project.</p>
@@ -3178,7 +3178,7 @@ to ensure correct versions for every CIB seven project.</p>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-connect-bom<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${version.camunda}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${version.cibseven}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependencies&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencyManagement&gt;</span>
@@ -3193,20 +3193,18 @@ to ensure correct versions for every CIB seven project.</p>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>cibseven-connect-connectors-all<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
-</span></span></code></pre></div><p>Camunda Connect is published to <a href="http://search.maven.org/#search%7Cga%7C1%7Ccamunda-connect">maven central</a>.</p>
+</span></span></code></pre></div><p>CIB seven Connect is published to <a href="http://search.maven.org/#search%7Cga%7C1%7Ccibseven-connect">maven central</a>.</p>
 
 <div class="note bg-info docs-info">
   <h3>Process engine plugin</h3>
-  <p>If you are using Connect in the CIB seven process engine, you also need the <code>camunda-engine-plugin-connect</code> dependency. For more information, refer to the <a href="/manual/latest/user-guide/process-engine/connectors/">Connectors guide</a>.</p>
+  <p>If you are using Connect in the CIB seven process engine, you also need the <code>cibseven-engine-plugin-connect</code> dependency. For more information, refer to the <a href="/manual/latest/user-guide/process-engine/connectors/">Connectors guide</a>.</p>
 </div>
 
 <h1 id="logging">Logging</h1>
-<p>Camunda Connect uses <a href="https://github.com/camunda/camunda-bpm-platform/tree/master/commons/logging">camunda-commons-logging</a> which itself uses <a href="http://slf4j.org">SLF4J</a> as
+<p>CIB seven Connect uses <a href="https://github.com/cibseven/cibseven/tree/master/commons/logging">cibseven-commons-logging</a> which itself uses <a href="http://slf4j.org">SLF4J</a> as
 a logging backend. To enable logging a SLF4J implementation has to be part of
 your classpath. For example <code>slf4j-simple</code>, <code>log4j12</code> or <code>logback-classic</code>.</p>
-<p>To also enable logging for the Apache HTTP client you can use a <a href="http://www.slf4j.org/legacy.html">SLF4J
-bridge</a> like <code>jcl-over-slf4j</code> as the Apache HTTP Client doesn&rsquo;t support
-SLF4J.</p>
+<p>To also enable logging for the Apache HTTP client you can use a <a href="http://www.slf4j.org/legacy.html">SLF4J bridge</a> like <code>jcl-over-slf4j</code> as the Apache HTTP Client doesn&rsquo;t support SLF4J.</p>
 
     </div>
   </div>

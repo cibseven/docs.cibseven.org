@@ -3148,8 +3148,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Diagnostics data is constantly collected and can be collected only by you. This allows you to access the collected data through the Java and REST APIs of Camunda.
-Being able to easily access the collected data is helpful when asking for help in our <a href="https://forum.camunda.org/">forum</a> or when opening issues in our <a href="https://app.camunda.com/jira">issue tracker</a> as it contains many of the information that are usually necessary to understand your Camunda setup.</p>
+      <p>Diagnostics data is constantly collected and can be collected only by you. This allows you to access the collected data through the Java and REST APIs of CIB seven.
+Being able to easily access the collected data is helpful when asking for help in our <a href="https://github.com/orgs/cibseven/discussions">discussions</a> or when opening issues in our <a href="https://app.camunda.com/jira">issue tracker</a> as it contains many of the information that are usually necessary to understand your Camunda setup.</p>
 <h2 id="how-to-access-the-data">How to access the data</h2>
 <h3 id="java-api">Java API</h3>
 <p>To fetch the collected data via the Java API, you can use the <code>ManagementService</code> class. For example, the following code retrieves the detected JDK vendor and version:</p>
@@ -3170,23 +3170,15 @@ Being able to easily access the collected data is helpful when asking for help i
 <ul>
 <li>Installation - an id that is stored as process engine configuration property</li>
 <li>Product name - the name of the product (i.e., <code>CIB seven Runtime</code>)</li>
-<li>Product version - the version of the process engine (i.e., <code>7.X.Y</code>)</li>
-<li>License key - the customer name, expiry date and enabled features as well as the raw license info</li>
+<li>Product version - the version of the process engine (i.e., <code>1.X.Y</code>)</li>
 </ul>
-<p>License key data does not contain any protected data like the signature. License data is only transmitted if any of the following holds true</p>
-<ul>
-<li>it is present in the database on engine startup</li>
-<li>it is set to the engine via  <a href="https://docs.camunda.org/javadoc/camunda-bpm-platform/7.14/org/camunda/bpm/engine/ManagementService.html#setLicenseKey-java.lang.String-">ManagementService#setLicenseKey </a></li>
-<li>it is set to the engine via <a href="https://docs.camunda.org/manual/latest/webapps/admin/system-management/#camunda-license-key">Admin Webapp</a></li>
-</ul>
-<p>Please note that only in case of setting the license key through the Admin Webapp the diagnostics data will contain structured metadata from the license key. In all other cases, unstructed raw data will be sent. If the license key is removed from the engine, it is removed from diagnostics data as well.</p>
 <h3 id="meta-and-environment-data">Meta and environment data</h3>
 <p>The &ldquo;Meta/Environment Data&rdquo; category contains information about the environmental setup:</p>
 <ul>
 <li>Database vendor and version</li>
 <li>Application server vendor and version</li>
 <li>JDK vendor and version</li>
-<li>Used Camunda Web Applications</li>
+<li>Used CIB seven Web Applications</li>
 </ul>
 <p>The application server information cannot be obtained in an embedded process engine setup where no web application (e.g. Tasklist, Cockpit, REST application) is deployed and used.</p>
 <p>In case of Azul Zulu JDK, the vendor will be send as &ldquo;Oracle Corporation&rdquo; as it cannot be distinguished programmatically from an Oracle JDK.</p>
@@ -3196,7 +3188,7 @@ Being able to easily access the collected data is helpful when asking for help i
 <li>Commands count - the count of executed commands after the last retrieved data. It could be from the previous 24 hours if the data have been reported then, and the process engine has not been closed during that time. Whenever the process engine is shutdown, the currently collected data is reported immediately.</li>
 <li>Metrics count - the collected metrics are number of root process instance executions started, number of activity instances started or also known as flow node instances, and number of executed decision instances and elements.
 The counts are collected from the start of the engine or the last reported time if the engine is already running for more than 24 hours.</li>
-<li>Camunda integration - a flag that shows if any of the Camunda integrations are used: Spring boot starter, Camunda Platform Run, WildFly subsystem or Camunda ejb service (e.g. WebSphere/WebLogic Application servers).</li>
+<li>Camunda integration - a flag that shows if any of the CIB seven integrations are used: Spring boot starter, CIB seven Platform Run, WildFly subsystem or CIB seven ejb service (e.g. WebSphere/WebLogic Application servers).</li>
 </ul>
 <h3 id="example">Example</h3>
 <pre tabindex="0"><code>{

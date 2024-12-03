@@ -3148,10 +3148,10 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>By default, the camunda-spring-boot-starter is configured to use the <code>SpringProcessEngineConfiguration</code> auto deployment feature.
+      <p>By default, the cibseven-spring-boot-starter is configured to use the <code>SpringProcessEngineConfiguration</code> auto deployment feature.
 Since 1.2.0 you also have the possibility to do so via <code>SpringBootProcessApplication</code>. This disables the <code>SpringProcessEngineConfiguration</code>
 auto-deploy feature and instead uses the required <code>META-INF/processes.xml</code> as an indicator for resource scanning.
-This also allows all <code>processes.xml</code> configuration features described [here] (/manual/1.1/user-guide/process-applications/the-processes-xml-deployment-descriptor/).</p>
+This also allows all <code>processes.xml</code> configuration features described <a href="/manual/1.1/user-guide/process-applications/the-processes-xml-deployment-descriptor/">here</a>.</p>
 <p>To use it, just add the <code>@EnableProcessApplication</code> annotation to your Spring Boot application class:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SpringBootApplication</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@EnableProcessApplication</span><span class="p">(</span><span class="s">&#34;myProcessApplicationName&#34;</span><span class="p">)</span><span class="w">
@@ -3160,7 +3160,7 @@ This also allows all <code>processes.xml</code> configuration features described
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>Some configuration can be done via Spring Boot configuration parameters. Check <a href="/manual/1.1/user-guide/spring-boot-integration/configuration/#camunda-bpm-application">the list of currently available parameters</a>.</p>
+</span></span></span></code></pre></div><p>Some configuration can be done via Spring Boot configuration parameters. Check <a href="/manual/1.1/user-guide/spring-boot-integration/configuration/#cib-seven-bpm-application">the list of currently available parameters</a>.</p>
 <h2 id="using-deployment-callbacks">Using Deployment Callbacks</h2>
 <p>As when using <code>@EnableProcessApplication</code> we don&rsquo;t extend the <code>ProcessApplication</code> class,
 we can&rsquo;t use <code>@PostDeploy</code> and <code>@PreUndeploy</code> method annotations. Instead these callbacks

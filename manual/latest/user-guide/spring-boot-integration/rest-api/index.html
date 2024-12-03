@@ -3154,14 +3154,6 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-rest<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>1.1.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><p>Do not forget, that extra repository should be added to <code>settings.xml</code> or to the POM file, since CIB seven is available yet only at <a href="https://artifacts.cibseven.org/">artifacts.cibseven.org</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;repositories&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;repository&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>mvn-cibseven-public<span class="nt">&lt;/id&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;name&gt;</span>CIB seven Public Repository<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;url&gt;</span>https://artifacts.cibseven.org/repository/public/<span class="nt">&lt;/url&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repository&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repositories&gt;</span>
 </span></span></code></pre></div><p>By default the application path is <code>engine-rest</code>, so without any further configuration you can access the api at <code>http://localhost:8080/engine-rest</code>.</p>
 <p>Because we use jersey, one can use spring boot&rsquo;s <a href="http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html">common application properties</a>.
 For example, to change the application path, use</p>

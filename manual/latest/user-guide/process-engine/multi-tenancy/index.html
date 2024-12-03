@@ -3148,7 +3148,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p><em>Multi-Tenancy</em> regards the case in which a single Camunda installation should serve more than one tenant. For each tenant, certain guarantees of isolation should be made. For example, one tenant&rsquo;s process instances should not interfere with those of another tenant.</p>
+      <p><em>Multi-Tenancy</em> regards the case in which a single CIB seven installation should serve more than one tenant. For each tenant, certain guarantees of isolation should be made. For example, one tenant&rsquo;s process instances should not interfere with those of another tenant.</p>
 <p>Multi-Tenancy can be achieved in two different ways. One way is to use <a href="#one-process-engine-per-tenant">one process engine per tenant</a>. The other way is to use just one process engine and associate the data with <a href="#single-process-engine-with-tenant-identifiers">tenant identifiers</a>. The two ways differ from each other in the level of data isolation, the effort of maintenance and the scalability. A combination of both ways is also possible.</p>
 <h1 id="single-process-engine-with-tenant-identifiers">Single Process Engine With Tenant-Identifiers</h1>
 <p>Multi-Tenancy can be achieved with one process engine which uses tenant identifiers (i.e., tenant-ids). The data of all tenants is stored in one table (same database and schema). Isolation is provided by the means of a tenant identifier that is stored in a column.</p>
@@ -3285,7 +3285,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">decisionDefinitionTenantId</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">evaluate</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><h2 id="transparent-access-restrictions-for-tenants">Transparent Access Restrictions for Tenants</h2>
-<p>When integrating Camunda into an application, it can be cumbersome to pass the tenant Id to each camunda API call. Since such an application usually also has a concept of an &ldquo;authenticated user&rdquo;, it is possible to set the list of tenant ids when setting the authentication:</p>
+<p>When integrating CIB seven into an application, it can be cumbersome to pass the tenant Id to each CIB seven API call. Since such an application usually also has a concept of an &ldquo;authenticated user&rdquo;, it is possible to set the list of tenant ids when setting the authentication:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">identityService</span><span class="p">.</span><span class="na">setAuthentication</span><span class="p">(</span><span class="s">&#34;mary&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">asList</span><span class="p">(</span><span class="s">&#34;accounting&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">asList</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3352,8 +3352,8 @@ The following example shows how to retrieve the lists of groups and tenants for 
   <p>The above example only works with the <a href="/manual/latest/user-guide/process-engine/identity-service/#the-database-identity-service">Database Identity Service</a> (i.e., the default implementation). The <a href="/manual/latest/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Service</a> doesn&rsquo;t support tenants.</p>
 </div>
 
-<h3 id="camunda-rest-api-and-web-applications">Camunda Rest API and Web Applications</h3>
-<p>The Camunda <a href="/manual/latest/reference/rest/">Rest API</a> and the web applications Cockpit and Tasklist support the transparent access restrictions. When a user logs in then he only sees and can only access the data (e.g., process definitions) that belongs to one of his tenants.</p>
+<h3 id="cib-seven-rest-api-and-web-applications">CIB seven Rest API and Web Applications</h3>
+<p>The CIB seven <a href="/manual/latest/reference/rest/">Rest API</a> and the web applications Cockpit and Tasklist support the transparent access restrictions. When a user logs in then he only sees and can only access the data (e.g., process definitions) that belongs to one of his tenants.</p>
 <p>Tenants and their memberships can be managed in the <a href="/manual/latest/webapps/admin/tenant-management/">Admin</a> web application.</p>
 <h3 id="disable-the-transparent-access-restrictions">Disable the Transparent Access Restrictions</h3>
 <p>The transparent access restrictions are enabled by default. To disable the restrictions, set the <code>tenantCheckEnabled</code> property in the <a href="/manual/latest/user-guide/process-engine/process-engine-bootstrapping/#processengineconfiguration-bean">ProcessEngineConfiguration</a> to <code>false</code>.</p>
@@ -3587,7 +3587,7 @@ manually by setting it to null explicitly via</li>
 <li><strong>CDI Integration</strong>: Named engine beans can be injected out of the box. The <a href="/manual/latest/user-guide/cdi-java-ee-integration/built-in-beans/">built-in CDI bean producer</a> can be specialized to access the engine of the current tenant dynamically.</li>
 <li><strong>Via JNDI on Wildfly</strong>: On Wildfly, every container-managed process engine can be <a href="/manual/latest/user-guide/runtime-container-integration/jboss/#look-up-a-process-engine-in-jndi">looked up via JNDI</a>.</li>
 </ul>
-<p>The Camunda web applications Cockpit, Tasklist and Admin offer tenant-specific views out of the box by <a href="/manual/latest/webapps/cockpit/dashboard/#multi-engine">switching between different process engines</a>.</p>
+<p>The CIB seven web applications Cockpit, Tasklist and Admin offer tenant-specific views out of the box by <a href="/manual/latest/webapps/cockpit/dashboard/#multi-engine">switching between different process engines</a>.</p>
 
     </div>
   </div>
@@ -3625,7 +3625,7 @@ manually by setting it to null explicitly via</li>
         <li><a href="#query-example">Query Example</a></li>
         <li><a href="#task-access-example">Task Access Example</a></li>
         <li><a href="#getting-a-users-tenant-ids-from-the-identity-service">Getting a user&rsquo;s Tenant Ids from the Identity Service</a></li>
-        <li><a href="#camunda-rest-api-and-web-applications">Camunda Rest API and Web Applications</a></li>
+        <li><a href="#cib-seven-rest-api-and-web-applications">CIB seven Rest API and Web Applications</a></li>
         <li><a href="#disable-the-transparent-access-restrictions">Disable the Transparent Access Restrictions</a></li>
         <li><a href="#access-all-tenants-as-administrator">Access all Tenants as Administrator</a></li>
       </ul>

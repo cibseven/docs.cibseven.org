@@ -3287,9 +3287,9 @@ If the feature ID is not provided, the whole plugin will be excluded.</p>
 </span></span><span class="line"><span class="cl">      <span class="na">cam-exclude-plugins</span><span class="o">=</span><span class="s">&#34;cockpit.processInstance.runtime.action:cancel-process-instance-action,
 </span></span></span><span class="line"><span class="cl"><span class="s">                           cockpit.processInstance.runtime.action:job-retry-action&#34;</span> <span class="p">/&gt;</span>
 </span></span></code></pre></div><h1 id="legacy-plugins">Legacy Plugins</h1>
-<p>Plugins created for CIB seven.13 or earlier can be included for compatibility. To achieve this, simply prefix your Plugin ID with <code>legacy-</code>. The AngularJS module name for the entry module will be <code>cockpit.plugin.legacy-*</code>.</p>
+<p>Plugins created for Camunda 7.13 or earlier can be included for compatibility. To achieve this, simply prefix your Plugin ID with <code>legacy-</code>. The AngularJS module name for the entry module will be <code>cockpit.plugin.legacy-*</code>.</p>
 <p>Please note that all Plugins with this prefix will be included using the 7.13 plugin mechanism. You cannot create new Plugins with IDs starting with <code>legacy</code>.</p>
-<p>For more details about legacy Plugins, check out the legacy <a href="https://docs.camunda.org/manual/7.13/webapps/cockpit/extend/plugins/">Plugin documentation</a>. Please note that this link will take you to the documentation of Camunda <strong>7.13</strong> .</p>
+<p>For more details about legacy Plugins, check out the legacy <a href="https://docs.camunda.org/manual/7.13/webapps/cockpit/extend/plugins/">Plugin documentation for Camunda</a>. Please note that this link will take you to the documentation of Camunda <strong>7.13</strong> .</p>
 <h1 id="plugin-points">Plugin points</h1>
 <p>In this section you will find all Cockpit plugin points.
 To configure where you place your plugin, enter the ID into the <code>pluginPoint</code> attribute of you frontend module.</p>

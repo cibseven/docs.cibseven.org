@@ -3158,7 +3158,7 @@ available:</p>
 <code>app/admin/styles/user-styles.css</code>. This file contains CSS, which is loaded into Admin
 and can override the standard styles.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-brand</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c">/* hides the &#34;Camunda Admin&#34; text */</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* hides the &#34;CIB even Admin&#34; text */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">text-indent</span><span class="p">:</span> <span class="mi">-999</span><span class="kt">em</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">/* put your logo */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">./path/to/the/logo.png</span><span class="p">);</span>
@@ -3170,7 +3170,7 @@ and can override the standard styles.</p>
 </span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">cam-widget-header</span><span class="o">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">border-bottom-color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><strong>Note:</strong> you can also change the app name (<em>Admin</em>) and vendor (<em>Camunda</em>)
+</span></span></code></pre></div><p><strong>Note:</strong> you can also change the app name (<em>Admin</em>) and vendor (<em>CIB seven</em>)
 by changing the <code>app/admin/scripts/config.js</code> configuration file as follow:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
@@ -3180,7 +3180,7 @@ by changing the <code>app/admin/scripts/config.js</code> configuration file as f
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h1 id="localization">Localization</h1>
-<p>Admin can be localized. Camunda maintains English and German translation files.
+<p>Admin can be localized. CIB seven maintains English and German translation files.
 You can find and download community maintained translation files at the <a href="https://github.com/camunda/camunda-webapp-translations">Camunda webapp translations repository</a>.</p>
 <p>The localization of Admin is contained in the <code>app/admin/locales/</code> directory. This
 directory contains a separate localization file for every available language. The file name
@@ -3209,7 +3209,7 @@ custom frontend module. Admin shares the frontend module structure with <a href=
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">customScripts</span><span class="o">:</span> 
 </span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;custom-module/module.js&#39;</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/admin</code> folder in the Camunda webapp .war file.</p>
+</span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/admin</code> folder in the CIB seven webapp .war file.</p>
 <h1 id="change-csrf-cookie-name">Change CSRF cookie name</h1>
 <p>The default name of the CSRF Cookie is <code>XSRF-TOKEN</code>. When using other applications within the
 same origin, the CSRF mechanisms could interfere with each other. To avoid the name conflict, change the name of the CSRF cookie in the <code>config.js</code> file as follows:</p>
@@ -3219,7 +3219,7 @@ same origin, the CSRF mechanisms could interfere with each other. To avoid the n
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p><strong>Note:</strong> Ensure you also change the CSRF cookie name on <a href="/manual/latest/webapps/shared-options/csrf-prevention/#cookie-name">server-side</a>.</p>
 <h1 id="disable-welcome-message-for-new-users">Disable welcome message for new users</h1>
-<p>First-time visitors are shown a message directing them to the Camunda welcome page. If you do
+<p>First-time visitors are shown a message directing them to the CIB seven welcome page. If you do
 not want this message to be shown, you can disable it by adjusting the <code>config.js</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
@@ -3252,7 +3252,7 @@ defines the original Bootstrap variables</li>
 overrides some Bootstrap variables (above) and add some custom ones</li>
 </ul>
 <h2 id="compiling-with-grunt">Compiling with Grunt</h2>
-<p>From within the <code>camunda-bpm-webapp</code> directory:</p>
+<p>From within the <code>cibseven-bpm-webapp</code> directory:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">grunt build:admin
 </span></span></code></pre></div><p>The command will build the front-end assets (of Admin), styles included.</p>
 

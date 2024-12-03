@@ -3155,12 +3155,12 @@ available:</p>
 <p>You can change the visual aspects of Cockpit. The user stylesheet file is located in
 <code>app/cockpit/styles/user-styles.css</code>. This file contains CSS which is loaded into Cockpit
 and can override the standard styles.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* hides the Camunda logo */</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* hides the CIB seven logo */</span>
 </span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">app-banner</span> <span class="nt">svg</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">app-banner</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c">/* hides the &#34;Camunda Cockpit&#34; text */</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* hides the &#34;CIB seven Cockpit&#34; text */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">text-indent</span><span class="p">:</span> <span class="mi">200</span><span class="kt">vw</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">/* put your logo */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">./path/to/the/logo.png</span><span class="p">);</span>
@@ -3172,7 +3172,7 @@ and can override the standard styles.</p>
 </span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">Header</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">border-top-color</span><span class="p">:</span> <span class="kc">blue</span> <span class="cp">!important</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><strong>Note:</strong> you can also change the app name (<em>Cockpit</em>) and vendor (<em>Camunda</em>)
+</span></span></code></pre></div><p><strong>Note:</strong> you can also change the app name (<em>Cockpit</em>) and vendor (<em>CIB seven</em>)
 by changing the <code>app/cockpit/scripts/config.js</code> configuration file as follow:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
@@ -3182,7 +3182,7 @@ by changing the <code>app/cockpit/scripts/config.js</code> configuration file as
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h1 id="localization">Localization</h1>
-<p>Cockpit can be localized. Camunda maintains English and German translation files.
+<p>Cockpit can be localized. CIB seven maintains English and German translation files.
 You can find and download community maintained translation files at the <a href="https://github.com/camunda/camunda-webapp-translations">Camunda webapp translations repository</a>.</p>
 <p>The localization of Cockpit is contained in the <code>app/cockpit/locales/</code> directory. This
 directory contains a separate localization file for every available language. The file name
@@ -3212,8 +3212,8 @@ custom frontend module as described in <a href="/manual/latest/webapps/cockpit/e
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">customScripts</span><span class="o">:</span> 
 </span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;custom-module/module.js&#39;</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/cockpit</code> folder in the Camunda webapp .war file.</p>
-<p>You can find a complete example about how to use <code>customScripts</code> to develop a Cockpit Plugin in the <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/cockpit/cockpit-cats">CIB seven examples repository</a>.</p>
+</span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/cockpit</code> folder in the CIB seven webapp .war file.</p>
+<p>You can find a complete example about how to use <code>customScripts</code> to develop a Cockpit Plugin in the <a href="https://github.com/cibseven/cibseven-bpm-examples/tree/master/cockpit/cockpit-cats">CIB seven examples repository</a>.</p>
 <h2 id="legacy-custom-scripts">Legacy Custom Scripts</h2>
 <p>Custom Scripts created for CIB seven.13 or earlier can be included using the <code>requireJsConfig</code> property to the <code>app/cockpit/scripts/config.js</code>. You can include these custom scripts using the custom <a href="https://requirejs.org/docs/api.html#config">requireJS configuration</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
@@ -3232,13 +3232,13 @@ custom frontend module as described in <a href="/manual/latest/webapps/cockpit/e
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>For more details about legacy Plugins, check out the legacy <a href="https://docs.camunda.org/manual/7.13/webapps/cockpit/extend/plugins/">Plugin documentation</a>. Please note that this link will take you to the documentation of Camunda <strong>7.13</strong> .</p>
+</span></span></code></pre></div><p>For more details about legacy Plugins, check out the legacy <a href="https://docs.camunda.org/manual/7.13/webapps/cockpit/extend/plugins/">plugin documentation of Camunda</a>. Please note that this link will take you to the documentation of Camunda <strong>7.13</strong> .</p>
 <h1 id="bpmn-diagram-viewer-bpmnjs">BPMN Diagram Viewer (bpmn.js)</h1>
 <p>The diagram viewer (bpmn.js) can be either customized by moddle extensions or
 <a href="https://bpmn.io/toolkit/bpmn-js/walkthrough/#extend-the-modeler">additional modules</a>. To extend the BPMN diagram viewer
 of Cockpit, a <code>bpmnJs</code> property must be added to the <code>app/cockpit/scripts/config.js</code> file.</p>
 <h2 id="additional-modules">Additional Modules</h2>
-<p>To add modules, the <code>additionalModules</code> property needs to be specified, where each module is registered with its path. The path is relative to the <code>app/cockpit</code> folder in the .war file of the Camunda Webapp.</p>
+<p>To add modules, the <code>additionalModules</code> property needs to be specified, where each module is registered with its path. The path is relative to the <code>app/cockpit</code> folder in the .war file of the CIB seven Webapp.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">bpmnJs</span><span class="o">:</span> <span class="p">{</span>
@@ -3247,11 +3247,11 @@ of Cockpit, a <code>bpmnJs</code> property must be added to the <code>app/cockpi
 </span></span><span class="line"><span class="cl">    <span class="p">]</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>You can find an example on how to add an additional bpmn.js module to Cockpit in the <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/cockpit/cockpit-bpmn-js-module">CIB seven examples repository</a>.</p>
+</span></span></code></pre></div><p>You can find an example on how to add an additional bpmn.js module to Cockpit in the <a href="https://github.com/cibseven/cibseven-bpm-examples/tree/master/cockpit/cockpit-bpmn-js-module">CIB seven examples repository</a>.</p>
 <h2 id="moddle-extensions">Moddle Extensions</h2>
 <p>The BPMN moddle can be extended by adding a <code>moddleExtensions</code> property. Each moddle extension has a unique name (key)
 and a path (value) to the JSON file of the moddle extension. The path is relative to the <code>app/cockpit</code> folder in the
-.war file of the Camunda Webapp. The suffix <code>.json</code> of the file is added automatically and must not be specified.</p>
+.war file of the CIB seven Webapp. The suffix <code>.json</code> of the file is added automatically and must not be specified.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="err">export</span> <span class="err">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="err">bpmnJs:</span> <span class="err">{</span>
@@ -3325,7 +3325,7 @@ can change the name of the CSRF cookie in the <code>config.js</code> file as fol
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></div><p><strong>Note:</strong> Please make sure to change the CSRF cookie name also on <a href="/manual/latest/webapps/shared-options/csrf-prevention/#cookie-name">server-side</a>.</p>
 <h1 id="disable-welcome-message-for-new-users">Disable Welcome Message for new Users</h1>
-<p>First-time visitors are shown a message directing them to the camunda welcome page. If you do
+<p>First-time visitors are shown a message directing them to the CIB seven welcome page. If you do
 not want this message to be shown, you can disable it by adjusting the <code>config.js</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …

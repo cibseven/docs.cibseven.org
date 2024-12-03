@@ -3214,7 +3214,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/h:body&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/f:view&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/html&gt;</span>
-</span></span></code></pre></div><p>Note that you need <code>camunda-engine-cdi</code> in order to have the <code>camundaTaskForm</code> bean available.</p>
+</span></span></code></pre></div><p>Note that you need <code>cibseven-engine-cdi</code> in order to have the <code>camundaTaskForm</code> bean available.</p>
 <h1 id="how-does-this-work">How does this work?</h1>
 <p>If the user clicks on &ldquo;Start to work on task&rdquo; <figure class="image">
   <span><img
@@ -3242,7 +3242,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;h:commandButton</span> <span class="na">id=</span><span class="s">&#34;complete&#34;</span> <span class="na">value=</span><span class="s">&#34;task completed&#34;</span> <span class="na">action=</span><span class="s">&#34;#{camundaTaskForm.completeTask()}&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>Note that the command button doesn&rsquo;t have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the <code>completeTask</code> button. This will work because of the conversation running in the background.</p>
 <h1 id="access-process-variables">Access Process Variables</h1>
-<p>In the forms you can access your own CDI beans as usual and also access the Camunda CDI beans. This makes it easy to access process variables, e.g., via the <code>processVariables</code> CDI bean:</p>
+<p>In the forms you can access your own CDI beans as usual and also access the CIB seven CDI beans. This makes it easy to access process variables, e.g., via the <code>processVariables</code> CDI bean:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;h:form</span> <span class="na">id=</span><span class="s">&#34;someForm&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;p&gt;</span>Here you would see the actual form to work on the task in some design normally either matching you task list or your business application (or both in the best case).<span class="nt">&lt;/p&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;table&gt;</span>

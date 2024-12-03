@@ -3213,15 +3213,15 @@ each new <code>ApplicationContext</code>. Reused (cached) <code>ApplicationConte
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p>Here, the <code>camunda.bpm.process-engine-name=foo</code> will set (a unique name) &ldquo;foo&rdquo; as the Process Engine name.</p>
-<h2 id="camunda-assertions">Camunda Assertions</h2>
-<p>The <a href="/manual/1.1/user-guide/testing/#camunda-assertions">CIB seven Assertions</a> library is
-integrated with the Camunda Spring Boot Starter in
+<h2 id="cib-seven-assertions">CIB seven Assertions</h2>
+<p>The <a href="/manual/1.1/user-guide/testing/#cib-seven-assertions">CIB seven Assertions</a> library is
+integrated with the CIB seven Spring Boot Starter in
 order to make testing processes in your Spring Boot application easier.</p>
 <h3 id="using-assertions-with-context-caching">Using Assertions with Context Caching</h3>
 <p>Out of the box, the CIB seven Assertions library tries to use the
 default engine or the (single) one that is available. Since when using
 Context Caching multiple engines are used in different contexts, binding
-the correct Process Engine to the Camunda Assertions library is required
+the correct Process Engine to the CIB seven Assertions library is required
 for both caching and assertions to work correctly. This can be done
 through the following initialization code in the test class:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Autowired</span><span class="w">
@@ -3249,7 +3249,7 @@ Engine/Application names</em> requirement described in the
   <ul>
     <li><a href="#context-caching-with-process-engines">Context Caching with Process Engines</a></li>
     <li><a href="#using-unique-process-engineapplication-names">Using unique Process Engine/Application names</a></li>
-    <li><a href="#camunda-assertions">Camunda Assertions</a>
+    <li><a href="#cib-seven-assertions">CIB seven Assertions</a>
       <ul>
         <li><a href="#using-assertions-with-context-caching">Using Assertions with Context Caching</a></li>
       </ul>

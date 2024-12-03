@@ -3156,11 +3156,11 @@ It is used to configure CIB seven in the following distributions:</p>
 
 <div class="note bg-warning docs-warning">
   <h3>Wildfly</h3>
-  <p>The <code>bpm-platform.xml</code> file is not used in the CIB seven distribution for Wildfly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="/manual/latest/user-guide/runtime-container-integration/jboss/">The Camunda Wildfly Subsystem</a> section of the <a href="/manual/latest/user-guide/">User Guide</a> for more details.</p>
+  <p>The <code>bpm-platform.xml</code> file is not used in the CIB seven distribution for Wildfly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="/manual/latest/user-guide/runtime-container-integration/jboss/">The CIB seven Wildfly Subsystem</a> section of the <a href="/manual/latest/user-guide/">User Guide</a> for more details.</p>
 </div>
 
 <h1 id="xml-schema-namespace">Xml Schema Namespace</h1>
-<p>The namespace for the <code>bpm-platform.xml</code> file is <code>http://www.camunda.org/schema/1.0/BpmPlatform</code>. The XSD file can be found in the <code>camunda-engine.jar</code> file.</p>
+<p>The namespace for the <code>bpm-platform.xml</code> file is <code>http://www.camunda.org/schema/1.0/BpmPlatform</code>. The XSD file can be found in the <code>cibseven-engine.jar</code> file.</p>
 <h2 id="example">Example</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/BpmPlatform&#34;</span>
@@ -3214,14 +3214,14 @@ It is used to configure CIB seven in the following distributions:</p>
   </tr>
 </table>
 <h1 id="configure-location-of-the-bpm-platformxml-file">Configure Location of the bpm-platform.xml File</h1>
-<p>You can configure the location of the <code>bpm-platform.xml</code>, so the file can be stored externally to allow an easy update path of camunda-bpm-platform.ear. This negates the work of unpacking / repackaging the ear when you need to change the configuration.</p>
+<p>You can configure the location of the <code>bpm-platform.xml</code>, so the file can be stored externally to allow an easy update path of cibseven-bpm-platform.ear. This negates the work of unpacking / repackaging the ear when you need to change the configuration.</p>
 <p>This feature is available for:</p>
 <ul>
 <li><a href="/manual/latest/installation/full/tomcat/">Apache Tomcat</a></li>
 </ul>
 <p>It is not available for the Wildfly subsystem implementation, because the subsystem implementation uses the JBoss specific <code>standalone.xml</code> to configure the platform.</p>
-<p>To specify the location, you have to provide an absolute path or an http/https url pointing to the <code>bpm-platform.xml</code> file, e.g., <code>/home/camunda/.camunda/bpm-platform.xml</code> or <code>http://camunda.org/bpm-platform.xml</code>.</p>
-<p>During startup of the camunda-bpm-platform, it tries to discover the location of the <code>bpm-platform.xml</code> file from the following sources, in the listed order:</p>
+<p>To specify the location, you have to provide an absolute path or an http/https url pointing to the <code>bpm-platform.xml</code> file, e.g., <code>/home/cibseven/.cibseven/bpm-platform.xml</code> or <code>http://example.org/bpm-platform.xml</code>.</p>
+<p>During startup of the cibseven-bpm-platform, it tries to discover the location of the <code>bpm-platform.xml</code> file from the following sources, in the listed order:</p>
 <ol>
 <li>JNDI entry is available at <code>java:/comp/env/bpm-platform-xml</code></li>
 <li>Environment variable <code>BPM_PLATFORM_XML</code> is set</li>
@@ -3229,7 +3229,7 @@ It is used to configure CIB seven in the following distributions:</p>
 <li><code>META-INF/bpm-platform.xml</code> exists on the classpath</li>
 <li>(For Tomcat only): checks if there is a <code>bpm-platform.xml</code> inside the folder specified by <code>${CATALINA_BASE} || ${CATALINA_HOME} + /conf/</code></li>
 </ol>
-<p>The discovery stops when one of the above mentioned sources is found or, in case none is found, it falls back to the <code>bpm-platform.xml</code> on the classpath, respectively <code>${CATALINA_BASE} || ${CATALINA_HOME} + /conf/</code> for Tomcat. We ship a default <code>bpm-platform.xml</code> file inside the camunda-bpm-platform.ear, except when you use the Tomcat or Wildfly version of the platform.</p>
+<p>The discovery stops when one of the above mentioned sources is found or, in case none is found, it falls back to the <code>bpm-platform.xml</code> on the classpath, respectively <code>${CATALINA_BASE} || ${CATALINA_HOME} + /conf/</code> for Tomcat. We ship a default <code>bpm-platform.xml</code> file inside the cibseven-bpm-platform.ear, except when you use the Tomcat or Wildfly version of the platform.</p>
 <h1 id="using-system-properties">Using System Properties</h1>
 <p>To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., <code>${PROPERTY_KEY}</code>). Expression resolution is supported within the <code>property</code> elements only. System properties may be set via command line (<code>-D</code>option) or in an implementation specific manner (Apache Tomcat&rsquo;s <code>catalina.properties</code> for example).
 Complex operations are not supported, but you may combine more than one expression in a single <code>property</code> element (e.g., <code>${ldap.host}:${ldap.port}</code>).</p>

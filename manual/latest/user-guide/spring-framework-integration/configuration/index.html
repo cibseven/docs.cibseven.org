@@ -3166,7 +3166,7 @@
 <h1 id="configure-a-container-managed-process-engine-as-a-spring-bean">Configure a Container-Managed Process Engine as a Spring Bean</h1>
 <p>If you want the process engine to be registered with the CIB seven ProcessEngineService, you must use <code>org.cibseven.bpm.engine.spring.container.ManagedProcessEngineFactoryBean</code> instead of the ProcessEngineFactoryBean shown in the example above. You will also need to ensure:</p>
 <ol>
-<li>That none of your webapps include camunda-webapp*.jar within their own lib folder, this should be at a shared level.</li>
+<li>That none of your webapps include cibseven-webapp*.jar within their own lib folder, this should be at a shared level.</li>
 <li>That your server.xml contains JNDI entries for the &lsquo;ProcessEngineService&rsquo; and &lsquo;ProcessApplicationService&rsquo; as below:</li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- Global JNDI resources
