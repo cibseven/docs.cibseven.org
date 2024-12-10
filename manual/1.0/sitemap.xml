@@ -3,1407 +3,1407 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/database-schema/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/database-schema/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/dmn/dashboard/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/dmn/dashboard/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/cibseven-run/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/cibseven-run/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/migration/10-to-11/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/migration/10-to-11/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/shared-options/authentication/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/shared-options/authentication/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/descriptors/bpm-platform-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/descriptors/bpm-platform-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/custom-extensions/extension-elements/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/custom-extensions/extension-elements/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/runtime-container-integration/bpm-platform-services/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/runtime-container-integration/bpm-platform-services/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/api/classic-vs-fluent/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/api/classic-vs-fluent/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/extend/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/extend/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/authentication/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/authentication/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/decisions/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/decisions/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/data-formats/configuring-spin-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/data-formats/configuring-spin-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/dashboard/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/dashboard/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/dashboard/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/dashboard/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/gateways/exclusive-gateway/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/gateways/exclusive-gateway/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/database/database-schema/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/database/database-schema/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/dmn/decision-definition-view/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/dmn/decision-definition-view/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/decision-table/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/decision-table/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/decision-table/input/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/decision-table/input/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/downloading-cibseven/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/downloading-cibseven/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/subprocesses/embedded-subprocess/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/subprocesses/embedded-subprocess/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/embed/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/embed/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/custom-extensions/camunda-elements/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/custom-extensions/camunda-elements/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/feel/legacy/data-types/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/feel/legacy/data-types/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/feel/type-handling/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/feel/type-handling/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/integrate/getting-a-distribution/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/integrate/getting-a-distribution/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/history/history-configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/history/history-configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/connect/http-connector/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/connect/http-connector/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/tasks/human-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/tasks/human-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/tomcat/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/tomcat/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/tomcat/pre-packaged/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/tomcat/pre-packaged/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/markers/manual-activation-rule/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/markers/manual-activation-rule/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/concepts/plan-items/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/concepts/plan-items/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-engine-bootstrapping/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-engine-bootstrapping/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-framework-integration/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-framework-integration/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/quarkus-integration/version-compatibility/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/quarkus-integration/version-compatibility/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/read-a-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/read-a-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/read-a-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/read-a-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/dmn-model-api/read-a-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/dmn-model-api/read-a-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/json/01-reading-json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/json/01-reading-json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/01-reading-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/01-reading-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/service-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/service-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/version-compatibility/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/version-compatibility/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/grouping-tasks/stage/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/grouping-tasks/stage/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/start-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/start-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/inputs/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/inputs/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/cam-script/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/cam-script/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-applications/the-process-application-class/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-applications/the-process-application-class/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/user-management/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/user-management/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/working-with-tasklist/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/working-with-tasklist/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/decision-literal-expression/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/decision-literal-expression/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/javadoc/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/javadoc/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/licenses/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/licenses/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/openapi/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/openapi/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/integrate/bootstrapping/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/integrate/bootstrapping/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/subprocesses/call-activity/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/subprocesses/call-activity/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/custom-extensions/extension-attributes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/custom-extensions/extension-attributes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/third-party-libraries/cibseven-bpm-platform-license-book/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/third-party-libraries/cibseven-bpm-platform-license-book/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/concepts/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/concepts/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/extend/plugins/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/extend/plugins/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/gateways/sequence-flow/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/gateways/sequence-flow/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/shared-options/cookie-security/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/shared-options/cookie-security/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/create-a-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/create-a-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/create-a-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/create-a-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/dmn-model-api/create-a-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/dmn-model-api/create-a-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/shared-options/csrf-prevention/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/shared-options/csrf-prevention/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/dashboard/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/dashboard/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/data-formats/data-formats-in-processes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/data-formats/data-formats-in-processes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/database/database-configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/database/database-configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/dmn/decision-instance-view/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/dmn/decision-instance-view/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/drg/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/drg/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/decisions/repository/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/decisions/repository/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/delegation-code/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/delegation-code/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/delegation-code/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/delegation-code/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/decision-table/output/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/decision-table/output/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/quarkus-integration/cdi-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/quarkus-integration/cdi-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/evaluate-decisions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/evaluate-decisions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/custom-extensions/camunda-attributes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/custom-extensions/camunda-attributes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/custom-extensions/camunda-attributes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/custom-extensions/camunda-attributes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/feel/custom-functions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/feel/custom-functions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/feel/legacy/language-elements/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/feel/legacy/language-elements/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/feel/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/feel/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/gateways/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/gateways/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/group-management/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/group-management/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/shared-options/header-security/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/shared-options/header-security/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/implemented-standards/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/implemented-standards/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/jboss/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/jboss/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/jboss/manual/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/jboss/manual/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/tomcat/manual/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/tomcat/manual/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cdi-java-ee-integration/jta-transaction-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cdi-java-ee-integration/jta-transaction-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/feel/legacy/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/feel/legacy/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/02-manipulating-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/02-manipulating-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/none-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/none-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/concepts/lifecycle/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/concepts/lifecycle/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/process-definition-view/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/process-definition-view/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-engine-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-engine-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/tasks/process-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/tasks/process-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/descriptors/processes-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/descriptors/processes-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/quarkus-integration/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/quarkus-integration/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/markers/required-rule/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/markers/required-rule/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/quarkus-integration/deployments/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/quarkus-integration/deployments/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/specification/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/specification/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/update/rolling-update/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/update/rolling-update/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/docker/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/docker/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/send-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/send-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/connect/soap-connector/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/connect/soap-connector/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-framework-integration/transactions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-framework-integration/transactions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/tenant-management/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/tenant-management/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/textarea/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/textarea/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-applications/the-processes-xml-deployment-descriptor/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-applications/the-processes-xml-deployment-descriptor/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/distro-use/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/distro-use/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/history/user-operation-log/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/history/user-operation-log/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/json/02-writing-json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/json/02-writing-json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/spring-boot/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/spring-boot/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/update/activiti/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/update/activiti/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/integrate/angular-js/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/integrate/angular-js/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/runtime-container-integration/tomcat/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/runtime-container-integration/tomcat/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/architecture/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/architecture/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/authorization-management/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/authorization-management/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/markers/auto-complete/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/markers/auto-complete/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-framework-integration/deployment/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-framework-integration/deployment/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/tasks/case-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/tasks/case-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/jboss/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/jboss/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/full/tomcat/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/full/tomcat/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/date-inputs/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/date-inputs/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/decisions/decision-service/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/decisions/decision-service/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/decision-table/rule/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/decision-table/rule/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/dmn/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/dmn/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/embeddability/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/embeddability/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/concepts/entry-exit-criteria/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/concepts/entry-exit-criteria/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/subprocesses/event-subprocess/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/subprocesses/event-subprocess/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cdi-java-ee-integration/expression-resolving/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cdi-java-ee-integration/expression-resolving/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/expressions-and-scripts/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/expressions-and-scripts/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/connect/extending-connect/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/connect/extending-connect/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/extending-spin/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/extending-spin/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/feel/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/feel/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/feel/spin-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/feel/spin-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/filters/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/filters/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/history/history-cleanup/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/history/history-cleanup/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/tags/job-executor/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/tags/job-executor/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/lifecycle/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/lifecycle/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/message-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/message-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/database/mssql-configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/database/mssql-configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/gateways/parallel-gateway/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/gateways/parallel-gateway/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/lifecycle/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/lifecycle/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-applications/process-application-event-listeners/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-applications/process-application-event-listeners/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-applications/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-applications/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-engine-concepts/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-engine-concepts/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/process-instance-view/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/process-instance-view/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/json/03-querying-json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/json/03-querying-json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/rest-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/rest-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/tasks/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/tasks/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/user-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/user-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/03-writing-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/03-writing-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/data-formats/xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/data-formats/xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-applications/process-application-resources/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-applications/process-application-resources/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/karaf-osgi/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/karaf-osgi/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/boolean-inputs/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/boolean-inputs/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/business-rule-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/business-rule-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cdi-java-ee-integration/contextual-programming-model/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cdi-java-ee-integration/contextual-programming-model/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/history/custom-implementation/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/history/custom-implementation/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/data-types/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/data-types/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/debugging/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/debugging/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/tasks/decision-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/tasks/decision-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/deployment-view/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/deployment-view/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/decision-table/hit-policy/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/decision-table/hit-policy/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/fluent-builder-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/fluent-builder-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/integrate/full-examples/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/integrate/full-examples/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/grouping-tasks/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/grouping-tasks/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/hal/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/hal/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/gateways/inclusive-gateway/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/gateways/inclusive-gateway/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/installation/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/installation/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/decisions/bpmn-cmmn/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/decisions/bpmn-cmmn/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/data-formats/json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/data-formats/json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/json/04-mapping-json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/json/04-mapping-json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-applications/maven-archetypes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-applications/maven-archetypes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/tags/process-archive/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/tags/process-archive/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/variables/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/variables/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/04-querying-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/04-querying-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/markers/repetition-rule/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/markers/repetition-rule/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/runtime-container-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/runtime-container-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-framework-integration/expressions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-framework-integration/expressions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/subprocesses/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/subprocesses/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/supported-environments/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/supported-environments/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/system-management/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/system-management/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/timer-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/timer-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/subprocesses/transaction-subprocess/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/subprocesses/transaction-subprocess/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/user-assignment/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/user-assignment/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/webapps/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/webapps/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/json-data/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/json-data/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/plugins/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/plugins/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cdi-java-ee-integration/built-in-beans/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cdi-java-ee-integration/built-in-beans/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cibseven-run/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cibseven-run/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/json/05-configuring-json/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/json/05-configuring-json/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/dmn-model-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/dmn-model-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/error-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/error-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/gateways/event-based-gateway/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/gateways/event-based-gateway/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/custom-extensions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/custom-extensions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/extensions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/extensions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/feel/legacy-behavior/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/feel/legacy-behavior/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/generating-businesskey/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/generating-businesskey/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/decisions/history/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/decisions/history/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/05-mapping-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/05-mapping-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/milestone/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/milestone/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/database/mysql-configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/database/mysql-configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/process-applications/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/process-applications/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/tags/process-engine/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/tags/process-engine/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-instance-modification/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-instance-modification/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-instance-restart/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-instance-restart/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/respository-service/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/respository-service/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/repository-service/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/repository-service/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/dmn-model-api/repository-service/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/dmn-model-api/repository-service/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/script-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/script-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/select/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/select/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-framework-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-framework-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-framework-integration/testing/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-framework-integration/testing/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/task-lifecycle/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/task-lifecycle/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/testing/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/testing/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/runtime-container-integration/jboss/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/runtime-container-integration/jboss/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/variables/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/variables/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/java-objects/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/java-objects/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/escalation-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/escalation-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/quarkus-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/quarkus-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/camunda-forms/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/camunda-forms/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cdi-java-ee-integration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cdi-java-ee-integration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/xml/06-configuring-xml/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/xml/06-configuring-xml/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/rest/overview/date-format/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/rest/overview/date-format/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/delegation-code/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/delegation-code/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/examples/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/examples/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/javascript/examples/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/javascript/examples/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/dmn-model-api/extension-attributes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/dmn-model-api/extension-attributes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/bpmn-model-api/extension-elements/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/bpmn-model-api/extension-elements/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/extension-elements/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/extension-elements/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/failed-jobs/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/failed-jobs/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/hidden/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/hidden/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/integrate/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/integrate/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/runtime-container-integration/job-execution-with-managed-resources/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/runtime-container-integration/job-execution-with-managed-resources/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/database/performance/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/database/performance/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/tasklist-plugins/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/tasklist-plugins/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/welcome/welcome-plugins/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/welcome/welcome-plugins/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/receive-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/receive-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/sentry/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/sentry/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/signal-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/signal-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/spin/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/spin/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/the-spring-event-bridge/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/the-spring-event-bridge/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/connect/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/connect/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/cancel-and-compensation-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/cancel-and-compensation-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/conditional-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/conditional-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/welcome/configuration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/welcome/configuration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/develop-and-test/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/develop-and-test/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/expression-language/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/expression-language/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/files/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/files/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/manual-task/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/manual-task/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/markers/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/markers/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/tasks-dashboard/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/tasks-dashboard/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/notices/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/notices/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/suspension/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/suspension/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/third-party-libraries/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/third-party-libraries/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/update/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/update/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/testing/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/testing/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/accessibility/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/accessibility/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/bpmn/drilldown/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/bpmn/drilldown/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/extend/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/extend/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/custom-extensions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/custom-extensions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/link-events/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/link-events/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/introduction/public-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/introduction/public-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/scripting/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/scripting/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/spring-boot-integration/spring-security/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/spring-boot-integration/spring-security/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/deployment-descriptors/tags/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/deployment-descriptors/tags/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/tasks/task-markers/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/tasks/task-markers/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/forms/embedded-forms/controls/bpmn-buttons/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/forms/embedded-forms/controls/bpmn-buttons/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/data-formats/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/data-formats/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/templating/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/templating/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/bpmn20/events/terminate-event/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/bpmn20/events/terminate-event/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/securing-custom-code/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/securing-custom-code/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/external-tasks/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/external-tasks/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/testing/assert-examples/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/testing/assert-examples/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/connectors/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/connectors/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/dmn/custom-extensions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/dmn/custom-extensions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/model-api/cmmn-model-api/limitations/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/model-api/cmmn-model-api/limitations/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/reference/cmmn11/migration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/reference/cmmn11/migration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/task-forms/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/task-forms/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/admin/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/admin/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/task-forms/jsf-task-forms/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/task-forms/jsf-task-forms/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-versioning/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-versioning/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-instance-migration/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-instance-migration/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/cockpit/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/cockpit/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/database/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/database/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/tasklist/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/tasklist/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/welcome/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/welcome/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/history/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/history/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/deployment-cache/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/deployment-cache/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/password-hashing/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/password-hashing/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/webapps/shared-options/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/webapps/shared-options/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/password-policy/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/password-policy/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/transactions-in-processes/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/transactions-in-processes/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/the-job-executor/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/the-job-executor/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/multi-tenancy/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/multi-tenancy/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/id-generator/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/id-generator/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/dmn-engine/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/dmn-engine/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/ext-client/spring-boot-starter/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/ext-client/spring-boot-starter/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/logging/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/logging/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/metrics/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/metrics/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/incidents/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/incidents/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/security/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/security/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-engine-plugins/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-engine-plugins/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/identity-service/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/identity-service/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/authorization-service/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/authorization-service/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/deployments/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/deployments/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/process-diagram-api/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/process-diagram-api/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/time-zones/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/time-zones/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/decisions/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/decisions/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/batch/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/batch/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/ext-client/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/ext-client/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/batch-operations/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/batch-operations/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/error-handling/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/error-handling/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/process-engine/diagnostics-data/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/process-engine/diagnostics-data/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/user-guide/ext-client/compatibility-matrix/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/user-guide/ext-client/compatibility-matrix/</loc>
   </url>
   
   <url>
-    <loc>https://docs.cibseven.de/manual/1.1/</loc>
+    <loc>https://docs.cibseven.de/manual/1.0/</loc>
   </url>
   
 </urlset>

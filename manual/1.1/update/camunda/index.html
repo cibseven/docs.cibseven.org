@@ -13,27 +13,23 @@
   <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
   <meta name="author" content="CIB software, CIB seven community" />
   
-    
-      <meta name="robots" content="noindex" />
-    
-  
 
-  <title>Activiti Migration | docs.cibseven.org</title>
+  <title>Camunda Migration | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/1.1/img/favicon.ico" type="image/x-icon" />
 
   
 
-  <link rel="stylesheet" href="/manual/1.1/css/docs.c40f5ea9c68c995ecce1061c670144b2e44ee8f1198ad028f8755801b39ba02c.css" integrity="sha256-xA9eqcaMmV7M4QYcZwFEsuRO6PEZitAo&#43;HVYAbOboCw=">
-  <link rel="canonical" href="https://docs.cibseven.org/manual/1.0/update/activiti/" />
+  <link rel="stylesheet" href="/manual/1.1/css/docs.e9b26ee1769424142dd77a433da276cef5d0772caff5b8e13bdc85064b52d936.css" integrity="sha256-6bJu4XaUJBQt13pDPaJ2zvXQdyyv9bjhO9yFBktS2TY=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/1.1/update/camunda/" />
 </head>
 <body class="">
 
 <nav class="navbar navbar-fixed-top">
   <div class="navbar-container">
     <div class="navbar-header">
-      <a href="/manual/1.1/">
+      <a href="/manual/1.1/" id="logolink">
       <img src="/manual/1.1/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
         <span class="site-name">Docs</span>
       </a>
@@ -90,8 +86,8 @@
 
 
 
+
 <div class="version versioned">
-  
     
       
     
@@ -100,11 +96,9 @@
       
     
 
-    <span class="number"><a>1.1</a>
-      
-    </span>
-  
+    <span class="number">1.1</span>
 </div>
+
 
 <ul class="site-menu-items">
   
@@ -3092,7 +3086,7 @@
           
   <li>
     
-      <a href="/manual/1.1/update/activiti/" >Activiti Migration</a>
+      <a href="/manual/1.1/update/camunda/" >Camunda Migration</a>
     
   </li>
 
@@ -3105,30 +3099,7 @@
 </ul>
 
 
-<div class="meta">
-  <h4 class="header">
-    <span class="toggle glyphicon glyphicon-chevron-up"></span>
-    Options
-  </h4>
-
-  <div class="content">
-    <label for="version-select">Version:</label>
-    <select id="version-select" data-basepath="/manual" base-url="/manual/1.1/">
-      
-        <option >latest</option>
-      
-        <option >1.0</option>
-      
-        <option  selected >1.1</option>
-      
-    </select>
-  </div>
-</div>
-
-
-
 </nav>
-
 
 <div class="page-wrapper">
 
@@ -3136,145 +3107,47 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Activiti Migration</h1>
+      <h1 class="page-title">Camunda Migration</h1>
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Migrating an existing application from Activiti &lt;= 5.11 (or Camunda fox 6.x - see below) to Camunda 7.0 is straightforward.
+      <p>Migrating an existing application from Camunda 7.22 to CIB seven 1.0 is straightforward.
 This page describes the necessary steps.</p>
-<p>Later upgrade of Camunda 7.0 to Camunda 7.22 is required and described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a></p>
-<p>Final migration from Camunda 7.x to CIB seven {{ <minor-version> }} should be straightforward.</p>
+<h1 id="migration-to-cib-seven-10">Migration to CIB seven 1.0</h1>
+<p>CIB seven 1.0 is a special version with minimal changes from Camunda. No source level changes were applied, no library dependencies were changed.</p>
+<p>We expect migration to this version should be as easy as possible. Only two steps are essential:</p>
+<h3 id="change-version-to-7220-cibseven">Change Version to 7.22.0-cibseven</h3>
 
 <div class="note bg-info docs-info">
-  <h3>Getting Help</h3>
-  <p>If you are on a more recent Activiti version or if you have any trouble migrating, ask for assistance in the <a href="https://github.com/orgs/cibseven/discussions">Discussions</a>. We are happy to help you!</p>
+  <h3>My Camunda version is less than 7.22!</h3>
+  <p>For Camunda versions before 7.22 please do minor updates before migrating to CIB seven as described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a>.</p>
 </div>
 
-<p>The changes in short are:</p>
+<p>Update your <code>pom.xml</code> files using Camunda and change version used from <code>7.22.x</code> (usually <code>7.22.0</code> for Community Edition) to <code>7.22.0-cibseven</code>.</p>
+<h3 id="setup-cib-seven-maven-repository">Setup CIB seven Maven Repository</h3>
+<p>We are not able to deliver artifacts for other projects to any Maven Central repository. Version <code>7.22.0-cibseven</code> is available only at <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/">artifacts.cibseven.org</a>  - our public maven repository.</p>
+<p>You can add this repository to <code>pom.xml</code> for current project or to <code>settings.xml</code> in <code>$M2_HOME</code> (usually <code>$HOME/.m2</code>) folder for current user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>mvn-cibseven-public<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;name&gt;</span>CIB seven Public Repository<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;url&gt;</span>https://artifacts.cibseven.org/repository/public/<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repositories&gt;</span>
+</span></span></code></pre></div><h1 id="migration-to-cib-seven-11">Migration to CIB seven 1.1</h1>
+
+<div class="note bg-info docs-info">
+  <h3>Don&#39;t panic and use OpenRewrite!</h3>
+  <p>There are renamings done in this version. It is too boring to do it manually. Just use <a href="https://github.com/cibseven/cibseven-migration/">Migration Script</a> we made for you!</p>
+</div>
+
+<p>CIB seven 1.1 has set of changes for versions, packages and artifacts naming. So you will need to update:</p>
 <ul>
-<li>Maven <strong>Dependencies</strong>, e.g., <code>activiti.jar</code> changed to <code>camunda-engine.jar</code>.</li>
-<li><strong>Package Names</strong> changed from <code>org.activiti</code> to <code>org.camunda.bpm</code> for all modules (including engine, CDI and spring).</li>
-<li>The <strong>configuration file</strong> changed from <code>activiti.cfg.xml</code> to <code>camunda.cfg.xml</code>.</li>
-<li>Several (internal) classes are renamed - see the lists below.</li>
+<li>Versions used (in <code>pom.xml</code> files): <code>7.22.0</code> -&gt; <code>1.1.0</code>.</li>
+<li>Artifacts names are changes from <code>camunda-*</code> to <code>cibseven-*</code> (for example <code>camunda-bpm-spring-boot-starter-webapp</code> is called now <code>cibseven-bpm-spring-boot-starter-webapp</code>).</li>
+<li>Imports used in custom code should now use <code>org.cibseven.foo.bar</code> instead of <code>org.camunda.foo.bar</code> packages.</li>
 </ul>
-<p>There are some things which have not changed yet:</p>
-<ul>
-<li>Database schema and table names. Note that we based our fork on Activiti 5.11 and the tables existent in that version.</li>
-<li>The <code>activiti:</code> <a href="/manual/1.1/reference/bpmn20/custom-extensions/">Custom Extensions</a> are kept.
-A CIB seven namespace will be introduced soon but backwards compatibility will be ensured.</li>
-</ul>
-<p>We based our fork on the database schema of Activiti 5.11. So please <a href="http://www.activiti.org/userguide/index.html#databaseUpgrade">update</a> your project to this database using the update scripts provided by Activiti. If you are using a newer version, best ask for assistance in the <a href="https://github.com/orgs/cibseven/discussions">Discussions</a>.</p>
-<h1 id="exchange-library">Exchange Library</h1>
-<p>Exchange the existing library (here shown as Maven dependency)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.activiti<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>activiti<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>5.11<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><p>to</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.camunda.bpm<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>camunda-engine<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>7.0.0-Final<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><p>Make sure that you have the Camunda Maven Repository set correctly:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repository&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;id&gt;</span>camunda-bpm-nexus<span class="nt">&lt;/id&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>camunda Maven Repository<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url&gt;</span>https://artifacts.camunda.com/artifactory/public/<span class="nt">&lt;/url&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/repository&gt;</span>
-</span></span></code></pre></div><h1 id="adjust-package-names">Adjust Package Names</h1>
-<p>Just do an <strong>Organize Imports</strong> in your IDE, that should do the trick as the API class names have not changed.
-Your IDE should figure out the rest for you.
-For Eclipse this can be done by clicking on the project and hitting <code>Ctrl-Shift-O</code>.</p>
-<h2 id="which-activiti-class-names-have-changed">Which Activiti Class Names Have Changed?</h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>component</th>
-      <th>Activiti class name</th>
-      <th>Camunda class name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>engine</td>
-      <td>ActivitiException</td>
-      <td>ProcessEngineException</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitiClassLoadingException</td>
-      <td>ClassLoadingException</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitiOptimisticLockingException</td>
-      <td>OptimisticLockingException</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitiTaskAlreadyClaimedException</td>
-      <td>TaskAlreadyClaimedException</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitiWrongDbException</td>
-      <td>WrongDbException</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitRule</td>
-      <td>ProcessEngineRule</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitiTestCase</td>
-      <td>ProcessEngineTestCase</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>PluggableActivitiTestCase</td>
-      <td>PluggableProcessEngineTestCase</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>AbstractActivitiTestCase</td>
-      <td>AbstractProcessEngineTestCase</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ResourceActivitiTestCase</td>
-      <td>ResourceProcessEngineTestCase</td>
-    </tr>
-    <tr>
-      <td>spring</td>
-      <td>ActivitiComponent</td>
-      <td>ProcessEngineComponent</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>SpringActivitiTestCase</td>
-      <td>SpringProcessEngineTestCase</td>
-    </tr>
-    <tr>
-      <td>cdi</td>
-      <td>ActivitiCdiException</td>
-      <td>ProcessEngineCdiException</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>ActivitiExtension</td>
-      <td>ProcessEngineExtension</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>CdiActivitiTestCase</td>
-      <td>CdiProcessEngineTestCase</td>
-    </tr>
-  </tbody>
-</table>
-<p>That&rsquo;s it - now your application should run again.</p>
+<p>All these changes can be done, using our Migration Script, based on OpenRewrite maven plugin (see <a href="https://github.com/cibseven/cibseven-migration/">GitHub</a> for details).</p>
 
     </div>
   </div>
@@ -3284,7 +3157,12 @@ For Eclipse this can be done by clicking on the project and hitting <code>Ctrl-S
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#which-activiti-class-names-have-changed">Which Activiti Class Names Have Changed?</a></li>
+    <li>
+      <ul>
+        <li><a href="#change-version-to-7220-cibseven">Change Version to 7.22.0-cibseven</a></li>
+        <li><a href="#setup-cib-seven-maven-repository">Setup CIB seven Maven Repository</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">
@@ -3318,7 +3196,7 @@ For Eclipse this can be done by clicking on the project and hitting <code>Ctrl-S
 
   
 
-  <script type="text/javascript" src="/manual/1.1/js/docs.f2c4b7c6c0f26856db0d2a99f49b8f70f5c29f4fac61b696eee23a7f5b23fa62.js" integrity="sha256-8sS3xsDyaFbbDSqZ9JuPcPXCn0&#43;sYbaW7uI6f1sj&#43;mI="></script>
+  <script type="text/javascript" src="/manual/1.1/js/docs.534b5c37efccaf6c5359102f6d3ff8d7889b80ee21ca931a5f31e1e4077906c5.js" integrity="sha256-U0tcN&#43;/Mr2xTWRAvbT/414ibgO4hypMaXzHh5Ad5BsU="></script>
 </body>
 </html>
 

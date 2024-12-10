@@ -6362,73 +6362,74 @@ body {
 .site-menu > .version {
   height: 32px;
   line-height: 32px;
-  font-size: smaller;
+  margin-left: 16px;
+  border-bottom: 1px dotted gray;
 }
-/* line 10, styles\_menu.less */
+/* line 11, styles\_menu.less */
 .site-menu > .version > span {
   float: left;
 }
-/* line 14, styles\_menu.less */
+/* line 15, styles\_menu.less */
 .site-menu > .version .name {
   padding-left: 10px;
   font-weight: 700;
   text-align: right;
   padding-right: 0.3em;
 }
-/* line 19, styles\_menu.less */
+/* line 20, styles\_menu.less */
 .site-menu > .version .name:after {
   content: ':';
 }
-/* line 24, styles\_menu.less */
+/* line 25, styles\_menu.less */
 .site-menu > .version .number {
   text-decoration: underline;
   text-align: left;
   cursor: pointer;
 }
-/* line 31, styles\_menu.less */
+/* line 32, styles\_menu.less */
 .site-menu ul,
 .site-menu li {
   margin: 0;
   padding: 0;
   display: block;
 }
-/* line 38, styles\_menu.less */
+/* line 39, styles\_menu.less */
 .site-menu ul {
   list-style: none;
 }
-/* line 42, styles\_menu.less */
+/* line 43, styles\_menu.less */
 .site-menu li {
   position: relative;
 }
-/* line 44, styles\_menu.less */
+/* line 45, styles\_menu.less */
 .site-menu li.active > a {
   color: #222222;
 }
-/* line 49, styles\_menu.less */
+/* line 50, styles\_menu.less */
 .site-menu ul li {
   margin-bottom: 6px;
 }
-/* line 52, styles\_menu.less */
+/* line 53, styles\_menu.less */
 .site-menu ul li:last-of-type {
   margin-bottom: 0;
 }
-/* line 57, styles\_menu.less */
+/* line 58, styles\_menu.less */
 .site-menu ul > .open > ul {
   margin-top: 6px;
 }
-/* line 61, styles\_menu.less */
+/* line 62, styles\_menu.less */
 .site-menu .site-menu-items > li > a,
 .site-menu .meta {
   padding: 6px 6px 6px 12px;
 }
-/* line 66, styles\_menu.less */
+/* line 67, styles\_menu.less */
 .site-menu .site-menu-items {
   position: relative;
   overflow: auto;
   height: calc(100% - (32px + 0px));
   padding: 6px 0;
 }
-/* line 72, styles\_menu.less */
+/* line 73, styles\_menu.less */
 .site-menu .site-menu-items li {
   list-style: none;
   display: block;
@@ -6449,67 +6450,67 @@ body {
 .site-menu .site-menu-items li.active > a {
   color: #000;
 }
-/* line 74, styles\_menu.less */
+/* line 75, styles\_menu.less */
 .site-menu .site-menu-items li > a {
   margin-left: 2px;
   font-weight: bold;
   border-left: 3px solid transparent;
   color: #555555;
 }
-/* line 80, styles\_menu.less */
+/* line 81, styles\_menu.less */
 .site-menu .site-menu-items li > a:hover {
   border-left-color: #BC1915;
   color: #000;
 }
-/* line 84, styles\_menu.less */
+/* line 85, styles\_menu.less */
 .site-menu .site-menu-items li.active > a {
   border-left-color: #A7A9AC;
   color: #000;
 }
-/* line 92, styles\_menu.less */
+/* line 93, styles\_menu.less */
 .site-menu .site-menu-items > li > .submenu-toggle {
   margin-top: 3px;
 }
-/* line 96, styles\_menu.less */
+/* line 97, styles\_menu.less */
 .site-menu .site-menu-items > li > a {
   font-size: 18px;
   padding: 3px 15px 3px 21px;
 }
-/* line 102, styles\_menu.less */
+/* line 103, styles\_menu.less */
 .site-menu .site-menu-items > li li a {
   padding-left: calc(15px + ((30px * 0.5)));
 }
-/* line 105, styles\_menu.less */
+/* line 106, styles\_menu.less */
 .site-menu .site-menu-items > li li .submenu-toggle {
   margin-right: calc(-1 * (15px + ((30px * 0.5))));
 }
-/* line 110, styles\_menu.less */
+/* line 111, styles\_menu.less */
 .site-menu .site-menu-items > li li li a {
   padding-left: calc(22px + ((30px * 0.5)));
 }
-/* line 113, styles\_menu.less */
+/* line 114, styles\_menu.less */
 .site-menu .site-menu-items > li li li .submenu-toggle {
   margin-right: calc(-1 * (22px + ((30px * 0.5))));
 }
-/* line 118, styles\_menu.less */
+/* line 119, styles\_menu.less */
 .site-menu .site-menu-items > li li li li a {
   padding-left: calc(30px + ((30px * 0.5)));
 }
-/* line 121, styles\_menu.less */
+/* line 122, styles\_menu.less */
 .site-menu .site-menu-items > li li li li .submenu-toggle {
   margin-right: calc(-1 * (30px + ((30px * 0.5))));
 }
-/* line 129, styles\_menu.less */
+/* line 130, styles\_menu.less */
 .site-menu .site-menu-items ul {
   max-height: 0;
   transition: max-height 0.218s linear;
   overflow: hidden;
 }
-/* line 135, styles\_menu.less */
+/* line 136, styles\_menu.less */
 .site-menu .site-menu-items li.open > ul {
   max-height: 100%;
 }
-/* line 140, styles\_menu.less */
+/* line 141, styles\_menu.less */
 .site-menu .submenu-toggle {
   cursor: pointer;
   position: absolute;
@@ -6520,7 +6521,7 @@ body {
   width: 12px;
   color: #b3b3b3;
 }
-/* line 152, styles\_menu.less */
+/* line 153, styles\_menu.less */
 .site-menu .submenu-toggle:before {
   font-family: 'Glyphicons Halflings';
   font-style: normal;
@@ -6532,27 +6533,27 @@ body {
   content: '\e250';
   transition: transform 0.218s ease;
 }
-/* line 166, styles\_menu.less */
+/* line 167, styles\_menu.less */
 .site-menu .submenu-toggle:hover,
 .site-menu .submenu-toggle:focus {
   outline: none;
   color: transparent;
 }
-/* line 173, styles\_menu.less */
+/* line 174, styles\_menu.less */
 .site-menu .open > .submenu-toggle:before {
   transform: rotateZ(90deg);
 }
-/* line 177, styles\_menu.less */
+/* line 178, styles\_menu.less */
 .site-menu .site-menu-items > li > .submenu-toggle {
   margin-right: -20px;
 }
-/* line 181, styles\_menu.less */
+/* line 182, styles\_menu.less */
 .site-menu .meta {
   background-color: #BC1915;
   color: #fff;
   z-index: 50;
 }
-/* line 185, styles\_menu.less */
+/* line 186, styles\_menu.less */
 .site-menu .meta > .header {
   border-bottom: 1px solid #8d8f93;
   cursor: pointer;
@@ -6562,47 +6563,47 @@ body {
   text-transform: uppercase;
   transition: background-color 0.218s ease;
 }
-/* line 193, styles\_menu.less */
+/* line 194, styles\_menu.less */
 .site-menu .meta > .header:hover {
   background-color: #E11E19;
 }
-/* line 197, styles\_menu.less */
+/* line 198, styles\_menu.less */
 .site-menu .meta .toggle {
   background-color: #BC1915;
   line-height: 30px;
   text-align: center;
 }
-/* line 201, styles\_menu.less */
+/* line 202, styles\_menu.less */
 .site-menu .meta .toggle:before {
   margin-left: -2px;
 }
-/* line 205, styles\_menu.less */
+/* line 206, styles\_menu.less */
 .site-menu .meta > .content {
   margin-left: -15px;
 }
-/* line 209, styles\_menu.less */
+/* line 210, styles\_menu.less */
 .site-menu .meta label,
 .site-menu .meta select {
   float: left;
   width: 50%;
 }
-/* line 214, styles\_menu.less */
+/* line 215, styles\_menu.less */
 .site-menu .meta label {
   padding-right: 0.3em;
   text-align: right;
 }
-/* line 218, styles\_menu.less */
+/* line 219, styles\_menu.less */
 .site-menu .meta select {
   color: #555555;
 }
 @media (max-width: 769px) {
-  /* line 225, styles\_menu.less */
+  /* line 226, styles\_menu.less */
   .site-menu {
     background-color: rgba(255, 255, 255, 0.95);
   }
 }
 @media (min-width: 770px) {
-  /* line 231, styles\_menu.less */
+  /* line 232, styles\_menu.less */
   .site-menu-toggle {
     display: none;
   }
@@ -6929,6 +6930,31 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
     padding-right: 0;
   }
 }
+/* line 196, styles\_navbar.less */
+#versions {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+/* line 206, styles\_navbar.less */
+#versions a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* line 213, styles\_navbar.less */
+#versions a:hover {
+  background-color: #ddd;
+}
+/* line 215, styles\_navbar.less */
+#versions .show {
+  display: block;
+}
 /* line 1, styles\_search.less */
 .search-field {
   position: relative;
@@ -7104,218 +7130,6 @@ body.search-open .search-underlay {
 /* line 26, styles\_sticky-footer.less */
 .page-footer > .row:hover {
   max-height: 80px;
-}
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-/* line 7, styles\_prism.less */
-code[class*="language-"],
-pre[class*="language-"] {
-  font-family: monospace;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  line-height: 19px;
-  font-size: 13px;
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-@media print {
-  /* line 48, styles\_prism.less */
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none;
-  }
-}
-/* Code blocks */
-/* line 55, styles\_prism.less */
-pre[class*="language-"] {
-  padding: 1em;
-  margin: .5em 0;
-  overflow: auto;
-}
-/* line 61, styles\_prism.less */
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: #eeeeee;
-}
-/* Inline code */
-/* line 67, styles\_prism.less */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-}
-/* line 72, styles\_prism.less */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: #777777;
-}
-/* line 79, styles\_prism.less */
-.token.punctuation {
-  color: #555555;
-}
-/* line 83, styles\_prism.less */
-.namespace {
-  opacity: .7;
-}
-/* line 87, styles\_prism.less */
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  color: #BC1915;
-}
-/* line 97, styles\_prism.less */
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  color: #893735;
-}
-/* line 106, styles\_prism.less */
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  color: #333333;
-}
-/* line 114, styles\_prism.less */
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  color: #8f9092;
-}
-/* line 120, styles\_prism.less */
-.token.function {
-  color: #6a986a;
-}
-/* line 124, styles\_prism.less */
-.token.regex,
-.token.important,
-.token.variable {
-  color: #782624;
-}
-/* line 130, styles\_prism.less */
-.token.important,
-.token.bold {
-  font-weight: bold;
-}
-/* line 134, styles\_prism.less */
-.token.italic {
-  font-style: italic;
-}
-/* line 138, styles\_prism.less */
-.token.entity {
-  cursor: help;
-}
-/*
-  Highlight line plugin
- */
-/* line 146, styles\_prism.less */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-/* line 151, styles\_prism.less */
-.line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  /* Same as .prism’s padding-top */
-  background: rgba(153, 122, 102, 0.08);
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-/* line 165, styles\_prism.less */
-.line-highlight:hover {
-  background: rgba(153, 122, 102, 0.2);
-}
-/* line 170, styles\_prism.less */
-.line-highlight:before,
-.line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: rgba(153, 122, 102, 0.4);
-  color: #f5f2f0;
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-/* line 188, styles\_prism.less */
-.line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}
-/*
-  Line numbers plugin
- */
-/* line 197, styles\_prism.less */
-pre.line-numbers {
-  position: relative;
-  padding-left: 3.8em;
-  counter-reset: linenumber;
-}
-/* line 203, styles\_prism.less */
-pre.line-numbers > code {
-  position: relative;
-}
-/* line 207, styles\_prism.less */
-.line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  font-size: 100%;
-  left: -3.8em;
-  width: 3em;
-  /* works for line-numbers below 1000 lines */
-  letter-spacing: -1px;
-  border-right: 1px solid #999;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-/* line 224, styles\_prism.less */
-.line-numbers-rows > span {
-  pointer-events: none;
-  display: block;
-  counter-increment: linenumber;
-}
-/* line 230, styles\_prism.less */
-.line-numbers-rows > span:before {
-  content: counter(linenumber);
-  color: #999;
-  display: block;
-  padding-right: 0.8em;
-  text-align: right;
 }
 /* line 2, styles\_content.less */
 summary {
@@ -7734,6 +7548,27 @@ code {
 /* line 391, styles\_content.less */
 .table-cmmn-events .glyphicon-ok {
   color: #f0ad4e;
+}
+/* line 396, styles\_content.less */
+.highlight {
+  position: relative;
+}
+/* line 400, styles\_content.less */
+.highlight .copybtn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: #aaa;
+  filter: grayscale(100%);
+  transition: transform .4s;
+}
+/* line 412, styles\_content.less */
+.copybtn:hover {
+  color: black;
+  transform: scale(1.2);
 }
 /* line 1, styles\_page-toc.less */
 .page-toc {
