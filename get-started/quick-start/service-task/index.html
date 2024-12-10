@@ -391,28 +391,20 @@ Your pom.xml file of your project should look like this:</p>
 </span></span><span class="line"><span class="cl">	<span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>de.cibseven.getstarted<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>org.cibseven.getstarted<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;artifactId&gt;</span>charge-card-worker<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;properties&gt;</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&lt;external-task-client.version&gt;</span>7.22.0-cibseven<span class="nt">&lt;/external-task-client.version&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;external-task-client.version&gt;</span>1.1.0<span class="nt">&lt;/external-task-client.version&gt;</span>
 </span></span><span class="line"><span class="cl">		<span class="nt">&lt;maven.compiler.source&gt;</span>11<span class="nt">&lt;/maven.compiler.source&gt;</span>
 </span></span><span class="line"><span class="cl">		<span class="nt">&lt;maven.compiler.target&gt;</span>11<span class="nt">&lt;/maven.compiler.target&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;repositories&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;repository&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;id&gt;</span>mvn-cibseven-public<span class="nt">&lt;/id&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;name&gt;</span>CIB seven Public Repository<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;url&gt;</span>https://artifacts.cibseven.org/repository/public<span class="nt">&lt;/url&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/repository&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repositories&gt;</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;dependencies&gt;</span>
 </span></span><span class="line"><span class="cl">		<span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">			<span class="nt">&lt;groupId&gt;</span>org.camunda.bpm<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">			<span class="nt">&lt;artifactId&gt;</span>camunda-external-task-client<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&lt;artifactId&gt;</span>cibseven-external-task-client<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">			<span class="nt">&lt;version&gt;</span>${external-task-client.version}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">		<span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">		<span class="nt">&lt;dependency&gt;</span>
@@ -431,14 +423,14 @@ Your pom.xml file of your project should look like this:</p>
 <p>Next, we will create a new ExternalTaskClient which subscribes to the <code>charge-card</code> topic.</p>
 <p>When the process engine encounters a service task that is configured to be externally handled, it creates an external task instance on which our handler will react.
 We are using <a href="/manual/latest/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks">Long Polling</a> in the ExternalTaskClient to make the communication more efficient.</p>
-<p>Next, you need to create a package, e.g., <em>de.cibseven.getstarted.chargecard</em> and add a Java class, e.g. <em>ChargeCardWorker</em>, to it.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">de.cibseven.getstarted.chargecard</span><span class="p">;</span><span class="w">
+<p>Next, you need to create a package, e.g., <em>org.cibseven.getstarted.chargecard</em> and add a Java class, e.g. <em>ChargeCardWorker</em>, to it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.chargecard</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.logging.Logger</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.awt.Desktop</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URI</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.camunda.bpm.client.ExternalTaskClient</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.bpm.client.ExternalTaskClient</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ChargeCardWorker</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">LOGGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">ChargeCardWorker</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w">
@@ -462,7 +454,7 @@ We are using <a href="/manual/latest/user-guide/process-engine/external-tasks/#l
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&#34;Charging credit card with an amount of &#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;&#39;€ for the item &#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;&#39;...&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">Desktop</span><span class="p">.</span><span class="na">getDesktop</span><span class="p">().</span><span class="na">browse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">URI</span><span class="p">(</span><span class="s">&#34;https://docs.cibseven.de/get-started/quick-start/complete&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">Desktop</span><span class="p">.</span><span class="na">getDesktop</span><span class="p">().</span><span class="na">browse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">URI</span><span class="p">(</span><span class="s">&#34;https://docs.cibseven.org/get-started/quick-start/complete&#34;</span><span class="p">));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">}</span><span class="w">
@@ -565,7 +557,7 @@ We use <a href="https://docs.camunda.org/manual/latest/user-guide/process-engine
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Charging credit card with an amount of </span><span class="si">${</span><span class="nx">amount</span><span class="si">}</span><span class="sb">€ for the item &#39;</span><span class="si">${</span><span class="nx">item</span><span class="si">}</span><span class="sb">&#39;...`</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">open</span><span class="p">(</span><span class="s1">&#39;https://docs.camunda.org/get-started/quick-start/success&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">open</span><span class="p">(</span><span class="s1">&#39;https://docs.cibseven.org/get-started/quick-start/success&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">// Complete the task
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">await</span> <span class="nx">taskService</span><span class="p">.</span><span class="nx">complete</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>

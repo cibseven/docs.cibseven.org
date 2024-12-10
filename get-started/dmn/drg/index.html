@@ -345,7 +345,7 @@
 
 <h1 id="evaluate-the-decision">Evaluate the Decision</h1>
 <p>To evaluate the <em>Beverages</em> decision, we extend the existing method in your Application class and add a new variable &ldquo;guestsWithChildren&rdquo;.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">de.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ProcessApplication</span><span class="p">(</span><span class="s">&#34;Dinner App DMN&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DinnerApplication</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServletProcessApplication</span><span class="w">
@@ -409,24 +409,24 @@
 <p>Build the web application with Maven and replace the <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> in the <code>$CIBSEVEN_HOME/server/apache-tomcat/webapps</code> folder.</p>
 <p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
 <pre class="console">
-INFO org.camunda.commons.logging.BaseLogger.logInfo
-ENGINE-07015 Detected @ProcessApplication class 'de.cibseven.getstarted.dish.DishApplication'
-INFO org.camunda.commons.logging.BaseLogger.logInfo
+INFO org.cibseven.commons.logging.BaseLogger.logInfo
+ENGINE-07015 Detected @ProcessApplication class 'org.cibseven.getstarted.dish.DishApplication'
+INFO org.cibseven.commons.logging.BaseLogger.logInfo
 ENGINE-08024 Found processes.xml file at ../webapps/dinner-dmn-0.1.0-SNAPSHOT/WEB-INF/classes/META-INF/processes.xml
-INFO org.camunda.commons.logging.BaseLogger.logInfo
+INFO org.cibseven.commons.logging.BaseLogger.logInfo
 ENGINE-08023 Deployment summary for process archive 'dinner-dmn':
 
         dinnerDecisions.dmn
 
-INFO de.cibseven.getstarted.dmn.DinnerApplication.evaluateDecisionTable 
+INFO org.cibseven.getstarted.dmn.DinnerApplication.evaluateDecisionTable 
 
 Desired dish: Stew
 
-INFO de.cibeven.getstarted.dmn.DinnerApplication.evaluateDecisionTable 
+INFO org.cibeven.getstarted.dmn.DinnerApplication.evaluateDecisionTable 
 
 Desired beverages: [Guiness, Water]
 
-INFO org.camunda.commons.logging.BaseLogger.logInfo
+INFO org.cibseven.commons.logging.BaseLogger.logInfo
 ENGINE-08050 Process application Dinner App DMN successfully deployed
 </pre>
 <h1 id="verify-the-evaluation-with-cockpit">Verify the Evaluation with Cockpit</h1>
