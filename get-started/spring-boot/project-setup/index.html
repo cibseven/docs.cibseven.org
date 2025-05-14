@@ -270,17 +270,24 @@
 </ol>
 <p>In the following sections, we go through this process step by step.</p>
 <h2 id="create-a-new-maven-project">Create a new Maven Project</h2>
-<p>First, we set up a new Apache Maven based project. Let&rsquo;s call it <em>loan-approval-spring-boot</em>. The screenshot below illustrates the settings we choose in Eclipse.</p>
+<p>First, we set up a new Apache Maven based project.</p>
 <figure class="image">
   <span><img
-      src="../img/eclipse-new-project.png"
+      src="../img/eclipse-new-project-1.png"
+       /></span>
+</figure>
+
+<p>Let&rsquo;s call it <em>loan-approval-spring-boot</em>. The screenshot below illustrates the settings we choose in Eclipse.</p>
+<figure class="image">
+  <span><img
+      src="../img/eclipse-new-project-2.png"
        /></span>
 </figure>
 
 <p>When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the <em>Project Explorer</em> view.</p>
 <h2 id="add-cib-seven--spring-boot-dependencies">Add CIB seven &amp; Spring Boot Dependencies</h2>
-<p>The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the <code>pom.xml</code> file of the project.
-We add the Spring Boot BOM in the &ldquo;dependency management&rdquo; section and the CIB seven Spring Boot Starter for Webapps, which will automatically include the CIB seven engine and webapps in the app.
+<p>The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the <code>pom.xml</code> file of the project.</p>
+<p>We add the Spring Boot BOM in the dependencyManagement section and the CIB seven Spring Boot Starter for Webapps, which will automatically include the CIB seven engine and webapps in the app.
 We also use <code>spring-boot-maven-plugin</code>, which does all the magic for packaging Spring Boot application content together.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
@@ -289,8 +296,8 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;properties&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cibseven.version&gt;</span>1.1.0<span class="nt">&lt;/cibseven.version&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;spring-boot.version&gt;</span>3.3.6<span class="nt">&lt;/spring-boot.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cibseven.version&gt;</span>2.0.0<span class="nt">&lt;/cibseven.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;spring-boot.version&gt;</span>3.4.4<span class="nt">&lt;/spring-boot.version&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;maven.compiler.release&gt;</span>17<span class="nt">&lt;/maven.compiler.release&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -310,6 +317,11 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-webapp<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-rest<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
@@ -350,9 +362,10 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
 </span></span></code></pre></div><h2 id="add-main-class-to-our-spring-boot-application">Add Main Class to our Spring Boot Application</h2>
-<p>Next, we add an application class with a main method that will be the entry point for launching the Spring Boot application. The class has the annotation <code>@SpringBootApplication</code> on it,
-which implicitly adds several convenient features (autoconfiguration, component scan, etc. - see Spring Boot docs).
-The class is added in the <code>src/main/java</code> folder in the <code>org.cibseven.getstarted.loanapproval</code> package.</p>
+<p>Next, we create an application class in the org.cibseven.getstarted.loadapproval package under the src/main/java directory.
+This class contains a main method that serves as the entry point for launching the Spring Boot application.
+It is annotated with @SpringBootApplication the annotation <code>@SpringBootApplication</code> on it,
+which implicitly adds several convenient features (autoconfiguration, component scan, etc. - see Spring Boot docs).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.loanapproval</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span><span class="w">
@@ -374,8 +387,12 @@ When started, it will use an in-memory H2 database for CIB seven engine needs.</
 <p>You can run the application by right-clicking on the <code>WebappExampleProcessApplication</code> class and selecting <code>Run as / Java application</code>.
 Wait until you see a similar line in the console:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Started WebappExampleProcessApplication in 10.584 seconds
-</span></span></code></pre></div><p>Then go to <a href="http://localhost:8080/">http://localhost:8080/</a> in your browser and enjoy the CIB seven webapps.</p>
-<p>Another way to run the app is to simply run the JAR-file with a <code>java -jar</code> command.</p>
+</span></span></code></pre></div><p>Another way to run the app is to simply run the JAR-file with a <code>java -jar</code> command.</p>
+<p>When you navigate to <a href="http://localhost:8080/">http://localhost:8080/</a>, you will be redirected to the CIB Seven web application.
+This application requires configuration before it can function properly;
+the necessary settings will be applied in the next step.
+In the meantime, the legacy Camunda web application remains accessible at <a href="http://localhost:8080/camunda">http://localhost:8080/camunda</a>,
+where you will be prompted to create an admin user.
 
 <div class="panel-group gs-download-step-panel" id="gitStep-1">
   <div class="panel panel-success">
@@ -405,7 +422,7 @@ Wait until you see a similar line in the console:</p>
     </div>
   </div>
 </div>
-
+</p>
 
     </div>
   </div>

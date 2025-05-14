@@ -294,6 +294,12 @@ to catch the &ldquo;post-deploy&rdquo; event to start the process instance at th
 <p>The next step consists of starting a process instance from our process application class. For this, we will process <code>PostDeployEvent</code>, which is fired as soon as
 our process application has been deployed to the CIB seven engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.bpm.engine.RuntimeService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.bpm.spring.boot.starter.annotation.EnableProcessApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.bpm.spring.boot.starter.event.PostDeployEvent</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Autowired</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">

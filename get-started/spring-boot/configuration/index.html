@@ -270,16 +270,44 @@ The full list of supported configuration parameters can be found <a href="/manua
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">firstName</span><span class="p">:</span><span class="w"> </span><span class="l">Demo</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">filter</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="l">All tasks</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">auth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">authentication</span><span class="p">:</span><span class="w"> </span><span class="l">composite</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">import</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">optional:classpath:cibseven-webclient.properties</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">basePath</span><span class="p">:</span><span class="w"> </span><span class="l">/webapp/services/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Engine rest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">engineRest</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080</span><span class="w">
 </span></span></span></code></pre></div><p>This configuration will result in the following:</p>
 <ol>
 <li>Admin user &ldquo;demo&rdquo; with the provided password and first name will be created.</li>
 <li>Default filter with the name &ldquo;All tasks&rdquo; will be created for Tasklist.</li>
+<li>Composite authentication will be enabled.</li>
+<li>Properties from the <code>cibseven-webclient.properties</code> configuration file will be imported.</li>
+<li>The base path for services will be defined so that Spring Boot can correctly map the endpoints.</li>
+<li>The Engine REST URL will be set to <code>http://localhost:8080</code></li>
 </ol>
+<p>Additionaly, let&rsquo;s create a <code>cibseven-webclient.properties</code> file in the same directory as <code>application.yaml</code> with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># do not use this jwtSecret value in production</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">cibseven.webclient.authentication.jwtSecret=RtURHZ7SQYfLoX902wcjlvduW2qe9g0bjMUczmffjiTjzU9phbv3mK54zHMqeGK6cqgoEBTIUE6RqwvemSqbpD40qUPXVRElvDHGhn4OAEfjeEP2ANah8GJejSA08E820mForcQHBmediqg2DzIrxnDXyf2</span><span class="w">
+</span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication.</p>
 <h2 id="build-and-run">Build and Run</h2>
-<p>Now you can rebuild and rerun the application again. Don&rsquo;t forget to call <code>mvn clean</code> before calling <code>mvn install</code> again.
-Now when you open <a href="http://localhost:8080/">http://localhost:8080/</a> in your browser, it does not ask you for admin user creation, but asks for login and password.
-You can use &ldquo;demo/demo&rdquo;, which we configured before, to access the CIB seven web applications.</p>
-<p>After you logged in, you can go to Tasklist and see that a filter named &ldquo;All tasks&rdquo; was created, though it does not contain any tasks so far.</p>
+<p>Now you can rebuild and rerun the application.
+Make sure to run
+<code>mvn clean</code> before running <code>mvn install</code> again.</p>
+<p>When you open <a href="http://localhost:8080/">http://localhost:8080/</a> in your browser, you will no longer be prompted to create an admin user.
+Instead, you&rsquo;ll be asked to log in with a username and password.</p>
+<p>You can use &ldquo;demo/demo&rdquo; — the credentials configured earlier — to access the CIB seven web applications.
+After you logged in, you can go to Tasklist and see that a filter named &ldquo;All tasks&rdquo; was created, though it does not contain any tasks so far.</p>
 
 <div class="panel-group gs-download-step-panel" id="gitStep-2">
   <div class="panel panel-success">
