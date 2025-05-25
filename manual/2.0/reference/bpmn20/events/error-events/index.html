@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/2.0/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3145,7 +3164,7 @@
 </span></span></code></pre></div><p>The exception type should only be used for business exceptions and not for technical exceptions in the process.</p>
 <p>An error event handler references the same error element to declare that it catches the error.</p>
 <p>It is also possible to define an error message with the <a href="/manual/2.0/reference/bpmn20/custom-extensions/extension-attributes/#errormessage"><code>camunda:errorMessage</code></a> extension for an error element to give further information about the error.
-The referencing error event definition must specify <a href="/manual/2.0/reference/bpmn20/custom-extensions/extension-attributes/#errormessagevariable"><code>camunda:errorMessageVariable</code></a> to receive the error message. The error message can also contain <a href="/manual/2.0/user-guide/process-engine/expression-language/">expressions</a>.</p>
+The referencing error event definition must specify <a href="/manual/2.0/reference/bpmn20/custom-extensions/extension-attributes/#errormessagevariable"><code>camunda:errorMessageVariable</code></a> to receive the error message. The error message can also contain <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/">expressions</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;error</span> <span class="na">id=</span><span class="s">&#34;myError&#34;</span> <span class="na">errorCode=</span><span class="s">&#34;ERROR-OCCURED&#34;</span> <span class="na">name=</span><span class="s">&#34;ERROR-OCCURED&#34;</span> 
 </span></span><span class="line"><span class="cl">      <span class="na">camunda:errorMessage=</span><span class="s">&#34;Something went wrong: ${errorCause}&#34;</span> <span class="nt">/&gt;</span>

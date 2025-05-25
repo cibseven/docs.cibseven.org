@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3129,10 +3148,11 @@ This script performs the following actions:</p>
 </ul>
 <h4 id="migration-to-cib-seven-webclient">Migration to CIB seven webclient</h4>
 <p>Among other things, CIB Seven 2.0.0 includes a new web client: CIB seven webclient (however, the option of using the old Camunda web application remains available).
+One of the features of the CIB seven webclient is a more secure connection to the CIB seven BPM engine, compared to the Camunda web application.
 The CIB Seven webclient uses JWT-based authentication and requires a special JWT secret, which must be stored securely and be accessible to both, the engine REST and the webclient middleware.
 So, for migration to CIB seven webclient, you need to create file <code>cibseven-webclient.properties</code> on the classpath, ideally for both, the engine-REST and the webclient.
 This configuration file should contain a jwtSecret property with the same value:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">   </span><span class="l">cibseven.webclient.authentication.jwtSecret=...</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">   </span><span class="l">cibseven.webclient.authentication.jwtSecret=...</span><span class="w">
 </span></span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
 <h2 id="migration-to-cib-seven-11">Migration to CIB seven 1.1</h2>
 

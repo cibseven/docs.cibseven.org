@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/2.0/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3181,6 +3200,12 @@
 <li>Session sharing can be enabled in your application server such that the application server instances share session state. This would allow users to connect to multiple instances in the cluster without being asked to login multiple times.</li>
 </ol>
 <p>If neither of the above approaches are implemented in a cluster setup, connections to multiple nodes - intentionally or via a load-balancing solution - will result in multiple login requests.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Consistent hashing</h3>
+  <p>If a cookie based consistent hashing is used, make sure that the cookie name is not JSESSIONID which is used by CIB seven.</p>
+</div>
+
 <h2 id="the-job-executor-in-a-clustered-environment">The Job Executor in a Clustered Environment</h2>
 <p>The process engine <a href="/manual/2.0/user-guide/process-engine/the-job-executor/">job executor</a> is also clustered and runs on each node. This way, there is no single point of failure as far as the process engine is concerned. The job executor can run in both <a href="/manual/2.0/user-guide/process-engine/the-job-executor/#cluster-setups">homogeneous and heterogeneous clusters</a>.</p>
 

@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/2.0/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3178,7 +3197,7 @@ custom frontend module as described in <a href="/manual/2.0/webapps/cockpit/exte
 </span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/cockpit</code> folder in the CIB seven webapp .war file.</p>
 <p>You can find a complete example about how to use <code>customScripts</code> to develop a Cockpit Plugin in the <a href="https://github.com/cibseven/cibseven-bpm-examples/tree/master/cockpit/cockpit-cats">CIB seven examples repository</a>.</p>
 <h2 id="legacy-custom-scripts">Legacy Custom Scripts</h2>
-<p>Custom Scripts created for CIB seven.13 or earlier can be included using the <code>requireJsConfig</code> property to the <code>app/cockpit/scripts/config.js</code>. You can include these custom scripts using the custom <a href="https://requirejs.org/docs/api.html#config">requireJS configuration</a>.</p>
+<p>Custom Scripts created for Camunda 7.13 or earlier can be included using the <code>requireJsConfig</code> property to the <code>app/cockpit/scripts/config.js</code>. You can include these custom scripts using the custom <a href="https://requirejs.org/docs/api.html#config">requireJS configuration</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">requireJsConfig</span><span class="o">:</span> <span class="p">{</span>
@@ -3240,6 +3259,14 @@ in the <code>default</code> property in the configuration.</p>
 <p>Moreover, the checkbox to enable/disable the option is by default not hidden in Cockpit. You can set this behaviour by configuring the property
 <code>hidden</code> (<code>true | false</code>) in the configuration. If the <code>hidden</code> value is configured to be false, then the checkbox
 will be hidden everywhere in Cockpit.</p>
+<h1 id="the-cascade-flag">The <code>cascade</code> flag</h1>
+<p>You can also configure the default value for the <code>cascade</code> flag by adding a <code>cascade</code> property in <code>app/cockpit/scripts/config.js</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cascade</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>If the value of this property is <code>true</code>, the flag&rsquo;s checkbox in cockpit will be selected by default. When the property is not present, the default value is <code>ƒalse</code>. This flag is used when deleting process definitions and deployments.</p>
 <h1 id="runtime-activity-instance-metrics-process-definition">Runtime Activity Instance Metrics (Process Definition)</h1>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">   <span class="nx">runtimeActivityInstanceMetrics</span><span class="o">:</span> <span class="p">{</span>

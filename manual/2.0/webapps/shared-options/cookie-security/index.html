@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/2.0/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3159,8 +3178,6 @@ Have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookie
 <p>In the following <a href="/manual/2.0/installation/full/">pre-packaged distributions</a>, the <code>SameSite</code> property is absent by default since the Java Container manages the cookie and the latest Servlet specification does currently not support the <code>SameSite</code> property:</p>
 <ul>
 <li>JBoss EAP/WildFly</li>
-<li>IBM WebSphere</li>
-<li>Oracle Weblogic</li>
 </ul>
 <p>For all other distributions, the <code>SameSite</code> flag is enabled by default.</p>
 
@@ -3193,8 +3210,8 @@ Have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookie
     <td><code>Lax *</code></td>
   </tr>
 </table>
-<p>* The <code>SameSite</code> property is not supported for IBM WebSphere and disabled by default for both cookies.
-The Session Cookie also has no <code>SameSite</code> attribute by default on JBoss EAP/WildFly and Oracle Weblogic.</p>
+<p>* The <code>SameSite</code> property is disabled by default for both cookies.
+The Session Cookie also has no <code>SameSite</code> attribute by default on JBoss EAP/WildFly.</p>
 
 <div class="note bg-info docs-info">
   <h3>SameSite &amp; Firefox</h3>

@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3150,7 +3169,7 @@ In most cases this is <code>$WILDFLY_HOME/standalone/configuration/standalone.xm
 </span></span><span class="line"><span class="cl">    ...
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;extension</span> <span class="na">module=</span><span class="s">&#34;org.cibseven.bpm.wildfly.camunda-wildfly-subsystem&#34;</span><span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>Configure the thread pool for the Camunda Job Executor:</p>
-<p>Since CIB seven.5, the configuration of the thread pool is done in the CIB seven subsystem, not in the JBoss Threads subsystem anymore like it was done before 7.5.
+<p>Since CIB seven 1.0, the configuration of the thread pool is done in the CIB seven subsystem, not in the JBoss Threads subsystem anymore like it was done before 7.5.
 The thread pool creation and shutdown is now controlled through the CIB seven subsystem.
 You are able to configure it through the following new configuration elements in the <code>job-executor</code> element of the subsystem XML configuration.</p>
 <p>Mandatory configuration elements are:</p>
@@ -3210,8 +3229,8 @@ typically <code>bin</code>.</p>
 </span></span><span class="line"><span class="cl">            <span class="na">pool-name=</span><span class="s">&#34;ProcessEngine&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;connection-url&gt;</span>jdbc:h2:./camunda-h2-dbs/process-engine;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE<span class="nt">&lt;/connection-url&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;driver&gt;</span>h2<span class="nt">&lt;/driver&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;security</span> <span class="na">user-name=</span><span class="s">&#34;sa&#34;</span> <span class="na">password=</span><span class="s">&#34;sa&#34;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- for WildFly ≥27 / JBoss EAP 8 --&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- for WildFly ≤26 / JBoss EAP 7
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;security</span> <span class="na">user-name=</span><span class="s">&#34;sa&#34;</span> <span class="na">password=</span><span class="s">&#34;sa&#34;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- for WildFly / JBoss EAP 8 --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- for JBoss EAP 7
 </span></span></span><span class="line"><span class="cl"><span class="c">  &lt;security&gt;
 </span></span></span><span class="line"><span class="cl"><span class="c">    &lt;user-name&gt;sa&lt;/user-name&gt;
 </span></span></span><span class="line"><span class="cl"><span class="c">    &lt;password&gt;sa&lt;/password&gt;

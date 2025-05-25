@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/2.0/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3111,330 +3130,454 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>CIB seven supports the Unified Expression Language (EL), specified by the <a href="https://jakarta.ee/specifications/expression-language/4.0/">Jakarta Expression
-Language 4.0 standard</a>. To do so, it maintains a custom version of the open source <a href="http://juel.sourceforge.net/">JUEL</a> implementation.</p>
-<p>Note, compared to EL 4.0 this JUEL implementation has the following limitations:</p>
-<ul>
-<li>
-<p>Initializing collections directly within expressions (e.g., <code>${[1,2,3]}</code>) is NOT supported.</p>
-</li>
-<li>
-<p>Lambda expressions (e.g., inline functions <code>${((x,y)-&gt;x+y)(3,4)}</code>) are NOT supported.</p>
-</li>
-<li>
-<p>Referencing static fields (e.g., <code>${Boolean.TRUE}</code>), static functions (e.g., <code>${Integer.parseInt(&quot;123&quot;)}</code>), and enums (e.g., <code>${Thread.State.TERMINATED}</code>) are NOT supported.</p>
-</li>
-<li>
-<p>The Assignment Operator <code>(A=B)</code>, the String Concatenation Operator <code>(A+=B)</code>, and the Semicolon Operator <code>(A ; B)</code> are NOT supported.</p>
-</li>
-</ul>
-<p>To get more general information about the usage of Expression Language,
-please read the <a href="https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html">official documentation</a>. It provides examples that give a good overview of
-the syntax of expressions.</p>
-<p>Within CIB seven, EL can be used in many circumstances to evaluate small script-like
-expressions. The following table provides an overview of the BPMN elements which support
-usage of EL.</p>
-<table class="table desc-table">
-  <tr>
-    <th>BPMN element</th>
-    <th>EL support</th>
-  </tr>
-  <tr>
-    <td>
-      <a href="#delegation-code">
-        Service Task, Business Rule Task, Send Task,
-        Message Intermediate Throwing Event, Message End Event, Execution Listener and
-        Task Listener
-      </a>
-    </td>
-    <td>Expression language as delegation code</td>
-  </tr>
-  <tr>
-    <td>
-      <a href="#conditions">
-        Sequence Flows, Conditional Events
-      </a>
-    </td>
-    <td>Expression language as condition expression</td>
-  </tr>
-  <tr>
-    <td>
-        <a href="#inputoutput-parameters">
-          All Tasks, All Events, Transaction, Subprocess and Connector
-        </a>
-    </td>
-    <td>Expression language inside an inputOutput parameter mapping</td>
-  </tr>
-  <tr>
-    <td>
-        <a href="#value">
-          Different Elements
-        </a>
-    </td>
-    <td>Expression language as the value of an attribute or element</td>
-  </tr>
-  <tr>
-    <td>
-      <a href="/manual/2.0/user-guide/process-engine/the-job-executor/#specifying-priorities-in-bpmn-xml">
-        All Flow Nodes, Process Definition
-      </a>
-    </td>
-    <td>Expression language to determine the priority of a job</td>
-  </tr>
-</table>
-<h1 id="usage-of-expression-language">Usage of Expression Language</h1>
-<h2 id="delegation-code">Delegation Code</h2>
-<p>Besides Java code, CIB seven also supports the evaluation of expressions as delegation code. For
-general information about delegation code, see the corresponding
-<a href="/manual/2.0/user-guide/process-engine/delegation-code/">section</a>.</p>
-<p>Two types of expressions are currently supported: <code>camunda:expression</code> and
-<code>camunda:delegateExpression</code>.</p>
-<p>With <code>camunda:expression</code> it is possible to evaluate a value expression or to invoke
-a method expression. You can use special variables which are available inside an expression or
-Spring and CDI beans. For more information about <a href="#availability-of-variables-and-functions-inside-expression-language">variables</a> and <a href="/manual/2.0/user-guide/spring-framework-integration/#expression-resolving">Spring</a>, respectively <a href="/manual/2.0/user-guide/cdi-java-ee-integration/expression-resolving/">CDI</a> beans,
-please see the corresponding sections.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;process&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="c">&lt;!-- execution listener which uses an expression to set a process variable --&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:executionListener</span> <span class="na">event=</span><span class="s">&#34;start&#34;</span> <span class="na">expression=</span><span class="s">&#34;${execution.setVariable(&#39;test&#39;, &#39;foo&#39;)}&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... --&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;userTask&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- task listener which calls a method of a bean with current task as parameter --&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;camunda:taskListener</span> <span class="na">event=</span><span class="s">&#34;complete&#34;</span> <span class="na">expression=</span><span class="s">&#34;${myBean.taskDone(task)}&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/userTask&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... --&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- service task which evaluates an expression and saves it in a result variable --&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;serviceTask&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">camunda:expression=</span><span class="s">&#34;${myBean.ready}&#34;</span> <span class="na">camunda:resultVariable=</span><span class="s">&#34;myVar&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... --&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process&gt;</span>
-</span></span></code></pre></div><p>The attribute <code>camunda:delegateExpression</code> is used for expressions which evaluate to a delegate
-object. This delegate object must implement either the <code>JavaDelegate</code> or <code>ActivityBehavior</code>
-interface.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="c">&lt;!-- service task which calls a bean implementing the JavaDelegate interface --&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;task1&#34;</span> <span class="na">camunda:delegateExpression=</span><span class="s">&#34;${myBean}&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- service task which calls a method which returns delegate object --&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;task2&#34;</span> <span class="na">camunda:delegateExpression=</span><span class="s">&#34;${myBean.createDelegate()}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="conditions">Conditions</h2>
-<p>To use conditional sequence flows or conditional events, expression language is usually used.
-For conditional sequence flows, a <code>conditionExpression</code> element of a sequence flow has to be used.
-For conditional events, a <code>condition</code> element of a conditional event has to be used. Both are
-of the type <code>tFormalExpression</code>. The text content of the element is the expression to be evaluated.</p>
-<p>Within the expression, some special variables are available which enable access of the current
-context. To find more information about the available variables, please see the <a href="#availability-of-variables-and-functions-inside-expression-language">corresponding
-section</a>.</p>
-<p>The following example shows usage of expression language as condition of a sequence flow:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;sequenceFlow&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;conditionExpression</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">      ${test == &#39;foo&#39;}
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/conditionExpression&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/sequenceFlow&gt;</span>
-</span></span></code></pre></div><p>For usage of expression language on conditional events, see the following example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;conditionalEventDefinition&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;condition</span> <span class="na">type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${var1 == 1}<span class="nt">&lt;/condition&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/conditionalEventDefinition&gt;</span>
-</span></span></code></pre></div><h2 id="inputoutput-parameters">inputOutput Parameters</h2>
-<p>With the Camunda <code>inputOutput</code> extension element you can map an <code>inputParameter</code> or <code>outputParameter</code>
-with expression language.</p>
-<p>Inside the expression some special variables are available which enable the access of the current
-context. To find more information about the available variables please see the <a href="#availability-of-variables-and-functions-inside-expression-language">corresponding
-section</a>.</p>
-<p>The following example shows an <code>inputParameter</code> which uses expression language to call a method of
-a bean.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;task&#34;</span> <span class="na">camunda:class=</span><span class="s">&#34;org.cibseven.bpm.example.SumDelegate&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:inputOutput&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;camunda:inputParameter</span> <span class="na">name=</span><span class="s">&#34;x&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">          ${myBean.calculateX()}
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/camunda:inputParameter&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/camunda:inputOutput&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/serviceTask&gt;</span>
-</span></span></code></pre></div><h2 id="external-task-error-handling">External Task Error Handling</h2>
-<p>For External Tasks it is possible to define
-<a href="/manual/2.0/reference/bpmn20/custom-extensions/extension-elements/#erroreventdefinition">camunda:errorEventDefinition</a>
-elements which can be provided with a JUEL expression. The expression is evaluated on <code>ExternalTaskService#complete</code> and
-<code>ExternalTaskService#handleFailure</code>. If the expression evaluates to <code>true</code>, a BPMN error is thrown which can be caught by an
-<a href="/manual/2.0/reference/bpmn20/events/error-events/#error-boundary-event">Error Boundary Event</a>.</p>
-<p>In the scope of an External Task, expressions have access to the <a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a>
- object via the key <code>externalTask</code> which provides getter methods for <code>errorMessage</code>, <code>errorDetails</code>, <code>workerId</code>, <code>retries</code> and more.</p>
-<p><strong>Examples:</strong></p>
-<p>How to access the External Task object:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bpmn:serviceTask</span> <span class="na">id=</span><span class="s">&#34;myExternalTaskId&#34;</span> <span class="na">name=</span><span class="s">&#34;myExternalTask&#34;</span> <span class="na">camunda:type=</span><span class="s">&#34;external&#34;</span> <span class="na">camunda:topic=</span><span class="s">&#34;myTopic&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;bpmn:extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;camunda:errorEventDefinition</span> <span class="na">id=</span><span class="s">&#34;myErrorEventDefinition&#34;</span> <span class="na">errorRef=</span><span class="s">&#34;myError&#34;</span> <span class="na">expression=</span><span class="s">&#34;${externalTask.getWorkerId() == &#39;myWorkerId&#39;}&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/bpmn:extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:serviceTask&gt;</span>
-</span></span></code></pre></div><p>How to match an error message:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bpmn:serviceTask</span> <span class="na">id=</span><span class="s">&#34;myExternalTaskId&#34;</span> <span class="na">name=</span><span class="s">&#34;myExternalTask&#34;</span> <span class="na">camunda:type=</span><span class="s">&#34;external&#34;</span> <span class="na">camunda:topic=</span><span class="s">&#34;myTopic&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;bpmn:extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;camunda:errorEventDefinition</span> <span class="na">id=</span><span class="s">&#34;myErrorEventDefinition&#34;</span> <span class="na">errorRef=</span><span class="s">&#34;myError&#34;</span> <span class="na">expression=</span><span class="s">&#34;${externalTask.getErrorDetails().contains(&#39;myErrorMessage&#39;)}&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/bpmn:extensionElements&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:serviceTask&gt;</span>
-</span></span></code></pre></div><p>For further details on the functionality of error event definitions in the context of external tasks, consult the <a href="/manual/2.0/user-guide/process-engine/external-tasks/#error-event-definitions">External Tasks Guide</a>.</p>
-<h2 id="value">Value</h2>
-<p>Different BPMN and CMMN elements allow to specify their content or an attribute value by an
-expression. Please see the corresponding sections for <a href="/manual/2.0/reference/bpmn20/">BPMN</a> and <a href="/manual/2.0/reference/cmmn11/">CMMN</a> in the references
-for more detailed examples.</p>
-<h1 id="availability-of-variables-and-functions-inside-expression-language">Availability of Variables and Functions Inside Expression Language</h1>
-<h2 id="process-variables">Process Variables</h2>
-<p>All process variables of the current scope are directly available inside an expression. So a
-conditional sequence flow can directly check a variable value:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;sequenceFlow&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;conditionExpression</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">      ${test == &#39;start&#39;}
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/conditionExpression&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/sequenceFlow&gt;</span>
-</span></span></code></pre></div><h2 id="internal-context-variables">Internal Context Variables</h2>
-<p>Depending on the current execution context, special built-in context variables are available while
-evaluating expressions:</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th>Java Type</th>
-      <th>Context</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>execution</code></td>
-      <td><code><a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
-</code></td>
-      <td>
-        Available in a BPMN execution context like a service task, execution listener or sequence
-        flow.
-      </td>
-    </tr>
-    <tr>
-      <td><code>task</code></td>
-      <td><code><a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
-</code></td>
-      <td>Available in a task context like a task listener.</td>
-    </tr>
-    <tr>
-      <td><code>externalTask</code></td>
-      <td><code><a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a>
-</code></td>
-      <td>Available during an external task context activity (e.g. in <a href="/manual/2.0/reference/bpmn20/custom-extensions/extension-elements/#erroreventdefinition">camunda:errorEventDefinition</a> expressions).</td>
-    </tr>
-    <tr>
-      <td><code>caseExecution</code></td>
-      <td><code><a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/delegate/DelegateCaseExecution.html">DelegateCaseExecution</a>
-</code></td>
-      <td>Available in a CMMN execution context.</td>
-    </tr>
-    <tr>
-      <td><code>authenticatedUserId</code></td>
-      <td><code>String</code></td>
-      <td>
-        The id of the currently authenticated user. Only returns a value if the id of the currently
-        authenticated user has been set through the corresponding methods of the
-        <code>IdentityService</code>. Otherwise it returns <code>null</code>.
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p>The following example shows an expression which sets the variable <code>test</code> to the current
-event name of an execution listener.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;camunda:executionListener</span> <span class="na">event=</span><span class="s">&#34;start&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="na">expression=</span><span class="s">&#34;${execution.setVariable(&#39;test&#39;, execution.eventName)}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="external-context-variables-with-spring-and-cdi">External Context Variables With Spring and CDI</h2>
-<p>If the process engine is integrated with Spring or CDI, it is possible to access Spring and CDI
-beans inside of expressions. Please see the corresponding sections for <a href="/manual/2.0/user-guide/spring-framework-integration/#expression-resolving">Spring</a> and <a href="/manual/2.0/user-guide/cdi-java-ee-integration/expression-resolving/">CDI</a>
-for more information. The following example shows the usage of a bean which implements the
-<code>JavaDelegate</code> interface as delegateExecution.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;task1&#34;</span> <span class="na">camunda:delegateExpression=</span><span class="s">&#34;${myBean}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><p>With the expression attribute any method of a bean can be called.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;task2&#34;</span> <span class="na">camunda:expression=</span><span class="s">&#34;${myBean.myMethod(execution)}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="internal-context-functions">Internal Context Functions</h2>
-<p>Special built-in context functions are available while evaluating expressions:</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Function</th>
-      <th>Return Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>currentUser()</code></td>
-      <td><code>String</code></td>
-      <td>
-        Returns the user id of the currently authenticated user or <code>null</code> no user is authenticated at the moment.
-      </td>
-    </tr>
-    <tr>
-      <td><code>currentUserGroups()</code></td>
-      <td><code>List of Strings</code></td>
-      <td>
-        Returns a list of the group ids of the currently authenticated user or <code>null</code> if no user is authorized at the moment.
-      </td>
-    </tr>
-    <tr>
-      <td><code>now()</code></td>
-      <td><code>Date</code></td>
-      <td>Returns the current date as a Java Date object.</td>
-    </tr>
-    <tr>
-      <td><code>dateTime()</code></td>
-      <td><code>DateTime</code></td>
-      <td>
-        Returns a Joda-Time DateTime object of the current date. Please see the
-        <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">Joda-Time</a>
-        documentation for all available functions.
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p>The following example sets the due date of a user task to the date 3 days after the creation
-of the task.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;theTask&#34;</span> <span class="na">name=</span><span class="s">&#34;Important task&#34;</span> <span class="na">camunda:dueDate=</span><span class="s">&#34;${dateTime().plusDays(3).toDate()}&#34;</span><span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="built-in-camunda-spin-functions">Built-In Camunda Spin Functions</h2>
-<p>If the Camunda Spin process engine plugin is activated, the Spin functions <code>S</code>,
-<code>XML</code> and <code>JSON</code> are also available inside of an expression. See the <a href="/manual/2.0/user-guide/data-formats/">Data Formats section</a> for a detailed explanation.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;task&#34;</span> <span class="na">camunda:expression=</span><span class="s">&#34;${XML(xml).attr(&#39;test&#39;).value()}&#34;</span> <span class="na">resultVariable=</span><span class="s">&#34;test&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div>
+      <p>CIB seven supports the Unified Expression Language and the Friendly Enough Expression Language.</p>
+
+    </div>
+
+    <div class="col-xs-12 menu-pages">
+      
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+    
+    
+
+  
+  
+  
+
+
+
+    
+      
+
+        
+
+        
+          
+          
+
+  
+  
+  
+
+
+
+    
+      
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+          
+        
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+  
+
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+        
+
+        
+      
+    
+
+  
+
+
+  
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+  <dl>
+
+  
+
+    <dt>
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/">Friendly Enough Expression Language</a>
+    </dt>
+    <dd>
+      
+    </dd>
+
+  
+
+    <dt>
+      <a href="/manual/2.0/user-guide/process-engine/expression-language/unified-expression-language/">Unified Expression Language</a>
+    </dt>
+    <dd>
+      
+    </dd>
+
+  
+
+  </dl>
+
+
+
     </div>
   </div>
 </div>
 
 <div class="page-toc">
-  <h3>On this Page:</h3>
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#delegation-code">Delegation Code</a></li>
-    <li><a href="#conditions">Conditions</a></li>
-    <li><a href="#inputoutput-parameters">inputOutput Parameters</a></li>
-    <li><a href="#external-task-error-handling">External Task Error Handling</a></li>
-    <li><a href="#value">Value</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#process-variables">Process Variables</a></li>
-    <li><a href="#internal-context-variables">Internal Context Variables</a></li>
-    <li><a href="#external-context-variables-with-spring-and-cdi">External Context Variables With Spring and CDI</a></li>
-    <li><a href="#internal-context-functions">Internal Context Functions</a></li>
-    <li><a href="#built-in-camunda-spin-functions">Built-In Camunda Spin Functions</a></li>
-  </ul>
-</nav>
   <div class="docs-banner" style="display:none">
  :(
 </div>
 
 </div>
-
 
     
     <footer class="page-footer">

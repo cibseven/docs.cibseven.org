@@ -260,6 +260,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -3120,7 +3139,7 @@
 <li><a href="/manual/latest/user-guide/spring-framework-integration/">Via Spring</a></li>
 </ul>
 <h1 id="shared-container-managed-process-engine">Shared, Container Managed Process Engine</h1>
-<p>A container of your choice (e.g., Tomcat, Wildfly or IBM WebSphere) manages the process engine for you. The configuration is carried out in a container specific way, see <a href="/manual/latest/user-guide/runtime-container-integration/">Runtime Container Integration</a> for details.</p>
+<p>A container of your choice (e.g., Tomcat or Wildfly) manages the process engine for you. The configuration is carried out in a container specific way, see <a href="/manual/latest/user-guide/runtime-container-integration/">Runtime Container Integration</a> for details.</p>
 <h2 id="processengineconfiguration-bean">ProcessEngineConfiguration Bean</h2>
 <p>The CIB seven engine uses the <a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/ProcessEngineConfiguration.html">ProcessEngineConfiguration bean</a>
  to configure and construct a standalone Process Engine. There are multiple subclasses available that can be used to define the process engine configuration. These classes represent different environments, and set defaults accordingly. It&rsquo;s a best practice to select the class that matches (most of) your environment to minimize the number of properties needed to configure the engine. The following classes are currently available:</p>
@@ -3186,8 +3205,6 @@ To be used when the engine runs in standalone mode, with JTA transactions.</li>
 <p>The <code>bpm-platform.xml</code> file is used to configure CIB seven in the following distributions:</p>
 <ul>
 <li>Apache Tomcat</li>
-<li>IBM WebSphere Application Server</li>
-<li>Oracle WebLogic Application Server</li>
 </ul>
 <p>The <code>&lt;process-engine ... /&gt;</code> xml tag allows you to define a process engine:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
