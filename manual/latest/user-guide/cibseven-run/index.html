@@ -3651,7 +3651,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <th>Description</th>
   </tr>
   <tr>
-      <td rowspan="20">cibseven.webclient</td>
+      <td rowspan="21">cibseven.webclient</td>
       <td>.api.common.title</td>
       <td>API title for Swagger. <br />Example: CIB seven webclient API</td>
   </tr>
@@ -3686,7 +3686,11 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   <tr>
       <td>.engineRest.url</td>
       <td>CIB seven engine REST API URL. <br />Example: http://localhost:8080</td>
-  </tr>  
+  </tr>
+    <tr>
+      <td>.engineRest.path</td>
+      <td>CIB seven engine REST path allows to customize the engine REST API path to support different Jersey application configurations. <br />Default value: /engine-rest</td>
+  </tr> 
   <tr>
       <td>.historyLevel</td>
       <td>CIB seven history tracking level. <br />Possible values: full/none</td>
