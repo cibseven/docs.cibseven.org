@@ -6793,13 +6793,12 @@ body {
   padding-top: 9px;
   padding-right: 15px;
   width: 190px;
-  display: none;
 }
-/* line 105, styles\_navbar.less */
+/* line 104, styles\_navbar.less */
 .navbar-container .site-menu-toggle {
   float: right;
 }
-/* line 112, styles\_navbar.less */
+/* line 111, styles\_navbar.less */
 .site-menu-toggle {
   border: none;
   background-color: transparent;
@@ -6851,7 +6850,7 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   opacity: 1;
   transform: translateY(-5px) rotateZ(-45deg);
 }
-/* line 121, styles\_navbar.less */
+/* line 120, styles\_navbar.less */
 .navbar-top-section {
   display: flex;
   padding: 8px 0;
@@ -6860,22 +6859,22 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   align-items: center;
   border-bottom: 1px solid #ccc;
 }
-/* line 128, styles\_navbar.less */
+/* line 127, styles\_navbar.less */
 .navbar-top-section span,
 .navbar-top-section a {
   display: inline-block;
   margin: 0 10px;
 }
-/* line 132, styles\_navbar.less */
+/* line 131, styles\_navbar.less */
 .navbar-top-section span {
   color: #000;
 }
-/* line 135, styles\_navbar.less */
+/* line 134, styles\_navbar.less */
 .navbar-top-section a {
   color: #0075FF;
   text-decoration: underline;
 }
-/* line 139, styles\_navbar.less */
+/* line 138, styles\_navbar.less */
 .navbar-top-section a:last-child {
   border: 1px solid #000;
   color: #000;
@@ -6884,53 +6883,53 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   transition: all 1.5 ease;
   text-decoration: none;
 }
-/* line 146, styles\_navbar.less */
+/* line 145, styles\_navbar.less */
 .navbar-top-section a:last-child:hover {
   background: #000;
   color: #fff;
 }
 @media (max-width: 500px) {
-  /* line 154, styles\_navbar.less */
+  /* line 153, styles\_navbar.less */
   .brand-name {
     display: none;
   }
 }
 @media (max-width: 710px) {
-  /* line 160, styles\_navbar.less */
+  /* line 159, styles\_navbar.less */
   .navbar-container {
     padding-right: 0px;
   }
-  /* line 165, styles\_navbar.less */
+  /* line 164, styles\_navbar.less */
   .navbar .search-field,
   .navbar .brand-name {
     display: none;
   }
 }
 @media (max-width: 800px) {
-  /* line 174, styles\_navbar.less */
+  /* line 173, styles\_navbar.less */
   .navbar .search-field {
     display: none;
   }
-  /* line 178, styles\_navbar.less */
+  /* line 177, styles\_navbar.less */
   .navbar-top-section {
     display: none;
   }
-  /* line 181, styles\_navbar.less */
+  /* line 180, styles\_navbar.less */
   .navbar-container {
     padding-right: 56px;
   }
 }
 @media (max-width: 769px) {
-  /* line 187, styles\_navbar.less */
+  /* line 186, styles\_navbar.less */
   .navbar .search-field {
     display: none;
   }
-  /* line 190, styles\_navbar.less */
+  /* line 189, styles\_navbar.less */
   .navbar-container {
     padding-right: 0;
   }
 }
-/* line 196, styles\_navbar.less */
+/* line 195, styles\_navbar.less */
 #versions {
   display: none;
   position: absolute;
@@ -6940,18 +6939,18 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-/* line 206, styles\_navbar.less */
+/* line 205, styles\_navbar.less */
 #versions a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-/* line 213, styles\_navbar.less */
+/* line 212, styles\_navbar.less */
 #versions a:hover {
   background-color: #ddd;
 }
-/* line 215, styles\_navbar.less */
+/* line 214, styles\_navbar.less */
 #versions .show {
   display: block;
 }
@@ -6966,15 +6965,16 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   font-family: 'Glyphicons Halflings';
   font-style: normal;
   font-weight: normal;
+  font-size: 16px;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: absolute;
   content: '\e003';
-  top: 15px;
-  right: 21px;
+  top: 25px;
+  right: 17px;
 }
-/* line 19, styles\_search.less */
+/* line 20, styles\_search.less */
 .search-field input {
   width: 100%;
   outline: none;
@@ -6984,8 +6984,9 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   padding: 0 24px 0 12px;
   height: 24px;
   line-height: 16px;
+  font-size: 12px;
 }
-/* line 39, styles\_search.less */
+/* line 41, styles\_search.less */
 .search-results {
   opacity: 0;
   position: fixed;
@@ -7002,7 +7003,7 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   border-top: none;
   box-shadow: 0 0 3px 0 #555555;
 }
-/* line 57, styles\_search.less */
+/* line 59, styles\_search.less */
 .search-results:before {
   content: '';
   height: 5px;
@@ -7013,7 +7014,7 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   width: calc(100% + 20px);
   box-shadow: 0 0 3px 0 #555555;
 }
-/* line 68, styles\_search.less */
+/* line 70, styles\_search.less */
 .search-results ul {
   padding: 0 15px 15px 15px;
   margin: 0 auto;
@@ -7022,53 +7023,53 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   transition: max-height 0.218s ease;
   list-style: none;
 }
-/* line 77, styles\_search.less */
+/* line 79, styles\_search.less */
 .search-results li {
   overflow: hidden;
   margin: 0 auto;
   max-width: 650px;
 }
-/* line 83, styles\_search.less */
+/* line 85, styles\_search.less */
 .search-results h2 {
   font-size: 20px;
 }
-/* line 85, styles\_search.less */
+/* line 87, styles\_search.less */
 .search-results h2 > a {
   text-decoration: none;
 }
-/* line 90, styles\_search.less */
+/* line 92, styles\_search.less */
 .search-results .thumbnail {
   float: left;
   margin-right: 15px;
   max-width: 25%;
 }
-/* line 101, styles\_search.less */
+/* line 103, styles\_search.less */
 .search-results .no-results {
   margin-top: 20px;
   font-size: 20px;
   text-align: center;
 }
-/* line 107, styles\_search.less */
+/* line 109, styles\_search.less */
 .search-results > footer {
   position: relative;
   width: 100%;
   text-align: center;
   overflow: hidden;
 }
-/* line 112, styles\_search.less */
+/* line 114, styles\_search.less */
 .search-results > footer button {
   float: left;
   display: block;
   border-width: 1px 0 0 0;
   width: 33%;
 }
-/* line 117, styles\_search.less */
+/* line 119, styles\_search.less */
 .search-results > footer button.search-close {
   width: 34%;
   border-left-width: 1px;
   border-right-width: 1px;
 }
-/* line 126, styles\_search.less */
+/* line 128, styles\_search.less */
 .search-underlay {
   position: fixed;
   top: 0;
@@ -7078,22 +7079,22 @@ body.site-menu-open .site-menu-toggle > span:last-of-type {
   z-index: 6;
   background-color: rgba(119, 119, 119, 0.95);
 }
-/* line 138, styles\_search.less */
+/* line 140, styles\_search.less */
 body.search-open .search-results {
   opacity: 1;
   transform: translateY(0);
   z-index: 7;
 }
-/* line 142, styles\_search.less */
+/* line 144, styles\_search.less */
 body.search-open .search-results ul {
   max-height: 500px;
 }
-/* line 147, styles\_search.less */
+/* line 149, styles\_search.less */
 body.search-open .search-underlay {
   height: 100%;
 }
 @media (max-width: 769px) {
-  /* line 153, styles\_search.less */
+  /* line 155, styles\_search.less */
   .search-results {
     left: 5px;
     right: 5px;
