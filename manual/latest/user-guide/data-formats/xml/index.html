@@ -3131,7 +3131,7 @@
 
     <div class="col-xs-12 content-text">
       <p>For working with XML, the Spin functions <code>org.cibseven.spin.Spin.S</code> and <code>org.cibseven.spin.Spin.XML</code> can be used as entry points. The latter offers strongly-typed access to Spin&rsquo;s XML API and is preferable when writing Java code. In scripting environments, only the <code>S</code> function is available. The returned Spin wrapper offers methods for manipulating and writing XML as well as mapping XML to Java. Furthermore, the entry functions can be provided with Java objects that get implicitly converted to Spin&rsquo;s intermediary XML format.</p>
-<p>The following provides examples on how Camunda Spin can be used in the process engine to work with XML data. For illustration purposes, let us assume that a String process variable <code>customer</code> containing XML exists. It has the following content:</p>
+<p>The following provides examples on how CIB seven Spin can be used in the process engine to work with XML data. For illustration purposes, let us assume that a String process variable <code>customer</code> containing XML exists. It has the following content:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;customer</span> <span class="na">xmlns=</span><span class="s">&#34;http://camunda.org/example&#34;</span> <span class="na">name=</span><span class="s">&#34;Jonny&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;address&gt;</span>
@@ -3139,7 +3139,7 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;postCode&gt;</span>1234<span class="nt">&lt;/postCode&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/address&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/customer&gt;</span>
-</span></span></code></pre></div><p>Further documentation about the usage of Spin can be found in the <a href="/manual/latest/reference/spin/">Camunda Spin Dataformat Reference</a>.</p>
+</span></span></code></pre></div><p>Further documentation about the usage of Spin can be found in the <a href="/manual/latest/reference/spin/">CIB seven Spin Dataformat Reference</a>.</p>
 <h1 id="expression-language-integration">Expression Language Integration</h1>
 <p>The Spin entry functions can be used wherever the process engine allows expression language. The following BPMN snippet shows a conditional sequence flow expression based on the customer&rsquo;s post code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...

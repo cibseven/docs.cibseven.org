@@ -270,10 +270,6 @@ The full list of supported configuration parameters can be found <a href="/manua
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">firstName</span><span class="p">:</span><span class="w"> </span><span class="l">Demo</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">filter</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="l">All tasks</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">auth</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">authentication</span><span class="p">:</span><span class="w"> </span><span class="l">composite</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w">
@@ -291,7 +287,6 @@ The full list of supported configuration parameters can be found <a href="/manua
 <ol>
 <li>Admin user &ldquo;demo&rdquo; with the provided password and first name will be created.</li>
 <li>Default filter with the name &ldquo;All tasks&rdquo; will be created for Tasklist.</li>
-<li>Composite authentication will be enabled.</li>
 <li>Properties from the <code>cibseven-webclient.properties</code> configuration file will be imported.</li>
 <li>The base path for services will be defined so that Spring Boot can correctly map the endpoints.</li>
 <li>The Engine REST URL will be set to <code>http://localhost:8080</code></li>
@@ -299,8 +294,75 @@ The full list of supported configuration parameters can be found <a href="/manua
 <p>Additionaly, let&rsquo;s create a <code>cibseven-webclient.properties</code> file in the same directory as <code>application.yaml</code> with the following content:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># do not use this jwtSecret value in production</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">cibseven.webclient.authentication.jwtSecret=RtURHZ7SQYfLoX902wcjlvduW2qe9g0bjMUczmffjiTjzU9phbv3mK54zHMqeGK6cqgoEBTIUE6RqwvemSqbpD40qUPXVRElvDHGhn4OAEfjeEP2ANah8GJejSA08E820mForcQHBmediqg2DzIrxnDXyf2</span><span class="w">
-</span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication.</p>
-<h2 id="build-and-run">Build and Run</h2>
+</span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication. However, it is not sufficient on its own: an authentication filter must also be applied.</p>
+<h2 id="add-authentication-filter">Add Authentication filter</h2>
+<p>To enable JWT-based authentication, we need to register an authentication filter as a @Bean and configure it to use the Composite authentication provider. This filter will intercept requests to the specified endpoints.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.loanapproval</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilter</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.autoconfigure.web.servlet.JerseyApplicationPath</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.web.servlet.FilterRegistrationBean</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FilterConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Composite Authentication Filter with Jwt Token and Http Basic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">FilterRegistrationBean</span><span class="o">&lt;</span><span class="n">ProcessEngineAuthenticationFilter</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">AuthenticationFilter</span><span class="p">(</span><span class="n">JerseyApplicationPath</span><span class="w"> </span><span class="n">applicationPath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="n">FilterRegistrationBean</span><span class="o">&lt;</span><span class="n">ProcessEngineAuthenticationFilter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registrationBean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FilterRegistrationBean</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">registrationBean</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&#34;cibseven-composite-auth&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="n">registrationBean</span><span class="p">.</span><span class="na">setFilter</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ProcessEngineAuthenticationFilter</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">registrationBean</span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="n">10</span><span class="p">);</span><span class="c1">// Order of execution if multiple filters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">String</span><span class="w"> </span><span class="n">restApiPathPattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">applicationPath</span><span class="p">.</span><span class="na">getPath</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">// Apply to all URLs under engine-rest except /engine-rest/identity/verify</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">urlPatterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/process-definition/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/process-instance/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/history/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/execution/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/batch/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/decision-definition/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/deployment/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/filter/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/incident/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/job-definition/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/job/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/telemetry/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/metrics/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/authorization/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/group/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/user/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/message/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/event-subscription/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/variable-instance/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/task/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/engine/*&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/identity/groups&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="p">).</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">pattern</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">addUrl</span><span class="p">(</span><span class="n">restApiPathPattern</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">)).</span><span class="na">toArray</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="p">::</span><span class="k">new</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="c1">// Enable async support</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">registrationBean</span><span class="p">.</span><span class="na">setAsyncSupported</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">// Init parameters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">registrationBean</span><span class="p">.</span><span class="na">addInitParameter</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s">&#34;authentication-provider&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">org</span><span class="p">.</span><span class="na">cibseven</span><span class="p">.</span><span class="na">bpm</span><span class="p">.</span><span class="na">engine</span><span class="p">.</span><span class="na">rest</span><span class="p">.</span><span class="na">security</span><span class="p">.</span><span class="na">auth</span><span class="p">.</span><span class="na">impl</span><span class="p">.</span><span class="na">CompositeAuthenticationProvider</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">registrationBean</span><span class="p">.</span><span class="na">addUrlPatterns</span><span class="p">(</span><span class="n">urlPatterns</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">registrationBean</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">addUrl</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">extend</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  	  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extend</span><span class="p">).</span><span class="na">replaceFirst</span><span class="p">(</span><span class="s">&#34;^(\\/+|([^/]))&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;/$2&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h2 id="build-and-run">Build and Run</h2>
 <p>Now you can rebuild and rerun the application.
 Make sure to run
 <code>mvn clean</code> before running <code>mvn install</code> again.</p>
@@ -349,6 +411,7 @@ After you logged in, you can go to Tasklist and see that a filter named &ldquo;A
   <nav id="TableOfContents">
   <ul>
     <li><a href="#customize-configuration">Customize Configuration</a></li>
+    <li><a href="#add-authentication-filter">Add Authentication filter</a></li>
     <li><a href="#build-and-run">Build and Run</a></li>
   </ul>
 </nav>

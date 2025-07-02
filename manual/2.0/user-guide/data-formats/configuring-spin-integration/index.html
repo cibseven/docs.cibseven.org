@@ -3135,7 +3135,7 @@
 <li>The Spin libraries must be on the engine&rsquo;s classpath</li>
 <li>The Spin process engine plugin must be registered with the process engine</li>
 </ol>
-<p>The following sections go into the details of integrating Spin with the process engine. Note that when you use a pre-built Camunda distribution, Spin is already integrated.</p>
+<p>The following sections go into the details of integrating Spin with the process engine. Note that when you use a pre-built CIB seven distribution, Spin is already integrated.</p>
 <h1 id="artifacts">Artifacts</h1>
 <p>There are three types of Spin artifacts as follows.</p>
 <h2 id="cibseven-spin-core">cibseven-spin-core</h2>
@@ -3180,7 +3180,7 @@ registers variable serializers that enable the process engine to store Java obje
 <p>Depending on the application and process engine setup, it is recommended to use either <code>cibseven-engine-plugin-spin</code> and <code>cibseven-spin-core</code> (plus individual data formats) or <code>cibseven-engine-plugin-spin</code> and <code>cibseven-spin-dataformat-all</code>. The following sections explain when to use which for the most common use cases.</p>
 <h2 id="embedded-process-engine">Embedded Process Engine</h2>
 <p>If your application manages its own process engine, then using <code>cibseven-engine-plugin-spin</code> with <code>cibseven-spin-core</code> is the recommended approach. Declare the dependencies in the <code>compile</code> scope so that the Spin libraries and their dependencies are added to your application when you bundle it. Configure <code>org.cibseven.spin.plugin.impl.SpinProcessEnginePlugin</code> as a process engine plugin according to the <a href="/manual/2.0/user-guide/process-engine/process-engine-plugins/">process engine plugin documentation</a>.</p>
-<h2 id="application-with-camunda-spring-boot-starter">Application with Camunda Spring Boot Starter</h2>
+<h2 id="application-with-cib-seven-spring-boot-starter">Application with CIB seven Spring Boot Starter</h2>
 <p>Add the dependencies to <code>cibseven-engine-plugin-spin</code> and <code>cibseven-spin-core</code> (along with <code>cibseven-spin-dataformat-json-jackson</code> and <code>cibseven-spin-dataformat-xml-dom</code> as needed) to your application. If you need to use Jakarta XML Binding 4.0 (e.g. Springboot version 3.x.x), use <code>cibseven-spin-dataformat-xml-dom-jakarta</code> instead of <code>cibseven-spin-dataformat-xml-dom</code>.
 The Spin process engine plugin will be automatically registered with the process engine.</p>
 <h2 id="shared-process-engine">Shared Process Engine</h2>
@@ -3216,7 +3216,7 @@ The Spin process engine plugin will be automatically registered with the process
 
   <ul>
     <li><a href="#embedded-process-engine">Embedded Process Engine</a></li>
-    <li><a href="#application-with-camunda-spring-boot-starter">Application with Camunda Spring Boot Starter</a></li>
+    <li><a href="#application-with-cib-seven-spring-boot-starter">Application with CIB seven Spring Boot Starter</a></li>
     <li><a href="#shared-process-engine">Shared Process Engine</a></li>
   </ul>
 </nav>
