@@ -3780,77 +3780,84 @@ that situation:</p>
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#creating-a-migration-plan">Creating a Migration Plan</a>
+    <li><a href="#process-instance-migration-by-example">Process Instance Migration by Example</a></li>
+    <li><a href="#api">API</a>
       <ul>
-        <li><a href="#one-to-one-relation-instruction">One-to-One Relation Instruction</a></li>
-        <li><a href="#updating-event-triggers">Updating Event Triggers</a></li>
-        <li><a href="#set-variables-to-process-instances">Set Variables to Process Instances</a></li>
+        <li><a href="#creating-a-migration-plan">Creating a Migration Plan</a>
+          <ul>
+            <li><a href="#one-to-one-relation-instruction">One-to-One Relation Instruction</a></li>
+            <li><a href="#updating-event-triggers">Updating Event Triggers</a></li>
+            <li><a href="#set-variables-to-process-instances">Set Variables to Process Instances</a></li>
+          </ul>
+        </li>
+        <li><a href="#generating-a-migration-plan">Generating a migration plan</a>
+          <ul>
+            <li><a href="#updating-event-triggers-1">Updating Event Triggers</a></li>
+          </ul>
+        </li>
+        <li><a href="#executing-a-migration-plan">Executing a migration plan</a>
+          <ul>
+            <li><a href="#selecting-process-instances-to-migrate">Selecting process instances to migrate</a></li>
+            <li><a href="#skipping-listeners-and-inputoutput-mappings">Skipping Listeners and Input/Output Mappings</a></li>
+            <li><a href="#synchronous-migration-execution">Synchronous migration execution</a></li>
+            <li><a href="#asynchronous-batch-migration-execution">Asynchronous batch migration execution</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#generating-a-migration-plan">Generating a migration plan</a>
+    <li><a href="#bpmn-specific-api-and-effects">BPMN-specific API and Effects</a>
       <ul>
-        <li><a href="#updating-event-triggers-1">Updating Event Triggers</a></li>
+        <li><a href="#tasks">Tasks</a>
+          <ul>
+            <li><a href="#user-task">User Task</a></li>
+            <li><a href="#receive-task">Receive Task</a></li>
+            <li><a href="#external-task">External Task</a></li>
+          </ul>
+        </li>
+        <li><a href="#gateways">Gateways</a>
+          <ul>
+            <li><a href="#inclusive--parallel-gateway">Inclusive &amp; Parallel Gateway</a></li>
+            <li><a href="#event-based-gateway">Event-based Gateway</a></li>
+          </ul>
+        </li>
+        <li><a href="#events">Events</a>
+          <ul>
+            <li><a href="#boundary-event">Boundary Event</a></li>
+            <li><a href="#start-event">Start Event</a></li>
+            <li><a href="#intermediate-catch-event">Intermediate Catch Event</a></li>
+            <li><a href="#compensation-event">Compensation Event</a></li>
+          </ul>
+        </li>
+        <li><a href="#subprocess">Subprocess</a>
+          <ul>
+            <li><a href="#call-activity">Call Activity</a></li>
+          </ul>
+        </li>
+        <li><a href="#flow-node-markers">Flow Node Markers</a>
+          <ul>
+            <li><a href="#multi-instance">Multi-Instance</a></li>
+            <li><a href="#asynchronous-continuations">Asynchronous Continuations</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#executing-a-migration-plan">Executing a migration plan</a>
+    <li><a href="#operational-semantics">Operational Semantics</a>
       <ul>
-        <li><a href="#selecting-process-instances-to-migrate">Selecting process instances to migrate</a></li>
-        <li><a href="#skipping-listeners-and-inputoutput-mappings">Skipping Listeners and Input/Output Mappings</a></li>
-        <li><a href="#synchronous-migration-execution">Synchronous migration execution</a></li>
-        <li><a href="#asynchronous-batch-migration-execution">Asynchronous batch migration execution</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li><a href="#tasks">Tasks</a>
-      <ul>
-        <li><a href="#user-task">User Task</a></li>
-        <li><a href="#receive-task">Receive Task</a></li>
-        <li><a href="#external-task">External Task</a></li>
-      </ul>
-    </li>
-    <li><a href="#gateways">Gateways</a>
-      <ul>
-        <li><a href="#inclusive--parallel-gateway">Inclusive &amp; Parallel Gateway</a></li>
-        <li><a href="#event-based-gateway">Event-based Gateway</a></li>
-      </ul>
-    </li>
-    <li><a href="#events">Events</a>
-      <ul>
-        <li><a href="#boundary-event">Boundary Event</a></li>
-        <li><a href="#start-event">Start Event</a></li>
-        <li><a href="#intermediate-catch-event">Intermediate Catch Event</a></li>
-        <li><a href="#compensation-event">Compensation Event</a></li>
-      </ul>
-    </li>
-    <li><a href="#subprocess">Subprocess</a>
-      <ul>
-        <li><a href="#call-activity">Call Activity</a></li>
-      </ul>
-    </li>
-    <li><a href="#flow-node-markers">Flow Node Markers</a>
-      <ul>
-        <li><a href="#multi-instance">Multi-Instance</a></li>
-        <li><a href="#asynchronous-continuations">Asynchronous Continuations</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li><a href="#migration-procedure">Migration Procedure</a>
-      <ul>
-        <li><a href="#assignment-of-migration-instructions">Assignment of Migration Instructions</a></li>
-        <li><a href="#validation-of-instruction-assignment">Validation of Instruction Assignment</a></li>
-        <li><a href="#cancellation-of-unmapped-activity-instances-and-event-handler-entities">Cancellation of Unmapped Activity Instances and Event-Handler Entities</a></li>
-        <li><a href="#migrationcreation-of-activity-instances">Migration/Creation of Activity Instances</a></li>
-      </ul>
-    </li>
-    <li><a href="#validation">Validation</a>
-      <ul>
-        <li><a href="#creation-time-validation">Creation Time Validation</a></li>
-        <li><a href="#execution-time-validation">Execution Time Validation</a></li>
-        <li><a href="#aspects-not-covered-by-validation">Aspects Not Covered by Validation</a></li>
+        <li><a href="#migration-procedure">Migration Procedure</a>
+          <ul>
+            <li><a href="#assignment-of-migration-instructions">Assignment of Migration Instructions</a></li>
+            <li><a href="#validation-of-instruction-assignment">Validation of Instruction Assignment</a></li>
+            <li><a href="#cancellation-of-unmapped-activity-instances-and-event-handler-entities">Cancellation of Unmapped Activity Instances and Event-Handler Entities</a></li>
+            <li><a href="#migrationcreation-of-activity-instances">Migration/Creation of Activity Instances</a></li>
+          </ul>
+        </li>
+        <li><a href="#validation">Validation</a>
+          <ul>
+            <li><a href="#creation-time-validation">Creation Time Validation</a></li>
+            <li><a href="#execution-time-validation">Execution Time Validation</a></li>
+            <li><a href="#aspects-not-covered-by-validation">Aspects Not Covered by Validation</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

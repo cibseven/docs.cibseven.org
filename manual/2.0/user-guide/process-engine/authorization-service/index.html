@@ -4060,52 +4060,63 @@ Typically, those people do not need full access to the system like an administra
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#authorizations">Authorizations</a></li>
-    <li><a href="#identities">Identities</a></li>
-    <li><a href="#permissions">Permissions</a></li>
-    <li><a href="#resources">Resources</a></li>
-    <li><a href="#authorization-type">Authorization Type</a></li>
-    <li><a href="#authorization-precedence">Authorization Precedence</a></li>
-    <li><a href="#when-are-authorizations-checked">When are Authorizations checked?</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#read-update-create-delete">Read, Update, Create, Delete</a></li>
-    <li><a href="#additional-task-permissions">Additional Task Permissions</a>
+    <li><a href="#when-is-authorization-required">When is Authorization required?</a></li>
+    <li><a href="#basic-principles">Basic Principles</a>
       <ul>
-        <li><a href="#default-task-permissions">Default Task Permissions</a></li>
+        <li><a href="#authorizations">Authorizations</a></li>
+        <li><a href="#identities">Identities</a></li>
+        <li><a href="#permissions">Permissions</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#authorization-type">Authorization Type</a></li>
+        <li><a href="#authorization-precedence">Authorization Precedence</a></li>
+        <li><a href="#when-are-authorizations-checked">When are Authorizations checked?</a></li>
       </ul>
     </li>
-    <li><a href="#additional-process-definition-permissions">Additional Process Definition Permissions</a></li>
-    <li><a href="#additional-process-instance-permissions">Additional Process Instance Permissions</a></li>
-    <li><a href="#additional-decision-definition-permissions">Additional Decision Definition Permissions</a></li>
-    <li><a href="#additional-batch-permissions">Additional Batch Permissions</a></li>
-    <li><a href="#default-read-variable-permissions">Default Read Variable Permissions</a></li>
-    <li><a href="#application-permissions">Application Permissions</a></li>
-    <li><a href="#user-operation-log-permissions">User Operation Log Permissions</a></li>
-    <li><a href="#historic-instance-permissions">Historic Instance Permissions</a>
+    <li><a href="#permissions-by-resource">Permissions by Resource</a>
       <ul>
-        <li><a href="#historic-task-permissions">Historic Task Permissions</a></li>
-        <li><a href="#historic-process-instance-permissions">Historic Process Instance Permissions</a></li>
+        <li><a href="#read-update-create-delete">Read, Update, Create, Delete</a></li>
+        <li><a href="#additional-task-permissions">Additional Task Permissions</a>
+          <ul>
+            <li><a href="#default-task-permissions">Default Task Permissions</a></li>
+          </ul>
+        </li>
+        <li><a href="#additional-process-definition-permissions">Additional Process Definition Permissions</a></li>
+        <li><a href="#additional-process-instance-permissions">Additional Process Instance Permissions</a></li>
+        <li><a href="#additional-decision-definition-permissions">Additional Decision Definition Permissions</a></li>
+        <li><a href="#additional-batch-permissions">Additional Batch Permissions</a></li>
+        <li><a href="#default-read-variable-permissions">Default Read Variable Permissions</a></li>
+        <li><a href="#application-permissions">Application Permissions</a></li>
+        <li><a href="#user-operation-log-permissions">User Operation Log Permissions</a></li>
+        <li><a href="#historic-instance-permissions">Historic Instance Permissions</a>
+          <ul>
+            <li><a href="#historic-task-permissions">Historic Task Permissions</a></li>
+            <li><a href="#historic-process-instance-permissions">Historic Process Instance Permissions</a></li>
+          </ul>
+        </li>
+        <li><a href="#system-permissions">System permissions</a></li>
       </ul>
     </li>
-    <li><a href="#system-permissions">System permissions</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#the-camunda-admin-group">The &ldquo;camunda-admin&rdquo; Group</a></li>
-    <li><a href="#the-administrator-authorization-plugin">The Administrator Authorization Plugin</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#enable-authorization-checks">Enable Authorization Checks</a></li>
-    <li><a href="#enable-authorization-checks-for-user-code">Enable Authorization Checks for User Code</a></li>
-    <li><a href="#check-revoke-authorizations">Check Revoke Authorizations</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#performance-of-checking-grant-authorizations">Performance of Checking Grant Authorizations</a></li>
-    <li><a href="#performance-of-checking-revoke-authorizations">Performance of Checking Revoke Authorizations</a></li>
+    <li><a href="#administrators">Administrators</a>
+      <ul>
+        <li><a href="#the-camunda-admin-group">The &ldquo;camunda-admin&rdquo; Group</a></li>
+        <li><a href="#the-administrator-authorization-plugin">The Administrator Authorization Plugin</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-options">Configuration Options</a>
+      <ul>
+        <li><a href="#enable-authorization-checks">Enable Authorization Checks</a></li>
+        <li><a href="#enable-authorization-checks-for-user-code">Enable Authorization Checks for User Code</a></li>
+        <li><a href="#check-revoke-authorizations">Check Revoke Authorizations</a></li>
+      </ul>
+    </li>
+    <li><a href="#java-api-example">Java API example</a></li>
+    <li><a href="#camunda-admin-webapp">Camunda Admin Webapp</a></li>
+    <li><a href="#performance-considerations">Performance Considerations</a>
+      <ul>
+        <li><a href="#performance-of-checking-grant-authorizations">Performance of Checking Grant Authorizations</a></li>
+        <li><a href="#performance-of-checking-revoke-authorizations">Performance of Checking Revoke Authorizations</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

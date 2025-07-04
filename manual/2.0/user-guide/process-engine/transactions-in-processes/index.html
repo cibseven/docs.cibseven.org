@@ -3476,32 +3476,42 @@ When reading a row, data is read at a given &ldquo;revision&rdquo;. Modification
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#why-asynchronous-continuations">Why Asynchronous Continuations?</a></li>
-    <li><a href="#configure-asynchronous-continuations">Configure Asynchronous Continuations</a></li>
-    <li><a href="#asynchronous-continuations-of-multi-instance-activities">Asynchronous Continuations of Multi-Instance Activities</a></li>
-    <li><a href="#understand-asynchronous-continuations">Understand Asynchronous Continuations</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#standalone-transaction-management">Standalone Transaction Management</a></li>
-    <li><a href="#transaction-manager-integration">Transaction Manager Integration</a></li>
-    <li><a href="#transactions-and-the-process-engine-context">Transactions and the Process Engine Context</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#what-is-optimistic-locking">What is Optimistic Locking?</a>
+    <li><a href="#wait-states">Wait States</a></li>
+    <li><a href="#transaction-boundaries">Transaction Boundaries</a></li>
+    <li><a href="#asynchronous-continuations">Asynchronous Continuations</a>
       <ul>
-        <li><a href="#example">Example</a></li>
-        <li><a href="#optimistic-locking-vs-pessimistic-locking">Optimistic Locking vs. Pessimistic Locking</a></li>
-        <li><a href="#further-reading">Further Reading</a></li>
+        <li><a href="#why-asynchronous-continuations">Why Asynchronous Continuations?</a></li>
+        <li><a href="#configure-asynchronous-continuations">Configure Asynchronous Continuations</a></li>
+        <li><a href="#asynchronous-continuations-of-multi-instance-activities">Asynchronous Continuations of Multi-Instance Activities</a></li>
+        <li><a href="#understand-asynchronous-continuations">Understand Asynchronous Continuations</a></li>
       </ul>
     </li>
-    <li><a href="#optimistic-locking-in-cib-seven">Optimistic Locking in CIB seven</a>
+    <li><a href="#rollback-on-exception">Rollback on Exception</a></li>
+    <li><a href="#reasoning-for-this-design">Reasoning for This Design</a></li>
+    <li><a href="#transaction-integration">Transaction Integration</a>
       <ul>
-        <li><a href="#the-optimisticlockingexception">The OptimisticLockingException</a></li>
-        <li><a href="#common-places-where-optimistic-locking-exceptions-are-thrown">Common Places Where Optimistic Locking Exceptions Are Thrown</a></li>
-        <li><a href="#optimistic-locking-and-non-transactional-side-effects">Optimistic Locking and Non-Transactional Side Effects</a></li>
-        <li><a href="#internal-implementation-details">Internal Implementation Details</a></li>
+        <li><a href="#standalone-transaction-management">Standalone Transaction Management</a></li>
+        <li><a href="#transaction-manager-integration">Transaction Manager Integration</a></li>
+        <li><a href="#transactions-and-the-process-engine-context">Transactions and the Process Engine Context</a></li>
+      </ul>
+    </li>
+    <li><a href="#optimistic-locking">Optimistic Locking</a>
+      <ul>
+        <li><a href="#what-is-optimistic-locking">What is Optimistic Locking?</a>
+          <ul>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#optimistic-locking-vs-pessimistic-locking">Optimistic Locking vs. Pessimistic Locking</a></li>
+            <li><a href="#further-reading">Further Reading</a></li>
+          </ul>
+        </li>
+        <li><a href="#optimistic-locking-in-cib-seven">Optimistic Locking in CIB seven</a>
+          <ul>
+            <li><a href="#the-optimisticlockingexception">The OptimisticLockingException</a></li>
+            <li><a href="#common-places-where-optimistic-locking-exceptions-are-thrown">Common Places Where Optimistic Locking Exceptions Are Thrown</a></li>
+            <li><a href="#optimistic-locking-and-non-transactional-side-effects">Optimistic Locking and Non-Transactional Side Effects</a></li>
+            <li><a href="#internal-implementation-details">Internal Implementation Details</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

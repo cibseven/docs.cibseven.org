@@ -3467,65 +3467,71 @@ technical details are disclosed when an error occurs on the application server l
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#authentication">Authentication</a>
+    <li><a href="#deployment-options-and-components">Deployment Options and Components</a></li>
+    <li><a href="#security-configuration-inside-cib-seven">Security Configuration inside CIB seven</a>
       <ul>
-        <li><a href="#do-i-need-authentication">Do I need Authentication?</a></li>
-        <li><a href="#enabling-authentication-for-the-rest-api">Enabling Authentication for the REST API</a></li>
-        <li><a href="#authentication-in-the-web-applications">Authentication in the Web Applications</a></li>
-        <li><a href="#internal-database-backed-user-management">Internal (database backed) User Management</a></li>
-        <li><a href="#ldap">LDAP</a></li>
+        <li><a href="#authentication">Authentication</a>
+          <ul>
+            <li><a href="#do-i-need-authentication">Do I need Authentication?</a></li>
+            <li><a href="#enabling-authentication-for-the-rest-api">Enabling Authentication for the REST API</a></li>
+            <li><a href="#authentication-in-the-web-applications">Authentication in the Web Applications</a></li>
+            <li><a href="#internal-database-backed-user-management">Internal (database backed) User Management</a></li>
+            <li><a href="#ldap">LDAP</a></li>
+          </ul>
+        </li>
+        <li><a href="#authorization">Authorization</a>
+          <ul>
+            <li><a href="#do-i-need-to-enable-authorizations">Do I need to enable Authorizations?</a></li>
+            <li><a href="#restricting-data-access-with-authorizations">Restricting Data Access with Authorizations</a></li>
+            <li><a href="#prevent-enumerating-user-accounts-by-brute-force-creating-new-users">Prevent: Enumerating user accounts by brute-force creating new users</a></li>
+            <li><a href="#prevent-bypassing-authorizations-by-reusing-leftover-user-authorizations">Prevent: Bypassing authorizations by reusing leftover user authorizations</a></li>
+          </ul>
+        </li>
+        <li><a href="#spring-security-oauth2">Spring Security OAuth2</a></li>
+        <li><a href="#deployments">Deployments</a></li>
+        <li><a href="#throttle-login-attempts">Throttle login attempts</a></li>
+        <li><a href="#custom-whitelist-for-user-group-and-tenant-ids">Custom Whitelist for User, Group and Tenant IDs</a></li>
+        <li><a href="#password-policy">Password Policy</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#queries">Queries</a>
+          <ul>
+            <li><a href="#expressions-in-queries">Expressions in Queries</a></li>
+            <li><a href="#native-queries">Native queries</a></li>
+            <li><a href="#maximum-results-limit-in-queries">Maximum Results Limit in Queries</a></li>
+          </ul>
+        </li>
+        <li><a href="#csrf-prevention-in-the-webapps">CSRF Prevention in the Webapps</a></li>
+        <li><a href="#xml-security">XML Security</a></li>
+        <li><a href="#http-header-security-in-webapps">HTTP Header Security in Webapps</a></li>
+        <li><a href="#variable-values-from-untrusted-sources">Variable Values from Untrusted Sources</a>
+          <ul>
+            <li><a href="#java-objects-using-the-jdk-built-in-applicationx-java-serialized-object-data-format">Java objects using the JDK built-in <code>application/x-java-serialized-object</code> data format</a></li>
+            <li><a href="#jsonxml-serialized-objects-using-spin">JSON/XML serialized objects using Spin</a></li>
+          </ul>
+        </li>
+        <li><a href="#user-operation-log-settings-for-synchronous-operations-affecting-multiple-entities">User operation log settings for synchronous operations affecting multiple entities</a></li>
       </ul>
     </li>
-    <li><a href="#authorization">Authorization</a>
+    <li><a href="#security-configuration-in-the-external-environment">Security Configuration in the external Environment</a>
       <ul>
-        <li><a href="#do-i-need-to-enable-authorizations">Do I need to enable Authorizations?</a></li>
-        <li><a href="#restricting-data-access-with-authorizations">Restricting Data Access with Authorizations</a></li>
-        <li><a href="#prevent-enumerating-user-accounts-by-brute-force-creating-new-users">Prevent: Enumerating user accounts by brute-force creating new users</a></li>
-        <li><a href="#prevent-bypassing-authorizations-by-reusing-leftover-user-authorizations">Prevent: Bypassing authorizations by reusing leftover user authorizations</a></li>
-      </ul>
-    </li>
-    <li><a href="#spring-security-oauth2">Spring Security OAuth2</a></li>
-    <li><a href="#deployments">Deployments</a></li>
-    <li><a href="#throttle-login-attempts">Throttle login attempts</a></li>
-    <li><a href="#custom-whitelist-for-user-group-and-tenant-ids">Custom Whitelist for User, Group and Tenant IDs</a></li>
-    <li><a href="#password-policy">Password Policy</a></li>
-    <li><a href="#forms">Forms</a></li>
-    <li><a href="#queries">Queries</a>
-      <ul>
-        <li><a href="#expressions-in-queries">Expressions in Queries</a></li>
-        <li><a href="#native-queries">Native queries</a></li>
-        <li><a href="#maximum-results-limit-in-queries">Maximum Results Limit in Queries</a></li>
-      </ul>
-    </li>
-    <li><a href="#csrf-prevention-in-the-webapps">CSRF Prevention in the Webapps</a></li>
-    <li><a href="#xml-security">XML Security</a></li>
-    <li><a href="#http-header-security-in-webapps">HTTP Header Security in Webapps</a></li>
-    <li><a href="#variable-values-from-untrusted-sources">Variable Values from Untrusted Sources</a>
-      <ul>
-        <li><a href="#java-objects-using-the-jdk-built-in-applicationx-java-serialized-object-data-format">Java objects using the JDK built-in <code>application/x-java-serialized-object</code> data format</a></li>
-        <li><a href="#jsonxml-serialized-objects-using-spin">JSON/XML serialized objects using Spin</a></li>
-      </ul>
-    </li>
-    <li><a href="#user-operation-log-settings-for-synchronous-operations-affecting-multiple-entities">User operation log settings for synchronous operations affecting multiple entities</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#database">Database</a>
-      <ul>
-        <li><a href="#data-encryption">Data encryption</a></li>
-        <li><a href="#securing-the-database-connection">Securing the database connection</a></li>
-        <li><a href="#securing-database-credentials">Securing Database Credentials</a></li>
-      </ul>
-    </li>
-    <li><a href="#web-server-applicable-when-using-rest-api-or-web-applications">Web Server (applicable when using REST API or Web Applications)</a>
-      <ul>
-        <li><a href="#enabling-ssl--https">Enabling SSL / HTTPS</a></li>
-        <li><a href="#session-timeout">Session timeout</a></li>
-        <li><a href="#cookies-domain">Cookies domain</a></li>
-        <li><a href="#maximum-post-size-in-server-rest-api">Maximum POST size in server (REST API)</a></li>
-        <li><a href="#securing-cookies-web-applications">Securing Cookies (Web Applications)</a></li>
-        <li><a href="#error-handling">Error handling</a></li>
-        <li><a href="#prevent-disclosure-of-application-server-internals">Prevent Disclosure of Application Server Internals</a></li>
+        <li><a href="#database">Database</a>
+          <ul>
+            <li><a href="#data-encryption">Data encryption</a></li>
+            <li><a href="#securing-the-database-connection">Securing the database connection</a></li>
+            <li><a href="#securing-database-credentials">Securing Database Credentials</a></li>
+          </ul>
+        </li>
+        <li><a href="#web-server-applicable-when-using-rest-api-or-web-applications">Web Server (applicable when using REST API or Web Applications)</a>
+          <ul>
+            <li><a href="#enabling-ssl--https">Enabling SSL / HTTPS</a></li>
+            <li><a href="#session-timeout">Session timeout</a></li>
+            <li><a href="#cookies-domain">Cookies domain</a></li>
+            <li><a href="#maximum-post-size-in-server-rest-api">Maximum POST size in server (REST API)</a></li>
+            <li><a href="#securing-cookies-web-applications">Securing Cookies (Web Applications)</a></li>
+            <li><a href="#error-handling">Error handling</a></li>
+            <li><a href="#prevent-disclosure-of-application-server-internals">Prevent Disclosure of Application Server Internals</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

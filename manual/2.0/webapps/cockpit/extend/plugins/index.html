@@ -3791,60 +3791,67 @@ This plugin point does not receive a DOM node to render into but an instance of 
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#file-structure">File structure</a></li>
-    <li><a href="#structure-of-a-frontend-module">Structure of a Frontend Module</a>
+    <li><a href="#the-nature-of-a-cockpit-plugin">The Nature of a Cockpit Plugin</a>
       <ul>
-        <li><a href="#attributes-in-detail">Attributes in Detail</a></li>
+        <li><a href="#file-structure">File structure</a></li>
+        <li><a href="#structure-of-a-frontend-module">Structure of a Frontend Module</a>
+          <ul>
+            <li><a href="#attributes-in-detail">Attributes in Detail</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#excluding-a-complete-plugin">Excluding a Complete Plugin</a></li>
-    <li><a href="#excluding-a-plugin-feature">Excluding a Plugin Feature</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#data">Data</a>
+    <li><a href="#plugin-exclusion-client-side">Plugin Exclusion (Client Side)</a>
       <ul>
-        <li><a href="#login-data">Login Data</a></li>
+        <li><a href="#excluding-a-complete-plugin">Excluding a Complete Plugin</a></li>
+        <li><a href="#excluding-a-plugin-feature">Excluding a Plugin Feature</a></li>
       </ul>
     </li>
-    <li><a href="#route">Route</a></li>
-    <li><a href="#navigation">Navigation</a></li>
-    <li><a href="#login">Login</a></li>
-    <li><a href="#dashboard">Dashboard</a></li>
-    <li><a href="#metrics">Metrics</a></li>
-    <li><a href="#processes-dashboard">Processes Dashboard</a></li>
-    <li><a href="#decisions-dashboard">Decisions Dashboard</a></li>
-    <li><a href="#cases-dashboard">Cases Dashboard</a></li>
-    <li><a href="#process-definition-runtime-tab">Process Definition Runtime Tab</a></li>
-    <li><a href="#process-instance-runtime-tab">Process Instance Runtime Tab</a></li>
-    <li><a href="#process-definition-runtime-action">Process Definition Runtime Action</a></li>
-    <li><a href="#process-instance-runtime-action">Process Instance Runtime Action</a></li>
-    <li><a href="#process-definition-view">Process Definition View</a></li>
-    <li><a href="#process-instance-view">Process Instance View</a></li>
-    <li><a href="#process-definition-diagram-overlay">Process Definition Diagram Overlay</a></li>
-    <li><a href="#process-instance-diagram-overlay">Process Instance Diagram Overlay</a></li>
-    <li><a href="#job-definition-action">Job Definition Action</a></li>
-    <li><a href="#decision-definition-tab">Decision Definition Tab</a></li>
-    <li><a href="#decision-definition-action">Decision Definition Action</a></li>
-    <li><a href="#decision-definition-table">Decision Definition Table</a></li>
-    <li><a href="#decision-instance-tab">Decision Instance Tab</a></li>
-    <li><a href="#decision-instance-action">Decision Instance Action</a></li>
-    <li><a href="#decision-instance-table">Decision Instance Table</a></li>
-    <li><a href="#case-definition-tab">Case Definition Tab</a></li>
-    <li><a href="#case-definition-action">Case Definition Action</a></li>
-    <li><a href="#case-definition-diagram-overlay">Case Definition Diagram Overlay</a></li>
-    <li><a href="#case-definition-diagram-plugin">Case Definition Diagram Plugin</a></li>
-    <li><a href="#case-instance-tab">Case Instance Tab</a></li>
-    <li><a href="#case-instance-action">Case Instance Action</a></li>
-    <li><a href="#case-instance-diagram-overlay">Case Instance Diagram Overlay</a></li>
-    <li><a href="#case-instance-diagram-plugin">Case Instance Diagram Plugin</a></li>
-    <li><a href="#repository-resource-action">Repository Resource Action</a></li>
-    <li><a href="#repository-resource-detail">Repository Resource Detail</a></li>
-    <li><a href="#open-task-dashboard">Open Task Dashboard</a></li>
-    <li><a href="#incident-action">Incident Action</a></li>
+    <li><a href="#legacy-plugins">Legacy Plugins</a></li>
+    <li><a href="#plugin-points">Plugin points</a>
+      <ul>
+        <li><a href="#data">Data</a>
+          <ul>
+            <li><a href="#login-data">Login Data</a></li>
+          </ul>
+        </li>
+        <li><a href="#route">Route</a></li>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#metrics">Metrics</a></li>
+        <li><a href="#processes-dashboard">Processes Dashboard</a></li>
+        <li><a href="#decisions-dashboard">Decisions Dashboard</a></li>
+        <li><a href="#cases-dashboard">Cases Dashboard</a></li>
+        <li><a href="#process-definition-runtime-tab">Process Definition Runtime Tab</a></li>
+        <li><a href="#process-instance-runtime-tab">Process Instance Runtime Tab</a></li>
+        <li><a href="#process-definition-runtime-action">Process Definition Runtime Action</a></li>
+        <li><a href="#process-instance-runtime-action">Process Instance Runtime Action</a></li>
+        <li><a href="#process-definition-view">Process Definition View</a></li>
+        <li><a href="#process-instance-view">Process Instance View</a></li>
+        <li><a href="#process-definition-diagram-overlay">Process Definition Diagram Overlay</a></li>
+        <li><a href="#process-instance-diagram-overlay">Process Instance Diagram Overlay</a></li>
+        <li><a href="#job-definition-action">Job Definition Action</a></li>
+        <li><a href="#decision-definition-tab">Decision Definition Tab</a></li>
+        <li><a href="#decision-definition-action">Decision Definition Action</a></li>
+        <li><a href="#decision-definition-table">Decision Definition Table</a></li>
+        <li><a href="#decision-instance-tab">Decision Instance Tab</a></li>
+        <li><a href="#decision-instance-action">Decision Instance Action</a></li>
+        <li><a href="#decision-instance-table">Decision Instance Table</a></li>
+        <li><a href="#case-definition-tab">Case Definition Tab</a></li>
+        <li><a href="#case-definition-action">Case Definition Action</a></li>
+        <li><a href="#case-definition-diagram-overlay">Case Definition Diagram Overlay</a></li>
+        <li><a href="#case-definition-diagram-plugin">Case Definition Diagram Plugin</a></li>
+        <li><a href="#case-instance-tab">Case Instance Tab</a></li>
+        <li><a href="#case-instance-action">Case Instance Action</a></li>
+        <li><a href="#case-instance-diagram-overlay">Case Instance Diagram Overlay</a></li>
+        <li><a href="#case-instance-diagram-plugin">Case Instance Diagram Plugin</a></li>
+        <li><a href="#repository-resource-action">Repository Resource Action</a></li>
+        <li><a href="#repository-resource-detail">Repository Resource Detail</a></li>
+        <li><a href="#open-task-dashboard">Open Task Dashboard</a></li>
+        <li><a href="#incident-action">Incident Action</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">
