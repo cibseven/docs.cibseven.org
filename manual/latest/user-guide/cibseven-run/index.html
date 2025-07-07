@@ -3650,6 +3650,15 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <th>Property name</th>
       <th>Description</th>
   </tr>
+    <tr>
+      <td rowspan="2">camunda.bpm.webapp</td>
+      <td>.applicationPath</td>
+      <td>The deployment path of CIB seven webclient. <br />Default value: /webapp</td>
+  </tr>
+    <tr>
+      <td>.legacyApplicationPath</td>
+      <td>The deployment path of Camunda web applications. <br />Default value: /camunda</td>
+  </tr>
   <tr>
       <td rowspan="21">cibseven.webclient</td>
       <td>.api.common.title</td>
@@ -3713,7 +3722,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   </tr>
   <tr>
       <td>.services.basePath</td>
-      <td>Base path for webclient REST services. <br />Example: /webapp/services/v1</td>
+      <td>Base path for CIB seven webclient REST services. <br />Example: services/v1</td>
   </tr>
   <tr>
       <td>.theme</td>
