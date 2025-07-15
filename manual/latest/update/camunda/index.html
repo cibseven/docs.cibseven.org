@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3146,14 +3178,40 @@ This script performs the following actions:</p>
 <li>Changes artifacts names from <code>camunda-*</code> to <code>cibseven-*</code>.</li>
 <li>Changes namespaces inside imports, used in your custom Java code from <code>org.camunda</code> to <code>org.cibseven</code>.</li>
 </ul>
-<h4 id="migration-to-cib-seven-webclient">Migration to CIB seven webclient</h4>
+<h3 id="migration-to-cib-seven-webclient">Migration to CIB seven webclient</h3>
 <p>Among other things, CIB Seven 2.0.0 includes a new web client: CIB seven webclient (however, the option of using the old Camunda web application remains available).
-One of the features of the CIB seven webclient is a more secure connection to the CIB seven BPM engine, compared to the Camunda web application.
 The CIB Seven webclient uses JWT-based authentication and requires a special JWT secret, which must be stored securely and be accessible to both, the engine REST and the webclient middleware.
 So, for migration to CIB seven webclient, you need to create file <code>cibseven-webclient.properties</code> on the classpath, ideally for both, the engine-REST and the webclient.
 This configuration file should contain a jwtSecret property with the same value:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">   </span><span class="l">cibseven.webclient.authentication.jwtSecret=...</span><span class="w">
 </span></span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
+<h3 id="migration-to-cib-seven-namespace">Migration to CIB seven namespace</h3>
+<p>In some cases, processes created for Camunda may reference classes from the org.camunda namespace.
+For example:</p>
+<ul>
+<li>A process definition might include a script task that uses classes from the org.camunda namespace.</li>
+<li>A task can have an user variable of the camunda namespace.</li>
+</ul>
+<p>All such objects are stored in the database and are not automatically renamed to the cibseven namespace during migration.</p>
+
+<div class="note bg-warning docs-warning">
+  <h3>Impact post-migration:</h3>
+  <p>If your processes utilize these objects, post-migration, attempting to access them may result in ClassNotFoundException.</p>
+</div>
+
+
+<div class="note bg-info docs-info">
+  <h3></h3>
+  <p>You can search for the string pattern <code>org.camunda.*</code> inside the BPMN files to find the processes with the camunda namespace.</p>
+</div>
+
+<p>To ensure smooth operation post-migration, additional properties are available to facilitate the renaming of these objects from org.camunda namespace to org.cibseven upon the first access:</p>
+<ul>
+<li><code>useCibSevenNamespaceInScripting</code> allows to handle org.camunda classes, used in a script, when the script is launched by a process</li>
+<li><code>useCibSevenNamespaceInReflection</code> allows to convert serialized objects, stored in the database, from the camunda namespace to the cibseven namespace.</li>
+</ul>
+<p>These properties are already included inside the configuration files for Tomcat (<code>bpm_platform.xml</code>), Wildfly (<code>standalone.xml</code>) and Run (<code>production.yml</code>) distributions of CIB seven 2.0 and higher, but the properties are disabled by default.
+Enabling these properties ensures smooth access to objects and prevents class loading errors after migration.</p>
 <h2 id="migration-to-cib-seven-11">Migration to CIB seven 1.1</h2>
 
 <div class="note bg-info docs-info">
@@ -3202,7 +3260,8 @@ This configuration file should contain a jwtSecret property with the same value:
       <ul>
         <li><a href="#migration-to-cib-seven-20">Migration to CIB seven 2.0</a>
           <ul>
-            <li></li>
+            <li><a href="#migration-to-cib-seven-webclient">Migration to CIB seven webclient</a></li>
+            <li><a href="#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></li>
           </ul>
         </li>
         <li><a href="#migration-to-cib-seven-11">Migration to CIB seven 1.1</a></li>

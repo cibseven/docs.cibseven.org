@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/2.0/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.0/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/2.0/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.0/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3130,23 +3162,23 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The processes dashboard of Cockpit is the entry point for process monitoring. It comes with a pre-installed plugin, which lets you see deployed process definitions. Additional <a href="/manual/2.0/webapps/cockpit/extend/plugins/">plugins</a> can be added to the processes dashboard.</p>
+      <p>The <strong>Processes Dashboard</strong> in Cockpit is the main entry point for process monitoring. It comes with a pre-installed plugin that allows you to view deployed process definitions. <!--Additional [plugins](/manual/2.0/webapps/cockpit/extend/plugins/) can be added to the processes dashboard. // I would not highlight it there yet--></p>
 <h1 id="deployed-processes">Deployed Processes</h1>
-<p>With this plugin you can easily observe the state of a process definition. Green check icons and yellow warning icons indicate running and failed jobs. At this observation level, a yellow warning icon indicates that there is at least one process instance or a sub process instance which has an unresolved incident. You can localize the problem by using the process definition view.</p>
+<p>With this plugin, you can easily monitor the state of a process definition. <strong>Green check icons</strong> and <strong>yellow warning icons</strong> indicate running and failed jobs, respectively. At this observation level, a yellow warning icon signals that at least one process instance or a subprocess instance has an unresolved incident. You can investigate the issue by using the process definition view.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-process-definition-state.png"
       
-          title="Deployed Processes"
+          title="Process Management"
        /></span>
 </figure>
 
-<p>With the search bar above the table, you can search for deployed processes by their name or key. It also allows you to search for partial matches of the name or key. In our next screenshot, you could also search for the name &ldquo;Receipt&rdquo; to find the corresponding process.</p>
+<p>Above the table, the search bar allows you to search for deployed processes by their name or key. It also supports searching for partial matches of both name and key. For example, in the next screenshot, you can search for the name <code>'Invoice'</code> to find the corresponding process.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-deployed-processes-search.png"
       
-          title="cockpit Search"
+          title="Process Management: Basic Search"
        /></span>
 </figure>
 
@@ -3172,19 +3204,6 @@ You can also switch to the preview tab which displays the rendered process model
 [failed-jobs]: /manual/2.0/webapps/cockpit/bpmn/failed-jobs/
 
 -->
-<h2 id="csv-export-for-process-instances">CSV Export for Process Instances</h2>
-<p>Sometimes incidents make it necessary for the Operations Engineer to intervene manually. However, these incidents might
-not always be solvable from Cockpit if other services or systems are involved. For this case, Cockpit provides a feature
-to export affected process instances and their process variable values as CSV spreadsheets. The export feature helps to
-communicate efficiently with other system owners. In the process instance view, you&rsquo;ll find a download icon in the upper-right corner. The icon is highlighted with an orange frame in the following screenshot.</p>
-<figure class="image">
-  <span><img
-      src="../../img/cockpit-export.png"
-      
-          title="CSV Export for Process Instances"
-       /></span>
-</figure>
-
 <!-- To trigger the CSV export, search for process instances and customize what properties you want to export by adding or removing columns. Suppose you are only interested in selecting
 specific process instances; you can checkmark the process instances of interest on the left side or select the whole page by checkmarking
 the box on the left side in the table header. You can select process instances across multiple pages. In the next step, you can choose a more coarse-grained process instance selection approach.
@@ -3227,29 +3246,6 @@ When clicking **Export CSV**, the backend crunches the requested data and create
 </figure>
 
 -->
-<p>When you click the button, the download of the CSV file starts and soon you should see a your CSV export in your browser.</p>
-<h3 id="export-result">Export Result</h3>
-<p>The format of the export result is a file of <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> (opens an external link to Wikipedia). The structure of the CSV is displayed in the next screenshot where you will find an example of the CSV file opened in MS Excel. We find the columns state, business key, start time, end time, ID, user, definition name and definition version.</p>
-<figure class="image">
-  <span><img
-      src="../../img/cockpit-export-result.png"
-      
-          title="CSV Export for Process Instances: Export Result"
-       /></span>
-</figure>
-
-<h3 id="structure-of-the-spreadsheet">Structure of the Spreadsheet</h3>
-<ul>
-<li>Each row in the spreadsheet represents a process instance, while each property has its dedicated column.</li>
-<li>The spreadsheet has a dedicated column for each variable property and displays its value in the respective row that matches with the process instance.</li>
-<li>The spreadsheet displays:
-<ul>
-<li>A <code>null</code> value as <code>&lt;&lt;NULL&gt;&gt;</code></li>
-<li>An unsupported variable value type as <code>&lt;&lt;UNSUPPORTED TYPE&gt;&gt;</code></li>
-</ul>
-<!--* A non-existing variable as empty cell.-->
-</li>
-</ul>
 <!--#### Example
 
 In the next screenshot you find an example of the CSV file opened by MS Excel. We find the columns state, business key, start time, end time, ID, user, definition name and definition version.
@@ -3307,6 +3303,82 @@ start editing by clicking on the value. You can expand the value in a modal dial
 </figure>
 
 -->
+<p>Next to the search bar on the right side there are two switches <code>'Only with incidents'</code> and <code>'Only active'</code>. Activate the first one if you are interested in displaying only instances with incidents. The second one is by default activated. Deactivate it if you want to see not active instances.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-deployed-processes-active-incidents.png"
+      
+          title="Process Management: Incidents and Active Instances"
+       /></span>
+</figure>
+
+<p>Next to it, on the right border, there is the button <code>'Organize deployments'</code>. Click here if you want to search for a specific process or decision deployment, or if you want to delete one. For more details, see Section <a href="/manual/2.0/webapps/cockpit/deployment-view/">Deployments</a>.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-deployed-processes-deployments.png"
+      
+          title="Process Management: Deployments"
+       /></span>
+</figure>
+
+<p>In the lower part, as mentioned at the beginning, all the found process instances are listed. On the right, you can find four buttons for each: <code>'Open BPMN file in modeler'</code>, <code>'Management'</code>, <code>'See deployments'</code>, and <code>'Cockpit'</code>.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-deployed-processes-buttons.png"
+      
+          title="Process Management: Further Options"
+       /></span>
+</figure>
+
+<h1 id="enterprise-features">Enterprise features</h1>
+<h2 id="process-instance-search">Process Instance Search</h2>
+<p>The <strong>enterprise</strong> version of CIB Seven introduces an advanced <strong>Process Instance Search</strong> feature. This functionality allows you to apply highly specific selection criteria to find and display process instances, which can then be exported as a CSV file for further analysis.</p>
+<p>To begin, navigate to the <strong>Process Instance Search</strong> tab. Once there, you’ll find a search bar. Clicking on it will reveal a dropdown menu with several options, including <code>'Process Definition'</code>, <code>'State'</code>, <code>'Dates'</code>, and <code>'Variables'</code>. These options allow you to filter the search based on various parameters.</p>
+<figure class="image">
+  <span><img
+      src="../../img/process-instance-search-01.png"
+      
+          title="Process Management: Advanced Search"
+       /></span>
+</figure>
+
+<p>We recommend experimenting with these search options to familiarize yourself with the functionality. For example, you can select a specific <strong>process definition</strong> using its unique key. Let’s go through an example: In this case, we want to filter the results to display all processes with the key <code>'llm-call-with-files'</code>. We select <code>'Process Definition Key'</code> in the search options and enter the key.</p>
+<figure class="image">
+  <span><img
+      src="../../img/process-instance-search-02.png"
+      
+          title="Process Management: Advanced Search - Select Definition Key"
+       /></span>
+</figure>
+
+<p>The search results provide various pieces of information, including the current <strong>state</strong> of the instance, the <strong>start date</strong>, and the <strong>user</strong> who initiated the process. Take a look at the upper-right corner of the search bar. Here, you’ll see a number representing the total count of instances that match your search criteria. You can reset the filters at any time by clicking on the <strong>cross symbol</strong>. Additionally, the <strong>paper clip symbol</strong> allows you to share the search query with a colleague, and the <strong>save icon</strong> lets you save the current query with a custom name for future reference.</p>
+<figure class="image">
+  <span><img
+      src="../../img/process-instance-search-03.png"
+      
+          title="Process Management: Advanced Search - Search Options"
+       /></span>
+</figure>
+
+<p>In some cases, you might want to display specific information, such as the <code>'tenant ID'</code> or the <code>'start user'</code>. To customize the table columns, click on the <strong>table icon</strong> in the lower-right corner, where you&rsquo;ll see a small <strong>plus symbol</strong>. In the dialog that appears, you can select the columns you want to display based on your needs.</p>
+<figure class="image">
+  <span><img
+      src="../../img/process-instance-search-04.png"
+      
+          title="Process Management: Advanced Search - Visibility of Columns"
+       /></span>
+</figure>
+
+<p>Finally, you can download the results as a CSV file for further analysis in programs such as Microsoft Excel or LibreOffice Calc. To do this, simply click on the <strong>download icon</strong> located above the search bar. This icon is highlighted with an orange frame in the last screenshot of this page.</p>
+<figure class="image">
+  <span><img
+      src="../../img/process-instance-search-05.png"
+      
+          title="Process Management: Advanced Search - Download"
+       /></span>
+</figure>
+
+
     </div>
   </div>
 </div>
@@ -3315,14 +3387,10 @@ start editing by clicking on the value. You can expand the value in a modal dial
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#deployed-processes">Deployed Processes</a>
+    <li><a href="#deployed-processes">Deployed Processes</a></li>
+    <li><a href="#enterprise-features">Enterprise features</a>
       <ul>
-        <li><a href="#csv-export-for-process-instances">CSV Export for Process Instances</a>
-          <ul>
-            <li><a href="#export-result">Export Result</a></li>
-            <li><a href="#structure-of-the-spreadsheet">Structure of the Spreadsheet</a></li>
-          </ul>
-        </li>
+        <li><a href="#process-instance-search">Process Instance Search</a></li>
       </ul>
     </li>
   </ul>

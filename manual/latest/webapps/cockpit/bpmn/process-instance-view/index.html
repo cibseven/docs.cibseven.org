@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3130,7 +3162,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Click on the eye icon of a process instance in the <a href="/manual/latest/webapps/cockpit/bpmn/process-definition-view/">process definition view</a> to open the <strong>process instance view</strong>. In the following screenshot, the icon is highlighted by an orange frame.</p>
+      <h1 id="community-features">Community Features</h1>
+<p>First, navigate to the <a href="/manual/latest/webapps/cockpit/bpmn/process-definition-view/">Process Definition View</a> and click on the eye icon <button class="btn btn-xs"><i class="glyphicon glyphicon-eye-open"></i></button> of the process instance of interest to open the <strong>Process Instance View</strong>. In the following screenshot, the icon is highlighted with an orange frame on the right.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-process-instances-view.png"
@@ -3139,18 +3172,27 @@
        /></span>
 </figure>
 
-<p>This view allows you to drill down into a single process instance and explore its running activities as well as the variables, tasks, jobs, etc.
-Beside the diagram view the process will be displayed as an <a href="#activity-instance-tree">activity instance tree view</a>. Variables that belong to the instance will be listed in a variables table of the <a href="#detailed-information-panel">detailed information panel</a>.</p>
+<p>This view allows you to check a single process instance and explore its running activities, as well as the variables, tasks, jobs, etc. <!--Beside the diagram view, the process will be displayed as an [activity instance tree view](#activity-instance-tree).--> The detailed information panel will be shown with the tabs <code>'Variables'</code>, <code>'Incidents'</code>, <code>'User tasks'</code>, <code>'Jobs'</code>, <code>'Called Process Instances'</code>, and <code>'External tasks'</code>.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-instances-view-detailed-pannel.png"
+      
+          title="Process Instance View: Information Panel"
+       /></span>
+</figure>
+
+<h2 id="information-panel">Information Panel</h2>
+<p>Variables that belong to the instance will be listed in a variables table of the <strong>Information Panel</strong> in the lower part. This view is marked with a orange frame in the next screenshot.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-process-instances-view-variables.png"
       
-          title="Process Instance View Variables"
+          title="Process Instance View: Variables Tab"
        /></span>
 </figure>
 
 <!--Now you can select single or multiple ('ctrl + click') flow nodes in the interactive BPMN 2.0 diagram or you can select an activity instance within the activity tree view. As diagram, tree view and variables table correspond with each other, the selected flow node will also be selected in the tree and the associated variables will be shown and vice versa.-->
-<p>Furthermore, you can maximize the diagram view or the detailed information panel by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button, respectively the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-up"></i></button> button, at the bottom left of the diagram view.</p>
+<p>Furthermore, you can maximize the bpmn diagram view by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-down"></i></button> button, at the top left above the Information Panel.</p>
 <!--# Activity Instance Tree
 
 <figure class="image">
@@ -3164,39 +3206,87 @@ Beside the diagram view the process will be displayed as an <a href="#activity-i
 
 The activity instance tree contains a node for each activity that is currently active in the process instance. It allows you to select activity instances to explore their details. Concurrently, the selected instance will be marked in the rendered process diagram and the corresponding variables will be listed in the detailed information panel.
 -->
-<h1 id="call-activity-drill-down">Call Activity Drill Down</h1>
-<p>Call activity instances that call at least one process instance have an overlay on the lower right corner that links to their called process instances (see next screenshot).</p>
+<p>In the detailed information panel to get an overview of the variables, incidents, called process instances, user tasks and external tasks that the process instance contains. In addition you can <a href="#edit-variables">edit variables</a> or change the assignees of user tasks.</p>
+<h2 id="variables-tab">Variables Tab</h2>
+<h3 id="sorting-variables">Sorting Variables</h3>
+<p>In the <strong>variables tab</strong>, you can sort variables by <code>'name'</code>, <code>'type'</code>, <code>'value'</code>, and <code>'scope'</code>. Click on the corresponding header titles to toggle between ascending and descending order. The header titles are highlighted in orange in the following screenshot.</p>
+<!--instance id and variable value by using search pills. You can filter variable values with the type `String`, `Number`, or `Boolean`. To do so, click in the empty search field and select a criterion. Next, fill in the respective values for the search pill. You can combine multiple search pills to narrow down the results.-->
+<figure class="image">
+  <span><img
+      src="../../img/variable-filter.png"
+      
+          title="Process Instance View: Filter Variables"
+       /></span>
+</figure>
+
+<!-- The total amount of results that suit the search query is displayed to the right. Furthermore, you can copy a link to the current search query to your clipboard by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-link"></i></button> button and you can save search queries to your local browser storage by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and inserting a name in the drop down menu that appears. You can then retrieve the search query by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and selecting the chosen name in the drop down menu. -->
+<h3 id="add-variables">Add Variables</h3>
+<p>Hit the <button class="btn btn-xs">
+  <i class="glyphicon glyphicon-plus" ></i>
+</button>
+ button on the right side to add variables to a process instance. You can choose between different data types. Please note that variables will be overwritten if you add a new variable with an existing name.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-add-variables.png"
+      
+          title="Process Instance View: Add Variables"
+       /></span>
+</figure>
+
+<h3 id="edit-variables">Edit Variables</h3>
+<p>Edit variables in the list of variables by using the <button class="btn btn-xs">
+  <i class="glyphicon glyphicon-pencil" ></i>
+</button>
+ symbol. This feature allows you to change the value. The symbol is highlighted with an orange frame in the following screenshot.<!-- of variables as well as the type. A validation of the date format and for the value of integers happens on client side. If you enter NULL the variable will be converted to a string type. --></p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-edit-variables.png"
+      
+          title="Process Instance View: Edit Variables"
+       /></span>
+</figure>
+
+<h3 id="delete-variables">Delete Variables</h3>
+<p>Next to the edit button you will find a button with a trash icon <button class="btn btn-xs">
+<i class="glyphicon glyphicon-trash"></i>
+</button>. Use this icon to delete single variables. After deletion, these variables cannot be used in the running process.</p>
+<h3 id="call-activity">Call Activity</h3>
+<p>Call activity instances that call at least one process instance have a paperclip button <button class="btn btn-xs"><i class="glyphicon glyphicon-paperclip"></i></button> on the lower right corner that links to their called process instances (see next screenshot).</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-call-activity-instance-drill-down.png"
       
-          title="Call Activity Drill Down"
+          title="Process Instance View: Call Activity Drill Down"
        /></span>
 </figure>
 
 <p>If the call activity instance calls exactly one process instance, then clicking the overlay redirects to the called process instance page. However, if the number of called process instances exceeds one, then clicking the overlay will show the called process instances tab containing only process instances called by the selected call activity instance.</p>
-<h1 id="detailed-information-panel">Detailed Information Panel</h1>
-<p>Use the detailed information panel to get an overview of the variables, incidents, called process instances, user tasks and external tasks that the process instance contains. In addition you can <a href="#edit-variables">edit variables</a> or change the assignees of user tasks.</p>
+<h2 id="incidents-tab">Incidents Tab</h2>
+<p>In the <strong>Incidents Tab</strong> you can click on the incident message name, which will open the stacktrace of the selected incident. Furthermore, you can increment the number of retries for a failed job by hitting the <button class="btn btn-xs">
+  <i class="glyphicon glyphicon-repeat" ></i>
+</button>
+ button and add an annotation by hitting the <button class="btn btn-xs">
+  <i class="glyphicon glyphicon-pencil" ></i>
+</button>
+ button.</p>
 <figure class="image">
   <span><img
-      src="../../img/cockpit-detailed-information-view.png"
+      src="../../img/cockpit-process-instance-incidents-tab.png"
       
-          title="Detailed Information Panel"
+          title="Process Instance View: Incidents Tab"
        /></span>
 </figure>
 
-<p>In the <strong>incidents tab</strong> you can click on the incident message name, which will open the stacktrace of the selected incident. Furthermore, you can increment the number of retries for a failed job by hitting the <button class="btn btn-xs">
-  <i class="glyphicon glyphicon-repeat" ></i>
-</button>
- button.</p>
-<p>The <strong>user tasks tab</strong> allows managing users and groups for selected user tasks. Hit the <button class="btn btn-xs">
+<h2 id="user-tasks-tab">User Tasks Tab</h2>
+<p>The <strong>User Tasks Tab</strong> allows managing users and groups for selected user tasks. Hit the <button class="btn btn-xs">
   <i class="glyphicon glyphicon-user" ></i>
 </button>
  <!--or <button class="btn btn-xs">
   <i class="glyphicon glyphicon-th" ></i>
 </button>
 --> button to open the corresponding menu.</p>
-<p>The <strong>jobs tab</strong> gives you an overview of all currently active jobs. You can <a href="#edit-variables">edit variables</a> or change the assignees of user tasks.</p>
+<h2 id="jobs-tab">Jobs Tab</h2>
+<p>The <strong>Jobs Tab</strong> gives you an overview of all currently active jobs.</p>
 <!--If the job has a duedate, you can edit the duedate by clicking on the <button class="btn btn-xs">
   <i class="glyphicon glyphicon-time" ></i>
 </button>
@@ -3207,57 +3297,88 @@ The activity instance tree contains a node for each activity that is currently a
   <i class="glyphicon glyphicon-play" ></i>
 </button>
  button respectively.-->
-<p>The <strong>called process instances tab</strong> gives you information about all the called activities in the process in case the process uses call activities.</p>
-<!--The external tasks tab displays various information about external tasks, such as the External Task Id, the activity, amount of retries, the Worker Id of the external task, lock expiration time, topic name and the set priority. See the [external tasks](/manual/latest/user-guide/process-engine/external-tasks/) section of the user guide for more information about external tasks.-->
-<h1 id="sorting-variables">Sorting Variables</h1>
-<p>In the <strong>variables tab</strong>, you can sort variables by name, type, value, and scope. Click on the corresponding header titles to toggle between ascending and descending order. The header titles are highlighted in orange in the following screenshot.</p>
-<!--instance id and variable value by using search pills. You can filter variable values with the type `String`, `Number`, or `Boolean`. To do so, click in the empty search field and select a criterion. Next, fill in the respective values for the search pill. You can combine multiple search pills to narrow down the results.-->
+<h2 id="called-process-instances-tab">Called Process Instances Tab</h2>
+<p>The <strong>Called Process Instances Tab</strong> gives you information about all the called activities in the process in case the process uses call activities.</p>
+<!--
+## External Tasks Tab
+
+The **external tasks** tab displays various information about external tasks, such as the External Task Id, the activity, amount of retries, the Worker Id of the external task, lock expiration time, topic name and the set priority. See the Section [External Tasks](/manual/latest/user-guide/process-engine/external-tasks/) of the user guide for more information about external tasks.
+-->
+<h1 id="enterprise-features">Enterprise Features</h1>
+<p>In the enterprise version, more features are visible. The enterprise features are marked in orange in the next screenshot.</p>
 <figure class="image">
   <span><img
-      src="../../img/variable-filter.png"
+      src="../../img/cockpit-process-instances-view-enterprise.png"
       
-          title="Filter Variables"
+          title="Process Instance View: Enterprise Features"
        /></span>
 </figure>
 
-<!-- The total amount of results that suit the search query is displayed to the right. Furthermore, you can copy a link to the current search query to your clipboard by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-link"></i></button> button and you can save search queries to your local browser storage by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and inserting a name in the drop down menu that appears. You can then retrieve the search query by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and selecting the chosen name in the drop down menu. -->
-<h1 id="add-variables">Add Variables</h1>
-<p>Hit the <button class="btn btn-xs">
-  <i class="glyphicon glyphicon-plus" ></i>
-</button>
- button on the right side to add variables to a process instance. You can choose between different data types. Please note that variables will be overwritten if you add a new variable with an existing name.</p>
+<p>The features are:</p>
+<ul>
+<li>Audit Log</li>
+<li>Executed decision instances</li>
+<li>User operations</li>
+<li>Job log</li>
+<li>External tasks log</li>
+<li>Modify</li>
+<li>Documentation</li>
+</ul>
+<p>See the next subsections to find more information to each of this point.</p>
+<h2 id="audit-log-tab">Audit Log Tab</h2>
+<p>In the Audit Log, you can find a detailed overview of the activities that took place within the process instance. The columns, from left to right, are <code>'state'</code>, <code>'activity'</code>, <code>'start time'</code>, <code>'end time'</code>, and <code>'activity instance ID'</code>.</p>
 <figure class="image">
   <span><img
-      src="../../img/cockpit-add-variables.png"
+      src="../../img/cockpit-process-instance-view-audit-log.png"
       
-          title="Add Variables"
+          title="Process Instance View: Enterprise Features - Audit Log Tab"
        /></span>
 </figure>
 
-<h1 id="edit-variables">Edit Variables</h1>
-<p>Edit variables in the list of variables by using the <button class="btn btn-xs">
-  <i class="glyphicon glyphicon-pencil" ></i>
-</button>
- symbol. This feature allows you to change the value. The symbol is highlighted with an orange frame in the following screenshot.<!-- of variables as well as the type. A validation of the date format and for the value of integers happens on client side. If you enter NULL the variable will be converted to a string type. --></p>
+<h2 id="executed-decision-instances-tab">Executed Decision Instances Tab</h2>
+<p>In the <strong>Executed Decision Instances</strong> tab, you can find an overview of all decision instances that were evaluated in this process instance. From left to right, you will find the columns <code>'ID'</code>, <code>'evaluation time'</code>, <code>'decision definition key'</code>, <code>'decision requirements definition'</code>, and <code>'activity'</code>. Clicking on the <code>'ID'</code> of the decision instance will take you to the decision instance view page for this instance. Clicking on the <code>'decision definition key'</code> will take you to the decision definition view page for the definition of this decision instance.</p>
 <figure class="image">
   <span><img
-      src="../../img/cockpit-edit-variables.png"
+      src="../../img/cockpit-process-instance-view-executed-decision-instances.png"
       
-          title="Edit Variables"
+          title="Process Instance View: Enterprise Features - Executed Decision Instances Tab"
        /></span>
 </figure>
 
-<h1 id="cancel-a-process-instance">Cancel a Process Instance</h1>
-<p>In the process instance view, you can cancel a single process instance by clicking the trash icon on the right. A confirmation dialog will appear, and the runtime data of the canceled instance will be deleted when you click on the button &ldquo;Delete.&rdquo;</p>
-<!--In the dialog that appears, you can choose to skip custom listeners and to skip I/O mappings. After you have completed this step,-->
+<h2 id="user-operations-tab">User Operations Tab</h2>
+<p>In the <strong>User Operations</strong> tab, you can see the <code>'operation'</code>, <code>'process instance'</code>, <code>'user'</code>, <code>'change time'</code>, <code>'property'</code>, and <code>'new value'</code>.</p>
 <figure class="image">
   <span><img
-      src="../../img/cockpit-cancel-process-instance.png"
+      src="../../img/cockpit-process-instance-view-user-operations.png"
       
-          title="Cancel Instances"
+          title="Process Instance View: Enterprise Features - User Operations Tab"
        /></span>
 </figure>
 
+<h2 id="job-log-tab">Job Log Tab</h2>
+<p>In the <strong>Job Log</strong> tab, you can find an overview of all job-related events of this process instance and the details of the specific jobs. From left to right, you will find the columns <code>'state'</code>, <code>'message'</code>, <code>'timestamp'</code>, <code>'due date'</code>, <code>'activity'</code>, <code>'failed activity'</code>, <code>'job ID'</code>, <code>'type'</code>, <code>'configuration retries'</code>, <code>'hostname'</code>, and <code>'priority'</code>. If you click on the <code>'activity'</code>, the diagram will jump to this selected activity.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-instance-view-job-log.png"
+      
+          title="Process Instance View: Enterprise Features - Job Log Tab"
+       /></span>
+</figure>
+
+<h2 id="external-tasks-log-tab">External Tasks Log Tab</h2>
+<p>In the <strong>External Tasks Log</strong>, you can find an overview of all external tasks of this process instance. This includes information about the <code>'external task ID'</code>, the <code>'state'</code> of the external task and the the <code>'timestamp'</code>. In case an external task has failed you will find the <code>'error message'</code>. Moreover, the <code>'activity name'</code>, the <code>'retries'</code>, the <code>'worker ID'</code>, the <code>'topic'</code>, and the <code>'priority'</code> can be seen.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-instance-view-external-task-log.png"
+      
+          title="Process Instance View: Enterprise Features - External Tasks Log Tab"
+       /></span>
+</figure>
+
+<h2 id="modify-tab">Modify Tab</h2>
+<p>For further details check out the chapter <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/">Process Modification</a>.</p>
+<h2 id="documentation-tab">Documentation Tab</h2>
+<p>This feature allows you to inspect documentation added in the Camunda Modeler. The documentation table lists all documented elements.</p>
 
     </div>
   </div>
@@ -3267,12 +3388,35 @@ The activity instance tree contains a node for each activity that is currently a
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#call-activity-drill-down">Call Activity Drill Down</a></li>
-    <li><a href="#detailed-information-panel">Detailed Information Panel</a></li>
-    <li><a href="#sorting-variables">Sorting Variables</a></li>
-    <li><a href="#add-variables">Add Variables</a></li>
-    <li><a href="#edit-variables">Edit Variables</a></li>
-    <li><a href="#cancel-a-process-instance">Cancel a Process Instance</a></li>
+    <li><a href="#community-features">Community Features</a>
+      <ul>
+        <li><a href="#information-panel">Information Panel</a></li>
+        <li><a href="#variables-tab">Variables Tab</a>
+          <ul>
+            <li><a href="#sorting-variables">Sorting Variables</a></li>
+            <li><a href="#add-variables">Add Variables</a></li>
+            <li><a href="#edit-variables">Edit Variables</a></li>
+            <li><a href="#delete-variables">Delete Variables</a></li>
+            <li><a href="#call-activity">Call Activity</a></li>
+          </ul>
+        </li>
+        <li><a href="#incidents-tab">Incidents Tab</a></li>
+        <li><a href="#user-tasks-tab">User Tasks Tab</a></li>
+        <li><a href="#jobs-tab">Jobs Tab</a></li>
+        <li><a href="#called-process-instances-tab">Called Process Instances Tab</a></li>
+      </ul>
+    </li>
+    <li><a href="#enterprise-features">Enterprise Features</a>
+      <ul>
+        <li><a href="#audit-log-tab">Audit Log Tab</a></li>
+        <li><a href="#executed-decision-instances-tab">Executed Decision Instances Tab</a></li>
+        <li><a href="#user-operations-tab">User Operations Tab</a></li>
+        <li><a href="#job-log-tab">Job Log Tab</a></li>
+        <li><a href="#external-tasks-log-tab">External Tasks Log Tab</a></li>
+        <li><a href="#modify-tab">Modify Tab</a></li>
+        <li><a href="#documentation-tab">Documentation Tab</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

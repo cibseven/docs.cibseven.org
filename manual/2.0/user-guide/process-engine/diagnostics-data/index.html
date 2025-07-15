@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/2.0/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.0/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/2.0/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.0/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.0/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3174,55 +3206,112 @@ The counts are collected from the start of the engine or the last reported time 
 </ul>
 <h3 id="example">Example</h3>
 <pre tabindex="0"><code>{
-    &#34;installation&#34;: &#34;8343cc7a-8ad1-42d4-97d2-43452c0bdfa3&#34;,
-    &#34;product&#34;: {
-      &#34;name&#34;: &#34;CIB seven Runtime&#34;,
-      &#34;version&#34;: &#34;7.14.0&#34;,
-      &#34;edition&#34;: &#34;community&#34;,
-      &#34;internals&#34;: {
-        &#34;database&#34;: {  
-          &#34;vendor&#34;: &#34;h2&#34;,
-          &#34;version&#34;: &#34;1.4.190 (2015-10-11)&#34;
+  &#34;installation&#34;: &#34;b569c782-cc23-45a0-bdca-2807ea97c6d1&#34;,
+  &#34;product&#34;: {
+    &#34;name&#34;: &#34;CIB seven&#34;,
+    &#34;version&#34;: &#34;2.0.0&#34;,
+    &#34;edition&#34;: &#34;community&#34;,
+    &#34;internals&#34;: {
+      &#34;database&#34;: {
+        &#34;vendor&#34;: &#34;H2&#34;,
+        &#34;version&#34;: &#34;2.3.232 (2024-08-11)&#34;
+      },
+      &#34;commands&#34;: {
+        &#34;AcquireJobsCmd&#34;: {
+          &#34;count&#34;: 3
         },
-        &#34;application-server&#34;: {
-          &#34;vendor&#34;: &#34;Wildfly&#34;,
-          &#34;version&#34;: &#34;WildFly Full 19.0.0.Final (WildFly Core 11.0.0.Final) - 2.0.30.Final&#34;
+        &#34;IsIdentityServiceReadOnlyCmd&#34;: {
+          &#34;count&#34;: 1
         },
-        &#34;jdk&#34;: {
-          &#34;version&#34;: &#34;14.0.2&#34;,
-          &#34;vendor&#34;: &#34;Oracle Corporation&#34;
+        &#34;AuthorizationQueryImpl&#34;: {
+          &#34;count&#34;: 12
         },
-        &#34;commands&#34;: {
-          &#34;StartProcessInstanceCmd&#34;: {&#34;count&#34;: 40},
-          &#34;FetchExternalTasksCmd&#34;:  {&#34;count&#34;: 100}
+        &#34;DbGroupQueryImpl&#34;: {
+          &#34;count&#34;: 5
         },
-        &#34;metrics&#34;: {
-          &#34;process-instances&#34;: { &#34;count&#34;: 936 },
-          &#34;flow-node-instances&#34;: { &#34;count&#34;: 6125 },
-          &#34;decision-instances&#34;: { &#34;count&#34;: 140 },
-          &#34;executed-decision-elements&#34;: { &#34;count&#34;: 732 }
+        &#34;CreateGroupQueryCmd&#34;: {
+          &#34;count&#34;: 5
         },
-        &#34;data-collection-start-date&#34;: &#34;2022-11-320T15:53:20.386+0100&#34;,
-        &#34;camunda-integration&#34;: [
-          &#34;spring-boot-starter&#34;,
-          &#34;camunda-bpm-run&#34;
-        ],
-        &#34;license-key&#34;: {
-          &#34;customer&#34;: &#34;customer name&#34;,
-          &#34;type&#34;: &#34;UNIFIED&#34;,
-          &#34;valid-until&#34;: &#34;2022-09-30&#34;,
-          &#34;unlimited&#34;: false,
-          &#34;features&#34;: {
-            &#34;camundaBPM&#34;: &#34;true&#34;
-          },
-          &#34;raw&#34;: &#34;customer=customer name;expiryDate=2022-09-30;camundaBPM=true;optimize=false;cawemo=false&#34;
+        &#34;ProcessInstanceQueryImpl&#34;: {
+          &#34;count&#34;: 2
         },
-        &#34;webapps&#34;: [
-          &#34;cockpit&#34;,
-          &#34;admin&#34;
-        ]
-      }
+        &#34;DecisionDefinitionQueryImpl&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;DeployCmd&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;HistoryLevelSetupCommand&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;BootstrapEngineCommand&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;GetTableMetaDataCmd&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;FilterQueryImpl&#34;: {
+          &#34;count&#34;: 2
+        },
+        &#34;ProcessDefinitionQueryImpl&#34;: {
+          &#34;count&#34;: 4
+        },
+        &#34;CreateUserQueryCmd&#34;: {
+          &#34;count&#34;: 3
+        },
+        &#34;CheckPassword&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;HistoryCleanupCmd&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;DbUserQueryImpl&#34;: {
+          &#34;count&#34;: 3
+        },
+        &#34;DbTenantQueryImpl&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;CreateTenantQueryCmd&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;SchemaOperationsProcessEngineBuild&#34;: {
+          &#34;count&#34;: 1
+        },
+        &#34;GetLicenseKeyCmd&#34;: {
+          &#34;count&#34;: 1
+        }
+      },
+      &#34;metrics&#34;: {
+        &#34;executed-decision-elements&#34;: {
+          &#34;count&#34;: 0
+        },
+        &#34;flow-node-instances&#34;: {
+          &#34;count&#34;: 0
+        },
+        &#34;decision-instances&#34;: {
+          &#34;count&#34;: 0
+        },
+        &#34;process-instances&#34;: {
+          &#34;count&#34;: 0
+        }
+      },
+      &#34;webapps&#34;: [],
+      &#34;jdk&#34;: {
+        &#34;version&#34;: &#34;17.0.15&#34;,
+        &#34;vendor&#34;: &#34;Ubuntu&#34;
+      },
+      &#34;application-server&#34;: {
+        &#34;vendor&#34;: &#34;Apache Tomcat&#34;,
+        &#34;version&#34;: &#34;Apache Tomcat/10.1.39&#34;
+      },
+      &#34;license-key&#34;: null,
+      &#34;camunda-integration&#34;: [
+        &#34;spring-boot-starter&#34;,
+        &#34;camunda-bpm-run&#34;
+      ],
+      &#34;data-collection-start-date&#34;: &#34;2025-07-11T15:07:27.407+0200&#34;
     }
+  }
 }
 </code></pre><h2 id="source-code">Source code</h2>
 <p>In case you want further details, you can have a look at the implementation of the diagnostics topic in <a href="https://github.com/cibseven/cibseven/blob/main/engine/src/main/java/org/cibseven/bpm/engine/impl/diagnostics/DiagnosticsCollector.java">the codebase</a>. The link leads you to the current <code>master</code> version of the feature.</p>

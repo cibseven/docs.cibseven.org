@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3130,21 +3162,43 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>To enable the <a href="/manual/latest/webapps/">Web Applications</a> you can use the following starter in your <code>pom.xml</code>:</p>
+      <p>Starting from CIB seven 2.0, the default web application is CIB seven webclient.
+To enable the <a href="/manual/latest/webapps/">webclient application</a> you can use the following starter in your <code>pom.xml</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-webapp<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><p>By default the application path is <code>/camunda</code>, so without any further configuration you can access
-the Webapps under <a href="http://localhost:8080/camunda/app/">http://localhost:8080/camunda/app/</a>.</p>
+</span></span></code></pre></div><p>By default the application path is <code>/webapp</code>, so without any further configuration you can access
+the CIB seven webclient under <a href="http://localhost:8080/webapp">http://localhost:8080/webapp</a>.</p>
+<p><strong>Note:</strong> The previous Camunda web applications are still accessible at <a href="http://localhost:8080/camunda">http://localhost:8080/camunda</a>, however, this endpoint is deprecated and will be discontinued in the future releases.</p>
+<h2 id="enterprise-webapps">Enterprise webapps</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Enterprise Feature</h3>
+  <p>Please note that this feature is only included in the enterprise edition of CIB seven, it is not available in the community edition.</p>
+</div>
+
+<p>To use the enterprise webclient, include enterprise version of the starter, with <code>-ee</code> suffix:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-webapp<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${project-version}-ee<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>If you are using the enterprise edition, you can also use the <a href="/manual/latest/user-guide/spring-boot-integration/configuration/#license-file"><code>cibseven.webclient.license.file.path</code></a>
+property to provide a license file that is inserted on application start. Or copy your license file under the name
+<code>cibseven-license.txt</code> to your <code>${user.home}/.cibseven/</code> directory. See the dedicated <a href="/manual/latest/user-guide/license-use/">License docs section</a>
+for more details on how to add a License key to your CIB seven installation.</p>
 <h2 id="configurations">Configurations</h2>
-<p>You can change the application path with the following configuration property in your <code>application.yaml</code> file:</p>
+<p>You can change the application path for CIB seven webclient with the following configuration property in your <code>application.yaml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">camunda.bpm.webapp.application-path</span><span class="o">=</span><span class="s">/my/application/path</span>
+</span></span></code></pre></div><p>The application path for the previous Camunda web applications is configured with this property:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">camunda.bpm.webapp.legacy-application-path</span><span class="o">=</span><span class="s">/my/legacy-application/path</span>
 </span></span></code></pre></div><p>By default, the starter registers a controller to redirect <code>/</code> to CIB seven&rsquo;s bundled <code>index.html</code>.
 To disable this, you have to add to your application properties:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">camunda.bpm.webapp.index-redirect-enabled</span><span class="o">=</span><span class="s">false</span>
-</span></span></code></pre></div><h2 id="error-pages">Error Pages</h2>
+</span></span></code></pre></div><p>For more information about the configuration options for CIB seven webclient, please see here: <a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webclient properties</a></p>
+<h2 id="error-pages">Error Pages</h2>
 <p>The default error handling coming with the Spring Boot (&lsquo;whitelabel&rsquo; error page) is enabled in the starter. To switch to the Camunda error pages (<code>webjar/META-INF/resources/webjars/camunda/error-XYZ-page.html</code>), please put them to the application folder structure under <code>/src/main/resources/public/error/XYZ.html</code>.</p>
 <h2 id="building-custom-rest-apis">Building Custom REST APIs</h2>
 <p>The Camunda Web Applications use a <code>CSRF Prevention Filter</code> that expects a <code>CSRF Token</code> on any
@@ -3163,6 +3217,7 @@ CSRF Prevention Filter Whitelist (via the configuration property <code>camunda.b
   <ul>
     <li>
       <ul>
+        <li><a href="#enterprise-webapps">Enterprise webapps</a></li>
         <li><a href="#configurations">Configurations</a></li>
         <li><a href="#error-pages">Error Pages</a></li>
         <li><a href="#building-custom-rest-apis">Building Custom REST APIs</a></li>

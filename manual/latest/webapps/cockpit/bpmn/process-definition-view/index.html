@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3130,7 +3162,11 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The <strong>process definition view</strong> provides you with information about the definition and the status of a process. On the left side, you can easily view the versions of the process and the number of instances running for each version. On the right side, the process model is displayed, with blue-filled circles representing the instance count and red-filled circles indicating the incident count, making it is easy to locate <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/">failed activities</a> in the process. In the lower part you will find a search bar, with which you can search for a business key. The mentioned options are highlighted in the following screenshot by orange frames.</p>
+      <h1 id="community-features">Community Features</h1>
+<p>The <strong>process definition view</strong> provides you with information about the definition and the status of a process.</p>
+<p>On the left side, you can easily view the versions of the process along with the number of instances currently running for each version. There, you will also find an information icon that you can hover over to display additional details about the specific deployment. Additionally, a trash icon is available, which allows you to delete a deployment. Please note: If you delete a deployment, all running instances associated with it will also be removed.</p>
+<p>On the right side, the process model is displayed. As soon as a process instance is running, blue-filled circles appear, indicating the number of currently active activities. If incidents occur, red-filled circles show the number of incidents. Grey circles mark activities that have already been completed. This makes it easy to locate <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/">failed activities</a> within the process.</p>
+<p>In the lower part of the view, you will find a search bar that allows you to search for a business key. Refer to the next screenshot, where the options mentioned above are highlighted with orange frames. Take a moment to familiarize yourself with this view first.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-process-definitions-view.png"
@@ -3139,32 +3175,68 @@
        /></span>
 </figure>
 
-<p>Use the mouse to navigate through the diagram. Hold the left mouse button to pan the diagram in the desired direction. By holding the CTRL key while scrolling the mouse wheel, you can zoom in and out. Alternatively, you can use the plus and minus icons on the right side. There is also an option to reset the zoom in that area.<!--Furthermore, you can maximize the diagram view or the detailed information panel by clicking on, respectively, the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button or the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-up"></i></button> button, at the bottom left of the diagram view. --></p>
-<p>In the <strong>Instances tab</strong>, all running instances are displayed in a table format. In addition to details such as the start and end time, business key, process ID, and user, you can perform various actions. The first pause icon allows you to suspend or activate the process instance, the second eye icon lets you open the <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-view/">process instance view</a>, and the final trash icon enables you to delete the process instance.</p>
+<p>Use the mouse to navigate through the diagram. Hold the left mouse button to pan the diagram in the desired direction. By holding the <strong>CTRL</strong> key while scrolling the mouse wheel, you can zoom in and out. Alternatively, you can use the plus and minus icons on the right side. There is also an option to reset the zoom in that area.</p>
+<p>In the <strong>Instanced</strong> tab, all running instances are displayed in a table format. In addition to details such as the start and end time, business key, process ID, and user, you can perform various actions. The pause icon <button class="btn btn-xs"><i class="glyphicon glyphicon-pause"></i></button> allows you to suspend or activate the process instance, the eye icon <button class="btn btn-xs"><i class="glyphicon glyphicon-eye-open"></i></button> lets you open the <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-view/">Process Instance View</a>, and the stop icon <button class="btn btn-xs"><i class="glyphicon glyphicon-stop"></i></button> enables you to delete the process instance.</p>
+<p>The <strong>Job Definitions</strong> tab displays the job definitions that are linked to this process definition. You can observe the name of the activity, the type of job, the configuration, and the state of each job. You can also suspend and re-activate the job definition (see <a href="/manual/latest/webapps/cockpit/bpmn/suspension/#job-definition-suspension">Suspension</a> for more information).</p>
 <!--The `Called Process Definitions` tab displays the called child processes. 
 You can learn more about navigating called process definitions and this tab in the section about [Call Activity Navigation][call-activity-navigation]. 
 In the column *Called Process Definition* the names of the called sub processes are listed. 
 Click on the name to display the process in the process definition view. 
 Please note that a filter called Parent is automatically set for the process so that you only see the instances that belong to the parent process. 
 In the *Activity* column you can select the instance that is calling the child process.-->
-<p>The <strong>Job Definitions tab</strong> displays the job definitions that are linked to this process definition. Observe the name of the activity, the type of job, the configuration and the state thereof. You can also suspend and re-activate the job definition (see <a href="/manual/latest/webapps/cockpit/bpmn/suspension/#job-definition-suspension">Job Definition Suspension</a> for more information). It is also possible to <a href="/manual/latest/webapps/cockpit/bpmn/process-definition-view/#set-job-priority">set the priority of jobs</a>.</p>
-<p>The <strong>Incidents tab</strong> displays details about incidents, including the error message, timestamp, current activity, and the failed activity. It also allows you to add notes or increase the number of retries. For more information, see <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/">failed activities</a>.</p>
-<h1 id="search-specific-process-instance">Search specific process instance</h1>
-<p>The case-sensitive search bar lets you search for a specific process instance using the business key. Additionally, you can define sorting criteria. In the following screenshot, we search for the process instance with a business key containing <code>John</code>.</p>
+<p>The <strong>Incidents</strong> tab displays details about incidents, including the error message, timestamp, current activity, and the failed activity. It also allows you to add notes or increase the number of retries. For more information, see the section <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/">Failed Jobs</a>.</p>
+<p>The <strong>Called Process Definitions</strong> tab displays details about called processes, such as call activities and <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/">Failed Jobs</a>.</p>
+<!-- 
+Here we need to include pausing, inspecting
+-->
+<h3 id="csv-export-for-process-instances">CSV Export for Process Instances</h3>
+<p>Sometimes, incidents may require the Operations Engineer to intervene manually. However, these incidents might not always be solvable from the Cockpit if other services or systems are involved. In such cases, we have a feature to export the affected process instances and their process variable values as CSV spreadsheets. This export feature helps facilitate efficient communication with other system owners. In the process instance view, you&rsquo;ll find a download icon in the upper-right corner. The icon is highlighted with an orange frame in the following screenshot.</p>
 <figure class="image">
   <span><img
-      src="../../img/filter-examples/business-key.png"
+      src="../../img/cockpit-export.png"
       
-          title="Filter Example"
+          title="Process Definition View: CSV Export of Process Instances"
        /></span>
 </figure>
 
-<p>When you click the icon to the right of the search bar, a modal dialog opens (see next screenshot). Here, you can apply one or more sorting criteria. Choose from values such as state, business key, start time, end time, ID, user, and incidents, and specify whether the order should be ascending or descending. To add more criteria, click the &ldquo;Add Criteria&rdquo; button. You can rearrange the criteria by using the small arrow icons to move them up or down, and remove them by clicking the trash icon.</p>
+<p>When you click the button, the download of the CSV file will start, and soon you should see your CSV export in your browser. The format of the export result is a file of <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> (opens an external link to Wikipedia). The structure of the CSV is shown in the next screenshot, where you will find an example of the CSV file opened in MS Excel. The columns include <code>'state'</code>, <code>'business key'</code>, <code>'start time'</code>, <code>'end time'</code>, <code>'ID'</code>, <code>'user'</code>, <code>'definition name'</code>, and <code>'definition version'</code>.</p>
 <figure class="image">
   <span><img
-      src="../../img/filter-examples/add-filter.png"
+      src="../../img/cockpit-export-result.png"
       
-          title="Filter Example"
+          title="Process Definition View: CSV Export Structure"
+       /></span>
+</figure>
+
+<p>Each row in the spreadsheet represents a process instance, while each property has its dedicated column. The spreadsheet has a separate column for each variable property and displays its value in the respective row that matches the process instance.</p>
+<h2 id="instances-tab">Instances Tab</h2>
+<h3 id="search-process-instance">Search process instance</h3>
+<p>The case-sensitive search bar allows you to search for a specific process instance using the business key. Additionally, you can define a sorting criteria. In the following screenshot, we search for the process instance with a business key containing <code>John</code>. The search area is marked with an orange frame.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definitions-view-01.png"
+      
+          title="Process Definition View: Filter"
+       /></span>
+</figure>
+
+<p>When you click the icon next to the right of the search bar, a modal dialog opens. Here, you can apply one or more sorting criteria. Choose from values such as state, business key, start time, end time, ID, user, and incidents, and specify whether the order should be ascending or descending. To add more criteria, click the <code>'Add Criteria'</code> button. You can rearrange the criteria using the small arrow icons to move them up or down, and remove them by clicking the trash icon.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definitions-view-02.png"
+      
+          title="Process Definition View: Sorting Criteria"
+       /></span>
+</figure>
+
+<h3 id="cancel-a-process-instance">Cancel a Process Instance</h3>
+<p>In the process instance view, you can cancel a single process instance by clicking the trash icon on the right. A confirmation dialog will appear, and the runtime data of the canceled instance will be deleted when you click the <code>'Delete'</code> button.</p>
+<!--In the dialog that appears, you can choose to skip custom listeners and to skip I/O mappings. After you have completed this step,-->
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-cancel-process-instance.png"
+      
+          title="Process Definition View: Cancel Instances"
        /></span>
 </figure>
 
@@ -3276,30 +3348,70 @@ Add a filter for process instances by filtering for a `boolean` value.
 Add a filter for process instances by filtering for a `numeric` (double, integer, long or short) value.
 
 -->
-<h1 id="set-job-priority">Set Job priority</h1>
-<p>You can change the job priority by overriding the priority specified in the BPMN 2.0 XML. To do so, click on the <button class="btn btn-xs">
-  <i class="glyphicon glyphicon-cog" ></i>
-</button>
- icon in the <strong>Job Definitions tab</strong>. In the opened dialog you can override the job priority. If an overridden priority is already set, you can clear it to use the priority specified in the XML again. It is also possible to include existing jobs when changing the priority.</p>
+<h2 id="job-definitions-tab">Job Definitions Tab</h2>
+<p>In the <strong>Job Definitions</strong> tab, you can see the currently called activities. From left to right, the table includes the following columns: <code>'state'</code>, <code>'activity'</code>, <code>'type'</code>, <code>'configuration'</code>, <code>'overriding job priority'</code>, and <code>'actions'</code>.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-set-job-priority.png"
       
-          title="Set Job Priority"
+          title="Process Definition View: Set Job Priority"
        /></span>
 </figure>
 
-<p>By using the <button class="btn btn-xs">
+<p>In the <strong>Actions</strong> column, you can change the job priority by overriding the priority specified in the BPMN 2.0 XML. To do so, click on the <button class="btn btn-xs">
   <i class="glyphicon glyphicon-cog" ></i>
 </button>
- button to the right of the process diagram, you can set the job priority of all jobs contained in the process definition at once.</p>
-<h1 id="call-activity-navigation">Call Activity Navigation</h1>
-<p>You can navigate from a process containing Call Activities to the corresponding called process definitions. To do this, click the blue link icon located in the lower-right corner of the Call Activity in the BPMN diagram as shown in the next screenshot.</p>
+ icon on the right. In the opened dialog, you can override the job priority. If an overridden priority is already set, you can clear it to revert to the priority specified in the BPMN. The pause icon <button class="btn btn-xs"><i class="glyphicon glyphicon-pause"></i></button> allows you to suspend the process instance,</p>
+<h2 id="incidents-tab">Incidents Tab</h2>
+<p>In case of an incident, the message will be displayed in the <em>Incidents</em> tab. Here, you can find key information about the incident, including the error message, the timestamp of when the error occurred, the activity in which the error happened, the name of the failed activity, and the incident type. This tab provides an overview of all the relevant details that can help troubleshoot the issue.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definition-incident-01.png"
+      
+          title="Process Definition View: Incident tab"
+       /></span>
+</figure>
+
+<p>For more detailed information, you can click on the <strong>blue link</strong> of the error message. This will open a detailed view where you can examine the specifics of the incident. In this view, you also have the option to <strong>copy the full stack trace</strong>, which can be useful for debugging. You can then share the stack trace, for instance, with the process developer to help them understand and resolve the issue. This function is marked in orange in the next screenshot.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definition-incident-02.png"
+      
+          title="Process Definition View: Incident tab - copy stacktrace"
+       /></span>
+</figure>
+
+<p>In addition to reviewing the details, the <em>Incidents</em> tab provides several actions to help resolve the incident. You can add an annotation to provide more context or information about the incident, which can be helpful for future reference. Furthermore, if the issue is temporary or resolvable, you can attempt to <strong>retry</strong> the job that caused the incident. This retry action can be initiated directly from the incident view, helping to quickly recover from certain errors without needing manual intervention.</p>
+<h2 id="called-process-definitions">Called Process Definitions</h2>
+<p>You can navigate from a process containing Call Activities to the corresponding called process definitions. To do this, click on the tab <code>'Called process definitions'</code> or on the the blue paper clip icon located in the lower-right corner of the call activity as also shown in the screenshot.</p>
 <figure class="image">
   <span><img
       src="../../img/cockpit-call-activity-definition-navigation.png"
       
-          title="Navigate to called processes definition"
+          title="Process Definition View: Navigate to called processes definition"
+       /></span>
+</figure>
+
+<p>There are three possible states:</p>
+<ul>
+<li><em>Running and referenced</em>: There is a running process instance, and the called process definition can be identified without any runtime information.</li>
+<li><em>Running</em>: A process instance is currently invoking this process definition, but it can only be resolved at runtime and is specific to that particular instance.</li>
+<li><em>Referenced</em>: There is no runtime information available.</li>
+</ul>
+
+<div class="note bg-info docs-info">
+  <h3>Information</h3>
+  <p>When a process is called using a <em>process variable</em> or <em>expression</em> (meaning the specific process to be called is determined at runtime), the exact process cannot be determined until the process is actually executing. In these cases, the blue link icon (which usually allows you to navigate to the referenced process definition) will appear <em>greyed out</em>. This greyed-out icon will only become blue if there is a <em>currently running process instance</em> at that call activity</p>
+</div>
+
+<h1 id="enterprise-features">Enterprise Features</h1>
+<p>The following functions are enterprise features of CIB Seven. First, in the enterprise version, there will be an <strong>advanced search functionality</strong> in the <code>'Instance Tab'</code>, allowing us to search for very specific instances. If we click on it, we will see a wide selection of different options. Alternatively, we can enter text. Experiment with this search a bit.</p>
+<p>In the screenshot, we made an example and searched for all <code>'Completed or Terminated'</code> instances. Only the instances that fulfill this criteria are shown.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definition-view-history-02.png"
+      
+          title="Process Definition View: History view"
        /></span>
 </figure>
 
@@ -3312,18 +3424,68 @@ We differentiate between three states:
 information and a call activity in this process is currently calling it.
   * *Running*: There is currently a process instance calling this process definition. 
 However, the called process definition can only be resolved at runtime and is only valid for a particular process instance.
-
-
-<div class="note bg-info docs-info">
-  <h3>Limitation</h3>
-  <p></p>
-</div>
-
 -->
-<p>When a to be called process is referenced via a process variable or an expression, the called process
-can only be determined at runtime. For these types of call activities, the diagram shows a greyed out overlay, unless
-there is currently a process instance running at that call activity.</p>
-<p>For more drill down options on call activities you can check out the <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-view/">process instance view</a>.</p>
+<h2 id="job-log-tab">Job Log Tab</h2>
+<p>The Job Log tracks the execution of asynchronous jobs within BPMN processes. It allows users to view job details and check the status of the jobs.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definition-job-log.png"
+      
+          title="Process Definition View: Job log"
+       /></span>
+</figure>
+
+<p>By selecting the relevant activity, the preview highlights the task in grey/blue, making it easy to identify and manage.</p>
+<h2 id="user-operations-tab">User Operations Tab</h2>
+<p>User operations is an <strong>enterprise feature</strong>. In this tab, you can see who performed an operation and at what time.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-decision-definition-user-operation.png"
+      
+          title="Process Definition View: User operations"
+       /></span>
+</figure>
+
+<p>In detail, you can view:</p>
+<ul>
+<li><strong>User</strong>: The user who performed the operation.</li>
+<li><strong>Process Instance</strong>: The specific process instance affected.</li>
+<li><strong>Timestamp</strong>: The exact time of the action.</li>
+<li><strong>Operation Details</strong>: Information on what action was performed (e.g., task assignments, completions).</li>
+<li><strong>Property / New Value</strong>: The property and new value.</li>
+</ul>
+<p>This tab is helpful if you want, for example, to review logs of user actions on sensitive financial tasks. By checking the user, timestamp, and process instance, you can ensure that only authorized users completed the tasks. This helps maintain compliance and provides an audit trail for security and regulatory purposes.</p>
+<h2 id="external-tasks-log-tab">External Tasks Log Tab</h2>
+<p>External Task Logs is an <strong>enterprise feature</strong>. External Task Logs in CIB Seven are valuable for tracking and troubleshooting external tasks by providing details such as task state, error messages, retries, and timestamps. They help identify and resolve task failures quickly, monitor task performance, and ensure tasks are processed in a timely manner. The logs also provide context by linking tasks to their Process Instance ID, helping to trace issues within the broader workflow. Additionally, the logs support audit and compliance efforts by maintaining a detailed history of task execution.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-process-definition-external-task-logs.png"
+      
+          title="Process Definition View: External task log"
+       /></span>
+</figure>
+
+<p>In this view, we can see a table with the following information:</p>
+<ul>
+<li><strong>External Task ID</strong>: A unique identifier for the external task. It helps to track and reference the task throughout its lifecycle.</li>
+<li><strong>State</strong>: The current status of the external task, such as <strong>waiting</strong>, <strong>locked</strong>, <strong>completed</strong>, or <strong>failed</strong>. This provides insight into whether the task is active or completed.</li>
+<li><strong>Timestamp</strong>: The exact date and time when the external task was created, completed, or failed. This helps track when the task was processed or when issues occurred.</li>
+<li><strong>Error Message</strong>: If the task failed, this column contains the error details, explaining the reason for failure (e.g., network issues, invalid data).</li>
+<li><strong>Process Instance ID</strong>: The ID of the process instance to which the external task belongs. It links the task to the larger process, helping you trace its context in the workflow.</li>
+<li><strong>Activity</strong>: The name of the activity in the BPMN process associated with the external task. This indicates what part of the process the task represents.</li>
+<li><strong>Retries</strong>: The number of times the task has been retried after a failure. This helps identify tasks that are repeatedly failing and might need further investigation or resolution.</li>
+<li><strong>Worker ID</strong>: The identifier of the external worker (or system) that is processing the task. This helps track which worker is responsible for executing the task.</li>
+<li><strong>Topic</strong>: The topic associated with the external task, which helps group tasks into categories for processing by specific workers or systems.</li>
+<li><strong>Priority</strong>: Indicates the priority level of the external task, helping to manage the order in which tasks should be processed (e.g., high, medium, low).</li>
+</ul>
+<h2 id="modify-tab">Modify Tab</h2>
+<p>Here, we want to refer to the section <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/">Process Modification</a> for more details.</p>
+<h2 id="restart-tab">Restart Tab</h2>
+<p>Here, we want to refer to the section <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/">Process Instance Restart</a> for more details.</p>
+<h2 id="documentation-tab">Documentation Tab</h2>
+<p>This feature allows you to inspect documentation added in the Camunda Modeler. To do so, open the Documentation tab. The documentation table lists all documented elements. Click on a table row to highlight the element in the diagram.</p>
+<p>To view long documentations, click on the  on the element or the documentation link in the table. This opens a modal which displays the formated documentation in a textbox. To copy the documentation to the clipboard, click on  button.</p>
+<!-- What can be done here???  MUST BE CHECKED-->
 
     </div>
   </div>
@@ -3333,9 +3495,34 @@ there is currently a process instance running at that call activity.</p>
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#search-specific-process-instance">Search specific process instance</a></li>
-    <li><a href="#set-job-priority">Set Job priority</a></li>
-    <li><a href="#call-activity-navigation">Call Activity Navigation</a></li>
+    <li><a href="#community-features">Community Features</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#csv-export-for-process-instances">CSV Export for Process Instances</a></li>
+          </ul>
+        </li>
+        <li><a href="#instances-tab">Instances Tab</a>
+          <ul>
+            <li><a href="#search-process-instance">Search process instance</a></li>
+            <li><a href="#cancel-a-process-instance">Cancel a Process Instance</a></li>
+          </ul>
+        </li>
+        <li><a href="#job-definitions-tab">Job Definitions Tab</a></li>
+        <li><a href="#incidents-tab">Incidents Tab</a></li>
+        <li><a href="#called-process-definitions">Called Process Definitions</a></li>
+      </ul>
+    </li>
+    <li><a href="#enterprise-features">Enterprise Features</a>
+      <ul>
+        <li><a href="#job-log-tab">Job Log Tab</a></li>
+        <li><a href="#user-operations-tab">User Operations Tab</a></li>
+        <li><a href="#external-tasks-log-tab">External Tasks Log Tab</a></li>
+        <li><a href="#modify-tab">Modify Tab</a></li>
+        <li><a href="#restart-tab">Restart Tab</a></li>
+        <li><a href="#documentation-tab">Documentation Tab</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

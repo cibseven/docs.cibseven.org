@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3497,7 +3529,7 @@ See the <a href="/manual/latest/user-guide/spring-boot-integration/the-spring-ev
 </tr>
 <tr><td colspan="4"><b>Webapp</b></td></tr>
 <tr>
-<td rowspan="3"><code>camunda.bpm.webapp</code></td>
+<td rowspan="6"><code>camunda.bpm.webapp</code></td>
 <td><code>.enabled</code></td>
 <td>Switch to disable the CIB seven Webapp auto-configuration.</td>
 <td><code>true</code></td>
@@ -3513,11 +3545,31 @@ Spring Boot behaviour is taken into account.</td>
 </tr>
 <tr>
 <td><code>.application-path</code></td>
-<td>Changes the application path of the webapp.
+<td>Changes the application path of the CIB seven webclient.
+<br/>
+When setting to <code>/</code>, the legacy behavior of CIB seven Spring Boot Starter <= 3.4.x is restored.
+</td>
+<td><code>/webapp</code></td>
+</tr>
+<tr>
+<td><code>.legacy-application-path</code></td>
+<td>Changes the application path of the Camunda webapp.
 <br/>
 When setting to <code>/</code>, the legacy behavior of CIB seven Spring Boot Starter <= 3.4.x is restored.
 </td>
 <td><code>/camunda</code></td>
+</tr>
+<tr>
+<td><code>.webjar-class-path</code></td>
+<td>Changes the class path of the CIB seven webclient.
+</td>
+<td><code>/META-INF/resources/webjars/webapp</code></td>
+</tr>
+<tr>
+<td><code>.legacy-webjar-class-path</code></td>
+<td>Changes the class path of the Camunda webapp.
+</td>
+<td><code>/META-INF/resources/webjars/camunda</code></td>
 </tr>
 <tr id="csrf">
   <td rowspan="10"><code>camunda.bpm.webapp.csrf</code></td>

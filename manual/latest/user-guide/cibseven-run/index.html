@@ -1340,6 +1340,14 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
       <ul>
         
@@ -2821,6 +2829,30 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
     
   </li>
@@ -3651,13 +3683,21 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <th>Description</th>
   </tr>
     <tr>
-      <td rowspan="2">camunda.bpm.webapp</td>
+      <td rowspan="4">camunda.bpm.webapp</td>
       <td>.applicationPath</td>
-      <td>The deployment path of CIB seven webclient. <br />Default value: /webapp</td>
+      <td>The deployment path of CIB seven web application (CIB seven webclient). <br />Default value: /webapp</td>
   </tr>
-    <tr>
+  <tr>
       <td>.legacyApplicationPath</td>
       <td>The deployment path of Camunda web applications. <br />Default value: /camunda</td>
+  </tr>
+  <tr>
+      <td>.webjarClassPath</td>
+      <td>The classpath of CIB seven web application (CIB seven webclient). <br />Default value: /META-INF/resources/webjars/webapp</td>
+  </tr>
+  <tr>
+      <td>.legacyWebjarClassPath</td>
+      <td>The classpath of Camunda web applications. <br />Default value: /META-INF/resources/webjars/camunda</td>
   </tr>
   <tr>
       <td rowspan="21">cibseven.webclient</td>
@@ -3722,7 +3762,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   </tr>
   <tr>
       <td>.services.basePath</td>
-      <td>Base path for webclient REST services.<br />Example: /webapp/services/v1</td>
+      <td>Base path for webclient REST services. <br />Example: /webapp/services/v1</td>
   </tr>
   <tr>
       <td>.theme</td>
@@ -3769,6 +3809,43 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>.followReferrals</td>
       <td>Whether to follow LDAP referrals. <br />Example: follow</td>
   </tr>
+  <tr>
+      <td rowspan="9">cibseven.webclient.sso</td>
+      <td>.endpoints.token</td>
+      <td>OAuth2 token endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.jwks</td>
+      <td>OAuth2 jwks endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.authorization</td>
+      <td>authorization token endpoint</td>
+  </tr>
+  <tr>
+      <td>.clientId</td>
+      <td>OAuth2 Client id of the application</td>
+  </tr>
+  <tr>
+      <td>.clientSecret</td>
+      <td>OAuth2 Client secret of the application</td>
+  </tr>
+  <tr>
+      <td>.userIdProperty</td>
+      <td>Property in the Id-Token where the userid is taken from</td>
+  </tr>
+  <tr>
+      <td>.userNameProperty</td>
+      <td>Property in the Id-Token where the username is taken from</td>
+  </tr>
+  <tr>
+      <td>.active</td>
+      <td>Activates the redirect in the frontend to login with the sso provider</td>
+  </tr>
+  <tr>
+      <td>.scopes</td>
+      <td> OAuth2 scopes to include in the authorization request</td>
+  </tr>  
   <tr>
       <td rowspan="9">management</td>
       <td>.endpoints.enabled-by-default</td>
