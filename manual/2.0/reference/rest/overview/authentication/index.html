@@ -1464,6 +1464,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.0/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3162,7 +3170,148 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The REST API ships with an implementation of <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a>. By default it is switched off, but can be activated by adding a servlet filter as follows:</p>
+      <h1 id="composite-authentication">Composite Authentication</h1>
+<p>From version 2.0.0, the REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. By default, this is implemented as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
+<p>This setup enables secure communication between the engine and the CIB seven web application. By default, it is switched off but can be activated by adding a servlet filter as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;filter&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-class&gt;</span>
+</span></span><span class="line"><span class="cl">    org.cibseven.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilter
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/filter-class&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;async-supported&gt;</span>true<span class="nt">&lt;/async-supported&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;init-param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;param-name&gt;</span>authentication-provider<span class="nt">&lt;/param-name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;param-value&gt;</span>
+</span></span><span class="line"><span class="cl">      org.cibseven.bpm.engine.rest.security.auth.impl.CompositeAuthenticationProvider
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/param-value&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/init-param&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;init-param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;param-name&gt;</span>rest-url-pattern-prefix<span class="nt">&lt;/param-name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;param-value&gt;&lt;/param-value&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/init-param&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/process-definition/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/process-instance/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/history/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/execution/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/batch/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/decision-definition/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/deployment/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/filter/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/incident/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/job-definition/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/job/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/telemetry/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/metrics/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/authorization/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/group/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/user/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/message/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/event-subscription/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/variable-instance/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/task/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/engine/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;filter-mapping&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/identity/groups<span class="nt">&lt;/url-pattern&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
+</span></span></code></pre></div><p>As noted in the <code>web.xml</code>, the <code>/identity/verify</code> endpoint is the only one that should remain unfiltered, and therefore should be explicitly excluded from the authentication filter configuration. All other requests will be authenticated using the JWT provided in the request header.</p>
+<p>JWT-based authentication requires a shared secret to validate the incoming tokens, so you must create a file named <code>cibseven-webclient.properties</code> on the classpath. This configuration file should define the following property with a 155-character alphanumeric secret value:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
+</span></span></code></pre></div><p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file, comment out the <code>cibseven-pseudo-auth</code> filter and remove the comment markers from the above mentioned filter declaration to activate JWT-based authentication.</p>
+<h1 id="http-basic-authentication">HTTP Basic Authentication</h1>
+
+<div class="note bg-info docs-info">
+  <h3></h3>
+  <p>Please note that relying solely on HTTP Basic Authentication may have consequences when using the CIB seven web application. Therefore, it is strongly recommended to use Composite Authentication.</p>
+</div>
+
+<p>The REST API ships with an implementation of <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a>. By default it is switched off, but can be activated by adding a servlet filter as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;filter&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-auth<span class="nt">&lt;/filter-name&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-class&gt;</span>
@@ -3179,7 +3328,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
 </span></span></code></pre></div><p>Any engine-specific request will then be authenticated against that engine&rsquo;s identity service. The GET <code>/engine</code> request that supplies a list of all available process engines is the only request that does not require authentication. Any request that does not address a specific engine (i.e., it is not of the form <code>/engine/{name}/...</code>) will be authenticated against the default engine.</p>
-<p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file and remove the comment markers from the above mentioned filter declaration to activate authentication.</p>
+<p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file and, comment out the <code>cibseven-pseudo-auth</code> filter and add the above mentioned filter declaration to activate HTTP Basic authentication.</p>
 <p>Note that HTTP Basic Authentication <em>does not provide encryption</em> and should be secured by an SSL connection.</p>
 <p>The authentication provider is exchangeable. You can implement the interface <code>org.cibseven.bpm.engine.rest.security.auth.AuthenticationProvider</code> to provide another authentication method and change the filter&rsquo;s initialization parameter accordingly.</p>
 <h1 id="resteasy-specifics">RESTEasy Specifics</h1>
@@ -3215,6 +3364,8 @@
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#composite-authentication">Composite Authentication</a></li>
+    <li><a href="#http-basic-authentication">HTTP Basic Authentication</a></li>
     <li><a href="#resteasy-specifics">RESTEasy Specifics</a></li>
   </ul>
 </nav>

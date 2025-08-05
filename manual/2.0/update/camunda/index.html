@@ -1464,6 +1464,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.0/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3183,8 +3191,8 @@ This script performs the following actions:</p>
 The CIB Seven webclient uses JWT-based authentication and requires a special JWT secret, which must be stored securely and be accessible to both, the engine REST and the webclient middleware.
 So, for migration to CIB seven webclient, you need to create file <code>cibseven-webclient.properties</code> on the classpath, ideally for both, the engine-REST and the webclient.
 This configuration file should contain a jwtSecret property with the same value:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">   </span><span class="l">cibseven.webclient.authentication.jwtSecret=...</span><span class="w">
-</span></span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl">   <span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
+</span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
 <h3 id="migration-to-cib-seven-namespace">Migration to CIB seven namespace</h3>
 <p>In some cases, processes created for Camunda may reference classes from the org.camunda namespace.
 For example:</p>

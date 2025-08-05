@@ -1464,6 +1464,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3216,7 +3224,7 @@
 <p>If you use LDAP as Identity Provider, you should consider <a href="/manual/latest/reference/rest/overview/hal/#caching-of-hal-relations">activating caching</a> of
 Users and Groups in the CIB seven web application. In order to activate this, add the following
 configuration to the <code>web.xml</code> file of the CIB seven web application
-(<code>camunda-webapp-wildfly-$PLATFORM_VERSION.war/WEB-INF/lib</code> or <code>camunda-webapp-jboss-$PLATFORM_VERSION.war/WEB-INF/lib</code>):</p>
+(<code>cibseven-webapp-wildfly-$PLATFORM_VERSION.war/WEB-INF/lib</code> or <code>cibseven-webapp-jboss-$PLATFORM_VERSION.war/WEB-INF/lib</code>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;web-app</span> <span class="na">version=</span><span class="s">&#34;2.5&#34;</span> <span class="na">xmlns=</span><span class="s">&#34;http://java.sun.com/xml/ns/javaee&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -3256,7 +3264,7 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 <p>Add an additional engine plugin as a module to the folder $WILDFLY_HOME/modules/</p>
 </li>
 <li>
-<p>Add the module dependency to the file <code>$WILDFLY_HOME/modules/org/cibseven/bpm/cibseven-engine-plugins/main/module.xml</code> and set the attribute <code>export=&quot;true&quot;</code> to make sure that the module is visible in the classpath of Camunda&rsquo;s subsystem</p>
+<p>Add the module dependency to the file <code>$WILDFLY_HOME/modules/org/cibseven/bpm/cibseven-engine-plugins/main/module.xml</code> and set the attribute <code>export=&quot;true&quot;</code> to make sure that the module is visible in the classpath of CIB seven&rsquo;s subsystem</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;module</span> <span class="na">xmlns=</span><span class="s">&#34;urn:jboss:module:1.0&#34;</span>
 </span></span><span class="line"><span class="cl">      <span class="na">name=</span><span class="s">&#34;org.cibseven.bpm.cibseven-engine-plugins&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
@@ -3270,7 +3278,10 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 <p><a href="/manual/latest/user-guide/runtime-container-integration/jboss/#extend-a-process-engine-using-process-engine-plugins">Configure the process engine plugin</a> in the standalone.xml/domain.xml configuration file</p>
 </li>
 </ol>
-<h2 id="session-cookie-in-webapps">Session Cookie in Webapps</h2>
+<h2 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h2>
+<p>The REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. It is configured as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
+<p>By default it is switched off, but you can activate it by adding a servlet filter under <code>WEB-INF/web.xml</code> as described in the <a href="/manual/latest/reference/rest/overview/authentication/#composite-authentication">Authentication</a> section.</p>
+<h2 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h2>
 <p>The deployment descriptor of the Web applications needs to be adjusted to configure the <strong>Session Cookie</strong>.</p>
 <p>You can find it under <code>WEB-INF/web.xml</code>. Please watch out for the following section:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
@@ -3284,7 +3295,7 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 </span></span></code></pre></div><p>Please note that security-related configurations for the <strong>Session Cookie</strong> can only be applied with the Deployment Descriptor (<code>web.xml</code>) version set to 3.0.</p>
 <p>To adjust the <code>SameSite</code> flag of the session cookie, you can configure a <code>SameSiteCookieHandler</code> as described in related the <a href="https://www.wildfly.org/news/2020/05/04/WildFly-1910-Released/">WildFly documentation</a>.
 This can be used with WildFly versions &gt;= 19.1.0.</p>
-<h2 id="security-related-http-headers-in-webapps">Security-related HTTP headers in Webapps</h2>
+<h2 id="security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</h2>
 <p>To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
 to be adjusted. You can find it under <code>WEB-INF/web.xml</code>.</p>
 <p>Please watch out for the following section:</p>
@@ -3340,8 +3351,9 @@ to be adjusted. You can find it under <code>WEB-INF/web.xml</code>.</p>
         </li>
         <li><a href="#hal-resource-caching">HAL Resource Caching</a></li>
         <li><a href="#add-custom-engine-plugins">Add Custom Engine Plugins</a></li>
-        <li><a href="#session-cookie-in-webapps">Session Cookie in Webapps</a></li>
-        <li><a href="#security-related-http-headers-in-webapps">Security-related HTTP headers in Webapps</a></li>
+        <li><a href="#composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</a></li>
+        <li><a href="#session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</a></li>
+        <li><a href="#security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</a></li>
       </ul>
     </li>
   </ul>

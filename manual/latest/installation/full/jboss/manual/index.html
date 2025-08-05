@@ -1464,6 +1464,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3181,7 +3189,7 @@
 <li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-jboss/2.0.0/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>cibseven-webapp-jboss-2.0.0.war</code>.</li>
 </ul>
 <h3 id="copy-modules">Copy Modules</h3>
-<p>Copy the modules from the <code>modules/</code> folder of the CIB seven distribution, or extract the <code>camunda-wildfly-modules</code> archive, to the <code>$WILDFLY_HOME/modules/</code> of your WildFly application server.</p>
+<p>Copy the modules from the <code>modules/</code> folder of the CIB seven distribution, or extract the <code>cibseven-wildfly-modules</code> archive, to the <code>$WILDFLY_HOME/modules/</code> of your WildFly application server.</p>
 
 <div class="note ">
   <h3>Replace H2 Database</h3>
@@ -3199,9 +3207,9 @@ In most cases this is <code>$WILDFLY_HOME/standalone/configuration/standalone.xm
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;server</span> <span class="na">xmlns=</span><span class="s">&#34;urn:jboss:domain:20.0&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensions&gt;</span>
 </span></span><span class="line"><span class="cl">    ...
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;extension</span> <span class="na">module=</span><span class="s">&#34;org.cibseven.bpm.wildfly.camunda-wildfly-subsystem&#34;</span><span class="nt">/&gt;</span>
-</span></span></code></pre></div><p>Configure the thread pool for the Camunda Job Executor:</p>
-<p>Since CIB seven 1.0, the configuration of the thread pool is done in the CIB seven subsystem, not in the JBoss Threads subsystem anymore like it was done before 7.5.
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;extension</span> <span class="na">module=</span><span class="s">&#34;org.cibseven.bpm.wildfly.cibseven-wildfly-subsystem&#34;</span><span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>Configure the thread pool for the CIB seven Job Executor:</p>
+<p>Since CIB seven 1.0, the configuration of the thread pool is done in the CIB seven subsystem, not in the JBoss Threads subsystem anymore like it was done before Camunda 7.5.
 The thread pool creation and shutdown is now controlled through the CIB seven subsystem.
 You are able to configure it through the following new configuration elements in the <code>job-executor</code> element of the subsystem XML configuration.</p>
 <p>Mandatory configuration elements are:</p>
@@ -3276,8 +3284,22 @@ These links point you to resources for other databases:</p>
 </ul>
 <h2 id="optional-components">Optional Components</h2>
 <p>This section describes how to install optional dependencies. None of these are required to work with the core platform. Before continuing, make sure that CIB seven is already installed according to <a href="#setup">this step</a> for WildFly / JBoss EAP.</p>
+<h3 id="cib-seven-web-application">CIB seven web application</h3>
+<p>The following steps are required to deploy CIB seven web application:</p>
+<ol>
+<li>Download the CIB seven web application that contains the web applications from our Maven Artifactory.
+<ul>
+<li>For <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/webapp/cibseven-webclient-web/2.0.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-webclient-web-2.0.0-wildfly.war</code>.</li>
+</ul>
+</li>
+<li>Optionally, you may change the context path to which the application will be deployed (default is <code>/webapp</code>).
+Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the <code>context-root</code> element accordingly.</li>
+<li>Copy the war file to <code>$WILDFLY_HOME/standalone/deployments</code>.</li>
+<li>Startup WildFly.</li>
+<li>Access CIB seven web application via <code>/webapp</code> or under the context path you configured.</li>
+</ol>
 <h3 id="cockpit-tasklist-and-admin">Cockpit, Tasklist, and Admin</h3>
-<p>The following steps are required to deploy the web application:</p>
+<p>The following steps are required to deploy legacy Camunda web application:</p>
 <ol>
 <li>Download the Camunda web application that contains the web applications from our Maven Artifactory.</li>
 <li>Optionally, you may change the context path to which the application will be deployed (default is <code>/camunda</code>).
@@ -3435,6 +3457,7 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
         </li>
         <li><a href="#optional-components">Optional Components</a>
           <ul>
+            <li><a href="#cib-seven-web-application">CIB seven web application</a></li>
             <li><a href="#cockpit-tasklist-and-admin">Cockpit, Tasklist, and Admin</a></li>
             <li><a href="#rest-api">REST API</a></li>
             <li><a href="#cib-seven-connect-plugin">CIB seven Connect Plugin</a></li>
