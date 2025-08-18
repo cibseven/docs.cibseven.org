@@ -96,7 +96,7 @@
       
     
 
-    <span class="number">2.0</span>
+    <span class="number">2.0-ee</span>
 </div>
 
 
@@ -2357,6 +2357,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3183,7 +3191,7 @@
 </span></span><span class="line"><span class="cl">      <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.engine.spring.ProcessEngineFactoryBean&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;processEngineConfiguration&#34;</span> <span class="na">ref=</span><span class="s">&#34;processEngineConfiguration&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
-</span></span></code></pre></div><p>Note that the processEngineConfiguration bean uses the <a href="/javadoc/cibseven/2.0/org/cibseven/bpm/engine/spring/SpringProcessEngineConfiguration.html">SpringProcessEngineConfiguration</a>
+</span></span></code></pre></div><p>Note that the processEngineConfiguration bean uses the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/spring/SpringProcessEngineConfiguration.html">SpringProcessEngineConfiguration</a>
  class.</p>
 <h1 id="configure-a-container-managed-process-engine-as-a-spring-bean">Configure a Container-Managed Process Engine as a Spring Bean</h1>
 <p>If you want the process engine to be registered with the CIB seven ProcessEngineService, you must use <code>org.cibseven.bpm.engine.spring.container.ManagedProcessEngineFactoryBean</code> instead of the ProcessEngineFactoryBean shown in the example above. You will also need to ensure:</p>

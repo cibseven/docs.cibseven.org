@@ -96,7 +96,7 @@
       
     
 
-    <span class="number">2.0</span>
+    <span class="number">2.0-ee</span>
 </div>
 
 
@@ -2357,6 +2357,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3172,10 +3180,10 @@
     <div class="col-xs-12 content-text">
       <p>To inspect the current state of configured process engines and deployed process applications, the class <code>org.cibseven.bpm.BpmPlatform</code> offers access to the <code>ProcessEngineService</code> and the <code>ProcessApplicationService</code>.</p>
 <h1 id="processengineservice">ProcessEngineService</h1>
-<p>The <a href="/javadoc/cibseven/2.0/org/cibseven/bpm/ProcessEngineService.html">ProcessEngineService</a>
+<p>The <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/ProcessEngineService.html">ProcessEngineService</a>
  can be accessed by calling <code>BpmPlatform.getProcessEngineService()</code>. It offers access to the default process engine, as well as any process engine by its name as specified in the process engine configuration. It returns <code>ProcessEngine</code> objects from which any services for a specific engine can be accessed.</p>
 <h1 id="processapplicationservice">ProcessApplicationService</h1>
-<p>The <a href="/javadoc/cibseven/2.0/org/cibseven/bpm/ProcessApplicationService.html">ProcessApplicationService</a>
+<p>The <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/ProcessApplicationService.html">ProcessApplicationService</a>
  is accessible via <code>BpmPlatform.getProcessApplicationService()</code>. It provides details on the process application deployments made on the application server it is running on. That means that it does not provide a global view across all nodes in a cluster.</p>
 <p>Given a process application name, a <code>ProcessApplicationInfo</code> object can be retrieved that contains details on the deployments made by this process application. These correspond to the process archives declared in <a href="/manual/latest/user-guide/process-applications/the-processes-xml-deployment-descriptor/">processes.xml</a>.</p>
 <p>Furthermore, application-specific properties can be retrieved such as the servlet context path in case of a servlet process application.</p>

@@ -96,7 +96,7 @@
       
     
 
-    <span class="number">2.0</span>
+    <span class="number">2.0-ee</span>
 </div>
 
 
@@ -2357,6 +2357,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3691,6 +3699,11 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <th>Description</th>
   </tr>
     <tr>
+      <td>camunda.bpm.webapp</td>
+      <td>.enabled</td>
+      <td>Specifies whether Camunda web applications REST API is enabled. <br />Default value: true</td>
+  </tr>
+    <tr>
       <td rowspan="4">camunda.bpm.webapp</td>
       <td>.applicationPath</td>
       <td>The deployment path of CIB seven web application (CIB seven webclient). <br />Default value: /webapp</td>
@@ -3706,6 +3719,11 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   <tr>
       <td>.legacyWebjarClassPath</td>
       <td>The classpath of Camunda web applications. <br />Default value: /META-INF/resources/webjars/camunda</td>
+  </tr>
+    <tr>
+      <td>cibseven.webclient</td>
+      <td>.enabled</td>
+      <td>Specifies whether CIB seven web application (CIB seven webclient) REST API is enabled. <br />Default value: true</td>
   </tr>
   <tr>
       <td rowspan="21">cibseven.webclient</td>
@@ -3770,7 +3788,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   </tr>
   <tr>
       <td>.services.basePath</td>
-      <td>Base path for webclient REST services. <br />Example: /webapp/services/v1</td>
+      <td>Relative path, location of the backend services starting from applicationPath. <br />Default value: services/v1</td>
   </tr>
   <tr>
       <td>.theme</td>
@@ -3853,7 +3871,64 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   <tr>
       <td>.scopes</td>
       <td> OAuth2 scopes to include in the authorization request</td>
-  </tr>  
+  </tr>
+  <tr>
+      <td rowspan="14">rest</td>
+      <td>.enabled</td>
+      <td>Whether the custom RestTemplate is enabled. If false, a default RestTemplate will be used.  <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.keepAlive</td>
+      <td>Whether the socket connection should be kept alive between requests. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.socketTimeout</td>
+      <td>Socket read timeout in seconds (0 = infinite). Maximum time to wait for data from an established connection. <br />Default value: 3600</td>
+  </tr>
+  <tr>
+      <td>.connectTimeout</td>
+      <td>Time in seconds to establish connection (0 = infinite). Maximum time to wait while establishing a connection. <br />Default value: 30</td>
+  </tr>
+  <tr>
+      <td>.connectionRequestTimeout</td>
+      <td>Time to wait in seconds for a connection from the connection pool. <br />Default value: 180</td>
+  </tr>
+  <tr>
+      <td>.connectionResponseTimeout</td>
+      <td>Max response wait time in seconds (0 = infinite). If not set, the socketTimeout value will be used.</td>
+  </tr>
+  <tr>
+      <td>.maxConnPerRoute</td>
+      <td>Max HTTP connections per route. Limits the number of connections to a specific host. <br />Default value: 20</td>
+  </tr>
+  <tr>
+      <td>.maxConnTotal</td>
+      <td>Total max HTTP connections across all routes. Defaults to 2 * maxConnPerRoute if not specified.</td>
+  </tr>
+  <tr>
+      <td>.connectionTimeToLive</td>
+      <td>Connection time to live in milliseconds. Maximum time a connection can be reused. <br />Default value: 50000</td>
+  </tr>
+  <tr>
+      <td>.connectionPoolingEnabled</td>
+      <td>Whether to enable connection pooling. Improves performance by reusing connections. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.connectionReuseEnabled</td>
+      <td>Whether to enable connection reuse. Allows reusing connections for multiple requests. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.metricsEnabled</td>
+      <td>Whether to enable Micrometer metrics for monitoring connection pool usage. <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.requestLoggingEnabled</td>
+      <td>Whether to enable request/response logging for debugging purposes. <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.followRedirects</td>
+      <td>Whether to automatically follow HTTP redirects (status codes 3xx). <br />Default value: true</td>
+  </tr>
   <tr>
       <td rowspan="9">management</td>
       <td>.endpoints.enabled-by-default</td>
