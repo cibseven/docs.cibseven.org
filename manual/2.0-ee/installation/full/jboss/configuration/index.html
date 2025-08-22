@@ -3288,8 +3288,15 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 </ol>
 <h2 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h2>
 <p>The REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. It is configured as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
-<p>By default it is switched off, but you can activate it by adding a servlet filter under <code>WEB-INF/web.xml</code> as described in the <a href="/manual/2.0-ee/reference/rest/overview/authentication/#composite-authentication">Authentication</a> section.</p>
-<h2 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h2>
+<p>By default it is switched off, but you can activate it by adding a servlet filter under <code>WEB-INF/web.xml</code> as described in the <a href="/manual/2.0-ee/reference/rest/overview/authentication/#composite-authentication">Authentication</a> section.
+Additionally, as explained in the referred section, a <code>cibseven-webclient.properties</code> file must be placed on the classpath. To ensure configuration files are available at runtime in WildFly, they should be placed in a custom module, such as the <code>org/cibseven/config</code> module directory on the filesystem. The corresponding module (<code>org.cibseven.config</code>) should then be added to the <code>EE</code> subsystem in `standalone.xml&rsquo; , as shown below:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">    <span class="nt">&lt;subsystem</span> <span class="na">xmlns=</span><span class="s">&#34;urn:jboss:domain:ee:6.0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;global-modules&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;module</span> <span class="na">name=</span><span class="s">&#34;org.cibseven.config&#34;</span> <span class="na">slot=</span><span class="s">&#34;main&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/global-modules&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="c">&lt;!-- ... --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/subsystem&gt;</span>
+</span></span></code></pre></div><h2 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h2>
 <p>The deployment descriptor of the Web applications needs to be adjusted to configure the <strong>Session Cookie</strong>.</p>
 <p>You can find it under <code>WEB-INF/web.xml</code>. Please watch out for the following section:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
