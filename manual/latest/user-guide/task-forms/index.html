@@ -3163,6 +3163,14 @@
   </li>
 
   
+    
+  <li>
+    
+      <a href="/manual/latest/release-notes/" >Release Notes</a>
+    
+  </li>
+
+  
 </ul>
 
 
@@ -3267,7 +3275,14 @@ Forms can be used on top of the task completion API to render form fields and va
 </span></span><span class="line"><span class="cl">    <span class="na">camunda:formRefBinding=</span><span class="s">&#34;version&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">camunda:formRefVersion=</span><span class="s">&#34;${formVersion}&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:userTask&gt;</span>
-</span></span></code></pre></div><figure class="image">
+</span></span></code></pre></div><h2 id="form-key">Form Key</h2>
+<p>As an alternative to <code>formRef</code> you can reference a Camunda Form file with a <code>deployment</code> or <code>app</code> <a href="/manual/latest/user-guide/task-forms/#form-key-details">form key</a>:</p>
+<ul>
+<li><code>camunda-forms:deployment:FORM_NAME.form</code></li>
+<li><code>camunda-forms:app:forms/FORM_NAME.form</code></li>
+</ul>
+<p>To enter the <code>formKey</code> in the Modeler,  you have to select <code>Embedded or External Task Forms</code> as Type in the dropdown.</p>
+<figure class="image">
   <span><img
       src="img/reference-camunda-form.png"
       
@@ -3275,13 +3290,6 @@ Forms can be used on top of the task completion API to render form fields and va
        /></span>
 </figure>
 
-<h2 id="form-key">Form Key</h2>
-<p>Aa an alternative to <code>formRef</code> you can reference a Camunda Form file with a <code>deployment</code> or <code>app</code> <a href="/manual/latest/user-guide/task-forms/#form-key-details">form key</a>:</p>
-<ul>
-<li><code>camunda-forms:deployment:FORM_NAME.form</code></li>
-<li><code>camunda-forms:app:forms/FORM_NAME.form</code></li>
-</ul>
-<p>To enter the <code>formKey</code> in the Modeler,  you have to select <code>Embedded or External Task Forms</code> as Type in the dropdown.</p>
 <p>From the form developers point of view, <code>formRef</code> offers more flexibility than <code>formKey</code> as they can be deployed independently from the process model.</p>
 <h2 id="process-variable-binding">Process Variable Binding</h2>
 <p>To define a default value for a form field, a process variable with the same name as the form field key needs to be defined. Local variables (e.g. created by defining an <a href="../process-engine/variables/#input-output-variable-mapping">Input Parameter</a> for the User Task) take precedence over process variables.</p>

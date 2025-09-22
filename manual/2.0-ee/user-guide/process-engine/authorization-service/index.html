@@ -3163,6 +3163,14 @@
   </li>
 
   
+    
+  <li>
+    
+      <a href="/manual/2.0-ee/release-notes/" >Release Notes</a>
+    
+  </li>
+
+  
 </ul>
 
 
@@ -3178,25 +3186,25 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Camunda allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc&hellip;</p>
+      <p>CIB seven allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc&hellip;</p>
 <p>Authorization has a performance cost and introduces some complexity. It should only be used if required.</p>
 <h1 id="when-is-authorization-required">When is Authorization required?</h1>
 <p>Not every CIB seven setup needs to enable authorization. In many scenarios, CIB seven is embedded into an application and the application itself ensures that users can only access data they are authorized to access. Generally speaking, authorization is only required if untrusted parties interact with the process engine API directly. If you embed the process engine into a Java application, you usually do not need to enable authorization. The application can control how the API is accessed.</p>
 <p>Situations in which authorization is required:</p>
 <ul>
-<li>Camunda Rest API is made accessible to users who should not have full access, even after authentication.</li>
-<li>Camunda Webapplication is made accessible to users who should not have full access, even after authentication.</li>
+<li>CIB seven Rest API is made accessible to users who should not have full access, even after authentication.</li>
+<li>CIB seven webclient is made accessible to users who should not have full access, even after authentication.</li>
 <li>Other situations in which an untrusted user can directly construct the queries and commands executed on the process engine.</li>
 </ul>
 <p>Situations in which authorization is <em>not</em> required</p>
 <ul>
 <li>An application completely controls the API methods invoked on the process engine.</li>
-<li>Camunda Webapplication is made accessible to users who can have full access after authentication.</li>
+<li>CIB seven webclient is made accessible to users who can have full access after authentication.</li>
 </ul>
 <p><strong>Example</strong></p>
 <p>Assume that you have the following authorization requirement: <em>As a regular user, I can only see the tasks that are assigned to me.</em></p>
-<p>If the engine is embedded into a Java application, the application can easily ensure this by restricting the task query on the <code>assignee</code> property. The application can guarantee this since the Camunda API is not directly exposed to the user.</p>
-<p>By contrast, if the Camunda Rest API is directly exposed over the network to a Javascript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.</p>
+<p>If the engine is embedded into a Java application, the application can easily ensure this by restricting the task query on the <code>assignee</code> property. The application can guarantee this since the CIB seven API is not directly exposed to the user.</p>
+<p>By contrast, if the CIB seven Rest API is directly exposed over the network to a Javascript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.</p>
 <h1 id="basic-principles">Basic Principles</h1>
 <h2 id="authorizations">Authorizations</h2>
 <p>An Authorization assigns a set of Permissions to an identity to interact with a given Resource.</p>
@@ -3390,7 +3398,7 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
 </ul>
 <p>The last item means that even if authorization is enabled, authorization checks are only performed if a user is currently authenticated.
 If no user is authenticated, then the engine does not perform any checks.</p>
-<p>When using the Camunda Webapps, it is always ensured that a user is authenticated before the user can access any restricted resources.
+<p>When using the CIB seven Webapps, it is always ensured that a user is authenticated before the user can access any restricted resources.
 When embedding the process engine into a custom application, the application needs to take care of authentication if it needs authorization checks to be performed.</p>
 
 <div class="note bg-info docs-info">
@@ -3764,7 +3772,7 @@ Keep in mind that user who is allowed to perform variable updates could trigger 
 </ul>
 <h2 id="application-permissions">Application Permissions</h2>
 <p>The resource &ldquo;Application&rdquo; uniquely supports the <strong>Access</strong> permission.
-The <strong>Access</strong> permission controls whether a user has access to a Camunda web application or not. Out of the box, it can be granted for the following applications (resource ids):</p>
+The <strong>Access</strong> permission controls whether a user has access to a CIB seven webclient or not. Out of the box, it can be granted for the following applications (resource ids):</p>
 <ul>
 <li><code>admin</code></li>
 <li><code>cockpit</code></li>
@@ -3973,7 +3981,7 @@ Typically, those people do not need full access to the system like an administra
 <p>CIB seven has no explicit concept of &ldquo;administrator&rdquo; beyond it being a user who has been granted all authorizations on all resources.</p>
 <h2 id="the-camunda-admin-group">The &ldquo;camunda-admin&rdquo; Group</h2>
 <p>When downloading the CIB seven distribution, the invoice example application creates a group with id <code>camunda-admin</code> and grants all authorizations on all resources to this group.</p>
-<p>In absense of the demo application, this task is performed by the <a href="/manual/2.0-ee/webapps/admin/user-management/#initial-user-setup">Camunda Admin Web Application</a>. If the Camunda webapplication is started for the first time and no user exists in the database, it asks you to perform the &ldquo;initial setup&rdquo;. In this process, the <code>camunda-admin</code> group is created and granted all permissions on all resources.</p>
+<p>In absense of the demo application, this task is performed by the <a href="/manual/2.0-ee/webapps/admin/user-management/#initial-user-setup">CIB seven Admin Web Application</a>. If the CIB seven webclient is started for the first time and no user exists in the database, it asks you to perform the &ldquo;initial setup&rdquo;. In this process, the <code>camunda-admin</code> group is created and granted all permissions on all resources.</p>
 
 <div class="note bg-info docs-info">
   <h3>LDAP</h3>
@@ -4085,8 +4093,8 @@ Typically, those people do not need full access to the system like an administra
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">authorizationService</span><span class="p">.</span><span class="na">saveAuthorization</span><span class="p">(</span><span class="n">authProcessDefinition</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">authorizationService</span><span class="p">.</span><span class="na">saveAuthorization</span><span class="p">(</span><span class="n">authProcessInstance</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="camunda-admin-webapp">Camunda Admin Webapp</h1>
-<p>The Camunda Admin Webapplication provides an out of the box <a href="/manual/2.0-ee/webapps/admin/authorization-management/">UI for configuring Authorizations</a>.</p>
+</span></span></span></code></pre></div><h1 id="cib-seven-admin-webapp">CIB seven Admin Webapp</h1>
+<p>The CIB seven Admin Webapp provides an out of the box <a href="/manual/2.0-ee/webapps/admin/authorization-management/">UI for configuring Authorizations</a>.</p>
 <h1 id="performance-considerations">Performance Considerations</h1>
 <p>Authorizations are calculated by the database which is most efficient. Example: when performing a task query, the database query only returns the tasks for which the user has a READ authorization.</p>
 <h2 id="performance-of-checking-grant-authorizations">Performance of Checking Grant Authorizations</h2>
@@ -4158,7 +4166,7 @@ Typically, those people do not need full access to the system like an administra
       </ul>
     </li>
     <li><a href="#java-api-example">Java API example</a></li>
-    <li><a href="#camunda-admin-webapp">Camunda Admin Webapp</a></li>
+    <li><a href="#cib-seven-admin-webapp">CIB seven Admin Webapp</a></li>
     <li><a href="#performance-considerations">Performance Considerations</a>
       <ul>
         <li><a href="#performance-of-checking-grant-authorizations">Performance of Checking Grant Authorizations</a></li>
