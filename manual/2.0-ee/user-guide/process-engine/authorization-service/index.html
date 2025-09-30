@@ -3406,6 +3406,39 @@ When embedding the process engine into a custom application, the application nee
   <p>Authentication and Authorization are two distinct concepts as explained <a href="https://en.wikipedia.org/wiki/Authentication#Authorization">here</a>.</p>
 </div>
 
+<h2 id="authorizations-and-access-to-ui-features">Authorizations and access to UI features</h2>
+<p>CIB seven frontend uses a dedicated <code>/authorization</code> endpoint to determine which UI elements (tiles) a user can see.
+This process includes the following steps:</p>
+<ul>
+<li>
+<p>Request for the <a href="#authorizations">Authorizations</a>: after the authentication, our frontend makes a call to <code>/authorization</code> endpoint via <code>UserProvider.getUserAuthorization()</code> method to fetch all effective authorizations for the user. The fetched authorizations are organized by resource type (application, process, task, etc.).</p>
+</li>
+<li>
+<p>UI Permission Checks: our frontend uses a permissions mixin (from “permissions.js”) that provides methods like: <br/>
+<code>applicationPermissions()</code> – checks if a user can access specific application features; <br/>
+<code>adminManagementPermissions()</code> – check if a user has admin privileges; <br/>
+various other permission checks.</p>
+</li>
+<li>
+<p>Conditional UI Rendering: components, like <code>StartView.vue</code>, use these permission checks to conditionally render UI elements.</p>
+</li>
+</ul>
+
+<div class="note bg-info docs-info">
+  <h3>Important!</h3>
+  <p><p>Because of this mechanism, in order to use CIB seven webclient properly by ordinary users, it is mandatory to configure Authorization permissions as follows:</p>
+<p><code>type=GLOBAL, user=*, Permissions=READ, Resource ID=*</code></p>
+</p>
+</div>
+
+<h3 id="permission-configuration">Permission Configuration:</h3>
+<p>The required permissions for each features are defined in <code>config.json</code>.
+For example, to access authorization management, a user needs <code>ALL</code> permission on the <code>authorization</code> resource:
+&ldquo;authorizationsManagement&rdquo;: { &ldquo;authorization&rdquo;: [&ldquo;ALL&rdquo;] }</p>
+<p><strong>Example</strong></p>
+<p>User administration access is controller by the <code>userManagement</code> permissions set, defined in <code>config.json</code>:</p>
+<p>&ldquo;usersManagement&rdquo;: {&ldquo;user&rdquo;:[&ldquo;ALL&rdquo;]}</p>
+<p>This means a user needs the <code>ALL</code> permission on the <code>user</code> resource type to access user administration.</p>
 <h1 id="permissions-by-resource">Permissions by Resource</h1>
 <p>This section explains which permissions are available on which resources.</p>
 <h2 id="read-update-create-delete">Read, Update, Create, Delete</h2>
@@ -4126,6 +4159,11 @@ Typically, those people do not need full access to the system like an administra
         <li><a href="#authorization-type">Authorization Type</a></li>
         <li><a href="#authorization-precedence">Authorization Precedence</a></li>
         <li><a href="#when-are-authorizations-checked">When are Authorizations checked?</a></li>
+        <li><a href="#authorizations-and-access-to-ui-features">Authorizations and access to UI features</a>
+          <ul>
+            <li><a href="#permission-configuration">Permission Configuration:</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#permissions-by-resource">Permissions by Resource</a>

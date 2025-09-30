@@ -3322,7 +3322,7 @@
 </span></span></code></pre></div>
 <div class="note bg-info docs-info">
   <h3></h3>
-  <p>An alternative method for setting the JWR secret is to use the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
+  <p>An alternative method for setting the JWT secret is to use the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
 </div>
 
 <p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file, comment out the <code>cibseven-pseudo-auth</code> filter and remove the comment markers from the above mentioned filter declaration to activate JWT-based authentication.</p>

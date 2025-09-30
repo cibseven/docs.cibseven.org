@@ -3186,8 +3186,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Camunda is a Java-based framework. The main components are written in Java and we have a general focus on providing Java developers with the tools they need for designing, implementing and running business processes and workflows on the JVM. Nevertheless, we also want to make the process engine technology available to non-Java developers. This is why Camunda also provides a REST API which allows you to build applications connecting to a remote process engine.</p>
-<p>Camunda can be used both as a standalone process engine server or embedded inside custom Java applications. The embeddability requirement is at the heart of many architectural decisions within Camunda. For instance, we work hard to make the process engine component a lightweight component with as little dependencies on <a href="/manual/2.0-ee/introduction/third-party-libraries/">third-party libraries</a> as possible. Furthermore, the embeddability motivates programming model choices such as the capabilities of the process engine to participate in Spring Managed or JTA <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/">transactions and the threading model</a>.</p>
+      <p>CIB seven is a Java-based framework. The main components are written in Java and we have a general focus on providing Java developers with the tools they need for designing, implementing and running business processes and workflows on the JVM. Nevertheless, we also want to make the process engine technology available to non-Java developers. This is why CIB seven also provides a REST API which allows you to build applications connecting to a remote process engine.</p>
+<p>CIB seven can be used both as a standalone process engine server or embedded inside custom Java applications. The embeddability requirement is at the heart of many architectural decisions within CIB seven. For instance, we work hard to make the process engine component a lightweight component with as little dependencies on <a href="/manual/2.0-ee/introduction/third-party-libraries/">third-party libraries</a> as possible. Furthermore, the embeddability motivates programming model choices such as the capabilities of the process engine to participate in Spring Managed or JTA <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/">transactions and the threading model</a>.</p>
 <h1 id="process-engine-architecture">Process Engine Architecture</h1>
 <figure class="image">
   <span><img
@@ -3205,8 +3205,8 @@
 </ul>
 <h2 id="required-third-party-libraries">Required Third-Party Libraries</h2>
 <p>See the section on <a href="/manual/2.0-ee/introduction/third-party-libraries/">third-party libraries</a>.</p>
-<h1 id="camunda-architecture">Camunda Architecture</h1>
-<p>Camunda is a flexible framework which can be deployed in different scenarios. This section provides an overview of the most common deployment scenarios.</p>
+<h1 id="cib-seven-architecture">CIB seven Architecture</h1>
+<p>CIB seven is a flexible framework which can be deployed in different scenarios. This section provides an overview of the most common deployment scenarios.</p>
 <h2 id="embedded-process-engine">Embedded Process Engine</h2>
 <figure class="image">
   <span><img
@@ -3249,7 +3249,7 @@
 
 <p>The individual process engine instances do not maintain session state across transactions. Whenever the process engine runs a transaction, the complete state is flushed out to the shared database. This makes it possible to route subsequent requests which do work in the same process instance to different cluster nodes. This model is very simple and easy to understand and imposes limited restrictions when it comes to deploying a cluster installation. As far as the process engine is concerned, there is no difference between setups for scale-up and setups for fail-over (as the process engine keeps no session state between transactions).</p>
 <h2 id="session-state-in-a-clustered-environment">Session State in a Clustered Environment</h2>
-<p>Camunda doesn&rsquo;t provide load-balancing capabilities or session replication capabilities out of the box. The load-balancing function would need to be provided by a third-party system, and session replication would need to be provided by the host application server.</p>
+<p>CIB seven doesn&rsquo;t provide load-balancing capabilities or session replication capabilities out of the box. The load-balancing function would need to be provided by a third-party system, and session replication would need to be provided by the host application server.</p>
 <p>In a clustered setup, if users are going to login to the web applications, an extra step will need to be taken to ensure that users aren&rsquo;t asked to login multiple times. Two options exist:</p>
 <ol>
 <li>&ldquo;Sticky sessions&rdquo; could be configured and enabled within your load balancing solution. This would ensure that all requests from a given user are directed to the same instance over a configurable period of time.</li>
@@ -3271,31 +3271,38 @@
 </div>
 
 <h1 id="multi-tenancy-models">Multi-Tenancy Models</h1>
-<p>To serve multiple, independent parties with one Camunda installation, the process engine supports
+<p>To serve multiple, independent parties with one CIB seven installation, the process engine supports
 multi-tenancy. The following multi tenancy models are supported:</p>
 <ul>
 <li>Table-level data separation by using different database schemas or databases</li>
 <li>Row-level data separation by using a tenant marker</li>
 </ul>
-<p>Users should choose the model which fits their data separation needs. Camunda&rsquo;s APIs provide access
+<p>Users should choose the model which fits their data separation needs. CIB seven&rsquo;s APIs provide access
 to processes and related data specific to each tenant.
 More details can be found in the <a href="/manual/2.0-ee/user-guide/process-engine/multi-tenancy/">multi-tenancy section</a>.</p>
 <h1 id="web-application-architecture">Web Application Architecture</h1>
-<p>The Camunda web applications are based on a RESTful architecture.</p>
+<p>Starting from version 2.0.0, CIB seven comes with its own web-client: CIB seven webclient.
+The option of using the old Camunda web applications is still available, but it might be removed in future versions.</p>
+<p>The CIB seven webclient is based on a RESTful architecture.</p>
 <p>Frameworks used:</p>
 <ul>
-<li><a href="https://jax-rs-spec.java.net">JAX-RS</a> based Rest API</li>
-<li><a href="http://angularjs.org">AngularJS</a></li>
-<li><a href="http://requirejs.org">RequireJS</a></li>
-<li><a href="http://jquery.com">jQuery</a></li>
-<li><a href="http://getbootstrap.com">Twitter Bootstrap</a></li>
+<li><a href="https://vuejs.org/">Vue</a></li>
+<li><a href="https://axios-http.com/">Axios</a></li>
+<li><a href="http://getbootstrap.com">Bootstrap</a></li>
 </ul>
-<p>Additional custom frameworks developed by Camunda hackers and compatible with CIB seven:</p>
-<ul>
-<li><a href="https://github.com/camunda/camunda-bpmn.js">camunda-bpmn.js</a>: Camunda BPMN 2.0 JavaScript libraries</li>
-<li><a href="https://github.com/Nikku/requirejs-angular-define">ngDefine</a>: integration of AngularJS into RequireJS powered applications</li>
-<li><a href="https://github.com/Nikku/angular-data-depend">angular-data-depend</a>: toolkit for implementing complex, data heavy AngularJS applications</li>
-</ul>
+<h2 id="frontend-backend-interaction">Frontend-Backend Interaction</h2>
+<p>CIB seven webclient and Camunda web applications use different approaches to interact with the engine.
+Camunda web applications used the engine as a library, CIB seven webclient uses it through the engine-rest API, and that is why CIB seven needs to secure the communication between the webclient and the engine-rest:</p>
+<figure class="image">
+  <span><img
+      src="../img/webclient-engine-communication.png"
+      
+          title="Architectural changes in CIB seven 2.0.0"
+       /></span>
+</figure>
+
+<p>CIB seven includes its own authentication service which ensures secure communication between the webclient and the engine.
+For more information about CIB seven authentication, see the following section: <a href="/manual/2.0-ee/reference/rest/overview/authentication/">Authentication</a>.</p>
 
     </div>
   </div>
@@ -3310,7 +3317,7 @@ More details can be found in the <a href="/manual/2.0-ee/user-guide/process-engi
         <li><a href="#required-third-party-libraries">Required Third-Party Libraries</a></li>
       </ul>
     </li>
-    <li><a href="#camunda-architecture">Camunda Architecture</a>
+    <li><a href="#cib-seven-architecture">CIB seven Architecture</a>
       <ul>
         <li><a href="#embedded-process-engine">Embedded Process Engine</a></li>
         <li><a href="#shared-container-managed-process-engine">Shared, Container-Managed Process Engine</a></li>
@@ -3324,7 +3331,11 @@ More details can be found in the <a href="/manual/2.0-ee/user-guide/process-engi
       </ul>
     </li>
     <li><a href="#multi-tenancy-models">Multi-Tenancy Models</a></li>
-    <li><a href="#web-application-architecture">Web Application Architecture</a></li>
+    <li><a href="#web-application-architecture">Web Application Architecture</a>
+      <ul>
+        <li><a href="#frontend-backend-interaction">Frontend-Backend Interaction</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

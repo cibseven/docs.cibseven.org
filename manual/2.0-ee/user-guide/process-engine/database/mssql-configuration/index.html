@@ -3192,8 +3192,8 @@ on:</p>
 <ul>
 <li>How to set the correct database transaction isolation level.</li>
 <li>How different Microsoft SQL Server versions are supported in Azure SQL.</li>
-<li>How Camunda supports Azure SQL.</li>
-<li>How to configure a database on Azure SQL to be supported by Camunda.</li>
+<li>How CIB seven supports Azure SQL.</li>
+<li>How to configure a database on Azure SQL to be supported by CIB seven.</li>
 </ul>
 <p>To use these guides, you should have a basic understanding of (Microsoft&rsquo;s) T-SQL syntax. You should
 also have access to a database administration tool that can interact with your Microsoft database.</p>
@@ -3215,7 +3215,7 @@ following statements in order to enable SNAPSHOT isolation:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="n">process</span><span class="o">-</span><span class="n">engine</span><span class="p">]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">READ_COMMITTED_SNAPSHOT</span><span class="w"> </span><span class="k">ON</span><span class="w">
 </span></span></span></code></pre></div><p>where <code>[process-engine]</code> contains the name of your database.</p>
-<h1 id="camunda-support-for-azure-sql">Camunda support for Azure SQL</h1>
+<h1 id="cib-seven-support-for-azure-sql">CIB seven support for Azure SQL</h1>
 <p>This section applies only to the following Microsoft database products:</p>
 <ul>
 <li><em>Azure SQL Managed Instance</em></li>
@@ -3227,18 +3227,18 @@ and query optimization behaviors, and can be applied per database.</p>
 <p>Microsoft&rsquo;s <em>Azure SQL Managed Instance</em> and <em>Azure SQL Database</em> products always use the latest
 stable version of the SQL Server database engine. In order to provide backward compatibility with
 earlier SQL Server versions, the Azure SQL products utilize the <em>Database Compatibility Level</em> setting.</p>
-<h2 id="azure-sql-compatibility-levels-supported-by-camunda">Azure SQL compatibility levels supported by Camunda</h2>
+<h2 id="azure-sql-compatibility-levels-supported-by-cib-seven">Azure SQL compatibility levels supported by CIB seven</h2>
 <p>Microsoft associates each SQL Server version with a <em>Database Compatibility Level</em>. You can find a table
 of the SQL Server versions, and their associated compatibility level values
 <a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments">at the Microsoft <em>Alter Compatibility Level</em> page</a>.</p>
-<p>Camunda supports the <em>Database Compatibility Level</em> values of the currently supported Microsoft
+<p>CIB seven supports the <em>Database Compatibility Level</em> values of the currently supported Microsoft
 SQL Server versions documented in our <a href="/manual/2.0-ee/introduction/supported-environments/#supported-database-products">Supported Database Products section</a>.</p>
 <h2 id="configuring-a-database-on-azure-sql">Configuring a database on Azure SQL</h2>
 <p>It is advised to explicitly set the <em>Database Compatibility Level</em> setting for each database created on
 Azure SQL. The default value of the <em>Database Compatibility Level</em> setting is updated every time a new
 SQL Server version is released. If a <em>Database Compatibility Level</em> value isn&rsquo;t explicitly set on a
 database, the default value will be used. Using the default value may lead to unexpected behavior, or
-behavior unsupported by Camunda.</p>
+behavior unsupported by CIB seven.</p>
 <p>To set the <em>Database Compatibility Level</em> to a specific value, execute the following code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="n">database_name</span><span class="p">]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">COMPATIBILITY_LEVEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">compatibility_level</span><span class="p">]</span><span class="w">
@@ -3256,9 +3256,9 @@ SQL Server version you would like to use. You can see a list of all the availabl
   <nav id="TableOfContents">
   <ul>
     <li><a href="#transaction-isolation-levels">Transaction Isolation Levels</a></li>
-    <li><a href="#camunda-support-for-azure-sql">Camunda support for Azure SQL</a>
+    <li><a href="#cib-seven-support-for-azure-sql">CIB seven support for Azure SQL</a>
       <ul>
-        <li><a href="#azure-sql-compatibility-levels-supported-by-camunda">Azure SQL compatibility levels supported by Camunda</a></li>
+        <li><a href="#azure-sql-compatibility-levels-supported-by-cib-seven">Azure SQL compatibility levels supported by CIB seven</a></li>
         <li><a href="#configuring-a-database-on-azure-sql">Configuring a database on Azure SQL</a></li>
       </ul>
     </li>

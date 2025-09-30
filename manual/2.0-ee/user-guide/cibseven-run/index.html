@@ -3634,7 +3634,13 @@ are however still accessible on the classpath of CIB seven Run. Consult the <a h
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-alias</span><span class="p">:</span><span class="w"> </span><span class="l">camunda</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-password</span><span class="p">:</span><span class="w"> </span><span class="l">camunda</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8443</span><span class="w">
-</span></span></span></code></pre></div><p>After starting CIB seven Run, you can access the webapps via https://localhost:8443/camunda/app/ and the REST API via https://localhost:8443/engine-rest/.</p>
+</span></span></span></code></pre></div><p>After starting CIB seven Run, you can access the CIB seven webapp via https://localhost:8443/webapp, the legacy Camunda webapps via https://localhost:8443/camunda/app/ and the REST API via https://localhost:8443/engine-rest/.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Important:</h3>
+  <p>The CIB seven web app requires the <code>cibseven.webapp.engineRest.url</code> property to be updated accordingly; it should be set to https://localhost:8443</p>
+</div>
+
 <table class="table desc-table">
   <tr>
       <th>Prefix</th>
