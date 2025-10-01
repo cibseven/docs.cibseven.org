@@ -3332,6 +3332,35 @@ However, we do not recommended to use the example application in production.</p>
 All <a href="/manual/latest/user-guide/spring-boot-integration/configuration/#cib-seven-engine-properties">configuration properties</a> from the camunda-spring-boot-starter are available to customize CIB seven Run.</p>
 </div>
 
+<h2 id="migration-from-camunda">Migration from Camunda</h2>
+<p>If you are planning to migrate data from Camunda to CIB seven, you may need to activate the following properties in the <a href="#choose-between-default-and-production-configuration">configuration file</a>: <code>production.yml</code> or <code>default.yml</code></p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="2"><code>camunda.bpm.generic-properties.properties</code></td>
+      <td><code>.useCibSevenNamespaceInScripting</code></td>
+      <td>Allows to handle org.camunda classes, used in a script, when the script is launched by a process.</td>
+      <td><code>false</code></td>
+  </tr>
+  <tr>
+      <td><code>.useCibSevenNamespaceInReflection</code></td>
+      <td>Allows to convert serialized objects, stored in the database, from the camunda namespace to the cibseven namespace</td>
+      <td><code>false</code></td>
+  </tr>
+</table>
+<p>These properties are already included inside the configuration files, but they are disabled by default.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Attention:</h3>
+  <p>Activation of <code>useCibSevenNamespaceInReflection</code> modifies names of the objects stored in the database, therefore, it is recommended to create a backup of the database beforehand.</p>
+</div>
+
+<p>For more information about the migration to CIB seven, see the following sections: <a href="/manual/latest/update/camunda/#migration-to-cib-seven-20">Migration to CIB seven</a> and <a href="/manual/latest/update/camunda/#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></p>
 <h2 id="database">Database</h2>
 <p>The distro comes with a file-based h2 database for testing. It is recommended to connect to a standalone database system for use in production.</p>
 <table class="table desc-table">
@@ -4033,6 +4062,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
     </li>
     <li><a href="#configure-cib-seven-run">Configure CIB seven Run</a>
       <ul>
+        <li><a href="#migration-from-camunda">Migration from Camunda</a></li>
         <li><a href="#database">Database</a></li>
         <li><a href="#authentication">Authentication</a></li>
         <li><a href="#cross-origin-resource-sharing">Cross-Origin Resource Sharing</a></li>
