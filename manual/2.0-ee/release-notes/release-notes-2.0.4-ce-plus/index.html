@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Release Notes | docs.cibseven.org</title>
+  <title>CIB seven 2.0.4 CE&#43; - Release Notes | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/2.0-ee/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/manual/2.0-ee/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
-  <link rel="canonical" href="https://docs.cibseven.org/manual/2.0-ee/release-notes/" />
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.0-ee/release-notes/release-notes-2.0.4-ce-plus/" />
 </head>
 <body class="">
 
@@ -3182,167 +3182,184 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Release Notes</h1>
+      <h1 class="page-title">CIB seven 2.0.4 CE&#43; - Release Notes</h1>
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The table below contains links to the release notes for all official versions of CIB seven <br /></p>
-<table class="table desc-table">
-  <tr>
-      <th>Version</th>
-      <th>Edition</th>
-      <th>Release date</th>
-      <th>Release notes</th>
-  </tr>
-  <tr>
-      <td rowspan="2" style="vertical-align: middle;">2.0.4</td>
-      <td>Enterprise</td>
-      <td>17.10.2025</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-2.0.4-ee/">CIB seven 2.0.4 EE</a>
-      </td>
-  </tr>
-  <tr>
-      <td>Community+</td>
-      <td>17.10.2025</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-2.0.4-ce-plus/">CIB seven 2.0.4 CE+</a>
-      </td>
-  </tr>
-  <tr>
-      <td>2.0.3</td>
-      <td>Enterprise</td>
-      <td>19.09.2025</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-2.0.3-ee/">CIB seven 2.0.3 EE</a>
-      </td>
-  </tr>
-  <tr>
-      <td>2.0.2</td>
-      <td>Enterprise</td>
-      <td>13.08.2025</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-2.0.2-ee/">CIB seven 2.0.2 EE</a>
-      </td>
-  </tr>
-  <tr>
-      <td>2.0.1</td>
-      <td>Enterprise</td>
-      <td>15.07.2025</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-2.0.1-ee/">CIB seven 2.0.1 EE</a>
-      </td>
-  </tr>
-  <tr>
-      <td>2.0.0</td>
-      <td>Community</td>
-      <td>09.05.2025</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-2.0.0-ce/">CIB seven 2.0.0 CE</a>
-      </td>
-  </tr>
-  <tr>
-      <td>1.1.0</td>
-      <td>Community</td>
-      <td>03.12.2024</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-1.1.0-ce/">CIB seven 1.1.0 CE</a>
-      </td>
-  </tr>
-  <tr>
-      <td>1.0.0</td>
-      <td>Community</td>
-      <td>07.11.2024</td>
-      <td>
-        <a href="/manual/2.0-ee/release-notes/release-notes-1.0.0-ce/">CIB seven 1.0.0 CE</a>
-      </td>
-  </tr>
-</table>
-    </div>
-
-    <div class="col-xs-12 menu-pages">
-      
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-    
-  
-
-  
-
-
-
-
-
-
-
+      <h1 id="release-notes">Release Notes</h1>
+<p><em>Release Date: October 17, 2025</em></p>
+<h2 id="highlights">Highlights</h2>
+<ul>
+<li>Enhanced OAuth2 integration with access token forwarding and caching</li>
+<li>Comprehensive variable management improvements including type conversion support</li>
+<li>History Level &ldquo;none&rdquo; compatibility for runtime-only deployments</li>
+<li>Enhanced deployment management with improved UI and performance</li>
+<li>Strengthened authorization and permission controls</li>
+</ul>
+<h2 id="new-features">New Features</h2>
+<h3 id="oauth2--security-enhancements">OAuth2 &amp; Security Enhancements</h3>
+<ul>
+<li>Access token forwarding to engine REST API with caching mechanism</li>
+<li>Configurable token forwarding via <code>cibseven.webclient.sso.forwardToken</code> property</li>
+<li>Multi-user access token cache with automatic cleanup and expiration handling</li>
+<li>Concurrent request handling with token cache as synchronization lock</li>
+</ul>
+<h3 id="variable-management">Variable Management</h3>
+<ul>
+<li>Variable type conversion support allowing users to change variable types dynamically</li>
+<li>Null-typed variable editing capabilities</li>
+<li>Enhanced variable modal UI with improved name editing in edit mode</li>
+<li>Support for Object, JSON, Integer, Double, String, and Date type conversions</li>
+<li>Null value variable creation and management</li>
+</ul>
+<h3 id="deployment-management">Deployment Management</h3>
+<ul>
+<li>DMN deployment support with redeploy functionality</li>
+<li>New deployment creation service with comprehensive error handling</li>
+<li>Instant deployment deletion functionality</li>
+<li>Extension points for EE deployment actions</li>
+</ul>
+<h3 id="history-level-support">History Level Support</h3>
+<ul>
+<li>Runtime API integration for history level &ldquo;none&rdquo; environments</li>
+<li>Dynamic instance counting using runtime API when history is disabled</li>
+<li>Conditional display logic based on history level configuration</li>
+</ul>
+<h2 id="user-experience-improvements">User Experience Improvements</h2>
+<h3 id="interface-enhancements">Interface Enhancements</h3>
+<ul>
+<li>Enhanced deployments view UI with improved layout and functionality</li>
+<li>Better search functionality for decisions with improved grid display</li>
+<li>Enhanced modal customization with new dialogClass and contentClass properties</li>
+<li>Improved count display for search results</li>
+<li>Warning dialogs for process definition deletion with running instances</li>
+</ul>
+<h3 id="form-improvements">Form Improvements</h3>
+<ul>
+<li>Enhanced form value type determination using schema definitions</li>
+<li>Improved Camunda forms referencing as form keys</li>
+<li>Better error handling and validation in form submissions</li>
+<li>Type conversion support for form data submission</li>
+</ul>
+<h3 id="notifications--data-management">Notifications &amp; Data Management</h3>
+<ul>
+<li>Improved notifications error handling and data management</li>
+<li>Enhanced job log loading and management functionality</li>
+<li>Better error messaging and user feedback</li>
+</ul>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<h3 id="authorization--permissions">Authorization &amp; Permissions</h3>
+<ul>
+<li>Fixed authorization table sorting by populating userIdGroupId property</li>
+<li>Corrected permission checks for process instance suspension</li>
+<li>Fixed job definition suspension permission validation</li>
+<li>Enhanced authorization-enabled property checking</li>
+</ul>
+<h3 id="variable-operations">Variable Operations</h3>
+<ul>
+<li>Fixed file variable name handling using deserialized values</li>
+<li>Corrected variable deletion according to permission checks</li>
+<li>Fixed null value handling in form submissions</li>
+<li>Improved variable addition dialog closure behavior</li>
+</ul>
+<h3 id="form--template-issues">Form &amp; Template Issues</h3>
+<ul>
+<li>Fixed type conversion issues in DeployedForm and StartDeployedForm</li>
+<li>Corrected Camunda forms referencing problems</li>
+<li>Fixed document reference creation in template handling</li>
+<li>Enhanced upload response validation</li>
+</ul>
+<h3 id="ui--navigation">UI &amp; Navigation</h3>
+<ul>
+<li>Fixed copyable action handling with baseUrl consideration</li>
+<li>Corrected resource navigation bar modal layout</li>
+<li>Fixed historic batch fetch logic using &lsquo;completed&rsquo; instead of &lsquo;finished&rsquo;</li>
+<li>Improved new-tab feature handling</li>
+</ul>
+<h3 id="internationalization">Internationalization</h3>
+<ul>
+<li>Fixed Russian translation capitalization for &lsquo;calledProcessInstances&rsquo;</li>
+<li>Enhanced translation keys for running process deletion</li>
+<li>Improved spacing in translation paragraphs</li>
+</ul>
+<h2 id="technical-updates">Technical Updates</h2>
+<h3 id="dependencies--framework-updates">Dependencies &amp; Framework Updates</h3>
+<ul>
+<li>Updated Spring Boot to version 3.5.6 for enhanced performance and security</li>
+<li>Updated OpenAPI starter webmvc UI to version 2.8.13</li>
+<li>Updated Tomcat versions to 9.0.110 and 10.1.47</li>
+<li>Updated commons-lang3 to version 3.18.0 with proper exclusions</li>
+<li>Updated commons-fileupload from 1.5.0 to version 1.6.0</li>
+<li>Upgraded Axios from 1.10.0 to version 1.12.2 for improved HTTP handling</li>
+<li>Updated common-auth to version 1.2.0</li>
+</ul>
+<h3 id="code-quality--testing">Code Quality &amp; Testing</h3>
+<ul>
+<li>Added comprehensive unit tests for critical components</li>
+<li>Implemented license header verification for all Vue and JS files</li>
+<li>Enhanced test utilities for Vuex store testing</li>
+<li>Added unit tests for shortcuts and configuration consistency</li>
+</ul>
+<h3 id="architecture-improvements">Architecture Improvements</h3>
+<ul>
+<li>Version information extraction into dedicated bean</li>
+<li>Enhanced context path configuration for InfoService</li>
+<li>Improved component action names for consistency</li>
+<li>Better extension point implementation for EE features</li>
+</ul>
 
     </div>
   </div>
 </div>
 
 <div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#release-notes">Release Notes</a>
+      <ul>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#new-features">New Features</a>
+          <ul>
+            <li><a href="#oauth2--security-enhancements">OAuth2 &amp; Security Enhancements</a></li>
+            <li><a href="#variable-management">Variable Management</a></li>
+            <li><a href="#deployment-management">Deployment Management</a></li>
+            <li><a href="#history-level-support">History Level Support</a></li>
+          </ul>
+        </li>
+        <li><a href="#user-experience-improvements">User Experience Improvements</a>
+          <ul>
+            <li><a href="#interface-enhancements">Interface Enhancements</a></li>
+            <li><a href="#form-improvements">Form Improvements</a></li>
+            <li><a href="#notifications--data-management">Notifications &amp; Data Management</a></li>
+          </ul>
+        </li>
+        <li><a href="#bug-fixes">Bug Fixes</a>
+          <ul>
+            <li><a href="#authorization--permissions">Authorization &amp; Permissions</a></li>
+            <li><a href="#variable-operations">Variable Operations</a></li>
+            <li><a href="#form--template-issues">Form &amp; Template Issues</a></li>
+            <li><a href="#ui--navigation">UI &amp; Navigation</a></li>
+            <li><a href="#internationalization">Internationalization</a></li>
+          </ul>
+        </li>
+        <li><a href="#technical-updates">Technical Updates</a>
+          <ul>
+            <li><a href="#dependencies--framework-updates">Dependencies &amp; Framework Updates</a></li>
+            <li><a href="#code-quality--testing">Code Quality &amp; Testing</a></li>
+            <li><a href="#architecture-improvements">Architecture Improvements</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   <div class="docs-banner" style="display:none">
  :(
 </div>
 
 </div>
+
 
     
     <footer class="page-footer">
