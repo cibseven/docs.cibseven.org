@@ -332,7 +332,50 @@ It is not needed when using <code>cibseven-engine</code> because that already co
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.javaee<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-ejb-client<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</h1>
+</span></span></code></pre></div><h1 id="cib-seven-artifact-storage">CIB seven Artifact Storage</h1>
+<h2 id="community-edition">Community Edition</h2>
+<p>The <a href="https://artifacts.cibseven.org/repository/public/">public</a> repository includes all public artifacts for the Community edition</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>cibseven-bpm-nexus<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>cibseven-bpm-nexus<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;url&gt;</span>
+</span></span><span class="line"><span class="cl">     https://artifacts.cibseven.org/repository/public/
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
+</span></span></code></pre></div><h2 id="community-edition-1">Community+ Edition</h2>
+<p>The <a href="https://artifacts.cibseven.org/repository/private/">private</a> repository includes artifacts for the Community+ edition</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>mvn-cibseven-private<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>CIB seven Private repository<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;url&gt;</span>
+</span></span><span class="line"><span class="cl">      https://artifacts.cibseven.org/repository/private/
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
+</span></span></code></pre></div><h2 id="enterprise-edition">Enterprise Edition</h2>
+<p>The <a href="https://artifacts.cibseven.org/repository/enterprise-group/">enterprise-group</a> URL is a virtual repository, which aggregates a multitude of repositories.
+Those include customer enterprise artifacts and all public artifacts from <a href="https://artifacts.cibseven.com/repository/public/">public</a> to make builds easier if you need those dependencies.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>mvn-cibseven-ee<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>CIB seven Enterprise repository<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;url&gt;</span>
+</span></span><span class="line"><span class="cl">      https://artifacts.cibseven.org/repository/enterprise-group/
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
+</span></span></code></pre></div><p>Using the Enterprise Edition repository and Community+ Edition repository requires credentials in your Maven settings <code>~/.m2/settings.xml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;servers&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;server&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>mvn-cibseven-ee<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;username&gt;</span>YOUR_USERNAME<span class="nt">&lt;/username&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;password&gt;</span>YOUR_PASSWORD<span class="nt">&lt;/password&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/server&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/servers&gt;</span>
+</span></span></code></pre></div><h2 id="browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</h2>
 <p>In order to browse the CIB seven artifacts, here are the link you can use.</p>
 <p><a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/">https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/</a></p>
 <h1 id="other-cib-seven-modules">Other CIB seven Modules:</h1>
@@ -359,7 +402,14 @@ It is not needed when using <code>cibseven-engine</code> because that already co
     <li><a href="#cib-seven-dmn-engine-bom-bill-of-materials">CIB seven DMN Engine BOM (Bill of Materials)</a></li>
     <li><a href="#cib-seven-dmn">CIB seven DMN</a></li>
     <li><a href="#process-application-ejb-client">Process Application EJB Client</a></li>
-    <li><a href="#browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</a></li>
+    <li><a href="#cib-seven-artifact-storage">CIB seven Artifact Storage</a>
+      <ul>
+        <li><a href="#community-edition">Community Edition</a></li>
+        <li><a href="#community-edition-1">Community+ Edition</a></li>
+        <li><a href="#enterprise-edition">Enterprise Edition</a></li>
+        <li><a href="#browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</a></li>
+      </ul>
+    </li>
     <li><a href="#other-cib-seven-modules">Other CIB seven Modules:</a></li>
   </ul>
 </nav>
