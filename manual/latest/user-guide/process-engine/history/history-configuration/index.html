@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h2 id="choose-a-history-level">Choose a history level</h2>
+      
+<h3 id="choose-a-history-level">Choose a history level</h3>
 <p>The history level controls the amount of data the process engine provides via the history event stream. The following settings are available out of the box:</p>
 <ul>
 <li><code>NONE</code>: no history events are fired.</li>
@@ -3222,7 +3227,8 @@
 <p>If you need to customize the amount of history events logged, you can provide a custom implementation <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/impl/history/producer/HistoryEventProducer.html">HistoryEventProducer</a>
  and wire it in the process engine configuration.</p>
 <p>In case of specific needs, you can also create a <a href="/manual/latest/user-guide/process-engine/history/custom-implementation/#implement-a-custom-history-level">custom history level</a>.</p>
-<h2 id="set-the-history-level">Set the history level</h2>
+
+<h3 id="set-the-history-level">Set the history level</h3>
 <p>The history level can be provided as a property in the process engine configuration. Depending on how the process engine is configured, the property can be set using Java code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngine</span><span class="w"> </span><span class="n">processEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessEngineConfiguration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createProcessEngineConfigurationFromResourceDefault</span><span class="p">()</span><span class="w">
@@ -3237,9 +3243,11 @@
   <p><a href="/manual/latest/webapps/cockpit/">Camunda Cockpit</a> web application works best with History Level set to <code>FULL</code>. &ldquo;Lower&rdquo; History Levels will disable certain history-related features.</p>
 </div>
 
-<h2 id="default-history-implementation">Default history implementation</h2>
+
+<h3 id="default-history-implementation">Default history implementation</h3>
 <p>The default history database writes History Events to the appropriate database tables. The database tables can then be queried using the <code>HistoryService</code> or using the REST API.</p>
-<h2 id="history-entities">History entities</h2>
+
+<h3 id="history-entities">History entities</h3>
 <p>There are the following History entities, which - in contrast to the runtime data - will also remain present in the DB after process and case instances have been completed:</p>
 <ul>
 <li><code>HistoricProcessInstances</code> containing information about current and past process instances.</li>
@@ -3257,7 +3265,8 @@
 <li><code>HistoricIdentityLinkLog</code> containing information about current and past (added, deleted, assignee is set or changed and owner is set or changed) identity links.</li>
 <li><code>HistoricExternalTaskLog</code> containing information about the external log. The log provides details about the lifecycle of an external task.</li>
 </ul>
-<h3 id="state-of-historicprocessinstances">State of HistoricProcessInstances</h3>
+
+<h4 id="state-of-historicprocessinstances">State of HistoricProcessInstances</h4>
 <p>For every process instance process engine will create single record in history database and will keep updating this record during process execution. Every HistoricProcessInstance record can get one of the following states assigned:</p>
 <ul>
 <li>ACTIVE - running process instance</li>
@@ -3267,7 +3276,8 @@
 <li>INTERNALLY_TERMINATED - terminated internally, for instance by terminating boundary event</li>
 </ul>
 <p>Among them following states can be triggered externally, for example through REST API or Cockpit: ACTIVE, SUSPENDED, EXTERNALLY_TERMINATED.</p>
-<h3 id="query-history">Query history</h3>
+
+<h4 id="query-history">Query history</h4>
 <p>The HistoryService exposes the methods <code>createHistoricProcessInstanceQuery()</code>,
 <code>createHistoricVariableInstanceQuery()</code>, <code>createHistoricCaseInstanceQuery()</code>,
 <code>createHistoricActivityInstanceQuery()</code>, <code>createHistoricCaseActivityInstanceQuery()</code>,
@@ -3385,14 +3395,16 @@ which can be used for querying history.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">historyService</span><span class="p">.</span><span class="na">createHistoricExternalTaskLogQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">failureLog</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="history-report">History report</h3>
+</span></span></span></code></pre></div>
+<h4 id="history-report">History report</h4>
 <p>You can use the reports section to retrieve custom statistics and reports. Currently, we support the following kinds of reports:</p>
 <ul>
 <li><a href="#instance-duration-report">Instance Duration Report</a></li>
 <li><a href="#task-report">Task Report</a></li>
 <li><a href="#finished-instance-report">Finished Instance Report</a></li>
 </ul>
-<h4 id="instance-duration-report">Instance duration report</h4>
+
+<h5 id="instance-duration-report">Instance duration report</h5>
 <p>Retrieves a report about the duration of completed process instances, grouped by a specified period. These reports include the maximum, minimum and average duration of all completed process instances, which were started in the specified period. The following code snippet retrieves a report for every month since the engine was started:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">historyService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createHistoricProcessInstanceReport</span><span class="p">()</span><span class="w">
@@ -3411,7 +3423,8 @@ which can be used for querying history.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">historyService</span><span class="p">.</span><span class="na">createHistoricProcessInstanceReport</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">.</span><span class="na">startedBefore</span><span class="p">(</span><span class="n">calendar</span><span class="p">.</span><span class="na">getTime</span><span class="p">())</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">.</span><span class="na">duration</span><span class="p">(</span><span class="n">PeriodUnit</span><span class="p">.</span><span class="na">MONTH</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h4 id="task-report">Task report</h4>
+</span></span></span></code></pre></div>
+<h5 id="task-report">Task report</h5>
 <p>Retrieves a report of completed tasks. For the task report there are two possible report types: count and duration.</p>
 <p>If you use the method <code>countByProcessDefinitionKey</code> or <code>countByTaskName</code> in the end of your report query, the report contains a list of completed task counts where an entry contains the task name, the definition key of the task, the process definition id, the process definition key, the process definition name and the count of how many tasks were completed for the specified key in a given period. The methods <code>countByProcessDefinitionKey</code> and <code>countByTaskName</code> then group the count reports according the criterion &lsquo;definition key&rsquo; or &rsquo;task name&rsquo;. To retrieve a task count report grouped by the task name, one could execute the following query:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">historyService</span><span class="w">
@@ -3422,7 +3435,8 @@ which can be used for querying history.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createHistoricTaskInstanceReport</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">duration</span><span class="p">(</span><span class="n">PeriodUnit</span><span class="p">.</span><span class="na">MONTH</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>The supported period times and the confinement of the query works analogously to <a href="#instance-duration-report">Instance Duration Report</a>.</p>
-<h4 id="finished-instance-report">Finished instance report</h4>
+
+<h5 id="finished-instance-report">Finished instance report</h5>
 <p>Retrieves a report of finished process, decision or case instances. The report helps the user to tune the history time to live for definitions. They can see a summary of the historic data which can be cleaned after history cleanup. The output fields are definition id, key, name, version, count of the finished instances and count of the &lsquo;cleanable&rsquo; instances.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">historyService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createHistoricFinishedProcessInstanceReport</span><span class="p">()</span><span class="w">
@@ -3435,7 +3449,8 @@ which can be used for querying history.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">historyService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createHistoricFinishedCaseInstanceReport</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="partially-sorting-history-events-by-their-occurrence">Partially sorting history events by their occurrence</h3>
+</span></span></span></code></pre></div>
+<h4 id="partially-sorting-history-events-by-their-occurrence">Partially sorting history events by their occurrence</h4>
 <p>Sometimes you want to sort history events in the order in which they
 occurred. Please note that timestamps cannot be used for that.</p>
 <p>Most history events contain a timestamp which marks the point in time at which the action signified

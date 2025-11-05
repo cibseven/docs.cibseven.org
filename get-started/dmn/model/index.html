@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -260,7 +262,8 @@
     <div class="col-xs-12 content-text">
       <p>In this section you learn how to create your first <a href="/manual/latest/reference/dmn11/decision-table/">DMN Decision Table</a> with the Camunda Modeler. The table will contain the decision logic about the desired dish for a given season and guest count.</p>
 <p>Now start up the Camunda Modeler.</p>
-<h1 id="create-a-new-decision-diagram">Create a new Decision Diagram</h1>
+
+<h2 id="create-a-new-decision-diagram">Create a new Decision Diagram</h2>
 <p>Create a new DMN diagram by clicking <em>File &gt; New File &gt; DMN Diagram</em>.</p>
 <figure class="image">
   <span><img
@@ -268,7 +271,8 @@
        /></span>
 </figure>
 
-<h1 id="start-with-the-table-header">Start with the Table Header</h1>
+
+<h2 id="start-with-the-table-header">Start with the Table Header</h2>
 <p>Start by setting the name and the id of the decision. Select the decision, open the Properties Panel on the right side and change the text to &ldquo;dish&rdquo; as the technical <a href="/manual/latest/reference/dmn11/decision-table/#decision-id">id of the decision</a> which is used to reference the decision inside the process application.</p>
 <figure class="image">
   <span><img
@@ -291,7 +295,8 @@
        /></span>
 </figure>
 
-<h1 id="configure-the-input-expression-and-the-output-name">Configure the Input Expression and the Output Name</h1>
+
+<h2 id="configure-the-input-expression-and-the-output-name">Configure the Input Expression and the Output Name</h2>
 <p>Assuming that the input value for &ldquo;Season&rdquo; is provided by a variable with name &ldquo;season&rdquo;, the <a href="/manual/latest/reference/dmn11/decision-table/input/#input-expression">input expression</a> should be &ldquo;season&rdquo;.</p>
 <p>Double-click on the &ldquo;Season&rdquo; field. In the modal menu that pops up, set &ldquo;season&rdquo; as expression and close it.</p>
 <figure class="image">
@@ -301,7 +306,8 @@
 </figure>
 
 <p>Next, double-click on the &ldquo;Dish&rdquo; field and set &ldquo;desiredDish&rdquo; as <a href="/manual/latest/reference/dmn11/decision-table/output/#output-name">output name</a>.</p>
-<h1 id="configure-the-type-of-the-input-and-output">Configure the Type of the Input and Output</h1>
+
+<h2 id="configure-the-type-of-the-input-and-output">Configure the Type of the Input and Output</h2>
 <p>Assuming that the input value for &ldquo;Season&rdquo; is provided as String, the <a href="/manual/latest/reference/dmn11/decision-table/input/#input-type-definition">type of the input value</a> should be &ldquo;string&rdquo;.</p>
 <p>Double-click on the &ldquo;Season&rdquo; column header. Open the &ldquo;Type&rdquo; dropdown-menu in the modal menu and select &ldquo;string&rdquo;.</p>
 <figure class="image">
@@ -311,7 +317,8 @@
 </figure>
 
 <p>Same for the <a href="/manual/latest/reference/dmn11/decision-table/output/#output-type-definition">output type</a>, double-click on the &ldquo;Dish&rdquo; column header and choose &ldquo;string&rdquo; as type.</p>
-<h1 id="add-rules">Add Rules</h1>
+
+<h2 id="add-rules">Add Rules</h2>
 <p>Now, add the first <a href="/manual/latest/reference/dmn11/decision-table/rule/">rule</a> that specifies that the desired dish for season &ldquo;Fall&rdquo; is &ldquo;Spareribs&rdquo;.</p>
 <p>Click on the &ldquo;+&rdquo; button at the bottom of the table or just click anywhere on the last row. In the row that was added, type &ldquo;Fall&rdquo; in the input column and &ldquo;Spareribs&rdquo; in the output column.</p>
 <figure class="image">
@@ -329,7 +336,8 @@
        /></span>
 </figure>
 
-<h1 id="configure-the-hit-policy">Configure the Hit Policy</h1>
+
+<h2 id="configure-the-hit-policy">Configure the Hit Policy</h2>
 <p>Set the <a href="/manual/latest/reference/dmn11/decision-table/hit-policy/">hit policy</a> to &ldquo;UNIQUE&rdquo;, which specifies that only one rule can match. Verify that the decision table contains only one rule that can match the inputs.</p>
 <p>Click on the &ldquo;Hit Policy&rdquo; dropdown and choose the hit policy &ldquo;UNIQUE&rdquo;.</p>
 <figure class="image">
@@ -344,7 +352,8 @@
   <p>The default hit policy is &ldquo;UNIQUE&rdquo;. If your rules are disjunct so only one rule can match then you don&rsquo;t need to change the hit policy.</p>
 </div>
 
-<h1 id="save-the-decision-table">Save the Decision Table</h1>
+
+<h2 id="save-the-decision-table">Save the Decision Table</h2>
 <p>When you are done, save your changes by clicking <em>File &gt; Save File As..</em>. In the dialogue that pops up, navigate to the application project directory (by default this is in your Eclipse workspace path). In the project directory, place the model in the <code>src/main/resources</code> folder.</p>
 <figure class="image">
   <span><img

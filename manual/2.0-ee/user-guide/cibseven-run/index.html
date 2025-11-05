@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,10 +3191,12 @@
 
     <div class="col-xs-12 content-text">
       <p>This guide gives an introduction to CIB seven Run, a pre-packaged, lightweight distribution of CIB seven. CIB seven Run is easy to configure and does not require Java knowledge.</p>
-<h1 id="prerequisites-and-audience">Prerequisites and audience</h1>
+
+<h2 id="prerequisites-and-audience">Prerequisites and audience</h2>
 <p>To use this guide, you should at least know what CIB seven is and what it does. Check out the <a href="/get-started/quick-start/">Get Started guides</a> if you have never used CIB seven before. The <a href="/manual/2.0-ee/installation/cibseven-run/">Installation guide</a> is also worth looking at if you are completely new to CIB seven.</p>
 <p>This guide will teach you about CIB seven Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install CIB seven Run. Head over to the <a href="/manual/2.0-ee/installation/cibseven-run/">Installation guide</a> for details on how to install and start CIB seven Run.</p>
-<h1 id="what-is-cib-seven-run">What is CIB seven Run?</h1>
+
+<h2 id="what-is-cib-seven-run">What is CIB seven Run?</h2>
 <p>CIB seven Run is a full distribution of CIB seven. It includes:</p>
 <ul>
 <li>CIB seven web applications
@@ -3203,7 +3209,8 @@
 <li><a href="/manual/2.0-ee/reference/rest/overview/">REST API</a></li>
 <li><a href="#example-application">An example application</a></li>
 </ul>
-<h1 id="starting-with-cib-seven-run">Starting with CIB seven Run</h1>
+
+<h2 id="starting-with-cib-seven-run">Starting with CIB seven Run</h2>
 <p>To start with CIB seven Run, download the <a href="https://cibseven.org/downloads/">distribution</a> and unpacking it. You will find the following structure:</p>
 <pre tabindex="0"><code>cibseven-run
 ├── configuration/
@@ -3231,7 +3238,8 @@ for Windows, <code>shutdown.sh</code> for Linux/Mac).</p>
 <p>By explicitly passing arguments to one of the two CIB seven Run start scripts, the default detached mode is disabled and
 you can configure CIB seven Run according to your needs. Furthermore, CIB seven Run will start as a foreground process
 unless the <code>--detached</code> argument is explicitly passed to the <code>start.bat</code> or <code>start.sh</code> script.</p>
-<h2 id="start-script-arguments">Start script arguments</h2>
+
+<h3 id="start-script-arguments">Start script arguments</h3>
 <p>The start scripts (<code>start.bat</code> for Windows, <code>start.sh</code> for Linux/Mac) accept the following arguments:</p>
 <table class="table desc-table">
   <tr>
@@ -3281,11 +3289,14 @@ unless the <code>--detached</code> argument is explicitly passed to the <code>st
       <td><code>-</code></td>
   </tr>
 </table>
-<h2 id="starting-cib-seven-run-using-docker">Starting CIB seven Run using Docker</h2>
+
+<h3 id="starting-cib-seven-run-using-docker">Starting CIB seven Run using Docker</h3>
 <p>CIB seven Run is also available as a Docker image. Please see the CIB seven Run section of the CIB seven Docker documentation <a href="/manual/2.0-ee/installation/docker/#start-cibseven-using-docker">here</a> for more details.</p>
-<h2 id="optional-components">Optional components</h2>
+
+<h3 id="optional-components">Optional components</h3>
 <p>By default, CIB seven Run launches with the web apps, REST API and example modules. If you want to enable only a subset of them, execute the start script through a command-line interface with any of the <code>--webapps</code>, <code>--rest</code> or <code>--example</code> properties to enable the specific modules.</p>
-<h3 id="example-application">Example application</h3>
+
+<h4 id="example-application">Example application</h4>
 <p>By default, CIB seven Run deploys and launches an example application on startup.
 When launched, this application creates deployments with multiple BPMN and DMN definitions as well as form resources
 and starts instances of the defined processes.</p>
@@ -3299,7 +3310,8 @@ However, the example application will not be started.</p>
 You have to delete this data manually through the <a href="/manual/2.0-ee/webapps/cockpit/deployment-view/#delete">web apps</a>, the
 <a href="/manual/2.0-ee/reference/rest/specification/#tag/Deployment/operation/deleteDeployment">REST API</a>, or by cleaning the database
 <a href="#database">configured in the application properties</a>.</p>
-<h2 id="choose-between-default-and-production-configuration">Choose between default and production configuration</h2>
+
+<h3 id="choose-between-default-and-production-configuration">Choose between default and production configuration</h3>
 <p>CIB seven Run ships with two different configuration files which are both located in the <code>configuration</code> folder.</p>
 <ul>
 <li>The <code>default.yml</code> configuration only contains necessary configuration like the H2 database, a demo user and <a href="#cross-origin-resource-sharing">CORS</a> for REST calls from a client application.</li>
@@ -3309,7 +3321,8 @@ When using CIB seven Run in a production environment, make sure to base your cus
 <p>By default, Run launches with the <code>default.yml</code> configuration. To enable the <code>production.yml</code> configuration, execute the start script with the <code>--production</code> property.
 Using <code>--production</code> disables the example application. It can be enabled by explicitly passing <code>--example</code> to the start script.
 However, we do not recommended to use the example application in production.</p>
-<h2 id="connect-to-a-database">Connect to a Database</h2>
+
+<h3 id="connect-to-a-database">Connect to a Database</h3>
 <p>CIB seven Run is pre-configured to use a file-based H2 database for testing. The database schema and all required tables are automatically created when the engine starts up for the first time. If you want to use a custom standalone database, follow these steps:</p>
 <ol>
 <li>Make sure your database is among the <a href="/manual/2.0-ee/introduction/supported-environments/#supported-database-products">supported database systems</a>.</li>
@@ -3319,11 +3332,13 @@ However, we do not recommended to use the example application in production.</p>
 <li>Add the JDBC URL and login credentials to the configuration file like described <a href="#database">below</a>.</li>
 <li>Restart CIB seven Run</li>
 </ol>
-<h2 id="deploy-bpmn-models">Deploy BPMN Models</h2>
+
+<h3 id="deploy-bpmn-models">Deploy BPMN Models</h3>
 <p>In the unpacked distro, you will find a <code>resources</code> folder. All files (including BPMN, DMN, CMMN, form, and script files) will be deployed when you start CIB seven Run.</p>
 <p>You can reference forms and scripts in the BPMN diagram with <code>embedded:deployment:/my-form.html</code>, <code>cibseven-forms:deployment:/myform.form</code>, or <code>deployment:/my-script.js</code>. The deployment requires adding an extra <code>/</code> as a prefix to the filename.</p>
 <p>Deployments via the <a href="/manual/2.0-ee/reference/rest/specification/#tag/Deployment/operation/createDeployment">REST API</a> are still possible.</p>
-<h1 id="configure-cib-seven-run">Configure CIB seven Run</h1>
+
+<h2 id="configure-cib-seven-run">Configure CIB seven Run</h2>
 <p>Just like all the other distros, you can tailor CIB seven Run to your needs. To do this, you only have to edit one of the <a href="#choose-between-default-and-production-configuration">configuration files</a> that you can find in the configuration folder.</p>
 
 <div class="note bg-info docs-info">
@@ -3332,7 +3347,8 @@ However, we do not recommended to use the example application in production.</p>
 All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#cib-seven-engine-properties">configuration properties</a> from the camunda-spring-boot-starter are available to customize CIB seven Run.</p>
 </div>
 
-<h2 id="migration-from-camunda">Migration from Camunda</h2>
+
+<h3 id="migration-from-camunda">Migration from Camunda</h3>
 <p>If you are planning to migrate data from Camunda to CIB seven, you may need to activate the following properties in the <a href="#choose-between-default-and-production-configuration">configuration file</a>: <code>production.yml</code> or <code>default.yml</code></p>
 <table class="table desc-table">
   <tr>
@@ -3361,7 +3377,8 @@ All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#ci
 </div>
 
 <p>For more information about the migration to CIB seven, see the following sections: <a href="/manual/2.0-ee/update/camunda/#migration-to-cib-seven-20">Migration to CIB seven</a> and <a href="/manual/2.0-ee/update/camunda/#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></p>
-<h2 id="database">Database</h2>
+
+<h3 id="database">Database</h3>
 <p>The distro comes with a file-based h2 database for testing. It is recommended to connect to a standalone database system for use in production.</p>
 <table class="table desc-table">
   <tr>
@@ -3392,7 +3409,8 @@ All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#ci
       <td>-</td>
   </tr>
 </table>
-<h2 id="authentication">Authentication</h2>
+
+<h3 id="authentication">Authentication</h3>
 <p>To add authentication to requests against the <a href="/manual/2.0-ee/reference/rest/overview/">REST API</a>, you can enable basic authentication.</p>
 <table class="table desc-table">
   <tr>
@@ -3413,7 +3431,8 @@ All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#ci
       <td>basic</td>
   </tr>
 </table>
-<h2 id="cross-origin-resource-sharing">Cross-Origin Resource Sharing</h2>
+
+<h3 id="cross-origin-resource-sharing">Cross-Origin Resource Sharing</h3>
 <p>If you want to allow cross-origin requests to the <a href="/manual/2.0-ee/reference/rest/overview/">REST API</a>, you need to enable CORS.</p>
 <table class="table desc-table">
   <tr>
@@ -3456,7 +3475,8 @@ All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#ci
       <td><code>1800</code></td>
   </tr>
 </table>
-<h2 id="rest">REST</h2>
+
+<h3 id="rest">REST</h3>
 <p>CIB seven Run can be configured to disable the REST endpoint which exposes the WADL file via a property.</p>
 <table class="table desc-table">
   <tr>
@@ -3472,7 +3492,8 @@ All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#ci
       <td><code>false</code></td>
   </tr>
 </table>
-<h2 id="deployment">Deployment</h2>
+
+<h3 id="deployment">Deployment</h3>
 <p>CIB seven Run also supports configuration options for customizing the deployment.</p>
 <table class="table desc-table">
   <tr>
@@ -3495,7 +3516,8 @@ All <a href="/manual/2.0-ee/user-guide/spring-boot-integration/configuration/#ci
       <td><code>true</code></td>
   </tr>
 </table>
-<h2 id="ldap-identity-service">LDAP Identity Service</h2>
+
+<h3 id="ldap-identity-service">LDAP Identity Service</h3>
 <p>CIB seven can manage users and authorizations on its own, but if you want to use an existing LDAP authentication database you can enable the <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Service Plugin</a>
 which provides read-only access to the LDAP repository.</p>
 <p>Find all available configuration properties in the <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/#configuration-properties-of-the-ldap-plugin">LDAP Plugin Guide</a></p>
@@ -3513,7 +3535,8 @@ which provides read-only access to the LDAP repository.</p>
       <td><code>false</code></td>
   </tr>
 </table>
-<h3 id="ldap-administrator-authorization">LDAP Administrator Authorization</h3>
+
+<h4 id="ldap-administrator-authorization">LDAP Administrator Authorization</h4>
 <p>You can also use the <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization plugin</a>
 to ensure the appropriate LDAP user or group gains administrative access. Review all the available
 configuration options in the <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization plugin section</a>
@@ -3533,14 +3556,16 @@ of our documentation.</p>
       <td><code>false</code></td>
   </tr>
 </table>
-<h2 id="plugin-registration">Plugin registration</h2>
+
+<h3 id="plugin-registration">Plugin registration</h3>
 <p>CIB seven Run supports two types of plugins.</p>
 <ul>
 <li><a href="/manual/2.0-ee/user-guide/process-engine/process-engine-plugins/">Process engine plugins</a> can be used to extend the process engine configuration to add more functionality.</li>
 <li><a href="/manual/2.0-ee/webapps/cockpit/extend/plugins/">Webapp plugins</a> are used to extend one of the CIB seven webapps (i.e. Cockpit, Tasklist, Admin, Welcome).</li>
 </ul>
 <p>Both types of plugins are supported in CIB seven Run but have to be registered differently.</p>
-<h3 id="process-engine-plugin-registration">Process engine plugin registration</h3>
+
+<h4 id="process-engine-plugin-registration">Process engine plugin registration</h4>
 <p>CIB seven provides a process engine plugin mechanism to enable users to add and adjust
 process engine features by extending the process engine configuration. You can use plugins developed by CIB, Camunda, or by
 third-party developers.</p>
@@ -3591,7 +3616,8 @@ list items under the <code>process-engine-plugins</code> YAML property.</li>
 <p>Once complete, your YAML configuration file should look similar to the following:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">camunda.bpm.run.process-engine-plugins</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">plugin-class</span><span class="p">:</span><span class="w"> </span><span class="l">canonical.name.of.the.PluginClass</span><span class="w">
-</span></span></span></code></pre></div><h4 id="example-process-engine-plugin-registration">Example process engine plugin registration</h4>
+</span></span></span></code></pre></div>
+<h5 id="example-process-engine-plugin-registration">Example process engine plugin registration</h5>
 <p>Let&rsquo;s say that you want to register a process engine plugin called <code>TestPlugin</code>. The following information is
 available:</p>
 <ul>
@@ -3631,11 +3657,13 @@ YAML property, like so:</p>
 <li>Start CIB seven Run. The <code>TestPlugin</code> will be read from the YAML configuration and registered with the
 process engine.</li>
 </ol>
-<h3 id="webapp-plugin-registration">Webapp plugin registration</h3>
+
+<h4 id="webapp-plugin-registration">Webapp plugin registration</h4>
 <p>CIB seven provides a mechanism to extend the CIB seven Webapps with your own functionality. You can add plugins at various plugin points. For example, the processes dashboard in Cockpit.</p>
 <p>A webapp plugin is a maven jar project that provides a server-side and a client-side extension to the webapp. You can find more information about how to structure your plugins <a href="/manual/2.0-ee/webapps/cockpit/extend/plugins/#the-nature-of-a-cockpit-plugin">here</a>.</p>
 <p>To register a webapp plugin, simply drop the jar file into the <code>configuration/userlib</code> folder. See <a href="#starting-with-camunda-platform-run">the Starting with CIB seven Run section</a> of this guide to find out how to navigate the directories of CIB seven Run.</p>
-<h2 id="example-application-launch">Example application launch</h2>
+
+<h3 id="example-application-launch">Example application launch</h3>
 <p>CIB seven Run comes with a <a href="#example-application">demo application</a> that deploys resources and starts process instances.
 You can disable the start of that application so it does not create deployments and process instances. The resources of the application
 are however still accessible on the classpath of CIB seven Run. Consult the <a href="#example-application">example application section</a> for further details.</p>
@@ -3653,7 +3681,8 @@ are however still accessible on the classpath of CIB seven Run. Consult the <a h
       <td><code>false</code></td>
   </tr>
 </table>
-<h2 id="https">HTTPS</h2>
+
+<h3 id="https">HTTPS</h3>
 <p>CIB seven Run supports HTTPS over SSL. To enable it, you will need a valid SSL certificate signed by a trusted provider and stored in a key store file (either .jks or .p12), and add the following properties to your configuration file.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ssl</span><span class="p">:</span><span class="w">
@@ -3704,7 +3733,8 @@ are however still accessible on the classpath of CIB seven Run. Consult the <a h
       <td><code>-</code></td>
   </tr>
 </table>
-<h2 id="logging">Logging</h2>
+
+<h3 id="logging">Logging</h3>
 <p>CIB seven provides fine-grained and customizable logging. An overview of the available logging categories can be found in the <a href="/manual/2.0-ee/user-guide/logging/#process-engine">Logging User Guide</a>.
 To configure the logging behavior in CIB seven Run, customize your configuration file with the following properties.</p>
 <p>For more information on logging configuration visit the <a href="https://docs.spring.io/spring-boot/docs/2.4.0/reference/html/spring-boot-features.html#boot-features-logging">Spring Boot Logging Guide</a>.</p>
@@ -3733,7 +3763,8 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td><code>-</code></td>
   </tr>
 </table>
-<h2 id="cib-seven-webclient-properties">CIB seven webclient properties</h2>
+
+<h3 id="cib-seven-webclient-properties">CIB seven webclient properties</h3>
 <p>Below is a brief description of the properties for CIB seven webclient, which can by used with the <a href="#choose-between-default-and-production-configuration">configuration files</a></p>
 <table class="table desc-table">
   <tr>

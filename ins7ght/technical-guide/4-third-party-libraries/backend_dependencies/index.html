@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Backend Dependencies | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Backend Dependencies</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="backend-dependencies">Backend Dependencies</h2>
+<p>CIB ins7ght backend uses the following third-party libraries and frameworks.</p>
+<hr>
+
+<h3 id="core-framework">Core Framework</h3>
+
+<h4 id="spring-boot">Spring Boot</h4>
+<ul>
+<li><strong>Version:</strong> 3.5.1</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> Core application framework, dependency injection, auto-configuration</li>
+</ul>
+<p><strong>Included Starters:</strong></p>
+<ul>
+<li><code>spring-boot-starter-web</code> - Web application support with embedded Tomcat</li>
+<li><code>spring-boot-starter-data-jpa</code> - Database access with JPA/Hibernate</li>
+<li><code>spring-boot-starter-jdbc</code> - JDBC database connectivity</li>
+</ul>
+<hr>
+
+<h3 id="java-runtime">Java Runtime</h3>
+<ul>
+<li><strong>Java Version:</strong> 17</li>
+<li><strong>License:</strong> GPL v2 with Classpath Exception</li>
+<li><strong>Purpose:</strong> Programming language and runtime environment</li>
+</ul>
+<hr>
+
+<h3 id="jakarta-ee">Jakarta EE</h3>
+
+<h4 id="jakarta-servlet-api">Jakarta Servlet API</h4>
+<ul>
+<li><strong>Version:</strong> 6.0 (from Spring Boot 3.5.1)</li>
+<li><strong>License:</strong> EPL 2.0</li>
+<li><strong>Purpose:</strong> Servlet specification for web applications</li>
+<li><strong>Scope:</strong> Provided (supplied by Tomcat)</li>
+</ul>
+<hr>
+
+<h3 id="database">Database</h3>
+
+<h4 id="postgresql-jdbc-driver">PostgreSQL JDBC Driver</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1</li>
+<li><strong>License:</strong> BSD 2-Clause</li>
+<li><strong>Purpose:</strong> PostgreSQL database connectivity</li>
+<li><strong>Scope:</strong> Runtime</li>
+</ul>
+
+<h4 id="h2-database">H2 Database</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1 (2.x)</li>
+<li><strong>License:</strong> MPL 2.0 or EPL 1.0</li>
+<li><strong>Purpose:</strong> In-memory and file-based database</li>
+<li><strong>Scope:</strong> Runtime</li>
+</ul>
+
+<h4 id="hibernate-orm">Hibernate ORM</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1 (6.x)</li>
+<li><strong>License:</strong> LGPL 2.1</li>
+<li><strong>Purpose:</strong> Object-relational mapping, JPA implementation</li>
+<li><strong>Included via:</strong> Spring Data JPA</li>
+</ul>
+
+<h4 id="hikaricp">HikariCP</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> High-performance JDBC connection pool</li>
+<li><strong>Included via:</strong> Spring Boot default</li>
+</ul>
+<hr>
+
+<h3 id="cib-seven-integration">CIB Seven Integration</h3>
+
+<h4 id="camunda-rest-client">Camunda REST Client</h4>
+<ul>
+<li><strong>Version:</strong> 7.22.0</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> REST client for connecting to CIB seven (Camunda) engine</li>
+<li><strong>Repository:</strong> <a href="https://github.com/camunda-community-hub/camunda-platform-7-rest-client-spring-boot">https://github.com/camunda-community-hub/camunda-platform-7-rest-client-spring-boot</a></li>
+</ul>
+<hr>
+
+<h3 id="utilities">Utilities</h3>
+
+<h4 id="lombok">Lombok</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1 (1.18.x)</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Reduce boilerplate code (getters, setters, constructors, builders)</li>
+<li><strong>Scope:</strong> Provided (compile-time only)</li>
+</ul>
+<hr>
+
+<h3 id="web-and-api">Web and API</h3>
+
+<h4 id="jackson">Jackson</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1 (2.x)</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> JSON serialization and deserialization</li>
+<li><strong>Included via:</strong> Spring Boot Starter Web</li>
+</ul>
+
+<h4 id="apache-tomcat-embedded">Apache Tomcat (Embedded)</h4>
+<ul>
+<li><strong>Version:</strong> 10+ (from Spring Boot 3.5.1)</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> Embedded servlet container</li>
+<li><strong>Included via:</strong> Spring Boot Starter Web</li>
+</ul>
+<hr>
+
+<h3 id="logging">Logging</h3>
+
+<h4 id="slf4j">SLF4J</h4>
+<ul>
+<li><strong>Version:</strong> 2.0.16</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Logging facade API</li>
+<li><strong>Included via:</strong> Spring Boot</li>
+</ul>
+
+<h4 id="logback">Logback</h4>
+<ul>
+<li><strong>Version:</strong> Managed by Spring Boot 3.5.1 (1.5.x)</li>
+<li><strong>License:</strong> EPL 1.0 / LGPL 2.1</li>
+<li><strong>Purpose:</strong> Logging implementation</li>
+<li><strong>Included via:</strong> Spring Boot</li>
+</ul>
+<hr>
+
+<h3 id="build-tools">Build Tools</h3>
+
+<h4 id="maven">Maven</h4>
+<ul>
+<li><strong>Version:</strong> 3.6+</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> Build automation and dependency management</li>
+</ul>
+
+<h4 id="frontend-maven-plugin">Frontend Maven Plugin</h4>
+<ul>
+<li><strong>Version:</strong> 1.15.1</li>
+<li><strong>License:</strong> Apache License 2.0</li>
+<li><strong>Purpose:</strong> Integrate Node.js and npm builds into Maven</li>
+</ul>
+<p><strong>Frontend Build Integration:</strong></p>
+<ul>
+<li>Downloads and installs Node.js 22.14.0 and npm 10.9.2</li>
+<li>Runs <code>npm ci</code> to install frontend dependencies</li>
+<li>Executes <code>npm run build</code> to build Vue frontend</li>
+<li>Copies built frontend assets to WAR file</li>
+</ul>
+<p>See <a href="./frontend_dependencies.md">Frontend Dependencies</a> for complete frontend library documentation.</p>
+<hr>
+
+<h3 id="complete-dependency-summary">Complete Dependency Summary</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Library</th>
+          <th>Version</th>
+          <th>License</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Spring Boot</td>
+          <td>3.5.1</td>
+          <td>Apache 2.0</td>
+          <td>Core framework</td>
+      </tr>
+      <tr>
+          <td>Java</td>
+          <td>17</td>
+          <td>GPL v2 + Classpath Exception</td>
+          <td>Runtime</td>
+      </tr>
+      <tr>
+          <td>Jakarta Servlet API</td>
+          <td>6.0</td>
+          <td>EPL 2.0</td>
+          <td>Servlet specification</td>
+      </tr>
+      <tr>
+          <td>Spring Data JPA</td>
+          <td>(from Spring Boot)</td>
+          <td>Apache 2.0</td>
+          <td>Data access</td>
+      </tr>
+      <tr>
+          <td>Hibernate</td>
+          <td>6.x</td>
+          <td>LGPL 2.1</td>
+          <td>ORM</td>
+      </tr>
+      <tr>
+          <td>PostgreSQL Driver</td>
+          <td>(from Spring Boot)</td>
+          <td>BSD 2-Clause</td>
+          <td>Database driver</td>
+      </tr>
+      <tr>
+          <td>H2 Database</td>
+          <td>2.x</td>
+          <td>MPL 2.0 / EPL 1.0</td>
+          <td>Database</td>
+      </tr>
+      <tr>
+          <td>HikariCP</td>
+          <td>(from Spring Boot)</td>
+          <td>Apache 2.0</td>
+          <td>Connection pooling</td>
+      </tr>
+      <tr>
+          <td>Camunda REST Client</td>
+          <td>7.22.0</td>
+          <td>Apache 2.0</td>
+          <td>CIB seven integration</td>
+      </tr>
+      <tr>
+          <td>Lombok</td>
+          <td>1.18.x</td>
+          <td>MIT</td>
+          <td>Code generation</td>
+      </tr>
+      <tr>
+          <td>Jackson</td>
+          <td>2.x</td>
+          <td>Apache 2.0</td>
+          <td>JSON processing</td>
+      </tr>
+      <tr>
+          <td>Logback</td>
+          <td>1.5.x</td>
+          <td>EPL 1.0 / LGPL 2.1</td>
+          <td>Logging</td>
+      </tr>
+      <tr>
+          <td>SLF4J</td>
+          <td>2.0.16</td>
+          <td>MIT</td>
+          <td>Logging API</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="license-types">License Types</h3>
+<p>All third-party libraries comply with open-source licenses:</p>
+<ul>
+<li><strong>Apache License 2.0:</strong> Permissive, allows commercial use</li>
+<li><strong>MIT License:</strong> Permissive, minimal restrictions</li>
+<li><strong>BSD 2-Clause:</strong> Permissive, similar to MIT</li>
+<li><strong>EPL (Eclipse Public License):</strong> Weak copyleft</li>
+<li><strong>LGPL:</strong> Weak copyleft, allows dynamic linking</li>
+<li><strong>MPL (Mozilla Public License):</strong> Weak copyleft</li>
+<li><strong>GPL v2 with Classpath Exception:</strong> Allows commercial use with exception</li>
+</ul>
+<hr>
+
+<h3 id="dependency-management">Dependency Management</h3>
+<p>Dependencies are managed through Maven using the parent POM structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;parent&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-boot-dependencies<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>3.5.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/parent&gt;</span>
+</span></span></code></pre></div><p>Version management is handled by:</p>
+<ul>
+<li>Spring Boot BOM (Bill of Materials)</li>
+<li>Parent POM version properties</li>
+<li>Direct version specifications where needed</li>
+</ul>
+<hr>
+
+<h3 id="support-and-documentation">Support and Documentation</h3>
+<ul>
+<li><strong>Spring Boot:</strong> <a href="https://spring.io/projects/spring-boot">https://spring.io/projects/spring-boot</a></li>
+<li><strong>Hibernate:</strong> <a href="https://hibernate.org/orm/documentation/">https://hibernate.org/orm/documentation/</a></li>
+<li><strong>PostgreSQL JDBC:</strong> <a href="https://jdbc.postgresql.org/">https://jdbc.postgresql.org/</a></li>
+<li><strong>H2 Database:</strong> <a href="https://www.h2database.com/">https://www.h2database.com/</a></li>
+<li><strong>Camunda REST Client:</strong> <a href="https://github.com/camunda-community-hub/camunda-platform-7-rest-client-spring-boot">https://github.com/camunda-community-hub/camunda-platform-7-rest-client-spring-boot</a></li>
+<li><strong>Lombok:</strong> <a href="https://projectlombok.org/">https://projectlombok.org/</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#core-framework">Core Framework</a>
+      <ul>
+        <li><a href="#spring-boot">Spring Boot</a></li>
+      </ul>
+    </li>
+    <li><a href="#java-runtime">Java Runtime</a></li>
+    <li><a href="#jakarta-ee">Jakarta EE</a>
+      <ul>
+        <li><a href="#jakarta-servlet-api">Jakarta Servlet API</a></li>
+      </ul>
+    </li>
+    <li><a href="#database">Database</a>
+      <ul>
+        <li><a href="#postgresql-jdbc-driver">PostgreSQL JDBC Driver</a></li>
+        <li><a href="#h2-database">H2 Database</a></li>
+        <li><a href="#hibernate-orm">Hibernate ORM</a></li>
+        <li><a href="#hikaricp">HikariCP</a></li>
+      </ul>
+    </li>
+    <li><a href="#cib-seven-integration">CIB Seven Integration</a>
+      <ul>
+        <li><a href="#camunda-rest-client">Camunda REST Client</a></li>
+      </ul>
+    </li>
+    <li><a href="#utilities">Utilities</a>
+      <ul>
+        <li><a href="#lombok">Lombok</a></li>
+      </ul>
+    </li>
+    <li><a href="#web-and-api">Web and API</a>
+      <ul>
+        <li><a href="#jackson">Jackson</a></li>
+        <li><a href="#apache-tomcat-embedded">Apache Tomcat (Embedded)</a></li>
+      </ul>
+    </li>
+    <li><a href="#logging">Logging</a>
+      <ul>
+        <li><a href="#slf4j">SLF4J</a></li>
+        <li><a href="#logback">Logback</a></li>
+      </ul>
+    </li>
+    <li><a href="#build-tools">Build Tools</a>
+      <ul>
+        <li><a href="#maven">Maven</a></li>
+        <li><a href="#frontend-maven-plugin">Frontend Maven Plugin</a></li>
+      </ul>
+    </li>
+    <li><a href="#complete-dependency-summary">Complete Dependency Summary</a></li>
+    <li><a href="#license-types">License Types</a></li>
+    <li><a href="#dependency-management">Dependency Management</a></li>
+    <li><a href="#support-and-documentation">Support and Documentation</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

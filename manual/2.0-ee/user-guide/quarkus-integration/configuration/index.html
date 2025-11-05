@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3191,7 +3195,8 @@ within a Quarkus application.</p>
 <p>The documentation on the Camunda Quarkus Extension Configuration is intended for Quarkus application developers. It
 requires some knowledge on <a href="https://quarkus.io/guides/cdi-reference">Quarkus CDI support</a>, <a href="https://quarkus.io/guides/config-reference">Quarkus configuration</a>, as well as
 Camunda Process Engine Configuration properties.</p>
-<h2 id="process-engine-configuration">Process Engine Configuration</h2>
+
+<h3 id="process-engine-configuration">Process Engine Configuration</h3>
 <p>An instance of the <code>QuarkusProcessEngineConfiguration</code> class configures the process engine in a Quarkus application.
 A <code>QuarkusProcessEngineConfiguration</code> instance provides the following defaults:</p>
 <table class="table desc-table">
@@ -3263,7 +3268,8 @@ convert any property names from <code>camelCase</code> to the <code>kebab-case</
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.cmmn-enabled</span><span class="o">=</span><span class="s">false</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.dmn-enabled</span><span class="o">=</span><span class="s">false</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.history</span><span class="o">=</span><span class="s">none</span>
-</span></span></code></pre></div><h3 id="programmatic-configuration">Programmatic Configuration</h3>
+</span></span></code></pre></div>
+<h4 id="programmatic-configuration">Programmatic Configuration</h4>
 <p>You can also configure the process engine programmatically, by providing a <code>QuarkusProcessEngineConfiguration</code> CDI bean.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@ApplicationScoped</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyCustomEngineConfig</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">QuarkusProcessEngineConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3279,7 +3285,8 @@ However, if you define the following in an <code>application.properties</code> f
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.process-engine-name</span><span class="o">=</span><span class="s">quarkusEngine</span>
 </span></span></code></pre></div><p>then &ldquo;quarkusEngine&rdquo; will be used as the process engine name since Quarkus config sources have a higher ordinal than a
 <code>QuarkusProcessEngineConfiguration</code> CDI bean.</p>
-<h2 id="job-executor-configuration">Job Executor Configuration</h2>
+
+<h3 id="job-executor-configuration">Job Executor Configuration</h3>
 <p>As with the process engine configuration properties <a href="#process-engine-configuration">above</a>, you can set any job executor
 configuration properties under the <code>quarkus.camunda.job-executor</code> prefix. The <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/job-executor/#job-acquisition-configuration-properties">Job Executor Configuration Properties</a>
 page documents all the available properties. Convert any property names you intend to use from <code>camelCase</code> to the
@@ -3288,7 +3295,8 @@ page documents all the available properties. Convert any property names you inte
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.lock-time-in-millis</span><span class="o">=</span><span class="s">500000</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.wait-time-in-millis</span><span class="o">=</span><span class="s">7000</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.max-wait</span><span class="o">=</span><span class="s">65000</span>
-</span></span></code></pre></div><h2 id="quarkus-extension-configuration">Quarkus Extension Configuration</h2>
+</span></span></code></pre></div>
+<h3 id="quarkus-extension-configuration">Quarkus Extension Configuration</h3>
 <p>In addition to the general process engine and job executor configuration properties mentioned in the previous
 sections, the Camunda Quarkus extension provides some Quarkus-specific configuration properties. They can be set
 through a Quarkus config source, but not through the <code>QuarkusProcessEngineConfiguration</code> class. You can find all
@@ -3324,12 +3332,14 @@ the Quarkus-specific properties in the following table:</p>
     <td><code>3</code></td>
   </tr>
 </table>
-<h2 id="persistence">Persistence</h2>
+
+<h3 id="persistence">Persistence</h3>
 <p>The Engine Extension integrates with a JDBC Connection Pool and a Jakarta Transaction Manager provided
 by <a href="https://quarkus.io/guides/datasource">Quarkus</a>. The latter allows you to integrate your business logic into database
 transactions of the Engine. Read more about it under <a href="/manual/2.0-ee/user-guide/cdi-java-ee-integration/jta-transaction-integration/">JTA Transaction Integration</a>.
 A datasource is required to run the Camunda process engine.</p>
-<h3 id="choose-from-multiple-datasources">Choose from multiple datasources</h3>
+
+<h4 id="choose-from-multiple-datasources">Choose from multiple datasources</h4>
 <p>When multiple datasources are available in your application, you can choose the one the Engine Extension
 should use by its name via the <code>camunda.datasource</code> configuration property. Consider the example configuration below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.datasource.engine-datasource.db-kind</span><span class="o">=</span><span class="s">oracle</span>
@@ -3338,7 +3348,8 @@ should use by its name via the <code>camunda.datasource</code> configuration pro
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.engine-datasource.jdbc.url</span><span class="o">=</span><span class="s">jdbc:oracle:thin:@localhost:1521:ORCL</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.datasource</span><span class="o">=</span><span class="s">engine-datasource</span>
-</span></span></code></pre></div><h2 id="example">Example</h2>
+</span></span></code></pre></div>
+<h3 id="example">Example</h3>
 <p>The following is an example of a Quarkus <code>application.properties</code> file that provides custom values for the process
 engine configuration, job executor and data source:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1"># process engine configuration</span>

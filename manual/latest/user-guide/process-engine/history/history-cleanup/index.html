@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3195,12 +3199,15 @@
 <li>Historic batches plus all related historic data (historic incidents and job logs)</li>
 </ul>
 <p>History cleanup can be triggered manually or scheduled on a regular basis. Only <a href="/manual/latest/user-guide/process-engine/authorization-service/#the-camunda-admin-group">camunda-admins</a> have permissions to execute history cleanup manually.</p>
-<h2 id="use-case-example">Use case example</h2>
+
+<h3 id="use-case-example">Use case example</h3>
 <p>Assume we have a billing process for which we must keep the history trail for ten years for legal compliance reasons. Then we have a holiday application process for which history data is only relevant for a short time. In order to reduce the amount of data we have to store, we want to quickly remove holiday-related data.</p>
 <p>With history cleanup, we can assign the billing process a history time to live of ten years and the holiday process a history time to live of seven days. History cleanup then makes sure that history data is removed when the time to live has expired. This way, we can selectively keep history data based on its importance for our business. At the same time, we only keep what is necessary in the database.</p>
 <p>Note: The exact time at which data is removed depends on a couple of configuration settings, for example the selected <em>history cleanup strategy</em>. The underlying concepts and settings are explained in the following sections.</p>
-<h2 id="basic-concepts">Basic concepts</h2>
-<h3 id="cleanable-instances">Cleanable instances</h3>
+
+<h3 id="basic-concepts">Basic concepts</h3>
+
+<h4 id="cleanable-instances">Cleanable instances</h4>
 <p>The following elements of Camunda history are cleanable:</p>
 <ul>
 <li>Process Instances</li>
@@ -3215,14 +3222,16 @@
   <p>The history clean up job does not delete historic <a href="/manual/latest/reference/bpmn20/events/timer-events/#timer-start-event">timer-start-event</a> jobs. The reason being that the responsibility of timer-start-event job is to start a process instance, i.e. it does not belong to a process instance.</p>
 </div>
 
-<h3 id="history-time-to-live-ttl">History Time To Live (TTL)</h3>
+
+<h4 id="history-time-to-live-ttl">History Time To Live (TTL)</h4>
 <p><em>History Time To Live</em> (TTL) defines how long historic data shall remain in the database before it is cleaned up.</p>
 <ul>
 <li>Process, Case and Decision Instances: TTL can be defined in the XML file of the corresponding definition. This value can furthermore be changed after deployment via Java and REST API.</li>
 <li>Batches: TTL can be defined in the process engine configuration.</li>
 </ul>
 <p>See the <a href="#history-time-to-live">TTL configuration section</a> for how to set TTL.</p>
-<h3 id="instance-end-time">Instance end time</h3>
+
+<h4 id="instance-end-time">Instance end time</h4>
 <p><em>End Time</em> is the time when an instance is no longer active.</p>
 <ul>
 <li>Process Instances: The time when the instance finishes.</li>
@@ -3231,7 +3240,8 @@
 <li>Batches: The time when the batch completes.</li>
 </ul>
 <p>The end time is persisted in the corresponding instance tables <code>ACT_HI_PROCINST</code>, <code>ACT_HI_CASEINST</code>, <code>ACT_HI_DECINST</code> and <code>ACT_HI_BATCH</code>.</p>
-<h3 id="instance-removal-time">Instance removal time</h3>
+
+<h4 id="instance-removal-time">Instance removal time</h4>
 <p><em>Removal Time</em> is the time after which an instance shall be removed. It is computed as <code>removal time = base time + TTL</code>. <em>Base time</em> is configurable and can be either the start or the end time of an instance. In particular, this means:</p>
 <ul>
 <li>Process Instances: Base time is either the time when the process instance starts or the time at which it finishes. This is configurable.</li>
@@ -3250,9 +3260,11 @@
 
 <p>The removal time is persisted in <em>all</em> history tables. So in case of a process instance, the removal time is present in <code>ACT_HI_PROCINST</code> as well as the corresponding secondary entries in <code>ACT_HI_ACTINST</code>, <code>ACT_HI_TASKINST</code> etc.</p>
 <p>See the <a href="#removal-time-strategy">Removal Time Strategy configuration section</a> for how to configure if the removal time is based on the start or end time of an instance.</p>
-<h2 id="cleanup-strategies">Cleanup strategies</h2>
+
+<h3 id="cleanup-strategies">Cleanup strategies</h3>
 <p>In order to use history cleanup, you must decide for one of the two avialable history cleanup strategies: <em>Removal-Time-based</em> or <em>End-Time-based</em> strategy. The <em>Removal-Time-based</em> strategy is the default strategy and recommended in most scenarios. The following sections describe the strategies and their differences in detail. See the <a href="#cleanup-strategy">Cleanup Strategy configuration section</a> for how to configure each of the strategies.</p>
-<h3 id="removal-time-based-strategy">Removal-time-based strategy</h3>
+
+<h4 id="removal-time-based-strategy">Removal-time-based strategy</h4>
 <p>The <em>removal-time-based cleanup strategy</em> deletes data for which the removal time has expired.</p>
 <p>Strengths:</p>
 <ul>
@@ -3265,7 +3277,8 @@
 <li>Changing the TTL of a definition only applies to history data that is created in the future. It does not dynamically update the removal time of already written history data. However, it is possible to <a href="/manual/latest/user-guide/process-engine/batch-operations/#set-a-removal-time">Set a Removal Time via Batch Operations</a>.</li>
 <li>History data of case instances is not cleaned up.</li>
 </ul>
-<h3 id="end-time-based-strategy">End-time-based strategy</h3>
+
+<h4 id="end-time-based-strategy">End-time-based strategy</h4>
 <p>The <em>end-time-based cleanup strategy</em> deletes data whose end time plus TTL has expired. In contrast to the removal-time strategy, this is computed whenever history cleanup is performed.</p>
 <p>Strengths:</p>
 <ul>
@@ -3279,7 +3292,8 @@
 <li><a href="/manual/latest/user-guide/process-engine/authorization-service/#historic-instance-permissions">Historic Instance Permissions</a> are not cleaned up.</li>
 <li><a href="/manual/latest/user-guide/process-engine/history/history-cleanup/#historycleanupjobs-in-the-historic-job-log">History Cleanup Jobs</a> are not removed from the historic job log.</li>
 </ul>
-<h2 id="cleanup-internals">Cleanup internals</h2>
+
+<h3 id="cleanup-internals">Cleanup internals</h3>
 <p>History cleanup is implemented via jobs and performed by the <a href="/manual/latest/user-guide/process-engine/the-job-executor/">job executor</a>. It therefore competes for execution resources with other jobs, e.g. triggering of BPMN timer events.</p>
 <p>Cleanup execution can be controlled in three ways:</p>
 <ul>
@@ -3296,11 +3310,15 @@
 <li>The number of job retries is increased manually (e.g. via Java or REST API)</li>
 </ul>
 <p>The history cleanup jobs can be found via the API method <code>HistoryService#findHistoryCleanupJobs</code>.</p>
-<h2 id="configuration">Configuration</h2>
-<h3 id="history-time-to-live">History Time To Live</h3>
-<h4 id="required-property">Required property</h4>
+
+<h3 id="configuration">Configuration</h3>
+
+<h4 id="history-time-to-live">History Time To Live</h4>
+
+<h5 id="required-property">Required property</h5>
 <p>The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#enforceHistoryTimeToLive">process engine configuration</a>. To define a default TTL for process definitions and decision definitions if no other value is defined check <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#historyTimeToLive">historyTimeToLive configuration</a>.</p>
-<h4 id="processdecisioncase-definitions">Process/decision/case definitions</h4>
+
+<h5 id="processdecisioncase-definitions">Process/decision/case definitions</h5>
 <p>Process instances are only cleaned up if their corresponding definition has a valid time to live (TTL).
 Use the <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-attributes/#historytimetolive">&ldquo;historyTimeToLive&rdquo; extension attribute</a> of the process definition to define the TTL for all its instances:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;oneTaskProcess&#34;</span> <span class="na">name=</span><span class="s">&#34;The One Task Process&#34;</span> <span class="na">isExecutable=</span><span class="s">&#34;true&#34;</span> <span class="na">camunda:historyTimeToLive=</span><span class="s">&#34;5&#34;</span><span class="nt">&gt;</span>
@@ -3317,7 +3335,8 @@ Use the <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-att
 <p>In case you want to provide an engine-wide default TTL for all process, decision and case definitions,
 use the <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#historytimetolive">&ldquo;historyTimeToLive&rdquo; attribute</a>
 of the process engine configuration. This value is applied as the default whenever new definitions without TTL are deployed. Note that it therefore does not change the TTL of already deployed definitions. Use the API method given above to change TTL in this case.</p>
-<h4 id="batches">Batches</h4>
+
+<h5 id="batches">Batches</h5>
 <p>TTL for batches can be defined via attribute of the process engine configuration.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- default setting for all batch operations --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;batchOperationHistoryTimeToLive&#34;</span><span class="nt">&gt;</span>P5D<span class="nt">&lt;/property&gt;</span>
@@ -3343,21 +3362,24 @@ of the process engine configuration. This value is applied as the default whenev
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/map&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
 </span></span></code></pre></div><p>If the specific TTL is not set for a batch operation type, then the option <code>batchOperationHistoryTimeToLive</code> applies.</p>
-<h4 id="job-logs">Job logs</h4>
+
+<h5 id="job-logs">Job logs</h5>
 <p>A history cleanup is always performed by executing a history cleanup job. As with all other jobs, the history cleanup job
 will produce events that are logged in the historic job log. By default, those entries will stay in the log indefinitely
 and cleanup must be configured explicitly. Please note that this only works for the <a href="/manual/latest/user-guide/process-engine/history/history-cleanup/#removal-time-strategy">removal-time based history cleanup strategy</a>.</p>
 <p>The <code>historyCleanupJobLogTimeToLive</code> property can be used to define a TTL for historic job log entries produced by
 history cleanup jobs. The property accepts values in the ISO-8601 date format. Note that only the notation to define a number of days is allowed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;historyCleanupJobLogTimeToLive&#34;</span><span class="nt">&gt;</span>P5D<span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></div><h4 id="task-metrics">Task metrics</h4>
+</span></span></code></pre></div>
+<h5 id="task-metrics">Task metrics</h5>
 <p>The process engine reports <a href="/manual/latest/user-guide/process-engine/metrics/">runtime metrics</a> to the database that can help draw conclusions about usage, load, and performance of the BPM platform.
 With every assignment of a user task, the related task worker is stored as a pseudonymized, fixed-length value in the <code>ACT_RU_TASK_METER_LOG</code> table together with a timestamp. Cleanup for this data needs to
 be configured explicitly if needed.</p>
 <p>The <code>taskMetricsTimeToLive</code> property can be used to define a TTL for task metrics entries produced by user task assignments.
 The property accepts values in the ISO-8601 date format. Note that only the notation to define a number of days is allowed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;taskMetricsTimeToLive&#34;</span><span class="nt">&gt;</span>P540D<span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></div><h3 id="cleanup-window">Cleanup window</h3>
+</span></span></code></pre></div>
+<h4 id="cleanup-window">Cleanup window</h4>
 <p>For automated history cleanup on a regular basis, a batch window must be configured - the period of time during the day when the cleanup is to run.</p>
 <p>Use the following engine configuration properties to define a batch window for every day of the week:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;historyCleanupBatchWindowStartTime&#34;</span><span class="nt">&gt;</span>20:00<span class="nt">&lt;/property&gt;</span>
@@ -3374,11 +3396,13 @@ The property accepts values in the ISO-8601 date format. Note that only the nota
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;sundayHistoryCleanupBatchWindowEndTime&#34;</span><span class="nt">&gt;</span>06:00<span class="nt">&lt;/property&gt;</span>
 </span></span></code></pre></div><p>By default, no cleanup window is configured. In that case, history cleanup is not performed automatically.</p>
 <p>See the <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#history-cleanup-configuration-parameters">engine configuration reference</a> for a complete list of all parameters.</p>
-<h3 id="cleanup-strategy">Cleanup strategy</h3>
+
+<h4 id="cleanup-strategy">Cleanup strategy</h4>
 <p>Removal-time-based or end-time-based cleanup can be selected as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;historyCleanupStrategy&#34;</span><span class="nt">&gt;</span>removalTimeBased<span class="nt">&lt;/property&gt;</span>
 </span></span></code></pre></div><p>Valid values are <code>removalTimeBased</code> and <code>endTimeBased</code>. <code>removalTimeBased</code> is the default.</p>
-<h3 id="removal-time-strategy">Removal-time strategy</h3>
+
+<h4 id="removal-time-strategy">Removal-time strategy</h4>
 <p>Removal time is defined per instance as <code>removal time = base time + TTL</code>. <code>base time</code> can be either the start or end time of the instance in case of process instances. This can be configured in the process engine configuration as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;historyRemovalTimeStrategy&#34;</span><span class="nt">&gt;</span>end<span class="nt">&lt;/property&gt;</span>
 </span></span></code></pre></div><p>Valid values are <code>start</code>, <code>end</code> and <code>none</code>. <code>end</code> is the default value and the recommended option. <code>start</code> is a bit more efficient when the process engine populates the history tables, because it does not have to make extra <code>UPDATE</code> statements when an instance finishes.</p>
@@ -3390,20 +3414,24 @@ The property accepts values in the ISO-8601 date format. Note that only the nota
 This allows to perform a custom cleanup procedure outside the process engine by leveraging database capabilities (e.g. via table partitioning by removal time).</p>
 </div>
 
-<h3 id="parallel-execution">Parallel execution</h3>
+
+<h4 id="parallel-execution">Parallel execution</h4>
 <p>The degree of parallel execution for history cleanup can be defined in the engine configuration as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;historyCleanupDegreeOfParallelism&#34;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/property&gt;</span>
 </span></span></code></pre></div><p>Valid values are integers from 1 to 8. 1 is the default value.</p>
 <p>This property specifies the number of jobs used for history cleanup. In consequence, this value determines how many job executor threads and database connections may be busy with history cleanup at once. Choosing a high value can make cleanup faster, but may steal resources from other tasks the engine and database have to perform.</p>
-<h3 id="cleanup-batch-size">Cleanup batch size</h3>
+
+<h4 id="cleanup-batch-size">Cleanup batch size</h4>
 <p>The number of instances that are removed in one cleanup transaction can be set as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;historyCleanupBatchSize&#34;</span><span class="nt">&gt;</span>100<span class="nt">&lt;/property&gt;</span>
 </span></span></code></pre></div><p>The default (and maximum) value is 500. Reduce it if you notice transaction timeouts during history cleanup.</p>
-<h3 id="clustered-cleanup">Clustered cleanup</h3>
+
+<h4 id="clustered-cleanup">Clustered cleanup</h4>
 <p>In a multi-engine setup, you can configure whether a specific engine should participate in history cleanup or not.
 Please make sure that the same cleanup execution configuration (window, batch size, degree of parallelism) is present
 on all participating nodes.</p>
-<h4 id="cleanup-execution-participation-per-node">Cleanup execution participation per node</h4>
+
+<h5 id="cleanup-execution-participation-per-node">Cleanup execution participation per node</h5>
 <p>Sometimes it is necessary to exclude some nodes in a multi-engine setup from performing history cleanup execution,
 e. g. to reduce the load on some nodes.</p>
 <p>You can disable the history cleanup execution for each node with the following flag:</p>

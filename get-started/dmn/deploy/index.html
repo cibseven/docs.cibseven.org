@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,7 +261,8 @@
 
     <div class="col-xs-12 content-text">
       <p>In this step, we use Java Code to evaluate the decision table. Then we deploy the web application to Apache Tomcat and verify the result in Cockpit.</p>
-<h1 id="evaluate-the-decision-table">Evaluate the Decision Table</h1>
+
+<h2 id="evaluate-the-decision-table">Evaluate the Decision Table</h2>
 <p>To directly evaluate the decision table after deployment, add the following method to your Application class:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -314,7 +317,8 @@
   </div>
 </div>
 
-<h1 id="build-the-web-application-with-maven">Build the Web Application with Maven</h1>
+
+<h2 id="build-the-web-application-with-maven">Build the Web Application with Maven</h2>
 <p>Select the <code>pom.xml</code> in the Package Explorer, perform a right-click and select <code>Run As / Maven Install</code>. This will generate a WAR file named <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> in the <code>target/</code> folder of your Maven project.</p>
 
 <div class="note bg-info docs-info">
@@ -322,7 +326,8 @@
   <p>If the <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> file is not visible after having performed the Maven build, you need to refresh the project (F5) in eclipse.</p>
 </div>
 
-<h1 id="deploy-to-apache-tomcat">Deploy to Apache Tomcat</h1>
+
+<h2 id="deploy-to-apache-tomcat">Deploy to Apache Tomcat</h2>
 <p>In order to deploy the process application, copy-paste the <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> from your Maven project to the <code>$CIBSEVEN_HOME/server/apache-tomcat/webapps</code> folder.</p>
 <p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
 <pre class="console">
@@ -342,7 +347,8 @@ Desired dish: Stew
 INFO org.cibseven.commons.logging.BaseLogger.logInfo
 ENGINE-08050 Process application Dinner App DMN successfully deployed
 </pre>
-<h1 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h1>
+
+<h2 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h2>
 <p>Now, use Cockpit to check if the decision table is successfully deployed. Go to <a href="http://localhost:8080/camunda/app/cockpit">http://localhost:8080/camunda/app/cockpit</a>. Log in with <em>demo / demo</em>. Go to &ldquo;Decisions&rdquo; section. Your decision table <em>Dish</em> should be listed as deployed decision definition.</p>
 <figure class="image">
   <span><img
@@ -350,7 +356,8 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
        /></span>
 </figure>
 
-<h1 id="verify-the-evaluation-with-cockpit">Verify the Evaluation with Cockpit</h1>
+
+<h2 id="verify-the-evaluation-with-cockpit">Verify the Evaluation with Cockpit</h2>
 <p>Click on the decision <em>Dish</em>. This opens a dialog where you see when the decision table was evaluated.</p>
 <figure class="image">
   <span><img
@@ -366,7 +373,8 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
 </figure>
 
 <p>Verify that the 5th rule was matched and the output value for the desired dish is &ldquo;Stew&rdquo;.</p>
-<h1 id="next-steps">Next Steps</h1>
+
+<h2 id="next-steps">Next Steps</h2>
 <p>Congratulations, you have now successfully set up a project with your first DMN decision table.</p>
 <p>Next,</p>
 <ul>

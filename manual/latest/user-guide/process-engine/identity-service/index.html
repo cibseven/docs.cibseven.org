@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3207,7 +3211,8 @@
 <li><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/impl/identity/WritableIdentityProvider.html">org.cibseven.bpm.engine.impl.identity.WritableIdentityProvider</a>
 </li>
 </ul>
-<h1 id="custom-whitelist-for-user-group-and-tenant-ids">Custom Whitelist for User, Group and Tenant IDs</h1>
+
+<h2 id="custom-whitelist-for-user-group-and-tenant-ids">Custom Whitelist for User, Group and Tenant IDs</h2>
 <p>User, Group and Tenant IDs can be matched against a Whitelist Pattern to determine if the provided ID is acceptable or not. The default (global) Regular Expression pattern to match against is <strong>&quot;[a-zA-Z0-9]+|camunda-admin&quot;</strong> i.e. any combination of alphanumeric values or <em>&lsquo;camunda-admin&rsquo;</em>.</p>
 <p>If your organisation allows the usage of additional characters (ex.: special characters), the ProcessEngineConfiguration propery <code>generalResourceWhitelistPattern</code> should be set with the appropriate pattern in the engine&rsquo;s configuration file. Standard <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html">Java Regular Expression</a> syntax can be used. For example, to accept any character, the following property value can be used:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;generalResourceWhitelistPattern&#34;</span> <span class="na">value=</span><span class="s">&#34;.+&#34;</span><span class="nt">/&gt;</span>
@@ -3216,10 +3221,12 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;groupResourceWhitelistPattern&#34;</span> <span class="na">value=</span><span class="s">&#34;[a-zA-Z]+&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;tenantResourceWhitelistPattern&#34;</span> <span class="na">value=</span><span class="s">&#34;.+&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>Note that if a certain pattern isn&rsquo;t defined (ex. the tenant whitelist pattern), the general pattern will be used, either the default one (<code>&quot;[a-zA-Z0-9]+|camunda-admin&quot;</code>) or one defined in the configuration file.</p>
-<h1 id="the-database-identity-service">The Database Identity Service</h1>
+
+<h2 id="the-database-identity-service">The Database Identity Service</h2>
 <p>The database identity service uses the process engine database for managing users and groups. This is the default identity service implementation used if no alternative identity service implementation is provided.</p>
 <p>The database identity service implements both <code>ReadOnlyIdentityProvider</code> and <code>WritableIdentityProvider</code> providing full CRUD functionality in Users, Groups and Memberships.</p>
-<h1 id="the-ldap-identity-service">The LDAP Identity Service</h1>
+
+<h2 id="the-ldap-identity-service">The LDAP Identity Service</h2>
 <p>The LDAP identity service provides read-only access to an LDAP-based user/group repository. The identity service provider is implemented as a <a href="/manual/latest/user-guide/process-engine/process-engine-plugins/">Process Engine Plugin</a> and can be added to the process engine configuration. In that case it replaces the default database identity service.</p>
 <p>To use the LDAP identity service, the <code>camunda-identity-ldap.jar</code> library has to be added to the classloader of the process engine.</p>
 
@@ -3232,7 +3239,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.identity<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-identity-ldap<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h2 id="activate-the-ldap-plugin">Activate the LDAP Plugin</h2>
+</span></span></code></pre></div>
+<h3 id="activate-the-ldap-plugin">Activate the LDAP Plugin</h3>
 <p>The following is an example of how to configure the LDAP Identity Provider Plugin using Spring XML:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -3322,7 +3330,8 @@
   <p>Currently, the LDPA Identity Service doesn&rsquo;t support <a href="/manual/latest/user-guide/process-engine/multi-tenancy/#single-process-engine-with-tenant-identifiers">multi-tenancy</a>. That means it is not possible to get tenants from LDAP and the transparent multi-tenancy access restrictions don&rsquo;t work by default.</p>
 </div>
 
-<h2 id="configuration-properties-of-the-ldap-plugin">Configuration Properties of the LDAP Plugin</h2>
+
+<h3 id="configuration-properties-of-the-ldap-plugin">Configuration Properties of the LDAP Plugin</h3>
 <p>The LDAP Identity Provider provides the following configuration properties:</p>
 <table class="table table-striped">
   <tr>
@@ -3521,9 +3530,11 @@
    </td>
   </tr>
 </table>
-<h1 id="the-oauth2-identity-service">The OAuth2 Identity Service</h1>
+
+<h2 id="the-oauth2-identity-service">The OAuth2 Identity Service</h2>
 <p>See the Spring Security OAuth2 Integration&rsquo;s <a href="/manual/latest/user-guide/spring-boot-integration/spring-security/#oauth2-identity-provider">OAuth2 Identity Provider</a> documentation.</p>
-<h1 id="throttle-login-attempts">Throttle login attempts</h1>
+
+<h2 id="throttle-login-attempts">Throttle login attempts</h2>
 <p>A mechanism exists for preventing subsequent unsuccessful login attempts.The essence of it is that the user is not able to log in for a specific amount of time after unsuccessful login attempts.
 The amount of time is calculated after each attempt but it is limited by maximum delay time.
 After a predefined number of unsuccessful attempts, the user will be locked and only an administrator has permissions to <a href="/manual/latest/webapps/admin/user-management/">unlock</a> them.</p>
@@ -3538,7 +3549,8 @@ After a predefined number of unsuccessful attempts, the user will be locked and 
 <p>Calculation of the delay is done via the formula: <code>baseTime * factor^(attempt-1)</code>.
 The behaviour with the default configuration will be:
 3 seconds delay after the first unsuccessful attempt, 6 seconds after the 2nd attempt, 12 seconds, 24 seconds, 48 seconds, 60 seconds, 60 seconds, etc. After the 10th attempt, if the user fails to login again, the user will be locked.</p>
-<h2 id="ldap-specifics">LDAP specifics</h2>
+
+<h3 id="ldap-specifics">LDAP specifics</h3>
 <p>If you have a LDAP setup on your engine, you need to handle the throttling on the LDAP side. The login mechanism in your system will not be affected by the above properties.</p>
 
     </div>

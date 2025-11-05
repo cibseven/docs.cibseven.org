@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3191,7 +3195,8 @@ They enable a quickstart for developing production-ready process applications us
 We incorporated best practices for different application types into the templates to help you start off with a solid base.</p>
 <p>The Archetypes can be used to generate projects as detailed in the different usage sections.
 In case generating a project from an Archetype on your own is not feasible, we also provide a template GitHub repository for every Archetype.</p>
-<h1 id="overview-of-available-maven-archetypes">Overview of Available Maven Archetypes</h1>
+
+<h2 id="overview-of-available-maven-archetypes">Overview of Available Maven Archetypes</h2>
 <p>The following archetypes are currently provided. They are distributed via our Maven repository: <a href="https://artifacts.camunda.com/artifactory/camunda-bpm/">https://artifacts.camunda.com/artifactory/camunda-bpm/</a></p>
 <table class="table table-bordered">
   <thead>
@@ -3231,21 +3236,25 @@ In case generating a project from an Archetype on your own is not feasible, we a
     </tr>
   </tbody>
 </table>
-<h1 id="template-repositories">Template repositories</h1>
+
+<h2 id="template-repositories">Template repositories</h2>
 <p>We provide a template repository for every Camunda Archetype.
 Every repository contains a project generated from one specific template.
 You can find the whole list on <a href="https://github.com/camunda?q=%22camunda-bpm-archetype-%22">GitHub</a>.</p>
 <p>With every new release of the Archetypes, we will update those repositories with a new version as well.
 This allows to investigate possible update paths from one Camunda version to another and also enables you to simply update your existing project by pulling in the latest changes.</p>
 <p>In case you need more flexibility and customization for your project, you can generate a project on your own using one of the methods detailed in the next sections.</p>
-<h1 id="usage-in-eclipse-ide">Usage in Eclipse IDE</h1>
-<h2 id="summary">Summary</h2>
+
+<h2 id="usage-in-eclipse-ide">Usage in Eclipse IDE</h2>
+
+<h3 id="summary">Summary</h3>
 <ol>
 <li>Add archetype catalog (<strong>Preferences -&gt; Maven -&gt; Archetypes -&gt; Add Remote Catalog</strong>):
 <strong><a href="https://artifacts.camunda.com/artifactory/camunda-bpm/">https://artifacts.camunda.com/artifactory/camunda-bpm/</a></strong></li>
 <li>Create Maven project from archetype (<strong>File -&gt; New -&gt; Project&hellip; -&gt; Maven -&gt; Maven Project</strong>)</li>
 </ol>
-<h2 id="detailed-instructions">Detailed Instructions</h2>
+
+<h3 id="detailed-instructions">Detailed Instructions</h3>
 <ol>
 <li>
 <p>Go to <strong>Preferences -&gt; Maven -&gt; Archetypes -&gt; Add Remote Catalog</strong>
@@ -3320,9 +3329,11 @@ This allows to investigate possible update paths from one Camunda version to ano
        /></span>
 </figure>
 
-<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
 <p>Sometimes the creation of the very first Maven project fails in Eclipse. If that happens to you, just try it again. Most of the times the second try works. If the problem persists, <a href="https://forum.camunda.org/">contact us</a>.</p>
-<h1 id="usage-in-intellij-idea">Usage in IntelliJ IDEA</h1>
+
+<h2 id="usage-in-intellij-idea">Usage in IntelliJ IDEA</h2>
 <ol>
 <li>On the &ldquo;Welcome to IntelliJ IDEA&rdquo; screen, click on &ldquo;Configure&rdquo; and select &ldquo;Plugins&rdquo; in the dropdown.</li>
 <li>In the plugins dialog, click on &ldquo;Browse repositories&hellip;&rdquo;.</li>
@@ -3336,13 +3347,16 @@ modal window add the  URL of the catalog file: <a href="https://artifacts.camund
 <li>In the new project dialog, click on the left side on &ldquo;Maven&rdquo;, check &ldquo;Create from archetype&rdquo;
 and select any <code>org.camunda.bpm.archetype</code> entry.</li>
 </ol>
-<h1 id="usage-on-command-line">Usage on Command Line</h1>
-<h2 id="interactive">Interactive</h2>
+
+<h2 id="usage-on-command-line">Usage on Command Line</h2>
+
+<h3 id="interactive">Interactive</h3>
 <p>Run the following command in a terminal to generate a project. Maven will allow you to select an archetype and ask you for all parameters needed to configure it:</p>
 <pre class="console">
 mvn archetype:generate -Dfilter=org.camunda.bpm.archetype:
 </pre>
-<h2 id="full-automation">Full Automation</h2>
+
+<h3 id="full-automation">Full Automation</h3>
 <p>The following command completely automates the project generation and can be used in shell scripts or Ant builds:</p>
 <pre class="console">
 mvn archetype:generate \
@@ -3355,7 +3369,8 @@ mvn archetype:generate \
   -Dversion=0.0.1-SNAPSHOT \
   -Dpackage=org.example.bpm.ejb
 </pre>
-<h1 id="source-code-and-customization">Source Code and Customization</h1>
+
+<h2 id="source-code-and-customization">Source Code and Customization</h2>
 <p>You can also customize the project templates for your own technology stack. Just <a href="https://github.com/camunda/camunda-archetypes">fork them on GitHub</a>!</p>
 
     </div>

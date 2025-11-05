@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,14 +3190,16 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h2 id="process-engine">Process engine</h2>
+      
+<h3 id="process-engine">Process engine</h3>
 <p>The CIB seven engine uses the default time zone of the JVM when operating with dates:</p>
 <ul>
 <li>When reading datetime values from BPMN XML</li>
 <li>In REST responses</li>
 <li>When reading/writing DateTime values from/to the database</li>
 </ul>
-<h2 id="database">Database</h2>
+
+<h3 id="database">Database</h3>
 <p>Database time zone and database sessions time zone are out of scope of the CIB seven engine and must be configured explicitly.</p>
 <p>However, Timestamp columns in the CIB seven engine are using the <code>TIMESTAMP [WITHOUT TIME ZONE]</code> data type (the name differs in different database servers).
 For this reason, it is not recommended to change the time zone on the database side once set, since it may lead to an incorrect operation of the CIB seven engine.</p>
@@ -3207,9 +3213,11 @@ to avoid unexpected job executions.</p>
 </p>
 </div>
 
-<h2 id="camunda-web-applications">Camunda Web Applications</h2>
+
+<h3 id="camunda-web-applications">Camunda Web Applications</h3>
 <p>It is possible to use the Camunda Web Applications in different timezones. All dates are translated to/from the local timezone when working with the UI.</p>
-<h2 id="cluster-setup">Cluster Setup</h2>
+
+<h3 id="cluster-setup">Cluster Setup</h3>
 <p>In case the process engine is running in a <a href="/manual/2.0-ee/introduction/architecture/#clustering-model">cluster</a>,
 all cluster nodes must run in one and the same time zone. In case cluster nodes exist in different time zones,
 correct behaviour when operating with DateTime values can not be guaranteed.</p>

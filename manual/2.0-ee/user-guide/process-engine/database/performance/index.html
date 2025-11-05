@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,9 +3192,11 @@
     <div class="col-xs-12 content-text">
       <p>This page explains specific performance-related topics of database queries. It does not attempt to provide tools and guidance for general performance analysis and optimization of CIB seven installations.</p>
 <p>As the impact of the settings discussed here largely depends on the setup and workload of CIB seven, the recommendations may or may not help in your case. Performance improvements are not guaranteed.</p>
-<h1 id="task-query">Task Query</h1>
+
+<h2 id="task-query">Task Query</h2>
 <p>The task query is one of the heaviest used and most powerful queries of the process engine API. Due to its rich feature set, it can also become complex in SQL and may perform badly.</p>
-<h2 id="disabling-cmmn-and-standalone-tasks">Disabling CMMN and Standalone Tasks</h2>
+
+<h3 id="disabling-cmmn-and-standalone-tasks">Disabling CMMN and Standalone Tasks</h3>
 <p>To perform transparent access checks, the task query joins the authorization table (<code>ACT_RU_AUTHORIZATION</code>). For any kind of process-related filters, it joins the process definition table (<code>ACT_RE_PROCDEF</code>). By default, the query uses a left join for these operations. If CMMN and standalone tasks (tasks that are neither related to a BPMN process, nor a CMMN case) are not used, the engine configuration flags <code>cmmnEnabled</code> and <code>standaloneTasksEnabled</code> can be set to <code>false</code>. Then, the left joins are replaced by inner joins which perform better on some databases. See the <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/process-engine/#configuration-properties">configuration properties reference</a> for details on these settings.</p>
 
     </div>

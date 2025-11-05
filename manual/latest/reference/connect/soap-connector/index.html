@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,8 +3197,10 @@ instance by its connector ID, which is <code>soap-http-connector</code>.</p>
 </span></span></span></code></pre></div><p>The SOAP connector extends the Camunda Connect HTTP connector which uses
 the Apache HTTP client in the default implementation. To read about default and custom client configuration,
 please see the corresponding section in the <a href="/manual/latest/reference/connect/http-connector/">HTTP connector docs</a>.</p>
-<h1 id="request">Request</h1>
-<h2 id="creating-a-request">Creating a Request</h2>
+
+<h2 id="request">Request</h2>
+
+<h3 id="creating-a-request">Creating a Request</h3>
 <p>The SOAP HTTP connector can be used to create a new request, set a URL, content type
 and payload.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">connector</span><span class="p">.</span><span class="na">createRequest</span><span class="p">()</span><span class="w">
@@ -3203,7 +3209,8 @@ and payload.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">contentType</span><span class="p">(</span><span class="s">&#34;application/soap+xml&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">payload</span><span class="p">(</span><span class="n">soap_envelope</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="adding-http-headers-to-a-request">Adding HTTP Headers to a Request</h2>
+</span></span></span></code></pre></div>
+<h3 id="adding-http-headers-to-a-request">Adding HTTP Headers to a Request</h3>
 <p>To add own headers to the HTTP request the method <code>header</code> is
 available.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">connector</span><span class="p">.</span><span class="na">createRequest</span><span class="p">()</span><span class="w">
@@ -3213,7 +3220,8 @@ available.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">header</span><span class="p">(</span><span class="s">&#34;Accept&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;application/xml&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">payload</span><span class="p">(</span><span class="n">soap_envelope</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="using-the-generic-api">Using the Generic API</h2>
+</span></span></span></code></pre></div>
+<h3 id="using-the-generic-api">Using the Generic API</h3>
 <p>Besides the configuration methods also a generic API exists to
 set parameters of a request. The following parameters are
 available:</p>
@@ -3244,14 +3252,16 @@ available:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">request</span><span class="p">.</span><span class="na">setRequestParameter</span><span class="p">(</span><span class="s">&#34;method&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;GET&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">request</span><span class="p">.</span><span class="na">setRequestParameter</span><span class="p">(</span><span class="s">&#34;url&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;http://camunda.org&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">request</span><span class="p">.</span><span class="na">setRequestParameter</span><span class="p">(</span><span class="s">&#34;payload&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;hello world!&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="response">Response</h1>
+</span></span></span></code></pre></div>
+<h2 id="response">Response</h2>
 <p>A response contains the status code, response headers and body.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Integer</span><span class="w"> </span><span class="n">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getStatusCode</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">contentTypeHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getHeader</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getResponse</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>After the response was processed it should be closed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">response</span><span class="p">.</span><span class="na">close</span><span class="p">()</span><span class="w">
-</span></span></span></code></pre></div><h2 id="using-the-generic-api-1">Using the Generic API</h2>
+</span></span></span></code></pre></div>
+<h3 id="using-the-generic-api-1">Using the Generic API</h3>
 <p>Besides the response methods a generic API is provided
 to gather the response parameters. The following parameters
 are available:</p>

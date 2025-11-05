@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3197,9 +3201,11 @@ It is used to configure CIB seven in the following distributions:</p>
   <p>The <code>bpm-platform.xml</code> file is not used in the CIB seven distribution for Wildfly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="/manual/2.0-ee/user-guide/runtime-container-integration/jboss/">The CIB seven Wildfly Subsystem</a> section of the <a href="/manual/2.0-ee/user-guide/">User Guide</a> for more details.</p>
 </div>
 
-<h1 id="xml-schema-namespace">Xml Schema Namespace</h1>
+
+<h2 id="xml-schema-namespace">Xml Schema Namespace</h2>
 <p>The namespace for the <code>bpm-platform.xml</code> file is <code>http://www.camunda.org/schema/1.0/BpmPlatform</code>. The XSD file can be found in the <code>cibseven-engine.jar</code> file.</p>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/BpmPlatform&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -3224,7 +3230,8 @@ It is used to configure CIB seven in the following distributions:</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
-</span></span></code></pre></div><h1 id="syntax-reference">Syntax Reference</h1>
+</span></span></code></pre></div>
+<h2 id="syntax-reference">Syntax Reference</h2>
 <table class="table table-striped">
   <tr>
     <th>Tag name </th>
@@ -3251,7 +3258,8 @@ It is used to configure CIB seven in the following distributions:</p>
     <td>See <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/process-engine/">process-engine Reference</a></td>
   </tr>
 </table>
-<h1 id="configure-location-of-the-bpm-platformxml-file">Configure Location of the bpm-platform.xml File</h1>
+
+<h2 id="configure-location-of-the-bpm-platformxml-file">Configure Location of the bpm-platform.xml File</h2>
 <p>You can configure the location of the <code>bpm-platform.xml</code>, so the file can be stored externally to allow an easy update path of cibseven-bpm-platform.ear. This negates the work of unpacking / repackaging the ear when you need to change the configuration.</p>
 <p>This feature is available for:</p>
 <ul>
@@ -3268,10 +3276,12 @@ It is used to configure CIB seven in the following distributions:</p>
 <li>(For Tomcat only): checks if there is a <code>bpm-platform.xml</code> inside the folder specified by <code>${CATALINA_BASE} || ${CATALINA_HOME} + /conf/</code></li>
 </ol>
 <p>The discovery stops when one of the above mentioned sources is found or, in case none is found, it falls back to the <code>bpm-platform.xml</code> on the classpath, respectively <code>${CATALINA_BASE} || ${CATALINA_HOME} + /conf/</code> for Tomcat. We ship a default <code>bpm-platform.xml</code> file inside the cibseven-bpm-platform.ear, except when you use the Tomcat or Wildfly version of the platform.</p>
-<h1 id="using-system-properties">Using System Properties</h1>
+
+<h2 id="using-system-properties">Using System Properties</h2>
 <p>To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., <code>${PROPERTY_KEY}</code>). Expression resolution is supported within the <code>property</code> elements only. System properties may be set via command line (<code>-D</code>option) or in an implementation specific manner (Apache Tomcat&rsquo;s <code>catalina.properties</code> for example).
 Complex operations are not supported, but you may combine more than one expression in a single <code>property</code> element (e.g., <code>${ldap.host}:${ldap.port}</code>).</p>
-<h2 id="example-1">Example</h2>
+
+<h3 id="example-1">Example</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;plugin&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;class&gt;</span>org.cibseven.bpm.engine.impl.plugin.AdministratorAuthorizationPlugin<span class="nt">&lt;/class&gt;</span>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3206,7 +3210,8 @@ the processor becomes available and the condition is, for example, <code>${proce
 <p>During the entire execution of the process instance, the application can be canceled. If the condition of the conditional start event is
 satisfied, the execution of the process instance will be interrupted by the event sub process.
 This will cancel the current processing of the application.</p>
-<h1 id="condition">Condition</h1>
+
+<h2 id="condition">Condition</h2>
 <p>To specify when a conditional event should be triggered, a <code>condition</code> element must be specified as a sub-element of <code>conditionalEventDefinition</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;conditionalEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;condition</span> <span class="na">type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${var1 == 1}<span class="nt">&lt;/condition&gt;</span>
@@ -3225,7 +3230,8 @@ The attributes can be used in combination.</p>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/conditionalEventDefinition&gt;</span>
 </span></span></code></pre></div><p>The condition above is only evaluated if the variable <code>var1</code> is created or updated.
 The attributes are especially useful on non interrupting events, since these events can be triggered more than once!</p>
-<h1 id="conditional-boundary-event">Conditional Boundary Event</h1>
+
+<h2 id="conditional-boundary-event">Conditional Boundary Event</h2>
 <p>A conditional boundary event acts like an observer which is triggered if a specific condition is satisfied.</p>
 <p>There is a difference between an interrupting and a non interrupting conditional event. The interrupting event is the default.
 The non-interrupting event leads to the original activity not being interrupted, the instance remains active.
@@ -3237,7 +3243,8 @@ A non interrupting conditional event can be triggered more than once as long as 
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;condition</span> <span class="na">type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${var1 == 1}<span class="nt">&lt;/condition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/conditionalEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/boundaryEvent&gt;</span>
-</span></span></code></pre></div><h1 id="intermediate-conditional-catch-event">Intermediate Conditional Catch Event</h1>
+</span></span></code></pre></div>
+<h2 id="intermediate-conditional-catch-event">Intermediate Conditional Catch Event</h2>
 <p>An intermediate conditional event is like a wait until the condition is true. When the execution arrives at the catching event activity,
 the condition is evaluated for the first time. If the condition is satisfied, the execution process continues to the next activity.
 If the condition is not satisfied, the execution stays in this activity until the condition is satisfied.</p>
@@ -3248,7 +3255,8 @@ The specific sub-element type in this case is a conditionalEventDefinition eleme
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;condition</span> <span class="na">type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${var1 == 1}<span class="nt">&lt;/condition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/conditionalEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateCatchEvent&gt;</span>
-</span></span></code></pre></div><h1 id="conditional-start-event">Conditional Start Event</h1>
+</span></span></code></pre></div>
+<h2 id="conditional-start-event">Conditional Start Event</h2>
 <p>A conditional start event can be used to start a process by evaluating some condition. One process can have one or more conditional start events.</p>
 <p>If more than one conditions are fulfilled the respective number of processes will be triggered.</p>
 <p>When deploying a process definition with conditional start events, the following considerations apply:</p>
@@ -3275,7 +3283,8 @@ The XML representation of a conditional start event is the normal start event de
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;condition</span> <span class="na">type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${temperature &gt; 20}<span class="nt">&lt;/condition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/conditionalEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/startEvent&gt;</span>
-</span></span></code></pre></div><h1 id="conditional-start-event-for-event-sub-process">Conditional Start Event for Event Sub Process</h1>
+</span></span></code></pre></div>
+<h2 id="conditional-start-event-for-event-sub-process">Conditional Start Event for Event Sub Process</h2>
 <p>Similar to conditional boundary events, conditional start events for event sub process can be interrupting and non interrupting.</p>
 <p>Note: An Event Sub-Process must have a single start event.</p>
 <p>The XML representation of a conditional start event is the normal start event declaration with a conditionalEventDefinition child-element:</p>
@@ -3286,24 +3295,29 @@ The XML representation of a conditional start event is the normal start event de
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/conditionalEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/startEvent&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subProcess&gt;</span>
-</span></span></code></pre></div><h1 id="trigger-conditional-events">Trigger Conditional Events</h1>
-<h2 id="triggering-on-scope-instantiation">Triggering on Scope Instantiation</h2>
+</span></span></code></pre></div>
+<h2 id="trigger-conditional-events">Trigger Conditional Events</h2>
+
+<h3 id="triggering-on-scope-instantiation">Triggering on Scope Instantiation</h3>
 <p>When a BPMN scope is instantiated, the event conditions which are available in this scope
 are evaluated. This behavior is called <em>triggering on scope instantiation</em>.</p>
 <p>Consider the following process model:</p>
 <div data-bpmn-diagram="../bpmn/event-conditional2" ></div>
 <p>When a process instance is started, i.e., the process definition scope is instantiated, the condition of the sub process is evaluated before the none start
 event is executed. If fulfilled, it triggers immediately and the none start event never executes. The same applies to activities with conditional boundary events and intermediate conditional events.</p>
-<h2 id="triggering-via-variable-api">Triggering via Variable API</h2>
+
+<h3 id="triggering-via-variable-api">Triggering via Variable API</h3>
 <p>Besides the triggering on scope instantiation, conditional events can also be triggered when a process variable changes.
 That is the case if a variable is created, updated or deleted.</p>
-<h3 id="set-variable-from-outside">Set Variable From Outside</h3>
+
+<h4 id="set-variable-from-outside">Set Variable From Outside</h4>
 <p>Variables can be changed from the outside with the help of the <a href="/manual/2.0-ee/user-guide/process-engine/variables/">variable API</a>.
 See the following example how to set a variable on the variable scope of the process instance:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="c1">//set variable on process instance</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="n">processInstance</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;variable&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>This statement triggers the evaluation of all applicable conditional events. For details, see the sections on <a href="#top-down-evaluation">Top-Down Evaluation</a> and <a href="#scoped-evaluation">Scoped Evaluation</a>.</p>
-<h3 id="set-variable-from-delegation-code">Set Variable From Delegation Code</h3>
+
+<h4 id="set-variable-from-delegation-code">Set Variable From Delegation Code</h4>
 <p>Variables can not only be set from outside, but also also from within a process instance via <a href="/manual/2.0-ee/user-guide/process-engine/delegation-code/">delegation code</a>.</p>
 <p>For example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SetVariableDelegate</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3328,7 +3342,8 @@ See the following example how to set a variable on the variable scope of the pro
 <li><code>Ending</code> corresponds to the ending phase of the activity instance. At this time the output mappings and execution end listeners are called.</li>
 </ul>
 <p>For example, let us assume a variable is set in a start execution listener of an activity. Conditional events are only triggered after <em>all</em> start listeners have been executed and the activity instance is ready to enter the <code>Execute</code> phase.</p>
-<h3 id="top-down-evaluation">Top-Down Evaluation</h3>
+
+<h4 id="top-down-evaluation">Top-Down Evaluation</h4>
 <p>A variable change causes condition evaluation and event triggering in a <em>top-down</em> fashion.
 That means the evaluation starts at the the conditional events of the BPMN scope in which the variable was changed. It then step by step descends into the instances of nested BPMN scopes (e.g., embedded sub processes). This is done until a conditional event is triggered that interrupts the current scope instance (thereby cancelling all children) or until there are no more deeper nested scopes.</p>
 <p>For example see the following BPMN process model:</p>
@@ -3336,7 +3351,8 @@ That means the evaluation starts at the the conditional events of the BPMN scope
 <p>If a variable is set in the context of the sub process instance, then the conditional boundary event of the sub process is evaluated first.
 If the condition is satisfied, then the execution is interrupted, otherwise the conditional boundary event of <code>UserTask B</code> is evaluated and
 triggered, if the condition is satisfied.</p>
-<h3 id="scoped-evaluation">Scoped Evaluation</h3>
+
+<h4 id="scoped-evaluation">Scoped Evaluation</h4>
 <p>Variable changes in the context of a scope instance can only trigger the conditional events to which the variable is <em>visible</em>, but do not interfere with unrelated scope instances.
 That means if a variable changes, only those conditional events are evaluated that listen in the context of that scope instance or its children.</p>
 <p>See the following BPMN process model:</p>
@@ -3348,7 +3364,8 @@ That means if a variable changes, only those conditional events are evaluated th
      UserTask B
 </code></pre>
 <p>If a variable is set in the context of the <code>SubProcess</code> instance, then only the conditional boundary event of <code>UserTask B</code> is evaluated. The boundary event of <code>UserTask A</code> cannot trigger as the variable is not <em>visible</em> in its context. The user guide section on <a href="/manual/2.0-ee/user-guide/process-engine/variables/#variable-scopes-and-variable-visibility">variable scopes and variable visibility</a> provides details on the general concept.</p>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3368,7 +3385,8 @@ That means if a variable changes, only those conditional events are evaluated th
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="additional-resources">Additional Resources</h1>
+
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="http://camunda.org/bpmn/reference.html#events-conditional">Conditional Events</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>
 </ul>

@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,7 +261,8 @@
 
     <div class="col-xs-12 content-text">
       <p>In this section we learn how to deploy a process and invoke a Spring Bean from a BPMN 2.0 Service Task.</p>
-<h1 id="deploy-and-invoke-bpmn-process">Deploy and Invoke BPMN Process</h1>
+
+<h2 id="deploy-and-invoke-bpmn-process">Deploy and Invoke BPMN Process</h2>
 <p>Now that we know how to bootstrap the process engine within a Spring Boot Application, we can add a BPMN 2.0 process
 model and interact with the process from inside our Spring beans. In this section, we will</p>
 <ol>
@@ -268,7 +271,8 @@ model and interact with the process from inside our Spring beans. In this sectio
 <li>Create a process application.</li>
 <li>Start a process instance from our process application.</li>
 </ol>
-<h2 id="model-an-executable-bpmn-20-process-and-deploy-it">Model an Executable BPMN 2.0 Process and Deploy It</h2>
+
+<h3 id="model-an-executable-bpmn-20-process-and-deploy-it">Model an Executable BPMN 2.0 Process and Deploy It</h3>
 <p>Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.</p>
 <figure class="image">
   <span><img
@@ -285,12 +289,14 @@ model and interact with the process from inside our Spring beans. In this sectio
 
 <p>When you are done, save the process model in the <code>src/main/resources</code> folder of your Eclipse project. Make sure to refresh the Eclipse project afterwards.</p>
 <p>Once it is saved in the application classpath, it will be automatically deployed on engine startup.</p>
-<h2 id="create-process-application">Create Process Application</h2>
+
+<h3 id="create-process-application">Create Process Application</h3>
 <p>We recommend to declare the process application in your CIB seven Spring Boot application, which gives additional configuration possibilities and will help us in the current demo
 to catch the &ldquo;post-deploy&rdquo; event to start the process instance at that point.</p>
 <p>To declare the process application, just add the <code>@EnableProcessApplication</code> annotation on your <code>WebappExampleProcessApplication</code> class and put the empty <code>processes.xml</code> file in the
 <code>src/main/resources/META-INF</code> folder. The file is required by the CIB seven engine for every process application, but in our case it will stay empty.</p>
-<h2 id="start-a-process-instance-after-process-application-has-been-deployed">Start a Process Instance after Process Application has been Deployed</h2>
+
+<h3 id="start-a-process-instance-after-process-application-has-been-deployed">Start a Process Instance after Process Application has been Deployed</h3>
 <p>The next step consists of starting a process instance from our process application class. For this, we will process <code>PostDeployEvent</code>, which is fired as soon as
 our process application has been deployed to the CIB seven engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="p">...</span><span class="w">
@@ -309,7 +315,8 @@ our process application has been deployed to the CIB seven engine.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
 </span></span></span></code></pre></div><p>Note that we can easily inject the CIB seven engine service via the <code>@Autowired</code> annotation.</p>
-<h2 id="rebuild-and-test">Rebuild and test</h2>
+
+<h3 id="rebuild-and-test">Rebuild and test</h3>
 <p>If you rebuild and restart the application, you should see the task &ldquo;Check the request&rdquo; in Tasklist under the &ldquo;All tasks&rdquo; filter:</p>
 <figure class="image">
   <span><img

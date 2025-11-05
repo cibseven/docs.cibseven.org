@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Rest API Overview | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/api_overview/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Rest API Overview</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="rest-api-overview">REST API Overview</h2>
+<p>CIB ins7ght exposes a REST API for accessing process analytics, statistics, and configuration data. All endpoints are accessible without authentication.</p>
+<p><strong>Base URL:</strong> <code>http://localhost:8899</code> (configurable via <code>server.port</code>)</p>
+<hr>
+
+<h3 id="api-categories">API Categories</h3>
+
+<h4 id="1-overview-statistics-api">1. Overview Statistics API</h4>
+<p><strong>Base Path:</strong> <code>/overview</code></p>
+<p>Provides aggregated metrics and time-series data for process instances.</p>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /overview</code> - Get summary statistics</li>
+<li><code>GET /overview/graph/started-instances</code> - Time series of started instances</li>
+<li><code>GET /overview/graph/finalized-instances</code> - Time series of finalized instances</li>
+<li><code>GET /overview/graph/successful-instances</code> - Time series of successful instances</li>
+<li><code>GET /overview/graph/canceled-instances</code> - Time series of canceled instances</li>
+<li><code>GET /overview/graph/incident-instances</code> - Time series of instances with incidents</li>
+</ul>
+<p><a href="./overview_statistics.md">View Details →</a></p>
+<hr>
+
+<h4 id="2-process-analysis-api">2. Process Analysis API</h4>
+<p><strong>Base Path:</strong> <code>/process-analysis</code></p>
+<p>Provides detailed activity-level metrics, bottleneck detection, and outlier identification.</p>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /process-analysis/activity</code> - Activity-level statistics</li>
+<li><code>GET /process-analysis/activity-duration</code> - Duration between activities</li>
+<li><code>GET /process-analysis/outliers</code> - Outlier process instances</li>
+<li><code>GET /process-analysis/duration</code> - Duration distribution</li>
+<li><code>GET /process-analysis/thresholds</code> - Calculated outlier thresholds</li>
+<li><code>GET /process-analysis/version-duration</code> - Version comparison statistics</li>
+</ul>
+<p><a href="./process_analysis_bottleneck.md">View Details →</a></p>
+<hr>
+
+<h4 id="3-process-api">3. Process API</h4>
+<p><strong>Base Path:</strong> <code>/process</code></p>
+<p>Provides access to process definitions, versions, and BPMN diagrams.</p>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /process</code> - List all process definitions</li>
+<li><code>GET /process/{processKey}/version</code> - Get versions for a process</li>
+<li><code>GET /process/bpmn</code> - Get BPMN XML diagram</li>
+</ul>
+<p><a href="./process.md">View Details →</a></p>
+<hr>
+
+<h4 id="4-info-api">4. Info API</h4>
+<p><strong>Base Path:</strong> <code>/info</code></p>
+<p>Provides application metadata and configuration.</p>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /info</code> - Get application version</li>
+<li><code>GET /info/properties</code> - Get configuration properties</li>
+</ul>
+<p><a href="./info.md">View Details →</a></p>
+<hr>
+
+<h4 id="5-polling-info-api">5. Polling Info API</h4>
+<p><strong>Base Path:</strong> <code>/pollinfo</code></p>
+<p>Provides polling status and data synchronization information.</p>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /pollinfo</code> - Get polling status and timestamps</li>
+</ul>
+<p><a href="./pollinfo.md">View Details →</a></p>
+<hr>
+
+<h3 id="quick-start">Quick Start</h3>
+
+<h4 id="get-application-version">Get Application Version</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/info&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-all-processes">Get All Processes</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-overview-statistics">Get Overview Statistics</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview?processKey=invoice-process&amp;version=1&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-activity-analysis">Get Activity Analysis</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/activity?processKey=invoice-process&amp;version=1&#34;</span>
+</span></span></code></pre></div>
+<h4 id="check-polling-status">Check Polling Status</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/pollinfo&#34;</span>
+</span></span></code></pre></div><hr>
+
+<h3 id="common-parameters">Common Parameters</h3>
+<p>Most endpoints support the following query parameters for filtering:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>string</td>
+          <td>Process definition key (e.g., <code>invoice-process</code>)</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>string</td>
+          <td>Process version (e.g., <code>1</code>, <code>2</code>)</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>string</td>
+          <td>Start date in ISO 8601 format (e.g., <code>2025-01-01T00:00:00Z</code>)</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>string</td>
+          <td>End date in ISO 8601 format (e.g., <code>2025-01-31T23:59:59Z</code>)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="response-formats">Response Formats</h3>
+
+<h4 id="json">JSON</h4>
+<p>Most endpoints return JSON data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;field&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;numericField&#34;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;arrayField&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+<h4 id="plain-text">Plain Text</h4>
+<p>The <code>/info</code> endpoint returns plain text.</p>
+<pre tabindex="0"><code>0.0.2-SNAPSHOT 2025-01-29-1200
+</code></pre>
+<h4 id="binary-xml">Binary (XML)</h4>
+<p>The <code>/process/bpmn</code> endpoint returns BPMN XML as binary data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;bpmn:definitions</span> <span class="err">...</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:definitions&gt;</span>
+</span></span></code></pre></div><hr>
+
+<h3 id="data-types">Data Types</h3>
+
+<h4 id="timestamps">Timestamps</h4>
+<ul>
+<li><strong>Format:</strong> ISO 8601 with timezone (e.g., <code>2025-01-29T10:30:00Z</code>)</li>
+<li><strong>Unix Epoch:</strong> Long integers representing milliseconds since 1970-01-01 (e.g., <code>1704067200000</code>)</li>
+</ul>
+
+<h4 id="durations">Durations</h4>
+<ul>
+<li><strong>Format:</strong> Long integers representing milliseconds</li>
+<li><strong>Example:</strong> <code>3600000</code> (1 hour)</li>
+</ul>
+
+<h4 id="process-identifiers">Process Identifiers</h4>
+<ul>
+<li><strong>Process Key:</strong> String identifier for a process definition (e.g., <code>invoice-process</code>)</li>
+<li><strong>Version:</strong> String representing version number (e.g., <code>1</code>, <code>2</code>)</li>
+<li><strong>Process ID:</strong> Full process definition ID from CIB seven (e.g., <code>invoice-process:1:abc123</code>)</li>
+</ul>
+<hr>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<h4 id="successful-response">Successful Response</h4>
+<pre tabindex="0"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  &#34;data&#34;: &#34;...&#34;
+}
+</code></pre>
+<h4 id="error-response">Error Response</h4>
+<pre tabindex="0"><code>HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+  &#34;timestamp&#34;: &#34;2025-01-29T10:30:00.000+00:00&#34;,
+  &#34;status&#34;: 500,
+  &#34;error&#34;: &#34;Internal Server Error&#34;,
+  &#34;message&#34;: &#34;No Process Key provided&#34;,
+  &#34;path&#34;: &#34;/process-analysis/activity&#34;
+}
+</code></pre><p><strong>Common Error Scenarios:</strong></p>
+<ul>
+<li>Missing required parameters → 500 error with descriptive message</li>
+<li>Invalid process key/version → Empty array or <code>null</code> response</li>
+<li>Database connection issues → 500 error</li>
+</ul>
+<hr>
+
+<h3 id="cors">CORS</h3>
+<p>CIB ins7ght does not configure CORS headers. If cross-origin access is required, configure CORS at the reverse proxy level.</p>
+<hr>
+
+<h3 id="authentication">Authentication</h3>
+<p><strong>CIB ins7ght does not implement API authentication.</strong> All endpoints are publicly accessible.</p>
+<p>Access control must be implemented through:</p>
+<ul>
+<li>Network-level security (firewalls, VPNs)</li>
+<li>Reverse proxy authentication</li>
+<li>Infrastructure security controls</li>
+</ul>
+<p>See <a href="../../2%20Setup%20CIB%20ins7ght/security_instructions.md">Security Instructions</a> for details.</p>
+<hr>
+
+<h3 id="rate-limiting">Rate Limiting</h3>
+<p>No rate limiting is implemented. Consider implementing rate limiting at the reverse proxy or infrastructure level if needed.</p>
+<hr>
+
+<h3 id="api-versioning">API Versioning</h3>
+<p>The REST API is not versioned. Breaking changes will be documented in release notes.</p>
+<hr>
+
+<h3 id="testing-the-api">Testing the API</h3>
+
+<h4 id="using-curl">Using cURL</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Simple GET request</span>
+</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># With query parameters</span>
+</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview?processKey=invoice-process&amp;version=1&amp;startDate=2025-01-01T00:00:00Z&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Pretty print JSON response</span>
+</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview&#34;</span> <span class="p">|</span> jq .
+</span></span></code></pre></div>
+<h4 id="using-browser">Using Browser</h4>
+<p>Most GET endpoints can be accessed directly in a browser:</p>
+<pre tabindex="0"><code>http://localhost:8899/process
+http://localhost:8899/pollinfo
+http://localhost:8899/info/properties
+</code></pre><hr>
+
+<h3 id="api-documentation-by-category">API Documentation by Category</h3>
+<ol>
+<li><a href="./overview_statistics.md">Overview Statistics API</a> - Aggregated metrics and time-series data</li>
+<li><a href="./process_analysis_bottleneck.md">Process Analysis API</a> - Activity analysis and bottleneck detection</li>
+<li><a href="./process.md">Process API</a> - Process definitions and BPMN diagrams</li>
+<li><a href="./info.md">Info API</a> - Application metadata and configuration</li>
+<li><a href="./pollinfo.md">Polling Info API</a> - Polling status and synchronization</li>
+</ol>
+<hr>
+
+<h3 id="need-help">Need Help?</h3>
+<ul>
+<li>Check individual API documentation pages for detailed endpoint information</li>
+<li>Review JSON examples for expected request/response formats</li>
+<li>Consult <a href="../../2%20Setup%20CIB%20ins7ght/configuration.md">Configuration Guide</a> for server configuration</li>
+<li>See <a href="../../3%20Ins7ght%20Explained/ins7ght_web_app.md#troubleshooting">Troubleshooting</a> for common issues</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#api-categories">API Categories</a>
+      <ul>
+        <li><a href="#1-overview-statistics-api">1. Overview Statistics API</a></li>
+        <li><a href="#2-process-analysis-api">2. Process Analysis API</a></li>
+        <li><a href="#3-process-api">3. Process API</a></li>
+        <li><a href="#4-info-api">4. Info API</a></li>
+        <li><a href="#5-polling-info-api">5. Polling Info API</a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-start">Quick Start</a>
+      <ul>
+        <li><a href="#get-application-version">Get Application Version</a></li>
+        <li><a href="#get-all-processes">Get All Processes</a></li>
+        <li><a href="#get-overview-statistics">Get Overview Statistics</a></li>
+        <li><a href="#get-activity-analysis">Get Activity Analysis</a></li>
+        <li><a href="#check-polling-status">Check Polling Status</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-parameters">Common Parameters</a></li>
+    <li><a href="#response-formats">Response Formats</a>
+      <ul>
+        <li><a href="#json">JSON</a></li>
+        <li><a href="#plain-text">Plain Text</a></li>
+        <li><a href="#binary-xml">Binary (XML)</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types">Data Types</a>
+      <ul>
+        <li><a href="#timestamps">Timestamps</a></li>
+        <li><a href="#durations">Durations</a></li>
+        <li><a href="#process-identifiers">Process Identifiers</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-handling">Error Handling</a>
+      <ul>
+        <li><a href="#successful-response">Successful Response</a></li>
+        <li><a href="#error-response">Error Response</a></li>
+      </ul>
+    </li>
+    <li><a href="#cors">CORS</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li><a href="#rate-limiting">Rate Limiting</a></li>
+    <li><a href="#api-versioning">API Versioning</a></li>
+    <li><a href="#testing-the-api">Testing the API</a>
+      <ul>
+        <li><a href="#using-curl">Using cURL</a></li>
+        <li><a href="#using-browser">Using Browser</a></li>
+      </ul>
+    </li>
+    <li><a href="#api-documentation-by-category">API Documentation by Category</a></li>
+    <li><a href="#need-help">Need Help?</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

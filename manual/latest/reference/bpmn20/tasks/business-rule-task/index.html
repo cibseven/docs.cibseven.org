@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>A Business Rule Task is used to synchronously execute one or more rules. It is also possible to call Java code or providing a work item for an external worker to complete asynchronously or invoking a logic which is implemented in form of webservices.</p>
 <div class="bpmn-symbol"><img src="/manual/latest//img/short-codes/bpmn-business-rule-task.png" /></div>
 
-<h1 id="using-camunda-dmn-engine">Using Camunda DMN Engine</h1>
+
+<h2 id="using-camunda-dmn-engine">Using Camunda DMN Engine</h2>
 <p>You can use the Camunda DMN engine integration to evaluate a DMN decision. You have
 to specify the decision key to evaluate as the <code>camunda:decisionRef</code> attribute. Additionally,
 the <code>camunda:decisionRefBinding</code> specifies which version of the decision should be evaluated.
@@ -3227,14 +3232,17 @@ an expression which will be evaluated on execution of the task.</p>
   <p>The result variable should not have the name <code>decisionResult</code>, as the decision result itself is saved in a variable with this name. Otherwise, an exception is thrown while saving the result variable.</p>
 </div>
 
-<h1 id="decisionref-tenant-id">DecisionRef Tenant Id</h1>
+
+<h2 id="decisionref-tenant-id">DecisionRef Tenant Id</h2>
 <p>When the Business Rule Task resolves the decision definition to be evaluated it must take multi tenancy into account.</p>
-<h2 id="default-tenant-resolution">Default Tenant Resolution</h2>
+
+<h3 id="default-tenant-resolution">Default Tenant Resolution</h3>
 <p>By default, the tenant id of the calling process definition is used to evaluate the decision definition.
 That is, if the calling process definition has no tenant id, then the Business Rule Task evaluates a decision definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling process definition has a tenant id, a decision definition with the provided key and the same tenant id is evaluated.</p>
 <p>Note that the tenant id of the calling process instance is not taken into account in the default behavior.</p>
-<h2 id="explicit-tenant-resolution">Explicit Tenant Resolution</h2>
+
+<h3 id="explicit-tenant-resolution">Explicit Tenant Resolution</h3>
 <p>In some situations it may be useful to override this default behavior and specify the tenant id explicitly.</p>
 <p>The <code>camunda:decisionRefTenantId</code> attribute allows to explicitly specify a tenant id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;businessRuleTask</span> <span class="na">id=</span><span class="s">&#34;businessRuleTask&#34;</span> <span class="na">decisionRef=</span><span class="s">&#34;myDecision&#34;</span>
@@ -3248,17 +3256,21 @@ If the calling process definition has a tenant id, a decision definition with th
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;businessRuleTask</span> <span class="na">id=</span><span class="s">&#34;businessRuleTask&#34;</span> <span class="na">decisionRef=</span><span class="s">&#34;myDecision&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:decisionRefTenantId=</span><span class="s">&#34;${ execution.tenantId }&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/businessRuleTask&gt;</span>
-</span></span></code></pre></div><h1 id="using-a-custom-rule-engine">Using a Custom Rule Engine</h1>
+</span></span></code></pre></div>
+<h2 id="using-a-custom-rule-engine">Using a Custom Rule Engine</h2>
 <p>You can integrate with other rule engines. To do so, you have to plug in your
 implementation of the rule task the same way as in a Service Task.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;businessRuleTask</span> <span class="na">id=</span><span class="s">&#34;businessRuleTask&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">camunda:delegateExpression=</span><span class="s">&#34;${MyRuleServiceDelegate}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="using-delegate-code">Using Delegate Code</h1>
+</span></span></code></pre></div>
+<h2 id="using-delegate-code">Using Delegate Code</h2>
 <p>Alternatively, a Business Rule Task can be implemented using Java Delegation just as a Service Task. For more
 information on this please see the <a href="/manual/latest/reference/bpmn20/tasks/service-task/">Service Tasks</a> documentation.</p>
-<h1 id="implementing-as-an-external-task">Implementing as an External Task</h1>
+
+<h2 id="implementing-as-an-external-task">Implementing as an External Task</h2>
 <p>In addition to the above, a Business Rule Task can be implemented via the <a href="/manual/latest/user-guide/process-engine/external-tasks/">External Task</a> mechanism where an external system polls the process engine for work to do. See the section on <a href="/manual/latest/reference/bpmn20/tasks/service-task/#external-tasks">Service Tasks</a> for more information about how to configure an external task.</p>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3325,7 +3337,8 @@ information on this please see the <a href="/manual/latest/reference/bpmn20/task
     </td>
   </tr>
 </table>
-<h1 id="additional-resources">Additional Resources</h1>
+
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="/manual/latest/user-guide/process-engine/decisions/">Decisions</a></li>
 <li><a href="/manual/latest/reference/bpmn20/tasks/service-task/">Service Tasks</a></li>

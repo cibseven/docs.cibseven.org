@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>This page provides an overview of how to secure a CIB seven installation. For CIB seven&rsquo;s security policy, a list of security notices and a guide how to report vulnerabilities, please visit the <a href="/security">general security documentation</a>.</p>
 <p>In order to secure a CIB seven installation, CIB seven itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific CIB seven product and listed those in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others</p>
-<h1 id="deployment-options-and-components">Deployment Options and Components</h1>
+
+<h2 id="deployment-options-and-components">Deployment Options and Components</h2>
 <p>There are different ways of using CIB seven and different components are provided: the process engine itself, the REST API, the web applications. Depending on how CIB seven is deployed and which components are used, different security considerations apply. The following list gives a general overview over deployment options and components outlining the main differences from a security point of view. The remainder of this chapter elaborates on the different configuration options.</p>
 <ul>
 <li>Embedded Java library inside an application: in this case, the CIB seven engine is embedded inside a custom Java Application. Usually the application takes care of securing access to CIB seven&rsquo;s APIs and the APIs are not directly exposed to an end user. In this case, the application typically takes care of ensuring authentication and preventing access by unauthorized users.</li>
@@ -3204,11 +3209,14 @@
 you still want to use it in production, consider un-deploying the invoice application and removing the demo user.</p>
 </div>
 
-<h1 id="security-configuration-inside-cib-seven">Security Configuration inside CIB seven</h1>
+
+<h2 id="security-configuration-inside-cib-seven">Security Configuration inside CIB seven</h2>
 <p>CIB seven provides a number of configuration options which are relevant from a security perspective. Most prominently: authentication, authorization and the control of custom code (scripts) which can be executed on the server.</p>
-<h2 id="authentication">Authentication</h2>
+
+<h3 id="authentication">Authentication</h3>
 <p>Authentication controls <em>who</em> can access CIB seven&rsquo;s APIs and Applications.</p>
-<h3 id="do-i-need-authentication">Do I need Authentication?</h3>
+
+<h4 id="do-i-need-authentication">Do I need Authentication?</h4>
 <p>Authentication is only needed in the following cases:</p>
 <ul>
 <li>CIB seven&rsquo;s REST API is used</li>
@@ -3216,11 +3224,14 @@ you still want to use it in production, consider un-deploying the invoice applic
 </ul>
 <p>In these cases, direct access to CIB seven&rsquo;s core APIs is provided over HTTP and authentication must be enabled.</p>
 <p>By contrast, authentication is generally not done by CIB seven when embedded as a library into an application. In this case the application takes care of authentication itself.</p>
-<h3 id="enabling-authentication-for-the-rest-api">Enabling Authentication for the REST API</h3>
+
+<h4 id="enabling-authentication-for-the-rest-api">Enabling Authentication for the REST API</h4>
 <p>For ease of use by developers, the REST API&rsquo;s authentication is disabled by default. When deploying the REST API in production, it is therefore required to enable authentication. Check the corresponding section in the <a href="/manual/latest/reference/rest/overview/authentication/">REST API documentation</a>.</p>
-<h3 id="authentication-in-the-web-applications">Authentication in the Web Applications</h3>
+
+<h4 id="authentication-in-the-web-applications">Authentication in the Web Applications</h4>
 <p>For the web applications, authentication is enabled by default, and it is not possible to disable it.</p>
-<h4 id="authentication-cache">Authentication Cache</h4>
+
+<h5 id="authentication-cache">Authentication Cache</h5>
 <p>Due to the <a href="/manual/latest/webapps/shared-options/authentication/#cache">authentication cache</a>, by default, <strong>the following user management actions don&rsquo;t have an immediate effect</strong> on currently active user sessions:</p>
 <ul>
 <li>A user account is deleted.</li>
@@ -3242,7 +3253,8 @@ to querying for the authentication information on each REST API request.</li>
 </p>
 </div>
 
-<h4 id="enable-authentication-logging-in-the-cib-seven-web-apps">Enable authentication logging in the CIB seven web apps</h4>
+
+<h5 id="enable-authentication-logging-in-the-cib-seven-web-apps">Enable authentication logging in the CIB seven web apps</h5>
 <p>It is generally recommended to enable logging of log in attempts (successful and failed) as well as log out events.
 In CIB seven, you can enable authentication logging in the CIB seven web apps by setting the <code>webappsAuthenticationLoggingEnabled</code> process engine <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#webappsAuthenticationLoggingEnabled">configuration flag</a> to true. All user-initiated log in and log out events will then be logged to the application log using the <code>org.cibseven.bpm.webapp</code> <a href="/manual/latest/user-guide/logging/#process-engine">logger</a>.</p>
 <p>The following events produce log statements:</p>
@@ -3259,22 +3271,28 @@ In CIB seven, you can enable authentication logging in the CIB seven web apps by
   <p>Someone could use brute force to produce arbitrary amounts of log statements and potentially reduce disc space available for logging. This could theoretically lead to a denial of service if the logs are stored on the same partition as the application. CIB seven does not handle such cases and the users are responsible to mitigate this risk, e.g. by <a href="/manual/latest/user-guide/process-engine/identity-service/#throttle-login-attempts">limiting log in attempts</a>.</p>
 </div>
 
-<h3 id="internal-database-backed-user-management">Internal (database backed) User Management</h3>
+
+<h4 id="internal-database-backed-user-management">Internal (database backed) User Management</h4>
 <p>To perform authentication, CIB seven can use two sources: a database or LDAP.</p>
 <p>When using the database, usernames and passwords are stored inside the <code>ACT_ID_USER</code> table (see <a href="/manual/latest/user-guide/process-engine/database/database-schema/#identity">documentation on database schema</a>). To protect the passwords stored in the database, CIB seven uses two concepts:</p>
 <ul>
 <li><strong>hashing</strong>: instead of storing the password in plain text, a hash is stored. When authenticating, the same hash is generated from the user&rsquo;s input and compared against the hash in the database. If both hashes are equal the authentication attempt is successful. CIB seven allows users to configure and customize the hash function used. Please refer the <a href="/manual/latest/user-guide/process-engine/password-hashing/">documentation section on password hashing</a> for details.</li>
 <li><strong>salted hashes</strong> to protect the database against rainbow table attacks, CIB seven uses salted hashes. Similar to hashing itself, this function can be configured and extended to a user&rsquo;s needs. Please refer the <a href="/manual/latest/user-guide/process-engine/password-hashing/">documentation section on password hashing</a> for details.</li>
 </ul>
-<h3 id="ldap">LDAP</h3>
+
+<h4 id="ldap">LDAP</h4>
 <p>As an alternative to the database, CIB seven can use LDAP for verifying user credentials on authentication. CIB seven has read-only access to LDAP.</p>
-<h2 id="authorization">Authorization</h2>
+
+<h3 id="authorization">Authorization</h3>
 <p>Authorization controls what data a user can access and change in CIB seven once authenticated. Authentication is a pre-requisite to authorization.</p>
-<h3 id="do-i-need-to-enable-authorizations">Do I need to enable Authorizations?</h3>
+
+<h4 id="do-i-need-to-enable-authorizations">Do I need to enable Authorizations?</h4>
 <p>Similar considerations as for authentication apply. For an in-depth discussion, see the documentation section on <a href="/manual/latest/user-guide/process-engine/authorization-service/#when-is-authorization-required">authorizations</a></p>
-<h3 id="restricting-data-access-with-authorizations">Restricting Data Access with Authorizations</h3>
+
+<h4 id="restricting-data-access-with-authorizations">Restricting Data Access with Authorizations</h4>
 <p>Authorizations can be used to restrict a user from accessing a data object (such as a process or a task) and can be used to restrict how the user can interact with such data objects (read-only vs. modifications). Authorizations in CIB seven are very powerful and it is recommended to read the corresponding <a href="/manual/latest/user-guide/process-engine/authorization-service/">documentation entry on authorizations</a>.</p>
-<h3 id="prevent-enumerating-user-accounts-by-brute-force-creating-new-users">Prevent: Enumerating user accounts by brute-force creating new users</h3>
+
+<h4 id="prevent-enumerating-user-accounts-by-brute-force-creating-new-users">Prevent: Enumerating user accounts by brute-force creating new users</h4>
 <p>Under certain circumstances, an attacker can enumerate user accounts by brute-force creating new users:</p>
 <p>You don&rsquo;t centrally manage user accounts (e.g., with the help of LDAP or a custom implementation of <code>WritableIdentityProvider</code>) but instead &hellip;</p>
 <ul>
@@ -3296,7 +3314,8 @@ advisable to manage accounts via the ways mentioned above.</p>
 <p>We think that the before mentioned scenarios are uncommon for organizations using the CIB seven Runtime.
 However, we want to inform you about the options to prevent unrecommended usage, which makes the product
 vulnerable to attacks.</p>
-<h3 id="prevent-bypassing-authorizations-by-reusing-leftover-user-authorizations">Prevent: Bypassing authorizations by reusing leftover user authorizations</h3>
+
+<h4 id="prevent-bypassing-authorizations-by-reusing-leftover-user-authorizations">Prevent: Bypassing authorizations by reusing leftover user authorizations</h4>
 <p>When you delete a user, related user authorizations are not deleted automatically.
 Leftover user authorizations are reapplied when creating a new user with the same id, allowing attackers to bypass authorizations.</p>
 <p>We designed the authorization schema like this because user accounts are usually centrally managed by an external directory service such as LDAP or a custom implementation of the <code>ReadonlyIdentityProvider</code> Java interface.
@@ -3314,9 +3333,11 @@ User authorizations cannot be automatically deleted in a technically feasible wa
 <li>Delete user authorizations via Admin web app or APIs.</li>
 <li>Don&rsquo;t allow to reuse an id of a deleted user.</li>
 </ol>
-<h2 id="spring-security-oauth2">Spring Security OAuth2</h2>
+
+<h3 id="spring-security-oauth2">Spring Security OAuth2</h3>
 <p>See the Spring Security OAuth2 Integration&rsquo;s <a href="/manual/latest/user-guide/spring-boot-integration/spring-security/#security-recommendations">Security Recommendations</a> documentation.</p>
-<h2 id="deployments">Deployments</h2>
+
+<h3 id="deployments">Deployments</h3>
 <p><a href="/manual/latest/user-guide/process-engine/deployments/">Deployments</a> to the process engine can contain resources that are interpreted like code:</p>
 <ul>
 <li>BPMN, DMN, CMMN models that the process engine executes on the CIB seven server</li>
@@ -3332,12 +3353,15 @@ User authorizations cannot be automatically deleted in a technically feasible wa
 <li>System administrators ensure that only trusted users have network access to the CIB seven installation</li>
 </ul>
 <p>See also the user guide section <a href="/manual/latest/user-guide/process-engine/securing-custom-code/">Custom Code &amp; Security</a> for further information.</p>
-<h2 id="throttle-login-attempts">Throttle login attempts</h2>
+
+<h3 id="throttle-login-attempts">Throttle login attempts</h3>
 <p>The engine gives option to throttle login attempts. The mechanism behind this is enabled by default. You can read more about it under <a href="/manual/latest/user-guide/process-engine/identity-service/#throttle-login-attempts">Identity Service</a> in User Guide.</p>
-<h2 id="custom-whitelist-for-user-group-and-tenant-ids">Custom Whitelist for User, Group and Tenant IDs</h2>
+
+<h3 id="custom-whitelist-for-user-group-and-tenant-ids">Custom Whitelist for User, Group and Tenant IDs</h3>
 <p>To determine if the provided ID is acceptable or not, IDs can be matched against a Whitelist Pattern.
 You can read more about it under <a href="/manual/latest/user-guide/process-engine/identity-service/#custom-whitelist-for-user-group-and-tenant-ids">Identity Service</a> in User Guide.</p>
-<h2 id="password-policy">Password Policy</h2>
+
+<h3 id="password-policy">Password Policy</h3>
 <p>When using the identity management provided by the engine (i.e., not the LDAP identity management),
 it is possible to configure a password policy to ensure that all user passwords meet a certain security
 standard.</p>
@@ -3348,17 +3372,22 @@ level of security by implementing a more sophisticated custom password policy (e
 also see the <a href="https://github.com/OWASP/CheatSheetSeries/blob/7d94e9a29174b8fd76235ca60f47245d1f34df1e/cheatsheets/Authentication_Cheat_Sheet.md#password-complexity">OWASP guide</a>
 on password complexity).</p>
 <p>You can find more information on how to enable the base password policy and how to implement a custom password policy in our <a href="/manual/latest/user-guide/process-engine/password-policy/">User Guide</a>.</p>
-<h2 id="forms">Forms</h2>
+
+<h3 id="forms">Forms</h3>
 <p>CIB seven offers different types of forms which are primarily used in Tasklist. In the input inside of this forms you can call and execute scripts which allows you to achieve easily your business logic. Please validate this input each time to prevent malicious behaviour.</p>
 <p>If you don&rsquo;t want to display form previews and execute the embedded scripts in Cockpit, you can disable it in the <a href="/manual/latest/webapps/cockpit/extend/configuration/#preview-deployed-embedded-forms">configuration</a>.</p>
-<h2 id="queries">Queries</h2>
-<h3 id="expressions-in-queries">Expressions in Queries</h3>
+
+<h3 id="queries">Queries</h3>
+
+<h4 id="expressions-in-queries">Expressions in Queries</h4>
 <p>Consider disabling execution of expressions in queries. See also: <a href="/manual/latest/user-guide/process-engine/securing-custom-code/">Custom Code &amp; Security
 </a></p>
-<h3 id="native-queries">Native queries</h3>
+
+<h4 id="native-queries">Native queries</h4>
 <p>One of the options to query data from the engine is using native queries. Which means to provide own SQL queries to retrieve engine entities if the Query API lacks the possibilities you need.
 However, use the native queries with care. Please bear in mind of the SQL Injection while using this approach.</p>
-<h3 id="maximum-results-limit-in-queries">Maximum Results Limit in Queries</h3>
+
+<h4 id="maximum-results-limit-in-queries">Maximum Results Limit in Queries</h4>
 <p>Using the REST API or the Webapps querying for results without restricting the maximum number of
 results or querying  for a vast number of results can lead to a high memory consumption or even to
 out of memory exceptions.</p>
@@ -3372,12 +3401,14 @@ out of memory exceptions.</p>
 
 <p>Please see the User Guide to learn more about the
 <a href="/manual/latest/user-guide/process-engine/process-engine-api/#query-maximum-results-limit">Query Maximum Results Limit</a>.</p>
-<h2 id="csrf-prevention-in-the-webapps">CSRF Prevention in the Webapps</h2>
+
+<h3 id="csrf-prevention-in-the-webapps">CSRF Prevention in the Webapps</h3>
 <p>A CSRF filter is enabled by default, validating each modifying request performed through the webapps.
 Please also see the detailed overview on how to configure <a href="/manual/latest/webapps/shared-options/csrf-prevention/">CSRF Prevention</a>.</p>
 <p>The CSRF Prevention makes use of a cookie. By default, some security-related configurations are present for this cookie.
 To ensure full security, please consult the documentation about <a href="/manual/latest/webapps/shared-options/cookie-security/">Cookie Security</a> to learn more about it.</p>
-<h2 id="xml-security">XML Security</h2>
+
+<h3 id="xml-security">XML Security</h3>
 <p>CIB seven handles many XML files containing configurations of process engines, definitions of process models and more. In order to mitigate possible vulnerabilities that can be introduced by XML files, the following measures are activated by default:</p>
 <ul>
 <li>Prevention against XML eXternal Entity (XXE) injections according to <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.md">OWASP</a></li>
@@ -3386,7 +3417,8 @@ To ensure full security, please consult the documentation about <a href="/manual
 <p>If the limitations on XML files introduced by XXE prevention need to be removed, XXE processing can be enabled via <code>enableXxeProcessing</code> in the <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#configuration-properties">process engine configuration</a>.</p>
 <p>FSP itself can not be disabled in the engine. All properties that are influenced by this can however be configured in the environment via system properties and the <code>jaxp.properties</code> file. See the <a href="https://docs.oracle.com/javase/tutorial/jaxp/limits/using.html">Oracle documentation</a> on how to determine the right limits and how to set them.</p>
 <p>Since BPMN schema validation requires external XSD documents, the property <code>http://javax.xml.XMLConstants/property/accessExternalSchema</code> is by default configured to value <code>all</code>, which enables referencing XML schemas by any supported protocol. This can be overridden via the system property <code>javax.xml.accessExternalSchema</code>, however a value set via <code>jaxp.properties</code> does not take effect.</p>
-<h2 id="http-header-security-in-webapps">HTTP Header Security in Webapps</h2>
+
+<h3 id="http-header-security-in-webapps">HTTP Header Security in Webapps</h3>
 <p>Out-of-the-box the web applications support the following security-related HTTP headers:</p>
 <ul>
 <li>XSS Protection</li>
@@ -3398,15 +3430,18 @@ To ensure full security, please consult the documentation about <a href="/manual
 <p>According to your project requirements, some of these headers can be configured more strict or lax. Please see the
 documentation about the <a href="/manual/latest/webapps/shared-options/header-security/">HTTP Header Security</a> to learn more
 about the several headers, the defaults and how to configure the HTTP headers according to your needs.</p>
-<h2 id="variable-values-from-untrusted-sources">Variable Values from Untrusted Sources</h2>
+
+<h3 id="variable-values-from-untrusted-sources">Variable Values from Untrusted Sources</h3>
 <p>Process variables can be submitted as Java objects using the JDK built-in <code>application/x-java-serialized-object</code> data format, JSON or XML along with a Java class name via the CIB seven REST API and web applications.
 On server side, they can then be deserialized into Java objects, so that Java code can work with them in a native way. See <a href="/manual/latest/user-guide/data-formats/configuring-spin-integration/">Spin</a> for details and this <a href="/manual/latest/reference/rest/specification/#tag/Execution/operation/putLocalExecutionVariable">REST API endpoint</a> for an example.</p>
 <p>If an attacker can access these endpoints, they can exploit so-called <em>serialization gadgets</em>, i.e. classes that run vulnerable code during deserialization resulting in remote code execution in the general case. For example, consider a class constructor that makes a REST request based on a field value. An attacker could submit a forged variable value so that during deserialization, when the constructor is called, the application server would make an arbitrary REST request to a destination of the attacker&rsquo;s choice. For details, see <a href="https://www.owasp.org/index.php/Deserialization_of_untrusted_data">OWASP&rsquo;s description of Deserialization of untrusted data</a>.</p>
-<h3 id="java-objects-using-the-jdk-built-in-applicationx-java-serialized-object-data-format">Java objects using the JDK built-in <code>application/x-java-serialized-object</code> data format</h3>
+
+<h4 id="java-objects-using-the-jdk-built-in-applicationx-java-serialized-object-data-format">Java objects using the JDK built-in <code>application/x-java-serialized-object</code> data format</h4>
 <p>Starting with version 7.9, by default, it is not possible to set variables of type <code>Object</code> <strong>AND</strong> the data format <code>application/x-java-serialized-object</code>.
 The behavior can be restored with the process engine configuration flag <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#javaSerializationFormatEnabled"><code>javaSerializationFormatEnabled</code></a>.
 However, please bear in mind that enabling the java serialization format might make the process engine vulnerable against the aforementioned attacking scenario.</p>
-<h3 id="jsonxml-serialized-objects-using-spin">JSON/XML serialized objects using Spin</h3>
+
+<h4 id="jsonxml-serialized-objects-using-spin">JSON/XML serialized objects using Spin</h4>
 <p>Therefore, we recommend enabling the whitelisting of allowed Java classes by enabling the property <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#deserializationTypeValidationEnabled">deserializationTypeValidationEnabled</a> in the process engine configuration. With this, the process engine validates the class names of submitted variables against a whitelist of allowed Java class and package names. Any non-whitelisted content is rejected. The default values are safe, but may be too restrictive for your use case. You can use the engine properties <code>deserializationAllowedPackages</code> and <code>deserializationAllowedClasses</code> to extend the default whitelist with package and class names of Java types that you consider save to deserialize in your environment.</p>
 <p>In case this default behavior needs further adjustment, a custom validator can be implemented and registered in the engine with the engine property <code>deserializationTypeValidator</code>.
 The provided object needs to be a subtype of <code>org.cibseven.bpm.engine.runtime.DeserializationTypeValidator</code> and offer an implementation of the <code>#validate</code> method.
@@ -3418,7 +3453,8 @@ An implementation of this interface registered as validator will be provided wit
   <p>Spin&rsquo;s JSON implementation is based on Jackson. If you configure Spin to deserialize polymorphic classes based on type information included in the JSON itself (i.e. where the JSON contains explicit class names), we strongly recommend to additionally enable Jackson&rsquo;s <a href="https://medium.com/@cowtowncoder/jackson-2-10-safe-default-typing-2d018f0ce2ba">Whitelisting feature</a> starting with version 2.10. CIB seven&rsquo;s whitelisting feature does not cover this case.</p>
 </div>
 
-<h2 id="user-operation-log-settings-for-synchronous-operations-affecting-multiple-entities">User operation log settings for synchronous operations affecting multiple entities</h2>
+
+<h3 id="user-operation-log-settings-for-synchronous-operations-affecting-multiple-entities">User operation log settings for synchronous operations affecting multiple entities</h3>
 <p>Some of the synchronous APIs can be used to perform actions on multiple entities, potentially affecting large amounts of data.</p>
 <p>Without constraints, the process engine can create potentially unlimited numbers of user operation log entries. A user operation log entry technically consists of multiple database entries in
 the <code>ACT_HI_OP_LOG</code> table. The amount of table entries depends on the number of properties logged for the user operation log. Example: A synchronous message correlation will log up to three properties (<code>messageName</code>, <code>nrOfVariables</code>, <code>processInstance</code>) depending on some conditions. A synchronous message correlation operation with 1000 affected process instances would yield 3000 new rows in the user operation log database table.</p>
@@ -3429,41 +3465,56 @@ For more information about the possible values for <code>logEntriesPerSyncOperat
 <ul>
 <li>Message correlation</li>
 </ul>
-<h1 id="security-configuration-in-the-external-environment">Security Configuration in the external Environment</h1>
+
+<h2 id="security-configuration-in-the-external-environment">Security Configuration in the external Environment</h2>
 <p>CIB seven integrates into an environment, most prominently the database and, when using the web applications or the REST API, also a webserver. In order to secure your CIB seven deployment as a whole, the integration is relevant.</p>
-<h2 id="database">Database</h2>
+
+<h3 id="database">Database</h3>
 <p>CIB seven stores its data into a relational database. In order to protect access to this data, it must be configured correctly.
 The documentation section on <a href="/manual/latest/introduction/supported-environments/">supported environments</a> provides a list of supported databases.</p>
-<h3 id="data-encryption">Data encryption</h3>
+
+<h4 id="data-encryption">Data encryption</h4>
 <p>To prevent unauthorized access to the data stored in the CIB seven database you must follow best practices around operating the database, including data encryption. Please make sure to consult the manual provided by your database vendor.</p>
-<h3 id="securing-the-database-connection">Securing the database connection</h3>
+
+<h4 id="securing-the-database-connection">Securing the database connection</h4>
 <p>To access the database, CIB seven needs to establish a connection. Usually the connection is configured either directly through the JDBC configuration options or through a <em>datasource</em> configured inside the application server. Most database drivers support encrypted connections and transport layer security when connecting to the database. When operating CIB seven and the database in an untrusted network it is recommended to enable these features. Please consider the manuals of your database, database driver and your application server to do so.</p>
-<h3 id="securing-database-credentials">Securing Database Credentials</h3>
+
+<h4 id="securing-database-credentials">Securing Database Credentials</h4>
 <p>To establish the connection to the database, the database credentials need to be provided. As opposed to providing the credentials as plain text in a configuration file, some application servers support storing the credentials securely in an encrypted form. In that case, consult the manual of your application server to learn how to use these features.</p>
-<h2 id="web-server-applicable-when-using-rest-api-or-web-applications">Web Server (applicable when using REST API or Web Applications)</h2>
+
+<h3 id="web-server-applicable-when-using-rest-api-or-web-applications">Web Server (applicable when using REST API or Web Applications)</h3>
 <p>When deploying the REST API or the CIB seven web applications, CIB seven is integrated with a third party web server. The documentation section on <a href="/manual/latest/introduction/supported-environments/">supported environments</a> provides a list of supported web servers / application servers.
 It is strongly recommended to consider applying the following configurations.</p>
-<h3 id="enabling-ssl--https">Enabling SSL / HTTPS</h3>
+
+<h4 id="enabling-ssl--https">Enabling SSL / HTTPS</h4>
 <p>Configure SSL / HTTPS when deploying the CIB seven REST APIs or web applications. This can be achieved by configuring HTTPS either on the web server itself or through a reverse proxy. Consider disable HTTP and configure HTTPS only for your web applications. Please consult the manual of your web server or reverse proxy for details.</p>
-<h3 id="session-timeout">Session timeout</h3>
+
+<h4 id="session-timeout">Session timeout</h4>
 <p>Setting up the session timeout is usually done via <code>web.xml</code> deployment descriptor. Please consult the Java Servlet specification or manual of your application server.</p>
-<h3 id="cookies-domain">Cookies domain</h3>
+
+<h4 id="cookies-domain">Cookies domain</h4>
 <p>The session cookies domain is configured in web server specific configuration. If you want to set such kind of cookies please consult the manual of your web server for details, e.g. for Tomcat check this <a href="https://tomcat.apache.org/tomcat-9.0-doc/config/context.html#Common_Attributes">docs</a>.</p>
-<h3 id="maximum-post-size-in-server-rest-api">Maximum POST size in server (REST API)</h3>
+
+<h4 id="maximum-post-size-in-server-rest-api">Maximum POST size in server (REST API)</h4>
 <p>Restriction of the maximum size in bytes of the POST requests is specific to your web server. Please consult the manual of your web server for details, e.g. for Tomcat server, check this <a href="https://tomcat.apache.org/tomcat-9.0-doc/config/http.html#Common_Attributes">documentation page</a>.</p>
-<h3 id="securing-cookies-web-applications">Securing Cookies (Web Applications)</h3>
+
+<h4 id="securing-cookies-web-applications">Securing Cookies (Web Applications)</h4>
 <p>The container provides the session cookie. Please consult the documentation about <a href="/manual/latest/webapps/shared-options/cookie-security/">Cookie Security</a> to learn what configurations are necessary to ensure full security for the session cookie.</p>
-<h3 id="error-handling">Error handling</h3>
+
+<h4 id="error-handling">Error handling</h4>
 <p>When it comes to error handling, from a security perspective, the top goal is to prevent attackers
 from obtaining technical details about the system, which for example, a stack trace could reveal
 (see OWASP&rsquo;s <a href="https://www.owasp.org/index.php/Improper_Error_Handling">Improper Error Handling article</a> for more information).</p>
 <p>In this section, we describe what we do to prevent disclosing technical details about the system.</p>
-<h4 id="webapps">Webapps</h4>
+
+<h5 id="webapps">Webapps</h5>
 <p>In the Webapps, a generic default error page is provided when an error occurs. This error page does
 not include any technical details like stack traces.</p>
-<h4 id="rest-api">REST API</h4>
+
+<h5 id="rest-api">REST API</h5>
 <p>The REST API only displays the type and a short error message when an error is thrown.</p>
-<h3 id="prevent-disclosure-of-application-server-internals">Prevent Disclosure of Application Server Internals</h3>
+
+<h4 id="prevent-disclosure-of-application-server-internals">Prevent Disclosure of Application Server Internals</h4>
 <p>In the <a href="#error-handling">Error handling</a> paragraph, we explain our technical measures not to disclose
 any technical details about the CIB seven Runtime.</p>
 <p>However, technical details cannot only be disclosed on the application level, but also by the application

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,29 +3191,36 @@
 
     <div class="col-xs-12 content-text">
       <p>In the following example we will walk through a typical human workflow scenario. In our prepackaged distribution, Tasklist has four demo users which belong to different user groups. Sign in with the user <em>demo</em>.</p>
-<h1 id="start-a-process">Start a Process</h1>
+
+<h2 id="start-a-process">Start a Process</h2>
 <p>To start a process instance via Tasklist, click on <em>Start process</em> in the header menu of the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/">dashboard</a> and select a process out of the displayed list of process definitions. If no process definitions are listed here, please verify that your process application is deployed correctly and you have the required permissions to start a process. For our example, start the <em>Invoice Receipt</em> process.
 After selecting the process to start, complete the start form. Hit <code>Start</code> to continue to the next step in our example.</p>
 <p>*Permissions: <code>CREATE_INSTANCE</code> and <code>READ</code> permissions on Process definition level, and <code>CREATE</code> permission for all Process instances.</p>
-<h1 id="create-a-filter">Create a Filter</h1>
+
+<h2 id="create-a-filter">Create a Filter</h2>
 <p>On the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/">dashboard</a> you can now create a filter which displays this task. For our example, we will create a filter to display all tasks assigned to the currently signed in user and which belong to the process definition <em>Invoice Receipt</em>. To do so, click on <em>Create a Filter</em> and insert a name for the filter, e.g., <em>My invoice tasks</em>. Then click on <em>Criteria</em> and on <em>Add Criterion</em>. Next, click on the empty <em>Key</em> field, select <em>Name</em> in the <em>Process Definition</em> submenu and insert <em>Invoice Receipt</em> into the <em>Value</em> field. Click on <em>Add Criterion</em> again, select <em>Assignee</em> in the <em>User/Group</em> submenu of the key field and insert <em>${ currentUser() }</em> into the value field. We want to publish this filter to our colleagues as well. To do this, click on <em>Permissions</em> and tick the box at <em>Accessible by all users</em>. As a final step, click on <code>Save</code> to create the filter.</p>
 <p>Now you can see the filter on the left side of the dashboard. Click on the filter to display the user tasks.</p>
 <p>See the <a href="/manual/2.0-ee/webapps/tasklist/filters/">Filters</a> section for more information.</p>
-<h1 id="claim-tasks">Claim Tasks</h1>
+
+<h2 id="claim-tasks">Claim Tasks</h2>
 <p>First we need to claim this task to be able to work on it. To do so, click on <em>Claim</em> in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#task-view">task view section</a>. You can also reassign the task to another user by clicking on <em>Demo Demo</em>. A text field will appear into which you can insert the user that you want to assign this task to.</p>
 <p>See the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#claim-unclaim-and-reassign-tasks">Claiming, unclaiming and reassigning tasks</a> section for more information.</p>
-<h1 id="working-on-tasks">Working on Tasks</h1>
+
+<h2 id="working-on-tasks">Working on Tasks</h2>
 <p>After creating the filter, we now want to start working on a task. We can do so by selecting the task in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#filter-results">filter results</a>. On the right side, you will see the task form to work on as an embedded form.</p>
 <p>In our example task form you are asked to approve an invoice (or not). To complete the task, either tick the checkbox at <em>Do you approve?</em> or not and click on <code>Complete</code>. For our example, tick the checkbox and complete the task. Then have a look at the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#filter-results">filter results</a>. Now you will see that the <em>Prepare Bank Transfer</em> task has been created.</p>
 <p>When you submit the task form, the task is completed and the process continues in the engine. Furthermore, you can visualize the process model by clicking on the <em>Diagram</em> tab in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#task-view">task view</a> section of the dashboard.</p>
 <p>See the <a href="/manual/2.0-ee/user-guide/task-forms/">Task Forms</a> section for more information.</p>
-<h1 id="set-follow-up-date">Set Follow-Up Date</h1>
+
+<h2 id="set-follow-up-date">Set Follow-Up Date</h2>
 <p>Let&rsquo;s assume that this task was assigned to the user just before the end of his working day. Because we want to hurry out, we will set a follow-up date (reminder) for this task so that we don&rsquo;t forget about it when we get back to the office. To do so, click on <em>Set follow-up date</em> in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#task-view">task view section</a> and select a date in the calendar that is displayed. We can also set an exact time for the follow-up.</p>
 <p>See the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#set-due-dates-and-follow-up-dates">Follow-Up</a> section for more information.</p>
-<h1 id="comment-a-task">Comment a Task</h1>
+
+<h2 id="comment-a-task">Comment a Task</h2>
 <p>Now we want to add a comment for other Tasklist users to see. To do so, click on <em>Add Comment</em> at the top of the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#task-view">task view section</a> and insert the comment, e.g., &ldquo;Hi Mary, please review this task&rdquo;. The comment can now be seen in the task history.</p>
 <p>See the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#comments">Comments</a> section for more information.</p>
-<h1 id="set-due-date">Set Due Date</h1>
+
+<h2 id="set-due-date">Set Due Date</h2>
 <p>Last but not least, we want to set a due date for this task, to ensure that the task is handled on time. To do so, click on <em>Set due date</em> in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#task-view">task view section</a> and select a date in the calendar that is displayed. You can also set an exact time.</p>
 <p>See the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#set-due-dates-and-follow-up-dates">Due Dates</a> section for more information.</p>
 <p>This concludes our example task. Now we will elaborate on the functions that Tasklist offers.</p>

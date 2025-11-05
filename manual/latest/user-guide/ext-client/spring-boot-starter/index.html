@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3199,9 +3203,11 @@ your <code>pom.xml</code> file:</p>
 When the execution waits in an External Task, the Client executes your custom business logic.
 For instance, the customer&rsquo;s credit score is checked, and if successful, the External Task
 can be marked as completed and the execution proceeds.</p>
-<h1 id="requirements">Requirements</h1>
+
+<h2 id="requirements">Requirements</h2>
 <p>External Task Client Spring Boot Starter requires Java 17.</p>
-<h2 id="topic-subscription">Topic Subscription</h2>
+
+<h3 id="topic-subscription">Topic Subscription</h3>
 <p>The interface which allows implementing the custom business logic and interacting with the Engine is
 called <code>ExternalTaskHandler</code>. A subscription is identified by a topic name and configured with a
 reference to the <code>ExternalTaskHandler</code> bean.</p>
@@ -3228,7 +3234,8 @@ either referencing the topic name in your <code>application.yml</code> file:</p>
 <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/client/spring/annotation/ExternalTaskSubscription.html">Javadocs</a>
 .</p>
 <p><strong>Please Note:</strong> A property defined in the <code>application.yml</code> file always overrides the respective attribute defined programmatically via annotation.</p>
-<h3 id="handler-configuration-example">Handler Configuration Example</h3>
+
+<h4 id="handler-configuration-example">Handler Configuration Example</h4>
 <p>Please consider the following complete handler bean example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ExternalTaskSubscription</span><span class="p">(</span><span class="s">&#34;creditScoreChecker&#34;</span><span class="p">)</span><span class="w">
@@ -3264,7 +3271,8 @@ either referencing the topic name in your <code>application.yml</code> file:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="openclose-a-topic-subscription">Open/close a Topic Subscription</h3>
+</span></span></span></code></pre></div>
+<h4 id="openclose-a-topic-subscription">Open/close a Topic Subscription</h4>
 <p>When not further configured, a topic subscription is automatically opened when the Spring Boot
 application starts, meaning the Client starts immediately to fetch External Tasks related to the topic name.</p>
 <p>There might be situations in which a topic subscription should not be opened immediately when the
@@ -3300,10 +3308,13 @@ topic subscription can be opened or closed:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="configuration">Configuration</h2>
-<h3 id="applicationyml-file"><code>application.yml</code> file</h3>
+</span></span></span></code></pre></div>
+<h3 id="configuration">Configuration</h3>
+
+<h4 id="applicationyml-file"><code>application.yml</code> file</h4>
 <p>The central configuration point is the <code>application.yml</code> file.</p>
-<h4 id="client-bootstrapping">Client Bootstrapping</h4>
+
+<h5 id="client-bootstrapping">Client Bootstrapping</h5>
 <p>Please make sure to configure the properties together with the prefix: <code>camunda.bpm.client</code></p>
 <p>An example configuration could look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.client</span><span class="p">:</span><span class="w">
@@ -3438,7 +3449,8 @@ topic subscription can be opened or closed:</p>
     </tr>
   </tbody>
 </table>
-<h4 id="topic-subscription-1">Topic Subscription</h4>
+
+<h5 id="topic-subscription-1">Topic Subscription</h5>
 <p>The properties for topic subscriptions go under: <code>camunda.bpm.client.subscriptions</code></p>
 <p>The configuration properties can be applied for each topic name as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.client</span><span class="p">:</span><span class="w">
@@ -3590,12 +3602,14 @@ topic subscription can be opened or closed:</p>
     </tr>
   </tbody>
 </table>
-<h4 id="logging">Logging</h4>
+
+<h5 id="logging">Logging</h5>
 <p>To log the Client&rsquo;s internal workings, you can set the level of the logger <code>org.cibseven.bpm.client.spring</code> to <code>DEBUG</code>.</p>
 <p>You can set the log level in your <code>application.yml</code> file as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">logging.level.org.cibseven.bpm.client.spring</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
 </span></span></span></code></pre></div><p>For debugging, it might be helpful to increase the level of the logger <code>org.cibseven.bpm.client</code> as well.</p>
-<h3 id="request-interceptor">Request Interceptor</h3>
+
+<h4 id="request-interceptor">Request Interceptor</h4>
 <p>A request interceptor is called whenever the Client performs an HTTP request. You can use this
 extension point, for example, to implement a custom authentication strategy like OAuth 2.0.</p>
 <p>You can register one or more request interceptors by defining beans of type <code>ClientRequestInterceptor</code>:</p>
@@ -3603,14 +3617,16 @@ extension point, for example, to implement a custom authentication strategy like
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RequestInterceptorConfiguration</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ClientRequestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// ...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="backoff-strategy">Backoff Strategy</h3>
+</span></span></span></code></pre></div>
+<h4 id="backoff-strategy">Backoff Strategy</h4>
 <p>By default, the Client uses an exponential backoff strategy. You can replace it with a custom strategy
 by defining a bean of type <code>BackoffStrategy</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BackoffStrategyConfiguration</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">BackoffStrategy</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// ...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="resolving-properties">Resolving Properties</h3>
+</span></span></span></code></pre></div>
+<h4 id="resolving-properties">Resolving Properties</h4>
 <p>String-based Client configuration properties can be resolved from a custom properties file by
 defining a bean of type <code>PropertySourcesPlaceholderConfigurer</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
@@ -3636,7 +3652,8 @@ defining a bean of type <code>PropertySourcesPlaceholderConfigurer</code>:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">worker-id</span><span class="p">:</span><span class="w"> </span><span class="l">${client.workerId}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">date-format</span><span class="p">:</span><span class="w"> </span><span class="l">${client.dateFormat}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default-serialization-format</span><span class="p">:</span><span class="w"> </span><span class="l">${client.serializationFormat}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="custom-client">Custom Client</h3>
+</span></span></span></code></pre></div>
+<h4 id="custom-client">Custom Client</h4>
 <p>You can bootstrap the Client programmatically, which skips the internal creation of the Client:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomClientConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w"> 
@@ -3649,13 +3666,16 @@ defining a bean of type <code>PropertySourcesPlaceholderConfigurer</code>:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="beans">Beans</h2>
+</span></span></span></code></pre></div>
+<h3 id="beans">Beans</h3>
 <p>You can define handler beans, but more beans are defined internally, and they are beyond your control.
 However, these beans can be accessed via auto wiring.</p>
-<h3 id="client-bean">Client Bean</h3>
+
+<h4 id="client-bean">Client Bean</h4>
 <p>When not already defined by the user (see <a href="#custom-client">Custom Client</a>), a bean with the name
 <code>externalTaskClient</code> of type <code>ExternalTaskClient</code> is constructed.</p>
-<h3 id="subscription-bean">Subscription Bean</h3>
+
+<h4 id="subscription-bean">Subscription Bean</h4>
 <p>Based on a handler bean annotated with <code>@ExternalTaskSubscription</code>, a subscription bean of type
 <code>SpringTopicSubscription</code> is constructed. The bean name is composed of:</p>
 <pre tabindex="0"><code>handler bean name + &#34;Subscription&#34;
@@ -3667,7 +3687,8 @@ However, these beans can be accessed via auto wiring.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>Will result in the subscription bean name:</p>
 <pre tabindex="0"><code>creditScoreCheckerHandlerSubscription
-</code></pre><h2 id="spring-only-module">Spring-only Module</h2>
+</code></pre>
+<h3 id="spring-only-module">Spring-only Module</h3>
 <p>If you want to use Spring instead of Spring Boot, you can add the following Maven dependency
 to your <code>pom.xml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>

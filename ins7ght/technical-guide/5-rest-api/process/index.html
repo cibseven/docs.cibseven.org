@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Process API | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/process/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Process API</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="process-api">Process API</h2>
+<p>The Process API provides access to process definitions, versions, and BPMN diagrams.</p>
+<p><strong>Base Path:</strong> <code>/process</code></p>
+<hr>
+
+<h3 id="endpoints">Endpoints</h3>
+
+<h4 id="get-process">GET /process</h4>
+<p>Returns all available process definitions.</p>
+<p><strong>Purpose:</strong> Get a list of all process definitions currently imported from CIB seven.</p>
+<p><strong>Parameters:</strong> None</p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process:1:abc123&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Invoice Process&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;approval-process:1:def456&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Approval Process&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;approval-process&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process:2:ghi789&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Invoice Process&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Response Fields:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>id</code></td>
+          <td>string</td>
+          <td>Process definition ID from CIB seven</td>
+      </tr>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Human-readable process name</td>
+      </tr>
+      <tr>
+          <td><code>key</code></td>
+          <td>string</td>
+          <td>Process definition key (identifier)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+<h4 id="get-processprocesskeyversion">GET /process/{processKey}/version</h4>
+<p>Returns all available versions for a specific process.</p>
+<p><strong>Purpose:</strong> Get version numbers for a given process definition.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>string</td>
+          <td><strong>Yes</strong></td>
+          <td>Process definition key (path parameter)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;3&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Response Type:</strong> Array of strings</p>
+<hr>
+
+<h4 id="get-processbpmn">GET /process/bpmn</h4>
+<p>Returns the BPMN XML diagram for a specific process version.</p>
+<p><strong>Purpose:</strong> Get the BPMN 2.0 XML definition for visualization or analysis.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>string</td>
+          <td><strong>Yes</strong></td>
+          <td>Process definition key</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>string</td>
+          <td><strong>Yes</strong></td>
+          <td>Process version</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;bpmn:definitions</span> <span class="na">xmlns:bpmn=</span><span class="s">&#34;http://www.omg.org/spec/BPMN/20100524/MODEL&#34;</span> 
+</span></span><span class="line"><span class="cl">                  <span class="na">xmlns:bpmndi=</span><span class="s">&#34;http://www.omg.org/spec/BPMN/20100524/DI&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="na">xmlns:dc=</span><span class="s">&#34;http://www.omg.org/spec/DD/20100524/DC&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="na">xmlns:di=</span><span class="s">&#34;http://www.omg.org/spec/DD/20100524/DI&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="na">id=</span><span class="s">&#34;Definitions_1&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="na">targetNamespace=</span><span class="s">&#34;http://bpmn.io/schema/bpmn&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;bpmn:process</span> <span class="na">id=</span><span class="s">&#34;invoice-process&#34;</span> <span class="na">name=</span><span class="s">&#34;Invoice Process&#34;</span> <span class="na">isExecutable=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;bpmn:startEvent</span> <span class="na">id=</span><span class="s">&#34;StartEvent_1&#34;</span> <span class="na">name=</span><span class="s">&#34;Invoice Received&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;bpmn:outgoing&gt;</span>Flow_1<span class="nt">&lt;/bpmn:outgoing&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/bpmn:startEvent&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;bpmn:task</span> <span class="na">id=</span><span class="s">&#34;Task_1&#34;</span> <span class="na">name=</span><span class="s">&#34;Review Invoice&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;bpmn:incoming&gt;</span>Flow_1<span class="nt">&lt;/bpmn:incoming&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;bpmn:outgoing&gt;</span>Flow_2<span class="nt">&lt;/bpmn:outgoing&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/bpmn:task&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... more BPMN elements ... --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/bpmn:process&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... diagram information ... --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:definitions&gt;</span>
+</span></span></code></pre></div><p><strong>Response Type:</strong> <code>application/octet-stream</code> (binary XML data)</p>
+<hr>
+
+<h3 id="usage-examples">Usage Examples</h3>
+
+<h4 id="get-all-processes">Get All Processes</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-versions-for-a-process">Get Versions for a Process</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process/invoice-process/version&#34;</span>
+</span></span></code></pre></div>
+<h4 id="download-bpmn-diagram">Download BPMN Diagram</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process/bpmn?processKey=invoice-process&amp;version=1&#34;</span> -o invoice-process.bpmn
+</span></span></code></pre></div>
+<h4 id="get-bpmn-for-visualization">Get BPMN for Visualization</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process/bpmn?processKey=invoice-process&amp;version=1&#34;</span>
+</span></span></code></pre></div><hr>
+
+<h3 id="notes">Notes</h3>
+<ul>
+<li>The process list includes all versions; filter by <code>key</code> to group by process</li>
+<li>The BPMN endpoint returns raw XML data (binary stream)</li>
+<li>BPMN diagrams conform to the BPMN 2.0 specification</li>
+<li>Process keys are unique identifiers, but names may be duplicated across versions</li>
+<li>An empty <code>processKey</code> in <code>/process/{processKey}/version</code> will throw an error</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#endpoints">Endpoints</a>
+      <ul>
+        <li><a href="#get-process">GET /process</a></li>
+        <li><a href="#get-processprocesskeyversion">GET /process/{processKey}/version</a></li>
+        <li><a href="#get-processbpmn">GET /process/bpmn</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage-examples">Usage Examples</a>
+      <ul>
+        <li><a href="#get-all-processes">Get All Processes</a></li>
+        <li><a href="#get-versions-for-a-process">Get Versions for a Process</a></li>
+        <li><a href="#download-bpmn-diagram">Download BPMN Diagram</a></li>
+        <li><a href="#get-bpmn-for-visualization">Get BPMN for Visualization</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

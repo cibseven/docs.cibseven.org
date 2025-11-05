@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,10 +3192,12 @@
     <div class="col-xs-12 content-text">
       <p>For <a href="/manual/latest/introduction/supported-environments/#container-managed-process-engine-and-camunda-cockpit-tasklist-admin">supported environments</a>, CIB seven provides server modules that integrate the Job Execution with the application server&rsquo;s managed threadpools. If you are using one of those environments, it is recommended to use the integration provided with it.</p>
 <p>The descriptions on this page apply to the use case where there is <em>no</em> existing resource-aware implementation provided. In those cases, using managed resources provided by the application server is recommended over using unmanaged resources. In order for the integration to work, a JEE 7+ compliant application server is required.</p>
-<h1 id="managedjobexecutor">ManagedJobExecutor</h1>
+
+<h2 id="managedjobexecutor">ManagedJobExecutor</h2>
 <p>Integration into application servers without a resource-aware implementation is offered by a specific type of <code>JobExecutor</code> called the <code>ManagedJobExecutor</code>. The purpose of the <code>ManagedJobExecutor</code> is to ensure that job execution within the process engine is correctly controlled by the application server, by using managed resources (primarily: managed threads).</p>
 <p>In order to facilitate the <code>ManagedJobExecutor</code>, the engine must be configured to use it. For instance, when bootstrapping the engine from Java code, you would create a new instance of the <code>ManagedJobExecutor</code> and provide the resource dependency it has by injecting it from your application server&rsquo;s environment. The <code>ManagedJobExecutor</code> can then be set as the <code>JobExecutor</code> that the process engine should use.</p>
-<h2 id="example-usage">Example usage</h2>
+
+<h3 id="example-usage">Example usage</h3>
 <p>The following code listing shows the essential configuration performed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ApplicationScoped</span><span class="w">

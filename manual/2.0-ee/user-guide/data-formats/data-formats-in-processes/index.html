@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,16 +3192,21 @@
     <div class="col-xs-12 content-text">
       <p>The main entry point to Spin&rsquo;s functionality is the static function <code>org.cibseven.spin.Spin.S</code> that can be used to process documents or to map Java objects to a document format. The returned value of this function is a <em>Spin wrapper</em>, which is an intermediary representation of a document and that offers functions for manipulation of the underlying document. Additionally, the functions <code>org.cibseven.spin.Spin.XML</code> and <code>org.cibseven.spin.Spin.JSON</code> can be used that return a strongly-typed Spin wrapper of the provided documents which is useful when writing Java. Refer to the <a href="/manual/2.0-ee/reference/spin/">Spin reference documentation</a> on how these methods can be used and what API is offered by the Spin wrappers.</p>
 <p>The following subsections describe the integration points of the process engine and Spin. For specific documentation on data formats like XML and JSON, please refer to the <a href="/manual/2.0-ee/user-guide/data-formats/xml/">XML section</a> and the <a href="/manual/2.0-ee/user-guide/data-formats/json/">JSON section</a>.</p>
-<h1 id="expression-language-integration">Expression Language Integration</h1>
+
+<h2 id="expression-language-integration">Expression Language Integration</h2>
 <p>The Spin engine plugin registers the Spin API entry functions in the context used for expression evaluation. It can therefore be used at all points where the engine allows expression language.</p>
-<h1 id="scripting-integration">Scripting Integration</h1>
+
+<h2 id="scripting-integration">Scripting Integration</h2>
 <p>Similar to the EL integration, the Spin functions can be accessed from custom scripts in the supported languages JavaScript, Groovy, Python and Ruby. See the <a href="/manual/2.0-ee/user-guide/process-engine/scripting/">scripting section</a> on how scripting is configured in general in CIB seven.</p>
-<h1 id="native-json-and-xml-variable-values">Native JSON and XML Variable Values</h1>
+
+<h2 id="native-json-and-xml-variable-values">Native JSON and XML Variable Values</h2>
 <p>When working with JSON or XML payloads it wouldn&rsquo;t be convenient to treat the payload as strings because then features like path-expressions and accessing properties couldn&rsquo;t be used. Additionally, you do not always need or want a class in your system to represent the JSON/XML.</p>
 <p>That is why Spin provides native variable values to work with JSON and XML. The Spin API enables access and manipulation of the data in an easy way. Parsing and serialization can be done with a single command.</p>
-<h1 id="serializing-process-variables">Serializing Process Variables</h1>
+
+<h2 id="serializing-process-variables">Serializing Process Variables</h2>
 <p>Whenever custom Java objects are set as process variables, they have to be persisted to the database. Thus, a Java object instance has to be serialized. The engine&rsquo;s default serialization uses standard Java object serialization which ends up as machine-readable bytes in the database. This approach is limited in that the database values cannot be introspected and that a client reading the object has to possess the respective Java class. To alleviate these issues, by using the Spin engine plugin, variables can be serialized using Spin&rsquo;s data formats. The plugin registers a serializer that looks up all available data formats and offers them for serialization.</p>
-<h1 id="extending-serialization">Extending Serialization</h1>
+
+<h2 id="extending-serialization">Extending Serialization</h2>
 <p>Spin offers two interfaces that can be implemented to <a href="/manual/2.0-ee/reference/spin/extending-spin/#custom-dataformats">provide custom data formats</a> and to <a href="/manual/2.0-ee/reference/spin/extending-spin/#configuring-data-formats">configure serialization</a>. Every process application may provide a different set of data format providers and configurators. CIB seven then instantiates process-application-specific data formats and ensures that they are only accessible when code is executed within the process application&rsquo;s context. See the section on <a href="/manual/2.0-ee/user-guide/process-applications/process-application-resources/">process application resource access</a> to understand when the process engine operates in the context of a process application and how a context switch can be enforced.</p>
 
 <div class="note bg-info docs-info">

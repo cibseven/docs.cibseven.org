@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="transaction-integration-by-example">Transaction Integration by Example</h1>
+      
+<h2 id="transaction-integration-by-example">Transaction Integration by Example</h2>
 <p>The following explains the <a href="https://github.com/cibseven/cibseven-bpm-platform/blob/v1.1.0/engine-spring/core/src/test/java/org/cibseven/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest.java">SpringTransactionIntegrationTest</a> of the core codebase step by step. Below is the Spring configuration file that we use in this example (you can find it in <a href="https://github.com/cibseven/cibseven/blob/v.1.1.0/engine-spring/core/src/test/resources/org/cibseven/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest-context.xml">SpringTransactionIntegrationTest-context.xml</a>). The section shown below contains the <code>dataSource</code>, <code>transactionManager</code>, <code>processEngine</code> and the process engine services.</p>
 <p>When passing the DataSource to the <code>SpringProcessEngineConfiguration</code> (using property &ldquo;dataSource&rdquo;), the CIB seven engine uses a <code>org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy</code> internally, which wraps the passed DataSource. This is done to make sure the SQL connections retrieved from the DataSource and the Spring transactions play well together. This implies that it&rsquo;s no longer needed to proxy the dataSource yourself in Spring configuration, although it&rsquo;s still allowed to pass a <code>TransactionAwareDataSourceProxy</code> into the <code>SpringProcessEngineConfiguration</code>. In this case no additional wrapping will occur.</p>
 <p>Make sure when declaring a <code>TransactionAwareDataSourceProxy</code> in Spring configuration yourself, that you don&rsquo;t use it for resources that are already aware of Spring-transactions (e.g., <code>DataSourceTransactionManager</code> and <code>JPATransactionManager</code> need the un-proxied dataSource).</p>
@@ -3279,7 +3284,8 @@ i.e. the <code>transactionManager</code> bean must actually manage the data sour
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">runtimeService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="using-inner-spring-transactions">Using Inner Spring Transactions</h1>
+</span></span></span></code></pre></div>
+<h2 id="using-inner-spring-transactions">Using Inner Spring Transactions</h2>
 <p>When engine API calls are executed in the Spring context, Spring doesn&rsquo;t
 make it transparent to the Process Engine when nested API calls need to
 be executed in a separate transaction (the <code>Propagation.REQUIRES_NEW</code>
@@ -3296,7 +3302,8 @@ will be reverted.</p>
 <p>The Process Engine Context must be declared whenever a Spring
 <code>Propagation.REQUIRES_NEW</code> inner transaction is defined in an already
 running transaction.</p>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <p>In the following code-snippet, we can see a Spring <code>Propagation.REQUIRED</code>
 transaction, defined on the <code>execute</code> method, and a Spring <code>Propagation.REQUIRES_NEW</code>
 transaction, defined on the <code>InnerProcessServiceImpl#startInnerProcess</code> method.

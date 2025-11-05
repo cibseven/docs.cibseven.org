@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3196,7 +3200,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/address&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/customer&gt;</span>
 </span></span></code></pre></div><p>Further documentation about the usage of Spin can be found in the <a href="/manual/latest/reference/spin/">CIB seven Spin Dataformat Reference</a>.</p>
-<h1 id="expression-language-integration">Expression Language Integration</h1>
+
+<h2 id="expression-language-integration">Expression Language Integration</h2>
 <p>The Spin entry functions can be used wherever the process engine allows expression language. The following BPMN snippet shows a conditional sequence flow expression based on the customer&rsquo;s post code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;sequenceFlow&gt;</span>
@@ -3213,7 +3218,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/conditionExpression&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/sequenceFlow&gt;</span>
 </span></span><span class="line"><span class="cl">...
-</span></span></code></pre></div><h1 id="scripting-integration">Scripting Integration</h1>
+</span></span></code></pre></div>
+<h2 id="scripting-integration">Scripting Integration</h2>
 <p>The following example is a script implemented in JavaScript. The script makes use of the Spin API to extract the address object from the customer, add a city name and set it as a process variable:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;scriptTask</span> <span class="na">id=</span><span class="s">&#34;task&#34;</span> <span class="na">name=</span><span class="s">&#34;Script Task&#34;</span> <span class="na">scriptFormat=</span><span class="s">&#34;javascript&#34;</span><span class="nt">&gt;</span>
@@ -3227,7 +3233,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/script&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/scriptTask&gt;</span>
 </span></span><span class="line"><span class="cl">...
-</span></span></code></pre></div><h1 id="native-xml-variable-value">Native XML Variable Value</h1>
+</span></span></code></pre></div>
+<h2 id="native-xml-variable-value">Native XML Variable Value</h2>
 <p>The native variable value for XML makes it possible to easily parse an XML string and wrap it inside an object without the need to have a class representing the XML. Suppose we want to save the XML inside a process variable for later use, we could do the following inside a JavaDelegate:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDelegate</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3257,7 +3264,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>When retrieving the XML value via <code>execution.getVariableTyped()</code> there are two options: serialized and deserialized.
 Retrieving the variable deserialized by calling either <code>getVariableTyped(&quot;name&quot;)</code> or <code>getVariableTyped(&quot;name&quot;, true)</code>  the <code>XmlValue</code> contains the wrapped DomXML object to represent the XML data. Calling <code>getVariableTyped(&quot;name&quot;, false)</code> results in <code>XmlValue</code> containing only the raw string, which is advantageous if you only need the string to pass it to, e.g., another API.</p>
-<h1 id="serializing-process-variables">Serializing Process Variables</h1>
+
+<h2 id="serializing-process-variables">Serializing Process Variables</h2>
 <p>A Java object can be serialized using Spin&rsquo;s built-in XML data format. Let us assume that there are two Java classes, <code>com.example.Customer</code> and <code>com.example.Address</code>. Spin&rsquo;s default XML format relies on JAXB which is why JAXB annotations like <code>@XmlRootElement</code>, <code>@XmlAttribute</code>, and <code>@XmlElement</code> can be used to configure the serialization process. Note though that these annotations are not required. The classes look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@XmlRootElement</span><span class="p">(</span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;http://camunda.org/example&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Customer</span><span class="w"> </span><span class="p">{</span><span class="w">

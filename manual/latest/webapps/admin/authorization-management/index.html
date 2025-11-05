@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3202,9 +3206,11 @@
   <p>The Authorization Management menu is only usable by users which are granted with <em>Read</em> permission for authorizations.</p>
 </div>
 
-<h1 id="grant-basic-permissions">Grant Basic Permissions</h1>
+
+<h2 id="grant-basic-permissions">Grant Basic Permissions</h2>
 <p>In this use case we&rsquo;ll grant some basic permissions. To start out we&rsquo;ll need some users and a group. Create two users in the  <a href="/manual/latest/webapps/admin/user-management/#user-menu">users menu</a>, create a group called <em>support</em> in the <a href="/manual/latest/webapps/admin/group-management/#groups-menu">groups menu</a> and add the new users to the group in the <a href="/manual/latest/webapps/admin/user-management/#user-menu">users menu</a>.</p>
-<h2 id="application-access">Application Access</h2>
+
+<h3 id="application-access">Application Access</h3>
 <p>Set the authorizations for the new group and the created users. First you have to define which application the members of your new group have access to. Select the <em>Application</em> menu and create a new <code>Application Authorization</code> rule. The group members should be able to access Tasklist, so add the following rule:</p>
 <figure class="image">
   <span><img
@@ -3234,7 +3240,8 @@
 </figure>
 -->
 <p>Log in with the new user accounts and test if you can access the desired application.</p>
-<h2 id="filter-access">Filter Access</h2>
+
+<h3 id="filter-access">Filter Access</h3>
 <p>Currently the users in the <em>support</em> group can only see the predefined filters in Tasklist. We want the group members to have <code>READ</code> access to another filter, so we create a rule for that filter:</p>
 <figure class="image">
   <span><img
@@ -3245,7 +3252,8 @@
 </figure>
 
 <p>The authorizations set here correspond to the authorizations that can be set in the filter settings in Tasklist. The resource ID can be found in the database table <code>ACT_RU_FILTER</code>. See <a href="/manual/latest/webapps/tasklist/filters/">this section</a> for more information about filters.</p>
-<h2 id="member-visibility">Member Visibility</h2>
+
+<h3 id="member-visibility">Member Visibility</h3>
 <p>Depending on the users authorization, <a href="/manual/latest/webapps/tasklist/">Tasklist</a> will show you information about your colleagues and groups. Currently you can only see the group folder <em>support</em> but not your colleague. To change that, log in to the admin application as administrator, enter the Users Authorization menu and create the following rules:</p>
 <figure class="image">
   <span><img
@@ -3256,7 +3264,8 @@
 </figure>
 
 <p>Now every member of the group <em>support</em> is able to see the new users <em>lemmy</em> and <em>Ozzy</em>.</p>
-<h1 id="application-specific-permissions">Application-Specific Permissions</h1>
+
+<h2 id="application-specific-permissions">Application-Specific Permissions</h2>
 <p>This use case demonstrates how to give a group access to Cockpit, but restrict them to <code>READ</code> access. We will use the <em>support</em> group that we created in the previous <a href="/manual/latest/webapps/admin/authorization-management/#grant-basic-permissions">example</a>.</p>
 <p>To limit the access we have to know which resources are accessible in Cockpit so that we can set the proper permissions for them.
 Of the predefined resources at the moment this would be:</p>
@@ -3285,7 +3294,8 @@ Of the predefined resources at the moment this would be:</p>
 <p>For all the resources that are accessible from Cockpit we add <code>READ</code> permission for every resource id (indicated by the asterisk) for the group, e.g., in the screenshot for all process definitions.</p>
 <p>Now every user of the <em>support</em> group can access Cockpit and see everything that is inside without being able to change anything (unless the user has special permissions himself, because those take precedence over group permissions).</p>
 <p>Now that we have one group that can see everything in Cockpit, we want to have another group managing one single process.</p>
-<h1 id="restrict-process-permissions">Restrict Process Permissions</h1>
+
+<h2 id="restrict-process-permissions">Restrict Process Permissions</h2>
 <p>Not every process has to be managed by every user/group and with regards to different organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.</p>
 <p>In this use case we want to give the group <em>accounting</em>, which we will assume is already present and has access to Cockpit (see <a href="/manual/latest/webapps/admin/authorization-management/#application-specific-permissions">Application-Specific Permission</a> and <a href="#application-acces">Application Access</a>), full access to the &ldquo;invoice&rdquo; process and only to this process.</p>
 <p>For groups and users to be able to see process definitions they need at least <code>READ</code> permission for the &ldquo;Process Definition&rdquo; resource. To see running process instances the same permission is required for the &ldquo;Process Instance&rdquo; resource.</p>
@@ -3299,7 +3309,8 @@ Of the predefined resources at the moment this would be:</p>
 
 <p>We grant the <em>accounting</em> group all permissions for the <em>invoice</em> process because they shall be able to manage their process completely. The resource id references the key of the process definition.</p>
 <p>Now that we know how to grant certain permissions, we might need a second user who serves as an administrator.</p>
-<h1 id="create-a-user-with-all-permissions">Create a User with All Permissions</h1>
+
+<h2 id="create-a-user-with-all-permissions">Create a User with All Permissions</h2>
 <p>During the <a href="/manual/latest/webapps/admin/user-management/#initial-user-setup">setup</a> you had to create one administrator account. In a real-world scenario it could be beneficial to have a second administrator account to manage the users. Basically, an administrator is a user with the <code>ALL</code> permission for every possible resource and resource id. For example, to grant the <em>accounting</em> group all permissions for authorizations the following entry has to be made:</p>
 <figure class="image">
   <span><img
@@ -3317,7 +3328,8 @@ Of the predefined resources at the moment this would be:</p>
 <li>Grant one specific user all permissions.</li>
 </ol>
 <p>Now, after creating a new administrator account, we may want to start working and start processes.</p>
-<h1 id="grant-permission-to-start-processes-from-tasklist">Grant Permission to Start Processes from Tasklist</h1>
+
+<h2 id="grant-permission-to-start-processes-from-tasklist">Grant Permission to Start Processes from Tasklist</h2>
 <p>Processes are started from Tasklist. For a user or group to be able to start processes we need, again, a certain combination of permissions.
 In this use case we want to give the <em>accounting</em> group the permission to start the <em>invoice</em> process from Tasklist.</p>
 <figure class="image">
@@ -3348,7 +3360,8 @@ In this use case we want to give the <em>accounting</em> group the permission to
 
 <p>After that, we grant the <code>CREATE</code> permission for process instances. The <code>CREATE</code> permission is necessary for the group to be able to create new process instances. The resource id references the generated process instance ids, therefore we use the asterisk, because we can&rsquo;t know the generated id in advance.</p>
 <p>Now that we know how to start a process, we may want to restrict permissions to certain running processes.</p>
-<h1 id="grant-permission-for-single-process-instance">Grant Permission for Single Process Instance</h1>
+
+<h2 id="grant-permission-for-single-process-instance">Grant Permission for Single Process Instance</h2>
 <p>It is possible to restrict a group&rsquo;s/user&rsquo;s permissions to a single process instance, i.e., after the process ends, the group/user will not be able to change any other running process instances. We will use the <em>accounting</em> group again in this example. We assume that the group has access to Cockpit (also see <a href="#application-access">Application Access</a>) and that a process with the name and key <em>OrderProcess</em> is present.</p>
 <figure class="image">
   <span><img
@@ -3378,7 +3391,8 @@ In this use case we want to give the <em>accounting</em> group the permission to
 
 <p>This id then has to be used as the resource id when granting the user all permissions for the <em>Process Instance</em> resource.</p>
 <p>This will limit the group&rsquo;s permissions to this running process instance. As with restricting access to a certain process instance, it is also possible to apply similar limitations for a single task.</p>
-<h1 id="grant-permission-for-single-tasks">Grant Permission for Single Tasks</h1>
+
+<h2 id="grant-permission-for-single-tasks">Grant Permission for Single Tasks</h2>
 <p>Since several groups can participate in a process, it could be useful to restrict certain tasks to certain people/groups. For this example, we will reuse the <em>accounting</em> group and the <em>invoice</em> process from the previous sections. At least we need one running instance of the process.</p>
 <figure class="image">
   <span><img

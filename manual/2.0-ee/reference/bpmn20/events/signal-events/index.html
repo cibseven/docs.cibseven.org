@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3192,7 +3196,8 @@
 <p>This event can now be caught by all process instances which are interested. The following is an example of a process subscribing to the event.</p>
 <div data-bpmn-diagram="../bpmn/event-signal-catching"></div>
 <p>Note: It is important to understand that a signal event is broadcast to all active handlers. In the example given above this means that all instances of the process catching the signal would receive the event.</p>
-<h1 id="signal-event-definition">Signal Event Definition</h1>
+
+<h2 id="signal-event-definition">Signal Event Definition</h2>
 <p>A signal event definition is declared using the signalEventDefinition element. The attribute <code>signalRef</code> references a signal element declared as a child element of the definitions root element. The following is an excerpt of a process in which a signal event is thrown and caught by intermediate events. The signalEventDefinitions reference the &lsquo;global&rsquo; signal element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- declaration of the signal --&gt;</span>
@@ -3212,12 +3217,15 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
 </span></span></code></pre></div><p><strong>Note</strong>: Contrary to other events, such error events, a signal is not consumed if it is caught. If you have two active signal boundary events catching the same signal event, both boundary events are triggered, even if they are part of different process instances.</p>
-<h2 id="expressions">Expressions</h2>
+
+<h3 id="expressions">Expressions</h3>
 <p>You can use expressions for the name in the signal event definition. The name is then resolved as soon as a process reaches the scope of the signal. For example when the process instances reaches a Signal Intermediate Catching Event, then the expression within the name is resolved.</p>
 <p>By using expressions within the signal name you can influence the signal name dynamically based on process variables. This could come in handy when for example there is the need to interrupt parallel branches. An example could look like follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;signal</span> <span class="na">id=</span><span class="s">&#34;alertSignal&#34;</span> <span class="na">name=</span><span class="s">&#34;alert-${execution.processBusinessKey}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="signal-api">Signal Api</h1>
-<h2 id="triggering-throwing-signals">Triggering (Throwing) Signals</h2>
+</span></span></code></pre></div>
+<h2 id="signal-api">Signal Api</h2>
+
+<h3 id="triggering-throwing-signals">Triggering (Throwing) Signals</h3>
 <p>A signal can either be thrown by a process instance using a BPMN construct or programmatically using Java API. The <code>RuntimeService</code> provides a fluent API to throw a signal programmatically:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// broadcast signal</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="w">
@@ -3236,14 +3244,17 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RuntimeService</span><span class="p">.</span><span class="na">signalEventReceived</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">signalName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">executionId</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>If an execution id is specified then the signal is only delivered to the specific execution. Otherwise, the signal is thrown globally to all subscribed handlers (broadcast semantics).</p>
 <p>Note: The signal event does not perform any kind of correlation to a specific process instance. On the contrary, it is broadcast to all process instances. If you need to exclusively deliver a signal to a specific process instance, do not use the throwing signal event. Instead, perform the correlation manually using the appropriate query mechanisms and deliver the signal to a specific execution programmatically.</p>
-<h2 id="querying-for-signal-event-subscriptions">Querying for Signal Event Subscriptions</h2>
+
+<h3 id="querying-for-signal-event-subscriptions">Querying for Signal Event Subscriptions</h3>
 <p>It is possible to query for all executions which have subscribed to a specific signal event:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">List<span class="nt">&lt;Execution&gt;</span> executions = runtimeService.createExecutionQuery()
 </span></span><span class="line"><span class="cl">    .signalEventSubscriptionName(&#34;alert&#34;)
 </span></span><span class="line"><span class="cl">    .list();
 </span></span></code></pre></div><p>You could then use the signal API to deliver the signal to these executions.</p>
-<h1 id="catching-signal-events">Catching Signal Events</h1>
-<h2 id="signal-start-event">Signal Start Event</h2>
+
+<h2 id="catching-signal-events">Catching Signal Events</h2>
+
+<h3 id="signal-start-event">Signal Start Event</h3>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-signal-start-event.png" /></div>
 
 <p>A signal start event can be used to start a process instance using a named signal.</p>
@@ -3261,14 +3272,16 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;startEvent</span> <span class="na">id=</span><span class="s">&#34;signalStart&#34;</span> <span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;alertSignal&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/startEvent&gt;</span>
-</span></span></code></pre></div><h2 id="signal-intermediate-catching-event">Signal Intermediate Catching Event</h2>
+</span></span></code></pre></div>
+<h3 id="signal-intermediate-catching-event">Signal Intermediate Catching Event</h3>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-signal-intermediate-catch-event.png" /></div>
 
 <p>When a token arrives at the signal intermediate catching event, it will wait there until a signal with the proper name arrives.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;intermediateCatchEvent</span> <span class="na">id=</span><span class="s">&#34;signal&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;newCustomerSignal&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateCatchEvent&gt;</span>
-</span></span></code></pre></div><h2 id="camunda-extensions">Camunda Extensions</h2>
+</span></span></code></pre></div>
+<h3 id="camunda-extensions">Camunda Extensions</h3>
 <p>The following extensions are supported for the Signal Intermediate Catching Event:</p>
 <table class="table table-striped">
   <tr>
@@ -3287,14 +3300,17 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h2 id="signal-boundary-event">Signal Boundary Event</h2>
+
+<h3 id="signal-boundary-event">Signal Boundary Event</h3>
 <p>When an execution arrives in the activity to which the signal boundary event is attached, the signal boundary event catches signals with the proper name.</p>
 <p>Note: Contrary to other events, such as the error boundary event, a signal boundary event does not only catch signal events thrown from the scope it is attached to. A signal event has a global scope (broadcast semantics), meaning that the signal can be thrown from any place, even from a different process instance.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&#34;boundary&#34;</span> <span class="na">attachedToRef=</span><span class="s">&#34;task&#34;</span> <span class="na">cancelActivity=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;alertSignal&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/boundaryEvent&gt;</span>
-</span></span></code></pre></div><h1 id="throwing-signal-events">Throwing Signal Events</h1>
-<h2 id="signal-intermediate-throwing-event">Signal Intermediate Throwing Event</h2>
+</span></span></code></pre></div>
+<h2 id="throwing-signal-events">Throwing Signal Events</h2>
+
+<h3 id="signal-intermediate-throwing-event">Signal Intermediate Throwing Event</h3>
 <p>A signal intermediate throwing event throws a signal event for a defined signal.</p>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-signal-intermediate-throw-event.png" /></div>
 
@@ -3311,14 +3327,16 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;intermediateThrowEvent</span> <span class="na">id=</span><span class="s">&#34;signal&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;newCustomerSignal&#34;</span> <span class="na">camunda:asyncBefore=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateThrowEvent&gt;</span>
-</span></span></code></pre></div><h2 id="signal-end-event">Signal End Event</h2>
+</span></span></code></pre></div>
+<h3 id="signal-end-event">Signal End Event</h3>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-signal-end-event.png" /></div>
 
 <p>A signal end event throws a signal event for a defined signal and the current path of execution is ended. It has the same behavior as a signal intermediate throwing event.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;endEvent</span> <span class="na">id=</span><span class="s">&#34;signal&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;newCustomerSignal&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/endEvent&gt;</span>
-</span></span></code></pre></div><h2 id="passing-variables">Passing Variables</h2>
+</span></span></code></pre></div>
+<h3 id="passing-variables">Passing Variables</h3>
 <p>It is possible to pass process variables from the signal-throwing process instance, to all of the signal-catching process instances. The data is copied into a signal-catching process instance when it is started with a Signal Start Event, or before it leaves the wait-state in a Signal Intermediate Catching Event.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;newCustomerSignal&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;extensionElements&gt;</span>
@@ -3353,7 +3371,8 @@
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;camunda:in</span> <span class="na">sourceExpression=</span><span class="s">&#34;${X + 5}&#34;</span> <span class="na">target=</span><span class="s">&#34;Z&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/signalEventDefinition&gt;</span>
-</span></span></code></pre></div><h2 id="passing-a-business-key">Passing a Business Key</h2>
+</span></span></code></pre></div>
+<h3 id="passing-a-business-key">Passing a Business Key</h3>
 <p>In addition to passing process variables to the signal-catching process instances, it is also possible to pass a Business Key. However, this Business Key passing can only be applied to process instances that use a Signal Start Event.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;signalEventDefinition</span> <span class="na">signalRef=</span><span class="s">&#34;newCustomerSignal&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;extensionElements&gt;</span>
@@ -3361,7 +3380,8 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/signalEventDefinition&gt;</span>
 </span></span></code></pre></div><p>The business key &ldquo;camunda:in&rdquo; element can be used in combination with the process variable passing &ldquo;camunda:in&rdquo; elements.</p>
-<h2 id="camunda-extensions-1">Camunda Extensions</h2>
+
+<h3 id="camunda-extensions-1">Camunda Extensions</h3>
 <p>The following extensions are supported for the Signal Intermediate and End Throwing Events:</p>
 <table class="table table-striped">
   <tr>
@@ -3383,7 +3403,8 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="additional-resources">Additional Resources</h1>
+
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="http://camunda.org/bpmn/reference.html#events-signal">Signal Events</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>
 </ul>

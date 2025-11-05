@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,10 +3192,12 @@
     <div class="col-xs-12 content-text">
       <p>Error events are events which are triggered by a defined error.</p>
 <div data-bpmn-diagram="../bpmn/event-error"></div>
-<h1 id="business-errors-vs-technical-errors">Business Errors vs. Technical Errors</h1>
+
+<h2 id="business-errors-vs-technical-errors">Business Errors vs. Technical Errors</h2>
 <p>A BPMN error is meant for business errors - which are different than technical exceptions. So, this is different than Java exceptions - which are, by default, handled in their own way.</p>
 <p>You might also want to check out the basics of <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/#transaction-boundaries">Threading and Transactions</a> in the <a href="/manual/2.0-ee/user-guide/">User Guide</a> first.</p>
-<h1 id="defining-an-error">Defining an Error</h1>
+
+<h2 id="defining-an-error">Defining an Error</h2>
 <p>An error event definition references an error element. The following is an example of an error end event, referencing an error declaration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;error</span> <span class="na">id=</span><span class="s">&#34;myError&#34;</span> <span class="na">errorCode=</span><span class="s">&#34;ERROR-OCCURED&#34;</span> <span class="na">name=</span><span class="s">&#34;ERROR-OCCURED&#34;</span><span class="nt">/&gt;</span>
@@ -3244,7 +3250,8 @@ The referencing error event definition must specify <a href="/manual/2.0-ee/refe
 </span></span><span class="line"><span class="cl">      <span class="na">expression=</span><span class="s">&#34;${externalTask.getErrorDetails().contains(&#39;address error found&#39;)}&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/serviceTask&gt;</span>
-</span></span></code></pre></div><h1 id="error-start-event">Error Start Event</h1>
+</span></span></code></pre></div>
+<h2 id="error-start-event">Error Start Event</h2>
 <p>An error start event can only be used to trigger an Event Sub-Process - it <strong>cannot</strong> be used to start a process instance. The error start event is always interrupting.</p>
 <div data-bpmn-diagram="../bpmn/event-subprocess-alternative1"></div>
 <p>Three optional attributes can be added to the error start event: <code>errorRef</code>, <code>camunda:errorCodeVariable</code> and <code>camunda:errorMessageVariable</code>:</p>
@@ -3269,10 +3276,13 @@ The referencing error event definition must specify <a href="/manual/2.0-ee/refe
 <li>The <code>camunda:errorMessageVariable</code> will contain the error message that was specified with the error.</li>
 </ul>
 <p><code>camunda:errorCodeVariable</code> and <code>camunda:errorMessageVariable</code> can be retrieved like any other process variable, but only if the attribute was set.</p>
-<h1 id="error-end-event">Error End Event</h1>
+
+<h2 id="error-end-event">Error End Event</h2>
 <p>When process execution arrives at an error end event, the current path of execution is ended and an error is thrown. This error can be caught by a matching intermediate error boundary event. In case no matching error boundary event is found, the execution semantics defaults to the none end event semantics.</p>
-<h2 id="camunda-extensions">Camunda Extensions</h2>
-<h3 id="error-event-definition">Error Event Definition</h3>
+
+<h3 id="camunda-extensions">Camunda Extensions</h3>
+
+<h4 id="error-event-definition">Error Event Definition</h4>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3296,7 +3306,8 @@ The referencing error event definition must specify <a href="/manual/2.0-ee/refe
     <td>&ndash;</td>
   </tr>
 </table>
-<h3 id="error-definition">Error Definition</h3>
+
+<h4 id="error-definition">Error Definition</h4>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3313,7 +3324,8 @@ The referencing error event definition must specify <a href="/manual/2.0-ee/refe
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="error-boundary-event">Error Boundary Event</h1>
+
+<h2 id="error-boundary-event">Error Boundary Event</h2>
 <p>An intermediate catching error event on the boundary of an activity, or error boundary event for short, catches errors that are thrown within the scope of the activity on which it is defined.</p>
 <p>Defining a error boundary event makes most sense on an embedded subprocess, or a call activity, as a subprocess creates a scope for all activities inside the subprocess. Errors are thrown by error end events. Such an error will propagate its parent scopes upwards until a scope is found on which a error boundary event is defined that matches the error event definition.</p>
 <p>When an error event is caught, the activity on which the boundary event is defined is destroyed, also destroying all current executions therein (e.g., concurrent activities, nested subprocesses, etc.). Process execution continues following the outgoing sequence flow of the boundary event.</p>
@@ -3340,14 +3352,17 @@ The referencing error event definition must specify <a href="/manual/2.0-ee/refe
 <li>If the errorCodeVariable is set, the error code can be retrieved using this variable.</li>
 <li>If the errorMessageVariable is set, the error message can be retrieved using this variable.</li>
 </ul>
-<h1 id="unhandled-bpmn-error">Unhandled BPMN Error</h1>
+
+<h2 id="unhandled-bpmn-error">Unhandled BPMN Error</h2>
 <p>It can happen that no catching boundary event was defined for an error event. The default behaviour in this case is to log information and end the current execution.
 This behaviour can be changed with <code>enableExceptionsAfterUnhandledBpmnError</code> property set to <code>true</code>
 (via the process engine configuration or the deployment descriptor) and Process Engine Exception will be thrown if unhandled BPMN Error occurs.</p>
-<h1 id="catch-and-re-throw-pattern">Catch and Re-Throw Pattern</h1>
+
+<h2 id="catch-and-re-throw-pattern">Catch and Re-Throw Pattern</h2>
 <p>An error can be handled by the error start event in the event sub process and the same error can be thrown from the event sub process to handle the error on the higher level scope (in the example  below, the error thrown from the Event Subprocess is handled by the error boundary event in the Subprocess).</p>
 <div data-bpmn-diagram="../bpmn/catchandthrowpattern"></div>
-<h2 id="additional-resources">Additional Resources</h2>
+
+<h3 id="additional-resources">Additional Resources</h3>
 <ul>
 <li><a href="http://camunda.org/bpmn/reference.html#events-error">Error Events</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>
 <li><a href="/manual/2.0-ee/user-guide/process-engine/incidents/">Incidents</a> in the <a href="/manual/2.0-ee/user-guide/">User Guide</a></li>

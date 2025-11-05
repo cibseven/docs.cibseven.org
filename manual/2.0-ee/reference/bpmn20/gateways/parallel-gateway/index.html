@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3242,7 +3246,8 @@
 </span></span></span></code></pre></div><p>When these two tasks are completed, the second parallel gateway joins the two executions and, as there is only one outgoing sequence flow, no concurrent paths of execution are created and only the Archive Order task is active.</p>
 <p>Note that a parallel gateway does not need to be &lsquo;balanced&rsquo; (i.e., a matching number of incoming/outgoing sequence flows for corresponding parallel gateways). A parallel gateway will simply wait for all incoming sequence flows and create a concurrent path of execution for each outgoing sequence flow, not influenced by other constructs in the process model. So, the following process is legal in BPMN 2.0:</p>
 <div data-bpmn-diagram="../bpmn/parallel-gateway-unbalanced"></div>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3268,7 +3273,8 @@
     </td>
   </tr>
 </table>
-<h1 id="additional-resources">Additional Resources</h1>
+
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="http://camunda.org/bpmn/reference.html#gateways-parallel-gateways">Parallel Gateways</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>
 </ul>

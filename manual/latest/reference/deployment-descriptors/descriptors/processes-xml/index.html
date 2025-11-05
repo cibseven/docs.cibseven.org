@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,11 +3192,14 @@
     <div class="col-xs-12 content-text">
       <p>The <code>processes.xml</code> file is deployed as part of a process application and is used for configuration of the deployment of BPMN 2.0 resource files. Additionally, it can be used to configure process engines which are started / stopped with the deployment of the application.</p>
 <p>See the <a href="/manual/latest/user-guide/process-applications/the-processes-xml-deployment-descriptor/">processes.xml</a> section of the <a href="/manual/latest/user-guide/">User Guide</a> for more details..</p>
-<h1 id="xml-schema-namespace">Xml Schema Namespace</h1>
+
+<h2 id="xml-schema-namespace">Xml Schema Namespace</h2>
 <p>The namespace for the processes.xml file is <code>http://www.camunda.org/schema/1.0/ProcessApplication</code>. The XSD file can be found in the <code>camunda-engine.jar</code> file.</p>
-<h1 id="empty-processesxml">Empty processes.xml</h1>
+
+<h2 id="empty-processesxml">Empty processes.xml</h2>
 <p>The <code>processes.xml</code> may be left blank (can be empty). In this case, default values are used. See the <a href="/manual/latest/user-guide/process-applications/the-processes-xml-deployment-descriptor/#empty-processes-xml">Empty processes.xml</a> section of the <a href="/manual/latest/user-guide/">User Guide</a> for more details.</p>
-<h1 id="example">Example</h1>
+
+<h2 id="example">Example</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-application</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/ProcessApplication&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span><span class="nt">&gt;</span>
@@ -3206,7 +3213,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-archive&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-application&gt;</span>
-</span></span></code></pre></div><h1 id="syntax-reference">Syntax Reference</h1>
+</span></span></code></pre></div>
+<h2 id="syntax-reference">Syntax Reference</h2>
 <table class="table table-striped">
   <tr>  
     <th>Tag name</th>

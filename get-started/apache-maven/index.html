@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -270,7 +272,8 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repository&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repositories&gt;</span>
 </span></span></code></pre></div><p>This repository will be essential if you want to use <code>7.22.0-cibseven</code> (<code>1.0</code>) transitional version of CIB seven. It is not available at Maven Cental repository.</p>
-<h1 id="cib-seven-bom-bill-of-materials">CIB seven BOM (Bill of Materials)</h1>
+
+<h2 id="cib-seven-bom-bill-of-materials">CIB seven BOM (Bill of Materials)</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencyManagement&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependencies&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
@@ -288,12 +291,14 @@
   <p>Please import the CIB seven BOM if you use multiple CIB seven projects. The BOM defines versions for all CIB seven projects. This way it is ensured that no incompatible versions are imported.</p>
 </div>
 
-<h1 id="cib-seven-engine">CIB seven Engine</h1>
+
+<h2 id="cib-seven-engine">CIB seven Engine</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="cib-seven-engine-spring-integration">CIB seven Engine Spring Integration</h1>
+</span></span></code></pre></div>
+<h2 id="cib-seven-engine-spring-integration">CIB seven Engine Spring Integration</h2>
 <p>The <code>cibseven-engine</code> Spring integration for Spring Framework 5:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
@@ -304,12 +309,14 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-spring-6<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="cib-seven-engine-cdi-integration">CIB seven Engine CDI Integration</h1>
+</span></span></code></pre></div>
+<h2 id="cib-seven-engine-cdi-integration">CIB seven Engine CDI Integration</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-cdi<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="cib-seven-dmn-engine-bom-bill-of-materials">CIB seven DMN Engine BOM (Bill of Materials)</h1>
+</span></span></code></pre></div>
+<h2 id="cib-seven-dmn-engine-bom-bill-of-materials">CIB seven DMN Engine BOM (Bill of Materials)</h2>
 <p>This BOM allows to use the DMN engine standalone without the BPMN engine and the rest of the CIB seven platform.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencyManagement&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependency&gt;</span>
@@ -320,20 +327,24 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencyManagement&gt;</span>
-</span></span></code></pre></div><h1 id="cib-seven-dmn">CIB seven DMN</h1>
+</span></span></code></pre></div>
+<h2 id="cib-seven-dmn">CIB seven DMN</h2>
 <p>This dependency allows to use DMN engine standalone without the BPMN engine and the rest of the CIB seven platform.
 It is not needed when using <code>cibseven-engine</code> because that already contains the DMN engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.dmn<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-dmn<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="process-application-ejb-client">Process Application EJB Client</h1>
+</span></span></code></pre></div>
+<h2 id="process-application-ejb-client">Process Application EJB Client</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.javaee<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-ejb-client<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="cib-seven-artifact-storage">CIB seven Artifact Storage</h1>
-<h2 id="community-edition">Community Edition</h2>
+</span></span></code></pre></div>
+<h2 id="cib-seven-artifact-storage">CIB seven Artifact Storage</h2>
+
+<h3 id="community-edition">Community Edition</h3>
 <p>The <a href="https://artifacts.cibseven.org/repository/public/">public</a> repository includes all public artifacts for the Community edition</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;repository&gt;</span>
@@ -344,7 +355,8 @@ It is not needed when using <code>cibseven-engine</code> because that already co
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/url&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repository&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
-</span></span></code></pre></div><h2 id="community-edition-1">Community+ Edition</h2>
+</span></span></code></pre></div>
+<h3 id="community-edition-1">Community+ Edition</h3>
 <p>The <a href="https://artifacts.cibseven.org/repository/private/">private</a> repository includes artifacts for the Community+ edition</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;repository&gt;</span>
@@ -355,7 +367,8 @@ It is not needed when using <code>cibseven-engine</code> because that already co
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/url&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repository&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
-</span></span></code></pre></div><h2 id="enterprise-edition">Enterprise Edition</h2>
+</span></span></code></pre></div>
+<h3 id="enterprise-edition">Enterprise Edition</h3>
 <p>The <a href="https://artifacts.cibseven.org/repository/enterprise-group/">enterprise-group</a> URL is a virtual repository, which aggregates a multitude of repositories.
 Those include customer enterprise artifacts and all public artifacts from <a href="https://artifacts.cibseven.com/repository/public/">public</a> to make builds easier if you need those dependencies.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
@@ -375,10 +388,12 @@ Those include customer enterprise artifacts and all public artifacts from <a hre
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;password&gt;</span>YOUR_PASSWORD<span class="nt">&lt;/password&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/server&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/servers&gt;</span>
-</span></span></code></pre></div><h2 id="browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</h2>
+</span></span></code></pre></div>
+<h3 id="browse-cib-seven-artifact-storage">Browse CIB seven Artifact Storage</h3>
 <p>In order to browse the CIB seven artifacts, here are the link you can use.</p>
 <p><a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/">https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/</a></p>
-<h1 id="other-cib-seven-modules">Other CIB seven Modules:</h1>
+
+<h2 id="other-cib-seven-modules">Other CIB seven Modules:</h2>
 <ul>
 <li><a href="/manual/latest/user-guide/dmn-engine/embed/#maven-coordinates">DMN Engine</a></li>
 <li><a href="/manual/latest/reference/spin">Spin</a></li>

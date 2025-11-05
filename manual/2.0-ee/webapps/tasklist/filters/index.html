@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3204,7 +3208,8 @@
 <li><strong>Criteria</strong> - Specify which tasks will be displayed when selecting the filter. A key and a value must be inserted. There are various keys which can be selected from the categories <em>Process Instance (ID, Business Key)</em>, <em>Process Definition (ID, Key, Name)</em>, <em>Case Instance (ID, Business Key)</em>, <em>Case Definition (ID, Key, Name)</em>, <em>Other (Process Instance state, Activity instance ID, Execution ID)</em>, <em>User/Group (Assignee, Owner, Candidate User or Group, Involved user, Unassigned, Delegation State)</em>, <em>Task (Definition Key, Name, Description, Priority)</em> and <em>Dates (Created date, Due date, Follow up date)</em>. Keys marked with a * accept expressions as value.</li>
 <li><strong>Variables</strong> - Specify which variables are displayed in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#filter-results">filter results</a> section of the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/">dashboard</a>. Setting variables here has no influence on which tasks are displayed. To set the variables, you need to insert a <em>Name</em>, which is the coded name of the variable, and a <em>Label</em>, which defines what the variable will be named in the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#filter-results">filter results</a>.</li>
 </ul>
-<h1 id="expressions-in-filters">Expressions in Filters</h1>
+
+<h2 id="expressions-in-filters">Expressions in Filters</h2>
 <p>Several of the filter criteria accept expressions as values. These expressions are written in <a href="http://juel.sourceforge.net/">JUEL</a>. In filters which are related to times and dates, you can use the dateTime class, which returns a <a href="http://www.joda.org/joda-time/">Joda-Time</a> DateTime object.</p>
 
 <div class="note bg-warning docs-warning">
@@ -3212,7 +3217,8 @@
   <p>Filter expressions can be abused to execute arbitrary code when the query is evaluated. It is therefore required that any user authorized to create filters is trusted in this respect. The default behavior of evaluating filter expressions can be deactivated in the process engine configuration. See the section on <a href="/manual/2.0-ee/user-guide/process-engine/securing-custom-code/">security considerations for custom code</a> for details.</p>
 </div>
 
-<h1 id="common-filters">Common Filters</h1>
+
+<h2 id="common-filters">Common Filters</h2>
 <p>In the table below we list some of the more common and useful filters that you can create in Tasklist and how to set them up.</p>
 <section class="row">
   <div class="col-md-12">

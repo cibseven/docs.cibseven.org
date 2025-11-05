@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3190,7 +3194,8 @@
 <p>It is useful if you have a parallel token flow in a process and you want to consume all tokens available in the same scope immediately.</p>
 <p>A terminate event on process instance level terminates the complete instance. On subprocess level the current scope and all contained processes instances will be terminated.</p>
 <div data-bpmn-diagram="../bpmn/event-terminate"></div>
-<h1 id="terminate-event-definition">Terminate Event Definition</h1>
+
+<h2 id="terminate-event-definition">Terminate Event Definition</h2>
 <p>A terminate event is modeled as an end event with an additional definition element to mark the termination:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;someProcess&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
@@ -3199,7 +3204,8 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;endEvent&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process&gt;</span>
-</span></span></code></pre></div><h1 id="camunda-extensions">Camunda Extensions</h1>
+</span></span></code></pre></div>
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3222,7 +3228,8 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h2 id="additional-resources">Additional Resources</h2>
+
+<h3 id="additional-resources">Additional Resources</h3>
 <ul>
 <li><a href="http://camunda.org/bpmn/reference.html#events-termination">Terminate Events</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>
 </ul>

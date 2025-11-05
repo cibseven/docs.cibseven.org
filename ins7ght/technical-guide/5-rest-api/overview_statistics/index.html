@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Overview Statistics API | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Overview Statistics API</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="overview-statistics-api">Overview Statistics API</h2>
+<p>The Overview Statistics API provides aggregated metrics and time-series data for process instances. All endpoints support filtering by process, version, and date range.</p>
+<p><strong>Base Path:</strong> <code>/overview</code></p>
+<hr>
+
+<h3 id="endpoints">Endpoints</h3>
+
+<h3 id="instance-count-endpoints">Instance Count Endpoints</h3>
+<p>These endpoints return aggregate counts and statistics as single values (Integer, Long, or Double).</p>
+
+<h4 id="get-overviewstarted-instances">GET /overview/started-instances</h4>
+<p>Returns the total count of process instances that were started within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/started-instances?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Process definition key</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Process version</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Start date (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>End date (ISO 8601)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">142</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewfinalized-instances">GET /overview/finalized-instances</h4>
+<p>Returns the total count of process instances that were finalized (completed, canceled, or terminated) within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/finalized-instances?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">135</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewsuccessful-instances">GET /overview/successful-instances</h4>
+<p>Returns the total count of process instances that completed successfully within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/successful-instances?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">128</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewavg-process-duration">GET /overview/avg-process-duration</h4>
+<p>Returns the average duration (in milliseconds) of process instances within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Long</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/avg-process-duration?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">3600000</span>
+</span></span></code></pre></div><p><strong>Note:</strong> The value is in milliseconds. In this example, 3,600,000ms = 1 hour.</p>
+<hr>
+
+<h4 id="get-overviewcanceled-instances-internally-terminated">GET /overview/canceled-instances-internally-terminated</h4>
+<p>Returns the count of process instances that were canceled due to internal termination within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/canceled-instances-internally-terminated?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">3</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewcanceled-instances-externally-terminated">GET /overview/canceled-instances-externally-terminated</h4>
+<p>Returns the count of process instances that were canceled due to external termination within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/canceled-instances-externally-terminated?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">4</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewerror-start-event-instances">GET /overview/error-start-event-instances</h4>
+<p>Returns the count of process instances that were triggered by error start events within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/error-start-event-instances?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">7</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewincident-instances">GET /overview/incident-instances</h4>
+<p>Returns the count of process instances that had incidents within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Integer</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/incident-instances?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">5</span>
+</span></span></code></pre></div><hr>
+
+<h3 id="user-task-endpoints">User Task Endpoints</h3>
+<p>These endpoints provide statistics related to user tasks within process instances.</p>
+
+<h4 id="get-overviewcompleted-user-tasks-percentage">GET /overview/completed-user-tasks-percentage</h4>
+<p>Returns the percentage of user tasks that were completed within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Double</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/completed-user-tasks-percentage?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mf">94.5</span>
+</span></span></code></pre></div><p><strong>Note:</strong> The value is a percentage (0-100). In this example, 94.5% of user tasks were completed.</p>
+<hr>
+
+<h4 id="get-overviewavg-user-task-duration">GET /overview/avg-user-task-duration</h4>
+<p>Returns the average duration (in milliseconds) of user tasks within the specified date range.</p>
+<p><strong>Response Type:</strong> <code>Long</code></p>
+<p><strong>Example Request:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /overview/avg-user-task-duration?processKey=order-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z
+</span></span></span></code></pre></div><p><strong>Parameters:</strong> Same as <code>/overview/started-instances</code></p>
+<p><strong>Example Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="mi">7200000</span>
+</span></span></code></pre></div><p><strong>Note:</strong> The value is in milliseconds. In this example, 7,200,000ms = 2 hours.</p>
+<hr>
+
+<h4 id="get-overviewgraphstarted-instances">GET /overview/graph/started-instances</h4>
+<p>Returns time-series data for started process instances.</p>
+<p><strong>Purpose:</strong> Get historical data showing when process instances were started, grouped by time intervals.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Process definition key</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Process version</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Start date (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>End date (ISO 8601)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">45</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704153600000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">52</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704240000000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">38</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Response Fields:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>date</code></td>
+          <td>long</td>
+          <td>Timestamp in milliseconds (Unix epoch)</td>
+      </tr>
+      <tr>
+          <td><code>totalInstances</code></td>
+          <td>int</td>
+          <td>Number of instances started at this time</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+<h4 id="get-overviewgraphfinalized-instances">GET /overview/graph/finalized-instances</h4>
+<p>Returns time-series data for finalized process instances.</p>
+<p><strong>Purpose:</strong> Get historical data showing when process instances were completed or terminated.</p>
+<p><strong>Parameters:</strong> Same as <code>/overview/graph/started-instances</code></p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">42</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704153600000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">48</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewgraphsuccessful-instances">GET /overview/graph/successful-instances</h4>
+<p>Returns time-series data for successfully completed process instances.</p>
+<p><strong>Purpose:</strong> Track process instances that completed without errors or cancellations.</p>
+<p><strong>Parameters:</strong> Same as <code>/overview/graph/started-instances</code></p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">40</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704153600000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">45</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewgraphcanceled-instances">GET /overview/graph/canceled-instances</h4>
+<p>Returns time-series data for canceled process instances.</p>
+<p><strong>Purpose:</strong> Track process instances that were canceled (internally or externally).</p>
+<p><strong>Parameters:</strong> Same as <code>/overview/graph/started-instances</code></p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704153600000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-overviewgraphincident-instances">GET /overview/graph/incident-instances</h4>
+<p>Returns time-series data for process instances with incidents.</p>
+<p><strong>Purpose:</strong> Track process instances that encountered errors or incidents.</p>
+<p><strong>Parameters:</strong> Same as <code>/overview/graph/started-instances</code></p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704153600000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><hr>
+
+<h3 id="usage-examples">Usage Examples</h3>
+
+<h4 id="get-overall-statistics">Get Overall Statistics</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-statistics-for-a-specific-process">Get Statistics for a Specific Process</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview?processKey=invoice-process&amp;version=1&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-statistics-for-a-date-range">Get Statistics for a Date Range</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview?processKey=invoice-process&amp;version=1&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z&#34;</span>
+</span></span></code></pre></div>
+<h4 id="get-started-instances-time-series">Get Started Instances Time Series</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview/graph/started-instances?processKey=invoice-process&amp;version=1&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z&#34;</span>
+</span></span></code></pre></div><hr>
+
+<h3 id="notes">Notes</h3>
+<ul>
+<li>All time values are in milliseconds</li>
+<li>Date parameters must be in ISO 8601 format with timezone</li>
+<li>Omitting <code>processKey</code> and <code>version</code> returns aggregated data for all processes</li>
+<li>The <code>version</code> parameter requires <code>processKey</code> to be specified</li>
+<li>Time-series data is aggregated by time intervals (typically daily)</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#instance-count-endpoints">Instance Count Endpoints</a>
+      <ul>
+        <li><a href="#get-overviewstarted-instances">GET /overview/started-instances</a></li>
+        <li><a href="#get-overviewfinalized-instances">GET /overview/finalized-instances</a></li>
+        <li><a href="#get-overviewsuccessful-instances">GET /overview/successful-instances</a></li>
+        <li><a href="#get-overviewavg-process-duration">GET /overview/avg-process-duration</a></li>
+        <li><a href="#get-overviewcanceled-instances-internally-terminated">GET /overview/canceled-instances-internally-terminated</a></li>
+        <li><a href="#get-overviewcanceled-instances-externally-terminated">GET /overview/canceled-instances-externally-terminated</a></li>
+        <li><a href="#get-overviewerror-start-event-instances">GET /overview/error-start-event-instances</a></li>
+        <li><a href="#get-overviewincident-instances">GET /overview/incident-instances</a></li>
+      </ul>
+    </li>
+    <li><a href="#user-task-endpoints">User Task Endpoints</a>
+      <ul>
+        <li><a href="#get-overviewcompleted-user-tasks-percentage">GET /overview/completed-user-tasks-percentage</a></li>
+        <li><a href="#get-overviewavg-user-task-duration">GET /overview/avg-user-task-duration</a></li>
+        <li><a href="#get-overviewgraphstarted-instances">GET /overview/graph/started-instances</a></li>
+        <li><a href="#get-overviewgraphfinalized-instances">GET /overview/graph/finalized-instances</a></li>
+        <li><a href="#get-overviewgraphsuccessful-instances">GET /overview/graph/successful-instances</a></li>
+        <li><a href="#get-overviewgraphcanceled-instances">GET /overview/graph/canceled-instances</a></li>
+        <li><a href="#get-overviewgraphincident-instances">GET /overview/graph/incident-instances</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage-examples">Usage Examples</a>
+      <ul>
+        <li><a href="#get-overall-statistics">Get Overall Statistics</a></li>
+        <li><a href="#get-statistics-for-a-specific-process">Get Statistics for a Specific Process</a></li>
+        <li><a href="#get-statistics-for-a-date-range">Get Statistics for a Date Range</a></li>
+        <li><a href="#get-started-instances-time-series">Get Started Instances Time Series</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

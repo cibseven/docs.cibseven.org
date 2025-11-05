@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,13 +3191,15 @@
 
     <div class="col-xs-12 content-text">
       <p>These buttons can be used to trigger error and escalation events in user tasks. They will submit all entered values and activate the corresponding boundary event. To learn more about error and escalation events, see our section about <a href="https://docs.camunda.org/manual/latest/reference/bpmn20/events/">events</a>.</p>
-<h2 id="error">Error</h2>
+
+<h3 id="error">Error</h3>
 <p>An Error Button can be bound to an error code and error message using the <code>cam-error-code</code> and <code>cam-error-message</code> directive.
 Providing an error message is optional.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">cam-error-code</span><span class="o">=</span><span class="s">&#34;bpmn-error-543&#34;</span>
 </span></span><span class="line"><span class="cl"> <span class="na">cam-error-message</span><span class="o">=</span><span class="s">&#34;anErrorMessage&#34;</span> <span class="p">/&gt;</span>
 </span></span></code></pre></div><p>In the example above, the button is bound to the error code <code>bpmn-error-543</code> with the message <code>anErrorMessage</code>.</p>
-<h2 id="escalation">Escalation</h2>
+
+<h3 id="escalation">Escalation</h3>
 <p>In a similar manner to the error button, an escalation button can be bound to an escalation code using the <code>cam-escalation-code</code> directive.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">cam-escalation-code</span><span class="o">=</span><span class="s">&#34;bpmn-escalation-123&#34;</span> <span class="p">/&gt;</span>
 </span></span></code></pre></div>

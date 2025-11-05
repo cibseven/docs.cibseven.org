@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3199,7 +3203,8 @@ Event Log</a>.</p>
 for decisions is created.</p>
 </div>
 
-<h1 id="query-for-evaluated-decisions">Query for evaluated Decisions</h1>
+
+<h2 id="query-for-evaluated-decisions">Query for evaluated Decisions</h2>
 <p>The History Service can be used to query for <code>HistoricDecisionInstances</code>. For
 example, use the following query to get all history entries for a decision
 definition with key <code>checkOrder</code> ordered by the time when the decision was
@@ -3257,7 +3262,8 @@ the query to retrieve the inputs and outputs from the result.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">includeInputs</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">includeOutputs</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="the-historic-decision-instance">The Historic Decision Instance</h1>
+</span></span></span></code></pre></div>
+<h2 id="the-historic-decision-instance">The Historic Decision Instance</h2>
 <p>The <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/engine/history/HistoricDecisionInstance">HistoricDecisionInstance</a>
  contains information about a single
 evaluation of a decision.</p>
@@ -3290,7 +3296,8 @@ an aggregator function, then the result of the aggregation can be retrieved by
 the <code>getCollectResultValue()</code> method.</p>
 <p>For more information on supported hit policies please see the <a href="/manual/latest/reference/dmn/decision-table/hit-policy/">DMN 1.3
 reference</a>.</p>
-<h2 id="historic-decision-input-instance">Historic Decision Input Instance</h2>
+
+<h3 id="historic-decision-input-instance">Historic Decision Input Instance</h3>
 <p>The <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/engine/history/HistoricDecisionInputInstance">HistoricDecisionInputInstance</a>
  represents one input of an
 evaluated decision (e.g., an input clause of a decision table).</p>
@@ -3310,7 +3317,8 @@ evaluated decision (e.g., an input clause of a decision table).</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TypedValue</span><span class="w"> </span><span class="n">typedValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getTypedValue</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Note that the value may be the result of a type transformation in case the
 input specifies a type.</p>
-<h2 id="historic-decision-output-instance">Historic Decision Output Instance</h2>
+
+<h3 id="historic-decision-output-instance">Historic Decision Output Instance</h3>
 <p>The <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/engine/history/HistoricDecisionOutputInstance">HistoricDecisionOutputInstance</a>
  represents one output entry of an
 evaluated decision. If the decision is implemented as decision table, the
@@ -3341,7 +3349,8 @@ for each output clause and matched rule.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">variableName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="na">getVariableName</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Note that the value may be the result of a type transformation in case the
 output specifies a type.</p>
-<h1 id="cockpit">Cockpit</h1>
+
+<h2 id="cockpit">Cockpit</h2>
 <p>You can audit the evaluated decision definitions in the <a href="/manual/latest/webapps/cockpit/dmn/">Cockpit</a> webapp.</p>
 
     </div>

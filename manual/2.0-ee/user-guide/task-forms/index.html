@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3194,7 +3198,8 @@
 <li><a href="#external-task-forms">External Task Forms</a> can be used to link to custom applications. The Form will not be embedded in Tasklist.</li>
 </ol>
 <p>If no form key is present, a <a href="#generic-task-forms">Generic Task Form</a> will be shown.</p>
-<h1 id="form-key-details">Form Key details</h1>
+
+<h2 id="form-key-details">Form Key details</h2>
 <p>Form keys that are used in Tasklist have the structure <code>FORM-TYPE:LOCATION:FORM.NAME</code>.</p>
 <table class="table table-striped">
   <tr>
@@ -3223,7 +3228,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;theTask&#34;</span> <span class="na">camunda:formKey=</span><span class="s">&#34;camunda-forms:deployment:forms/userTask.form&#34;</span>
 </span></span><span class="line"><span class="cl">          <span class="na">camunda:candidateUsers=</span><span class="s">&#34;John, Mary&#34;</span>
 </span></span><span class="line"><span class="cl">          <span class="na">name=</span><span class="s">&#34;my Task&#34;</span><span class="nt">&gt;</span>
-</span></span></code></pre></div><h1 id="embedded-task-forms">Embedded Task Forms</h1>
+</span></span></code></pre></div>
+<h2 id="embedded-task-forms">Embedded Task Forms</h2>
 <p>Embedded task forms are HTML and JavaScript forms. We provide more information about the creation of embedded forms in our <a href="/manual/2.0-ee/reference/forms/embedded-forms/">Embedded Task Forms Reference</a>.</p>
 <p>To add an embedded form to your application, simply create an HTML file and refer to it from a <a href="/manual/2.0-ee/reference/bpmn20/tasks/user-task/">UserTask</a> or a <a href="/manual/2.0-ee/reference/bpmn20/events/start-events/">StartEvent</a> in your process model. For example, you can create a <code>FORM_NAME.html</code> file containing the relevant content for your form, e.g., a simple form with two input fields:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;form&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;form&#34;</span><span class="p">&gt;</span>
@@ -3242,7 +3248,8 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>The form key for this file could be <code>embedded:deployment:FORM_NAME.html</code> or <code>embedded:app:forms/FORM_NAME.html</code>.</p>
-<h1 id="camunda-forms">Camunda Forms</h1>
+
+<h2 id="camunda-forms">Camunda Forms</h2>
 <p>Camunda Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in <code>.form</code> files.  You can find out how to build Camunda Forms in the <a href="https://docs.camunda.org/manual/latest/modeler/">Camunda Modeler documentation</a> or refer to the <a href="https://docs.camunda.io/docs/guides/utilizing-forms/">Camunda Forms Reference</a> to explore all configuration options for form elements.</p>
 <p><a href="/manual/2.0-ee/user-guide/process-engine/variables/">Process variables</a> are mapped to form fields where the field&rsquo;s key matches the variable name.</p>
 
@@ -3254,7 +3261,8 @@ Users can still submit any variables via APIs for form completion like the
 Forms can be used on top of the task completion API to render form fields and validate submitted values.</p>
 </div>
 
-<h2 id="form-reference">Form Reference</h2>
+
+<h3 id="form-reference">Form Reference</h3>
 <p>With Form References, Camunda Forms provide a flexible way of linking an element in a BPMN diagram to a form. To link a BPMN element (<a href="/manual/2.0-ee/reference/bpmn20/events/start-events/">StartEvent</a> or <a href="/manual/2.0-ee/reference/bpmn20/tasks/user-task/">UserTask</a>) to a Camunda Form, you have to specify the Id of the Camunda Form as the <code>camunda:formRef</code> attribute. Additionally, the <code>camunda:formRefBinding</code> attribute specifies which version of the Camunda Form to reference.</p>
 <p>Valid values are:</p>
 <ul>
@@ -3275,7 +3283,8 @@ Forms can be used on top of the task completion API to render form fields and va
 </span></span><span class="line"><span class="cl">    <span class="na">camunda:formRefBinding=</span><span class="s">&#34;version&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">camunda:formRefVersion=</span><span class="s">&#34;${formVersion}&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:userTask&gt;</span>
-</span></span></code></pre></div><h2 id="form-key">Form Key</h2>
+</span></span></code></pre></div>
+<h3 id="form-key">Form Key</h3>
 <p>As an alternative to <code>formRef</code> you can reference a Camunda Form file with a <code>deployment</code> or <code>app</code> <a href="/manual/2.0-ee/user-guide/task-forms/#form-key-details">form key</a>:</p>
 <ul>
 <li><code>camunda-forms:deployment:FORM_NAME.form</code></li>
@@ -3291,7 +3300,8 @@ Forms can be used on top of the task completion API to render form fields and va
 </figure>
 
 <p>From the form developers point of view, <code>formRef</code> offers more flexibility than <code>formKey</code> as they can be deployed independently from the process model.</p>
-<h2 id="process-variable-binding">Process Variable Binding</h2>
+
+<h3 id="process-variable-binding">Process Variable Binding</h3>
 <p>To define a default value for a form field, a process variable with the same name as the form field key needs to be defined. Local variables (e.g. created by defining an <a href="../process-engine/variables/#input-output-variable-mapping">Input Parameter</a> for the User Task) take precedence over process variables.</p>
 <figure class="image">
   <span><img
@@ -3307,7 +3317,8 @@ Forms can be used on top of the task completion API to render form fields and va
 <li>When the User Task has an Input Parameter defined with the same name as the form field key, then this local variable will be used. In this case, an <a href="../process-engine/variables/#input-output-variable-mapping">Output Parameter</a> needs to be defined to map the local variable to a process variable for usage in other process elements.</li>
 <li>When no variable exists with the same name as the form field key, then a new process variable will be created and gets the value from the submission.</li>
 </ul>
-<h2 id="dynamic-components">Dynamic Components</h2>
+
+<h3 id="dynamic-components">Dynamic Components</h3>
 <p>You can bind the available options of some component types (Select, Radio Buttons, Checklist, and Taglist) to a variable.
 Like this, Camunda Forms show available options dynamically based on process data (variables).</p>
 <p>To bind a variable to a dynamic component, define its name in Camunda Modeler&rsquo;s form builder in the Properties Panel under <strong>Options Source</strong> -&gt; <strong>Type</strong> -&gt; <strong>Input Data</strong> -&gt; <strong>Dynamic options</strong> -&gt; <strong>Input values key</strong> for the respective component.</p>
@@ -3331,7 +3342,8 @@ If a variable supposed to store the user selection for multi-select components (
 </span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span></code></pre></div><p>If you are about to prototype your application, you can also use the shortcut format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">[</span><span class="s2">&#34;Dynamic Value 2&#34;</span><span class="p">,</span> <span class="s2">&#34;Dynamic Value 2&#34;</span><span class="p">]</span>
-</span></span></code></pre></div><h2 id="deployment">Deployment</h2>
+</span></span></code></pre></div>
+<h3 id="deployment">Deployment</h3>
 <p>If you want to include your Camunda Form as part of the <code>deployment</code>, then you need to deploy the <code>.form</code> file in the same deployment as the respective <code>.bpmn</code> diagram - for example using the Camunda Modeler (since Modeler Version 5.0.0).</p>
 
 <div class="note bg-warning docs-warning">
@@ -3351,7 +3363,8 @@ placed inside the <code>configuration/resources/</code> directory are automatica
 </figure>
 
 <p>You can also include Camunda Forms from other deployments by using <a href="#form-reference">form references</a>.</p>
-<h1 id="external-task-forms">External Task Forms</h1>
+
+<h2 id="external-task-forms">External Task Forms</h2>
 
 <div class="note bg-info docs-info">
   <h3>Using Task Forms outside of CIB seven Tasklist</h3>
@@ -3371,9 +3384,11 @@ placed inside the <code>configuration/resources/</code> directory are automatica
   <p><a href="/manual/2.0-ee/user-guide/task-forms/jsf-task-forms/">How to add JSF Forms to your process application</a></p>
 </div>
 
-<h1 id="other-task-forms">Other Task Forms</h1>
+
+<h2 id="other-task-forms">Other Task Forms</h2>
 <p>These Task forms do not use the form-key attribute to be referenced. They are not recommended for production use and are intended for testing and development purposes.</p>
-<h2 id="generic-task-forms">Generic Task Forms</h2>
+
+<h3 id="generic-task-forms">Generic Task Forms</h3>
 <p>The generic form will be used whenever you have not added a dedicated form for a <a href="/manual/2.0-ee/reference/bpmn20/tasks/user-task/">UserTask</a> or a <a href="/manual/2.0-ee/reference/bpmn20/events/start-events/">StartEvent</a>.</p>
 <figure class="image">
   <span><img
@@ -3386,7 +3401,8 @@ placed inside the <code>configuration/resources/</code> directory are automatica
 <p>Hit the <em>Add a variable</em> button to add a variable that will be passed to the process instance upon task completion. State a variable name, select the type and enter the desired value. Enter as many variables as you need.
 After hitting the <em>Complete</em> button, the process instance contains the entered values. Generic task forms can be very helpful during the development stage, so you do not need to implement all task forms before you can run a workflow. For debugging and testing this concept has many benefits as well.</p>
 <p>You can also retrieve already existing variables of the process instance by clicking the <em>Load Variables</em> button.</p>
-<h2 id="generated-task-forms">Generated Task Forms</h2>
+
+<h3 id="generated-task-forms">Generated Task Forms</h3>
 
 <div class="note bg-info docs-info">
   <h3>Camunda Forms or Generated Task Forms?</h3>
@@ -3441,7 +3457,8 @@ After hitting the <em>Complete</em> button, the process instance contains the en
     </tr>
   </tbody>
 </table>
-<h3 id="form-fields">Form Fields</h3>
+
+<h4 id="form-fields">Form Fields</h4>
 
 <div class="note bg-warning docs-warning">
   <h3>Process variables access</h3>
@@ -3484,7 +3501,8 @@ Form fields can be used on top of the task completion API to render forms and va
     </tr>
   </tbody>
 </table>
-<h3 id="form-field-validation">Form Field Validation</h3>
+
+<h4 id="form-field-validation">Form Field Validation</h4>
 <p>Validation can be used for specifying frontend and backend validation of form fields. CIB seven provides a set of built-in form field validators and an extension point for plugging in custom validators.</p>
 <p>Validation can be configured for each form field in the BPMN 2.0 XML:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:formField</span>

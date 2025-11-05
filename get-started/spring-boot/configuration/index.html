@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -261,7 +263,8 @@
       <p>The CIB seven Spring Boot Application created in previous step uses the default and best practice configuration, embedded in a starter.
 There are several ways to customize or override the configuration. The easiest is to provide a set of parameters in the <code>application.yaml</code> (or <code>application.properties</code>) file.
 The full list of supported configuration parameters can be found <a href="/manual/latest/user-guide/spring-boot-integration/configuration/#cib-seven-engine-properties">here</a>.</p>
-<h2 id="customize-configuration">Customize Configuration</h2>
+
+<h3 id="customize-configuration">Customize Configuration</h3>
 <p>Let&rsquo;s create an <code>application.yaml</code> file in the <code>src/main/resources</code> folder with the following content:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">admin-user</span><span class="p">:</span><span class="w">
@@ -298,7 +301,8 @@ The full list of supported configuration parameters can be found <a href="/manua
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># do not use this jwtSecret value in production</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">cibseven.webclient.authentication.jwtSecret=RtURHZ7SQYfLoX902wcjlvduW2qe9g0bjMUczmffjiTjzU9phbv3mK54zHMqeGK6cqgoEBTIUE6RqwvemSqbpD40qUPXVRElvDHGhn4OAEfjeEP2ANah8GJejSA08E820mForcQHBmediqg2DzIrxnDXyf2</span><span class="w">
 </span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication. However, it is not sufficient on its own: an authentication filter must also be applied.</p>
-<h2 id="add-authentication-filter">Add Authentication filter</h2>
+
+<h3 id="add-authentication-filter">Add Authentication filter</h3>
 <p>To enable JWT-based authentication, we need to register an authentication filter as a @Bean and configure it to use the Composite authentication provider. This filter will intercept requests to the specified endpoints.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.loanapproval</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -365,7 +369,8 @@ The full list of supported configuration parameters can be found <a href="/manua
 </span></span></span><span class="line"><span class="cl"><span class="w">  	  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extend</span><span class="p">).</span><span class="na">replaceFirst</span><span class="p">(</span><span class="s">&#34;^(\\/+|([^/]))&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;/$2&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="build-and-run">Build and Run</h2>
+</span></span></span></code></pre></div>
+<h3 id="build-and-run">Build and Run</h3>
 <p>Now you can rebuild and rerun the application.
 Make sure to run
 <code>mvn clean</code> before running <code>mvn install</code> again.</p>

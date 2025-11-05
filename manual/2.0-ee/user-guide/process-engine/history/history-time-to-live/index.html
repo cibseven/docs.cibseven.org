@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,14 +3197,16 @@
 <li>Set a default HTTL via an engine configuration.</li>
 <li>Switch off the HTTL check via an engine configuration if history cleanup is not used.</li>
 </ul>
-<h2 id="values">Values</h2>
+
+<h3 id="values">Values</h3>
 <p>Process instances are only cleaned up if their corresponding definition has a valid time to live (TTL). Use the <code>historyTimeToLive</code> extension attribute of the process definition to define the TTL for all its instances:</p>
 <p><code>&lt;process id=&quot;oneTaskProcess&quot; name=&quot;The One Task Process&quot; isExecutable=&quot;true&quot; camunda:historyTimeToLive=&quot;5&quot;&gt;&lt;/process&gt;</code></p>
 <p>TTL can also be defined in ISO-8601 date format. The function only accepts the notation to define the number of days.</p>
 <p><code>&lt;process id=&quot;oneTaskProcess&quot; name=&quot;The One Task Process&quot; isExecutable=&quot;true&quot; camunda:historyTimeToLive=&quot;P5D&quot;&gt;&lt;/process&gt;</code></p>
 <p>Refer to the <a href="https://docs.cibseven.org/manual/latest/user-guide/process-engine/history/history-cleanup/#process-decision-case-definitions">CIB seven documentation regarding case definitions</a> for additional details.</p>
 <p>Time to live must be defined under <strong>History cleanup</strong> in the properties panel on the right side of the screen.</p>
-<h2 id="references">References</h2>
+
+<h3 id="references">References</h3>
 <ul>
 <li><a href="https://docs.cibseven.org/manual/latest/user-guide/process-engine/history/">History documentation</a></li>
 </ul>

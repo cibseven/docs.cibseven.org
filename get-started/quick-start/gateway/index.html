@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,7 +261,8 @@
 
     <div class="col-xs-12 content-text">
       <p>In this section, you&rsquo;ll learn how to make your process more dynamic by using BPMN 2.0 <em>Exclusive Gateways</em>.</p>
-<h1 id="add-two-gateways">Add Two Gateways</h1>
+
+<h2 id="add-two-gateways">Add Two Gateways</h2>
 <p>We want to modify our process so that it&rsquo;s more dynamic.</p>
 <p>To do so, open the process in the Camunda Modeler.</p>
 <p>Next, from the Modeler&rsquo;s left-hand menu, select the gateway shape (diamond) and drag it into position between the Start Event and the Service Task. Use the create space tool again as needed. Move the User Task down and add another Gateway after it. Lastly, adjust the Sequence Flows so that the model looks like this:
@@ -276,7 +279,8 @@
        /></span>
 </figure>
 </p>
-<h1 id="configure-the-gateways">Configure the Gateways</h1>
+
+<h2 id="configure-the-gateways">Configure the Gateways</h2>
 <p>Next, open the properties panel and select the <code>&lt;1000 €</code> Sequence Flow after the Gateway on the canvas. This will update the selection in the properties panel.
 Scroll to the property named <code>Condition Type</code> and change it to <code>Expression</code>. Then input <code>${amount&lt;1000}</code> as the Expression.
 We are using the <a href="https://docs.camunda.org/manual/latest/user-guide/process-engine/expression-language/">Java Unified Expression Language</a> to evaluate the Gateway.</p>
@@ -308,9 +312,11 @@ We are using the <a href="https://docs.camunda.org/manual/latest/user-guide/proc
        /></span>
 </figure>
 </p>
-<h1 id="deploy-the-process">Deploy the Process</h1>
+
+<h2 id="deploy-the-process">Deploy the Process</h2>
 <p>Use the <code>Deploy</code> Button in the Camunda Modeler to deploy the updated process to Camunda.</p>
-<h1 id="work-on-the-task">Work on the Task</h1>
+
+<h2 id="work-on-the-task">Work on the Task</h2>
 <p>Go to Tasklist (<a href="http://localhost:8080/camunda/app/tasklist/">http://localhost:8080/camunda/app/tasklist/</a>) and log in with the credentials &ldquo;demo / demo&rdquo;.
 Click on the <button class="btn btn-xs">
   <i class="glyphicon glyphicon-list-alt" ></i> Start process

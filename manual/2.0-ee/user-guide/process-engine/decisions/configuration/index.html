@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,7 +3197,8 @@
 <li><a href="#configure-the-dmn-engine-using-spring-xml">Declarative via XML configuration</a></li>
 </ul>
 <p>In the examples the default expression language of the input expressions is set to <code>groovy</code>. A list of all possible configurations can be found in the <a href="/manual/2.0-ee/user-guide/dmn-engine/embed/#configuration-of-the-dmn-engine">DMN Engine Configuration</a> section.</p>
-<h1 id="configure-the-dmn-engine-using-java-api">Configure the DMN Engine using Java API</h1>
+
+<h2 id="configure-the-dmn-engine-using-java-api">Configure the DMN Engine using Java API</h2>
 <p>First, you need to create a <a href="/manual/2.0-ee/user-guide/process-engine/process-engine-bootstrapping/#bootstrap-a-process-engine-using-the-java-api">ProcessEngineConfiguration</a> object for the process engine and a <code>DmnEngineConfiguration</code> object for the DMN engine. Now you can configure the DMN engine using the <code>DmnEngineConfiguration</code> object. When you are done, set the object on the <code>ProcessEngineConfiguration</code> and call <code>buildProcessEngine()</code> to create the process engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// create the process engine configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProcessEngineConfigurationImpl</span><span class="w"> </span><span class="n">processEngineConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">// ...</span><span class="w">
@@ -3211,7 +3216,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// build the process engine which includes the DMN engine</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">processEngineConfiguration</span><span class="p">.</span><span class="na">buildProcessEngine</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="configure-the-dmn-engine-using-spring-xml">Configure the DMN Engine using Spring XML</h1>
+</span></span></span></code></pre></div>
+<h2 id="configure-the-dmn-engine-using-spring-xml">Configure the DMN Engine using Spring XML</h2>
 <p>Follow the <a href="/manual/2.0-ee/user-guide/process-engine/process-engine-bootstrapping/#configure-process-engine-using-spring-xml">instructions</a> to create a base <code>camunda.cfg.xml</code> XML configuration for the process engine.</p>
 <p>Add a new configuration bean of class <code>org.cibseven.bpm.dmn.engine.impl.DefaultDmnEngineConfiguration</code>. Configure the DMN engine using the bean and set it as <code>dmnEngineConfiguration</code> property on the <code>processEngineConfiguration</code> bean.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span> 

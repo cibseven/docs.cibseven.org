@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,9 +3191,11 @@
 
     <div class="col-xs-12 content-text">
       <p>This page explains how to configure the full distribution for Tomcat Application Server.</p>
-<h2 id="ldap">LDAP</h2>
+
+<h3 id="ldap">LDAP</h3>
 <p>In order to setup LDAP for the Tomcat distribution, you have to perform the following steps:</p>
-<h3 id="add-the-ldap-library">Add the LDAP Library</h3>
+
+<h4 id="add-the-ldap-library">Add the LDAP Library</h4>
 <p>Make sure the <code>camunda-identity-ldap-$PLATFORM_VERSION.jar</code> is present in the
 <code>$TOMCAT_DISTRIBUTION/lib/</code> folder.</p>
 
@@ -3198,7 +3204,8 @@
   <p>Note: If you use the pre-packaged distribution, the ldap plugin is already present and you can skip this step.</p>
 </div>
 
-<h3 id="adjust-the-process-engine-configuration">Adjust the Process Engine Configuration</h3>
+
+<h4 id="adjust-the-process-engine-configuration">Adjust the Process Engine Configuration</h4>
 <p>Edit the file <code>bpm-platform.xml</code> located inside the folder <code>$TOMCAT_HOME/conf</code> and add the <a href="/manual/latest/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Provider Plugin</a> and the <a href="/manual/latest/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/BpmPlatform&#34;</span>
@@ -3247,7 +3254,8 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
 </span></span></code></pre></div><p>The <code>administratorUserName</code> property should contain the user id of the LDAP user you want to grant administrator authorizations to. You can then use this user to log in to the web application and grant authorizations to additional users.</p>
 <p>See our user guide for complete documentation on the <a href="/manual/latest/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Provider Plugin</a> and the <a href="/manual/latest/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>.</p>
-<h2 id="hal-resource-caching">HAL Resource Caching</h2>
+
+<h3 id="hal-resource-caching">HAL Resource Caching</h3>
 <p>If you use LDAP as Indentity Provider, you should consider <a href="/manual/latest/reference/rest/overview/hal/#caching-of-hal-relations">activating caching</a> of
 Users and Groups in the Camunda webapplication. In order to activate this, add the following
 configuration to the <code>web.xml</code> file of Camunda webapplication
@@ -3285,10 +3293,12 @@ configuration to the <code>web.xml</code> file of Camunda webapplication
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/web-app&gt;</span>
-</span></span></code></pre></div><h2 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h2>
+</span></span></code></pre></div>
+<h3 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h3>
 <p>The REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. It is configured as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
 <p>By default it is switched off, but you can activate it by adding a servlet filter under <code>WEB-INF/web.xml</code> as described in the <a href="/manual/latest/reference/rest/overview/authentication/#composite-authentication">Authentication</a> section.</p>
-<h2 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h2>
+
+<h3 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h3>
 <p>To configure the <strong>Session Cookie</strong>, you can adjust the deployment descriptor of the Web applications.
 You can find it in the <code>WEB-INF/web.xml</code> in the following section:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
@@ -3386,7 +3396,8 @@ The following list describes all possible parameters you can use for the filter 
   </tr>
 </table>
 <p>Please also see the detailed overview about the <a href="/manual/latest/webapps/shared-options/cookie-security/">Cookie Security</a>.</p>
-<h2 id="security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</h2>
+
+<h3 id="security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</h3>
 <p>To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
 to be adjusted. You can find it under <code>WEB-INF/web.xml</code>.</p>
 <p>Please watch out for the following section:</p>

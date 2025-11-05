@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3202,7 +3206,8 @@ demonstrate how to create a rather complex process with 5 tasks and 2 gateways w
 <li>end event</li>
 <li>subprocess</li>
 </ul>
-<h1 id="create-a-process-with-the-fluent-builder-api">Create a Process With the Fluent Builder API</h1>
+
+<h2 id="create-a-process-with-the-fluent-builder-api">Create a Process With the Fluent Builder API</h2>
 <p>To create an empty model instance with a new process the method <code>Bpmn.createProcess()</code> is used. After this,
 you can add as many tasks and gateways as you like. At the end you must call <code>done()</code> to return the generated
 model instance. For example, a simple process with one user task can be created like this:</p>
@@ -3336,7 +3341,8 @@ process building or you can detach it and create flow elements of the subprocess
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">throwEventDefinitionDone</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">endEvent</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">done</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="extend-a-process-with-the-fluent-builder-api">Extend a Process With the Fluent Builder API</h1>
+</span></span></span></code></pre></div>
+<h2 id="extend-a-process-with-the-fluent-builder-api">Extend a Process With the Fluent Builder API</h2>
 <p>With the fluent builder API you can not only create processes, you can also extend existing processes.</p>
 <p>For example, imagine a process containing a parallel gateway with the id <code>gateway</code>. You now want to
 add another execution path to it for a new service task which has to be executed every time.</p>
@@ -3360,8 +3366,10 @@ you want to add a script task and a user task between these two.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">scriptTask</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">userTask</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">connectTo</span><span class="p">(</span><span class="n">serviceTask</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><h1 id="common-model-patterns">Common Model Patterns</h1>
-<h2 id="controlling-transaction-boundaries">Controlling Transaction Boundaries</h2>
+</span></span></span></code></pre></div>
+<h2 id="common-model-patterns">Common Model Patterns</h2>
+
+<h3 id="controlling-transaction-boundaries">Controlling Transaction Boundaries</h3>
 <p>The transaction boundaries of a process created with the fluent builder API can be controlled using the <code>camundaAsyncBefore()</code> and <code>camundaAsyncAfter()</code> methods offered for various process constructs.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">BpmnModelInstance</span><span class="w"> </span><span class="n">modelInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Bpmn</span><span class="p">.</span><span class="na">createProcess</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">startEvent</span><span class="p">()</span><span class="w">
@@ -3382,7 +3390,8 @@ you want to add a script task and a user task between these two.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">multiInstanceDone</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">endEvent</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">done</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="generation-of-diagram-interchange">Generation of Diagram Interchange</h1>
+</span></span></span></code></pre></div>
+<h2 id="generation-of-diagram-interchange">Generation of Diagram Interchange</h2>
 <p>To render the process, BPMN diagram elements are necessary. The fluent builder generates
 BPMN Shapes and BPMN Edges and places them automatically for flow nodes and sequence flows.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">final</span><span class="w"> </span><span class="n">BpmnModelInstance</span><span class="w"> </span><span class="n">myProcess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Bpmn</span><span class="p">.</span><span class="na">createExecutableProcess</span><span class="p">(</span><span class="s">&#34;process-payments&#34;</span><span class="p">)</span><span class="w">

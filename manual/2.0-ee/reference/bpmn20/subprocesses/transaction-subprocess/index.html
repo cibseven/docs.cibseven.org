@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3241,7 +3245,8 @@
 </div>
 
 <p>Consistency on top of ACID transactions and optimistic concurrency: A BPMN transaction guarantees consistency in the sense that either all activities compete successfully, or, if some activity cannot be performed, the effects of all other successful activities are compensated. So either way, we end up in a consistent state. However, it is important to recognize that in CIB seven, the consistency model for BPMN transactions is superposed on top of the consistency model for process execution. The CIB seven engine executes processes in a transactional way. Concurrency is addressed using optimistic locking. In the engine BPMN error, cancel and compensation events are built on top of the same ACID transactions and optimistic locking. For example, a cancel end event can only trigger compensation if it is actually reached. It is not reached if some undeclared exception is thrown by a service task before. The effects of a compensation handler can not be committed if some other participant in the underlying ACID transaction sets the transaction to the state rollback-only. Also, when two concurrent executions reach a cancel end event, compensation might be triggered twice and fail with an optimistic locking exception. All of this is to say that when implementing BPMN transactions in the core engine, the same set of rules apply as when implementing &ldquo;ordinary&rdquo; processes and subprocesses. So, to effectively guarantee consistency, it is important to implement processes in a way that takes the optimistic, transactional execution model into consideration. For further information, see the documentation on <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/#optimistic-locking">optimistic locking</a>.</p>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3267,7 +3272,8 @@
     </td>
   </tr>
 </table>
-<h1 id="additional-resources">Additional Resources</h1>
+
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/">Transactions in Processes</a></li>
 </ul>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3220,7 +3224,8 @@ rule is satisfied and the decision result contains the output entries
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/decisionTable&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/decision&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
-</span></span></code></pre></div><h1 id="input-entry-condition">Input Entry (Condition)</h1>
+</span></span></code></pre></div>
+<h2 id="input-entry-condition">Input Entry (Condition)</h2>
 <figure class="image no-lightbox">
   <span><img
       src="../img/input-entry.png"
@@ -3236,7 +3241,8 @@ Each input entry contains an expression in a <code>text</code> element as child 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;inputEntry</span> <span class="na">id=</span><span class="s">&#34;inputEntry41&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;text&gt;</span>&#34;Spring&#34;<span class="nt">&lt;/text&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/inputEntry&gt;</span>
-</span></span></code></pre></div><h2 id="expression-language-of-an-input-entry">Expression Language of an Input Entry</h2>
+</span></span></code></pre></div>
+<h3 id="expression-language-of-an-input-entry">Expression Language of an Input Entry</h3>
 <p>The expression language of the input entry can be specified by the
 <code>expressionLanguage</code> attribute on the <code>inputEntry</code> XML element. The supported
 expression languages are listed in the <a href="/manual/2.0-ee/user-guide/dmn-engine/expressions-and-scripts/#supported-expression-languages">User Guide</a>.</p>
@@ -3257,7 +3263,8 @@ language, which is set on the <code>definitions</code> XML element, is used.</p>
 is used instead. The default expression language for input entries is <a href="/manual/2.0-ee/reference/dmn/feel/">FEEL</a>.
 Please refer to the <a href="/manual/2.0-ee/user-guide/dmn-engine/expressions-and-scripts/#default-expression-languages">User Guide</a> to read more about expression
 languages.</p>
-<h1 id="output-entry-conclusion">Output Entry (Conclusion)</h1>
+
+<h2 id="output-entry-conclusion">Output Entry (Conclusion)</h2>
 <figure class="image no-lightbox">
   <span><img
       src="../img/output-entry.png"
@@ -3272,7 +3279,8 @@ an <code>outputEntry</code> XML element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;outputEntry</span> <span class="na">id=</span><span class="s">&#34;outputEntry4&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;text&gt;</span>&#34;Steak&#34;<span class="nt">&lt;/text&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/outputEntry&gt;</span>
-</span></span></code></pre></div><h2 id="expression-language-of-an-output-entry">Expression Language of an Output Entry</h2>
+</span></span></code></pre></div>
+<h3 id="expression-language-of-an-output-entry">Expression Language of an Output Entry</h3>
 <p>The expression language of the expression can be specified by the
 <code>expressionLanguage</code> attribute on the <code>outputEntry</code> XML element. The supported
 expression languages are listed in the <a href="/manual/2.0-ee/user-guide/dmn-engine/expressions-and-scripts/#supported-expression-languages">User Guide</a>.</p>
@@ -3293,8 +3301,10 @@ language, which is set on the <code>definitions</code> XML element, is used.</p>
 is used instead. The default expression language for output entries is JUEL.
 Please refer to the <a href="/manual/2.0-ee/user-guide/dmn-engine/expressions-and-scripts/#default-expression-languages">User Guide</a> to read more about expression
 languages.</p>
-<h1 id="empty-entries">Empty Entries</h1>
-<h2 id="empty-input-entry">Empty Input Entry</h2>
+
+<h2 id="empty-entries">Empty Entries</h2>
+
+<h3 id="empty-input-entry">Empty Input Entry</h3>
 <p>In case an input entry is irrelevant for a rule, the expression is empty, which
 is always satisfied.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;inputEntry</span> <span class="na">id=</span><span class="s">&#34;inputEntry41&#34;</span><span class="nt">&gt;</span>
@@ -3302,16 +3312,19 @@ is always satisfied.</p>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/inputEntry&gt;</span>
 </span></span></code></pre></div><p>If FEEL is used as expression language, then an empty input entry is represented
 by a <code>-</code>. Otherwise, the expression is empty.</p>
-<h2 id="empty-output-entry">Empty Output Entry</h2>
+
+<h3 id="empty-output-entry">Empty Output Entry</h3>
 <p>If the output entry is empty, then the output is ignored and not part of the
 decision table result.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;outputEntry</span> <span class="na">id=</span><span class="s">&#34;outputEntry4&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;text/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/outputEntry&gt;</span>
-</span></span></code></pre></div><h2 id="both-entries-empty">Both Entries Empty</h2>
+</span></span></code></pre></div>
+<h3 id="both-entries-empty">Both Entries Empty</h3>
 <p>In case of a rule has an empty input and output entry, the outcome of evaluation
 will be determined with precedence of the empty input outcome.</p>
-<h1 id="description">Description</h1>
+
+<h2 id="description">Description</h2>
 <figure class="image no-lightbox">
   <span><img
       src="../img/description.png"

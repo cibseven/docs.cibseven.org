@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3224,20 +3228,24 @@ instance migration</li>
 <li>Monitor job: after the seed job finished, it monitors the progress of the
 batch execution and completion</li>
 </ul>
-<h1 id="api">API</h1>
+
+<h2 id="api">API</h2>
 <p>The following gives an overview of the Java API for batches.</p>
-<h2 id="creating-a-batch">Creating a Batch</h2>
+
+<h3 id="creating-a-batch">Creating a Batch</h3>
 <p>A batch is created by executing a process engine command asynchronously.
 You can find a list of currently supported batch types in the <a href="/manual/2.0-ee/user-guide/process-engine/batch-operations/">Batch operations</a>.
 The Java API can be used to create Batch command. Refer to specific commands for exact usage examples.</p>
-<h2 id="query-a-batch">Query a Batch</h2>
+
+<h3 id="query-a-batch">Query a Batch</h3>
 <p>You can query a running batch by the id and the type, for example to query
 for all running process instance migration batches.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Batch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">migrationBatches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createBatchQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">type</span><span class="p">(</span><span class="n">Batch</span><span class="p">.</span><span class="na">TYPE_PROCESS_INSTANCE_MIGRATION</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="batch-statistics">Batch Statistics</h2>
+</span></span></span></code></pre></div>
+<h3 id="batch-statistics">Batch Statistics</h3>
 <p>You can query for statistics of batches by using the management service.
 The batch statistics will contain information about the remaining,
 completed and failed batch execution jobs.</p>
@@ -3245,7 +3253,8 @@ completed and failed batch execution jobs.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createBatchStatisticsQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">type</span><span class="p">(</span><span class="n">Batch</span><span class="p">.</span><span class="na">TYPE_PROCESS_INSTANCE_MIGRATION</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="history-of-a-batch">History of a Batch</h2>
+</span></span></span></code></pre></div>
+<h3 id="history-of-a-batch">History of a Batch</h3>
 <p>For the <a href="/manual/2.0-ee/user-guide/process-engine/history/history-configuration/#choose-a-history-level">history level</a> <code>FULL</code> a historic batch entry is created. You
 can query it using the history service.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HistoricBatch</span><span class="w"> </span><span class="n">historicBatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getHistoryService</span><span class="p">()</span><span class="w">
@@ -3263,7 +3272,8 @@ definition id.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">orderByTimestamp</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>You can make a configuration for <a href="/manual/2.0-ee/user-guide/process-engine/history/history-cleanup/#history-time-to-live-for-batch-operations">history cleanup</a> of the finished historic batch operations.</p>
-<h2 id="suspend-a-batch">Suspend a Batch</h2>
+
+<h3 id="suspend-a-batch">Suspend a Batch</h3>
 <p>To pause the execution of a batch and all corresponding jobs, a batch
 can be suspended using the management service.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
@@ -3272,7 +3282,8 @@ can be suspended using the management service.</p>
 service.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">activateBatchById</span><span class="p">(</span><span class="s">&#34;myBatch&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="delete-a-batch">Delete a Batch</h2>
+</span></span></span></code></pre></div>
+<h3 id="delete-a-batch">Delete a Batch</h3>
 <p>A running batch can be deleted using the management service.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Delete a batch preserving the history of the batch</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
@@ -3292,7 +3303,8 @@ to suspend the batch before deleting it.
 See the <a href="#suspend-a-batch">Suspend a Batch</a> section for details.</p>
 </div>
 
-<h2 id="priority-of-a-batch">Priority of a Batch</h2>
+
+<h3 id="priority-of-a-batch">Priority of a Batch</h3>
 <p>As all batch jobs are executed using the job executor, it is possible to use the
 <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/#job-prioritization">job prioritization</a> feature to adjust the priority of batch jobs. The
 default batch job priority is set by the process engine configuration
@@ -3306,12 +3318,15 @@ using the management service.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setOverridingJobPriorityForJobDefinition</span><span class="p">(</span><span class="n">batchJobDefinitionId</span><span class="p">,</span><span class="w"> </span><span class="n">100</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="operation-log">Operation log</h2>
+</span></span></span></code></pre></div>
+<h3 id="operation-log">Operation log</h3>
 <p>Please note that a user operation log is written for Batch creation itself only, execution
 of the seed job as well as individual jobs that perform operations are performed by Job Executor
 and therefore are not considered to be user operations.</p>
-<h1 id="job-definitions">Job Definitions</h1>
-<h2 id="seed-job">Seed Job</h2>
+
+<h2 id="job-definitions">Job Definitions</h2>
+
+<h3 id="seed-job">Seed Job</h3>
 <p>A batch initially creates a seed job. This seed will be repeatedly executed to
 create all batch execution jobs. For example if a user starts a <a href="/manual/2.0-ee/user-guide/process-engine/process-instance-migration/#asynchronous-batch-migration-execution">process
 instance migration batch</a> for 1000 process instances. With the
@@ -3330,7 +3345,8 @@ instance. In sum the seed job will be invoked 100 times, until it has created th
 can be suspended with the management service:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">suspendJobByJobDefinitionId</span><span class="p">(</span><span class="n">seedJobDefinition</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><h2 id="execution-jobs">Execution Jobs</h2>
+</span></span></span></code></pre></div>
+<h3 id="execution-jobs">Execution Jobs</h3>
 <p>The execution of a batch is split into several execution jobs. The specific
 number of jobs depends on the total jobs of the batch and the process engine
 configuration (see <a href="#seed-job">seed job</a>). Every execution job executes the actual batch
@@ -3351,7 +3367,8 @@ batch, e.g., for a <a href="/manual/2.0-ee/user-guide/process-engine/process-ins
 can be suspended with the management service:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">suspendJobByJobDefinitionId</span><span class="p">(</span><span class="n">executionJobDefinition</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><h2 id="monitor-job">Monitor Job</h2>
+</span></span></span></code></pre></div>
+<h3 id="monitor-job">Monitor Job</h3>
 <p>After all batch execution jobs were created by the <a href="#seed-job">seed job</a> a monitor job
 is created for the batch. This job regularly polls if the batch has been completed,
 i.e., all batch execution jobs were completed. The polling interval
@@ -3368,7 +3385,8 @@ batch:</p>
 monitor job definition can be suspended with the management service:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">suspendJobByJobDefinitionId</span><span class="p">(</span><span class="n">monitorJobDefinition</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><h2 id="configuration">Configuration</h2>
+</span></span></span></code></pre></div>
+<h3 id="configuration">Configuration</h3>
 <p>You can configure the number of jobs created by every seed job invocation
 <code>batchJobsPerSeed</code> (default: 100) and the number of invocations per batch
 execution job <code>invocationsPerBatchJob</code> (default: 1) in the

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,9 +3191,11 @@
 
     <div class="col-xs-12 content-text">
       <p>Message events are events which reference a named message. A message has a name and a payload. Unlike a signal, a message event is always directed at a single recipient.</p>
-<h1 id="defining-a-message">Defining a Message</h1>
+
+<h2 id="defining-a-message">Defining a Message</h2>
 <p>A message event definition is declared by using the <code>messageEventDefinition</code> element. The attribute <code>messageRef</code> references a message element declared as a child element of the definitions root element. The following is an excerpt of a process in which two message events are declared and referenced by a start event and an intermediate catching message event.</p>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions</span> <span class="na">id=</span><span class="s">&#34;definitions&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns=</span><span class="s">&#34;http://www.omg.org/spec/BPMN/20100524/MODEL&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns:camunda=</span><span class="s">&#34;http://activiti.org/bpmn&#34;</span>
@@ -3211,12 +3217,14 @@
 </span></span><span class="line"><span class="cl">    ...
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
-</span></span></code></pre></div><h2 id="expressions">Expressions</h2>
+</span></span></code></pre></div>
+<h3 id="expressions">Expressions</h3>
 <p>You can use expressions for the name in the message event definition (except for the message start event). The name is then resolved as soon as a process reaches the scope of the message. For example when the process instances reaches a Message Intermediate Catching Event, then the expression within the name is resolved.</p>
 <p>By using expressions within the message name, you can influence the message name dynamically based on process variables. An example could look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;message</span> <span class="na">id=</span><span class="s">&#34;newInvoice&#34;</span> <span class="na">name=</span><span class="s">&#34;newInvoiceMessage-${execution.processBusinessKey}&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p><strong>Note:</strong> It is not allowed to use expressions in the message name of a start event of the process definition. So using an expression in the message definition and then referencing this definition in a message start event of the process entry point will cause an error. However, it is allowed to use expressions in the message start event of a subprocess. Therefore, using an expression in the message definition and then referencing this definition in the message start event within a subprocess will work just fine.</p>
-<h2 id="camunda-extensions">Camunda Extensions</h2>
+
+<h3 id="camunda-extensions">Camunda Extensions</h3>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3238,10 +3246,12 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="message-api">Message Api</h1>
+
+<h2 id="message-api">Message Api</h2>
 <p>As an embeddable process engine, the CIB seven engine is not concerned with the receiving part of the message. This would be environment dependent and entails platform-specific activities such as connecting to a JMS (Java Messaging Service) Queue/Topic or processing a Webservice or REST request. The reception of messages is therefore something you have to implement as part of the application or infrastructure into which the process engine is embedded.</p>
 <p>After you have received a message, you can choose whether you employ the engine&rsquo;s built-in correlation or explicitly deliver the message to start a new process instance or trigger a waiting execution.</p>
-<h2 id="using-the-runtime-services-correlation-methods">Using the Runtime Service&rsquo;s Correlation Methods</h2>
+
+<h3 id="using-the-runtime-services-correlation-methods">Using the Runtime Service&rsquo;s Correlation Methods</h3>
 <p>The engine offers a basic correlation mechanism that will either signal an execution waiting for a specific message or instantiate a process with a matching message start event. The <code>RuntimeService</code> provides a fluent message correlation API:</p>
 <p>The result of the correlation is an object of type <code>MessageCorrelationResult</code>. It contains the type of the correlation, which is either <code>execution</code> or <code>processDefinition</code>.
 The first type is set if the message was correlated to an intermediate message catch event. The second is set if the message was correlated to a start event.
@@ -3283,7 +3293,8 @@ If the type is set to <code>execution</code>, then the result contains an <code>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">correlateAllWithResult</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>In this case the matching execution will be selected based on variables existing in it&rsquo;s scope (ignoring all parent scopes).</p>
 <p>In case of successful correlation, the correlated or newly created process instance is updated with the variables from the <code>processVariables</code> map.</p>
-<h2 id="explicitly-triggering-a-message">Explicitly Triggering a Message</h2>
+
+<h3 id="explicitly-triggering-a-message">Explicitly Triggering a Message</h3>
 <p>Alternatively, you can explicitly deliver a message to start a process instance or trigger a waiting execution.</p>
 <p>If the message should trigger the starting of a new process instance then you can use the correlation API:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">startedProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="w">
@@ -3311,7 +3322,8 @@ If the type is set to <code>execution</code>, then the result contains an <code>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">void</span><span class="w"> </span><span class="nf">messageEventReceived</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">messageName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">executionId</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">void</span><span class="w"> </span><span class="nf">messageEventReceived</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">messageName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">executionId</span><span class="p">,</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processVariables</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>For an asynchronous correlation to existing process instances, you can use a <a href="/manual/latest/user-guide/process-engine/batch-operations/#correlate-messages-to-process-instances">Batch operation</a>.</p>
-<h2 id="querying-for-message-event-subscriptions">Querying for Message Event Subscriptions</h2>
+
+<h3 id="querying-for-message-event-subscriptions">Querying for Message Event Subscriptions</h3>
 <p>The engine supports message start events and intermediate message events.</p>
 <p>In case of a message start event, the message event subscription is associated with a particular process definition. Such message subscriptions can be queried using a ProcessDefinitionQuery:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="p">.</span><span class="na">createProcessDefinitionQuery</span><span class="p">()</span><span class="w">
@@ -3324,7 +3336,8 @@ If the type is set to <code>execution</code>, then the result contains an <code>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processVariableValueEquals</span><span class="p">(</span><span class="s">&#34;orderId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">getOrderId</span><span class="p">())</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">singleResult</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Such queries are called correlation queries and usually require knowledge about the processes (in this case, there is a maximum of one process instance for a given orderId).</p>
-<h1 id="message-start-event">Message Start Event</h1>
+
+<h2 id="message-start-event">Message Start Event</h2>
 <p>A message start event can be used to start a process instance using a named message. This effectively allows us to select the right start event from a set of alternative start events using the message name.</p>
 <p>When deploying a process definition with one or more message start events, the following considerations apply:</p>
 <ul>
@@ -3370,7 +3383,8 @@ If the type is set to <code>execution</code>, then the result contains an <code>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
 </span></span></code></pre></div><p>A process can be started using one of two different messages, this is useful if the process needs alternative ways to react to different start events but eventually continues in a uniform way.</p>
 <div data-bpmn-diagram="../bpmn/event-message-start-alternative" > </div>
-<h1 id="message-intermediate-catching-event">Message Intermediate Catching Event</h1>
+
+<h2 id="message-intermediate-catching-event">Message Intermediate Catching Event</h2>
 <p>When a token arrives at the message intermediate catching event it will wait there until a message with the proper name arrives. As already described, the message must be handed into the engine via the appropriate API calls.</p>
 <p>The following example shows different message events in a process model:</p>
 <div data-bpmn-diagram="../bpmn/event-message"></div>
@@ -3378,19 +3392,22 @@ If the type is set to <code>execution</code>, then the result contains an <code>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;messageEventDefinition</span> <span class="na">messageRef=</span><span class="s">&#34;newCustomerMessage&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateCatchEvent&gt;</span>
 </span></span></code></pre></div><p>Instead of the message intermediate catching event you might want to think about a <a href="/manual/latest/reference/bpmn20/tasks/receive-task/">Receive Task</a> instead, which can serve similar purposes but is able to be used in combination with boundary events. In combination with the message intermediate catching event you might want to use an <a href="/manual/latest/reference/bpmn20/gateways/event-based-gateway/">Event-based Gateway</a>.</p>
-<h1 id="message-boundary-event">Message Boundary Event</h1>
+
+<h2 id="message-boundary-event">Message Boundary Event</h2>
 <p>Boundary events are catching events that are attached to an activity. This means that while the activity is running, the message boundary event is listening for named message. When this is caught, two things might happen, depending on the configuration of the boundary event:</p>
 <ul>
 <li>Interrupting boundary event: The activity is interrupted and the sequence flow going out of the event is followed.</li>
 <li>Non-interrupting boundary event: One token stays in the activity and an additional token is created which follows the sequence flow going out of the event.</li>
 </ul>
-<h1 id="message-intermediate-throwing-event">Message Intermediate Throwing Event</h1>
+
+<h2 id="message-intermediate-throwing-event">Message Intermediate Throwing Event</h2>
 <p>A Message Intermediate Throwing event sends a message to an external service. This event has the same behavior as a <a href="/manual/latest/reference/bpmn20/tasks/service-task/">Service Task</a>.</p>
 <div data-bpmn-diagram="../bpmn/event-message-throwing" > </div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;intermediateThrowEvent</span> <span class="na">id=</span><span class="s">&#34;message&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;messageEventDefinition</span> <span class="na">camunda:class=</span><span class="s">&#34;org.cibseven.bpm.MyMessageServiceDelegate&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateThrowEvent&gt;</span>
-</span></span></code></pre></div><h2 id="camunda-extensions-for-messageeventdefinition">Camunda Extensions for <code>messageEventDefinition</code></h2>
+</span></span></code></pre></div>
+<h3 id="camunda-extensions-for-messageeventdefinition">Camunda Extensions for <code>messageEventDefinition</code></h3>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3442,12 +3459,14 @@ If the type is set to <code>execution</code>, then the result contains an <code>
     </td>
   </tr>
 </table>
-<h1 id="message-end-event">Message End Event</h1>
+
+<h2 id="message-end-event">Message End Event</h2>
 <p>When process execution arrives at a Message End Event, the current path of execution is ended and a message is sent. The Message End Event has the same behavior as a <a href="/manual/latest/reference/bpmn20/tasks/service-task/">Service Task</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;endEvent</span> <span class="na">id=</span><span class="s">&#34;end&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;messageEventDefinition</span> <span class="na">camunda:class=</span><span class="s">&#34;org.cibseven.bpm.MyMessageServiceDelegate&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/endEvent&gt;</span>
-</span></span></code></pre></div><h2 id="camunda-extensions-for-messageeventdefinition-1">Camunda Extensions for <code>messageEventDefinition</code></h2>
+</span></span></code></pre></div>
+<h3 id="camunda-extensions-for-messageeventdefinition-1">Camunda Extensions for <code>messageEventDefinition</code></h3>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>

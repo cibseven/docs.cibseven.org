@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>Escalation events are events which reference a named escalation. They are mostly used to communicate from a subprocess to an upper process. Unlike an error, an escalation event is non critical and execution continues at the location of throwing.</p>
 <div data-bpmn-diagram="../bpmn/escalation-example"></div>
-<h1 id="defining-escalation">Defining Escalation</h1>
+
+<h2 id="defining-escalation">Defining Escalation</h2>
 <p>An escalation event definition is declared by using the <code>escalationEventDefinition</code> element. The attribute <code>escalationRef</code> references an <code>escalation</code> element declared as a child element of the definitions root element. The following is an excerpt of a process in which an escalation event is declared and referenced by an escalation intermediate throw event.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;escalation</span> <span class="na">id=</span><span class="s">&#34;lateShipment&#34;</span> <span class="na">escalationCode=</span><span class="s">&#34;ORDER-LATE-SHIPMENT&#34;</span> <span class="nt">/&gt;</span>
@@ -3201,8 +3206,10 @@
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
-</span></span></code></pre></div><h1 id="catching-escalation-events">Catching Escalation Events</h1>
-<h2 id="escalation-start-event">Escalation Start Event</h2>
+</span></span></code></pre></div>
+<h2 id="catching-escalation-events">Catching Escalation Events</h2>
+
+<h3 id="escalation-start-event">Escalation Start Event</h3>
 <ul>
 <li>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-escalation-event-subprocess-start-event.png" /></div>
@@ -3238,7 +3245,8 @@
 </p>
 </div>
 
-<h3 id="camunda-extensions">Camunda Extensions</h3>
+
+<h4 id="camunda-extensions">Camunda Extensions</h4>
 <p>The following extensions are supported for <code>escalationEventDefinition</code>.</p>
 <table class="table table-striped">
   <tr>
@@ -3256,7 +3264,8 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h2 id="escalation-boundary-event">Escalation Boundary Event</h2>
+
+<h3 id="escalation-boundary-event">Escalation Boundary Event</h3>
 <ul>
 <li>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-escalation-intermediate-boundary-event.png" /></div>
@@ -3284,7 +3293,8 @@
 </p>
 </div>
 
-<h3 id="camunda-extensions-1">Camunda Extensions</h3>
+
+<h4 id="camunda-extensions-1">Camunda Extensions</h4>
 <p>The following extensions are supported for <code>escalationEventDefinition</code>.</p>
 <table class="table table-striped">
   <tr>
@@ -3302,8 +3312,10 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="throwing-escalation-events">Throwing Escalation Events</h1>
-<h2 id="escalation-intermediate-throw-event">Escalation Intermediate Throw Event</h2>
+
+<h2 id="throwing-escalation-events">Throwing Escalation Events</h2>
+
+<h3 id="escalation-intermediate-throw-event">Escalation Intermediate Throw Event</h3>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-escalation-intermediate-throw-event.png" /></div>
 
 <p>When process execution arrives at an escalation intermediate throw event, a named escalation is thrown. This escalation can be caught by an escalation boundary event or an event sub-process with an escalation start event which has the same or none escalation code.</p>
@@ -3312,7 +3324,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;intermediateThrowEvent</span> <span class="na">id=</span><span class="s">&#34;throwEscalation&#34;</span> <span class="na">name=</span><span class="s">&#34;order shipped&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;escalationEventDefinition</span> <span class="na">escalationRef=</span><span class="s">&#34;orderShipped&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateThrowEvent&gt;</span>
-</span></span></code></pre></div><h2 id="escalation-end-event">Escalation End Event</h2>
+</span></span></code></pre></div>
+<h3 id="escalation-end-event">Escalation End Event</h3>
 <div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-escalation-end-event.png" /></div>
 
 <p>When process execution arrives at an escalation end event, the current path of execution is ended and a named escalation is thrown. It has the same behavior as an <a href="#escalation-intermediate-throw-event">escalation intermediate throw event</a>.</p>

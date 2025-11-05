@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3200,13 +3204,15 @@
 </ul>
 </li>
 </ul>
-<h2 id="what-are-the-properties-supposed-to-be">What are the properties supposed to be?</h2>
+
+<h3 id="what-are-the-properties-supposed-to-be">What are the properties supposed to be?</h3>
 <p>This section describes the purpose of security-related cookie properties. You can find more information about
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies">Secure and HttpOnly</a>
 as well as
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute">SameSite cookies</a>
 in Mozilla’s Developer Guide.</p>
-<h3 id="secure">Secure</h3>
+
+<h4 id="secure">Secure</h4>
 <p>When enabling the <code>Secure</code> flag, the browser does not send the cookie via a plain (insecure) HTTP connection.</p>
 <p>To provide a seamless getting started experience, we disabled the <code>Secure</code> flag by default for all cookies. However, you can easily enable the <code>Secure</code> flag. When the Secure flag is present, some browsers prevent cookies from being sent via a plain (insecure) HTTP connection.</p>
 
@@ -3215,9 +3221,11 @@ in Mozilla’s Developer Guide.</p>
   <p>It is highly recommended to use an HTTPS connection and enable the <code>Secure</code> flag.</p>
 </div>
 
-<h3 id="httponly">HttpOnly</h3>
+
+<h4 id="httponly">HttpOnly</h4>
 <p>When enabling the <code>HttpOnly</code> flag, the cookie cannot be read via JavaScript to mitigate cross-site scripting (XSS) attacks.</p>
-<h3 id="samesite">SameSite</h3>
+
+<h4 id="samesite">SameSite</h4>
 <p>When enabling the <code>SameSite</code> flag, the browser only sends the cookie if the client performs the request from the same domain that initially set the cookie. In case of a cross-site request, the browser will not send the cookie.</p>
 
 <div class="note bg-info docs-info">
@@ -3226,11 +3234,14 @@ in Mozilla’s Developer Guide.</p>
 Have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute">SameSite cookies</a> in Mozilla’s Developer Guide.</p>
 </div>
 
-<h2 id="what-are-the-limitations">What are the limitations?</h2>
+
+<h3 id="what-are-the-limitations">What are the limitations?</h3>
 <p>The following section lists the limitations of the cookie security settings.</p>
-<h3 id="absence-of-httponly-for-the-csrf-cookie">Absence of HttpOnly for the CSRF Cookie</h3>
+
+<h4 id="absence-of-httponly-for-the-csrf-cookie">Absence of HttpOnly for the CSRF Cookie</h4>
 <p>For the CSRF Cookie, the <code>HttpOnly</code> flag is absent and not configurable to ensure the functionality of the Web applications. Aforementioned is due to the reason that the CSRF cookie must be readable by the JavaScript HTTP Client to guarantee that the browser sends the token along with every modifying request.</p>
-<h3 id="absence-of-samesite-for-the-session-cookie">Absence of SameSite for the Session Cookie</h3>
+
+<h4 id="absence-of-samesite-for-the-session-cookie">Absence of SameSite for the Session Cookie</h4>
 <p>In the following <a href="/manual/latest/installation/full/">pre-packaged distributions</a>, the <code>SameSite</code> property is absent by default since the Java Container manages the cookie and the latest Servlet specification does currently not support the <code>SameSite</code> property:</p>
 <ul>
 <li>JBoss EAP/WildFly</li>
@@ -3242,7 +3253,8 @@ Have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookie
   <p>The absence of the <code>SameSite</code> property does not have any negative impact on the security of the Web applications: The <code>SameSite</code> property is supposed to ensure protection from CSRF attacks. With the CSRF Protection Filter, there already exists a dedicated protection mechanism for such scenarios.</p>
 </div>
 
-<h2 id="what-are-the-defaults">What are the defaults?</h2>
+
+<h3 id="what-are-the-defaults">What are the defaults?</h3>
 <p>The following table shows the default configuration of the Web applications.</p>
 <table class="table table-striped">
   <tr>
@@ -3278,16 +3290,19 @@ The Session Cookie also has no <code>SameSite</code> attribute by default on JBo
 </ul></p>
 </div>
 
-<h2 id="how-to-configure">How to configure?</h2>
+
+<h3 id="how-to-configure">How to configure?</h3>
 <p>This section describes how to configure the <strong>Session Cookie</strong> as well as the <strong>CSRF Cookie</strong>.</p>
-<h3 id="session-cookie">Session Cookie</h3>
+
+<h4 id="session-cookie">Session Cookie</h4>
 <p>Here you can find how to configure the session cookie for the following containers:</p>
 <ul>
 <li><a href="/manual/latest/installation/full/tomcat/configuration/#session-cookie-in-webapps">Tomcat</a></li>
 <li><a href="/manual/latest/installation/full/jboss/configuration/#session-cookie-in-webapps">JBoss EAP &amp; Wildfly</a></li>
 <li><a href="/manual/latest/user-guide/spring-boot-integration/configuration/#session-cookie">Spring Boot</a></li>
 </ul>
-<h3 id="csrf-cookie">CSRF Cookie</h3>
+
+<h4 id="csrf-cookie">CSRF Cookie</h4>
 <p>In the <a href="/manual/latest/webapps/shared-options/csrf-prevention/">CSRF Prevention</a> documentation, you can find how to configure the CSRF Cookie.</p>
 
     </div>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>The XML dataformat supports reading XML from Strings or input streams.</p>
-<h1 id="reading-xml-from-a-string">Reading XML from a String:</h1>
+
+<h2 id="reading-xml-from-a-string">Reading XML from a String:</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.DataFormats.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3197,7 +3202,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinXmlElement</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="s">&#34;&lt;order /&gt;&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="reading-xml-from-a-reader">Reading XML from a Reader:</h1>
+</span></span></span></code></pre></div>
+<h2 id="reading-xml-from-a-reader">Reading XML from a Reader:</h2>
 <p>Spin also supports reading XML directly from a <code>java.io.Reader</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.DataFormats.*</span><span class="p">;</span><span class="w">
@@ -3209,7 +3215,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">fis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&#34;/tmp/incomingOrder.xml&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">InputStreamReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">fis</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;utf-8&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinXmlElement</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">reader</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="reading-xml-using-a-script-language">Reading XML using a Script Language</h1>
+</span></span></span></code></pre></div>
+<h2 id="reading-xml-using-a-script-language">Reading XML using a Script Language</h2>
 <p>XML can be read from script languages in the same way as from Java. Since script languages use dynamic typing, you do not need to hint the data format but you can use autodetection. The following example demonstrates how to read XML in JavaScript:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">orderId</span> <span class="o">=</span> <span class="nx">S</span><span class="p">(</span><span class="s1">&#39;&lt;order id=&#34;1231&#34; /&gt;&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
 </span></span></code></pre></div>

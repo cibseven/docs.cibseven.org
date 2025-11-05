@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3203,8 +3207,10 @@ box:</p>
 </ul>
 <p>The script engine wrapper implementations can be found in the
 <a href="https://github.com/camunda-community-hub/camunda-7-template-engines-jsr223">camunda-7-template-engines-jsr223</a> community hub repository.</p>
-<h1 id="install-a-template-engine">Install a Template Engine</h1>
-<h2 id="install-a-template-engine-for-an-embedded-process-engine">Install a Template Engine for an Embedded Process Engine</h2>
+
+<h2 id="install-a-template-engine">Install a Template Engine</h2>
+
+<h3 id="install-a-template-engine-for-an-embedded-process-engine">Install a Template Engine for an Embedded Process Engine</h3>
 <p>A template engine must be installed in the same way as a script engine. This means that the template
 engine must be added to the process engine classpath.</p>
 <p>When using an embedded process engine, the template engine libraries must be added to the
@@ -3248,7 +3254,8 @@ For the community-driven template engines, please check the Maven coordinates be
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
-</span></span></code></pre></div><h2 id="install-a-template-engine-for-a-shared-process-engine">Install a Template Engine for a Shared Process Engine</h2>
+</span></span></code></pre></div>
+<h3 id="install-a-template-engine-for-a-shared-process-engine">Install a Template Engine for a Shared Process Engine</h3>
 <p>When using a shared process engine, the template engine must be added to the shared process engine
 classpath. The procedure for this depends on the application server. In Apache Tomcat, the
 libraries have to be added to the shared <code>lib/</code> folder.</p>
@@ -3258,7 +3265,8 @@ libraries have to be added to the shared <code>lib/</code> folder.</p>
   <p><a href="http://freemarker.org/">FreeMarker</a> is pre-installed in the CIB seven pre-packaged distribution.</p>
 </div>
 
-<h1 id="use-a-template-engine">Use a Template Engine</h1>
+
+<h2 id="use-a-template-engine">Use a Template Engine</h2>
 <p>If the template engine library is in the classpath, you can use templates everywhere in the BPMN
 process where you can <a href="/manual/latest/user-guide/process-engine/scripting/">use scripts</a>, for example as a script task or inputOutput mapping.
 The FreeMarker template engine is part of the CIB seven distribution.</p>
@@ -3295,8 +3303,10 @@ payload of a <code>camunda:connector</code>.</p>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/camunda:connector&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/bpmn2:extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn2:serviceTask&gt;</span>
-</span></span></code></pre></div><h1 id="use-xslt-as-template-engine">Use XSLT as Template Engine</h1>
-<h2 id="use-xslt-template-engine-with-an-embedded-process-engine">Use XSLT Template Engine with an embedded process engine</h2>
+</span></span></code></pre></div>
+<h2 id="use-xslt-as-template-engine">Use XSLT as Template Engine</h2>
+
+<h3 id="use-xslt-template-engine-with-an-embedded-process-engine">Use XSLT Template Engine with an embedded process engine</h3>
 <p>When using an embedded process engine, the XSLT template engine library must be added to the
 application deployment. When using the process engine in a maven <code>war</code> project, the template engine
 dependency must be added as dependencies to the maven <code>pom.xml</code> file:</p>
@@ -3309,7 +3319,8 @@ dependency must be added as dependencies to the maven <code>pom.xml</code> file:
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
-</span></span></code></pre></div><h2 id="use-xslt-templates">Use XSLT Templates</h2>
+</span></span></code></pre></div>
+<h3 id="use-xslt-templates">Use XSLT Templates</h3>
 <p>The following is an example of a BPMN ScriptTask used to execute an XSLT Template:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bpmn2:scriptTask</span> <span class="na">id=</span><span class="s">&#34;ScriptTask_1&#34;</span> <span class="na">name=</span><span class="s">&#34;convert input&#34;</span>
 </span></span><span class="line"><span class="cl">                  <span class="na">scriptFormat=</span><span class="s">&#34;xslt&#34;</span>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,9 +3192,11 @@
     <div class="col-xs-12 content-text">
       <p>Testing BPMN processes, CMMN cases (and also DMN decisions) is just as important as testing code.
 This section explains how to write unit tests and integration tests with CIB seven and explains some best practice and guidelines.</p>
-<h1 id="unit-tests">Unit Tests</h1>
+
+<h2 id="unit-tests">Unit Tests</h2>
 <p>CIB seven provides helper classes to write unit tests for JUnit versions 3, 4 and 5.</p>
-<h2 id="junit-5">JUnit 5</h2>
+
+<h3 id="junit-5">JUnit 5</h3>
 <p>CIB seven since 1.0 (also includin 7.22.0-cibseven versions) ships with a <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/junit5/ProcessEngineExtension.html">JUnit 5 extension</a>
  that provides access to the process engine and services through getter methods.</p>
 <p>The extensions process engine is configured by the default configuration file called <code>camunda.cfg.xml</code>, which needs to be placed on the classpath. A custom configuration file can be passed to the extension when creating the <code>ProcessEngineExtension</code> object.</p>
@@ -3262,7 +3268,8 @@ This section explains how to write unit tests and integration tests with CIB sev
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="junit-4">JUnit 4</h2>
+</span></span></span></code></pre></div>
+<h3 id="junit-4">JUnit 4</h3>
 <p>Using the JUnit 4 style of writing unit tests, the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a>
  must be used. Through this rule, the process engine and services are available through getters.</p>
 <p>This rule will look for the default configuration file on the classpath called <code>camunda.cfg.xml</code>. When constructing the ProcessEngineRule object you can pass a custom configuration file to the rule. Process engines are statically cached over multiple unit tests when using the same configuration resource.</p>
@@ -3292,7 +3299,8 @@ This section explains how to write unit tests and integration tests with CIB sev
   <p>Our <a href="/manual/latest/user-guide/process-applications/maven-archetypes/">Project Templates for Maven</a> give you a complete running project including a JUnit test out of the box.</p>
 </div>
 
-<h2 id="junit-3">JUnit 3</h2>
+
+<h3 id="junit-3">JUnit 3</h3>
 <p>In the JUnit 3 style, the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/ProcessEngineTestCase.html">ProcessEngineTestCase</a>
  must be extended. This will make the ProcessEngine and the services available through protected member fields. In the <code>setup()</code> of the test, the processEngine will be initialized by default with the <code>camunda.cfg.xml</code> resource on the classpath. To specify a different configuration file, override the getConfigurationResource() method. Process engines are cached statically over multiple unit tests when the configuration resource is the same.</p>
 <p>A JUnit 3 style test can look as follows:</p>
@@ -3309,7 +3317,8 @@ This section explains how to write unit tests and integration tests with CIB sev
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">assertThat</span><span class="p">(</span><span class="n">runtimeService</span><span class="p">.</span><span class="na">createProcessInstanceQuery</span><span class="p">().</span><span class="na">count</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="deploy-test-resources">Deploy Test Resources</h2>
+</span></span></span></code></pre></div>
+<h3 id="deploy-test-resources">Deploy Test Resources</h3>
 <p>You can annotate test classes and methods with <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/Deployment.html">@Deployment</a>
 . Before the test is run, a resource file named <code>TestClassName.bpmn20.xml</code> (for a class-level annotation) or <code>TestClassName.testMethod.bpmn20.xml</code> (for a method-level annotation), in the same package as the test class, will be deployed. At the end of the test the deployment will be deleted, including all related process instances, tasks, etc. The <code>@Deployment</code> annotation also supports setting the resource location explicitly.</p>
 <pre tabindex="0"><code>@Deployment(resources = {&#34;myProcess.bpmn&#34;, &#34;mySubprocess.bpmn&#34;})
@@ -3317,7 +3326,8 @@ This section explains how to write unit tests and integration tests with CIB sev
 <p>Method-level annotations override class-level annotations. See the Javadocs for <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/Deployment.html">@Deployment</a>
 more details.</p>
 <p>The annotation is supported for <a href="#junit-3">JUnit 3</a> and <a href="#junit-4">JUnit 4</a> style of testing.</p>
-<h2 id="specify-the-required-history-level">Specify the required History Level</h2>
+
+<h3 id="specify-the-required-history-level">Specify the required History Level</h3>
 <p>If a test requires a specific history level (e.g., because it uses the HistoryService) then you can annotate the test class or method with <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/RequiredHistoryLevel.html">@RequiredHistoryLevel</a>
  and specify the required history level (e.g., &ldquo;activity&rdquo;, &ldquo;full&rdquo;). Before the test is run, it checks the current history level of the process engine and skip the test if the history level is lower than the specified one.</p>
 <p>A JUnit 4 style test can look as follows:</p>
@@ -3343,7 +3353,8 @@ more details.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>The annotation is supported for <a href="#junit-3">JUnit 3</a> and <a href="#junit-4">JUnit 4</a> style of testing. Note that a skipped test is marked as passed for JUnit 3 style tests since JUnit 3 doesn&rsquo;t support skipping of tests.</p>
-<h2 id="debug-unit-tests">Debug Unit Tests</h2>
+
+<h3 id="debug-unit-tests">Debug Unit Tests</h3>
 <p>When using the in-memory H2 database for unit tests, the following instructions allow to easily inspect the data in the engine database during a debugging session. The screenshots here are taken in Eclipse, but the mechanism should be similar for other IDEs.</p>
 <p>Suppose we have put a breakpoint somewhere in our unit test. In Eclipse this is done by double-clicking in the left border next to the code:</p>
 <figure class="image">
@@ -3399,7 +3410,8 @@ more details.</p>
        /></span>
 </figure>
 
-<h1 id="cib-seven-assertions">CIB seven Assertions</h1>
+
+<h2 id="cib-seven-assertions">CIB seven Assertions</h2>
 <p>Additional to normal JUnit assertions, <a href="https://github.com/cibseven/cibseven/tree/v2.0-ee.0/test-utils/assert">CIB seven Assert</a> adds a fluent API for asserting typical scenarios in a process integrating with <a href="https://joel-costigliola.github.io/assertj/">AssertJ</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingAt</span><span class="p">(</span><span class="s">&#34;UserTask_InformCustomer&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">()).</span><span class="na">hasCandidateGroup</span><span class="p">(</span><span class="s">&#34;Sales&#34;</span><span class="p">).</span><span class="na">isNotAssigned</span><span class="p">();</span><span class="w">
@@ -3421,7 +3433,8 @@ more details.</p>
 </span></span></code></pre></div><p>If CIB seven Assert is used in combination with <a href="https://spring.io/projects/spring-boot">Spring Boot</a> or the
 <a href="/manual/latest/user-guide/spring-boot-integration/">CIB seven Spring Boot Starter</a>,
 the AssertJ dependency will be present in your project already.</p>
-<h2 id="assertions-version-compatibility">Assertions Version Compatibility</h2>
+
+<h3 id="assertions-version-compatibility">Assertions Version Compatibility</h3>
 <p>Each version of CIB seven Assert is bound to a specific version of CIB seven and AssertJ. Only these default combinations are recommended (and supported) by CIB seven.
 Nevertheless, each version of CIB seven Assert can be combined with newer patch versions of the CIB seven engine, though such combinations must be thoroughly tested before being used in production.</p>
 <p>With CIB seven 1.0 the project was moved into the <a href="https://github.com/cibseven/cibseven/">CIB seven repository</a> and is using the same versioning as CIB seven.</p>
@@ -3451,11 +3464,13 @@ Nevertheless, each version of CIB seven Assert can be combined with newer patch 
     <td>2.0.0</td>
   </tr>
 </table>
-<h1 id="community-extensions-to-support-testing">Community extensions to support testing</h1>
+
+<h2 id="community-extensions-to-support-testing">Community extensions to support testing</h2>
 <p>There are a couple of well documented and heavily used community extensions that can make testing much more productive and fun.
 The extensions described below were initially developed by the Camunda Community. Some of them have been forked to the <a href="https://github.com/cibseven-community-hub/">CIB seven Community Hub</a> and adapted to the CIB seven namespace.
 If you&rsquo;re interested in contributing, whether by migrating existing projects or developing new ones, feel free to contact us to get started: <a href="https://github.com/orgs/cibseven-community-hub/discussions">GitHub Discussions</a>, <a href="https://cibseven.org/en/contact/">Contact Form</a>, <a href="mailto:community@cibseven.org">Email</a>.</p>
-<h2 id="camunda-scenario-tests">Camunda Scenario Tests</h2>
+
+<h3 id="camunda-scenario-tests">Camunda Scenario Tests</h3>
 <p><a href="https://github.com/camunda/camunda-bpm-assert-scenario/">Camunda-bpm-assert-scenario</a> enables you to write more robust test suites. The idea is, that you only have to adapt your tests if your process models changes in a way that affects the tested behavior. It concentrates much less on the concrete path through a given process model, but on the external effects the path through the model has.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testHappyPath</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3470,9 +3485,11 @@ If you&rsquo;re interested in contributing, whether by migrating existing projec
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>The Camunda Scenario Tests extension is available within the <a href="https://github.com/camunda/camunda-bpm-assert-scenario/">Camunda-bpm-assert-scenario</a> repository.
 If you find this extension useful and are interested in migrating or contributing it to <a href="https://github.com/cibseven-community-hub/">CIB seven Community Hub</a>, feel free to contact us: <a href="https://github.com/orgs/cibseven-community-hub/discussions">GitHub Discussions</a>, <a href="https://cibseven.org/en/contact/">Contact Form</a>, <a href="mailto:community@cibseven.org">Email</a>.</p>
-<h2 id="cib-seven-test-coverage">CIB seven Test Coverage</h2>
+
+<h3 id="cib-seven-test-coverage">CIB seven Test Coverage</h3>
 <p><a href="https://github.com/cibseven-community-hub/cibseven-process-test-coverage/">Cibseven-bpm-process-test-coverage</a> visualises test process pathes and checks your process model coverage ratio. Running typical JUnit tests leaves html files in the build output.</p>
-<h1 id="resolving-beans-without-springcdi">Resolving Beans Without Spring/CDI</h1>
+
+<h2 id="resolving-beans-without-springcdi">Resolving Beans Without Spring/CDI</h2>
 <p>The <code>Mocks</code> class can be used to make beans available inside the <em>Expression Language</em> or in <em>Script Tasks</em> without the need of any bean manager.</p>
 <p>Register the bean inside the application:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Mocks</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="s">&#34;myBean&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bean</span><span class="p">());</span><span class="w">
@@ -3483,13 +3500,17 @@ one should make sure, that they are registered before the deployment happens. E.
 <code>@Deployment</code> annotation, beans should not be registered in <code>@Before</code> method, but rather the separate test rule can be created, that registers beans on startup,
 and chained before <code>ProcessEngineRule</code>.</p>
 <p><strong>The mocked beans feature should be used for testing purposes only.</strong> Beans that are stored with <code>Mocks</code> are exclusively available within the respective storing thread as it is based on <code>ThreadLocal</code>. In most productive environments, it is not possible to access mocked beans during process execution due to the reason that jobs are executed by the multi-threaded Job Executor. Since the <a href="/manual/latest/user-guide/process-engine/the-job-executor/#job-executor-in-a-unit-test">Job Executor is disabled in unit test scenarios</a>, the thread of process execution is the same that creates mocked bean instances.</p>
-<h1 id="best-practice">Best Practice</h1>
-<h2 id="write-focused-tests">Write Focused Tests</h2>
+
+<h2 id="best-practice">Best Practice</h2>
+
+<h3 id="write-focused-tests">Write Focused Tests</h3>
 <p>The feature to <a href="/manual/latest/user-guide/process-engine/process-engine-concepts/#start-a-process-instance-at-any-set-of-activities">start a process instance at a set of activities</a> can be used to to create a very specific scenario without much setup. Similarly, certain activities can be skipped by using <a href="/manual/latest/user-guide/process-engine/process-instance-modification/">process instance modification</a>.</p>
-<h2 id="scoping-tests">Scoping Tests</h2>
+
+<h3 id="scoping-tests">Scoping Tests</h3>
 <p>BPMN processes, CMMN cases and DMN decisions do not exist in isolation. Consider the example of a BPMN process: firstly, the process itself is executed by the CIB seven engine which requires a database. Next, the process is &ldquo;not just the process&rdquo;. It can contain expressions, scripts and often calls out to custom Java classes which may in turn again call out to services, either locally or remotely. To test the process, all these things need to be present, otherwise the test cannot work.</p>
 <p>Setting all of this up just to run a unit test is expensive. This is why, in practice, it makes sense to apply a concept which we call test scoping. Scoping the test means limiting the amount of infrastructure required to run the test. Things outside of the scope of the test are mocked.</p>
-<h3 id="example-scoping-tests-for-a-java-ee-application">Example: Scoping Tests for a Java EE Application</h3>
+
+<h4 id="example-scoping-tests-for-a-java-ee-application">Example: Scoping Tests for a Java EE Application</h4>
 <p>This is best explained using an example. Assume you are building a typical Java EE application containing a BPMN process. The process uses Java Expression Language (EL) for conditions, it invokes Java Delegate implementations as CDI beans, these beans may in turn call out to the actual business logic implemented as EJBs. The business logic uses JPA for maintaining additional business objects in a secondary database. It also sends out messages using JMS to interact with external systems and has a nice web UI. The application runs inside a Java EE application server like Wildfly.</p>
 <p>To test this application, all components, including the application server itself, need to be present and the external systems need to process the JMS messages. This makes it hard to write focused tests. However, by looking at the process itself, we find that there are many aspects of it that we can test without having the complete infrastructure in place. For example, if the process data is present, the Expression Language conditions can usually be tested without any additional infrastructure. This already allows asserting that the process &ldquo;takes the right turn&rdquo; at a gateway given a set of input data. Next, if the EJBs are mocked, the delegation logic can be included in such tests as well. This allows asserting that wiring of the delegation logic is correct, that it performs correct data transformation and mapping and that it invokes the business logic with the correct parameters. Given that the CIB seven engine can work with an in-memory database, it now becomes possible to test the BPMN process &ldquo;in isolation&rdquo;, as a unit test and assert its local functional correctness. The same principle can be applied to the next &ldquo;outer layers&rdquo; of the system, including the business logic and external systems.</p>
 <p>The following drawing shows a schematic representation of what this looks like for our example of a Java EE application:</p>

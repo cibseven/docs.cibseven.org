@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>This section explains some core process engine concepts that are used in both the process engine API and the internal process engine implementation. Understanding these fundamentals makes it easier to use the process engine API.</p>
-<h1 id="process-definitions">Process Definitions</h1>
+
+<h2 id="process-definitions">Process Definitions</h2>
 <p>A process definition defines the structure of a process. You could say that the process definition <em>is</em> the process. CIB seven uses <a href="http://camunda.org/bpmn/tutorial.html">BPMN 2.0</a> as its primary modeling language for modeling process definitions.</p>
 
 <div class="note bg-info docs-info">
@@ -3200,7 +3205,8 @@
 </div>
 
 <p>In CIB seven you can deploy processes to the process engine in BPMN 2.0 XML format. The XML files are parsed and transformed into a process definition graph structure. This graph structure is executed by the process engine.</p>
-<h2 id="query-for-process-definitions">Query for Process Definitions</h2>
+
+<h3 id="query-for-process-definitions">Query for Process Definitions</h3>
 <p>You can query for all deployed process definitions using the Java API and the <code>ProcessDefinitionQuery</code> made available through the <code>RepositoryService</code>. Example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">ProcessDefinition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processDefinitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="p">.</span><span class="na">createProcessDefinitionQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">processDefinitionKey</span><span class="p">(</span><span class="s">&#34;invoice&#34;</span><span class="p">)</span><span class="w">
@@ -3209,18 +3215,22 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>The above query returns all deployed process definitions for the key <code>invoice</code> ordered by their <code>version</code> property.</p>
 <p>You can also <a href="/manual/2.0-ee/reference/rest/specification/#tag/Process-Definition/operation/getProcessDefinitions">query for process definitions using the REST API</a>.</p>
-<h2 id="keys-and-versions">Keys and Versions</h2>
+
+<h3 id="keys-and-versions">Keys and Versions</h3>
 <p>The <em>key</em> of a process definition (<code>invoice</code> in the example above) is the logical identifier of the process. It is used throughout the API, most prominently for starting process instances (<a href="#process-instances">see section on process instances</a>). The key of a process definition is defined using the <code>id</code> property of the corresponding <code>&lt;process ... &gt;</code> element in the BPMN 2.0 XML file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;invoice&#34;</span> <span class="na">name=</span><span class="s">&#34;invoice receipt&#34;</span> <span class="na">isExecutable=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process&gt;</span>
 </span></span></code></pre></div><p>If you deploy multiple processes with the same key, they are treated as individual versions of the same process definition by the process engine. Please refer to <a href="/manual/2.0-ee/user-guide/process-engine/process-versioning/">Process Versioning</a> for details.</p>
-<h2 id="suspend-process-definitions">Suspend Process Definitions</h2>
+
+<h3 id="suspend-process-definitions">Suspend Process Definitions</h3>
 <p>Suspending a process definition disables it temporarily, i.e., it cannot be instantiated while it is suspended. The <code>RuntimeService</code> Java API can be used to suspend a process definition. Similarly, you can activate a process definition to undo this effect.</p>
-<h1 id="process-instances">Process Instances</h1>
+
+<h2 id="process-instances">Process Instances</h2>
 <p>A process instance is an individual execution of a process definition. The relation of the process instance to the process definition is the same as the relation between <em>Object</em> and <em>Class</em> in Object Oriented Programming (the process instance playing the role of the object and the process definition playing the role of the class in this analogy).</p>
 <p>The process engine is responsible for creating process instances and managing their state. If you start a process instance which contains a wait state, for example a <a href="/manual/2.0-ee/reference/bpmn20/tasks/user-task/">user task</a>, the process engine must make sure that the state of the process instance is captured and stored inside a database until the wait state is left (the user task is completed).</p>
-<h2 id="start-a-process-instance">Start a Process Instance</h2>
+
+<h3 id="start-a-process-instance">Start a Process Instance</h3>
 <p>The simplest way to start a process instance is by using the <code>startProcessInstanceByKey(...)</code> method offered by the RuntimeService:</p>
 <pre><code>ProcessInstance instance = runtimeService.startProcessInstanceByKey(&quot;invoice&quot;);
 </code></pre>
@@ -3231,7 +3241,8 @@ ProcessInstance instance = runtimeService.startProcessInstanceByKey(&quot;invoic
 </code></pre>
 <p>Process variables are available to all tasks in a process instance and are automatically persisted to the database in case the process instance reaches a wait state.</p>
 <p>It is also possible to <a href="/manual/2.0-ee/reference/rest/specification/#tag/Process-Definition/operation/startProcessInstance">start a process instance using the REST API</a>.</p>
-<h3 id="start-process-instances-via-tasklist">Start Process Instances via Tasklist</h3>
+
+<h4 id="start-process-instances-via-tasklist">Start Process Instances via Tasklist</h4>
 <p>In case you use <a href="/manual/2.0-ee/webapps/tasklist/working-with-tasklist/#start-a-process">Tasklist</a> to start process instances,
 the <a href="/manual/2.0-ee/reference/bpmn20/custom-extensions/extension-attributes/#isstartableintasklist"><code>startableInTasklist</code></a> option
 exists to specify which processes are visible for being started by the user.</p>
@@ -3243,7 +3254,8 @@ the subprocess, adjust the process xml file (*.bpmn) as follows:</p>
 </span></span><span class="line"><span class="cl">         <span class="na">camunda:isStartableInTasklist=</span><span class="s">&#34;false&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process&gt;</span>
-</span></span></code></pre></div><h2 id="start-a-process-instance-at-any-set-of-activities">Start a Process Instance at Any Set of Activities</h2>
+</span></span></code></pre></div>
+<h3 id="start-a-process-instance-at-any-set-of-activities">Start a Process Instance at Any Set of Activities</h3>
 <p>The <code>startProcessInstanceByKey</code> and <code>startProcessInstanceById</code> methods start the process instance at their default initial activity, which is typically the single blank start event of the process definition. It is also possible to start anywhere in a process instance by using the <em>fluent builder</em> for process instances. The fluent builder can be accessed via the RuntimeService methods <code>createProcessInstanceByKey</code> and <code>createProcessInstanceById</code>.</p>
 <p>The following starts a process instance before the activity <code>SendInvoiceReceiptTask</code> and the embedded sub process <code>DeliverPizzaSubProcess</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">createProcessInstanceByKey</span><span class="p">(</span><span class="s">&#34;invoice&#34;</span><span class="p">)</span><span class="w">
@@ -3253,7 +3265,8 @@ the subprocess, adjust the process xml file (*.bpmn) as follows:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setVariableLocal</span><span class="p">(</span><span class="s">&#34;destination&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;12 High Street&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>The fluent builder allows to submit any number of so-called instantiation instructions. When calling <code>execute</code>, the process engine performs these instructions in the order they are specified. In the above example, the engine first starts the task <em>SendInvoiceReceiptTask</em> and executes the process until it reaches a wait state and then starts <em>DeliverPizzaTask</em> and does the same. After these two instructions, the <code>execute</code> call returns.</p>
-<h3 id="variables-in-return">Variables in Return</h3>
+
+<h4 id="variables-in-return">Variables in Return</h4>
 <p>To access the latest variables which was used by the process instance during execution the <code>executeWithVariablesInReturn</code> can be used, instead of the <code>execute</code> method.
 See the following example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessInstanceWithVariables</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">createProcessInstanceByKey</span><span class="p">(</span><span class="s">&#34;invoice&#34;</span><span class="p">)</span><span class="w">
@@ -3263,7 +3276,8 @@ See the following example:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setVariableLocal</span><span class="p">(</span><span class="s">&#34;destination&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;12 High Street&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">executeWithVariablesInReturn</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>The <code>executeWithVariablesInReturn</code> returns if the process instance ends or reaches a wait state. The returned <code>ProcessInstanceWithVariables</code> object contains the informations of the process instance and the latest variables.</p>
-<h2 id="query-for-process-instances">Query for Process Instances</h2>
+
+<h3 id="query-for-process-instances">Query for Process Instances</h3>
 <p>You can query for all currently running process instances using the <code>ProcessInstanceQuery</code> offered by the <code>RuntimeService</code>:</p>
 <pre><code>runtimeService.createProcessInstanceQuery()
     .processDefinitionKey(&quot;invoice&quot;)
@@ -3272,7 +3286,8 @@ See the following example:</p>
 </code></pre>
 <p>The above query would select all process instances for the <code>invoice</code> process where the <code>creditor</code> is <code>Nice Pizza Inc.</code>.</p>
 <p>You can also <a href="/manual/2.0-ee/reference/rest/specification/#tag/Process-Instance/operation/getProcessInstances">query for process instances using the REST API</a>.</p>
-<h2 id="interact-with-a-process-instance">Interact With a Process Instance</h2>
+
+<h3 id="interact-with-a-process-instance">Interact With a Process Instance</h3>
 <p>Once you have performed a query for a particular process instance (or a list of process instances), you may want to interact with it. There are multiple possibilities to interact with a process instance, most prominently:</p>
 <ul>
 <li>Triggering it (make it continue execution):
@@ -3293,13 +3308,15 @@ See the following example:</p>
 </li>
 </ul>
 <p>If your process uses at least one User Task, you can also interact with the process instance using the TaskService API.</p>
-<h2 id="suspend-process-instances">Suspend Process Instances</h2>
+
+<h3 id="suspend-process-instances">Suspend Process Instances</h3>
 <p>Suspending a process instance is helpful, if you want ensure that it is not executed any further. For example, if process variables are in an undesired state, you can suspend the instance and change the variables <em>safely</em>.</p>
 <p>In detail, suspension means to disallow all actions that change <em>token</em> state (i.e., the activities that are currently executed) of the instance. For example, it is not possible to signal an event or complete a user task for a suspended process instance, as these actions will continue the process instance execution subsequently. Nevertheless, actions like setting or removing variables are still allowed, as they do not change the token state.</p>
 <p>Also, when suspending a process instance, all tasks belonging to it will be suspended. Therefore, it will no longer be possible to invoke actions that have effects on the task&rsquo;s <em>lifecycle</em> (i.e., user assignment, task delegation, task completion, &hellip;). However, any actions not touching the lifecycle like setting variables or adding comments will still be allowed.</p>
 <p>A process instance can be suspended by using the <code>suspendProcessInstanceById(...)</code> method of the <code>RuntimeService</code>. Similarly it can be reactivated again.</p>
 <p>If you would like to suspend all process instances of a given process definition, you can use the method <code>suspendProcessDefinitionById(...)</code> of the<code>RepositoryService</code> and specify the <code>suspendProcessInstances</code> option.</p>
-<h1 id="executions">Executions</h1>
+
+<h2 id="executions">Executions</h2>
 <p>If your process instance contains multiple execution paths (like for instance after a <a href="/manual/2.0-ee/reference/bpmn20/gateways/parallel-gateway/">parallel gateway</a>, you must be able to differentiate the currently active paths inside the process instance. In the following example, two user tasks <em>receive payment</em> and <em>ship order</em> can be active at the same time.</p>
 <figure class="image">
   <span><img
@@ -3311,14 +3328,16 @@ See the following example:</p>
 
 <p>Internally, the process engine creates two concurrent executions inside the process instance, one for each concurrent path of execution. Executions are also created for scopes, for example if the process engine reaches a <a href="/manual/2.0-ee/reference/bpmn20/subprocesses/embedded-subprocess/">Embedded Sub Process</a> or in case of <a href="/manual/2.0-ee/reference/bpmn20/tasks/task-markers/">Multi Instance</a>.</p>
 <p>Executions are hierarchical and all executions inside a process instance span a tree, the process instance being the root-node in the tree. Note: the process instance itself is an execution. Executions are <a href="/manual/2.0-ee/user-guide/process-engine/variables/">variable scopes</a>, meaning that dynamic data can be associated with them.</p>
-<h2 id="query-for-executions">Query for Executions</h2>
+
+<h3 id="query-for-executions">Query for Executions</h3>
 <p>You can query for executions using the <code>ExecutionQuery</code> offered by the <code>RuntimeService</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="p">.</span><span class="na">createExecutionQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">processInstanceId</span><span class="p">(</span><span class="n">someId</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>The above query returns all executions for a given process instance.</p>
 <p>You can also <a href="/manual/2.0-ee/reference/rest/specification/#tag/Execution/operation/getExecutions">query for executions using the REST API</a>.</p>
-<h1 id="activity-instances">Activity Instances</h1>
+
+<h2 id="activity-instances">Activity Instances</h2>
 <p>The activity instance concept is similar to the execution concept but takes a different perspective. While an execution can be imagined as a <em>token</em> moving through the process, an activity instance represents an individual instance of an activity (task, subprocess, &hellip;). The concept of the activity instance is thus more <em>state-oriented</em>.</p>
 <p>Activity instances also span a tree, following the scope structure provided by BPMN 2.0. Activities that are &ldquo;on the same level of subprocess&rdquo; (i.e., part of the same scope, contained in the same subprocess) will have their activity instances at the same level in the tree.</p>
 <p>For example, Activity Instances are used for <a href="/manual/2.0-ee/user-guide/process-engine/process-instance-modification/">Process Instance Modification</a> and the <a href="/manual/2.0-ee/webapps/cockpit/bpmn/process-instance-view/#activity-instance-tree">Activity Instance Tree in Cockpit</a>.</p>
@@ -3355,32 +3374,39 @@ See the following example:</p>
 <pre tabindex="0"><code>ProcessInstance
   cancel order
   cancel shipping
-</code></pre><h2 id="retrieve-an-activity-instance">Retrieve an Activity Instance</h2>
+</code></pre>
+<h3 id="retrieve-an-activity-instance">Retrieve an Activity Instance</h3>
 <p>Currently, activity instances can only be retrieved for a process instance:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ActivityInstance</span><span class="w"> </span><span class="n">rootActivityInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">getActivityInstance</span><span class="p">(</span><span class="n">processInstance</span><span class="p">.</span><span class="na">getProcessInstanceId</span><span class="p">());</span><span class="w">
 </span></span></span></code></pre></div><p>You can <a href="/manual/2.0-ee/reference/rest/specification/#tag/Process-Instance/operation/getActivityInstanceTree">retrieve the activity instance tree using the REST API</a> as well.</p>
-<h2 id="identity--uniqueness">Identity &amp; Uniqueness</h2>
+
+<h3 id="identity--uniqueness">Identity &amp; Uniqueness</h3>
 <p>Each activity instance is assigned a unique ID. The ID is persistent, if you invoke this method multiple times, the same activity instance IDs will be returned for the same activity instances. (However, there might be different executions assigned, see below)</p>
-<h2 id="relation-to-executions">Relation to Executions</h2>
+
+<h3 id="relation-to-executions">Relation to Executions</h3>
 <p>The Execution concept in the process engine is not completely aligned with the activity instance concept because the execution tree is generally not aligned with the activity / scope concept in BPMN. In general, there is a n-1 relationship between Executions and ActivityInstances, i.e., at a given point in time, an activity instance can be linked to multiple executions. In addition, it is not guaranteed that the same execution that started a given activity instance will also end it. The process engine performs several internal optimizations concerning the compacting of the execution tree which might lead to executions being reordered and pruned. This can lead to situations where a given execution starts an activity instance but another execution ends it. Another special case is the process instance: if the process instance is executing a non-scope activity (for example a user task) below the process definition scope, it will be referenced by both the root activity instance and the user task activity instance.</p>
 <p>Note: If you need to interpret the state of a process instance in terms of a BPMN process model, it is usually easier to use the activity instance tree as opposed to the execution tree.</p>
-<h1 id="jobs-and-job-definitions">Jobs and Job Definitions</h1>
+
+<h2 id="jobs-and-job-definitions">Jobs and Job Definitions</h2>
 <p>The Camunda process engine includes a component named the <em>Job Executor</em>. The Job Executor is a scheduling component, responsible for performing asynchronous background work. Consider the example of a Timer Event: whenever the process engine reaches the timer event, it will stop execution, persist the current state to the database and create a job to resume execution in the future. A job has a due date which is calculated using the timer expression provided in the BPMN XML.</p>
 <p>When a process is deployed, the process engine creates a Job Definition for each activity in the process which will create jobs at runtime. This allows you to query information about timers and asynchronous continuations in your processes.</p>
-<h2 id="query-for-jobs">Query for jobs</h2>
+
+<h3 id="query-for-jobs">Query for jobs</h3>
 <p>Using the management service, you can query for jobs. The following selects all jobs which are due after a certain date:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">createJobQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">duedateHigherThan</span><span class="p">(</span><span class="n">someDate</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">()</span><span class="w">
 </span></span></span></code></pre></div><p>It is possible to query for jobs using the REST API.</p>
-<h2 id="query-for-job-definitions">Query for Job Definitions</h2>
+
+<h3 id="query-for-job-definitions">Query for Job Definitions</h3>
 <p>Using the management service, you can also query for job definitions. The following selects all job definitions from a specific process definition:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">createJobDefinitionQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processDefinitionKey</span><span class="p">(</span><span class="s">&#34;orderProcess&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">()</span><span class="w">
 </span></span></span></code></pre></div><p>The result will contain information about all timers and asynchronous continuations in the order process.</p>
 <p>It is also possible to query for job definitions using the REST API.</p>
-<h2 id="suspend-and-activate-job-execution">Suspend and Activate Job Execution</h2>
+
+<h3 id="suspend-and-activate-job-execution">Suspend and Activate Job Execution</h3>
 <p>Job suspension prevents jobs from being executed. Suspension of job execution can be controlled on different levels:</p>
 <ul>
 <li>Job Instance Level: individual Jobs can be suspended either directly through the <code>managementService.suspendJob(...)</code> API or transitively when suspending a Process Instance or a Job Definition.</li>

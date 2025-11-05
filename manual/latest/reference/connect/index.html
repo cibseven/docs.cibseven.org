@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>CIB seven Connect provides a simple API for connecting HTTP services and other
 things. It aims at two usage scenarios: usage in a generic system such as the
 CIB seven process engine and standalone usage via API.</p>
-<h1 id="connectors">Connectors</h1>
+
+<h2 id="connectors">Connectors</h2>
 <p>CIB seven Connect provides a HTTP and a SOAP HTTP connector. If you want to
 add an own connector to Connect please have a look at the <a href="/manual/latest/reference/connect/extending-connect/">extending Connect</a>
 section. This section also describes the usage of a <code>ConnectorConfigurator</code> to
@@ -3198,7 +3203,8 @@ configure the connector instances.</p>
 The user can add own interceptors to this chain. The interceptor is called for
 every request of this connector.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">connector</span><span class="p">.</span><span class="na">addRequestInterceptor</span><span class="p">(</span><span class="n">interceptor</span><span class="p">).</span><span class="na">createRequest</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="maven-coordinates">Maven Coordinates</h1>
+</span></span></span></code></pre></div>
+<h2 id="maven-coordinates">Maven Coordinates</h2>
 <p>Connect can be used in any Java-based application by adding the following maven
 dependency to your <code>pom.xml</code> file:</p>
 
@@ -3238,7 +3244,8 @@ to ensure correct versions for every CIB seven project.</p>
   <p>If you are using Connect in the CIB seven process engine, you also need the <code>cibseven-engine-plugin-connect</code> dependency. For more information, refer to the <a href="/manual/latest/user-guide/process-engine/connectors/">Connectors guide</a>.</p>
 </div>
 
-<h1 id="logging">Logging</h1>
+
+<h2 id="logging">Logging</h2>
 <p>CIB seven Connect uses <a href="https://github.com/cibseven/cibseven/tree/master/commons/logging">cibseven-commons-logging</a> which itself uses <a href="http://slf4j.org">SLF4J</a> as
 a logging backend. To enable logging a SLF4J implementation has to be part of
 your classpath. For example <code>slf4j-simple</code>, <code>log4j12</code> or <code>logback-classic</code>.</p>

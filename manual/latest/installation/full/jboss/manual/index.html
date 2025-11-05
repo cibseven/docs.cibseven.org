@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3199,12 +3203,14 @@
 </ul></p>
 </div>
 
-<h2 id="setup">Setup</h2>
+
+<h3 id="setup">Setup</h3>
 <ul>
 <li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-wildfly/2.0.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-webapp-wildfly-2.0.0.war</code>.</li>
 <li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-jboss/2.0.0/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>cibseven-webapp-jboss-2.0.0.war</code>.</li>
 </ul>
-<h3 id="copy-modules">Copy Modules</h3>
+
+<h4 id="copy-modules">Copy Modules</h4>
 <p>Copy the modules from the <code>modules/</code> folder of the CIB seven distribution, or extract the <code>cibseven-wildfly-modules</code> archive, to the <code>$WILDFLY_HOME/modules/</code> of your WildFly application server.</p>
 
 <div class="note ">
@@ -3216,7 +3222,8 @@ To do so, <strong>make sure to delete the folder</strong></p>
 </code></pre></p>
 </div>
 
-<h3 id="adjust-the-configuration">Adjust the Configuration</h3>
+
+<h4 id="adjust-the-configuration">Adjust the Configuration</h4>
 <p>Next, a number of changes need to be performed in the application server&rsquo;s configuration file.
 In most cases this is <code>$WILDFLY_HOME/standalone/configuration/standalone.xml</code>.</p>
 <p>Add the CIB seven subsystem as extension:</p>
@@ -3269,14 +3276,16 @@ You are able to configure it through the following new configuration elements in
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/job-acquisitions&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/job-executor&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subsystem&gt;</span>
-</span></span></code></pre></div><h3 id="create-the-database-schema">Create the Database Schema</h3>
+</span></span></code></pre></div>
+<h4 id="create-the-database-schema">Create the Database Schema</h4>
 <p>By default, the database schema is automatically created in an H2 database when the engine starts up for the first time. If you do not want to use the H2 database, you have to</p>
 <ul>
 <li>Create a database schema for CIB seven yourself.</li>
 <li>Install the database schema to create all required tables and default indices using our <a href="/manual/latest/installation/database-schema/">database schema installation guide</a>.</li>
 </ul>
 <p>When you create the tables manually, then you can also configure the engine to <strong>not</strong> create tables at startup by setting the <code>isAutoSchemaUpdate</code> property to <code>false</code> (or, in case you are using Oracle, to <code>noop</code>). In WildFly, this is done in the <code>standalone.xml</code>, located in the <code>$WILDFLY_DISTRIBUTION\server\wildfly-$WILDFLY_VERSION\standalone\configuration\</code> folder.</p>
-<h3 id="create-a-datasource">Create a Datasource</h3>
+
+<h4 id="create-a-datasource">Create a Datasource</h4>
 <p>You need to create a datasource named <code>java:jboss/datasources/ProcessEngine</code>.
 The following datasource shows an example of using the built-in H2 database for this, using a file within the <code>./</code> folder,
 typically <code>bin</code>.</p>
@@ -3298,9 +3307,11 @@ These links point you to resources for other databases:</p>
 <li><a href="http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle">How to configure an Oracle database</a></li>
 <li><a href="http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql">How to configure a MySQL database</a></li>
 </ul>
-<h2 id="optional-components">Optional Components</h2>
+
+<h3 id="optional-components">Optional Components</h3>
 <p>This section describes how to install optional dependencies. None of these are required to work with the core platform. Before continuing, make sure that CIB seven is already installed according to <a href="#setup">this step</a> for WildFly / JBoss EAP.</p>
-<h3 id="cib-seven-web-application">CIB seven web application</h3>
+
+<h4 id="cib-seven-web-application">CIB seven web application</h4>
 <p>The following steps are required to deploy CIB seven web application:</p>
 <ol>
 <li>Download the CIB seven web application that contains the web applications from our Maven Artifactory.
@@ -3314,7 +3325,8 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 <li>Startup WildFly.</li>
 <li>Access CIB seven web application via <code>/webapp</code> or under the context path you configured.</li>
 </ol>
-<h3 id="cockpit-tasklist-and-admin">Cockpit, Tasklist, and Admin</h3>
+
+<h4 id="cockpit-tasklist-and-admin">Cockpit, Tasklist, and Admin</h4>
 <p>The following steps are required to deploy legacy Camunda web application:</p>
 <ol>
 <li>Download the Camunda web application that contains the web applications from our Maven Artifactory.</li>
@@ -3324,7 +3336,8 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 <li>Startup WildFly.</li>
 <li>Access Cockpit, Tasklist, and Admin via <code>/camunda/app/cockpit</code>, <code>/camunda/app/tasklist</code> and <code>/camunda/app/admin</code>, or under the context path you configured.</li>
 </ol>
-<h3 id="rest-api">REST API</h3>
+
+<h4 id="rest-api">REST API</h4>
 <p>The following steps are required to deploy the REST API:</p>
 <ol>
 <li>Download the REST API web application archive from our Maven Artifactory.
@@ -3341,7 +3354,8 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 For example, <a href="http://localhost:8080/engine-rest/engine">http://localhost:8080/engine-rest/engine</a> should return the names of all engines of the platform,
 provided that you deployed the application in the context <code>/engine-rest</code>.</li>
 </ol>
-<h3 id="cib-seven-connect-plugin">CIB seven Connect Plugin</h3>
+
+<h4 id="cib-seven-connect-plugin">CIB seven Connect Plugin</h4>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
 <li><code>org/cibseven/bpm/cibseven-engine-plugin-connect</code></li>
@@ -3364,9 +3378,11 @@ provided that you deployed the application in the context <code>/engine-rest</co
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engines&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subsystem&gt;</span>
-</span></span></code></pre></div><h3 id="spin">Spin</h3>
+</span></span></code></pre></div>
+<h4 id="spin">Spin</h4>
 <p>You can use the Spin plugin to extend the engine functionality to de-/serialize object variables from and to JSON and XML. For more information, see the <a href="/manual/latest/reference/spin/">Spin Reference</a>.</p>
-<h4 id="setup-spin">Setup Spin</h4>
+
+<h5 id="setup-spin">Setup Spin</h5>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
 <li><code>org/cibseven/spin/cibseven-spin-core</code></li>
@@ -3405,7 +3421,8 @@ provided that you deployed the application in the context <code>/engine-rest</co
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engines&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subsystem&gt;</span>
-</span></span></code></pre></div><h4 id="problems-with-jackson-annotations">Problems with Jackson Annotations</h4>
+</span></span></code></pre></div>
+<h5 id="problems-with-jackson-annotations">Problems with Jackson Annotations</h5>
 <p>The usage of Jackson annotations on WildFly together with the Spin JSON serialization can lead to problems.
 WildFly implicitly adds the JAX-RS subsystem to each new deployment, if JAX-RS annotations are present (see the WildFly <a href="https://docs.wildfly.org/23/Developer_Guide.html#Implicit_module_dependencies_for_deployments">documentation</a> for more information).
 This JAX-RS subsystem includes the Jackson library, the version of which does not match with the version used by the SPIN Plugin.
@@ -3427,14 +3444,17 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
 <li>This solution is also shown in the <a href="https://github.com/camunda/camunda-bpm-examples/blob/master/wildfly/jackson-annotations">Jackson Annotation Example for WildFly for Camunda</a> in the Camunda example repository.</li>
 </ul>
 <p>See this <a href="https://forum.camunda.io/t/camunda-json-marshalling-and-jsonignore/271/19">Camunda Forum Post</a> for other approaches and information.</p>
-<h4 id="problem-with-deployments-using-the-rest-api">Problem With Deployments Using the REST API</h4>
+
+<h5 id="problem-with-deployments-using-the-rest-api">Problem With Deployments Using the REST API</h5>
 <p>Spin is not available in scripts if a process definition is deployed via REST API. Because WildFly handles dependencies using its module system and CIB seven engine module has no module dependency on the spin module.</p>
-<h3 id="groovy-scripting">Groovy Scripting</h3>
+
+<h4 id="groovy-scripting">Groovy Scripting</h4>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
 <li><code>org/apache/groovy/groovy-all</code></li>
 </ul>
-<h3 id="freemarker-integration">Freemarker Integration</h3>
+
+<h4 id="freemarker-integration">Freemarker Integration</h4>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
 <li><code>org/cibseven/template-engines/cibseven-template-engines-freemarker</code></li>
@@ -3442,7 +3462,8 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
 <li><code>org/cibseven/commons/cibseven-commons-logging</code></li>
 <li><code>org/cibseven/commons/cibseven-commons-utils</code></li>
 </ul>
-<h3 id="graalvm-javascript-integration">GraalVM JavaScript Integration</h3>
+
+<h4 id="graalvm-javascript-integration">GraalVM JavaScript Integration</h4>
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
 <li><code>org/graalvm/js/js</code></li>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,16 +3191,19 @@
 
     <div class="col-xs-12 content-text">
       <p>You have a number of options to configure and create a process engine depending on whether you use an application managed or a shared, container managed process engine.</p>
-<h1 id="application-managed-process-engine">Application Managed Process Engine</h1>
+
+<h2 id="application-managed-process-engine">Application Managed Process Engine</h2>
 <p>You manage the process engine as part of your application. The following ways exist to configure it:</p>
 <ul>
 <li><a href="#bootstrap-a-process-engine-using-the-java-api">Programmatically via Java API</a></li>
 <li><a href="#configure-process-engine-using-camunda-cfg-xml">Via XML configuration</a></li>
 <li><a href="/manual/2.0-ee/user-guide/spring-framework-integration/">Via Spring</a></li>
 </ul>
-<h1 id="shared-container-managed-process-engine">Shared, Container Managed Process Engine</h1>
+
+<h2 id="shared-container-managed-process-engine">Shared, Container Managed Process Engine</h2>
 <p>A container of your choice (e.g., Tomcat or Wildfly) manages the process engine for you. The configuration is carried out in a container specific way, see <a href="/manual/2.0-ee/user-guide/runtime-container-integration/">Runtime Container Integration</a> for details.</p>
-<h2 id="processengineconfiguration-bean">ProcessEngineConfiguration Bean</h2>
+
+<h3 id="processengineconfiguration-bean">ProcessEngineConfiguration Bean</h3>
 <p>The CIB seven engine uses the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ProcessEngineConfiguration.html">ProcessEngineConfiguration bean</a>
  to configure and construct a standalone Process Engine. There are multiple subclasses available that can be used to define the process engine configuration. These classes represent different environments, and set defaults accordingly. It&rsquo;s a best practice to select the class that matches (most of) your environment to minimize the number of properties needed to configure the engine. The following classes are currently available:</p>
 <ul>
@@ -3209,7 +3216,8 @@ To be used when the process engine is used in a Spring environment. See the Spri
 <li><code>org.cibseven.bpm.engine.impl.cfg.JtaProcessEngineConfiguration</code><br>
 To be used when the engine runs in standalone mode, with JTA transactions.</li>
 </ul>
-<h2 id="bootstrap-a-process-engine-using-the-java-api">Bootstrap a Process Engine Using the Java API</h2>
+
+<h3 id="bootstrap-a-process-engine-using-the-java-api">Bootstrap a Process Engine Using the Java API</h3>
 <p>You can configure the process engine programmatically by creating the right ProcessEngineConfiguration object or by using some pre-defined one:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngineConfiguration</span><span class="p">.</span><span class="na">createStandaloneProcessEngineConfiguration</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProcessEngineConfiguration</span><span class="p">.</span><span class="na">createStandaloneInMemProcessEngineConfiguration</span><span class="p">();</span><span class="w">
@@ -3219,7 +3227,8 @@ To be used when the engine runs in standalone mode, with JTA transactions.</li>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setJdbcUrl</span><span class="p">(</span><span class="s">&#34;jdbc:h2:mem:my-own-db;DB_CLOSE_DELAY=1000&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setJobExecutorActivate</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">buildProcessEngine</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="configure-process-engine-using-camunda-cfg-xml">Configure Process Engine Using camunda cfg XML</h2>
+</span></span></span></code></pre></div>
+<h3 id="configure-process-engine-using-camunda-cfg-xml">Configure Process Engine Using camunda cfg XML</h3>
 <p>The easiest way to configure your Process Engine is through an XML file called <code>camunda.cfg.xml</code>. Using that you can simply do:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngine</span><span class="w"> </span><span class="n">processEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessEngines</span><span class="p">.</span><span class="na">getDefaultProcessEngine</span><span class="p">()</span><span class="w">
 </span></span></span></code></pre></div><p>The <code>camunda.cfg.xml</code> must contain a bean that has the id <code>processEngineConfiguration</code>, select the <code>ProcessEngineConfiguration</code> class best suited to your needs:</p>
@@ -3257,7 +3266,8 @@ To be used when the engine runs in standalone mode, with JTA transactions.</li>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngineConfiguration</span><span class="p">.</span><span class="na">createStandaloneProcessEngineConfiguration</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProcessEngineConfiguration</span><span class="p">.</span><span class="na">createStandaloneInMemProcessEngineConfiguration</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>All these <code>ProcessEngineConfiguration.createXXX()</code> methods return a <code>ProcessEngineConfiguration</code> that can further be tweaked if needed. After calling the <code>buildProcessEngine()</code> operation, a <code>ProcessEngine</code> is created as explained above.</p>
-<h2 id="configure-process-engine-in-the-bpm-platformxml">Configure Process Engine in the bpm-platform.xml</h2>
+
+<h3 id="configure-process-engine-in-the-bpm-platformxml">Configure Process Engine in the bpm-platform.xml</h3>
 <p>The <code>bpm-platform.xml</code> file is used to configure CIB seven in the following distributions:</p>
 <ul>
 <li>Apache Tomcat</li>
@@ -3286,7 +3296,8 @@ To be used when the engine runs in standalone mode, with JTA transactions.</li>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
 </span></span></code></pre></div><p>See the <a href="/manual/2.0-ee/reference/deployment-descriptors/descriptors/bpm-platform-xml/">Deployment Descriptor Reference</a> for complete documentation of the syntax of the <code>bpm-platform.xml</code> file.</p>
-<h2 id="configure-process-engine-in-the-processesxml">Configure Process Engine in the processes.xml</h2>
+
+<h3 id="configure-process-engine-in-the-processesxml">Configure Process Engine in the processes.xml</h3>
 <p>The process engine can also be configured and bootstrapped using the <code>META-INF/processes.xml</code> file. See <a href="/manual/2.0-ee/user-guide/process-applications/the-processes-xml-deployment-descriptor/">Section on processes.xml file</a> for details.</p>
 <p>See the <a href="/manual/2.0-ee/reference/deployment-descriptors/descriptors/processes-xml/">Deployment Descriptor Reference</a> for complete documentation of the syntax of the <code>processes.xml</code> file.</p>
 

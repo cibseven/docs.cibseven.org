@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>This section describes the concepts of variables in processes. Variables can be used to add data to process runtime state or, more particular, variable scopes. Various API methods that change the state of these entities allow updating of the attached variables. In general, a variable consists of a name and a value. The name is used for identification across process constructs. For example, if one activity sets a variable named <em>var</em>, a follow-up activity can access it by using this name. The value of a variable is a Java object.</p>
-<h1 id="variable-scopes-and-variable-visibility">Variable Scopes and Variable Visibility</h1>
+
+<h2 id="variable-scopes-and-variable-visibility">Variable Scopes and Variable Visibility</h2>
 <p>All entities that can have variables are called <em>variable scopes</em>. These are executions (which include process instances) and tasks. As described in the  <a href="/manual/latest/user-guide/process-engine/process-engine-concepts/#executions">Concepts section</a>, the runtime state of a process instance is represented by a tree of executions. Consider the following process model where the red dots mark active tasks:</p>
 <figure class="image">
   <span><img
@@ -3238,7 +3243,8 @@
 <li>Scripts in the process model</li>
 <li>(Historic) Variable queries</li>
 </ul>
-<h1 id="set-and-retrieve-variables---overview">Set and Retrieve Variables - Overview</h1>
+
+<h2 id="set-and-retrieve-variables---overview">Set and Retrieve Variables - Overview</h2>
 <p>To set and retrieve variables, the process engine offers a Java API that allows setting of variables from Java objects and retrieving them in the same form. Internally, the engine persists variables to the database and therefore applies serialization. For most applications, this is a detail of no concern. However, sometimes, when working with custom Java classes, the serialized value of a variable is of interest. Imagine the case of a monitoring application that manages many process applications. It is decoupled from those applications&rsquo; classes and therefore cannot access custom variables in their Java representation. For these cases, the process engine offers a way to retrieve and manipulate the serialized value. This boils down to two APIs:</p>
 <ul>
 <li><strong>Java Object Value API</strong>: Variables are represented as Java objects. These objects can be directly set as values and retrieved in the same form. This is the more simple API and is the recommended way when implementing code as part of a process application.</li>
@@ -3261,7 +3267,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">IntegerValue</span><span class="w"> </span><span class="n">typedDiff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Variables</span><span class="p">.</span><span class="na">integerValue</span><span class="p">(</span><span class="n">diff</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execution</span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="s">&#34;diff&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">typedDiff</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>The specifics of this code are described in more detail in the sections on the <a href="#java-object-api">Java Object Value API</a> and the <a href="#typed-value-api">Typed Value API</a>.</p>
-<h2 id="setting-variables-to-specific-scope">Setting variables to specific scope</h2>
+
+<h3 id="setting-variables-to-specific-scope">Setting variables to specific scope</h3>
 <p>There is a possibility to set variables into specific scope from scripts, input\output mapping, listeners and service tasks. Implementation of this functionality is using activity id in order to identify destination scope and will throw an exception if no scope is located to set a variable. Additionally, once target scope is found, variable will be set locally in it, which means that propagation to the parent scope will not be executed even if destination scope does not have a variable with given id.</p>
 <p>Here is example usage with script executionListener:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:executionListener</span> <span class="na">event=</span><span class="s">&#34;end&#34;</span><span class="nt">&gt;</span>
@@ -3279,7 +3286,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>here variable will be set locally in &ldquo;aSubProcess&rdquo; and not propagated to the parent scope even if variable was not set beforehand locally in &ldquo;aSubProcess&rdquo;.</p>
-<h1 id="supported-variable-values">Supported Variable Values</h1>
+
+<h2 id="supported-variable-values">Supported Variable Values</h2>
 <p>The process engine supports the following variable value types:</p>
 <figure class="image">
   <span><img
@@ -3314,7 +3322,8 @@ it may be implemented separately and must happen before the Camunda API to set t
 </div>
 
 <p>Process variables can be stored in formats like JSON and XML provided by the <a href="/manual/latest/user-guide/data-formats/">Camunda Spin plugin</a>. Spin provides serializers for the variables of type <code>object</code> such that Java variables can be persisted in these formats to the database. Furthermore, it is possible to store JSON and XML documents directly as a Spin object by the value types <code>xml</code> and <code>json</code>. Opposed to plain <code>string</code> variables, Spin objects provide a fluent API to perform common operations on such documents like reading and writing properties.</p>
-<h2 id="object-value-serialization">Object Value Serialization</h2>
+
+<h3 id="object-value-serialization">Object Value Serialization</h3>
 <p>When an <code>object</code> value is passed to the process engine, a <em>serialization format</em> can be specified to tell the process engine to store the value in a specific format. Based on this format, the engine looks up a <em>serializer</em>. The serializer is able to serialize a Java object to the specified format and deserialize it from a representation in that format. That means, there may be different serializers for different formats and it is possible to implement custom serializers in order to store custom objects in a specific format.</p>
 <p>The process engine ships one built-in object serializer for the format <code>application/x-java-serialized-object</code>. It is able to serialize Java objects that implement the interface <code>java.io.Serializable</code> and applies standard Java object serialization.</p>
 <p>The desired serialization format can be specified when setting a variable using the Typed Value API:</p>
@@ -3338,7 +3347,8 @@ it may be implemented separately and must happen before the Camunda API to set t
   <p>The <a href="/manual/latest/user-guide/data-formats/">Camunda Spin plugin</a> provides serializers that are capable of serializing object values to XML and JSON. They can be used when it is desired that the serialized objects values can be interpreted by humans or when the serialized value should be meaningful without having the corresponding Java class. When using a pre-built Camunda distribution, Camunda Spin is already preconfigured and you can try these formats without further configuration.</p>
 </div>
 
-<h1 id="java-object-api">Java Object API</h1>
+
+<h2 id="java-object-api">Java Object API</h2>
 <p>The most convenient way of working with process variables from Java is to use their Java object representation. Wherever the process engine offers variable access, process variables can be accessed in this representation given that for custom objects the engine is aware of the involved classes. For example, the following code sets and retrieves a variable for a given process instance:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="n">execution</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;order&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">);</span><span class="w">
@@ -3352,10 +3362,12 @@ it may be implemented separately and must happen before the Camunda API to set t
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="w"> </span><span class="n">retrievedOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="p">)</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">getVariableLocal</span><span class="p">(</span><span class="n">execution</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;order&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// both methods return the variable</span><span class="w">
 </span></span></span></code></pre></div><p>Whenever a variable is set in its Java representation, the process engine automatically determines a suitable value serializer or raises an exception if the provided value cannot be serialized.</p>
-<h1 id="typed-value-api">Typed Value API</h1>
+
+<h2 id="typed-value-api">Typed Value API</h2>
 <p>In cases in which it is important to access a variable&rsquo;s serialized representation or in which the engine has to be hinted to serialize a value in a certain format, the typed-value-based API can be used. In comparison to the Java-Object-based API, it wraps a variable value in a so-called <em>Typed Value</em>. Such a typed value allows richer representation of variable values.</p>
 <p>In order to easily construct typed values, CIB seven offers the class <code>org.cibseven.bpm.engine.variable.Variables</code>. This class contains static methods that allow creation of single typed values as well as creation of a map of typed values in a fluent way.</p>
-<h2 id="primitive-values">Primitive Values</h2>
+
+<h3 id="primitive-values">Primitive Values</h3>
 <p>The following code sets a single <code>String</code> variable by specifying it as a typed value:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">StringValue</span><span class="w"> </span><span class="n">typedStringValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Variables</span><span class="p">.</span><span class="na">stringValue</span><span class="p">(</span><span class="s">&#34;a string value&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="n">execution</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;stringVariable&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">typedStringValue</span><span class="p">);</span><span class="w">
@@ -3363,7 +3375,8 @@ it may be implemented separately and must happen before the Camunda API to set t
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">StringValue</span><span class="w"> </span><span class="n">retrievedTypedStringValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">getVariableTyped</span><span class="p">(</span><span class="n">execution</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;stringVariable&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">stringValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrievedTypedStringValue</span><span class="p">.</span><span class="na">getValue</span><span class="p">();</span><span class="w"> </span><span class="c1">// equals &#34;a string value&#34;</span><span class="w">
 </span></span></span></code></pre></div><p>Note that with this API, there is one more level of abstraction around the variable value. Thus, in order to access the true value, it is necessary to <em>unwrap</em> the actual value.</p>
-<h2 id="file-values">File Values</h2>
+
+<h3 id="file-values">File Values</h3>
 <p>Of course, for plain <code>String</code> values, the Java-Object-based API is more concise. Let us therefore consider values of richer data structures.</p>
 <p>Files can be persisted as BLOBs in the database. The <code>file</code> value type allows to store additional metadata such as a file name and a mime type along with it. The following example code creates a file value from a text file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">FileValue</span><span class="w"> </span><span class="n">typedFileValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Variables</span><span class="w">
@@ -3379,12 +3392,14 @@ it may be implemented separately and must happen before the Camunda API to set t
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrievedTypedFileValue</span><span class="p">.</span><span class="na">getFilename</span><span class="p">();</span><span class="w"> </span><span class="c1">// equals &#34;addresses.txt&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">mimeType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrievedTypedFileValue</span><span class="p">.</span><span class="na">getMimeType</span><span class="p">();</span><span class="w"> </span><span class="c1">// equals &#34;text/plain&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">encoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrievedTypedFileValue</span><span class="p">.</span><span class="na">getEncoding</span><span class="p">();</span><span class="w"> </span><span class="c1">// equals &#34;UTF-8&#34;</span><span class="w">
-</span></span></span></code></pre></div><h3 id="changing-a-file-value">Changing a File Value</h3>
+</span></span></span></code></pre></div>
+<h4 id="changing-a-file-value">Changing a File Value</h4>
 <p>To change or update a <code>file</code> value, you have to create a new <code>FileValue</code> with the same name and the new content, because all typed values are immutable:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">InputStream</span><span class="w"> </span><span class="n">newContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&#34;path/to/the/new/file.txt&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FileValue</span><span class="w"> </span><span class="n">fileVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">execution</span><span class="p">.</span><span class="na">getVariableTyped</span><span class="p">(</span><span class="s">&#34;addresses.txt&#34;</span><span class="p">);</span><span class="w">  
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Variables</span><span class="p">.</span><span class="na">fileValue</span><span class="p">(</span><span class="n">fileVariable</span><span class="p">.</span><span class="na">getName</span><span class="p">()).</span><span class="na">file</span><span class="p">(</span><span class="n">newContent</span><span class="p">).</span><span class="na">encoding</span><span class="p">(</span><span class="n">fileVariable</span><span class="p">.</span><span class="na">getEncoding</span><span class="p">()).</span><span class="na">mimeType</span><span class="p">(</span><span class="n">fileVariable</span><span class="p">.</span><span class="na">getMimeType</span><span class="p">()).</span><span class="na">create</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="object-values">Object Values</h2>
+</span></span></span></code></pre></div>
+<h3 id="object-values">Object Values</h3>
 <p>Custom Java objects can be serialized with the value type <code>object</code>. Example using the typed value API:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ObjectValue</span><span class="w"> </span><span class="n">typedObjectValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Variables</span><span class="p">.</span><span class="na">objectValue</span><span class="p">(</span><span class="n">order</span><span class="p">).</span><span class="na">create</span><span class="p">();</span><span class="w">
@@ -3440,9 +3455,11 @@ with the help of the <a href="/manual/latest/reference/deployment-descriptors/ta
 However, please make sure to read the <a href="/manual/latest/user-guide/security/#variable-values-from-untrusted-sources">Security Implication</a> first before enabling this.</p>
 </div>
 
-<h2 id="json-and-xml-values">JSON and XML Values</h2>
+
+<h3 id="json-and-xml-values">JSON and XML Values</h3>
 <p>The Camunda Spin plugin provides an abstraction for JSON and XML documents that facilitate their processing and manipulation. This is often more convenient than storing such documents as plain <code>string</code> variables. See the documentation on Camunda SPIN for <a href="/manual/latest/user-guide/data-formats/json/#native-json-variable-value">storing JSON documents</a> and <a href="/manual/latest/user-guide/data-formats/xml/#native-xml-variable-value">storing XML documents</a> for details.</p>
-<h2 id="transient-variables">Transient variables</h2>
+
+<h3 id="transient-variables">Transient variables</h3>
 <p>Declaration of transient variables is possible only through the typed-value-based API. They are not saved into the database and exist only during the current transaction. Every waiting state during an execution of a process instance leads to the loss of all transient variables. This happens typically when e.g. an external service is not currently available, an user task has been reached or the process execution is waiting for a message, a signal or a condition. Please use this feature carefully.</p>
 <p>Variables of <a href="#supported-variable-values">any type</a> can be declared as transient using the <code>Variables</code> class and setting the parameter <code>isTransient</code> to true.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// primitive values</span><span class="w">
@@ -3459,7 +3476,8 @@ However, please make sure to read the <a href="/manual/latest/user-guide/securit
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">encoding</span><span class="p">(</span><span class="s">&#34;UTF-8&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">create</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Transient variables can be used via REST API, e.g. <a href="/manual/latest/reference/rest/specification/#tag/Process-Definition/operation/startProcessInstance">when starting a new process instance</a>.</p>
-<h2 id="set-multiple-typed-values">Set Multiple Typed Values</h2>
+
+<h3 id="set-multiple-typed-values">Set Multiple Typed Values</h3>
 <p>Similar to the Java-Object-based API, it is also possible to set multiple typed values in one API call. The <code>Variables</code> class offers a fluent API to construct a map of typed values:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">Order</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3469,10 +3487,12 @@ However, please make sure to read the <a href="/manual/latest/user-guide/securit
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">putValueTyped</span><span class="p">(</span><span class="s">&#34;string&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">Variables</span><span class="p">.</span><span class="na">stringValue</span><span class="p">(</span><span class="s">&#34;a string value&#34;</span><span class="p">))</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">putValueTyped</span><span class="p">(</span><span class="s">&#34;stringTransient&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">Variables</span><span class="p">.</span><span class="na">stringValue</span><span class="p">(</span><span class="s">&#34;foobar&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">setVariablesLocal</span><span class="p">(</span><span class="n">execution</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;order&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="interchangeability-of-apis">Interchangeability of APIs</h1>
+</span></span></span></code></pre></div>
+<h2 id="interchangeability-of-apis">Interchangeability of APIs</h2>
 <p>Both APIs offer different views on the same entities and can therefore be combined as is desired. For example, a variable that is set using the Java-Object-based API can be retrieved as a typed value and vice versa. As the class <code>VariableMap</code> implements the <code>Map</code> interface, it is also possible to put plain Java objects as well as typed values into this map.</p>
 <p>Which API should you use? The one that fits your purpose best. When you are certain that you always have access to the involved value classes, such as when implementing code in a process application like a <code>JavaDelegate</code>, then the Java-Object-based API is easier to use. When you need to access value-specific metadata such as serialization formats or to define a variable as transient, then the Typed-Value-based API is the way to go.</p>
-<h1 id="inputoutput-variable-mapping">Input/Output Variable Mapping</h1>
+
+<h2 id="inputoutput-variable-mapping">Input/Output Variable Mapping</h2>
 <p>To improve the reusability of source code and business logic, CIB seven offers input/output
 mapping of process variables. This can be used for tasks, events and subprocesses.</p>
 <p>In order to use the variable mapping, the Camunda extension element <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-elements/#camunda-inputoutput">inputOutput</a> has to be added
@@ -3551,7 +3571,8 @@ depends on a variable <code>avgForecast</code> as the average value of the three
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/camunda:inputOutput&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/serviceTask&gt;</span>
-</span></span></code></pre></div><h2 id="multi-instance-io-mapping">Multi-instance IO Mapping</h2>
+</span></span></code></pre></div>
+<h3 id="multi-instance-io-mapping">Multi-instance IO Mapping</h3>
 <p>Input mappings can also be used with multi-instance constructs, in which the mapping is applied for every instance that is created. For example, for a multi-instance subprocess with five instances, the mapping is executed five times and the involved variables are created in each of the five subprocess scopes such that they can be accessed independently.</p>
 
 <div class="note bg-info docs-info">
@@ -3559,7 +3580,8 @@ depends on a variable <code>avgForecast</code> as the average value of the three
   <p>The engine does not support output mappings for multi-instance constructs. Every instance of the output mapping would overwrite the variables set by the previous instances and the final variable state would become hard to predict.</p>
 </div>
 
-<h2 id="io-mapping-on-canceled-activities">IO Mapping on canceled activities</h2>
+
+<h3 id="io-mapping-on-canceled-activities">IO Mapping on canceled activities</h3>
 <p>If an Activity is canceled (e.g. due to throwing a BPMN error), IO mapping is still executed. This can lead to exceptions if the output mapping references variables that do not exist in the scope of the activity at that time.</p>
 <p>The default behavior is that the engine still tries to execute output mappings on canceled activities and fails with an exception if a variable is not found. By enabling the <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#skipOutputMappingOnCanceledActivities">skipOutputMappingOnCanceledActivities</a> engine configuration flag (i.e. setting it to <code>true</code>) the engine will not perform output mappings on any canceled activity.</p>
 

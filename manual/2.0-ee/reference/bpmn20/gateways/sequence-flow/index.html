@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>A sequence flow is the connector between two elements of a process. After an element is visited during process execution, all outgoing sequence flows are followed. This means that the default nature of BPMN 2.0 is to be parallel: <strong>two outgoing sequence flows will create two separate, parallel paths of execution.</strong></p>
 <div data-bpmn-diagram="../bpmn/sequence-flow-parallel"></div>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3205,7 +3210,8 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="conditional-sequence-flow">Conditional Sequence Flow</h1>
+
+<h2 id="conditional-sequence-flow">Conditional Sequence Flow</h2>
 <p>A sequence flow can have a condition defined on it. When a BPMN 2.0 activity is left, the default behavior is to evaluate the conditions on the outgoing sequence flows. When a condition evaluates to &rsquo;true&rsquo;, that outgoing sequence flow is selected. When multiple sequence flows are selected that way, multiple executions will be generated and the process is continued in a parallel way. Note: This is different for gateways. Gateways will handle sequence flows with conditions in specific ways, depending on the gateway type.</p>
 <div data-bpmn-diagram="../bpmn/sequence-flow-conditional"></div>
 <p>A conditional sequence flow is represented in XML as a regular sequence flow, containing a conditionExpression sub-element. Note that at the moment only tFormalExpressions are supported. Omitting the xsi:type=&quot;&quot; definition will simply default to this type of expression.</p>
@@ -3232,7 +3238,8 @@ should resolve to a boolean value, otherwise an exception is thrown while evalua
 on <a href="/manual/2.0-ee/user-guide/process-engine/scripting/#script-source">script source</a> for more information).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;conditionExpression</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span> <span class="na">language=</span><span class="s">&#34;groovy&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:resource=</span><span class="s">&#34;org/cibseven/bpm/exampe/condition.groovy&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="extensions-for-conditionexpression">Extensions for conditionExpression</h1>
+</span></span></code></pre></div>
+<h2 id="extensions-for-conditionexpression">Extensions for conditionExpression</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3249,7 +3256,8 @@ on <a href="/manual/2.0-ee/user-guide/process-engine/scripting/#script-source">s
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="default-sequence-flow">Default Sequence Flow</h1>
+
+<h2 id="default-sequence-flow">Default Sequence Flow</h2>
 <p>All BPMN 2.0 tasks and gateways can have a default sequence flow. This sequence flow is <strong>only</strong> selected as the outgoing sequence flow for that activity <strong>if</strong> none of the other sequence flows could be selected. Conditions on a default sequence flow are always ignored.</p>
 <p>A default sequence flow for a certain activity is defined by the default attribute on that activity. The following example shows an exclusive gateway with a default sequence flow. Only when x is neither 1 nor 2 it will be selected as outgoing sequence flow for the gateway.</p>
 <div data-bpmn-diagram="../bpmn/exclusive-gateway"></div>

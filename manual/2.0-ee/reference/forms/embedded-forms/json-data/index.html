@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="fetching-an-existing-json-variable">Fetching an existing JSON Variable</h1>
+      
+<h2 id="fetching-an-existing-json-variable">Fetching an existing JSON Variable</h2>
 <p>The Form SDK will only fetch those variables which are actually used in a form. Since a JSON object is usually not bound to a single input field, we cannot use the <code>cam-variable-name</code> directive.
 We thus need to fetch the variable programatically:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
@@ -3202,7 +3207,8 @@ We thus need to fetch the variable programatically:</p>
 </span></span></code></pre></div><p>After that, you can work with the JSON object in your form, e.g., use it in input fields:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">ng-model</span><span class="o">=</span><span class="s">&#34;customer.firstName&#34;</span> <span class="na">required</span> <span class="p">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">ng-model</span><span class="o">=</span><span class="s">&#34;customer.lastName&#34;</span> <span class="na">required</span> <span class="p">/&gt;</span>
-</span></span></code></pre></div><h1 id="creating-a-new-json-variable">Creating a new JSON Variable</h1>
+</span></span></code></pre></div>
+<h2 id="creating-a-new-json-variable">Creating a new JSON Variable</h2>
 <p>You can use JSON objects in your embedded forms. In order to persist this data in the process instance, you have to explicitely create the variable in the <code>variableManager</code>. This code-snippet creates the variable <code>customer</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">customer</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">customer</span> <span class="o">=</span> <span class="p">{</span>
@@ -3220,7 +3226,8 @@ We thus need to fetch the variable programatically:</p>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">  <span class="p">});</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="full-example">Full Example</h1>
+</span></span></code></pre></div>
+<h2 id="full-example">Full Example</h2>
 <p>A full example of this feature can be found in the <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/usertask/task-form-embedded-json-variables">CIB seven Examples Repository</a>.</p>
 
     </div>

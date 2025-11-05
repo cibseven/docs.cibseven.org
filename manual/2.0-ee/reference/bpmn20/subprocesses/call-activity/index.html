@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3194,7 +3198,8 @@
 <p>A call activity is a regular activity that requires a calledElement which references a process definition by its key. In practice, this means that the id of the process is used in the calledElement:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callCheckCreditProcess&#34;</span> <span class="na">name=</span><span class="s">&#34;Check credit&#34;</span> <span class="na">calledElement=</span><span class="s">&#34;checkCreditProcess&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>Note that the process definition of the subprocess is resolved at runtime. This means that the subprocess can be deployed independently from the calling process, if needed.</p>
-<h1 id="calledelement-binding">CalledElement Binding</h1>
+
+<h2 id="calledelement-binding">CalledElement Binding</h2>
 <p>In a call activity the <code>calledElement</code> attribute contains the process definition key as reference to the subprocess. This means that the latest process definition version of the subprocess is always called.
 To call another version of the subprocess it is possible to define the attributes <code>calledElementBinding</code>, <code>calledElementVersion</code>, and <code>calledElementVersionTag</code> in the call activity. These attributes are optional.</p>
 <p>CalledElementBinding has four different values:</p>
@@ -3213,14 +3218,17 @@ To call another version of the subprocess it is possible to define the attribute
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:calledElementBinding=</span><span class="s">&#34;versionTag&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:calledElementVersionTag=</span><span class="s">&#34;ver-tag-1.0.1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
-</span></span></code></pre></div><h1 id="calledelement-tenant-id">CalledElement Tenant Id</h1>
+</span></span></code></pre></div>
+<h2 id="calledelement-tenant-id">CalledElement Tenant Id</h2>
 <p>When the call activity resolves the process definition to be called it must take multi tenancy into account.</p>
-<h2 id="default-tenant-resolution">Default Tenant Resolution</h2>
+
+<h3 id="default-tenant-resolution">Default Tenant Resolution</h3>
 <p>By default, the tenant id of the calling process definition is used to resolve the called process definition.
 That is, if the calling process definition has no tenant id, then the call activity resolves a process definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling process definition has a tenant id, a process definition with the provided key and the same tenant id is resolved.</p>
 <p>Note that the tenant id of the calling process instance is not taken into account in the default behavior.</p>
-<h2 id="explicit-tenant-resolution">Explicit Tenant Resolution</h2>
+
+<h3 id="explicit-tenant-resolution">Explicit Tenant Resolution</h3>
 <p>In some situations it may be useful to override this default behavior and specify the tenant id explicitly.</p>
 <p>The <code>camunda:calledElementTenantId</code> attribute allows to explicitly specify a tenant id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callSubProcess&#34;</span> <span class="na">calledElement=</span><span class="s">&#34;checkCreditProcess&#34;</span>
@@ -3234,7 +3242,8 @@ If the calling process definition has a tenant id, a process definition with the
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callSubProcess&#34;</span> <span class="na">calledElement=</span><span class="s">&#34;checkCreditProcess&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:calledElementTenantId=</span><span class="s">&#34;${ execution.tenantId }&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
-</span></span></code></pre></div><h1 id="passing-variables">Passing Variables</h1>
+</span></span></code></pre></div>
+<h2 id="passing-variables">Passing Variables</h2>
 <p>You can pass process variables to the subprocess and vice versa. The data is copied into the subprocess when it is started and copied back into the main process when it ends.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callSubProcess&#34;</span> <span class="na">calledElement=</span><span class="s">&#34;checkCreditProcess&#34;</span> <span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensionElements&gt;</span>
@@ -3259,9 +3268,11 @@ If the calling process definition has a tenant id, a process definition with the
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
 </span></span></code></pre></div><p>So in the end <code>z = y+5 = x+5+5</code> holds.</p>
 <p>Source expressions are evaluated in the context of the called process instance. That means, in cases where calling and called process definitions belong to different process applications, context like Java classes, Spring or CDI beans is resolved from the process application the called process definition belongs to.</p>
-<h2 id="variable-output-on-bpmn-error-event">Variable Output on BPMN Error Event</h2>
+
+<h3 id="variable-output-on-bpmn-error-event">Variable Output on BPMN Error Event</h3>
 <p>When a BPMN error event from a called process instance is caught in the calling process instance, the output variable mappings are executed as well. Depending on the BPMN models, this requires output parameters to tolerate <code>null</code> values for variables that do not exist in the called instance when the error is propagated.</p>
-<h2 id="combination-with-inputoutput-parameters">Combination with Input/Output parameters</h2>
+
+<h3 id="combination-with-inputoutput-parameters">Combination with Input/Output parameters</h3>
 <p>Call activities can be combined with <a href="/manual/2.0-ee/user-guide/process-engine/variables/#input-output-variable-mapping">Input/Output parameters</a> as well. This allows for an even more flexible mapping of variables into the called process. In order to only map variables that are declared in the <code>inputOutput</code> mapping, the attribute <code>local</code> can be used. Consider the following XML:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callSubProcess&#34;</span> <span class="na">calledElement=</span><span class="s">&#34;checkCreditProcess&#34;</span> <span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensionElements&gt;</span>
@@ -3302,11 +3313,13 @@ If the calling process definition has a tenant id, a process definition with the
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
 </span></span></code></pre></div><p>When the called process instance ends, due to <code>local=&quot;true&quot;</code> in the <code>camunda:out</code> parameter all variables are mapped to local variables of the execution executing the call activity. These variables can be mapped to process instance variables by using an output mapping. Any variable that is not declared by a <code>camunda:outputParameter</code> element will not be available anymore after the call activity ends.</p>
-<h2 id="delegation-of-variable-mapping">Delegation of Variable Mapping</h2>
+
+<h3 id="delegation-of-variable-mapping">Delegation of Variable Mapping</h3>
 <p>The mapping of input and output variables can also be delegated. This means the passing of input or/and output variables can be done in Java code.
 For this the <a href="/manual/2.0-ee/user-guide/process-engine/delegation-code/#delegate-variable-mapping">Delegate Variable Mapping</a> interface must be implemented.</p>
 <p>There are two possible ways to use delegation for variable mapping.</p>
-<h3 id="delegate-variable-mapping-via-reference">Delegate Variable Mapping via Reference</h3>
+
+<h4 id="delegate-variable-mapping-via-reference">Delegate Variable Mapping via Reference</h4>
 <p>The first one is to set the Camunda extension property <code>variableMappingClass</code> and reference the implementation of the <code>DelegateVariableMapping</code> interface via the whole class name.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"> <span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;callSimpleSubProcess&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -3325,7 +3338,8 @@ For this the <a href="/manual/2.0-ee/user-guide/process-engine/delegation-code/#
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;endEvent</span> <span class="na">id=</span><span class="s">&#34;theEnd&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process&gt;</span>
-</span></span></code></pre></div><h3 id="delegate-variable-mapping-via-expression">Delegate Variable Mapping via Expression</h3>
+</span></span></code></pre></div>
+<h4 id="delegate-variable-mapping-via-expression">Delegate Variable Mapping via Expression</h4>
 <p>The second one is to set the Camunda extension property <code>variableMappingDelegateExpression</code> with an expression.
 This allows to specify an expression that resolves to an object implementing the <code>DelegateVariableMapping</code> interface.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;callSimpleSubProcess&#34;</span><span class="nt">&gt;</span>
@@ -3346,14 +3360,16 @@ This allows to specify an expression that resolves to an object implementing the
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process&gt;</span>
 </span></span></code></pre></div><p>See <a href="/manual/2.0-ee/user-guide/process-engine/delegation-code/#delegate-variable-mapping">Delegate Variable Mapping</a> for further information of implementing the interface.</p>
-<h1 id="passing-business-key">Passing Business Key</h1>
+
+<h2 id="passing-business-key">Passing Business Key</h2>
 <p>You can pass the business key to the subprocess. The data is copied into the subprocess when it is started. You can not give back the business key to the parent process because the business key is not changeable.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callSubProcess&#34;</span> <span class="na">calledElement=</span><span class="s">&#34;checkCreditProcess&#34;</span> <span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;camunda:in</span> <span class="na">businessKey=</span><span class="s">&#34;#{execution.processBusinessKey}&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
-</span></span></code></pre></div><h1 id="example">Example</h1>
+</span></span></code></pre></div>
+<h2 id="example">Example</h2>
 <p>The following process diagram shows a simple handling of an order. Since, for example, the billing could be common to many other processes, it is modeled as a call activity.</p>
 <div data-bpmn-diagram="../bpmn/call-activity"></div>
 <p>The XML looks as follows:</p>
@@ -3368,9 +3384,11 @@ This allows to specify an expression that resolves to an object implementing the
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;endEvent</span> <span class="na">id=</span><span class="s">&#34;end&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>There is nothing special about the process definition of the subprocess. It could also be used without being called from another process.</p>
-<h1 id="create-a-case-instance">Create a Case Instance</h1>
+
+<h2 id="create-a-case-instance">Create a Case Instance</h2>
 <p>A call activity can also be used to create a new CMMN case instance as a subordinate of the corresponding process instance. The call activity completes as soon as the created case instance reaches the state <code>COMPLETED</code> for the first time. In contrast to calling a BPMN process, the attribute <code>caseRef</code> instead of the attribute <code>calledElement</code> must be used to reference a case definition by its key. This means that the latest case definition version is always called.</p>
-<h2 id="case-binding">Case Binding</h2>
+
+<h3 id="case-binding">Case Binding</h3>
 <p>To call another version of a case definition it is possible to define the attributes <code>caseBinding</code> and <code>caseVersion</code> in the call activity. Both attributes are optional.</p>
 <p>CaseBinding has three different values:</p>
 <ul>
@@ -3382,7 +3400,8 @@ This allows to specify an expression that resolves to an object implementing the
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:caseBinding=</span><span class="s">&#34;latest|deployment|version&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:caseVersion=</span><span class="s">&#34;17&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
-</span></span></code></pre></div><h2 id="case-tenant-id">Case Tenant Id</h2>
+</span></span></code></pre></div>
+<h3 id="case-tenant-id">Case Tenant Id</h3>
 <p>The call activity must take multi tenancy into account when resolving the case definition to be called.</p>
 <p>The <a href="#default-tenant-resolution">default behavior</a> is the same as when resolving BPMN Process Definitions (i.e., the tenant id of the calling process definition is used to resolve the called case definition.)</p>
 <p>In order to override the default behavior, the tenant id for resolving the called case definition can be specified explicitly using the <code>camunda:caseTenantId</code> attribute:</p>
@@ -3397,7 +3416,8 @@ This allows to specify an expression that resolves to an object implementing the
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;callActivity</span> <span class="na">id=</span><span class="s">&#34;callSubProcess&#34;</span> <span class="na">camunda:caseRef=</span><span class="s">&#34;checkCreditCase&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:caseTenantId=</span><span class="s">&#34;${ execution.tenantId }&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/callActivity&gt;</span>
-</span></span></code></pre></div><h1 id="camunda-extensions">Camunda Extensions</h1>
+</span></span></code></pre></div>
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3456,7 +3476,8 @@ This allows to specify an expression that resolves to an object implementing the
     </td>
   </tr>
 </table>
-<h1 id="additional-resources">Additional Resources</h1>
+
+<h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="http://camunda.org/bpmn/reference.html#activities-call-activity">Call Activity</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>
 </ul>

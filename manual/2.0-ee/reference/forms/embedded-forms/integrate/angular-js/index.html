@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,15 +3197,18 @@
 While AngularJS remains available in the Camunda web applications, these applications will be deprecated and removed in future releases of CIB seven.</p>
 </div>
 
-<h1 id="including-the-angular-distribution">Including the Angular Distribution</h1>
+
+<h2 id="including-the-angular-distribution">Including the Angular Distribution</h2>
 <p>Make sure you include the AngularJS build of the Forms SDK:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;angular.min.js&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;camunda-bpm-sdk-angular.js&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="loading-the-forms-module">Loading the Forms Module</h1>
+</span></span></code></pre></div>
+<h2 id="loading-the-forms-module">Loading the Forms Module</h2>
 <p>Add the Forms SDK as module dependency to your application
 module:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">angular</span><span class="p">.</span><span class="nx">bootstrap</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cam.embedded.forms&#39;</span><span class="p">,</span> <span class="p">...]);</span>
-</span></span></code></pre></div><h1 id="angular-directives--compilation">Angular Directives &amp; Compilation</h1>
+</span></span></code></pre></div>
+<h2 id="angular-directives--compilation">Angular Directives &amp; Compilation</h2>
 <p>If the form is loaded from a URL, the SDK makes sure that it is properly compiled and linked to the current Angular scope. This allows using Angular directives in forms loaded dynamically at runtime.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;form&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;form&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">

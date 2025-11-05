@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>This page describes the process of migrating a custom project, which uses Camunda BPM, to using CIB seven.</p>
-<h2 id="migration-to-cib-seven-20">Migration to CIB seven 2.0</h2>
+
+<h3 id="migration-to-cib-seven-20">Migration to CIB seven 2.0</h3>
 <p>The backend of CIB seven 2.0.0 is based on Camunda 7.23.0, so before the migration, please check your Camunda version: it should be Camunda 7.23.0. If the version of Camunda is less than 7.23.0 then update it to 7.23.0, first.</p>
 
 <div class="note bg-info docs-info">
@@ -3202,7 +3207,8 @@ This script performs the following actions:</p>
 <li>Changes artifacts names from <code>camunda-*</code> to <code>cibseven-*</code>.</li>
 <li>Changes namespaces inside imports, used in your custom Java code from <code>org.camunda</code> to <code>org.cibseven</code>.</li>
 </ul>
-<h3 id="migration-to-cib-seven-webclient">Migration to CIB seven webclient</h3>
+
+<h4 id="migration-to-cib-seven-webclient">Migration to CIB seven webclient</h4>
 <p>Among other things, CIB Seven 2.0.0 includes a new web client: CIB seven webclient (however, the option of using the old Camunda web application remains available).
 The CIB Seven webclient uses JWT-based authentication and requires a special JWT secret, which must be stored securely and be accessible to both, the engine REST and the webclient middleware.
 So, for migration to CIB seven webclient, you need to create file <code>cibseven-webclient.properties</code> on the classpath, ideally for both, the engine-REST and the webclient.
@@ -3210,7 +3216,8 @@ This configuration file should contain a jwtSecret property with the same value:
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl">   <span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
 </span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
 <p>Alternatively, the JWT secret can be specified via the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
-<h3 id="migration-to-cib-seven-namespace">Migration to CIB seven namespace</h3>
+
+<h4 id="migration-to-cib-seven-namespace">Migration to CIB seven namespace</h4>
 <p>In some cases, processes created for Camunda may reference classes from the org.camunda namespace.
 For example:</p>
 <ul>
@@ -3237,7 +3244,8 @@ For example:</p>
 </ul>
 <p>These properties are already included inside the configuration files for Tomcat (<code>bpm_platform.xml</code>), Wildfly (<code>standalone.xml</code>) and Run (<code>production.yml</code>) distributions of CIB seven 2.0 and higher, but the properties are disabled by default.
 Enabling these properties ensures smooth access to objects and prevents class loading errors after migration.</p>
-<h2 id="migration-to-cib-seven-11">Migration to CIB seven 1.1</h2>
+
+<h3 id="migration-to-cib-seven-11">Migration to CIB seven 1.1</h3>
 
 <div class="note bg-info docs-info">
   <h3>Don&#39;t panic and use OpenRewrite!</h3>
@@ -3251,10 +3259,12 @@ Enabling these properties ensures smooth access to objects and prevents class lo
 <li>Imports used in custom code should now use <code>org.cibseven.foo.bar</code> instead of <code>org.camunda.foo.bar</code> packages.</li>
 </ul>
 <p>All these changes can be done, using our Migration Script, based on OpenRewrite maven plugin (see <a href="https://github.com/cibseven/cibseven-migration/releases/tag/v1.1.0">GitHub</a> for details).</p>
-<h2 id="migration-to-cib-seven-10">Migration to CIB seven 1.0</h2>
+
+<h3 id="migration-to-cib-seven-10">Migration to CIB seven 1.0</h3>
 <p>CIB seven 1.0 is a special version with minimal changes from Camunda. No source level changes were applied, no library dependencies were changed.</p>
 <p>We expect migration to this version should be as easy as possible. Only two steps are essential:</p>
-<h3 id="change-version-to-7220-cibseven">Change Version to 7.22.0-cibseven</h3>
+
+<h4 id="change-version-to-7220-cibseven">Change Version to 7.22.0-cibseven</h4>
 
 <div class="note bg-info docs-info">
   <h3>My Camunda version is less than 7.22!</h3>
@@ -3262,7 +3272,8 @@ Enabling these properties ensures smooth access to objects and prevents class lo
 </div>
 
 <p>Update your <code>pom.xml</code> files using Camunda and change version used from <code>7.22.x</code> (usually <code>7.22.0</code> for Community Edition) to <code>7.22.0-cibseven</code>.</p>
-<h3 id="setup-cib-seven-maven-repository">Setup CIB seven Maven Repository</h3>
+
+<h4 id="setup-cib-seven-maven-repository">Setup CIB seven Maven Repository</h4>
 <p>We are not able to deliver artifacts for other projects to any Maven Central repository. Version <code>7.22.0-cibseven</code> is available only at <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/">artifacts.cibseven.org</a>  - our public maven repository.</p>
 <p>You can add this repository to <code>pom.xml</code> for current project or to <code>settings.xml</code> in <code>$M2_HOME</code> (usually <code>$HOME/.m2</code>) folder for current user:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;repositories&gt;</span>

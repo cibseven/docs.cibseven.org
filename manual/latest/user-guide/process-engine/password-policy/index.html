@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>This chapter is about configuring and using a password policy for engine-managed user accounts. A password policy makes sure that only passwords that meet certain criteria are allowed. A policy can consist of any number of rules. Violation of one of the policy&rsquo;s rules results in an error and the user not being saved.</p>
 <p>Since version 7.11.0, the engine comes with a standard password policy that is disabled by default and must be configured to use.</p>
 <p><strong>Note:</strong> This only applies to users that are managed within the CIB seven engine. If you use LDAP for your user management a password policy has no effect on these users.</p>
-<h1 id="built-in-password-policy">Built-In Password Policy</h1>
+
+<h2 id="built-in-password-policy">Built-In Password Policy</h2>
 <p>The built-in password policy requires all passwords to meet the following criteria:</p>
 <ul>
 <li>user data (i.e., user id, first name, last name, email) must not be contained</li>
@@ -3199,7 +3204,8 @@
 <li>at least 1 digit</li>
 <li>at least 1 special character</li>
 </ul>
-<h1 id="customize-the-password-policy">Customize the Password Policy</h1>
+
+<h2 id="customize-the-password-policy">Customize the Password Policy</h2>
 <p>You can use the process engine configuration to enable / disable the password policy or plug in a custom policy. See <a href="../process-engine-bootstrapping">Process Engine Bootstrapping</a> on how to set properties for your Camunda environment.</p>
 <p>To enable or disable the password policy checks you need to set the <code>enablePasswordPolicy</code> property.</p>
 <p>If you want to use a custom password policy you can do this by implementing the <code>PasswordPolicy</code> and <code>PasswordPolicyRule</code> interfaces from the <code>org.cibseven.bpm.engine.identity</code> package and provide your implementation to the process engine configuration by setting the <code>passwordPolicy</code> property.</p>

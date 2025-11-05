@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3219,7 +3223,8 @@
     A milestone without entry criteria is fulfilled as soon as the stage it is contained in becomes active. For example, a milestone item that is defined on the case definition level is completed as soon as the case is instantiated. It is therefore advisable to define at least one entry criterion for a milestone plan item.
   </p>
 </div>
-<h2 id="checking-milestones">Checking Milestones</h2>
+
+<h3 id="checking-milestones">Checking Milestones</h3>
 <p>In order to check whether a milestone has occurred, the history service can be used. The following checks the state of a milestone instance:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HistoricCaseActivityInstance</span><span class="w"> </span><span class="n">milestoneInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">historyService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createHistoricCaseActivityInstanceQuery</span><span class="p">()</span><span class="w">
@@ -3228,7 +3233,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">singleResult</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">milestoneInstance</span><span class="p">.</span><span class="na">isCompleted</span><span class="p">();</span><span class="w"> </span><span class="c1">// true if milestone occurred</span><span class="w">
-</span></span></span></code></pre></div><h2 id="camunda-extensions">Camunda Extensions</h2>
+</span></span></span></code></pre></div>
+<h3 id="camunda-extensions">Camunda Extensions</h3>
 <table class="table table-striped">
   <tr>
     <th>Extension Elements</th>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3190,7 +3194,8 @@
 Ids. These Ids uniquely identify an individual task, process instance, etc. When these entities are
 persisted to the database, the ids are used as primary keys in the corresponding database tables.</p>
 <p>Out of the box, the process engine provides two Id generator implementations.</p>
-<h1 id="the-database-id-generator">The Database Id Generator</h1>
+
+<h2 id="the-database-id-generator">The Database Id Generator</h2>
 <p>The Database Id Generator is implemented using a sequence Generator on top of the <code>ACT_GE_PROPERTY</code>
 table.</p>
 <p>This id generator is good for debugging and testing since it generates human readable ids.</p>
@@ -3200,7 +3205,8 @@ table.</p>
   <p>The Database Id Generator should <strong>never</strong> be used in production since it cannot handle high levels of concurrency.</p>
 </div>
 
-<h1 id="the-uuid-generator">The UUID Generator</h1>
+
+<h2 id="the-uuid-generator">The UUID Generator</h2>
 <p>The StrongUuidGenerator uses a UUID generator which uses the <a href="https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator">Java UUID Generator (JUG)</a> library
 internally.</p>
 

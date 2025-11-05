@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,7 +261,8 @@
 
     <div class="col-xs-12 content-text">
       <p>In this section, you&rsquo;ll learn how to create your first BPMN 2.0 process with the Camunda Modeler and how to execute automated steps. Start by opening up Camunda Modeler.</p>
-<h1 id="create-a-new-bpmn-diagram">Create a new BPMN Diagram</h1>
+
+<h2 id="create-a-new-bpmn-diagram">Create a new BPMN Diagram</h2>
 <p>Create a new BPMN diagram by clicking <em>File &gt; New File &gt; BPMN Diagram (Camunda 7)</em>.</p>
 <figure class="image">
   <span><img
@@ -267,7 +270,8 @@
        /></span>
 </figure>
 
-<h2 id="start-with-a-simple-process">Start with a Simple Process</h2>
+
+<h3 id="start-with-a-simple-process">Start with a Simple Process</h3>
 <p>Start by modeling a simple process.</p>
 <figure class="image">
   <span><img
@@ -296,7 +300,8 @@
        /></span>
 </figure>
 
-<h2 id="configure-the-service-task">Configure the Service Task</h2>
+
+<h3 id="configure-the-service-task">Configure the Service Task</h3>
 <p>There are different ways to <a href="/manual/latest/reference/bpmn20/tasks/service-task/">execute service tasks</a> using CIB seven. In this guide, we&rsquo;ll use the <a href="/manual/latest/user-guide/process-engine/external-tasks/">external task</a> pattern.
 Open the Properties Panel within the Camunda Modeler and click on the Service Task you just created. Change the Implementation to <code>External</code> and use <code>charge-card</code> as the Topic.</p>
 <figure class="image">
@@ -305,7 +310,8 @@ Open the Properties Panel within the Camunda Modeler and click on the Service Ta
        /></span>
 </figure>
 
-<h2 id="configure-properties-for-execution">Configure Properties for Execution</h2>
+
+<h3 id="configure-properties-for-execution">Configure Properties for Execution</h3>
 <figure class="image">
   <span><img
       src="../img/modeler-step5.png"
@@ -316,7 +322,8 @@ Open the Properties Panel within the Camunda Modeler and click on the Service Ta
 <p>First, configure an ID for the process. Type <em>payment-retrieval</em> in the property field <em>Id</em>. The property ID is used by the process engine as an identifier for the executable process, and it&rsquo;s best practice to set it to a human-readable name.</p>
 <p>Second, configure the Name of the process. Type <em>Payment Retrieval</em> in the property field <em>Name</em>.</p>
 <p>Finally, make sure the box next to the <em>Executable</em> property is checked. If you don&rsquo;t check this box, the process definition is ignored by the process engine.</p>
-<h2 id="save-the-bpmn-diagram">Save the BPMN Diagram</h2>
+
+<h3 id="save-the-bpmn-diagram">Save the BPMN Diagram</h3>
 <p>When you&rsquo;re done, save your changes by clicking <em>File &gt; Save File As..</em>. In the dialogue that appears, navigate to a folder of your choice and save the diagram as something like <code>payment.bpmn</code>.</p>
 
 <div class="panel-group gs-download-step-panel" id="gitStep-1">
@@ -348,7 +355,8 @@ Open the Properties Panel within the Camunda Modeler and click on the Service Ta
   </div>
 </div>
 
-<h1 id="implement-an-external-task-worker">Implement an external task worker</h1>
+
+<h2 id="implement-an-external-task-worker">Implement an external task worker</h2>
 <p>After modeling the process, we want to execute some business logic.</p>
 <p>CIB seven platform is built so that your business logic can be implemented in different languages.
 You have the choice which language suits your project best.</p>
@@ -364,15 +372,18 @@ You have the choice which language suits your project best.</p>
   <p>If you prefer a different programming language, you can also use <a href="/manual/latest/user-guide/process-engine/external-tasks/#rest-api">REST API</a> to access CIB seven API operations via HTTP.</p>
 </div>
 
-<h2 id="a-using-java">a) Using Java</h2>
+
+<h3 id="a-using-java">a) Using Java</h3>
 <p>In this section, you&rsquo;ll learn how to implement an external task worker in Java.</p>
-<h3 id="prerequisites">Prerequisites</h3>
+
+<h4 id="prerequisites">Prerequisites</h4>
 <p>Make sure you have the following tools installed:</p>
 <ul>
 <li>JDK 11</li>
 <li>An IDE for Java projects (e.g. <a href="https://eclipse.org/">Eclipse</a>)</li>
 </ul>
-<h3 id="create-a-new-maven-project">Create a new Maven project</h3>
+
+<h4 id="create-a-new-maven-project">Create a new Maven project</h4>
 <p>Start by creating a new Maven project in your IDE. If you&rsquo;re using Eclipse, you can follow these steps:</p>
 <p>In Eclipse, go to File / New / Other &hellip;. This opens the New Project Wizard. In the New Project Wizard, select Maven / Maven Project. Click Next.</p>
 <p>On the first page of the New Maven Project Wizard, select Create a simple project (you can skip archetype selection). Click Next.</p>
@@ -384,7 +395,8 @@ You have the choice which language suits your project best.</p>
 </figure>
 
 <p>When you&rsquo;re done, click Finish. Eclipse will set up a new Maven project. The project appears in the Project Explorer View.</p>
-<h3 id="add-cib-seven-external-task-client-dependency">Add CIB seven External Task Client Dependency</h3>
+
+<h4 id="add-cib-seven-external-task-client-dependency">Add CIB seven External Task Client Dependency</h4>
 <p>The next step consists of setting up the Maven dependency to the external task client for your new process application.
 Your pom.xml file of your project should look like this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -419,7 +431,8 @@ Your pom.xml file of your project should look like this:</p>
 </span></span><span class="line"><span class="cl">		<span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;/dependencies&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
-</span></span></code></pre></div><h3 id="add-the-java-class">Add the Java class</h3>
+</span></span></code></pre></div>
+<h4 id="add-the-java-class">Add the Java class</h4>
 <p>Next, we will create a new ExternalTaskClient which subscribes to the <code>charge-card</code> topic.</p>
 <p>When the process engine encounters a service task that is configured to be externally handled, it creates an external task instance on which our handler will react.
 We are using <a href="/manual/latest/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks">Long Polling</a> in the ExternalTaskClient to make the communication more efficient.</p>
@@ -465,7 +478,8 @@ We are using <a href="/manual/latest/user-guide/process-engine/external-tasks/#l
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">open</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="run-the-worker">Run the worker</h3>
+</span></span></span></code></pre></div>
+<h4 id="run-the-worker">Run the worker</h4>
 <p>You can run the Java application by right clicking on the class <code>ChargeCardWorker</code> and choosing <code>Run as Java</code>.</p>
 <p>Note that the worker should remain running throughout the entirety of this quick start guide.</p>
 
@@ -504,19 +518,23 @@ We are using <a href="/manual/latest/user-guide/process-engine/external-tasks/#l
   </div>
 </div>
 
-<h2 id="b-using-javascript-nodejs">b) Using JavaScript (NodeJS)</h2>
+
+<h3 id="b-using-javascript-nodejs">b) Using JavaScript (NodeJS)</h3>
 <p>In this section, you&rsquo;ll learn how to implement an external task worker in NodeJS.</p>
-<h3 id="prerequisites-1">Prerequisites</h3>
+
+<h4 id="prerequisites-1">Prerequisites</h4>
 <p>Make sure you have the following tools installed:</p>
 <ul>
 <li>NodeJS &gt;= v16 (<a href="https://nodejs.org/en/download/prebuilt-installer">Download available here</a>)</li>
 <li>Editor for JavaScript files (e.g. <a href="https://atom.io/">Atom</a>)</li>
 </ul>
-<h3 id="create-a-new-nodejs-project">Create a new NodeJS project</h3>
+
+<h4 id="create-a-new-nodejs-project">Create a new NodeJS project</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkdir charge-card-worker
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> ./charge-card-worker
 </span></span><span class="line"><span class="cl">npm init -y
-</span></span></code></pre></div><h3 id="update-packagejson-to-enable-es-modules">Update package.json to enable ES modules</h3>
+</span></span></code></pre></div>
+<h4 id="update-packagejson-to-enable-es-modules">Update package.json to enable ES modules</h4>
 <p>Add the following &ldquo;type&rdquo; field to your package.json file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// ...
@@ -527,10 +545,12 @@ We are using <a href="/manual/latest/user-guide/process-engine/external-tasks/#l
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// ...
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><h3 id="add-camunda-external-task-client-js-library">Add Camunda External Task Client JS library</h3>
+</span></span></code></pre></div>
+<h4 id="add-camunda-external-task-client-js-library">Add Camunda External Task Client JS library</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install camunda-external-task-client-js
 </span></span><span class="line"><span class="cl">npm install -D open
-</span></span></code></pre></div><h3 id="implement-the-nodejs-script">Implement the NodeJS script</h3>
+</span></span></code></pre></div>
+<h4 id="implement-the-nodejs-script">Implement the NodeJS script</h4>
 <p>Next, we&rsquo;ll create a new ExternalTaskClient that subscribes to the <code>charge-card</code> topic.</p>
 <p>When the process engine encounters a service task that&rsquo;s configured to be externally handled, it creates an external task instance on which our handler will react.
 We use <a href="https://docs.camunda.org/manual/latest/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks">Long Polling</a> in the ExternalTaskClient to make the communication more efficient.</p>
@@ -562,7 +582,8 @@ We use <a href="https://docs.camunda.org/manual/latest/user-guide/process-engine
 </span></span><span class="line"><span class="cl">  <span class="c1">// Complete the task
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">await</span> <span class="nx">taskService</span><span class="p">.</span><span class="nx">complete</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></div><h3 id="run-the-nodejs-script">Run the NodeJS script</h3>
+</span></span></code></pre></div>
+<h4 id="run-the-nodejs-script">Run the NodeJS script</h4>
 <p>You can run the NodeJS script with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">node ./worker.js
 </span></span></code></pre></div><p>Note that the worker should remain running throughout the entirety of this quick start guide.</p>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,20 +3192,26 @@
     <div class="col-xs-12 content-text">
       <p>Some CIB seven features require a license key. The license will be provided as a string by
 the CIB seven support team. The following section explains the various methods by which a CIB seven license can be added to the Process Engine.</p>
-<h1 id="deployment-scenarios-and-the-license-key">Deployment Scenarios and the License Key</h1>
+
+<h2 id="deployment-scenarios-and-the-license-key">Deployment Scenarios and the License Key</h2>
 <p>In a clustered scenario, CIB seven license key should be applied to all nodes. When activated, a license is valid until the expiration date. The license key is valid for an unlimited amount of engines.</p>
-<h1 id="license-key-pickup-methods">License Key Pickup Methods</h1>
-<h2 id="through-the-admin-webapp-ui">Through the Admin Webapp UI</h2>
+
+<h2 id="license-key-pickup-methods">License Key Pickup Methods</h2>
+
+<h3 id="through-the-admin-webapp-ui">Through the Admin Webapp UI</h3>
 <p>Any environment setup that uses the enterprise CIB seven Admin webapp, can use the provided License key page to
 enter a valid license key. Please see the dedicated <a href="/manual/2.0-ee/webapps/admin/system-management/#cibseven-license-key">Admin webapp</a>
 docs section for more details.</p>
-<h2 id="through-the-home-directory">Through the Home Directory</h2>
+
+<h3 id="through-the-home-directory">Through the Home Directory</h3>
 <p>Another possibility is to put a file with the license key on the path <code>${user.home}/.cibseven/cibseven-license.txt</code>.
 This is another method that can be applied in any environment setup. The license key will be
 automatically loaded in the database table unless a valid license key is already present.</p>
-<h2 id="through-the-configuration-file">Through the configuration file</h2>
+
+<h3 id="through-the-configuration-file">Through the configuration file</h3>
 <p>License keys could be stored in a file specified by an optional application property <code>cibseven.webclient.license.file.path</code> in your <code>cibseven-webclient.yaml</code></p>
-<h2 id="with-the-cib-seven-spring-boot-starter--cib-seven-run">With the CIB seven Spring Boot Starter &amp; CIB seven Run</h2>
+
+<h3 id="with-the-cib-seven-spring-boot-starter--cib-seven-run">With the CIB seven Spring Boot Starter &amp; CIB seven Run</h3>
 <p>CIB seven Run, and other Spring Boot applications that use the CIB seven Spring Boot Starter, can be provided with license  keys in two additional ways:</p>
 <ul>
 <li>provide a URL to a license file via a custom application property <code>cibseven.webclient.license.file.path</code> in your <code>application.yaml</code>.</li>
@@ -3214,7 +3224,8 @@ application must use the EE version of the starter, with <code>-ee</code> suffix
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-webapp<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${project-version}-ee<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="license-content">License content</h1>
+</span></span></code></pre></div>
+<h2 id="license-content">License content</h2>
 <p>This section defines what is a valid license key that will be accepted by the CIB seven webclient. This description is
 valid for all <a href="#license-key-pickup-methods">License pickup methods</a>.</p>
 <p>A valid license key content is stored in a JSON format with the following items:</p>

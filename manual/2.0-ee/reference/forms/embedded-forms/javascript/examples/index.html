@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>The following examples show example scenarios of custom JavaScript in embedded forms.</p>
-<h1 id="user-name-from-a-cam-script">User name from a cam-script</h1>
+
+<h2 id="user-name-from-a-cam-script">User name from a cam-script</h2>
 <p>This example demonstrates how to retrieve the user name and display it in an embedded form:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;form&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
@@ -3198,7 +3203,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Greetings {{ userName }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="load-additional-resources">Load Additional Resources</h1>
+</span></span></code></pre></div>
+<h2 id="load-additional-resources">Load Additional Resources</h2>
 <p>This example includes an image, which is located in the contextPath of the form (i.e., in the same directory). The URL of the image is retrieved via the <em>task form key</em> method of the REST API:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;form&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
@@ -3214,7 +3220,8 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">ng-src</span><span class="o">=</span><span class="s">&#34;{{contextPath}}/image.png&#34;</span> <span class="p">/&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="exclude-a-variable-from-submit">Exclude a variable from submit</h1>
+</span></span></code></pre></div>
+<h2 id="exclude-a-variable-from-submit">Exclude a variable from submit</h2>
 <p>When a variable is loaded, it is also sent back to the server when the form is submitted. If you have a variable that you don&rsquo;t want to be submitted when the form is completed, you can use the <code>destroyVariable</code> function of the variable manager:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">camForm</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;form-loaded&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -3230,7 +3237,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">camForm</span><span class="p">.</span><span class="nx">variableManager</span><span class="p">.</span><span class="nx">destroyVariable</span><span class="p">(</span><span class="s1">&#39;invoiceData&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">});</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="upload-large-files">Upload Large Files</h1>
+</span></span></code></pre></div>
+<h2 id="upload-large-files">Upload Large Files</h2>
 <p>This example contains a file input element and the script to send it to the server. In contrast to the <a href="/manual/2.0-ee/reference/forms/embedded-forms/controls/files/">file input element of the Forms SDK</a>, this example can handle large files, but it also has some drawbacks:</p>
 <ul>
 <li>Can not be used in the start form of a process (no process instance id exists at this time)</li>

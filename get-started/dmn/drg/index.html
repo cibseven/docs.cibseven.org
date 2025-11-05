@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -265,7 +267,8 @@
   <p>The visual representation of a Decision Requirements Graph (DRG) is called Decision Requirements Diagram (DRD). In the context of the Camunda Modeler, we name it DRD because we use the visual representation to model the DRG.</p>
 </div>
 
-<h1 id="switch-from-decision-table-to-drd">Switch from Decision Table to DRD</h1>
+
+<h2 id="switch-from-decision-table-to-drd">Switch from Decision Table to DRD</h2>
 <p>Open the <em>Dish</em> decision table from the previous step. Click on the button &ldquo;View DRD&rdquo; to see the Decision Requirements Diagram (DRD). It contains a single decision with the name <em>Dish</em>.</p>
 <figure class="image">
   <span><img
@@ -273,7 +276,8 @@
        /></span>
 </figure>
 
-<h1 id="set-the-name-and-the-id-of-the-drd">Set the Name and the Id of the DRD</h1>
+
+<h2 id="set-the-name-and-the-id-of-the-drd">Set the Name and the Id of the DRD</h2>
 <p>Click somewhere on the canvas and open the Property Panel on the right. Change the <a href="/manual/latest/reference/dmn11/drg/#decision-requirements-graph-id">id</a> of the DRD to &ldquo;dinnerDecisions&rdquo;. Next, change the <a href="/manual/latest/reference/dmn11/drg/#decision-requirements-graph-name">name</a> of the DRD to &ldquo;Dinner Decisions&rdquo;.</p>
 <figure class="image">
   <span><img
@@ -281,7 +285,8 @@
        /></span>
 </figure>
 
-<h1 id="create-a-new-decision-in-the-drd">Create a new Decision in the DRD</h1>
+
+<h2 id="create-a-new-decision-in-the-drd">Create a new Decision in the DRD</h2>
 <p>Click on the decision icon of the palette to create a new decision. Then, double-click on the decision and type <em>Beverages</em> to set the name. Change the type of the decision to <em>Decision Table</em> by clicking on the wrench icon next to the &ldquo;Beverages&rdquo; decision and selecting &ldquo;Decision Table&rdquo;. Use the Property Panel on the right side again to set the id to &ldquo;beverages&rdquo;.</p>
 <figure class="image">
   <span><img
@@ -297,7 +302,8 @@
 </figure>
 
 <p>Click on the top left icon of the <em>Beverages</em> decision to open the decision table.</p>
-<h1 id="configure-the-decision-table-and-add-the-rules">Configure the Decision Table and add the Rules</h1>
+
+<h2 id="configure-the-decision-table-and-add-the-rules">Configure the Decision Table and add the Rules</h2>
 <p>Configure the <em>Beverages</em> decision table so that it has:</p>
 <ul>
 <li>one input with label &ldquo;Dish&rdquo;, input expression &ldquo;desiredDish&rdquo; and type &ldquo;string&rdquo;,</li>
@@ -343,7 +349,8 @@
   </div>
 </div>
 
-<h1 id="evaluate-the-decision">Evaluate the Decision</h1>
+
+<h2 id="evaluate-the-decision">Evaluate the Decision</h2>
 <p>To evaluate the <em>Beverages</em> decision, we extend the existing method in your Application class and add a new variable &ldquo;guestsWithChildren&rdquo;.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -405,7 +412,8 @@
   </div>
 </div>
 
-<h1 id="build-and-deploy-the-web-application">Build and Deploy the Web Application</h1>
+
+<h2 id="build-and-deploy-the-web-application">Build and Deploy the Web Application</h2>
 <p>Build the web application with Maven and replace the <code>dinner-dmn-0.1.0-SNAPSHOT.war</code> in the <code>$CIBSEVEN_HOME/server/apache-tomcat/webapps</code> folder.</p>
 <p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
 <pre class="console">
@@ -429,7 +437,8 @@ Desired beverages: [Guiness, Water]
 INFO org.cibseven.commons.logging.BaseLogger.logInfo
 ENGINE-08050 Process application Dinner App DMN successfully deployed
 </pre>
-<h1 id="verify-the-evaluation-with-cockpit">Verify the Evaluation with Cockpit</h1>
+
+<h2 id="verify-the-evaluation-with-cockpit">Verify the Evaluation with Cockpit</h2>
 <p>Now, open <a href="http://localhost:8080/camunda/app/cockpit">Cockpit</a> and go to the &ldquo;Decisions&rdquo; section.</p>
 <figure class="image">
   <span><img
@@ -446,7 +455,8 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
 
 <p>Verify that both rules were matched and the output value for the beverages is &ldquo;Guiness&rdquo; and &ldquo;Water&rdquo;.</p>
 <p>Note that the <em>Dish</em> decision is evaluated as part of the evaluation of the <em>Beverages</em> decision. It provides the value &ldquo;Stew&rdquo; for the input expression &ldquo;desiredDish&rdquo;.</p>
-<h1 id="next-steps">Next Steps</h1>
+
+<h2 id="next-steps">Next Steps</h2>
 <p>Next,</p>
 <ul>
 <li>learn more about DRG by reading the <a href="/manual/reference/dmn11/drg">DMN Reference</a>,</li>

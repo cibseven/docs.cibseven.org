@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,9 +3190,11 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="release-notes">Release Notes</h1>
+      
+<h2 id="release-notes">Release Notes</h2>
 <p><em>Release Date: October 16, 2025</em></p>
-<h2 id="highlights">Highlights</h2>
+
+<h3 id="highlights">Highlights</h3>
 <ul>
 <li>Enhanced OAuth2 integration with access token forwarding and caching</li>
 <li>Comprehensive variable management improvements including type conversion support</li>
@@ -3196,15 +3202,18 @@
 <li>Enhanced deployment management with improved UI and performance</li>
 <li>Strengthened authorization and permission controls</li>
 </ul>
-<h2 id="new-features">New Features</h2>
-<h3 id="oauth2--security-enhancements">OAuth2 &amp; Security Enhancements</h3>
+
+<h3 id="new-features">New Features</h3>
+
+<h4 id="oauth2--security-enhancements">OAuth2 &amp; Security Enhancements</h4>
 <ul>
 <li>Access token forwarding to engine REST API with caching mechanism</li>
 <li>Configurable token forwarding via <code>cibseven.webclient.sso.forwardToken</code> property</li>
 <li>Multi-user access token cache with automatic cleanup and expiration handling</li>
 <li>Concurrent request handling with token cache as synchronization lock</li>
 </ul>
-<h3 id="variable-management">Variable Management</h3>
+
+<h4 id="variable-management">Variable Management</h4>
 <ul>
 <li>Variable type conversion support allowing users to change variable types dynamically</li>
 <li>Null-typed variable editing capabilities</li>
@@ -3212,21 +3221,25 @@
 <li>Support for Object, JSON, Integer, Double, String, and Date type conversions</li>
 <li>Null value variable creation and management</li>
 </ul>
-<h3 id="deployment-management">Deployment Management</h3>
+
+<h4 id="deployment-management">Deployment Management</h4>
 <ul>
 <li>DMN deployment support with redeploy functionality</li>
 <li>New deployment creation service with comprehensive error handling</li>
 <li>Instant deployment deletion functionality</li>
 <li>Extension points for EE deployment actions</li>
 </ul>
-<h3 id="history-level-support">History Level Support</h3>
+
+<h4 id="history-level-support">History Level Support</h4>
 <ul>
 <li>Runtime API integration for history level &ldquo;none&rdquo; environments</li>
 <li>Dynamic instance counting using runtime API when history is disabled</li>
 <li>Conditional display logic based on history level configuration</li>
 </ul>
-<h2 id="user-experience-improvements">User Experience Improvements</h2>
-<h3 id="interface-enhancements">Interface Enhancements</h3>
+
+<h3 id="user-experience-improvements">User Experience Improvements</h3>
+
+<h4 id="interface-enhancements">Interface Enhancements</h4>
 <ul>
 <li>Enhanced deployments view UI with improved layout and functionality</li>
 <li>Better search functionality for decisions with improved grid display</li>
@@ -3234,56 +3247,66 @@
 <li>Improved count display for search results</li>
 <li>Warning dialogs for process definition deletion with running instances</li>
 </ul>
-<h3 id="form-improvements">Form Improvements</h3>
+
+<h4 id="form-improvements">Form Improvements</h4>
 <ul>
 <li>Enhanced form value type determination using schema definitions</li>
 <li>Improved Camunda forms referencing as form keys</li>
 <li>Better error handling and validation in form submissions</li>
 <li>Type conversion support for form data submission</li>
 </ul>
-<h3 id="notifications--data-management">Notifications &amp; Data Management</h3>
+
+<h4 id="notifications--data-management">Notifications &amp; Data Management</h4>
 <ul>
 <li>Improved notifications error handling and data management</li>
 <li>Enhanced job log loading and management functionality</li>
 <li>Better error messaging and user feedback</li>
 </ul>
-<h2 id="bug-fixes">Bug Fixes</h2>
-<h3 id="authorization--permissions">Authorization &amp; Permissions</h3>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+
+<h4 id="authorization--permissions">Authorization &amp; Permissions</h4>
 <ul>
 <li>Fixed authorization table sorting by populating userIdGroupId property</li>
 <li>Corrected permission checks for process instance suspension</li>
 <li>Fixed job definition suspension permission validation</li>
 <li>Enhanced authorization-enabled property checking</li>
 </ul>
-<h3 id="variable-operations">Variable Operations</h3>
+
+<h4 id="variable-operations">Variable Operations</h4>
 <ul>
 <li>Fixed file variable name handling using deserialized values</li>
 <li>Corrected variable deletion according to permission checks</li>
 <li>Fixed null value handling in form submissions</li>
 <li>Improved variable addition dialog closure behavior</li>
 </ul>
-<h3 id="form--template-issues">Form &amp; Template Issues</h3>
+
+<h4 id="form--template-issues">Form &amp; Template Issues</h4>
 <ul>
 <li>Fixed type conversion issues in DeployedForm and StartDeployedForm</li>
 <li>Corrected Camunda forms referencing problems</li>
 <li>Fixed document reference creation in template handling</li>
 <li>Enhanced upload response validation</li>
 </ul>
-<h3 id="ui--navigation">UI &amp; Navigation</h3>
+
+<h4 id="ui--navigation">UI &amp; Navigation</h4>
 <ul>
 <li>Fixed copyable action handling with baseUrl consideration</li>
 <li>Corrected resource navigation bar modal layout</li>
 <li>Fixed historic batch fetch logic using &lsquo;completed&rsquo; instead of &lsquo;finished&rsquo;</li>
 <li>Improved new-tab feature handling</li>
 </ul>
-<h3 id="internationalization">Internationalization</h3>
+
+<h4 id="internationalization">Internationalization</h4>
 <ul>
 <li>Fixed Russian translation capitalization for &lsquo;calledProcessInstances&rsquo;</li>
 <li>Enhanced translation keys for running process deletion</li>
 <li>Improved spacing in translation paragraphs</li>
 </ul>
-<h2 id="technical-updates">Technical Updates</h2>
-<h3 id="dependencies--framework-updates">Dependencies &amp; Framework Updates</h3>
+
+<h3 id="technical-updates">Technical Updates</h3>
+
+<h4 id="dependencies--framework-updates">Dependencies &amp; Framework Updates</h4>
 <ul>
 <li>Updated Spring Boot to version 3.5.6 for enhanced performance and security</li>
 <li>Updated OpenAPI starter webmvc UI to version 2.8.13</li>
@@ -3293,14 +3316,16 @@
 <li>Upgraded Axios from 1.10.0 to version 1.12.2 for improved HTTP handling</li>
 <li>Updated common-auth to version 1.2.0</li>
 </ul>
-<h3 id="code-quality--testing">Code Quality &amp; Testing</h3>
+
+<h4 id="code-quality--testing">Code Quality &amp; Testing</h4>
 <ul>
 <li>Added comprehensive unit tests for critical components</li>
 <li>Implemented license header verification for all Vue and JS files</li>
 <li>Enhanced test utilities for Vuex store testing</li>
 <li>Added unit tests for shortcuts and configuration consistency</li>
 </ul>
-<h3 id="architecture-improvements">Architecture Improvements</h3>
+
+<h4 id="architecture-improvements">Architecture Improvements</h4>
 <ul>
 <li>Version information extraction into dedicated bean</li>
 <li>Enhanced context path configuration for InfoService</li>

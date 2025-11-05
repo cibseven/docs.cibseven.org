@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>This page documents how CIB seven Spin can be used together with the Scala FEEL Engine. Furthermore,
 it is shown how Spin data types are mapped to FEEL data types, as well as some rules when the
 former data structures are transformed into the latter.</p>
-<h2 id="where-can-the-spin-integration-be-found">Where can the Spin integration be found</h2>
+
+<h3 id="where-can-the-spin-integration-be-found">Where can the Spin integration be found</h3>
 <p>The Spin integration for the FEEL Engine is implemented into the
 <a href="/manual/2.0-ee/user-guide/data-formats/configuring-spin-integration/#cib-seven-engine-plugin-spin">Spin Process Engine Plugin</a> since it is expected that the Process Engine should be
 capable of using Spin, if another component of CIB seven (here, the FEEL Engine)
@@ -3203,7 +3208,8 @@ FEEL Engine integration.</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-plugin-spin<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h2 id="how-does-the-spin-integration-work">How does the Spin integration work</h2>
+</span></span></code></pre></div>
+<h3 id="how-does-the-spin-integration-work">How does the Spin integration work</h3>
 <p>The Spin integration consists of a Spin &ldquo;Data Types&rdquo;-dedicated implementation of the FEEL Engine
 <code>ValueMapper</code> interface. The <code>SpinValueMapper</code> implementation intercepts any objects of types:</p>
 <ul>
@@ -3220,11 +3226,13 @@ appropriate FEEL data type. Below, you can find an example of how this can be do
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// evaluate a decision containing a FEEL expression that uses the JSON variable</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">dmnEngine</span><span class="p">.</span><span class="na">evaluateDecision</span><span class="p">(</span><span class="n">decisionWithFEEL</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="what-is-the-feel-data-type-mapping-of-jsonxml-variables">What is the FEEL data type mapping of JSON/XML variables</h2>
+</span></span></span></code></pre></div>
+<h3 id="what-is-the-feel-data-type-mapping-of-jsonxml-variables">What is the FEEL data type mapping of JSON/XML variables</h3>
 <p>When converting JSON/XML variables to a FEEL data type, the provided JSON/XML structure will be
 mapped to a <code>Context</code> FEEL type. The actual values contained in the data structure will be mapped
 to the supported FEEL data types documented in the external FEEL documentation <a href="https://docs.camunda.io/docs/components/modeler/feel/language-guide/feel-data-types/">here</a>.</p>
-<h3 id="spin-json">Spin JSON</h3>
+
+<h4 id="spin-json">Spin JSON</h4>
 <p>Variables of type <code>SpinJsonNode</code> are transformed into an equal context, meaning that no
 transformation happens, it&rsquo;s basically the JSON structure.</p>
 <p>Spin JSON:</p>
@@ -3245,7 +3253,8 @@ transformation happens, it&rsquo;s basically the JSON structure.</p>
 </span></span><span class="line"><span class="cl">    <span class="nx">zipCode</span> <span class="o">:</span> <span class="mi">10961</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h3 id="spin-xml">Spin XML</h3>
+</span></span></code></pre></div>
+<h4 id="spin-xml">Spin XML</h4>
 <p>Variables of type <code>SpinXmlElement</code> are transformed into context applying the following rules:</p>
 <ul>
 <li>every XML element is a context entry</li>

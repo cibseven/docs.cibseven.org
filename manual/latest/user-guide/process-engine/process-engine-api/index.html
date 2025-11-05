@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="services-api">Services API</h1>
+      
+<h2 id="services-api">Services API</h2>
 <p>The Java API is the most common way of interacting with the engine. The central starting point is the ProcessEngine, which can be created in several ways as described in the configuration section. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods. ProcessEngine and the services objects are thread safe. So you can keep a reference to 1 of those for a whole server.</p>
 <figure class="image">
   <span><img
@@ -3246,7 +3251,8 @@
 .</p>
 </div>
 
-<h1 id="query-api">Query API</h1>
+
+<h2 id="query-api">Query API</h2>
 <p>To query data from the engine there are multiple possibilities:</p>
 <ul>
 <li>Java Query API: Fluent Java API to query engine entities (like ProcessInstances, Tasks, &hellip;).</li>
@@ -3264,7 +3270,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>You can find more information on this in the <a href="/javadoc/cibseven/2.0-ee/">Java Docs</a>
 .</p>
-<h2 id="query-maximum-results-limit">Query Maximum Results Limit</h2>
+
+<h3 id="query-maximum-results-limit">Query Maximum Results Limit</h3>
 <p>Querying for results without restricting the maximum number of results or querying for a vast number
 of results can lead to a high memory consumption or even to out of memory exceptions. With the help
 of the <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#queryMaxResultsLimit">Query Maximum Results Limit</a>,
@@ -3275,14 +3282,16 @@ you can restrict the maximum number of results.</p>
 <li>the query API is directly called e. g. via REST API (no enforcement within a process through
 <a href="/manual/latest/user-guide/process-engine/delegation-code/">Delegation Code</a>)</li>
 </ul>
-<h3 id="forbidden">Forbidden</h3>
+
+<h4 id="forbidden">Forbidden</h4>
 <ul>
 <li>Performing a query with an unbounded number of results using the <code>#list()</code> method</li>
 <li>Performing a <a href="#paginated-queries">Paginated Query</a> that exceeds the configured limit of maximum results</li>
 <li>Performing a query-based synchronous operation that affects more instances than the limit of
 maximum results (please use a <a href="/manual/latest/user-guide/process-engine/batch-operations/">Batch Operation</a> instead)</li>
 </ul>
-<h3 id="allowed">Allowed</h3>
+
+<h4 id="allowed">Allowed</h4>
 <ul>
 <li>Performing a query using the <code><a href="/manual/latest/reference/javadoc/org/cibseven/bpm/engine/query/Query.html#unlimitedList--">Query#unlimitedList</a></code> method</li>
 <li>Performing a <a href="#paginated-queries">Paginated Query</a> with a maximum number of results less or equal
@@ -3290,12 +3299,14 @@ to the maximum results limit</li>
 <li>Performing a <a href="#native-queries">Native Query</a> since it is not accessible via REST API or Webapps
 and therefore not likely to be exploited</li>
 </ul>
-<h3 id="limitations">Limitations</h3>
+
+<h4 id="limitations">Limitations</h4>
 <ul>
 <li>Performing a statistics query via REST API</li>
 <li>Performing a called instance query via Webapps (private API)</li>
 </ul>
-<h3 id="custom-identity-service-queries">Custom Identity Service Queries</h3>
+
+<h4 id="custom-identity-service-queries">Custom Identity Service Queries</h4>
 <p>When you provide&hellip;</p>
 <ol>
 <li>a custom identity provider implementation by implementing the interface <code>ReadOnlyIdentityProvider</code> or <code>WritableIdentityProvider</code></li>
@@ -3304,7 +3315,8 @@ and therefore not likely to be exploited</li>
 <p>Make sure to return all results without any limitation when calling <code><a href="/manual/latest/reference/javadoc/org/cibseven/bpm/engine/query/Query.html#unlimitedList--">Query#unlimitedList</a></code>.
 The possibility to retrieve an unlimited list is important to make sure that the REST API works appropriately since a few endpoints
 rely on retrieving unlimited results.</p>
-<h2 id="paginated-queries">Paginated Queries</h2>
+
+<h3 id="paginated-queries">Paginated Queries</h3>
 <p>Pagination allows configuring the maximum results retrieved by a query as well as the position
 (index) of the first result.</p>
 <p>Please see the following example:</p>
@@ -3314,7 +3326,8 @@ rely on retrieving unlimited results.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">orderByDueDate</span><span class="p">().</span><span class="na">asc</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">listPage</span><span class="p">(</span><span class="n">20</span><span class="p">,</span><span class="w"> </span><span class="n">50</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>The query shown above retrieves 50 results starting at the result with the index 20.</p>
-<h2 id="or-queries">OR Queries</h2>
+
+<h3 id="or-queries">OR Queries</h3>
 <p>The default behavior of the query API links filter criteria together with an AND expression.
 OR queries enable building queries in which filter criteria are linked together with an OR expression.</p>
 
@@ -3377,9 +3390,11 @@ more than once inside a query, only the value which was applied last is utilized
 </ul></p>
 </div>
 
-<h2 id="rest-query-api">REST Query API</h2>
+
+<h3 id="rest-query-api">REST Query API</h3>
 <p>The Java Query API is exposed as REST service as well, see the <a href="/manual/latest/reference/rest/">REST documentation</a> for details.</p>
-<h2 id="native-queries">Native Queries</h2>
+
+<h3 id="native-queries">Native Queries</h3>
 <p>Sometimes you need more powerful queries, e.g., queries using an OR operator or restrictions you can not express using the Query API. For these cases, we introduced native queries, which allow you to write your own SQL queries. The return type is defined by the Query object you use and the data is mapped into the correct objects, e.g., Task, ProcessInstance, Execution, etc. Since the query will be fired at the database you have to use table and column names as they are defined in the <a href="/manual/latest/user-guide/process-engine/database/database-schema/">database schema</a>. This requires some knowledge about the internal data structure and it is recommended to use native queries with care. The table names can be retrieved via the API to keep the dependency as small as possible.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskService</span><span class="p">.</span><span class="na">createNativeTaskQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">sql</span><span class="p">(</span><span class="s">&#34;SELECT * FROM &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">managementService</span><span class="p">.</span><span class="na">getTableName</span><span class="p">(</span><span class="n">Task</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; T WHERE T.NAME_ = #{taskName}&#34;</span><span class="p">)</span><span class="w">
@@ -3390,7 +3405,8 @@ more than once inside a query, only the value which was applied last is utilized
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">sql</span><span class="p">(</span><span class="s">&#34;SELECT count(*) FROM &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">managementService</span><span class="p">.</span><span class="na">getTableName</span><span class="p">(</span><span class="n">Task</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; T1, &#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="o">+</span><span class="w"> </span><span class="n">managementService</span><span class="p">.</span><span class="na">getTableName</span><span class="p">(</span><span class="n">VariableInstanceEntity</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; V1 WHERE V1.TASK_ID_ = T1.ID_&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">count</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="custom-queries">Custom Queries</h2>
+</span></span></span></code></pre></div>
+<h3 id="custom-queries">Custom Queries</h3>
 <p>For performance reasons it might sometimes be desirable not to query the engine objects but some own value or DTO objects collecting data from different tables - maybe including your own domain classes.</p>
 
 <div class="note bg-info docs-info">
@@ -3398,7 +3414,8 @@ more than once inside a query, only the value which was applied last is utilized
   <p><a href="http://blog.camunda.org/post/2017/12/custom-queries">Performance Tuning with Custom Queries</a>.</p>
 </div>
 
-<h2 id="sql-queries">SQL Queries</h2>
+
+<h3 id="sql-queries">SQL Queries</h3>
 <p>The <a href="/manual/latest/user-guide/process-engine/database/database-schema/">table layout</a> is pretty straightforward - we focused on making it easy to understand. Hence it is OK to do SQL queries for e.g., reporting use cases. Just make sure that you do not mess up the engine data by updating the tables without exactly knowing what you are doing.</p>
 
     </div>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3214,7 +3218,8 @@ private Object account;
 <li><code>@Named @BusinessProcessScoped</code> beans can be referenced directly.</li>
 <li>Other process variables can be referenced using the <code>ProcessVariables</code>-bean via <code>#{processVariables['accountNumber']}</code>.</li>
 </ul>
-<h1 id="inject-a-process-engine-based-on-contextual-data">Inject a process engine based on contextual data</h1>
+
+<h2 id="inject-a-process-engine-based-on-contextual-data">Inject a process engine based on contextual data</h2>
 <p>While a specific process engine can be accessed by adding the qualifier <code>@ProcessEngineName('name')</code> to the injection point,
 this requires that it is known which process engine is used at design time. A more flexible approach is to resolve the
 process engine at runtime based on contextual information such as the logged in user. In this case, <code>@Inject</code> can be used

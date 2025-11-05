@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3207,28 +3211,34 @@ event subscriptions. Their relationship is shown in the following UML model.</p>
        /></span>
 </figure>
 
-<h2 id="process-definitions-act_re_procdef">Process Definitions (<code>ACT_RE_PROCDEF</code>)</h2>
+
+<h3 id="process-definitions-act_re_procdef">Process Definitions (<code>ACT_RE_PROCDEF</code>)</h3>
 <p>The <code>ACT_RE_PROCDEF</code> table contains all deployed process definitions. It
 includes information like the version details, the resource name or the
 suspension state.</p>
-<h2 id="executions-act_ru_execution">Executions (<code>ACT_RU_EXECUTION</code>)</h2>
+
+<h3 id="executions-act_ru_execution">Executions (<code>ACT_RU_EXECUTION</code>)</h3>
 <p>The <code>ACT_RU_EXECUTION</code> table contains all current executions. It includes
 information like the process definition, parent execution, business key, the
 current activity and different metadata about the state of the execution.</p>
-<h2 id="tasks-act_ru_task">Tasks (<code>ACT_RU_TASK</code>)</h2>
+
+<h3 id="tasks-act_ru_task">Tasks (<code>ACT_RU_TASK</code>)</h3>
 <p>The <code>ACT_RU_TASK</code> table contains all open tasks of all running process
 instances. It includes information like the corresponding process instance,
 execution and also metadata such as creation time, assignee or due date.</p>
-<h2 id="variables-act_ru_variable">Variables (<code>ACT_RU_VARIABLE</code>)</h2>
+
+<h3 id="variables-act_ru_variable">Variables (<code>ACT_RU_VARIABLE</code>)</h3>
 <p>The <code>ACT_RU_VARIABLE</code> table contains all currently set process or task
 variables. It includes the names, types and values of the variables and
 information about the corresponding process instance or task.</p>
-<h2 id="event-subscriptions-act_ru_event_subscr">Event Subscriptions (<code>ACT_RU_EVENT_SUBSCR</code>)</h2>
+
+<h3 id="event-subscriptions-act_ru_event_subscr">Event Subscriptions (<code>ACT_RU_EVENT_SUBSCR</code>)</h3>
 <p>The <code>ACT_RU_EVENT_SUBSCR</code> table contains all currently existing event
 subscriptions. It includes the type, name and configuration of the expected
 event along with information about the corresponding process instance and
 execution.</p>
-<h2 id="schema-log-act_ge_schema_log">Schema Log (<code>ACT_GE_SCHEMA_LOG</code>)</h2>
+
+<h3 id="schema-log-act_ge_schema_log">Schema Log (<code>ACT_GE_SCHEMA_LOG</code>)</h3>
 <p>The <code>ACT_GE_SCHEMA_LOG</code> table contains a history of the database
 schema version. New entries to the table are written when changes to
 the database schema are made. On database creation the initial entry
@@ -3238,16 +3248,19 @@ the <code>version</code> the database was updated to and the date and time
 <p>To retrieve entries from the schema log, the SchemaLogQuery-API can be
 used:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">SchemaLogEntry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">managementService</span><span class="p">.</span><span class="na">createSchemaLogQuery</span><span class="p">().</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="metrics-log-act_ru_meter_log">Metrics Log (ACT_RU_METER_LOG)</h2>
+</span></span></span></code></pre></div>
+<h3 id="metrics-log-act_ru_meter_log">Metrics Log (ACT_RU_METER_LOG)</h3>
 <p>The <code>ACT_RU_METER_LOG</code> table contains a collection of runtime metrics that can help draw conclusions about usage, load
 and performance of CIB seven. Metrics are reported as numbers in the Java <code>long</code> range and count the occurrence of
 specific events. Please find detailed information about how metrics are collected in the <a href="/manual/2.0-ee/user-guide/process-engine/metrics/">Metrics User Guide</a>.</p>
 <p>The default configuration of the <a href="/manual/2.0-ee/user-guide/process-engine/metrics/#metrics-reporter">MetricsReporter</a> will create one row per <a href="/manual/2.0-ee/user-guide/process-engine/metrics/#built-in-metrics">metric</a> in <code>ACT_RU_METER_LOG</code> every 15 minutes.</p>
-<h2 id="task-metrics-log-act_ru_task_meter_log">Task Metrics Log (ACT_RU_TASK_METER_LOG)</h2>
+
+<h3 id="task-metrics-log-act_ru_task_meter_log">Task Metrics Log (ACT_RU_TASK_METER_LOG)</h3>
 <p>The <code>ACT_RU_TASK_METER_LOG</code> table contains a collection of task related metrics that can help draw conclusions about usage, load
 and performance of the BPM platform. Task metrics contain a pseudonymized and fixed-length value of task assignees and their time of appearance. Please find detailed information about how task metrics are collected in the <a href="/manual/2.0-ee/user-guide/process-engine/metrics/">Metrics User Guide</a>.</p>
 <p>Every assignment of a task to an assignee will create one row in <code>ACT_RU_TASK_METER_LOG</code>.</p>
-<h1 id="entity-relationship-diagrams">Entity Relationship Diagrams</h1>
+
+<h2 id="entity-relationship-diagrams">Entity Relationship Diagrams</h2>
 
 <div class="note bg-info docs-info">
   <h3></h3>
@@ -3258,7 +3271,8 @@ The following diagrams are based on the MySQL database schema. For other databas
 </div>
 
 <p>The following Entity Relationship Diagrams visualize the database tables and their explicit foreign key constraints, grouped by Engine with focus on BPMN, Engine with focus on DMN, Engine with focus on CMMN, the Engine History and the Identity. Please note that the diagrams do not visualize implicit connections between the tables.</p>
-<h2 id="engine-bpmn">Engine BPMN</h2>
+
+<h3 id="engine-bpmn">Engine BPMN</h3>
 <figure class="image">
   <span><img
       src="../../img/erd_723_bpmn.svg"
@@ -3267,7 +3281,8 @@ The following diagrams are based on the MySQL database schema. For other databas
        /></span>
 </figure>
 
-<h2 id="engine-dmn">Engine DMN</h2>
+
+<h3 id="engine-dmn">Engine DMN</h3>
 <figure class="image">
   <span><img
       src="../../img/erd_723_dmn.svg"
@@ -3276,7 +3291,8 @@ The following diagrams are based on the MySQL database schema. For other databas
        /></span>
 </figure>
 
-<h2 id="engine-cmmn">Engine CMMN</h2>
+
+<h3 id="engine-cmmn">Engine CMMN</h3>
 <figure class="image">
   <span><img
       src="../../img/erd_723_cmmn.svg"
@@ -3285,7 +3301,8 @@ The following diagrams are based on the MySQL database schema. For other databas
        /></span>
 </figure>
 
-<h2 id="history">History</h2>
+
+<h3 id="history">History</h3>
 <p>To allow different configurations and to keep the tables more flexible, the history tables contain no foreign key constraints.</p>
 <figure class="image">
   <span><img
@@ -3295,7 +3312,8 @@ The following diagrams are based on the MySQL database schema. For other databas
        /></span>
 </figure>
 
-<h2 id="identity">Identity</h2>
+
+<h3 id="identity">Identity</h3>
 <figure class="image">
   <span><img
       src="../../img/erd_723_identity.svg"

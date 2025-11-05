@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3199,7 +3203,8 @@
 <li>Starting execution after an activity on its single outgoing sequence flow</li>
 <li>Canceling a running instance or all running instances of an activity</li>
 </ul>
-<h2 id="perform-a-modification">Perform a Modification</h2>
+
+<h3 id="perform-a-modification">Perform a Modification</h3>
 <p>A modification consists typically of multiple instructions, which are displayed in the modification tab at the bottom half of the screen. It is possible to make a modification for:</p>
 <ul>
 <li>One specific instance using the <strong>Process Instance View</strong></li>
@@ -3261,9 +3266,11 @@
 
 <p>As soon as you click on the button <code>'Apply modification'</code>, another dialog is shown (see below <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/#review-modification-instructions">Review Modification Instructions</a>).</p>
 <p>Let us discuss some typical operations in the following:</p>
-<h3 id="cancel-running-active-instances">Cancel Running Active Instances</h3>
+
+<h4 id="cancel-running-active-instances">Cancel Running Active Instances</h4>
 <p>When canceling all instances of an activity, all instances that exist at the moment this instruction is executed will be canceled. This will also cancel instances created in the same modification (e.g., using a <code>startBefore</code> instruction before the cancel instruction). In most cases, you will probably want to explicitly state which instances to cancel.</p>
-<h3 id="start-new-activity-instances">Start New Activity Instances</h3>
+
+<h4 id="start-new-activity-instances">Start New Activity Instances</h4>
 <p>Using a combination of canceling the running active instance and starting a new instance allows you to <strong>move a process token of an instance</strong> to another part of the process.</p>
 <p>When starting a new activity instance, you have the option to start it before or after the activity. In both cases, you have the option to create new variables, which are created or updated with the creation of the activity. Starting an activity instantiates all parent scopes (e.g., embedded subprocesses that contain the activity) that are not yet instantiated before the actual activity is executed.</p>
 <!--
@@ -3279,7 +3286,8 @@ Additionally, you can specify the ancestor of the new activity instance if it is
        /></span>
 </figure>
 
-<h2 id="review-modification-instructions">Review Modification Instructions</h2>
+
+<h3 id="review-modification-instructions">Review Modification Instructions</h3>
 <p>To perform the modification, you have to click on <strong>Apply Modifications</strong>.</p>
 <figure class="image">
   <span><img
@@ -3315,7 +3323,8 @@ Additionally, you can specify the ancestor of the new activity instance if it is
        /></span>
 </figure>
 
-<h2 id="perform-a-batch-modification">Perform a Batch Modification</h2>
+
+<h3 id="perform-a-batch-modification">Perform a Batch Modification</h3>
 <p>When multiple process instances need to be modified, the batch modification feature can be used. To perform batch modifications, you need to click on the <code>'Modify Tab'</code> in the <strong>Process Definition View</strong>.</p>
 
     </div>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3240,8 +3244,10 @@
   </tr>
 </table>
 <p>In contrast to the <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/">Unified Expression Language</a> FEEL does not support <code>Expression language as delegation code</code> and does not provide access to beans and internal context variables. This steams from FEEL&rsquo;s nature of being Side-effect free.</p>
-<h1 id="usage-of-expression-language">Usage of Expression Language</h1>
-<h2 id="conditions">Conditions</h2>
+
+<h2 id="usage-of-expression-language">Usage of Expression Language</h2>
+
+<h3 id="conditions">Conditions</h3>
 <p>FEEL can be used to define conditions for sequence flows and conditional events.
 For conditional sequence flows, a <code>conditionExpression</code> element of a sequence flow has to be used.
 For conditional events, a <code>condition</code> element of a conditional event has to be used. Both are
@@ -3257,7 +3263,8 @@ of the type <code>tFormalExpression</code>. The text content of the element is t
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;conditionalEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;condition</span> <span class="na">type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>var1 == 1<span class="err">&lt;</span>/condition language=&#34;feel&#34;&gt;
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/conditionalEventDefinition&gt;</span>
-</span></span></code></pre></div><h2 id="inputoutput-parameters">inputOutput Parameters</h2>
+</span></span></code></pre></div>
+<h3 id="inputoutput-parameters">inputOutput Parameters</h3>
 <p>With the CIB seven <code>inputOutput</code> extension element you can map an <code>inputParameter</code> or <code>outputParameter</code>
 with expression language.</p>
 <p>For usage of expression language on <code>inputParameter</code> mapping, see the following example:</p>
@@ -3270,12 +3277,15 @@ with expression language.</p>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;/camunda:inputOutput&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/serviceTask&gt;</span>
-</span></span></code></pre></div><h2 id="value">Value</h2>
+</span></span></code></pre></div>
+<h3 id="value">Value</h3>
 <p>Different BPMN elements allow to specify their content or an attribute value by an
 expression. Please see the corresponding sections for <a href="/manual/latest/reference/bpmn20/">BPMN</a> in the references
 for more detailed examples.</p>
-<h1 id="availability-of-variables-and-functions-inside-expression-language">Availability of Variables and Functions Inside Expression Language</h1>
-<h2 id="process-variables">Process Variables</h2>
+
+<h2 id="availability-of-variables-and-functions-inside-expression-language">Availability of Variables and Functions Inside Expression Language</h2>
+
+<h3 id="process-variables">Process Variables</h3>
 <p>A conditional sequence flow can directly check a variable value:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;sequenceFlow&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;conditionExpression</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>
@@ -3283,14 +3293,18 @@ for more detailed examples.</p>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/conditionExpression&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/sequenceFlow&gt;</span>
 </span></span></code></pre></div><p>The list of variable types that is supported by FEEL can be found in the <a href="/manual/latest/user-guide/dmn-engine/feel/type-handling/">FEEL Engine Type Handling</a> page.</p>
-<h2 id="custom-functions">Custom Functions</h2>
+
+<h3 id="custom-functions">Custom Functions</h3>
 <p>CIB seven provides a wrapper for the FEEL Scala Engine to implement Custom Functions, which can be
 called in expressions and unary tests.
 To learn more visit the <a href="/manual/latest/user-guide/dmn-engine/feel/custom-functions/">FEEL Engine Custom Functions</a> page.</p>
-<h2 id="built-in-cib-seven-spin-functions">Built-In CIB seven Spin Functions</h2>
+
+<h3 id="built-in-cib-seven-spin-functions">Built-In CIB seven Spin Functions</h3>
 <p>To learn how CIB seven Spin can be used together with the Scala FEEL Engine visit the <a href="/manual/latest/user-guide/dmn-engine/feel/type-handling/#spin-types">FEEL Engine Spin Integration</a> page.</p>
-<h1 id="plugin-requirements">Plugin Requirements</h1>
-<h2 id="spin-plugin-requirement-for-complex-feel-mappings">Spin Plugin Requirement for Complex FEEL Mappings</h2>
+
+<h2 id="plugin-requirements">Plugin Requirements</h2>
+
+<h3 id="spin-plugin-requirement-for-complex-feel-mappings">Spin Plugin Requirement for Complex FEEL Mappings</h3>
 <p>When using FEEL to define complex input parameters (such as nested objects or contexts in BPMN input/output mappings) the
 <a href="/manual/latest/user-guide/data-formats/configuring-spin-integration/#camunda-engine-plugin-spin">camunda-engine-plugin-spin</a>
 <strong>must</strong> be present on the classpath.</p>
@@ -3300,7 +3314,8 @@ To learn more visit the <a href="/manual/latest/user-guide/dmn-engine/feel/custo
 <li><strong>Complex nested contexts</strong> (e.g., a map containing another map) <strong>will fail</strong> with a runtime error when accessed in Java delegates or other components expecting Java types.</li>
 <li>FEEL expressions involving these structures will not be correctly parsed or mapped.</li>
 </ul>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <p>The following BPMN example defines a nested input parameter using a FEEL expression:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:inputParameter</span> <span class="na">name=</span><span class="s">&#34;context&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;camunda:script</span> <span class="na">scriptFormat=</span><span class="s">&#34;feel&#34;</span><span class="nt">&gt;</span>

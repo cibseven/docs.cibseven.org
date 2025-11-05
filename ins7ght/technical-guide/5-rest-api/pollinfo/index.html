@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Polling Info API | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/pollinfo/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Polling Info API</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="polling-info-api">Polling Info API</h2>
+<p>The Polling Info API provides real-time status information about the background polling service that synchronizes data from CIB seven.</p>
+<p><strong>Base Path:</strong> <code>/poll-info</code></p>
+<hr>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<h4 id="get-poll-info">GET /poll-info</h4>
+<p>Returns the current polling status and timestamps.</p>
+<p><strong>Purpose:</strong> Monitor the data synchronization status between CIB ins7ght and CIB seven.</p>
+<p><strong>Parameters:</strong> None</p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;550e8400-e29b-41d4-a716-446655440000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:00:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:15.000Z&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Response Fields:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>id</code></td>
+          <td>string</td>
+          <td>Unique polling status record ID (UUID)</td>
+      </tr>
+      <tr>
+          <td><code>fetchFrom</code></td>
+          <td>string</td>
+          <td>Timestamp from which data was last fetched (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>fetchedUntil</code></td>
+          <td>string</td>
+          <td>Timestamp until which data was fetched (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>isPollingSince</code></td>
+          <td>string</td>
+          <td>Timestamp when the current polling cycle started (ISO 8601)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="understanding-the-fields">Understanding the Fields</h3>
+
+<h4 id="fetchfrom">fetchFrom</h4>
+<p>The starting timestamp for the last polling operation. This indicates from which point in time process data was retrieved from CIB seven.</p>
+
+<h4 id="fetcheduntil">fetchedUntil</h4>
+<p>The ending timestamp for the last polling operation. This indicates up to which point in time data has been successfully imported.</p>
+
+<h4 id="ispollingsince">isPollingSince</h4>
+<p>The timestamp when the current polling cycle started. This is the key field for monitoring polling health.</p>
+<p><strong>Checking Polling Health:</strong>
+Compare <code>isPollingSince</code> to the current time:</p>
+<ul>
+<li>If the difference is small (e.g., &lt; 30 seconds), polling is active and working</li>
+<li>If the difference is large (e.g., &gt; 1-2 minutes), polling may be stuck or have errors</li>
+</ul>
+<hr>
+
+<h3 id="usage-examples">Usage Examples</h3>
+
+<h4 id="check-polling-status">Check Polling Status</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/pollinfo&#34;</span>
+</span></span></code></pre></div><p><strong>Response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;550e8400-e29b-41d4-a716-446655440000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:00:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:15.000Z&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div>
+<h4 id="check-if-polling-is-working">Check if Polling is Working</h4>
+<p>Compare <code>isPollingSince</code> to current time:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get the isPollingSince timestamp</span>
+</span></span><span class="line"><span class="cl"><span class="nv">POLLING_SINCE</span><span class="o">=</span><span class="k">$(</span>curl -s http://localhost:8899/pollinfo <span class="p">|</span> jq -r <span class="s1">&#39;.[0].isPollingSince&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Polling started at: </span><span class="nv">$POLLING_SINCE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># If this timestamp is very old (more than a minute or two), polling might be stuck</span>
+</span></span></code></pre></div><p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Recent timestamp</strong> (seconds or &lt;1 minute ago): ✅ Polling is active</li>
+<li><strong>Old timestamp</strong> (several minutes ago): ⚠️ Polling may be stuck, check logs</li>
+</ul>
+<hr>
+
+<h3 id="notes">Notes</h3>
+<ul>
+<li>Returns an array with typically one element (single polling status record)</li>
+<li>All timestamps are in ISO 8601 format with UTC timezone</li>
+<li>The polling interval is configured in <code>application.yaml</code> (default: 10 seconds)</li>
+<li>Check <code>isPollingSince</code> against current time to verify polling is working</li>
+<li>If polling is stuck, check application logs for errors</li>
+<li>This endpoint does not require authentication</li>
+<li>For detailed polling configuration, see <a href="../../2%20Setup%20CIB%20ins7ght/configuration.md">Configuration Guide</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#endpoint">Endpoint</a>
+      <ul>
+        <li><a href="#get-poll-info">GET /poll-info</a></li>
+      </ul>
+    </li>
+    <li><a href="#understanding-the-fields">Understanding the Fields</a>
+      <ul>
+        <li><a href="#fetchfrom">fetchFrom</a></li>
+        <li><a href="#fetcheduntil">fetchedUntil</a></li>
+        <li><a href="#ispollingsince">isPollingSince</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage-examples">Usage Examples</a>
+      <ul>
+        <li><a href="#check-polling-status">Check Polling Status</a></li>
+        <li><a href="#check-if-polling-is-working">Check if Polling is Working</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

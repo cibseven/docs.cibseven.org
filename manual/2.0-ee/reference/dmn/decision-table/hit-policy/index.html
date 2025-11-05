@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3233,13 +3237,15 @@ supported by the Camunda DMN engine:</p>
     <td>COLLECT</td>
   </tr>
 </table>
-<h1 id="the-role-of-a-hit-policy">The Role of a Hit Policy</h1>
+
+<h2 id="the-role-of-a-hit-policy">The Role of a Hit Policy</h2>
 <p>A hit policy specifies how many rules of a decision table can be satisfied and
 which of the satisfied rules are included in the <a href="/manual/2.0-ee/user-guide/dmn-engine/evaluate-decisions/#interpret-the-dmndecisiontableresult">decision table result</a>. The
 hit policies <a href="#unique-hit-policy">Unique</a>, <a href="#any-hit-policy">Any</a> and <a href="#first-hit-policy">First</a> will always return a maximum of one
 satisfied rule. The hit policies <a href="#rule-order-hit-policy">Rule Order</a> and <a href="#collect-hit-policy">Collect</a> can return
 multiple satisfied rules.</p>
-<h2 id="unique-hit-policy">Unique Hit Policy</h2>
+
+<h3 id="unique-hit-policy">Unique Hit Policy</h3>
 <p>Only a single rule can be satisfied or no rule at all. The decision table result contains the
 output entries of the satisfied rule.</p>
 <p>If more than one rule is satisfied, the Unique hit policy is violated.</p>
@@ -3254,7 +3260,8 @@ output entries of the satisfied rule.</p>
 
 Depending on the current season the dish should be chosen.
 Only one dish can be chosen, since only one season can exist at the same time.</p>
-<h2 id="any-hit-policy">Any Hit Policy</h2>
+
+<h3 id="any-hit-policy">Any Hit Policy</h3>
 <p>Multiple rules can be satisfied. However, all satisfied rules must generate the same
 output. The decision table result contains only the output of one of the
 satisfied rules.</p>
@@ -3272,7 +3279,8 @@ is violated.</p>
 This is a decision table for the leave application. If the applier
 has no vacation days left or is currently in the probation period, the application will be refused.
 Otherwise the application is applied.</p>
-<h2 id="first-hit-policy">First Hit Policy</h2>
+
+<h3 id="first-hit-policy">First Hit Policy</h3>
 <p>Multiple rules can be satisfied. The decision table result contains only
 the output of the first satisfied rule.</p>
 <p><figure class="image no-lightbox">
@@ -3286,7 +3294,8 @@ the output of the first satisfied rule.</p>
 See the above decistion table for advertisement. Regarding the current age of the user, which
 advertisement should be shown is decided. For example, the user is 19 years old. All the rules will match, but since
 the hit policy is set to first only, the advertisement for Cars is used.</p>
-<h2 id="rule-order-hit-policy">Rule Order Hit Policy</h2>
+
+<h3 id="rule-order-hit-policy">Rule Order Hit Policy</h3>
 <p>Multiple rules can be satisfied. The decision table result contains the output
 of all satisfied rules in the order of the rules in the decision table.</p>
 <p><figure class="image no-lightbox">
@@ -3300,7 +3309,8 @@ of all satisfied rules in the order of the rules in the decision table.</p>
 Again, see the advertisement example with the rule order policy. Say we have a user at the age of 19 again.
 All rules are satisfied so all outputs are given, ordered by the rule ordering.
 It can perhaps be used to indicate the priority of the displayed advertisements.</p>
-<h2 id="collect-hit-policy">Collect Hit Policy</h2>
+
+<h3 id="collect-hit-policy">Collect Hit Policy</h3>
 <p>Multiple rules can be satisfied. The decision table result contains the output
 of all satisfied rules in an arbitrary order as a list.</p>
 <p><figure class="image no-lightbox">
@@ -3323,7 +3333,8 @@ XML element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;decisionTable</span> <span class="na">id=</span><span class="s">&#34;decisionTable&#34;</span> <span class="na">hitPolicy=</span><span class="s">&#34;COLLECT&#34;</span> <span class="na">aggregation=</span><span class="s">&#34;SUM&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- .. --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/decisionTable&gt;</span>
-</span></span></code></pre></div><h3 id="aggregators-for-collect-hit-policy">Aggregators for Collect Hit Policy</h3>
+</span></span></code></pre></div>
+<h4 id="aggregators-for-collect-hit-policy">Aggregators for Collect Hit Policy</h4>
 <p>In the visual representation of the decision table an aggregator can be selected in addition to the <code>COLLECT</code> hit policy. The following aggregators are supported by
 the Camunda DMN engine:</p>
 <table class="table table-striped">
@@ -3353,7 +3364,8 @@ the Camunda DMN engine:</p>
     <td>the number of output values</td>
   </tr>
 </table>
-<h4 id="sum-aggregator">SUM aggregator</h4>
+
+<h5 id="sum-aggregator">SUM aggregator</h5>
 <p>The SUM aggregator sums up all outputs from the satisfied rules.
 <figure class="image no-lightbox">
   <span><img
@@ -3365,7 +3377,8 @@ the Camunda DMN engine:</p>
 
 The showed decision table can be used to sum up the salary bonus for an employee. For example, the employee has been working in the company for
 3.5 years. So the first, second and third rule will match and the result of the decision table is 600, since the output is summed up.</p>
-<h4 id="min-aggregator">MIN aggregator</h4>
+
+<h5 id="min-aggregator">MIN aggregator</h5>
 <p>The MIN aggregator can be used to return the smallest output value of all satisfied rules.
 See the following example of a car insurance. After years without a car crash the insurance fee will be reduced.
 <figure class="image no-lightbox">
@@ -3378,7 +3391,8 @@ See the following example of a car insurance. After years without a car crash th
 
 For example, if the input for the decision table is 3.5 years, the result will be 98.83, since the first three rules match
 but the third rule has the minimal output.</p>
-<h4 id="max-aggregator">MAX aggregator</h4>
+
+<h5 id="max-aggregator">MAX aggregator</h5>
 <p>The MAX aggregator can be used to return the largest output value of all satisfied rules.</p>
 <figure class="image no-lightbox">
   <span><img
@@ -3392,7 +3406,8 @@ but the third rule has the minimal output.</p>
 Depending of the age, the amount grows. For example, an input of 9 will satisfy the first and second rules.
 The output of the second rule is larger then the output of the first rule, so the output
 will be 5. A child at the age of 9 will get 5 as pocket money.</p>
-<h4 id="count-aggregator">COUNT aggregator</h4>
+
+<h5 id="count-aggregator">COUNT aggregator</h5>
 <p>The COUNT aggregator can be use to return the count of satisfied rules.</p>
 <figure class="image no-lightbox">
   <span><img

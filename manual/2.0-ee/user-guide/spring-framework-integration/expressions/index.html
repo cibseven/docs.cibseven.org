@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="limit-the-exposed-spring-beans">Limit the exposed Spring Beans</h1>
+      
+<h2 id="limit-the-exposed-spring-beans">Limit the exposed Spring Beans</h2>
 <p>When using the <code>ProcessEngineFactoryBean</code>, by default, all expressions and scripts in the BPMN processes will also &ldquo;see&rdquo; all the Spring beans. It&rsquo;s possible to limit the beans you want to expose or even expose no beans at all using a map that you can configure. The example below exposes a single bean (printer), available to use under the key <code>printer</code>. To expose NO beans at all, pass an empty map as <code>beans</code> property on the <code>SpringProcessEngineConfiguration</code>. When no <code>beans</code> property is set, all Spring beans in the context will be available.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;processEngineConfiguration&#34;</span>
 </span></span><span class="line"><span class="cl">      <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.engine.spring.SpringProcessEngineConfiguration&#34;</span><span class="nt">&gt;</span>
@@ -3200,7 +3205,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;printer&#34;</span>
 </span></span><span class="line"><span class="cl">      <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.engine.spring.test.transaction.Printer&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="using-spring-beans-in-expressions">Using Spring Beans in expressions</h1>
+</span></span></code></pre></div>
+<h2 id="using-spring-beans-in-expressions">Using Spring Beans in expressions</h2>
 <p>The exposed beans can be used in expressions. For example, the <code>SpringTransactionIntegrationTest</code> <code>testBasicActivitiSpringIntegration.bpmn20.xml</code> shows how a method on a Spring bean can be invoked using a UEL method expression:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions</span> <span class="na">id=</span><span class="s">&#34;definitions&#34;</span> <span class="err">...</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -3235,7 +3241,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;printer&#34;</span>
 </span></span><span class="line"><span class="cl">        <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.engine.spring.test.transaction.Printer&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/beans&gt;</span>
-</span></span></code></pre></div><h1 id="expression-resolving-with-the-shared-process-engine">Expression resolving with the shared process engine</h1>
+</span></span></code></pre></div>
+<h2 id="expression-resolving-with-the-shared-process-engine">Expression resolving with the shared process engine</h2>
 <p>In a shared process engine deployment scenario, you have a process engine which dispatches to multiple applications. In this case, there is not a single Spring application context but each application may maintain its own application context. The process engine cannot use a single expression resolver for a single application context but must delegate to the appropriate process application, depending on which process is currently being executed.</p>
 <p>This functionality is provided by the <code>org.cibseven.bpm.engine.spring.application.SpringProcessApplicationElResolver</code>. This class is a <code>ProcessApplicationElResolver</code> implementation delegating to the local application context. Expression resolving then works in the following way:</p>
 <ol>
@@ -3249,7 +3256,8 @@
   <p>The <code>SpringProcessApplicationElResolver</code> class is automatically detected if the <code>cibseven-engine-spring</code> module is included as a library of the process application, not as a global library.</p>
 </div>
 
-<h1 id="using-spring-beans-in-scripting">Using Spring Beans in scripting</h1>
+
+<h2 id="using-spring-beans-in-scripting">Using Spring Beans in scripting</h2>
 <p>When using <code>ProcessEngineFactoryBean</code>, all Spring beans are accessible in Groovy, JavaScript, and Jython. For example, the <code>ScriptTaskTest-applicationContext.xml</code> exposes the bean &rsquo;testbean':</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="err">...</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...

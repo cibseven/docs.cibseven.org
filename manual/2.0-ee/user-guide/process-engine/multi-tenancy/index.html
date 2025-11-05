@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p><em>Multi-Tenancy</em> regards the case in which a single CIB seven installation should serve more than one tenant. For each tenant, certain guarantees of isolation should be made. For example, one tenant&rsquo;s process instances should not interfere with those of another tenant.</p>
 <p>Multi-Tenancy can be achieved in two different ways. One way is to use <a href="#one-process-engine-per-tenant">one process engine per tenant</a>. The other way is to use just one process engine and associate the data with <a href="#single-process-engine-with-tenant-identifiers">tenant identifiers</a>. The two ways differ from each other in the level of data isolation, the effort of maintenance and the scalability. A combination of both ways is also possible.</p>
-<h1 id="single-process-engine-with-tenant-identifiers">Single Process Engine With Tenant-Identifiers</h1>
+
+<h2 id="single-process-engine-with-tenant-identifiers">Single Process Engine With Tenant-Identifiers</h2>
 <p>Multi-Tenancy can be achieved with one process engine which uses tenant identifiers (i.e., tenant-ids). The data of all tenants is stored in one table (same database and schema). Isolation is provided by the means of a tenant identifier that is stored in a column.</p>
 <figure class="image">
   <span><img
@@ -3211,10 +3216,12 @@
 </ul></p>
 </div>
 
-<h2 id="deploy-definitions-for-a-tenant">Deploy Definitions for a Tenant</h2>
+
+<h3 id="deploy-definitions-for-a-tenant">Deploy Definitions for a Tenant</h3>
 <p>To deploy definitions for a single tenant, the tenant identifier has to be set on the deployment. The given identifier is propagated to all definitions of the deployment so that they belong to the tenant.</p>
 <p>If no tenant identifier is set then the deployment and its definitions belong to all tenants. In this case, all tenants can access the deployment and the definitions. See <a href="#shared-definitions-for-all-tenants">this section</a> to read more about how to use shared definitions.</p>
-<h3 id="specify-the-tenant-identifier-via-java-api">Specify the Tenant Identifier via Java API</h3>
+
+<h4 id="specify-the-tenant-identifier-via-java-api">Specify the Tenant Identifier via Java API</h4>
 <p>When a deployment is created using the Repository Service, the tenant identifier can be set on the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/repository/DeploymentBuilder.html">DeploymentBuilder</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">repositoryService</span><span class="w">
@@ -3222,7 +3229,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">tenantId</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">addZipInputStream</span><span class="p">(</span><span class="n">inputStream</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span><span class="w">
-</span></span></span></code></pre></div><h3 id="specify-the-tenant-identifier-via-deployment-descriptor">Specify the Tenant Identifier via Deployment Descriptor</h3>
+</span></span></span></code></pre></div>
+<h4 id="specify-the-tenant-identifier-via-deployment-descriptor">Specify the Tenant Identifier via Deployment Descriptor</h4>
 <p>In case of a process application, the deployment is specified by a <a href="/manual/2.0-ee/user-guide/process-applications/the-processes-xml-deployment-descriptor/">processes.xml</a> Deployment Descriptor. Since the descriptor can contain multiple process-archives (i.e., deployments), the tenant identifier can be set on each process-archive as <code>tenantId</code> attribute.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-application</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/ProcessApplication&#34;</span>
@@ -3237,7 +3245,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-archive&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-application&gt;</span>
-</span></span></code></pre></div><h3 id="specify-the-tenant-identifier-via-spring-configuration">Specify the Tenant Identifier via Spring Configuration</h3>
+</span></span></code></pre></div>
+<h4 id="specify-the-tenant-identifier-via-spring-configuration">Specify the Tenant Identifier via Spring Configuration</h4>
 <p>When the <a href="/manual/2.0-ee/user-guide/spring-framework-integration/deployment/">Automatic Resource Deployment</a> of the Spring Framework Integration is used, the tenant identifier can be specified in the Process Engine Configuration as <code>deploymentTenantId</code> property.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;processEngineConfiguration&#34;</span> <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.engine.spring.SpringProcessEngineConfiguration&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;deploymentResources&#34;</span><span class="nt">&gt;</span>
@@ -3248,12 +3257,15 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;deploymentTenantId&#34;</span> <span class="na">value=</span><span class="s">&#34;tenant1&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
-</span></span></code></pre></div><h3 id="versioning-of-tenant-specific-definitions">Versioning of Tenant-Specific Definitions</h3>
+</span></span></code></pre></div>
+<h4 id="versioning-of-tenant-specific-definitions">Versioning of Tenant-Specific Definitions</h4>
 <p>When a definition is deployed for a tenant then it is assigned a version which is independent from definitions of other tenants. For example, if a new process definition is deployed for two tenants then both definitions are assigned the version <code>1</code>. The versioning within one tenant works like the <a href="/manual/2.0-ee/user-guide/process-engine/process-versioning/">versioning of definitions</a> that belong to no tenant.</p>
-<h2 id="query-data-of-a-tenant">Query Data of a Tenant</h2>
+
+<h3 id="query-data-of-a-tenant">Query Data of a Tenant</h3>
 <p>The process engine queries of tenant-specific data (e.g., Deployment Query, Process Definition Query) allows to filter by one or more tenant identifiers. If no identifier is set then the result contains the data of all tenants.</p>
 <p>Note that the <a href="#transparent-access-restrictions-for-tenants">transparent access restrictions</a> of tenants can influence the result of a query if a user is not allowed to see the data of a tenant.</p>
-<h3 id="query-deployments-of-a-tenant">Query Deployments of a Tenant</h3>
+
+<h4 id="query-deployments-of-a-tenant">Query Deployments of a Tenant</h4>
 <p>To find the deployments of specific tenants, the tenant identifiers have to be passed to <code>tenantIdIn</code> on the <code>DeploymentQuery</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Deployment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createDeploymentQuery</span><span class="p">()</span><span class="w">
@@ -3272,24 +3284,28 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">tenantIdIn</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">includeDeploymentsWithoutTenantId</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="query-definitions-of-a-tenant">Query Definitions of a Tenant</h3>
+</span></span></span></code></pre></div>
+<h4 id="query-definitions-of-a-tenant">Query Definitions of a Tenant</h4>
 <p>Similar to the <code>DeploymentQuery</code>, the definition queries allow to filter by one or more tenants and by definitions which belong to no tenant.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">ProcessDefinition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processDefinitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createProcessDefinitionQuery</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">tenantIdIn</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">includeProcessDefinitionsWithoutTenantId</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="run-commands-for-a-tenant">Run Commands for a Tenant</h2>
+</span></span></span></code></pre></div>
+<h3 id="run-commands-for-a-tenant">Run Commands for a Tenant</h3>
 <p>When a definition is deployed for multiple tenants, a command can be ambiguous (e.g., start a process instance by key). If such a command is executed, a <code>ProcessEngineException</code> is thrown. To run the command successfully, the tenant identifier has to be passed to the command.</p>
 <p>Note that the <a href="#transparent-access-restrictions-for-tenants">transparent access restrictions</a> of tenants can omit the tenant identifier if a user is only allowed to see one of the definitions.</p>
-<h3 id="create-a-process-instance">Create a Process Instance</h3>
+
+<h4 id="create-a-process-instance">Create a Process Instance</h4>
 <p>To create an instance by key of a process definition which is deployed for multiple tenants, the tenant identifier has to be passed to the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/runtime/ProcessInstantiationBuilder.html">ProcessInstantiationBuilder</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createProcessInstanceByKey</span><span class="p">(</span><span class="s">&#34;key&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processDefinitionTenantId</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="correlate-a-message">Correlate a Message</h3>
+</span></span></span></code></pre></div>
+<h4 id="correlate-a-message">Correlate a Message</h4>
 <p>The <a href="/manual/2.0-ee/reference/bpmn20/events/message-events/#message-api">Message API</a> can be used to correlate a message to one or all tenants. In case a message can correlate to definitions or executions of multiple tenants, the tenant identifier has to be passed to the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/runtime/MessageCorrelationBuilder.html">MessageCorrelationBuilder</a>
 . Otherwise, a <code>MismatchingMessageCorrelationException</code> is thrown.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="w">
@@ -3300,7 +3316,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createMessageCorrelation</span><span class="p">(</span><span class="s">&#34;messageName&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">correlateAll</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="send-a-signal">Send a Signal</h3>
+</span></span></span></code></pre></div>
+<h4 id="send-a-signal">Send a Signal</h4>
 <p>The <a href="/manual/2.0-ee/reference/bpmn20/events/signal-events/#signal-api">Signal API</a> can be used to deliver a signal to one or all tenants. Pass the tenant identifier to the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/runtime/SignalEventReceivedBuilder.html">SignalEventReceivedBuilder</a>
  to deliver the signal to a specific tenant. If no identifier is passed then the signal is delivered to all tenants.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="w">
@@ -3308,21 +3325,24 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">tenantId</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">send</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>When a signal is thrown within a process (i.e., intermediate signal event or signal end event) then the signal is delivered to definitions and executions which belong to the same tenant as the calling execution or no tenant.</p>
-<h3 id="create-a-case-instance">Create a Case Instance</h3>
+
+<h4 id="create-a-case-instance">Create a Case Instance</h4>
 <p>To create an instance by key of a case definition which is deployed for multiple tenants, the tenant identifier has to be passed to the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/runtime/CaseInstanceBuilder.html">CaseInstanceBuilder</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">caseService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">withCaseDefinitionByKey</span><span class="p">(</span><span class="s">&#34;key&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">caseDefinitionTenantId</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="evaluate-a-decision-table">Evaluate a Decision Table</h3>
+</span></span></span></code></pre></div>
+<h4 id="evaluate-a-decision-table">Evaluate a Decision Table</h4>
 <p>To evaluate a decision table by key which is deployed for multiple tenants, the tenant identifier has to be passed to the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/dmn/DecisionEvaluationBuilder.html">DecisionEvaluationBuilder</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">decisionService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">evaluateDecisionTableByKey</span><span class="p">(</span><span class="s">&#34;key&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">decisionDefinitionTenantId</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">evaluate</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="transparent-access-restrictions-for-tenants">Transparent Access Restrictions for Tenants</h2>
+</span></span></span></code></pre></div>
+<h3 id="transparent-access-restrictions-for-tenants">Transparent Access Restrictions for Tenants</h3>
 <p>When integrating CIB seven into an application, it can be cumbersome to pass the tenant Id to each CIB seven API call. Since such an application usually also has a concept of an &ldquo;authenticated user&rdquo;, it is possible to set the list of tenant ids when setting the authentication:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">identityService</span><span class="p">.</span><span class="na">setAuthentication</span><span class="p">(</span><span class="s">&#34;mary&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">asList</span><span class="p">(</span><span class="s">&#34;accounting&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">asList</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">));</span><span class="w">
@@ -3335,7 +3355,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>In the above example, all API calls executed between <code>setAuthentication(...)</code> and <code>clearAuthentication()</code> are transparently executed with the list
 of provided tenant Ids.</p>
-<h3 id="query-example">Query Example</h3>
+
+<h4 id="query-example">Query Example</h4>
 <p>The following query</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">identityService</span><span class="p">.</span><span class="na">setAuthentication</span><span class="p">(</span><span class="s">&#34;mary&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">asList</span><span class="p">(</span><span class="s">&#34;accounting&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">asList</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">));</span><span class="w">
@@ -3350,7 +3371,8 @@ of provided tenant Ids.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">tenantIdIn</span><span class="p">(</span><span class="s">&#34;tenant1&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">includeProcessDefinitionsWithoutTenantId</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="task-access-example">Task Access Example</h3>
+</span></span></span></code></pre></div>
+<h4 id="task-access-example">Task Access Example</h4>
 <p>For other commands like <code>complete()</code>, the transparent access check ensures that the authenticated user does not access
 resources by other tenants:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3362,7 +3384,8 @@ resources by other tenants:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">identityService</span><span class="p">.</span><span class="na">clearAuthentication</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="getting-a-users-tenant-ids-from-the-identity-service">Getting a user&rsquo;s Tenant Ids from the Identity Service</h3>
+</span></span></span></code></pre></div>
+<h4 id="getting-a-users-tenant-ids-from-the-identity-service">Getting a user&rsquo;s Tenant Ids from the Identity Service</h4>
 <p>The process engine&rsquo;s Identity Service can be used to manage users, groups and tenants as well as their relationships.
 The following example shows how to retrieve the lists of groups and tenants for a given user and then use these lists when setting the authentication:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Tenant</span><span class="o">&gt;</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identityService</span><span class="p">.</span><span class="na">createGroupQuery</span><span class="p">()</span><span class="w">
@@ -3390,10 +3413,12 @@ The following example shows how to retrieve the lists of groups and tenants for 
   <p>The above example only works with the <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/#the-database-identity-service">Database Identity Service</a> (i.e., the default implementation). The <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Service</a> doesn&rsquo;t support tenants.</p>
 </div>
 
-<h3 id="cib-seven-rest-api-and-web-applications">CIB seven Rest API and Web Applications</h3>
+
+<h4 id="cib-seven-rest-api-and-web-applications">CIB seven Rest API and Web Applications</h4>
 <p>The CIB seven <a href="/manual/2.0-ee/reference/rest/">Rest API</a> and the web applications Cockpit and Tasklist support the transparent access restrictions. When a user logs in then he only sees and can only access the data (e.g., process definitions) that belongs to one of his tenants.</p>
 <p>Tenants and their memberships can be managed in the <a href="/manual/2.0-ee/webapps/admin/tenant-management/">Admin</a> web application.</p>
-<h3 id="disable-the-transparent-access-restrictions">Disable the Transparent Access Restrictions</h3>
+
+<h4 id="disable-the-transparent-access-restrictions">Disable the Transparent Access Restrictions</h4>
 <p>The transparent access restrictions are enabled by default. To disable the restrictions, set the <code>tenantCheckEnabled</code> property in the <a href="/manual/2.0-ee/user-guide/process-engine/process-engine-bootstrapping/#processengineconfiguration-bean">ProcessEngineConfiguration</a> to <code>false</code>.</p>
 <p>Additionally, it is also possible to disable the restrictions for a single command (e.g., for a maintenance task). Use the <code>CommandContext</code> to disable and enable the restrictions for the current command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">commandContext</span><span class="p">.</span><span class="na">disableTenantCheck</span><span class="p">();</span><span class="w">
@@ -3402,10 +3427,12 @@ The following example shows how to retrieve the lists of groups and tenants for 
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">commandContext</span><span class="p">.</span><span class="na">enableTenantCheck</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Note that the restrictions can&rsquo;t be enabled for a command if they are disabled in the <code>ProcessEngineConfiguration</code>.</p>
-<h3 id="access-all-tenants-as-administrator">Access all Tenants as Administrator</h3>
+
+<h4 id="access-all-tenants-as-administrator">Access all Tenants as Administrator</h4>
 <p>The admin user or users who are a member of the admin group can access the data of all tenants, even if they don&rsquo;t belong to the tenants. This is useful for an administrator of a multi-tenancy application as they must manage the data of all tenants.</p>
 <p>Define admin users by making them a member of the group <code>camunda-admin</code> or with the help of the <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Admin Authorization Plugin</a>. The Admin Authorization Plugin allows granting admin privileges to a custom user or group.</p>
-<h2 id="shared-definitions-for-all-tenants">Shared Definitions for all Tenants</h2>
+
+<h3 id="shared-definitions-for-all-tenants">Shared Definitions for all Tenants</h3>
 <p>In section <a href="#deploy-definitions-for-a-tenant">Deploy Definitions for a Tenant</a> it is explained how to deploy a Process Definition or a Decision Definition for a particular tenant. The result is that the definition is only visible to the tenant for whom it was deployed but not to other tenants. This is useful if tenants have different processes and decisions. However, there are also many situations where all tenants should share the same definitions. In such situations it is desirable to deploy a definition only once, in a way that it is visible to all tenants.
 Then, when a new instance is created by a particular tenant, it should  be only visible to that tenant (and administrators of course).
 This can be achieved by a usage pattern we call &ldquo;Shared Definitions&rdquo;.
@@ -3416,14 +3443,16 @@ By the term <em>usage pattern</em> we mean that it is not a feature of Camunda p
   <p>You can find an <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions">example</a> on <a href="https://github.com/camunda/camunda-bpm-examples">GitHub</a> that shows how to use shared definitions.</p>
 </div>
 
-<h3 id="deploy-a-shared-definition">Deploy a Shared Definition</h3>
+
+<h4 id="deploy-a-shared-definition">Deploy a Shared Definition</h4>
 <p>Deploying a shared definition is just a &ldquo;regular&rdquo; deployment not assigning a Tenant Id to the deployment:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">repositoryService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createDeployment</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">addClasspathResource</span><span class="p">(</span><span class="s">&#34;processes/default/mainProcess.bpmn&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">addClasspathResource</span><span class="p">(</span><span class="s">&#34;processes/default/subProcess.bpmn&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">deploy</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="include-shared-definitions-in-a-query">Include Shared Definitions in a Query</h3>
+</span></span></span></code></pre></div>
+<h4 id="include-shared-definitions-in-a-query">Include Shared Definitions in a Query</h4>
 <p>Often in an application, we want to present a list of &ldquo;available&rdquo; process definitions to the user.
 In a multi tenancy context with shared resources we want the list to include definitions with the following properties:</p>
 <ul>
@@ -3436,7 +3465,8 @@ In a multi tenancy context with shared resources we want the list to include def
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">tenantIdIn</span><span class="p">(</span><span class="s">&#34;someTenantId&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">includeProcessDefinitionsWithoutTenantId</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="instantiate-a-shared-definition">Instantiate a Shared Definition</h3>
+</span></span></span></code></pre></div>
+<h4 id="instantiate-a-shared-definition">Instantiate a Shared Definition</h4>
 <p>When creating (starting) a new process instance, the tenant id of the process definition is propagated to the process instance.
 Shared resources  do not have a tenant id which means that no tenant id is propagated automatically. To have the tenant id of the user who starts the process instances assigned  to the process instance, an implementation of the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/impl/cfg/multitenancy/TenantIdProvider.html">TenantIdProvider</a>
  SPI needs to be provided.</p>
@@ -3494,7 +3524,8 @@ Shared resources  do not have a tenant id which means that no tenant id is propa
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;tenantIdProvider&#34;</span> <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.CustomTenantIdProvider&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/beans&gt;</span>
 </span></span></code></pre></div><p>In case of a shared process engine, the provider can be set via <a href="/manual/2.0-ee/user-guide/process-engine/process-engine-plugins/">Process Engine Plugin</a>.</p>
-<h3 id="tenant-specific-behavior-with-call-activities">Tenant-specific behavior with Call Activities</h3>
+
+<h4 id="tenant-specific-behavior-with-call-activities">Tenant-specific behavior with Call Activities</h4>
 <p>So far, we have seen that shared resources are a useful pattern if tenants have the same process definition. The advantage is that we do not have to deploy the same process definitions once per tenant. Yet, in many real world applications, the situation is somewhat in between: tenants share <em>mostly</em> the same process definitions, but there are some tenant specific variations.</p>
 <p>A common pattern of how to deal with this is to extract the tenant-specific behavior in a separate process which is then invoked using a call activity. Tenant specific decision logic (i.e., decision tables) using a business rules task are also common.</p>
 <p>To realize this, the call activity or business rule task needs to select the correct definition to invoke based on the tenant id of the current process instance. The <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions">Shared Resources Example</a> shows how to achieve this.</p>
@@ -3505,7 +3536,8 @@ Shared resources  do not have a tenant id which means that no tenant id is propa
 <li><a href="/manual/2.0-ee/reference/bpmn20/subprocesses/call-activity/#case-tenant-id">Case Tenant Id</a> for call activities.</li>
 <li><a href="/manual/2.0-ee/reference/bpmn20/tasks/business-rule-task/#decisionref-tenant-id">Decision Ref Tenant Id</a> for business rule tasks.</li>
 </ul>
-<h1 id="one-process-engine-per-tenant">One Process Engine Per Tenant</h1>
+
+<h2 id="one-process-engine-per-tenant">One Process Engine Per Tenant</h2>
 <p>Multi-Tenancy can be achieved by providing one process engine per tenant. Each process engine is configured to use a different data source which connects the data of the tenant. The data of the tenants can be stored in different databases, in one database with different schemas or in one schema with different tables.</p>
 <figure class="image">
   <span><img
@@ -3522,11 +3554,14 @@ Shared resources  do not have a tenant id which means that no tenant id is propa
   <p>You can see the <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/multi-tenancy/schema-isolation">example</a> how to implement multi-tenancy with data isolation by schemas.</p>
 </div>
 
-<h2 id="configure-the-process-engines">Configure the Process Engines</h2>
+
+<h3 id="configure-the-process-engines">Configure the Process Engines</h3>
 <p>The process engines can be configured in a configuration file or via Java API. Each engine should have a name that is related to a tenant such that it can be identified based on the tenant. For example, each engine can be named after the tenant it serves. See the <a href="/manual/2.0-ee/user-guide/process-engine/process-engine-bootstrapping/">Process Engine Bootstrapping</a> section for details.</p>
-<h3 id="database-isolation">Database Isolation</h3>
+
+<h4 id="database-isolation">Database Isolation</h4>
 <p>If different tenants should work on entirely different databases, they have to use different JDBC settings or different data sources.</p>
-<h3 id="schema-or-table-isolation">Schema or Table Isolation</h3>
+
+<h4 id="schema-or-table-isolation">Schema or Table Isolation</h4>
 <p>For schema- or table-based isolation, a single data source can be used which means that resources like a connection pool can be shared among multiple engines.
 To achieve this,</p>
 <ul>
@@ -3547,9 +3582,11 @@ manually by setting it to null explicitly via</li>
 </span></span></span></code></pre></div></p>
 </div>
 
-<h3 id="job-executor-for-multiple-process-engines">Job Executor for Multiple Process Engines</h3>
+
+<h4 id="job-executor-for-multiple-process-engines">Job Executor for Multiple Process Engines</h4>
 <p>For background execution of processes and tasks, the process engine has a component called <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/">job executor</a>. The job executor periodically acquires jobs from the database and submits them to a thread pool for execution. For all process applications on one server, one thread pool is used for job execution. Furthermore, it is possible to share the acquisition thread between multiple engines. This way, resources are still manageable even when a large amount of process engines are used. See the section <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/#the-job-executor-and-multiple-process-engines">The Job Executor and Multiple Process Engines</a> for details.</p>
-<h3 id="example-configuration-for-schema-isolation">Example Configuration for Schema Isolation</h3>
+
+<h4 id="example-configuration-for-schema-isolation">Example Configuration for Schema Isolation</h4>
 <p>Multi-Tenancy settings can be applied in the various ways of configuring a process engine. The following is an example of a <a href="/manual/2.0-ee/user-guide/process-engine/process-engine-bootstrapping/#configure-process-engine-in-bpm-platformxml">bpm-platform.xml</a> file that specifies engines for two tenants that share the same database but work on different schemas:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/BpmPlatform&#34;</span>
@@ -3590,7 +3627,8 @@ manually by setting it to null explicitly via</li>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
-</span></span></code></pre></div><h2 id="deploy-definitions-for-a-tenant-1">Deploy Definitions for a Tenant</h2>
+</span></span></code></pre></div>
+<h3 id="deploy-definitions-for-a-tenant-1">Deploy Definitions for a Tenant</h3>
 <p>When developing process applications, i.e., process definitions and supplementary code, some processes may be deployed to every tenant&rsquo;s engine while others are tenant-specific. The processes.xml deployment descriptor that is part of every process application offers this kind of flexibility by the concept of <em>process archives</em>. One application can contain any number of process archive deployments, each of which can be deployed to a different process engine with different resources. See the section on the <a href="/manual/2.0-ee/user-guide/process-applications/the-processes-xml-deployment-descriptor/">processes.xml deployment descriptor</a> for details.</p>
 <p>The following is an example that deploys different process definitions for two tenants. It uses the configuration property <code>resourceRootPath</code> that specifies a path in the deployment that contains process definitions to deploy. Accordingly, all the processes under <code>processes/tenant1</code> on the application&rsquo;s classpath are deployed to engine <code>tenant1</code>, while all the processes under <code>processes/tenant2</code> are deployed to engine <code>tenant2</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-application</span>
@@ -3618,7 +3656,8 @@ manually by setting it to null explicitly via</li>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-archive&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-application&gt;</span>
-</span></span></code></pre></div><h2 id="access-the-process-engine-of-a-tenant">Access the Process Engine of a Tenant</h2>
+</span></span></code></pre></div>
+<h3 id="access-the-process-engine-of-a-tenant">Access the Process Engine of a Tenant</h3>
 <p>To access a specific tenant&rsquo;s process engine at runtime, it has to be identified by its name. The CIB seven engine offers access to named engines in various programming models:</p>
 <ul>
 <li><strong>Plain Java API</strong>: Via the <a href="/manual/2.0-ee/user-guide/runtime-container-integration/bpm-platform-services/#processengineservice">ProcessEngineService</a> any named engine can be accessed.</li>

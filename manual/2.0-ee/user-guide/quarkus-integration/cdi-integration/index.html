@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3192,7 +3196,8 @@ the CDI 4.0 standard but only implements a subset of it.</p>
 <p>The CIB seven engine offers CDI 4 integration with the <code>cibseven-engine-cdi-jakarta</code> module. This module is integrated
 directly into the Quarkus Extension. You can learn more about the features and the programming model
 at <a href="/manual/2.0-ee/user-guide/cdi-java-ee-integration/">CDI and Java EE Integration</a>.</p>
-<h2 id="limitations">Limitations</h2>
+
+<h3 id="limitations">Limitations</h3>
 <p>Since Quarkus ArC does not aim to implement CDI 4.0 fully, you cannot use the full range of features
 the <code>cibseven-engine-cdi-jakarta</code> module provides. Some features documented under
 <a href="/manual/2.0-ee/user-guide/cdi-java-ee-integration/">CDI and Java EE Integration</a> are unsupported or only work with restrictions.
@@ -3206,7 +3211,8 @@ we highly recommend you consider the <a href="https://quarkus.io/guides/cdi-refe
 <a href="https://quarkus.io/guides/cdi-reference#supported_features">supported features</a> of the Quarkus version you are using.</p>
 </div>
 
-<h3 id="limited-support-of-juel-expression-resolution">Limited support of JUEL Expression Resolution</h3>
+
+<h4 id="limited-support-of-juel-expression-resolution">Limited support of JUEL Expression Resolution</h4>
 <p>The <code>cibseven-engine-cdi-jakarta</code> module allows referencing CDI beans and calling methods on CDI beans in
 model expression properties (e.g., <code>camunda:expression</code>, <code>camunda:delegateExpression</code>, etc.).
 Quarkus ArC currently doesn&rsquo;t support the CDI API method <code>javax.enterprise.inject.spi.BeanManager#getELResolver</code>,
@@ -3217,11 +3223,13 @@ CDI beans is supported.</p>
 <li>Supported Expression: <code>${myService}</code></li>
 <li>Unsupported Expression: <code>${myService.checkCondition('foo')}</code></li>
 </ul>
-<h3 id="limited-support-of-scopes-in-the-contextual-programming-model">Limited support of scopes in the Contextual Programming Model</h3>
+
+<h4 id="limited-support-of-scopes-in-the-contextual-programming-model">Limited support of scopes in the Contextual Programming Model</h4>
 <p>While the <code>cibseven-engine-cdi-jakarta</code> module supports associating a process instance with
 <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#conversation_context_ee">Conversational Scope</a> or <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#request_context_ee">Request Scope</a>, Quarkus ArC
 only supports the <strong>Request Scope</strong>.</p>
-<h3 id="configure-quarkus-to-allow-setting-variables-when-a-startprocess-annotated-method-is-called">Configure Quarkus to allow setting variables when a <code>@StartProcess</code> annotated method is called</h3>
+
+<h4 id="configure-quarkus-to-allow-setting-variables-when-a-startprocess-annotated-method-is-called">Configure Quarkus to allow setting variables when a <code>@StartProcess</code> annotated method is called</h4>
 <p>The <code>cibseven-engine-cdi-jakarta</code> module allows setting variables when assigning a value to a class field
 annotated with <code>@ProcessVariableTyped</code> or <code>@ProcessVariable</code> inside a method annotated
 with <code>@StartProcess</code>, as shown in the following example:</p>
@@ -3254,17 +3262,20 @@ Read more about it in the <a href="https://quarkus.io/guides/cdi-reference#quark
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="businessprocessscoped-beans"><code>@BusinessProcessScoped</code> Beans</h3>
+</span></span></span></code></pre></div>
+<h4 id="businessprocessscoped-beans"><code>@BusinessProcessScoped</code> Beans</h4>
 <p>The <code>cibseven-engine-cdi-jakarta</code> module stores <a href="/manual/2.0-ee/user-guide/cdi-java-ee-integration/contextual-programming-model/#work-with-businessprocessscoped-beans"><code>@BusinessProcessScoped</code></a> beans as
 process variables in the context of the current process instance.</p>
-<h4 id="passivation-is-unsupported">Passivation is unsupported</h4>
+
+<h5 id="passivation-is-unsupported">Passivation is unsupported</h5>
 <p>Quarkus does not support <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#passivating_scope">Passivation and passivating scopes</a>.
 When using <code>@BusinessProcessScoped</code> beans, no validation of being serializable and therefore
 &ldquo;Passivation Capable&rdquo; is performed during the startup of the Quarkus application.</p>
 <p>If your <code>@BusinessProcessScoped</code> beans and their references
 don&rsquo;t implement the <code>java.io.Serializable</code> interface, the engine throws an exception during execution
 when trying to persist the beans as process variables.</p>
-<h4 id="destroying-bean-instances-is-unsupported">Destroying Bean Instances is unsupported</h4>
+
+<h5 id="destroying-bean-instances-is-unsupported">Destroying Bean Instances is unsupported</h5>
 <p>Programmatically destroying a <code>@BusinessProcessScoped</code> bean instance is
 <a href="https://jira.camunda.com/browse/CAM-13755">currently unsupported</a>.</p>
 <p>The following API methods will throw an <code>UnsupportedOperationException</code>:</p>
@@ -3274,7 +3285,8 @@ when trying to persist the beans as process variables.</p>
 <li><code>io.quarkus.arc.InjectableContext#destroy</code></li>
 <li><code>io.quarkus.arc.InjectableContext#destroy(Contextual&lt;?&gt; contextual)</code></li>
 </ul>
-<h3 id="task-form-beans">Task form beans</h3>
+
+<h4 id="task-form-beans">Task form beans</h4>
 <p>Associating beans with <a href="https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#conversation_context_ee">Conversational Scope</a> is currently <a href="https://quarkus.io/guides/cdi#bean-scope-available">not supported</a> by Quarkus ArC.
 Furthermore, Quarkus does not allow to set a different default scope for beans that are outside of the extension&rsquo;s control.
 As a result, the following conversational scoped beans are not available in a Quarkus application out of the box:</p>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>CIB seven is a Java-based framework. The main components are written in Java and we have a general focus on providing Java developers with the tools they need for designing, implementing and running business processes and workflows on the JVM. Nevertheless, we also want to make the process engine technology available to non-Java developers. This is why CIB seven also provides a REST API which allows you to build applications connecting to a remote process engine.</p>
 <p>CIB seven can be used both as a standalone process engine server or embedded inside custom Java applications. The embeddability requirement is at the heart of many architectural decisions within CIB seven. For instance, we work hard to make the process engine component a lightweight component with as little dependencies on <a href="/manual/2.0-ee/introduction/third-party-libraries/">third-party libraries</a> as possible. Furthermore, the embeddability motivates programming model choices such as the capabilities of the process engine to participate in Spring Managed or JTA <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/">transactions and the threading model</a>.</p>
-<h1 id="process-engine-architecture">Process Engine Architecture</h1>
+
+<h2 id="process-engine-architecture">Process Engine Architecture</h2>
 <figure class="image">
   <span><img
       src="../img/process-engine-architecture.png"
@@ -3203,11 +3208,14 @@
 <li><a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/">Job Executor</a>: The Job Executor is responsible for processing asynchronous background work such as Timers or asynchronous continuations in a process.</li>
 <li><strong>The Persistence Layer</strong>: The process engine features a persistence layer responsible for persisting process instance state to a relational database. We use the MyBatis mapping engine for object relational mapping.</li>
 </ul>
-<h2 id="required-third-party-libraries">Required Third-Party Libraries</h2>
+
+<h3 id="required-third-party-libraries">Required Third-Party Libraries</h3>
 <p>See the section on <a href="/manual/2.0-ee/introduction/third-party-libraries/">third-party libraries</a>.</p>
-<h1 id="cib-seven-architecture">CIB seven Architecture</h1>
+
+<h2 id="cib-seven-architecture">CIB seven Architecture</h2>
 <p>CIB seven is a flexible framework which can be deployed in different scenarios. This section provides an overview of the most common deployment scenarios.</p>
-<h2 id="embedded-process-engine">Embedded Process Engine</h2>
+
+<h3 id="embedded-process-engine">Embedded Process Engine</h3>
 <figure class="image">
   <span><img
       src="../img/embedded-process-engine.png"
@@ -3217,7 +3225,8 @@
 </figure>
 
 <p>In this case, the process engine is added as an application library to a custom application. This way, the process engine can easily be started and stopped with the application lifecycle. It is possible to run multiple embedded process engines on top of a shared database.</p>
-<h2 id="shared-container-managed-process-engine">Shared, Container-Managed Process Engine</h2>
+
+<h3 id="shared-container-managed-process-engine">Shared, Container-Managed Process Engine</h3>
 <figure class="image">
   <span><img
       src="../img/shared-process-engine.png"
@@ -3227,7 +3236,8 @@
 </figure>
 
 <p>In this case, the process engine is started inside the runtime container (Servlet Container, Application Server, &hellip;). The process engine is provided as a container service and can be shared by all applications deployed inside the container. The concept can be compared to a JMS Message Queue which is provided by the runtime and can be used by all applications. There is a one-to-one mapping between process deployments and applications: the process engine keeps track of the process definitions deployed by an application and delegates execution to the application in question.</p>
-<h2 id="standalone-remote-process-engine-server">Standalone (Remote) Process Engine Server</h2>
+
+<h3 id="standalone-remote-process-engine-server">Standalone (Remote) Process Engine Server</h3>
 <figure class="image">
   <span><img
       src="../img/standalone-process-engine.png"
@@ -3237,7 +3247,8 @@
 </figure>
 
 <p>In this case, the process engine is provided as a network service. Different applications running on the network can interact with the process engine through a remote communication channel. The easiest way to make the process engine accessible remotely is to use the built-in REST API. Different communication channels such as SOAP Webservices or JMS are possible but need to be implemented by users.</p>
-<h1 id="clustering-model">Clustering Model</h1>
+
+<h2 id="clustering-model">Clustering Model</h2>
 <p>In order to provide scale-up or fail-over capabilities, the process engine can be distributed to different nodes in a cluster. Each process engine instance must then connect to a shared database.</p>
 <figure class="image">
   <span><img
@@ -3248,7 +3259,8 @@
 </figure>
 
 <p>The individual process engine instances do not maintain session state across transactions. Whenever the process engine runs a transaction, the complete state is flushed out to the shared database. This makes it possible to route subsequent requests which do work in the same process instance to different cluster nodes. This model is very simple and easy to understand and imposes limited restrictions when it comes to deploying a cluster installation. As far as the process engine is concerned, there is no difference between setups for scale-up and setups for fail-over (as the process engine keeps no session state between transactions).</p>
-<h2 id="session-state-in-a-clustered-environment">Session State in a Clustered Environment</h2>
+
+<h3 id="session-state-in-a-clustered-environment">Session State in a Clustered Environment</h3>
 <p>CIB seven doesn&rsquo;t provide load-balancing capabilities or session replication capabilities out of the box. The load-balancing function would need to be provided by a third-party system, and session replication would need to be provided by the host application server.</p>
 <p>In a clustered setup, if users are going to login to the web applications, an extra step will need to be taken to ensure that users aren&rsquo;t asked to login multiple times. Two options exist:</p>
 <ol>
@@ -3262,7 +3274,8 @@
   <p>If a cookie based consistent hashing is used, make sure that the cookie name is not JSESSIONID which is used by CIB seven.</p>
 </div>
 
-<h2 id="the-job-executor-in-a-clustered-environment">The Job Executor in a Clustered Environment</h2>
+
+<h3 id="the-job-executor-in-a-clustered-environment">The Job Executor in a Clustered Environment</h3>
 <p>The process engine <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/">job executor</a> is also clustered and runs on each node. This way, there is no single point of failure as far as the process engine is concerned. The job executor can run in both <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/#cluster-setups">homogeneous and heterogeneous clusters</a>.</p>
 
 <div class="note bg-info docs-info">
@@ -3270,7 +3283,8 @@
   <p>The are some limitations on <a href="/manual/2.0-ee/user-guide/process-engine/time-zones/#cluster-setup">time zone usage in a cluster</a>.</p>
 </div>
 
-<h1 id="multi-tenancy-models">Multi-Tenancy Models</h1>
+
+<h2 id="multi-tenancy-models">Multi-Tenancy Models</h2>
 <p>To serve multiple, independent parties with one CIB seven installation, the process engine supports
 multi-tenancy. The following multi tenancy models are supported:</p>
 <ul>
@@ -3280,7 +3294,8 @@ multi-tenancy. The following multi tenancy models are supported:</p>
 <p>Users should choose the model which fits their data separation needs. CIB seven&rsquo;s APIs provide access
 to processes and related data specific to each tenant.
 More details can be found in the <a href="/manual/2.0-ee/user-guide/process-engine/multi-tenancy/">multi-tenancy section</a>.</p>
-<h1 id="web-application-architecture">Web Application Architecture</h1>
+
+<h2 id="web-application-architecture">Web Application Architecture</h2>
 <p>Starting from version 2.0.0, CIB seven comes with its own web-client: CIB seven webclient.
 The option of using the old Camunda web applications is still available, but it might be removed in future versions.</p>
 <p>The CIB seven webclient is based on a RESTful architecture.</p>
@@ -3290,7 +3305,8 @@ The option of using the old Camunda web applications is still available, but it 
 <li><a href="https://axios-http.com/">Axios</a></li>
 <li><a href="http://getbootstrap.com">Bootstrap</a></li>
 </ul>
-<h2 id="frontend-backend-interaction">Frontend-Backend Interaction</h2>
+
+<h3 id="frontend-backend-interaction">Frontend-Backend Interaction</h3>
 <p>CIB seven webclient and Camunda web applications use different approaches to interact with the engine.
 Camunda web applications used the engine as a library, CIB seven webclient uses it through the engine-rest API, and that is why CIB seven needs to secure the communication between the webclient and the engine-rest:</p>
 <figure class="image">

@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,7 +261,8 @@
 
     <div class="col-xs-12 content-text">
       <p>In this section, you&rsquo;ll learn how to add decision automation to your process by using <a href="/manual/latest/reference/bpmn20/tasks/business-rule-task/">BPMN 2.0 <em>Business Rule Tasks</em></a> and <a href="/manual/latest/reference/dmn11/">DMN 1.3 Decision Tables</a>.</p>
-<h1 id="add-a-business-rule-task-to-the-process">Add a Business Rule Task to the Process</h1>
+
+<h2 id="add-a-business-rule-task-to-the-process">Add a Business Rule Task to the Process</h2>
 <p>Use the Camunda Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to <em>Business Rule Task</em> in the wrench button menu.</p>
 <figure class="image">
   <span><img
@@ -275,7 +278,8 @@
 </figure>
 
 <p>Save your changes and deploy the updated process using the <code>Deploy</code> Button in the Camunda Modeler.</p>
-<h1 id="create-a-dmn-table-using-the-camunda-modeler">Create a DMN table using the Camunda Modeler</h1>
+
+<h2 id="create-a-dmn-table-using-the-camunda-modeler">Create a DMN table using the Camunda Modeler</h2>
 <p>First, create a new DMN diagram by clicking <em>File &gt; New File &gt; DMN Diagram (Camunda 7)</em>.
 <figure class="image">
   <span><img
@@ -297,7 +301,8 @@
        /></span>
 </figure>
 </p>
-<h1 id="specify-the-dmn-table">Specify the DMN table</h1>
+
+<h2 id="specify-the-dmn-table">Specify the DMN table</h2>
 <p>First, specify the input expressions for the DMN table. In this example, we&rsquo;ll decide whether a payment is approved based on the item name. Your rules can also make use of the FEEL Expression Language, JUEL or Script. If you like, you can <a href="/manual/latest/user-guide/dmn-engine/expressions-and-scripts/">read more about Expressions in the DMN Engine</a>.</p>
 <p>Double click <em>Input</em> to configure the input column. Use <code>Item</code> as the <em>Input Label</em> and <code>item</code> as the <em>Input Expression</em>:
 <figure class="image">
@@ -327,7 +332,8 @@
        /></span>
 </figure>
 </p>
-<h1 id="deploy-the-dmn-table">Deploy the DMN table</h1>
+
+<h2 id="deploy-the-dmn-table">Deploy the DMN table</h2>
 <p>To deploy the Decision Table, click on the Deploy button in the Camunda Modeler, give it Deployment Name &ldquo;Payment Retrieval Decision&rdquo;, then hit the Deploy button.
 <figure class="image">
   <span><img
@@ -335,7 +341,8 @@
        /></span>
 </figure>
 </p>
-<h1 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h1>
+
+<h2 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h2>
 <p>Now, use Cockpit to see if the decision table was successfully deployed. Go to <a href="http://localhost:8080/camunda/app/cockpit/">http://localhost:8080/camunda/app/cockpit/</a>. Log in with the credentials <em>demo / demo</em>. Navigate to the &ldquo;Decisions&rdquo; section. Your decision table <em>Approve Payment</em> should be listed as deployed decision definition.</p>
 <figure class="image">
   <span><img
@@ -343,7 +350,8 @@
        /></span>
 </figure>
 
-<h1 id="inspect-using-cockpit-and-tasklist">Inspect using Cockpit and Tasklist</h1>
+
+<h2 id="inspect-using-cockpit-and-tasklist">Inspect using Cockpit and Tasklist</h2>
 <p>Next, use Tasklist to start two new Process Instances and verify that depending on your input, the Process Instance will be routed differently.
 To do so, go to <a href="http://localhost:8080/camunda/app/tasklist/">http://localhost:8080/camunda/app/tasklist/</a>. Log in with <em>demo / demo</em>.</p>
 <p>Click on the <button class="btn btn-xs">

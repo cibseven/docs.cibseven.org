@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,10 +3190,13 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="cancel-events">Cancel Events</h1>
-<h2 id="cancel-end-event">Cancel End Event</h2>
+      
+<h2 id="cancel-events">Cancel Events</h2>
+
+<h3 id="cancel-end-event">Cancel End Event</h3>
 <p>The cancel end event can only be used in combination with a <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/">transaction subprocess</a>. When the cancel end event is reached, a cancel event is thrown which must be caught by a cancel boundary event. The cancel boundary event then cancels the transaction and triggers compensation.</p>
-<h2 id="cancel-boundary-event">Cancel Boundary Event</h2>
+
+<h3 id="cancel-boundary-event">Cancel Boundary Event</h3>
 <p>An attached intermediate catching cancel event on the boundary of a transaction subprocess, or, for short, a cancel boundary event, is triggered when a transaction is canceled. When the cancel boundary event is triggered, it first interrupts all active executions in the current scope. Next, it starts compensation of all active compensation boundary events in the scope of the transaction. Compensation is performed synchronously, i.e., the boundary event waits before compensation is completed before leaving the transaction. When compensation is completed, the transaction subprocess is left using the sequence flow(s) running out of the cancel boundary event.</p>
 <div class="bpmn-symbol"><img src="/manual/latest//img/short-codes/bpmn-cancel-intermediate-catch-event.png" /></div>
 
@@ -3201,8 +3208,10 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;cancelEventDefinition</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/boundaryEvent&gt;</span>
 </span></span></code></pre></div><p>Since the cancel boundary event is always interrupting, the cancelActivity attribute is not required.</p>
-<h1 id="compensation-events">Compensation Events</h1>
-<h2 id="intermediate-throwing-compensation-event">Intermediate Throwing Compensation Event</h2>
+
+<h2 id="compensation-events">Compensation Events</h2>
+
+<h3 id="intermediate-throwing-compensation-event">Intermediate Throwing Compensation Event</h3>
 <p>An intermediate throwing compensation event can be used to trigger compensation.</p>
 <div class="bpmn-symbol"><img src="/manual/latest//img/short-codes/bpmn-compensation-intermediate-throw-event.png" /></div>
 
@@ -3239,14 +3248,16 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;intermediateThrowEvent</span> <span class="na">id=</span><span class="s">&#34;throwCompensation&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;compensateEventDefinition</span> <span class="na">activityRef=</span><span class="s">&#34;bookHotel&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateThrowEvent&gt;</span>
-</span></span></code></pre></div><h2 id="compensation-end-event">Compensation End Event</h2>
+</span></span></code></pre></div>
+<h3 id="compensation-end-event">Compensation End Event</h3>
 <div class="bpmn-symbol"><img src="/manual/latest//img/short-codes/bpmn-compensation-end-event.png" /></div>
 
 <p>A compensation end event triggers compensation and the current path of execution is ended. It has the same behavior and limitations as a compensation intermediate throwing event.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;endEvent</span> <span class="na">id=</span><span class="s">&#34;throwCompensation&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;compensateEventDefinition</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/endEvent&gt;</span>
-</span></span></code></pre></div><h2 id="camunda-extensions">Camunda Extensions</h2>
+</span></span></code></pre></div>
+<h3 id="camunda-extensions">Camunda Extensions</h3>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3269,7 +3280,8 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h2 id="compensation-boundary-event">Compensation Boundary Event</h2>
+
+<h3 id="compensation-boundary-event">Compensation Boundary Event</h3>
 <p>An attached intermediate catching compensation on the boundary of an activity, or, for short, a compensation boundary event, can be used to attach a compensation handler to an activity or an embedded subprocess.</p>
 <div class="bpmn-symbol"><img src="/manual/latest//img/short-codes/bpmn-compensation-intermediate-boundary-event.png" /></div>
 
@@ -3290,7 +3302,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;undoBookHotel&#34;</span> <span class="na">isForCompensation=</span><span class="s">&#34;true&#34;</span> <span class="na">camunda:class=</span><span class="s">&#34;...&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>As the compensation boundary event is activated after the activity has completed successfully, the cancelActivity attribute is not supported.</p>
-<h2 id="compensation-start-event">Compensation Start Event</h2>
+
+<h3 id="compensation-start-event">Compensation Start Event</h3>
 <div class="bpmn-symbol"><img src="/manual/latest//img/short-codes/bpmn-compensation-event-subprocess-start-event.png" /></div>
 
 <p>A compensation start event can only be used to trigger an Event Sub-Process - it <strong>cannot</strong> be used to start a process instance. This kind of event subprocess is called compensation event subprocess.</p>
@@ -3311,7 +3324,8 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/startEvent&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subProcess&gt;</span>
-</span></span></code></pre></div><h2 id="additional-resources">Additional Resources</h2>
+</span></span></code></pre></div>
+<h3 id="additional-resources">Additional Resources</h3>
 <ul>
 <li><a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/">Transaction subprocess</a></li>
 <li><a href="http://camunda.org/bpmn/reference.html#events-compensation">Compensation Events</a> in the <a href="http://camunda.org/bpmn/reference.html">BPMN 2.0 Modeling Reference</a></li>

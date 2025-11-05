@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3205,19 +3209,22 @@ Download the CIB seven REST API artifact containing the OpenAPI documentation <a
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-rest-openapi<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="client-generation">Client Generation</h1>
+</span></span></code></pre></div>
+<h2 id="client-generation">Client Generation</h2>
 <p>To generate REST API client in the language of your preference based on the OpenAPI documentation,
 you will need a client generator library, e.g. <a href="https://github.com/OpenAPITools/openapi-generator">OpenAPI Generator</a> or any other library that
 is compatible with OpenAPI Specification version 3.0.</p>
 <p>Follow the steps of the OpenAPI Generator&rsquo;s documentation, how to <a href="https://github.com/OpenAPITools/openapi-generator#1---installation">install</a> the tool and
 <a href="https://github.com/OpenAPITools/openapi-generator#to-generate-a-sample-client-library">generate a simple client</a> in one of the supported languages.</p>
-<h1 id="getting-started-experience">Getting Started Experience</h1>
+
+<h2 id="getting-started-experience">Getting Started Experience</h2>
 <p>Instead of client generation, you can use one of the OpenAPI editors to play around with the REST API endpoints.</p>
 <p>You can go to <a href="https://editor.swagger.io/">Swagger Editor</a> and paste the content of the openapi.json on the left-hand side of the editor.
 Start a Process engine with enabled cross-origin requests, and you will be able to execute requests from the editor.</p>
 <p>Some API Tools also support import of endpoints via upload of a OpenAPI document.
 For example, <a href="https://www.postman.com/">Postman</a> users can <a href="https://learning.postman.com/docs/postman/collections/working-with-openAPI/">import the OpenAPI documentation</a> and work with the REST endpoints from a single place.</p>
-<h1 id="coverage">Coverage</h1>
+
+<h2 id="coverage">Coverage</h2>
 <p>The description currently covers all endpoints of all but the following resources:</p>
 <ul>
 <li>Case Definition</li>

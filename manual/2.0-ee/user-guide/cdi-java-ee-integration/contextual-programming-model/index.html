@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3194,7 +3198,8 @@ This is particularly useful if a unit of work is complex, for instance if the im
 of different forms and &ldquo;non-process-scoped&rdquo; state needs to be kept during this interaction. In the default configuration,
 process instances are associated with the &ldquo;broadest&rdquo; active scope, starting with the conversation and falling back to the request
 if the conversation context is not active.</p>
-<h1 id="associate-a-conversation-with-a-process-instance">Associate a conversation with a process instance</h1>
+
+<h2 id="associate-a-conversation-with-a-process-instance">Associate a conversation with a process instance</h2>
 <p>When resolving <code>@BusinessProcessScoped</code> beans or injecting process variables, we rely on an existing association between an active CDI scope and a process instance.
 The Camunda CDI integration provides the <code>org.cibseven.bpm.engine.cdi.BusinessProcess</code> bean for controlling the association, most prominently:</p>
 <ul>
@@ -3210,7 +3215,8 @@ The following JSF2 snippet begins a new conversation and associates it with a us
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;f:viewParam</span> <span class="na">name=</span><span class="s">&#34;taskId&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;f:event</span> <span class="na">type=</span><span class="s">&#34;preRenderView&#34;</span> <span class="na">listener=</span><span class="s">&#34;#{businessProcess.startTask(taskId, true)}&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/f:metadata&gt;</span>
-</span></span></code></pre></div><h1 id="declaratively-controlling-the-process">Declaratively controlling the process</h1>
+</span></span></code></pre></div>
+<h2 id="declaratively-controlling-the-process">Declaratively controlling the process</h2>
 <p>Camunda CDI allows declaratively starting process instances and completing tasks using annotations.
 The <code>@org.cibseven.bpm.engine.cdi.annotation.StartProcess</code> annotation allows to start a process instance either by &ldquo;key&rdquo; or by &ldquo;name&rdquo;.
 Note that the process instance is started after the annotated method returns. Example:</p>
@@ -3229,7 +3235,8 @@ works in the same way:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>The <code>@CompleteTask</code> annotation offers the possibility to end the current conversation. The default behavior is to end the conversation
 after the call to the engine returns. Ending the conversation can be disabled, as shown in the example above.</p>
-<h1 id="work-with-businessprocessscoped-beans">Work with @BusinessProcessScoped beans</h1>
+
+<h2 id="work-with-businessprocessscoped-beans">Work with @BusinessProcessScoped beans</h2>
 <p>Using Camunda CDI, the lifecycle of a bean can be bound to a process instance. To this extent, a custom context implementation is provided,
 namely the <code>BusinessProcessContext</code>. Instances of <code>BusinessProcessScoped</code> beans are stored as process variables in the current process instance.
 On deployment, beans annotated with <code>BusinessProcessScoped</code> are validated for being &ldquo;passivation capable&rdquo;, which means that they must implement

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,27 +3190,32 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="developing">Developing</h1>
+      
+<h2 id="developing">Developing</h2>
 <p>Spring Boot provides <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools">Developer Tools</a> which feature options like automatic restart and live reload during the development of an application.</p>
-<h2 id="spring-developer-tools-and-classloading">Spring Developer Tools and Classloading</h2>
+
+<h3 id="spring-developer-tools-and-classloading">Spring Developer Tools and Classloading</h3>
 <p>An additional process engine plugin (<code>ApplicationContextClassloaderSwitchPlugin</code>) will be loaded in case your application is in a development mode:</p>
 <ul>
 <li>Spring Developer tools (<code>spring-boot-devtools</code> library) are on the class path and</li>
 <li>the tools are enabled, e.g., the application is started in IDE</li>
 </ul>
 <p>The plugin ensures exchanging the application context classloader with the classloader used for the process engine to prevent issues during deserialization.</p>
-<h1 id="testing">Testing</h1>
+
+<h2 id="testing">Testing</h2>
 <p>Spring offers extensive support for automated <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testing-introduction">testing</a>.
 This is covered through dedicated mocking packages, test runners and annotations.
 When testing Spring and Spring Boot applications, a significant amount of time is
 required to load the <code>ApplicationContext</code>. That is why Spring caches an <code>ApplicationContext</code>
 after a test is finished. This allows for it to be reused in later tests with the same configuration.</p>
-<h2 id="context-caching-with-process-engines">Context Caching with Process Engines</h2>
+
+<h3 id="context-caching-with-process-engines">Context Caching with Process Engines</h3>
 <p>To use <code>ApplicationContext</code> caching with the Process Engine requires some additional configuration.
 This is because the Process Engine needs a statically defined name (if no name is defined, &ldquo;default&rdquo; is used),
 which leads to Spring attempting to create multiple <code>ApplicationContext</code>s with Process Engines with the
 same name. This will cause tests to behave incorrectly, or in the worst case, completely fail to load the <code>ApplicationContext</code>.</p>
-<h2 id="using-unique-process-engineapplication-names">Using unique Process Engine/Application names</h2>
+
+<h3 id="using-unique-process-engineapplication-names">Using unique Process Engine/Application names</h3>
 <p>To make context caching work properly with Process Engines and Process Applications,
 they need to have unique names for every different test configuration.</p>
 <p>When defining a new test configuration, the easiest way to ensure that the new ApplicationContext
@@ -3251,11 +3260,13 @@ each new <code>ApplicationContext</code>. Reused (cached) <code>ApplicationConte
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p>Here, the <code>camunda.bpm.process-engine-name=foo</code> will set (a unique name) &ldquo;foo&rdquo; as the Process Engine name.</p>
-<h2 id="cib-seven-assertions">CIB seven Assertions</h2>
+
+<h3 id="cib-seven-assertions">CIB seven Assertions</h3>
 <p>The <a href="/manual/2.0-ee/user-guide/testing/#cib-seven-assertions">CIB seven Assertions</a> library is
 integrated with the CIB seven Spring Boot Starter in
 order to make testing processes in your Spring Boot application easier.</p>
-<h3 id="using-assertions-with-context-caching">Using Assertions with Context Caching</h3>
+
+<h4 id="using-assertions-with-context-caching">Using Assertions with Context Caching</h4>
 <p>Out of the box, the CIB seven Assertions library tries to use the
 default engine or the (single) one that is available. Since when using
 Context Caching multiple engines are used in different contexts, binding

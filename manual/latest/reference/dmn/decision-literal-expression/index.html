@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3205,7 +3209,8 @@ It consists of a <a href="/manual/latest/reference/dmn/decision-literal-expressi
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/literalExpression&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/decision&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
-</span></span></code></pre></div><h1 id="decision-name">Decision Name</h1>
+</span></span></code></pre></div>
+<h2 id="decision-name">Decision Name</h2>
 <figure class="image no-lightbox">
   <span><img
       src="img/decision-name.png"
@@ -3219,7 +3224,8 @@ decision logic. It is set as the <code>name</code> attribute on the <code>decisi
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;decision</span> <span class="na">id=</span><span class="s">&#34;season&#34;</span> <span class="na">name=</span><span class="s">&#34;Season&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/decision&gt;</span>
-</span></span></code></pre></div><h1 id="decision-id">Decision Id</h1>
+</span></span></code></pre></div>
+<h2 id="decision-id">Decision Id</h2>
 <figure class="image no-lightbox">
   <span><img
       src="img/decision-id.png"
@@ -3236,14 +3242,16 @@ The engine uses the id as the decision key of the deployed
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;decision</span> <span class="na">id=</span><span class="s">&#34;season&#34;</span> <span class="na">name=</span><span class="s">&#34;Season&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/decision&gt;</span>
-</span></span></code></pre></div><h1 id="literal-expression">Literal Expression</h1>
+</span></span></code></pre></div>
+<h2 id="literal-expression">Literal Expression</h2>
 <p>The literal expression specifies how the value of the decision is generated. It is an expression which will be evaluated by the DMN engine.
 It can be used to do a complex calculation, to invoke a bean which provides decision logic, or to combine the output values of <a href="/manual/latest/reference/dmn/drg/#required-decisions">required decisions</a>.</p>
 <p>The expression is set inside a <code>text</code> element that is a child of the <code>literalExpression</code> XML element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;literalExpression&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;text&gt;</span>calendar.getSeason(date)<span class="nt">&lt;/text&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/literalExpression&gt;</span>
-</span></span></code></pre></div><h2 id="literal-expression-language">Literal Expression Language</h2>
+</span></span></code></pre></div>
+<h3 id="literal-expression-language">Literal Expression Language</h3>
 <p>The expression language of the literal expression can be specified by the
 <code>expressionLanguage</code> attribute on the <code>literalExpression</code> XML element. The
 supported expression languages are listed in the <a href="/manual/latest/user-guide/dmn-engine/expressions-and-scripts/#supported-expression-languages">User Guide</a>.</p>
@@ -3263,17 +3271,20 @@ which is set on the <code>definitions</code> XML element.</p>
 is used instead. The default expression language for literal expressions is JUEL.
 Please refer to the <a href="/manual/latest/user-guide/dmn-engine/expressions-and-scripts/#default-expression-languages">User Guide</a> to read more about expression
 languages.</p>
-<h1 id="variable">Variable</h1>
+
+<h2 id="variable">Variable</h2>
 <p>A decision literal expression must have a variable which specifies the name and the type of the decision result.
 A variable is represented by a <code>variable</code> element inside a <code>decision</code> XML element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;decision</span> <span class="na">id=</span><span class="s">&#34;season&#34;</span> <span class="na">name=</span><span class="s">&#34;Season&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&#34;season&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/decision&gt;</span>
-</span></span></code></pre></div><h2 id="variable-name">Variable Name</h2>
+</span></span></code></pre></div>
+<h3 id="variable-name">Variable Name</h3>
 <p>The name of the variable is used to reference the value of the literal expression in the decision result.
 It is specified by the <code>name</code> attribute on the <code>variable</code> XML element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">&#34;season&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="variable-type-definition">Variable Type Definition</h2>
+</span></span></code></pre></div>
+<h3 id="variable-type-definition">Variable Type Definition</h3>
 <p>The type of the decision result can be specified by the <code>typeRef</code> attribute on the
 <code>variable</code> XML element. After the expression is evaluated by the
 DMN engine it converts the result to the specified type. The supported types

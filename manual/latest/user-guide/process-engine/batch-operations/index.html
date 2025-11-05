@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3216,7 +3220,8 @@ can pick up those jobs of a batch that need to be executed on their nodes.
 The deployment id of the seed job is chosen from the list of involved deployments.
 This list is derived from the resulting set of affected instances.
 Execution jobs only contain elements of the same deployment and are bound to that deployment&rsquo;s id.</p>
-<h2 id="cancellation-of-running-process-instances">Cancellation Of Running Process Instances</h2>
+
+<h3 id="cancellation-of-running-process-instances">Cancellation Of Running Process Instances</h3>
 <p>Cancellation of running process instances can be performed asynchronously using the following Java API method invocation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processInstanceIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">deleteProcessInstancesAsync</span><span class="p">(</span><span class="n">processInstanceIds</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">REASON</span><span class="p">);</span><span class="w">
@@ -3226,17 +3231,20 @@ Execution jobs only contain elements of the same deployment and are bound to tha
 <li><code>skipSubprocesses</code>: Skip deletion of the subprocesses related to deleted processes as part of this request.</li>
 <li><code>skipIoMappings</code>: Skip the IO Mappings if the process instance contains any which would prevent the deletion otherwise.</li>
 </ul>
-<h2 id="deletion-of-historic-process-instances">Deletion Of Historic Process Instances</h2>
+
+<h3 id="deletion-of-historic-process-instances">Deletion Of Historic Process Instances</h3>
 <p>Deletion of historic process instances can be performed asynchronously using the following Java API method invocation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">historicProcessInstanceIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">historyService</span><span class="p">.</span><span class="na">deleteHistoricProcessInstancesAsync</span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">historicProcessInstanceIds</span><span class="p">,</span><span class="w"> </span><span class="n">TEST_REASON</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="update-suspend-state-of-process-instances">Update Suspend State Of Process Instances</h2>
+</span></span></span></code></pre></div>
+<h3 id="update-suspend-state-of-process-instances">Update Suspend State Of Process Instances</h3>
 <p>Update the suspension state of multiple process instances asynchronously using the following Java API method invocation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processInstanceIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">updateProcessInstanceSuspensionState</span><span class="p">().</span><span class="na">byProcessInstanceIds</span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">processInstanceIds</span><span class="p">).</span><span class="na">suspendAsync</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="setting-retries-and-due-dates-of-jobs-using-the-builder-pattern">Setting retries and due dates of jobs using the builder pattern</h2>
+</span></span></span></code></pre></div>
+<h3 id="setting-retries-and-due-dates-of-jobs-using-the-builder-pattern">Setting retries and due dates of jobs using the builder pattern</h3>
 <p>Setting retries of jobs can be performed asynchronously using a builder. There are two general ways to reference jobs: by job ids/job queries or by process.
 Here are demonstrations of how to use both APIs:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">setJobRetriesByJobsAsync</span><span class="p">(</span><span class="n">retries</span><span class="p">)</span><span class="w">
@@ -3250,18 +3258,21 @@ Here are demonstrations of how to use both APIs:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">historicProcessInstanceQuery</span><span class="p">(</span><span class="n">myHistoricProcessInstanceQuery</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">dueDate</span><span class="p">(</span><span class="n">myDueDate</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">executeAsync</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="setting-retries-of-jobs-associated-with-process-instances">Setting Retries Of Jobs Associated With Process Instances</h2>
+</span></span></span></code></pre></div>
+<h3 id="setting-retries-of-jobs-associated-with-process-instances">Setting Retries Of Jobs Associated With Process Instances</h3>
 <p>Setting retries of jobs associated with process instances can be performed asynchronously using the following Java API method invocation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processInstanceIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">int</span><span class="w"> </span><span class="n">retries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">managementService</span><span class="p">.</span><span class="na">setJobRetriesAsync</span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">processInstanceIds</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">retries</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="setting-retries-of-external-tasks">Setting Retries Of External Tasks</h2>
+</span></span></span></code></pre></div>
+<h3 id="setting-retries-of-external-tasks">Setting Retries Of External Tasks</h3>
 <p>Setting retries of external tasks can be performed asynchronously using the following Java API method invocation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">externalTaskIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">externalTaskService</span><span class="p">.</span><span class="na">setRetriesAsync</span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">externalTaskIds</span><span class="p">,</span><span class="w"> </span><span class="n">TEST_REASON</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="set-variables-to-process-instances">Set Variables to Process Instances</h2>
+</span></span></span></code></pre></div>
+<h3 id="set-variables-to-process-instances">Set Variables to Process Instances</h3>
 <p>Sometimes it is necessary to add or update data of an already running process instance.
 For example, when a user entered incorrect data at the beginning of a process,
 the data needs to be corrected on-the-fly.</p>
@@ -3284,7 +3295,8 @@ This can be controlled by configuring the <a href="/manual/latest/user-guide/pro
 </p>
 </div>
 
-<h2 id="correlate-messages-to-process-instances">Correlate Messages to Process Instances</h2>
+
+<h3 id="correlate-messages-to-process-instances">Correlate Messages to Process Instances</h3>
 <p>This batch operation helps you to correlate messages to multiple process instances asynchronously.
 Furthermore, you can set variables to the root scope of those process instances as well.</p>
 <p>You can either (1) filter for process instances using a <code>HistoricProcessInstanceQuery</code> or a <code>ProcessInstanceQuery</code>
@@ -3309,7 +3321,8 @@ This can be controlled by configuring the [invocationsPerBatchJob][] property.</
 </p>
 </div>
 
-<h2 id="set-a-removal-time">Set a Removal Time</h2>
+
+<h3 id="set-a-removal-time">Set a Removal Time</h3>
 <p>Sometimes it is necessary to postpone or even prevent the deletion of certain historic instances.
 A removal time can be set asynchronously to historic processes, decisions and batches.</p>
 <p>The following modes can be chosen:</p>
@@ -3333,7 +3346,8 @@ A removal time can be set asynchronously to historic processes, decisions and ba
 <p>Historic process and decision instances can be part of a hierarchy. To set the same removal time for all instances within
 a hierarchy, the method <code>.hierarchical()</code> needs to be called.
 Setting removal time to running process instances would delete data from historic database tables (i.e. tables starting with <code>ACT_HI_*</code>), but not from runtime database tables (i.e. tables starting with <code>ACT_RU_*</code>).</p>
-<h3 id="historic-process-instances">Historic Process Instances</h3>
+
+<h4 id="historic-process-instances">Historic Process Instances</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HistoricProcessInstanceQuery</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">historyService</span><span class="p">.</span><span class="na">createHistoricProcessInstanceQuery</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3345,7 +3359,8 @@ Setting removal time to running process instances would delete data from histori
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">byIds</span><span class="p">(</span><span class="s">&#34;693206dd-11e9-b7cb-be5e0f7575b7&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;...&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="c1">// .hierarchical()              // sets a removal time across the hierarchy</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">executeAsync</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="historic-decision-instances">Historic Decision Instances</h3>
+</span></span></span></code></pre></div>
+<h4 id="historic-decision-instances">Historic Decision Instances</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HistoricDecisionInstanceQuery</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">historyService</span><span class="p">.</span><span class="na">createHistoricDecisionInstanceQuery</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3368,7 +3383,8 @@ please use the batch operation for process instances with the <code>.hierarchica
 </p>
 </div>
 
-<h3 id="historic-batches">Historic Batches</h3>
+
+<h4 id="historic-batches">Historic Batches</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HistoricBatchQuery</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">historyService</span><span class="p">.</span><span class="na">createHistoricBatchQuery</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Batch</span><span class="w"> </span><span class="n">batch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">historyService</span><span class="p">.</span><span class="na">setRemovalTimeToHistoricBatches</span><span class="p">()</span><span class="w">
@@ -3378,7 +3394,8 @@ please use the batch operation for process instances with the <code>.hierarchica
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">byQuery</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">byIds</span><span class="p">(</span><span class="s">&#34;693206dd-11e9-b7cb-be5e0f7575b7&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;...&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">executeAsync</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="updating-in-chunks">Updating in chunks</h3>
+</span></span></span></code></pre></div>
+<h4 id="updating-in-chunks">Updating in chunks</h4>
 <p>The batch operations update the removal time of all historic entities related to the respective root element, e.g. a historic process instance.
 Those updates are done within one database transaction. For large numbers of related entities, those updates can take too long, the database transactions time out, and the execution jobs of the batch fail. Additionally, this can block the <a href="/manual/latest/user-guide/process-engine/the-job-executor/">job executor</a>, trying to execute these long-running batch execution jobs.</p>
 <p>For historic process instances, you can therefore configure the batch operation to update related historic database tables in chunks using <code>.updateInChunks()</code>.

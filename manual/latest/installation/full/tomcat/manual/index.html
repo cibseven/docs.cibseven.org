@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3214,22 +3218,26 @@ To resolve this, move the weld library away from the war and place it into the <
 </p>
 </div>
 
-<h1 id="setup">Setup</h1>
+
+<h2 id="setup">Setup</h2>
 <p>Before you can install the CIB seven components, you need to perform a number of required setup steps.</p>
-<h2 id="create-the-database-schema-and-tables">Create the Database Schema and Tables</h2>
+
+<h3 id="create-the-database-schema-and-tables">Create the Database Schema and Tables</h3>
 <p>In the default configuration of the distribution, the database schema and all required tables are automatically created in an H2 database when the engine starts up for the first time. If you do not want to use the H2 database, you have to</p>
 <ul>
 <li>Create a database schema for CIB seven yourself.</li>
 <li>Install the database schema to create all required tables and default indices using our <a href="/manual/latest/installation/database-schema/">database schema installation guide</a>.</li>
 </ul>
 <p>When you create the tables manually, then you have to configure the engine to <strong>not</strong> create tables at startup by setting the <code>databaseSchemaUpdate</code> property to <code>false</code> (or, in case you are using Oracle, to <code>noop</code>). In Tomcat, this is done in the <code>bpm-platform.xml</code>, located in the <code>$TOMCAT_DISTRIBUTION\server\apache-tomcat-$VERSION\conf\</code> folder.</p>
-<h2 id="add-bpm-bootstrap-server-listener">Add BPM Bootstrap Server Listener</h2>
+
+<h3 id="add-bpm-bootstrap-server-listener">Add BPM Bootstrap Server Listener</h3>
 <p>Add the entry <code>org.cibseven.bpm.container.impl.tomcat.TomcatBpmPlatformBootstrap</code> as Listener before the <code>GlobalResourcesLifecycleListener</code> in your <code>$TOMCAT_HOME/conf/server.xml</code>. This class is responsible for starting and stopping Camunda as Tomcat is started and stopped.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Server</span> <span class="na">port=</span><span class="s">&#34;8005&#34;</span> <span class="na">shutdown=</span><span class="s">&#34;SHUTDOWN&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;Listener</span> <span class="na">className=</span><span class="s">&#34;org.cibseven.bpm.container.impl.tomcat.TomcatBpmPlatformBootstrap&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
-</span></span></code></pre></div><h2 id="configure-a-jdbc-resource">Configure a JDBC Resource</h2>
+</span></span></code></pre></div>
+<h3 id="configure-a-jdbc-resource">Configure a JDBC Resource</h3>
 <p>To configure a JDBC Resource you have to edit the file <code>$TOMCAT_HOME/conf/server.xml</code>. This could look like the following example for an H2 database:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Server&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
@@ -3252,7 +3260,8 @@ To resolve this, move the weld library away from the war and place it into the <
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/Server&gt;</span>
 </span></span></code></pre></div><p>For more information on the creation of JDBC datasources have a look at the documentation of your Tomcat version:
 <a href="https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html">9.0</a>.</p>
-<h2 id="add-camunda-services">Add Camunda Services</h2>
+
+<h3 id="add-camunda-services">Add Camunda Services</h3>
 <p>Copy the following blocks from <code>${TOMCAT_DISTRIBUTION}/server/apache-tomcat-${TOMCAT_VERSION}/conf/server.xml</code>
 into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">     <span class="nt">&lt;Resource</span> <span class="na">name=</span><span class="s">&#34;global/camunda-bpm-platform/process-engine/ProcessEngineService!org.cibseven.bpm.ProcessEngineService&#34;</span> <span class="na">auth=</span><span class="s">&#34;Container&#34;</span>
@@ -3264,10 +3273,12 @@ into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 </span></span><span class="line"><span class="cl">              <span class="na">type=</span><span class="s">&#34;org.cibseven.bpm.ProcessApplicationService&#34;</span>
 </span></span><span class="line"><span class="cl">              <span class="na">description=</span><span class="s">&#34;CIB seven Platform Process Application Service&#34;</span>
 </span></span><span class="line"><span class="cl">              <span class="na">factory=</span><span class="s">&#34;org.cibseven.bpm.container.impl.jndi.ProcessApplicationServiceObjectFactory&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="add-required-libraries">Add Required Libraries</h2>
+</span></span></code></pre></div>
+<h3 id="add-required-libraries">Add Required Libraries</h3>
 <p>Copy all libraries from the <code>$TOMCAT_DISTRIBUTION/lib/</code> folder to the Tomcat library folder <code>$TOMCAT_HOME/lib</code>:</p>
 <p>Furthermore, you have to merge your corresponding JDBC driver into the folder <code>$TOMCAT_HOME/lib</code>.</p>
-<h2 id="add-bpm-platformxml">Add bpm-platform.xml</h2>
+
+<h3 id="add-bpm-platformxml">Add bpm-platform.xml</h3>
 <p>You have to add the file <code>bpm-platform.xml</code> to the folder <code>$TOMCAT_HOME/conf</code> or, optionally, you can configure the location through some available mechanisms, see <a href="/manual/latest/reference/deployment-descriptors/descriptors/bpm-platform-xml/#configure-location-of-the-bpm-platform-xml-file">Configure location of the bpm-platform.xml file</a>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;bpm-platform</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.camunda.org/schema/1.0/BpmPlatform&#34;</span>
@@ -3293,15 +3304,18 @@ into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
-</span></span></code></pre></div><h2 id="secure-tomcat">Secure Tomcat</h2>
+</span></span></code></pre></div>
+<h3 id="secure-tomcat">Secure Tomcat</h3>
 <p>Follow the Tomcat Security Howto of your Tomcat version:
 <a href="https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html">9.0</a>,
 <a href="https://tomcat.apache.org/tomcat-10.1-doc/security-howto.html">10.1</a>.</p>
 <p>In particular, go to <code>${TOMCAT_HOME}/webapps/</code> and remove the directories
 <code>ROOT</code>, <code>docs</code>, <code>examples</code>, <code>manager</code> and <code>host-manager</code>.</p>
-<h1 id="optional-components">Optional Components</h1>
+
+<h2 id="optional-components">Optional Components</h2>
 <p>This section describes how to install optional CIB seven dependencies onto a Tomcat server. None of these are required to work with the core platform.</p>
-<h2 id="cockpit-tasklist-and-admin">Cockpit, Tasklist and Admin</h2>
+
+<h3 id="cockpit-tasklist-and-admin">Cockpit, Tasklist and Admin</h3>
 <p>The following steps are required to deploy the applications:</p>
 <ol>
 <li>
@@ -3323,7 +3337,8 @@ Optionally you may name it differently or extract it to a folder to deploy it to
 <p>Access Cockpit and Tasklist via <code>/camunda/app/cockpit</code> and <code>/camunda/app/tasklist</code> or under the context path you configured.</p>
 </li>
 </ol>
-<h2 id="rest-api">REST API</h2>
+
+<h3 id="rest-api">REST API</h3>
 <p>The following steps are required to deploy the REST API:</p>
 <ol>
 <li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/2.0.0/">Artifact Repository</a>.</li>
@@ -3334,7 +3349,8 @@ Optionally you may rename it or extract it to a folder to deploy it to a specifi
 For example, http://localhost:8080/engine-rest/engine should return the names of all engines of the platform, provided that you deployed the application in the context <code>/engine-rest</code>.</li>
 <li>Enable authentication as described in the <a href="/manual/latest/reference/rest/overview/authentication/">REST API documentation</a></li>
 </ol>
-<h2 id="cib-seven-connect-plugin">CIB seven Connect Plugin</h2>
+
+<h3 id="cib-seven-connect-plugin">CIB seven Connect Plugin</h3>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
 <li><code>cibseven-engine-plugin-connect-$PLATFORM_VERSION.jar</code></li>
@@ -3355,7 +3371,8 @@ For example, http://localhost:8080/engine-rest/engine should return the names of
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
-</span></span></code></pre></div><h2 id="spin">Spin</h2>
+</span></span></code></pre></div>
+<h3 id="spin">Spin</h3>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
 <li><code>cibseven-spin-dataformat-all-$PLATFORM_VERSION.jar</code></li>
@@ -3379,7 +3396,8 @@ For example, http://localhost:8080/engine-rest/engine should return the names of
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/process-engine&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpm-platform&gt;</span>
-</span></span></code></pre></div><h2 id="groovy-scripting">Groovy Scripting</h2>
+</span></span></code></pre></div>
+<h3 id="groovy-scripting">Groovy Scripting</h3>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
 <li><code>groovy-$GROOVY_VERSION.jar</code></li>
@@ -3390,14 +3408,16 @@ For example, http://localhost:8080/engine-rest/engine should return the names of
 <li><code>groovy-dateutil-$GROOVY_VERSION.jar</code></li>
 <li><code>groovy-datetime-$GROOVY_VERSION.jar</code></li>
 </ul>
-<h2 id="freemarker-integration">Freemarker Integration</h2>
+
+<h3 id="freemarker-integration">Freemarker Integration</h3>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
 <li><code>cibseven-template-engines-freemarker-$PLATFORM_VERSION.jar</code></li>
 <li><code>freemarker-2.3.31.jar</code></li>
 <li><code>cibseven-commons-utils-$PLATFORM_VERSION.jar</code></li>
 </ul>
-<h2 id="graalvm-javascript-integration">GraalVM JavaScript Integration</h2>
+
+<h3 id="graalvm-javascript-integration">GraalVM JavaScript Integration</h3>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
 <li><code>graal-sdk-21.1.0.jar</code></li>

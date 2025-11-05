@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>This section documents the supported MySQL configuration.</p>
-<h2 id="database-schema">Database Schema</h2>
+
+<h3 id="database-schema">Database Schema</h3>
 <p>The engine&rsquo;s MySQL database schema does not support milliseconds precision for the column types <code>TIMESTAMP</code> and <code>DATETIME</code>:
 I.e., a to be stored value is rounded to the next or previous second, e.g., <code>2021-01-01 15:00:46.731</code> is rounded to <code>2021-01-01 15:00:47</code>.</p>
 
@@ -3198,10 +3203,12 @@ Please read <a href="#jdbc-driver-configuration">how to configure the MySQL JDBC
 to ensure that date/time values are handled correctly.</p>
 </div>
 
-<h2 id="jdbc-driver-configuration">JDBC Driver Configuration</h2>
+
+<h3 id="jdbc-driver-configuration">JDBC Driver Configuration</h3>
 <p>Here you can find the MySQL JDBC Driver’s configuration prerequisites to ensure a frictionless behavior
 of the process engine.</p>
-<h3 id="disable-sending-milliseconds-for-datetime-values">Disable sending milliseconds for date/time values</h3>
+
+<h4 id="disable-sending-milliseconds-for-datetime-values">Disable sending milliseconds for date/time values</h4>
 
 <div class="note bg-info docs-info">
   <h3>Heads Up!</h3>

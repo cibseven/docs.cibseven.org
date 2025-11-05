@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,28 +3190,36 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="assertions">Assertions</h1>
-<h2 id="instance-isactive">Instance: isActive</h2>
+      
+<h2 id="assertions">Assertions</h2>
+
+<h3 id="instance-isactive">Instance: isActive</h3>
 <p>Assert that a process instance is currently &lsquo;active&rsquo;, so neither suspended nor ended:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isActive</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-isended">Instance: isEnded</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-isended">Instance: isEnded</h3>
 <p>Assert that a process instance is already ended:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isEnded</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-isnotended">Instance: isNotEnded</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-isnotended">Instance: isNotEnded</h3>
 <p>Assert that a process instance is not ended:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotEnded</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-isstarted">Instance: isStarted</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-isstarted">Instance: isStarted</h3>
 <p>Assert that a process instance is started:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isStarted</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-issuspended">Instance: isSuspended</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-issuspended">Instance: isSuspended</h3>
 <p>Assert that a process instance is suspended:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isSuspended</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-haspassed">Instance: hasPassed</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-haspassed">Instance: hasPassed</h3>
 <p>Assert that a process instance has passed a specified activity:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasPassed</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance has passed several specified activities:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasPassed</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;correct&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-haspassedinorder">Instance: hasPassedInOrder</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-haspassedinorder">Instance: hasPassedInOrder</h3>
 <p>Assert that a process instance has passed several specified activities
 exactly in the given order:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasPassedInOrder</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;review&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;correct&#34;</span><span class="p">);</span><span class="w">
@@ -3217,156 +3229,196 @@ exactly in the given order:</p>
 specified activities. Everything that matters is that the order is correct.
 So in the example just given, this more minimalistic assertion would also pass:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasPassedInOrder</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;review&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;publish&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-hasnotpassed">Instance: hasNotPassed</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-hasnotpassed">Instance: hasNotPassed</h3>
 <p>Assert that a process instance has not passed a specified activity:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasNotPassed</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance has not passed any of several specified activities:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasNotPassed</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;correct&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-hasvariables">Instance: hasVariables</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-hasvariables">Instance: hasVariables</h3>
 <p>Assert that a process instance holds at least one process variable:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasVariables</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance holds - aside potential other variables - one or more specified process variables:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">hasVariables</span><span class="p">(</span><span class="s">&#34;approved&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">hasVariables</span><span class="p">(</span><span class="s">&#34;jobAnnouncementId&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-hasnovariables">Instance: hasNoVariables</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-hasnovariables">Instance: hasNoVariables</h3>
 <p>Assert that a process instance holds no process variables at all:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasNoVariables</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-hasprocessdefinitionkey">Instance: hasProcessDefinitionKey</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-hasprocessdefinitionkey">Instance: hasProcessDefinitionKey</h3>
 <p>Assert that a process instance is based on a specific process definition:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasProcessDefinitionKey</span><span class="p">(</span><span class="s">&#34;myProcessDefinitionKey&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-hasbusinesskey">Instance: hasBusinessKey</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-hasbusinesskey">Instance: hasBusinessKey</h3>
 <p>Assert that a process instance has a specific business key:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">hasBusinessKey</span><span class="p">(</span><span class="s">&#34;myBusinessKey&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-iswaitingat">Instance: isWaitingAt</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-iswaitingat">Instance: isWaitingAt</h3>
 <p>Assert that a process instance is currently waiting at a specified activity Id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingAt</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance is currently waiting at several specified activity Ids:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingAt</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;correct&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-isnotwaitingat">Instance: isNotWaitingAt</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-isnotwaitingat">Instance: isNotWaitingAt</h3>
 <p>Assert that a process instance is currently NOT waiting at a specified activity Id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotWaitingAt</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance is currently NOT waiting at several specified activity Ids:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotWaitingAt</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;correct&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-iswaitingatexactly">Instance: isWaitingAtExactly</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-iswaitingatexactly">Instance: isWaitingAtExactly</h3>
 <p>Assert that a process instance is currently waiting at exactly one specified activity Id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingAtExactly</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance is currently waiting at exactly the several specified activity Ids:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingAtExactly</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;correct&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-iswaitingfor">Instance: isWaitingFor</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-iswaitingfor">Instance: isWaitingFor</h3>
 <p>Assert that a process instance is currently waiting for a specified message:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingFor</span><span class="p">(</span><span class="s">&#34;myMessage&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance is currently waiting for several specified messages:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingFor</span><span class="p">(</span><span class="s">&#34;myMessage&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;yourMessage&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="instance-isnotwaitingfor">Instance: isNotWaitingFor</h2>
+</span></span></span></code></pre></div>
+<h3 id="instance-isnotwaitingfor">Instance: isNotWaitingFor</h3>
 <p>Assert that a process instance is currently NOT waiting for a specified message:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotWaitingFor</span><span class="p">(</span><span class="s">&#34;myMessage&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Assert that a process instance is currently NOT waiting for any of several specified messages:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotWaitingFor</span><span class="p">(</span><span class="s">&#34;myMessage&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;yourMessage&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="definition-hasactiveinstances">Definition: hasActiveInstances</h2>
+</span></span></span></code></pre></div>
+<h3 id="definition-hasactiveinstances">Definition: hasActiveInstances</h3>
 <p>Assert that a process definition currently has exactly the expected number of &lsquo;active&rsquo;
 (so neither ended nor suspended) instances:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processDefinition</span><span class="p">).</span><span class="na">hasActiveInstances</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="job-hasactivityid">Job: hasActivityId</h2>
+</span></span></span></code></pre></div>
+<h3 id="job-hasactivityid">Job: hasActivityId</h3>
 <p>Assert that a job is based on an activity definition with a specific id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">job</span><span class="p">).</span><span class="na">hasActivityId</span><span class="p">(</span><span class="s">&#34;ServiceTask_1&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="job-hasdeploymentid">Job: hasDeploymentId</h2>
+</span></span></span></code></pre></div>
+<h3 id="job-hasdeploymentid">Job: hasDeploymentId</h3>
 <p>Assert that a job has a specific deployment id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">job</span><span class="p">).</span><span class="na">hasDeploymentId</span><span class="p">(</span><span class="n">deploymentId</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="job-hasduedate">Job: hasDueDate</h2>
+</span></span></span></code></pre></div>
+<h3 id="job-hasduedate">Job: hasDueDate</h3>
 <p>Assert that a job is due at a specific date:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">job</span><span class="p">).</span><span class="na">hasDueDate</span><span class="p">(</span><span class="n">dueDate</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="job-hasid">Job: hasId</h2>
+</span></span></span></code></pre></div>
+<h3 id="job-hasid">Job: hasId</h3>
 <p>Assert a specific internal id for the job:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">job</span><span class="p">).</span><span class="na">hasId</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="job-hasretries">Job: hasRetries</h2>
+</span></span></span></code></pre></div>
+<h3 id="job-hasretries">Job: hasRetries</h3>
 <p>Assert that a job has a specific number of retries left:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">job</span><span class="p">).</span><span class="na">hasRetries</span><span class="p">(</span><span class="n">3</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-isassignedto">Task: isAssignedTo</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-isassignedto">Task: isAssignedTo</h3>
 <p>Assert that a specified user is assigned to a task:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">isAssignedTo</span><span class="p">(</span><span class="s">&#34;kermit&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-isnotassigned">Task: isNotAssigned</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-isnotassigned">Task: isNotAssigned</h3>
 <p>Assert that a task is currently not assigned to any user:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">isNotAssigned</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hascandidategroup">Task: hasCandidateGroup</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hascandidategroup">Task: hasCandidateGroup</h3>
 <p>Assert that a task is is currently waiting to be assigned
 to a user of the specified candidate group.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasCandidateGroup</span><span class="p">(</span><span class="s">&#34;human-resources-department&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Note that (in line with Camunda&rsquo;s interpretation of the term
 &lsquo;candidate&rsquo;) <strong>assigned</strong> tasks will not pass this assertion.
 However, the next assertion discussed here, would pass:</p>
-<h2 id="task-hascandidategroupassociated">Task: hasCandidateGroupAssociated</h2>
+
+<h3 id="task-hascandidategroupassociated">Task: hasCandidateGroupAssociated</h3>
 <p>Assert the expectation that a task is currently associated to the
 specified candidate group - no matter whether it is already assigned to a
 specific user or not.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasCandidateGroupAssociated</span><span class="p">(</span><span class="s">&#34;human-resources-department&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hascandidateuser">Task: hasCandidateUser</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hascandidateuser">Task: hasCandidateUser</h3>
 <p>Assert that a task is currently waiting to be assigned to a specified candidate user:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasCandidateUser</span><span class="p">(</span><span class="s">&#34;kermit&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Note that (in line with Camunda&rsquo;s interpretation of the term
 &lsquo;candidate&rsquo;) <strong>assigned</strong> tasks will not pass this assertion.
 However, the next assertion discussed here, would pass:</p>
-<h2 id="task-hascandidateuserassociated">Task: hasCandidateUserAssociated</h2>
+
+<h3 id="task-hascandidateuserassociated">Task: hasCandidateUserAssociated</h3>
 <p>Assert the expectation that a task is currently associated to the
 specified candidate user - no matter whether it is already assigned to a
 specific user or not.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasCandidateUserAssociated</span><span class="p">(</span><span class="s">&#34;kermit&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hasdefinitionkey">Task: hasDefinitionKey</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hasdefinitionkey">Task: hasDefinitionKey</h3>
 <p>Assert that a task has the specified definition key (aka the id attribute of the <code>&lt;userTask id=&ldquo;review-and-approve&rdquo; &hellip;/&gt;</code> element in the process definition BPMN 2.0 XML file):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasDefinitionKey</span><span class="p">(</span><span class="s">&#34;review-and-approve&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hasdescription">Task: hasDescription</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hasdescription">Task: hasDescription</h3>
 <p>Assert that the task has the specified free text description:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasDescription</span><span class="p">(</span><span class="s">&#34;Please review and approve the result document.&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hasduedate">Task: hasDueDate</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hasduedate">Task: hasDueDate</h3>
 <p>Assert that a task is due at a specified date:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasDueDate</span><span class="p">(</span><span class="n">expectedDueDate</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hasformkey">Task: hasFormKey</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hasformkey">Task: hasFormKey</h3>
 <p>Assert that a task is associated to a specified form (key):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasFormKey</span><span class="p">(</span><span class="s">&#34;myForm.html&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hasid">Task: hasId</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hasid">Task: hasId</h3>
 <p>Assert that a task has the specified internal id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasId</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="task-hasname">Task: hasName</h2>
+</span></span></span></code></pre></div>
+<h3 id="task-hasname">Task: hasName</h3>
 <p>Assert that the task has the specified name:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">).</span><span class="na">hasName</span><span class="p">(</span><span class="s">&#34;Review and approve&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="external-task-hasactivityid">External Task: hasActivityId</h2>
+</span></span></span></code></pre></div>
+<h3 id="external-task-hasactivityid">External Task: hasActivityId</h3>
 <p>Assert that the external task has the specified activity id:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">externalTask</span><span class="p">).</span><span class="na">hasActivityId</span><span class="p">(</span><span class="s">&#34;review-and-approve&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="external-task-hastopicname">External Task: hasTopicName</h2>
+</span></span></span></code></pre></div>
+<h3 id="external-task-hastopicname">External Task: hasTopicName</h3>
 <p>Assert that the external task has the specified topic name:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">externalTask</span><span class="p">).</span><span class="na">hasTopicName</span><span class="p">(</span><span class="s">&#34;Review and approve&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="helpers">Helpers</h1>
-<h2 id="finding-tasks-events-and-gateways-by-name">Finding tasks, events and gateways by name</h2>
+</span></span></span></code></pre></div>
+<h2 id="helpers">Helpers</h2>
+
+<h3 id="finding-tasks-events-and-gateways-by-name">Finding tasks, events and gateways by name</h3>
 <p>You can map the name of a task, event or a gateway to it&rsquo;s ID by the means of a static helper method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">findId</span><span class="p">(</span><span class="s">&#34;My verbose task name&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="claiming-tasks">Claiming tasks</h2>
+</span></span></span></code></pre></div>
+<h3 id="claiming-tasks">Claiming tasks</h3>
 <p>You can directly claim a task by means of a static helper method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">claim</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;fozzie&#34;</span><span class="p">);</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="unclaiming-tasks">Unclaiming tasks</h2>
+</span></span></span></code></pre></div>
+<h3 id="unclaiming-tasks">Unclaiming tasks</h3>
 <p>You can directly unclaim a task by means of a static helper method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">unclaim</span><span class="p">(</span><span class="n">task</span><span class="p">);</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="completing-tasks">Completing tasks</h2>
+</span></span></span></code></pre></div>
+<h3 id="completing-tasks">Completing tasks</h3>
 <p>You can directly complete a task by means of a static helper method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">complete</span><span class="p">(</span><span class="n">task</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="completing-tasks-and-passing-process-variables">Completing tasks and passing process variables</h2>
+</span></span></span></code></pre></div>
+<h3 id="completing-tasks-and-passing-process-variables">Completing tasks and passing process variables</h3>
 <p>You can directly construct a map of process variables by passing a sequence
 of key/value pairs to the static helper method &ldquo;withVariables&rdquo;:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withVariables</span><span class="p">(</span><span class="s">&#34;documentId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"> 
 </span></span></span></code></pre></div><p>You can therefore e.g. write</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">complete</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="n">withVariables</span><span class="p">(</span><span class="s">&#34;documentId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">));</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="completing-external-tasks">Completing external tasks</h2>
+</span></span></span></code></pre></div>
+<h3 id="completing-external-tasks">Completing external tasks</h3>
 <p>You can directly complete an external task by means of a static helper method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">complete</span><span class="p">(</span><span class="n">externalTask</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="completing-external-tasks-and-passing-process-variables">Completing external tasks and passing process variables</h2>
+</span></span></span></code></pre></div>
+<h3 id="completing-external-tasks-and-passing-process-variables">Completing external tasks and passing process variables</h3>
 <p>You can directly construct a map of process variables by passing a sequence
 of key/value pairs to the static helper method &ldquo;withVariables&rdquo;:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withVariables</span><span class="p">(</span><span class="s">&#34;documentId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"> 
 </span></span></span></code></pre></div><p>You can therefore e.g. write</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">complete</span><span class="p">(</span><span class="n">externalTask</span><span class="p">,</span><span class="w"> </span><span class="n">withVariables</span><span class="p">(</span><span class="s">&#34;documentId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">));</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="executing-jobs">Executing jobs</h2>
+</span></span></span></code></pre></div>
+<h3 id="executing-jobs">Executing jobs</h3>
 <p>You can directly execute a job by means of a static helper method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">execute</span><span class="p">(</span><span class="n">job</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><h2 id="creating-queries">Creating queries</h2>
+</span></span></span></code></pre></div>
+<h3 id="creating-queries">Creating queries</h3>
 <p>You can directly create queries by means of a static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">TaskQuery</span><span class="w"> </span><span class="n">taskQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskQuery</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">JobQuery</span><span class="w"> </span><span class="n">jobQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jobQuery</span><span class="p">();</span><span class="w">
@@ -3374,7 +3426,8 @@ of key/value pairs to the static helper method &ldquo;withVariables&rdquo;:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ExecutionQuery</span><span class="w"> </span><span class="n">executionQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">executionQuery</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>You can therefore e.g. write</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">task</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">().</span><span class="na">taskAssignee</span><span class="p">(</span><span class="s">&#34;fozzie&#34;</span><span class="p">)).</span><span class="na">hasCandidateGroup</span><span class="p">(</span><span class="s">&#34;human-resources-department&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="accessing-engine-and-engine-api-services">Accessing engine and engine API services</h2>
+</span></span></span></code></pre></div>
+<h3 id="accessing-engine-and-engine-api-services">Accessing engine and engine API services</h3>
 <p>You can directly access the engine and API services by means of static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngine</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3386,13 +3439,15 @@ of key/value pairs to the static helper method &ldquo;withVariables&rdquo;:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RepositoryService</span><span class="w"> </span><span class="n">repositoryService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RuntimeService</span><span class="w"> </span><span class="n">runtimeService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TaskService</span><span class="w"> </span><span class="n">taskService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskService</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-the-only-task-of-an-instance">Making assertions on the only task of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-the-only-task-of-an-instance">Making assertions on the only task of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; task assert inspecting the one and only
 one task currently available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">task</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">task</span><span class="p">().</span><span class="na">isNotAssigned</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-a-specific-task-of-an-instance">Making assertions on a specific task of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-a-specific-task-of-an-instance">Making assertions on a specific task of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; task assert inspecting a very specific task currently
 available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">task</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
@@ -3400,13 +3455,15 @@ available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">task</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">().</span><span class="na">taskAssignee</span><span class="p">(</span><span class="s">&#34;fozzie&#34;</span><span class="p">));</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">task</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">).</span><span class="na">isAssignedTo</span><span class="p">(</span><span class="s">&#34;fozzie&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-the-only-external-task-of-an-instance">Making assertions on the only external task of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-the-only-external-task-of-an-instance">Making assertions on the only external task of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; external task assert inspecting the one and only
 one external task currently available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">externalTask</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">externalTask</span><span class="p">().</span><span class="na">hasTopicName</span><span class="p">(</span><span class="s">&#34;editing&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-a-specific-external-task-of-an-instance">Making assertions on a specific external task of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-a-specific-external-task-of-an-instance">Making assertions on a specific external task of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; external task assert inspecting a very specific external task currently
 available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">externalTask</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">);</span><span class="w">
@@ -3414,13 +3471,15 @@ available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">externalTask</span><span class="p">(</span><span class="n">externalTaskQuery</span><span class="p">().</span><span class="na">activityId</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">));</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">externalTask</span><span class="p">(</span><span class="s">&#34;edit&#34;</span><span class="p">).</span><span class="na">hasTopicName</span><span class="p">(</span><span class="s">&#34;editing&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-the-only-job-of-an-instance">Making assertions on the only job of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-the-only-job-of-an-instance">Making assertions on the only job of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; job assert inspecting the one and only
 one job currently available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">job</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">job</span><span class="p">().</span><span class="na">hasRetries</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-a-specific-job-of-an-instance">Making assertions on a specific job of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-a-specific-job-of-an-instance">Making assertions on a specific job of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; job assert inspecting a very specific job currently
 available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">job</span><span class="p">(</span><span class="s">&#34;ServiceTask_1&#34;</span><span class="p">);</span><span class="w">
@@ -3428,13 +3487,15 @@ available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">job</span><span class="p">(</span><span class="n">jobQuery</span><span class="p">().</span><span class="na">executionId</span><span class="p">(</span><span class="n">executionId</span><span class="p">));</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">job</span><span class="p">(</span><span class="s">&#34;ServiceTask_1&#34;</span><span class="p">).</span><span class="na">hasRetries</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-the-only-called-process-of-a-super-process-instance">Making assertions on the only called process of a super process instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-the-only-called-process-of-a-super-process-instance">Making assertions on the only called process of a super process instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; process instance assert inspecting the one and only
 called process instance currently available in the context of a super process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">calledProcessInstance</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">calledProcessInstance</span><span class="p">().</span><span class="na">hasProcessDefinitionKey</span><span class="p">(</span><span class="s">&#34;mySubProcessDefinitionKey&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-a-specific-called-process-instance-of-a-super-process-instance">Making assertions on a specific called process instance of a super process instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-a-specific-called-process-instance-of-a-super-process-instance">Making assertions on a specific called process instance of a super process instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; process instance assert inspecting a very specific called process instance currently
 available in the context of a super process instance, either by means of a processDefinitionKey&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">calledProcessInstance</span><span class="p">(</span><span class="s">&#34;mySubProcessDefinitionKey&#34;</span><span class="p">);</span><span class="w">
@@ -3442,7 +3503,8 @@ available in the context of a super process instance, either by means of a proce
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">calledProcessInstance</span><span class="p">(</span><span class="n">processInstanceQuery</span><span class="p">().</span><span class="na">processDefinitionKey</span><span class="p">(</span><span class="s">&#34;mySubProcessDefinitionKey&#34;</span><span class="p">));</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; in order to directly make assertions on it, e.g.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">calledProcessInstance</span><span class="p">(</span><span class="s">&#34;mySubProcessDefinitionKey&#34;</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="making-assertions-on-the-process-variables-map-of-an-instance">Making assertions on the process variables map of an instance</h2>
+</span></span></span></code></pre></div>
+<h3 id="making-assertions-on-the-process-variables-map-of-an-instance">Making assertions on the process variables map of an instance</h3>
 <p>You can retrieve a &ldquo;chained&rdquo; process variables map assert inspecting all the process variables
 available in the context of a process instance&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">variables</span><span class="p">();</span><span class="w">
@@ -3451,7 +3513,8 @@ available in the context of a process instance&hellip;</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">hasSize</span><span class="p">(</span><span class="n">2</span><span class="p">).</span><span class="na">containsEntry</span><span class="p">(</span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>You may want to compare that with the other possibility to assert whether a process instance
 <a href="#instance-hasvariables">hasVariables</a> (without leaving your current ProcessInstanceAssert).</p>
-<h2 id="accessing-tasks-in-the-context-of-a-process-instance-under-test">Accessing tasks in the context of a process instance under test</h2>
+
+<h3 id="accessing-tasks-in-the-context-of-a-process-instance-under-test">Accessing tasks in the context of a process instance under test</h3>
 <p>You can directly access tasks in the context of the last asserted process
 instance by means of static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span><span class="w">
@@ -3469,7 +3532,8 @@ instance by means of static helper methods:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Task</span><span class="w"> </span><span class="n">sameTaskOfProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task</span><span class="p">(</span><span class="n">taskQuery</span><span class="p">().</span><span class="na">taskDefinitionKey</span><span class="p">(</span><span class="s">&#34;review-and-approve&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">processInstance</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>You can therefore e.g. write &hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">complete</span><span class="p">(</span><span class="n">task</span><span class="p">(</span><span class="s">&#34;review-and-approve&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">processInstance</span><span class="p">),</span><span class="w"> </span><span class="n">withVariables</span><span class="p">(</span><span class="s">&#34;documentId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">));</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="accessing-external-tasks-in-the-context-of-a-process-instance-under-test">Accessing external tasks in the context of a process instance under test</h2>
+</span></span></span></code></pre></div>
+<h3 id="accessing-external-tasks-in-the-context-of-a-process-instance-under-test">Accessing external tasks in the context of a process instance under test</h3>
 <p>You can directly access external tasks in the context of the last asserted process
 instance by means of static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span><span class="w">
@@ -3487,7 +3551,8 @@ instance by means of static helper methods:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ExternalTask</span><span class="w"> </span><span class="n">sameTaskOfProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">externalTask</span><span class="p">(</span><span class="n">externalTaskQuery</span><span class="p">().</span><span class="na">activityId</span><span class="p">(</span><span class="s">&#34;review-and-approve&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">processInstance</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>You can therefore e.g. write &hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">complete</span><span class="p">(</span><span class="n">externalTask</span><span class="p">(</span><span class="s">&#34;review-and-approve&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">processInstance</span><span class="p">),</span><span class="w"> </span><span class="n">withVariables</span><span class="p">(</span><span class="s">&#34;documentId&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;approved&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">));</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="accessing-jobs-in-the-context-of-a-process-instance-under-test">Accessing jobs in the context of a process instance under test</h2>
+</span></span></span></code></pre></div>
+<h3 id="accessing-jobs-in-the-context-of-a-process-instance-under-test">Accessing jobs in the context of a process instance under test</h3>
 <p>You can directly access jobs in the context of the last asserted process
 instance by means of static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span><span class="w">
@@ -3505,7 +3570,8 @@ instance by means of static helper methods:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Task</span><span class="w"> </span><span class="n">sameJobOfProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">(</span><span class="n">jobQuery</span><span class="p">().</span><span class="na">executable</span><span class="p">(),</span><span class="w"> </span><span class="n">processInstance</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>You can therefore e.g. write &hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">execute</span><span class="p">(</span><span class="n">job</span><span class="p">(</span><span class="s">&#34;publish&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">processInstance</span><span class="p">));</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="accessing-called-process-instances-in-the-context-of-a-process-instance-under-test">Accessing called process instances in the context of a process instance under test</h2>
+</span></span></span></code></pre></div>
+<h3 id="accessing-called-process-instances-in-the-context-of-a-process-instance-under-test">Accessing called process instances in the context of a process instance under test</h3>
 <p>You can directly access called process instances in the context of the last asserted process
 instance by means of static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span><span class="w">
@@ -3523,7 +3589,8 @@ instance by means of static helper methods:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">sameCalledProcessInstanceOfProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calledProcessInstance</span><span class="p">(</span><span class="n">processInstanceQuery</span><span class="p">().</span><span class="na">processDefinitionKey</span><span class="p">(</span><span class="s">&#34;myCalledProcessDefinitionKey&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">superProcessInstance</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>You can therefore e.g. write &hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessInstance</span><span class="w"> </span><span class="n">calledProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calledProcessInstance</span><span class="p">(</span><span class="s">&#34;myCalledProcessDefinitionKey&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">superProcessInstance</span><span class="p">);</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="accessing-process-definitions">Accessing process definitions</h2>
+</span></span></span></code></pre></div>
+<h3 id="accessing-process-definitions">Accessing process definitions</h3>
 <p>You can directly access process definitions by means of static helper methods:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinitionOflastAssertedProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processDefinition</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinitionOfSpecifiedProcessInstance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processDefinition</span><span class="p">(</span><span class="n">processInstance</span><span class="p">);</span><span class="w">

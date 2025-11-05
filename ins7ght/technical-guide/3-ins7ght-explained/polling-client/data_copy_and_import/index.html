@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Polling Client - Data Copy and Import | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Polling Client - Data Copy and Import</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="polling-client---data-copy-and-import">Polling Client - Data Copy and Import</h2>
+<p>The Polling Client is a core component of CIB ins7ght responsible for continuously synchronizing data from CIB seven to the CIB ins7ght database. This section explains the architecture, data flow, and mechanisms behind this critical component.</p>
+<hr>
+
+<h3 id="architecture-overview">Architecture Overview</h3>
+<p>The Polling Client operates as a scheduled background service within the CIB ins7ght application. It connects to the CIB seven database through REST APIs, retrieves process data, and stores it in the CIB ins7ght database for analysis.</p>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong>Polling Scheduler:</strong> Orchestrates the polling cycles and manages timing</li>
+<li><strong>Data Provider:</strong> Interfaces with CIB seven REST API to fetch data</li>
+<li><strong>Data Transformer:</strong> Converts CIB seven data format to CIB ins7ght schema</li>
+<li><strong>Data Persister:</strong> Stores transformed data into the CIB ins7ght database</li>
+</ul>
+<hr>
+
+<h3 id="data-flow">Data Flow</h3>
+<pre tabindex="0"><code>CIB seven Database (Read-Only)
+        ↓
+   REST API Layer
+        ↓
+  Polling Scheduler
+        ↓
+   Data Providers
+        ↓
+  Data Transformers
+        ↓
+ CIB ins7ght Database
+        ↓
+  Analytics Engine
+</code></pre><hr>
+
+<h3 id="polling-mechanism">Polling Mechanism</h3>
+
+<h4 id="polling-cycle">Polling Cycle</h4>
+<p>The Polling Client operates in continuous cycles:</p>
+<ol>
+<li><strong>Trigger:</strong> The scheduler initiates a polling cycle based on the configured interval</li>
+<li><strong>Fetch:</strong> Each data provider retrieves new or updated records from CIB seven</li>
+<li><strong>Transform:</strong> Data is converted to the CIB ins7ght schema</li>
+<li><strong>Persist:</strong> Transformed data is saved to the CIB ins7ght database</li>
+<li><strong>Wait:</strong> The system waits for the next polling interval</li>
+</ol>
+<p><strong>Default Polling Interval:</strong> 10 seconds (configurable)</p>
+
+<h4 id="incremental-synchronization">Incremental Synchronization</h4>
+<p>After the initial full import, the Polling Client uses incremental synchronization:</p>
+<ul>
+<li>Tracks the last successfully imported timestamp for each data type</li>
+<li>Only fetches records created or modified after the last sync</li>
+<li>Minimizes network traffic and processing overhead</li>
+<li>Ensures efficient real-time data updates</li>
+</ul>
+<hr>
+
+<h3 id="data-sources">Data Sources</h3>
+<p>The Polling Client retrieves data from CIB seven via REST API:</p>
+
+<h4 id="1-process-instances">1. Process Instances</h4>
+<p><strong>Purpose:</strong> Historical process instance information including execution status and timing</p>
+<p><strong>Key Data Elements:</strong></p>
+<ul>
+<li>Process instance identifiers</li>
+<li>Process definition references</li>
+<li>Start and end timestamps</li>
+<li>Duration metrics</li>
+<li>Current state (ACTIVE, COMPLETED, CANCELED)</li>
+</ul>
+<p><strong>Synchronization:</strong> Incremental updates based on timestamp, fetching only new or modified instances since last poll.</p>
+
+<h4 id="2-activity-instances">2. Activity Instances</h4>
+<p><strong>Purpose:</strong> Individual activity execution data for detailed performance analysis</p>
+<p><strong>Key Data Elements:</strong></p>
+<ul>
+<li>Activity instance identifiers</li>
+<li>Parent process instance reference</li>
+<li>Activity ID and name from process definition</li>
+<li>Start and end timestamps</li>
+<li>Duration metrics</li>
+</ul>
+<p><strong>Synchronization:</strong> Continuous sync of activity-level execution data to enable bottleneck analysis.</p>
+
+<h4 id="3-process-definitions">3. Process Definitions</h4>
+<p><strong>Purpose:</strong> Process definition metadata including versioning information</p>
+<p><strong>Key Data Elements:</strong></p>
+<ul>
+<li>Process definition identifiers</li>
+<li>Process keys and names</li>
+<li>Version numbers</li>
+<li>Deployment references</li>
+</ul>
+<p><strong>Synchronization:</strong> Triggered when new process versions are deployed to CIB seven.</p>
+
+<h4 id="4-incidents">4. Incidents</h4>
+<p><strong>Purpose:</strong> Process execution incidents and error tracking</p>
+<p><strong>Key Data Elements:</strong></p>
+<ul>
+<li>Incident identifiers</li>
+<li>Process instance references</li>
+<li>Incident types and categories</li>
+<li>Error messages and details</li>
+<li>Timestamp of occurrence</li>
+</ul>
+<p><strong>Synchronization:</strong> Real-time import of incidents to ensure immediate visibility into process issues.</p>
+
+<h4 id="5-bpmn-process-definitions">5. BPMN Process Definitions</h4>
+<p><strong>Purpose:</strong> Serialized BPMN diagrams for process visualization</p>
+<p><strong>Key Data Elements:</strong></p>
+<ul>
+<li>BPMN XML content</li>
+<li>Resource names</li>
+<li>Deployment information</li>
+</ul>
+<p><strong>Synchronization:</strong> Fetched when new process definitions are detected or on-demand for visualization purposes.</p>
+<hr>
+
+<h3 id="data-providers">Data Providers</h3>
+<p>Each data type has a dedicated provider component that specializes in fetching and processing specific types of data:</p>
+<p><strong>Common Provider Functionality:</strong></p>
+<ul>
+<li>Connection management to CIB seven</li>
+<li>Error handling and retry logic</li>
+<li>Timestamp tracking for incremental sync</li>
+<li>Batch processing capabilities</li>
+</ul>
+<p><strong>Provider Types:</strong></p>
+<p>The system includes specialized providers for each data source:</p>
+<ul>
+<li><strong>Process Instance Provider:</strong> Fetches process instance data</li>
+<li><strong>Activity Instance Provider:</strong> Retrieves activity execution data</li>
+<li><strong>Process Definition Provider:</strong> Imports process definitions</li>
+<li><strong>Incident Provider:</strong> Collects incident information</li>
+<li><strong>BPMN Definition Provider:</strong> Downloads BPMN process definitions</li>
+</ul>
+<hr>
+
+<h3 id="data-transformation">Data Transformation</h3>
+<p>Raw data from CIB seven is transformed to match the CIB ins7ght schema:</p>
+<p><strong>Transformation Steps:</strong></p>
+<ol>
+<li><strong>Field Mapping:</strong> CIB seven column names are mapped to CIB ins7ght equivalents</li>
+<li><strong>Data Type Conversion:</strong> Date formats, numeric types are standardized</li>
+<li><strong>Calculated Fields:</strong> Additional metrics are computed (e.g., normalized durations)</li>
+<li><strong>Relationship Mapping:</strong> Foreign key relationships are established</li>
+<li><strong>Validation:</strong> Data integrity checks are performed</li>
+</ol>
+<hr>
+
+<h3 id="initial-import">Initial Import</h3>
+<p>When CIB ins7ght is first connected to a CIB seven instance:</p>
+<ol>
+<li><strong>Full Historical Import:</strong> All existing data is retrieved from CIB seven</li>
+<li><strong>Baseline Establishment:</strong> The system establishes a complete historical dataset</li>
+<li><strong>Index Creation:</strong> Database indexes are created for optimal query performance</li>
+<li><strong>Statistics Calculation:</strong> Initial KPIs and metrics are computed</li>
+</ol>
+<p><strong>Note:</strong> Initial import duration depends on data volume. For large datasets (millions of records), this process may take several hours.</p>
+<hr>
+
+<h3 id="error-handling-and-resilience">Error Handling and Resilience</h3>
+<p>The Polling Client includes error handling:</p>
+
+<h4 id="failure-recovery">Failure Recovery</h4>
+<ul>
+<li><strong>Transaction Management:</strong> Database operations use transactions</li>
+<li><strong>State Persistence:</strong> Last successful sync timestamp is tracked in the database</li>
+<li><strong>Resume from Last Success:</strong> Polling resumes from the last known good state after failures</li>
+<li><strong>Error Logging:</strong> Errors are logged for troubleshooting</li>
+</ul>
+
+<h4 id="monitoring">Monitoring</h4>
+<ul>
+<li><strong>Logs:</strong> Detailed logging for troubleshooting and monitoring polling activity</li>
+</ul>
+<hr>
+
+<h3 id="performance-optimization">Performance Optimization</h3>
+
+<h4 id="batch-processing">Batch Processing</h4>
+<ul>
+<li>Data is fetched in configurable page sizes</li>
+<li>Default page sizes:
+<ul>
+<li>Deployments: 500</li>
+<li>Activity Instances: 100,000</li>
+<li>Process Instances: 500</li>
+<li>Incidents: 500</li>
+</ul>
+</li>
+<li>Reduces memory footprint</li>
+<li>Optimizes network utilization</li>
+</ul>
+<hr>
+
+<h3 id="configuration">Configuration</h3>
+<p>Key configuration properties for the Polling Client:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">polling</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">                                 </span><span class="c"># Polling interval in seconds</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">engineRestUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/engine-rest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeDeployments</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">              </span><span class="c"># Max deployments per request</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeActivityInstances</span><span class="p">:</span><span class="w"> </span><span class="m">100000</span><span class="w">     </span><span class="c"># Max activity instances per request</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeProcessInstances</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">         </span><span class="c"># Max process instances per request</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeIncidents</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">                </span><span class="c"># Max incidents per request</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">batchIntervalInHours</span><span class="p">:</span><span class="w"> </span><span class="m">24</span><span class="w">                 </span><span class="c"># Batch processing interval</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">auth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type: basic                            # Authentication type</span><span class="p">:</span><span class="w"> </span><span class="l">basic, webclient, or sso</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">basic</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
+</span></span></span></code></pre></div><p>See <a href="../../2%20Setup%20CIB%20ins7ght/configuration.md">Configuration Guide</a> for detailed authentication options.</p>
+<hr>
+
+<h3 id="monitoring-and-troubleshooting">Monitoring and Troubleshooting</h3>
+
+<h4 id="check-polling-status">Check Polling Status</h4>
+<p><strong>Polling Info Endpoint:</strong></p>
+<pre tabindex="0"><code>GET /pollinfo
+</code></pre><p>This endpoint returns the current polling status and timestamps.</p>
+<p><strong>Response Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;uuid&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-10-29T10:00:00Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-10-29T10:30:00Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-10-29T10:30:15Z&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Fields:</strong></p>
+<ul>
+<li><code>fetchFrom</code>: Last timestamp from which data was fetched</li>
+<li><code>fetchedUntil</code>: Last timestamp until which data was fetched</li>
+<li><code>isPollingSince</code>: Timestamp when current polling cycle started</li>
+</ul>
+<p><strong>Application Logs:</strong></p>
+<p>Monitor polling activity through application logs for detailed information:</p>
+<ul>
+<li>Polling start and completion times</li>
+<li>Number of records fetched per data type</li>
+<li>Connection status to CIB seven</li>
+<li>Any errors or warnings</li>
+</ul>
+
+<h4 id="common-issues">Common Issues</h4>
+<p><strong>Polling Not Starting:</strong></p>
+<ul>
+<li>Check CIB seven connection settings (<code>polling.engineRestUrl</code>)</li>
+<li>Verify authentication configuration (<code>polling.auth</code>)</li>
+<li>Review application logs for errors</li>
+<li>Ensure CIB seven REST API is accessible</li>
+</ul>
+<p><strong>Slow Import Performance:</strong></p>
+<ul>
+<li>Increase page size parameters for larger datasets</li>
+<li>Check network latency to CIB seven</li>
+<li>Review database performance and indexing</li>
+<li>Verify CIB seven server performance</li>
+</ul>
+<p><strong>Data Inconsistencies:</strong></p>
+<ul>
+<li>Verify CIB seven version compatibility</li>
+<li>Check for schema changes in CIB seven</li>
+<li>Review transformation logic for errors</li>
+</ul>
+<hr>
+
+<h3 id="security-considerations">Security Considerations</h3>
+<ul>
+<li>Polling Client accesses CIB seven via REST API</li>
+<li>Credentials should be stored as environment variables</li>
+<li>HTTPS/TLS can be configured for encrypted connections to CIB seven</li>
+<li>Application logs record polling activity</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#architecture-overview">Architecture Overview</a></li>
+    <li><a href="#data-flow">Data Flow</a></li>
+    <li><a href="#polling-mechanism">Polling Mechanism</a>
+      <ul>
+        <li><a href="#polling-cycle">Polling Cycle</a></li>
+        <li><a href="#incremental-synchronization">Incremental Synchronization</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-sources">Data Sources</a>
+      <ul>
+        <li><a href="#1-process-instances">1. Process Instances</a></li>
+        <li><a href="#2-activity-instances">2. Activity Instances</a></li>
+        <li><a href="#3-process-definitions">3. Process Definitions</a></li>
+        <li><a href="#4-incidents">4. Incidents</a></li>
+        <li><a href="#5-bpmn-process-definitions">5. BPMN Process Definitions</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-providers">Data Providers</a></li>
+    <li><a href="#data-transformation">Data Transformation</a></li>
+    <li><a href="#initial-import">Initial Import</a></li>
+    <li><a href="#error-handling-and-resilience">Error Handling and Resilience</a>
+      <ul>
+        <li><a href="#failure-recovery">Failure Recovery</a></li>
+        <li><a href="#monitoring">Monitoring</a></li>
+      </ul>
+    </li>
+    <li><a href="#performance-optimization">Performance Optimization</a>
+      <ul>
+        <li><a href="#batch-processing">Batch Processing</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#monitoring-and-troubleshooting">Monitoring and Troubleshooting</a>
+      <ul>
+        <li><a href="#check-polling-status">Check Polling Status</a></li>
+        <li><a href="#common-issues">Common Issues</a></li>
+      </ul>
+    </li>
+    <li><a href="#security-considerations">Security Considerations</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

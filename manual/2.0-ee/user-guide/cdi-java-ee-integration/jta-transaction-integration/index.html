@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h2 id="embedded-process-engine">Embedded Process Engine</h2>
+      
+<h3 id="embedded-process-engine">Embedded Process Engine</h3>
 <p>The process engine transaction management can integrate with JTA and Jakarta Transactions.
 To use transaction manager integration, you need to use the</p>
 <ul>
@@ -3205,10 +3210,12 @@ you have configured for the process engine. If that is not the case, the data so
 This can lead to inconsistencies in the database, because transaction commits and rollbacks are no longer performed.</p>
 </div>
 
-<h2 id="shared-process-engine">Shared Process Engine</h2>
+
+<h3 id="shared-process-engine">Shared Process Engine</h3>
 <p>The shared process engine distributions for Java EE and Jakarta EE Application Servers (Wildfly, JBoss EAP)
 provide JTA or Jakarta Transactions integration out of the box.</p>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <p>The following example shows how to integrate your custom business logic into a transaction of the process engine:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Named</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Dependent</span><span class="w">

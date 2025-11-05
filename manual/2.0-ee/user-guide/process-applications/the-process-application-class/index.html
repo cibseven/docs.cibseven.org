@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3196,7 +3200,8 @@
 <li><strong>SpringProcessApplication</strong>: To be used for bootstrapping the process application from a Spring Application Context.</li>
 </ul>
 <p>In the following section, we walk through the different implementations and discuss where and how they can be used.</p>
-<h1 id="the-servletprocessapplication-and-jakartaservletprocessapplication">The ServletProcessApplication and JakartaServletProcessApplication</h1>
+
+<h2 id="the-servletprocessapplication-and-jakartaservletprocessapplication">The ServletProcessApplication and JakartaServletProcessApplication</h2>
 
 <div class="note bg-info docs-info">
   <h3>Jakarta Servlet environments</h3>
@@ -3229,7 +3234,8 @@ The mechanisms described herein for the <code>ServletProcessApplication</code> a
   <p>There is a <a href="/manual/2.0-ee/user-guide/process-applications/maven-archetypes/">project template for Maven</a> called <code>camunda-archetype-servlet-war</code>, which gives you a complete running project based on a servlet process application.</p>
 </div>
 
-<h2 id="using-servlet-process-applications-inside-an-ejbjakarta-eejava-ee-container-such-as-wildfly">Using Servlet process applications inside an EJB/Jakarta EE/Java EE container such as Wildfly</h2>
+
+<h3 id="using-servlet-process-applications-inside-an-ejbjakarta-eejava-ee-container-such-as-wildfly">Using Servlet process applications inside an EJB/Jakarta EE/Java EE container such as Wildfly</h3>
 <p>You can use the <code>ServletProcessApplication</code> inside an EJB / Java EE container such as Wildfly 26 and below.
 In Jakarta EE 9+ containers like WildFly, you need to use the <code>JakartaServletProcessApplication</code>.</p>
 <p>Process application bootstrapping and deployment will work in the same way as in a Servlet container.
@@ -3247,7 +3253,8 @@ Jakarta EE/Java EE container, you will not be able to use features like:</p>
 </ul>
 <p>If your application does not use such features, it is perfectly fine to use the servlet process application inside an EE container.
 In that case you only get servlet specification guarantees.</p>
-<h1 id="the-ejbprocessapplication-and-jakartaejbprocessapplication">The EjbProcessApplication and JakartaEjbProcessApplication</h1>
+
+<h2 id="the-ejbprocessapplication-and-jakartaejbprocessapplication">The EjbProcessApplication and JakartaEjbProcessApplication</h2>
 
 <div class="note bg-info docs-info">
   <h3>Jakarta EJB environments</h3>
@@ -3271,7 +3278,8 @@ the <code>camunda-ejb-client-jakarta</code> artifact for Jakarta EE 9+ applicati
 or <code>JakartaEjbProcessApplication</code>, you can write a custom subclass of the respective class and add it to your application.</li>
 </ul>
 <p>Both options are explained in greater detail below.</p>
-<h2 id="bundling-the-camunda-ejb-client-jar">Bundling the Camunda EJB Client Jar</h2>
+
+<h3 id="bundling-the-camunda-ejb-client-jar">Bundling the Camunda EJB Client Jar</h3>
 <p>The most convenient option for deploying a process application to a Java EE EJB container is by adding the following maven dependency to your maven project:</p>
 
 <div class="note bg-info docs-info">
@@ -3299,7 +3307,8 @@ You could of course use something like the maven shade plugin for adding the cla
 </p>
 </div>
 
-<h2 id="deploying-a-custom-ejbprocessapplication-class">Deploying a Custom <code>EjbProcessApplication</code> Class</h2>
+
+<h3 id="deploying-a-custom-ejbprocessapplication-class">Deploying a Custom <code>EjbProcessApplication</code> Class</h3>
 <p>If you want to customize the behavior of the <code>EjbProcessApplication</code> class you have the option of writing a custom <code>EjbProcessApplication</code> class. The following is an example of such an implementation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Singleton</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Startup</span><span class="w">
@@ -3320,7 +3329,8 @@ You could of course use something like the maven shade plugin for adding the cla
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="expose-servlet-context-path-using-a-custom-ejb-process-application">Expose Servlet Context Path Using a Custom EJB process application</h2>
+</span></span></span></code></pre></div>
+<h3 id="expose-servlet-context-path-using-a-custom-ejb-process-application">Expose Servlet Context Path Using a Custom EJB process application</h3>
 <p>If your application is a <code>WAR</code> (or a <code>WAR</code> inside an <code>EAR</code>) and you want to use <a href="/manual/2.0-ee/user-guide/task-forms/#embedded-task-forms">embedded forms</a> or <a href="/manual/2.0-ee/user-guide/task-forms/#external-task-forms">external task forms</a> inside the <a href="/manual/2.0-ee/webapps/tasklist/">Tasklist</a> application, then your custom EJB process application must expose the servlet context path of your application as a property. This enables the Tasklist to resolve the path to the embedded or external task forms.</p>
 <p>Therefore, your custom EJB process application must be extended by a <code>Map</code> and a getter-method for that <code>Map</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Singleton</span><span class="w">
@@ -3385,7 +3395,8 @@ You could of course use something like the maven shade plugin for adding the cla
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/web-app&gt;</span>
-</span></span></code></pre></div><h2 id="invocation-semantics-of-the-ejb-process-application">Invocation Semantics of the EJB process application</h2>
+</span></span></code></pre></div>
+<h3 id="invocation-semantics-of-the-ejb-process-application">Invocation Semantics of the EJB process application</h3>
 <p>The fact that the EJB process application exposes itself as a Session Bean Component inside the EJB container determines</p>
 <ul>
 <li>the invocation semantics when invoking code from the process application and</li>
@@ -3421,7 +3432,8 @@ You could of course use something like the maven shade plugin for adding the cla
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>When the EJB process application registers with a process engine (see <code>ManagementService#registerProcessApplication(String, ProcessApplicationReference)</code>, the process application passes a reference to itself to the process engine. This reference allows the process engine to reference the process application. The EJB process application takes advantage of the EJB Containers naming context and passes a reference containing the EJB process application&rsquo;s Component Name to the process engine. Whenever the process engine needs access to process application, the actual component instance is looked up and invoked.</p>
-<h1 id="the-embeddedprocessapplication">The EmbeddedProcessApplication</h1>
+
+<h2 id="the-embeddedprocessapplication">The EmbeddedProcessApplication</h2>
 <p><strong>Supported on:</strong> JVM, Apache Tomcat, Wildfly</p>
 <p><strong>Packaging:</strong> JAR, WAR, EAR</p>
 <p>The <code>org.cibseven.bpm.application.impl.EmbeddedProcessApplication</code> can only be used in combination with an embedded process engine. Usage in combination with a Shared Process Engine is not supported as the class performs no process application context switching at runtime.</p>
@@ -3449,13 +3461,15 @@ You could of course use something like the maven shade plugin for adding the cla
 </span></span></span></code></pre></div><p>Remember that to make a manually managed EmbeddedProcessApplication work, you will have to register your ProcessEngine on the RuntimeContainer:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">RuntimeContainerDelegate</span><span class="w"> </span><span class="n">runtimeContainerDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RuntimeContainerDelegate</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeContainerDelegate</span><span class="p">.</span><span class="na">registerProcessEngine</span><span class="p">(</span><span class="n">processEngine</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="the-springprocessapplication">The SpringProcessApplication</h1>
+</span></span></span></code></pre></div>
+<h2 id="the-springprocessapplication">The SpringProcessApplication</h2>
 <p><strong>Supported on:</strong> JVM, Apache Tomcat.</p>
 <p><strong>Packaging:</strong> JAR, WAR, EAR</p>
 <p>The <code>org.cibseven.bpm.engine.spring.application.SpringProcessApplication</code> class allows bootstrapping a process application through a Spring Application Context. You can either reference the SpringProcessApplication class from an XML-based application context configuration file or use an annotation-based setup.</p>
 <p>If your application is a web application you should use <code>org.cibseven.bpm.engine.spring.application.SpringServletProcessApplication</code> as it provides support for exposing the servlet context path through the <code>ProcessApplicationInfo#PROP_SERVLET_CONTEXT_PATH</code> property.</p>
 <p>We recommend to always use <code>SpringServletProcessApplication</code> unless the deployment is not a web application. Using this class requires the <code>org.springframework:spring-web</code> module to be on the classpath.</p>
-<h2 id="configuring-a-spring-process-application">Configuring a Spring Process Application</h2>
+
+<h3 id="configuring-a-spring-process-application">Configuring a Spring Process Application</h3>
 <p>The following shows an example of how to bootstrap a SpringProcessApplication inside a Spring application context XML file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -3469,9 +3483,11 @@ You could of course use something like the maven shade plugin for adding the cla
 <blockquote>
 <p>If you are manually managing your processEngine, you will have to register it on the RuntimeContainerDelegate as described in the EmbeddedProcessEngine section.</p>
 </blockquote>
-<h2 id="process-application-name">Process Application Name</h2>
+
+<h3 id="process-application-name">Process Application Name</h3>
 <p>The <code>SpringProcessApplication</code> will use the bean name (<code>id=&quot;invoicePa&quot;</code> in the example above) as auto-detected name for the process application. Make sure to provide a unique process application name here (unique across all process applications deployed on a single application server instance). As an alternative, you can provide a custom subclass of <code>SpringProcessApplication</code> (or <code>SpringServletProcessApplication</code>) and override the <code>getName()</code> method.</p>
-<h2 id="configure-a-managed-process-engine-using-spring">Configure a Managed Process Engine Using Spring</h2>
+
+<h3 id="configure-a-managed-process-engine-using-spring">Configure a Managed Process Engine Using Spring</h3>
 <p>If you use a Spring process application, you may want to configure your process engine inside the Spring application context Xml file (as opposed to the processes.xml file). In this case, you must use the <code>org.cibseven.bpm.engine.spring.container.ManagedProcessEngineFactoryBean</code> class for creating the process engine object instance. In addition to creating the process engine object, this implementation registers the process engine with the CIB seven infrastructure so that the process engine is returned by the <code>ProcessEngineService</code>. The following is an example of how to configure a managed process engine using Spring.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>

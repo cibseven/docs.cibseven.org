@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3203,7 +3207,8 @@
 <li>Automatic deployment of BPMN 2.0 processes (through the Process Application API).</li>
 <li>Use a managed Thread Pool for the Job Executor configured through the CIB seven Subsystem.</li>
 </ul>
-<h1 id="configure-the-job-executor-in-standalonexmldomainxml">Configure the Job Executor in standalone.xml/domain.xml</h1>
+
+<h2 id="configure-the-job-executor-in-standalonexmldomainxml">Configure the Job Executor in standalone.xml/domain.xml</h2>
 <p>The configuration of the thread pool used by the Job Executor is done in the CIB seven subsystem, not in the JBoss Threads subsystem, as it was done before.
 The thread pool creation and shutdown is now controlled through the CIB seven subsystem.
 You are able to configure it through the following new configuration elements below the <code>job-executor</code> element of the subsystem XML configuration.</p>
@@ -3220,7 +3225,8 @@ You are able to configure it through the following new configuration elements be
 </ul>
 <p>Shown values are the default ones.</p>
 <p>For a complete list of all configuration options, please refer to the <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/job-executor/">Job Executor Configuration</a>.</p>
-<h1 id="configure-a-process-engine-in-standalonexmldomainxml">Configure a Process Engine in standalone.xml/domain.xml</h1>
+
+<h2 id="configure-a-process-engine-in-standalonexmldomainxml">Configure a Process Engine in standalone.xml/domain.xml</h2>
 <p>Using the Camunda Wildfly subsystem, it is possible to configure and manage the process engine through the JBoss Management Model. The most straightforward way is to add the process engine configuration to the <code>standalone.xml</code> file of the Wildfly Server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;subsystem</span> <span class="na">xmlns=</span><span class="s">&#34;urn:org.cibseven.bpm.jboss:1.1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;process-engines&gt;</span>
@@ -3252,7 +3258,8 @@ You are able to configure it through the following new configuration elements be
 </span></span></code></pre></div><p>It should be easy to see that the configuration consists of a single process engine which uses the Datasource <code>java:jboss/datasources/ProcessEngine</code> and is configured to be the <code>default</code> process engine. In addition, the job executor currently uses a single Job Acquisition, also named default.</p>
 <p>If you start up your Wildfly server with this configuration, it will automatically create the corresponding services and expose them through the management model.</p>
 <p>For a complete list of all configuration options, please refer to the <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/process-engine/">Process Engine Configuration</a>.</p>
-<h1 id="provide-a-custom-process-engine-configuration-class">Provide a Custom Process Engine Configuration Class</h1>
+
+<h2 id="provide-a-custom-process-engine-configuration-class">Provide a Custom Process Engine Configuration Class</h2>
 <p>It is possible to provide a custom Process Engine Configuration class on a Wildfly Application Server. To this extent, provide the fully qualified classname of the class in the <code>standalone.xml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-engine</span> <span class="na">name=</span><span class="s">&#34;default&#34;</span> <span class="na">default=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;datasource&gt;</span>java:jboss/datasources/ProcessEngine<span class="nt">&lt;/datasource&gt;</span>
@@ -3282,7 +3289,8 @@ class would provide a method named</p>
 </span></span></span></code></pre></div></p>
 </div>
 
-<h1 id="extend-a-process-engine-using-process-engine-plugins">Extend a Process Engine Using Process Engine Plugins</h1>
+
+<h2 id="extend-a-process-engine-using-process-engine-plugins">Extend a Process Engine Using Process Engine Plugins</h2>
 <p>It is possible to extend a process engine using the process engine plugins concept.
 You specify the process engine plugins in <code>standalone.xml</code>/<code>domain.xml</code> for each process engine separately as shown below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;subsystem</span> <span class="na">xmlns=</span><span class="s">&#34;urn:org.cibseven.bpm.jboss:1.1&#34;</span><span class="nt">&gt;</span>
@@ -3313,11 +3321,13 @@ The restrictions which apply for <a href="#provide-a-custom-process-engine-confi
 <li>Plugin class must be visible in the classpath for the Camunda subsystem.</li>
 <li>Properties map can be used for invoking primitive valued setters (Integer, String, Boolean) that follow the Java Bean conventions.</li>
 </ul>
-<h1 id="using-system-properties">Using System Properties</h1>
+
+<h2 id="using-system-properties">Using System Properties</h2>
 <p>To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., <code>${PROPERTY_KEY}</code>).
 Expression resolution is supported for all elements and attributes except for the <code>name</code> attribute on the elements <code>process-engine</code> and <code>job-acquisition</code>.
 System properties may be set via command line (<code>-D</code>option). Read more on expressions in the documentation for <a href="http://docs.wildfly.org/23/Extending_WildFly.html#expressions">WildFly</a>.</p>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;plugin&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;class&gt;</span>org.cibseven.bpm.engine.impl.plugin.AdministratorAuthorizationPlugin<span class="nt">&lt;/class&gt;</span>
@@ -3326,7 +3336,8 @@ System properties may be set via command line (<code>-D</code>option). Read more
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/plugin&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="c">&lt;!-- ... --&gt;</span>
-</span></span></code></pre></div><h1 id="look-up-a-process-engine-in-jndi">Look Up a Process Engine in JNDI</h1>
+</span></span></code></pre></div>
+<h2 id="look-up-a-process-engine-in-jndi">Look Up a Process Engine in JNDI</h2>
 <p>The Camunda Wildfly subsystem provides the same <a href="/manual/2.0-ee/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/">JNDI bindings for the ProcessApplicationService and the ProcessEngineService</a> as provided on other containers. In addition, the Camunda Wildfly subsystem creates JNDI Bindings for all managed process engines, allowing us to look them up directly.</p>
 <p>The global JNDI bindings for process engines follow the pattern</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nl">java</span><span class="p">:</span><span class="n">global</span><span class="o">/</span><span class="n">camunda</span><span class="o">-</span><span class="n">bpm</span><span class="o">-</span><span class="n">platform</span><span class="o">/</span><span class="n">process</span><span class="o">-</span><span class="n">engine</span><span class="o">/</span><span class="n">$PROCESS_ENGINE_NAME</span><span class="w">
@@ -3340,9 +3351,11 @@ A declarative mechanism like <code>@Resource</code> could be</p>
   <p>On Wildfly, Spring users should always <a href="#manage-service-dependencies">create a resource-ref for the process engine in web.xml</a></a> and then lookup the local name in the <code>java:comp/env/</code> namespace. <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/deployment/spring-wildfly-non-pa">For an example, see this Quickstart</a></a></p>
 </div>
 
-<h1 id="manage-the-process-engine-through-the-jboss-management-system">Manage the Process Engine Through the JBoss Management System</h1>
+
+<h2 id="manage-the-process-engine-through-the-jboss-management-system">Manage the Process Engine Through the JBoss Management System</h2>
 <p>To inspect and change the management model, we can use <a href="https://docs.wildfly.org/23/Admin_Guide.html#Management_Clients">one of the multiple WildFly Management Clients available</a>.</p>
-<h2 id="inspect-the-configuration">Inspect the Configuration</h2>
+
+<h3 id="inspect-the-configuration">Inspect the Configuration</h3>
 <p>It is possible to inspect the configuration using the CLI (Command Line Interface, jboss-cli.bat/sh):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">You are disconnected at the moment. Type &#39;connect&#39; to connect to the server or &#39;help&#39; for the list of supported commands.
 </span></span></span><span class="line"><span class="cl"><span class="go">[disconnected /] connect
@@ -3376,7 +3389,8 @@ A declarative mechanism like <code>@Resource</code> could be</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">        }}
 </span></span></span><span class="line"><span class="cl"><span class="go">    }
 </span></span></span><span class="line"><span class="cl"><span class="go">}
-</span></span></span></code></pre></div><h2 id="stop-the-process-engine-through-the-jboss-management-system">Stop the Process Engine Through the JBoss Management System</h2>
+</span></span></span></code></pre></div>
+<h3 id="stop-the-process-engine-through-the-jboss-management-system">Stop the Process Engine Through the JBoss Management System</h3>
 <p>Once the process engine is registered in the JBoss Management Model, it is possible to control it through the management API. For example, you can stop it through the CLI:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">[standalone@localhost:9999 subsystem=camunda-bpm-platform] cd process-engines=default
 </span></span></span><span class="line"><span class="cl"><span class="go">[standalone@localhost:9999 process-engines=default] :remove
@@ -3388,7 +3402,8 @@ A declarative mechanism like <code>@Resource</code> could be</p>
   <p>For this to work, but also to avoid race conditions at deployment time, it is necessary that each application explicitly declares dependencies on the process engines it is using.</p>
 </div>
 
-<h2 id="start-the-process-engine-through-the-jboss-management-system">Start the Process Engine Through the JBoss Management System</h2>
+
+<h3 id="start-the-process-engine-through-the-jboss-management-system">Start the Process Engine Through the JBoss Management System</h3>
 <p>It is also possible to start a new process engine at runtime:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">[standalone@localhost:9999 subsystem=camunda-bpm-platform] /subsystem=camunda-bpm-platform/process-engines=my-process-engine/:add(name=my-process-engine,datasource=java:jboss/datasources/ExampleDS)
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;outcome&#34; =&gt; &#34;success&#34;}
@@ -3397,7 +3412,8 @@ A declarative mechanism like <code>@Resource</code> could be</p>
 <li>Persist any changes to the model in the underlying configuration file. This means that if you start a process engine using the command line interface, the configuration will be added to <code>standalone.xml</code>/<code>domain.xml</code> such that it is available when the server is restarted.</li>
 <li>Distribute the configuration in the cluster and start / stop the process engine on all servers that are part of the same domain.</li>
 </ul>
-<h2 id="use-the-jboss-jconsole-extensions">Use the JBoss JConsole Extensions</h2>
+
+<h3 id="use-the-jboss-jconsole-extensions">Use the JBoss JConsole Extensions</h3>
 <p>In some cases, you may find it more convenient to use WildFly&rsquo;s JConsole extension for starting a process engine.</p>
 <figure class="image">
   <span><img
@@ -3408,7 +3424,8 @@ A declarative mechanism like <code>@Resource</code> could be</p>
 </figure>
 
 <p>The JConsole plugin allows you to inspect the management model graphically and build operations using a wizard. To start the JBoss JConsole plugin, start the jconsole.bat/sh file provided in the WildFly distribution. <a href="https://docs.wildfly.org/23/Admin_Guide.html#JMX">More Information in the WildFly Docs</a>.</p>
-<h1 id="manage-classpath-dependencies">Manage Classpath Dependencies</h1>
+
+<h2 id="manage-classpath-dependencies">Manage Classpath Dependencies</h2>
 
 <div class="note bg-info docs-info">
   <h3>Implicit Module Dependencies</h3>
@@ -3418,9 +3435,11 @@ A declarative mechanism like <code>@Resource</code> could be</p>
 <p>When using the Camunda Wildfly subsystem, the process engine classes are deployed as WildFly module. The module is named
 <code>org.cibseven.bpm.camunda-engine</code> and is deployed in the folder <code>$WILDFLY_HOME/modules/org/cibseven/bpm/camunda-engine</code>.</p>
 <p>By default, the application server will not add this module to the classpath of applications. If an application needs to interact with the process engine, we must declare a module dependency in the application. This can be achieved using either an implicit or an explicit module dependency.</p>
-<h2 id="implicit-module-dependencies-with-the-process-application-api">Implicit Module Dependencies with the Process Application API</h2>
+
+<h3 id="implicit-module-dependencies-with-the-process-application-api">Implicit Module Dependencies with the Process Application API</h3>
 <p>When using the Process Application API (i.e., when deploying either a servlet process application or an EJB process application), the Camunda Wildfly subsystem will detect the <code>@ProcessApplication</code> class in the deployment and automatically add a module dependency between the application and the process engine module. As a result, we don&rsquo;t have to declare the dependency ourselves. It is called an <a href="https://docs.wildfly.org/23/Developer_Guide.html#Implicit_module_dependencies_for_deployments">implicit module dependency</a> because it is not explicitly declared but can be derived by inspecting the application and seeing that it provides a <code>@ProcessApplication</code> class.</p>
-<h2 id="explicit-module-dependencies">Explicit Module Dependencies</h2>
+
+<h3 id="explicit-module-dependencies">Explicit Module Dependencies</h3>
 <p>If an application does not use the Process Application API but still needs the process engine classes to be added to its classpath, an explicit module dependency is required.
 Wildfly offers multiple <a href="https://docs.wildfly.org/23/Developer_Guide.html#Class_Loading_in_WildFly">different mechanisms for achieving this</a>. The simplest way is to add a manifest entry to the MANIFEST.MF file of the deployment. The following example illustrates how to generate such a dependency using the maven WAR plugin:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;build&gt;</span>
@@ -3440,7 +3459,8 @@ Wildfly offers multiple <a href="https://docs.wildfly.org/23/Developer_Guide.htm
 </span></span><span class="line"><span class="cl">   <span class="nt">&lt;/plugins&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/build&gt;</span>
 </span></span></code></pre></div><p>As a result, the Application Service will add the process engine module to the classpath of the application.</p>
-<h1 id="manage-service-dependencies">Manage Service Dependencies</h1>
+
+<h2 id="manage-service-dependencies">Manage Service Dependencies</h2>
 
 <div class="note bg-info docs-info">
   <h3>Implicit Service Dependencies</h3>
@@ -3457,9 +3477,11 @@ Wildfly offers multiple <a href="https://docs.wildfly.org/23/Developer_Guide.htm
 </figure>
 
 <p>There are three applications deployed and two process engine services exist. Application 1 and Application 2 are using Process Engine 1 and Application 3 is using Process Engine 2.</p>
-<h2 id="implicit-service-dependencies">Implicit Service Dependencies</h2>
+
+<h3 id="implicit-service-dependencies">Implicit Service Dependencies</h3>
 <p>When using the Process Application API (i.e., when deploying either a servlet process application or an EJB process application), the Camunda Wildfly subsystem will detect the <code>@ProcessApplication</code> class in the deployment and automatically add a service dependency between the process application component and the process engine module. This ensures that the process engine is available when the process application is deployed.</p>
-<h2 id="explicit-service-dependencies">Explicit Service Dependencies</h2>
+
+<h3 id="explicit-service-dependencies">Explicit Service Dependencies</h3>
 <p>If an application does not use the Process Application API but still needs to interact with a process engine, it is important to declare the dependency on the Process Engine Service explicitly. If we fail to declare the dependency, there is no guarantee that the process engine is available to the application.</p>
 <ul>
 <li>When the application server is started, it will bring up services concurrently. If it is not aware of the dependency between the application and the process engine, the application may start <em>before</em> the process engine, potentially resulting in exceptions if the process engine is accessed from some deployment listener (like a servlet context listener).</li>

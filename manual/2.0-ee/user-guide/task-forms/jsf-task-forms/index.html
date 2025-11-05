@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="adding-jsf-forms-to-your-process-application">Adding JSF Forms to your Process Application</h1>
+      
+<h2 id="adding-jsf-forms-to-your-process-application">Adding JSF Forms to your Process Application</h2>
 
 <div class="note bg-info docs-info">
   <h3>Heads-up!</h3>
@@ -3222,7 +3227,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;acknowledge-categorization&#34;</span> <span class="na">name=</span><span class="s">&#34;Acknowledge Categorization&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">camunda:formKey=</span><span class="s">&#34;app:acknowledge-form.jsf&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="creating-simple-user-task-forms">Creating Simple User Task Forms</h1>
+</span></span></code></pre></div>
+<h2 id="creating-simple-user-task-forms">Creating Simple User Task Forms</h2>
 <p>Create a JSF page in <code>src/main/webapp/WEB-INF</code> representing a form used for User Tasks. A very simple task form is shown below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&#34;en&#34;</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.w3.org/1999/xhtml&#34;</span>
@@ -3253,7 +3259,8 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/f:view&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/html&gt;</span>
 </span></span></code></pre></div><p>Note that you need <code>cibseven-engine-cdi</code> in order to have the <code>camundaTaskForm</code> bean available.</p>
-<h1 id="how-does-this-work">How does this work?</h1>
+
+<h2 id="how-does-this-work">How does this work?</h2>
 <p>If the user clicks on &ldquo;Start to work on task&rdquo; <figure class="image">
   <span><img
       src="../img/start-task-button.png"
@@ -3279,7 +3286,8 @@
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;h:commandButton</span> <span class="na">id=</span><span class="s">&#34;complete&#34;</span> <span class="na">value=</span><span class="s">&#34;task completed&#34;</span> <span class="na">action=</span><span class="s">&#34;#{camundaTaskForm.completeTask()}&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>Note that the command button doesn&rsquo;t have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the <code>completeTask</code> button. This will work because of the conversation running in the background.</p>
-<h1 id="access-process-variables">Access Process Variables</h1>
+
+<h2 id="access-process-variables">Access Process Variables</h2>
 <p>In the forms you can access your own CDI beans as usual and also access the CIB seven CDI beans. This makes it easy to access process variables, e.g., via the <code>processVariables</code> CDI bean:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;h:form</span> <span class="na">id=</span><span class="s">&#34;someForm&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;p&gt;</span>Here you would see the actual form to work on the task in some design normally either matching you task list or your business application (or both in the best case).<span class="nt">&lt;/p&gt;</span>
@@ -3395,7 +3403,8 @@
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;h:commandButton</span> <span class="na">id=</span><span class="s">&#34;start&#34;</span> <span class="na">value=</span><span class="s">&#34;Start Process Instance&#34;</span> <span class="na">action=</span><span class="s">&#34;#{camundaTaskForm.completeProcessInstanceForm()}&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>Note that the command button doesn&rsquo;t have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the <code>completeProcessInstanceForm</code> button. This will work because of the conversation running in the background.</p>
-<h1 id="styling-your-task-forms">Styling your Task Forms</h1>
+
+<h2 id="styling-your-task-forms">Styling your Task Forms</h2>
 <p>We use <a href="http://getbootstrap.com/">Twitter Bootstrap</a> in our tasklist - so best add this to your Process Application as well and you can easily polish your UI:</p>
 <figure class="image">
   <span><img

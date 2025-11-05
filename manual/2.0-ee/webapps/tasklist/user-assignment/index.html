@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,7 +3197,8 @@
 <li>Building Filters: <a href="/manual/2.0-ee/webapps/tasklist/filters/">filters</a> then allow users to find tasks which are assigned to them or to the groups they belong to.</li>
 <li>Claiming group tasks: if a task is not directly assigned to a given user, the user must claim the task before working on it.</li>
 </ol>
-<h1 id="implementing-initial-assignment">Implementing Initial Assignment</h1>
+
+<h2 id="implementing-initial-assignment">Implementing Initial Assignment</h2>
 <p>Initial user assignments are configured directly in the BPMN model.</p>
 <figure class="image">
   <span><img
@@ -3208,7 +3213,8 @@
 <li><a href="/manual/2.0-ee/reference/bpmn20/tasks/user-task/#user-assignment">Implementing user assignments for BPMN User Tasks</a></li>
 <li><a href="/manual/2.0-ee/reference/cmmn11/tasks/human-task/#user-assignment">Implementing user assignments for CMMN Human Tasks</a></li>
 </ul>
-<h1 id="claiming-a-task-in-tasklist">Claiming a task in Tasklist</h1>
+
+<h2 id="claiming-a-task-in-tasklist">Claiming a task in Tasklist</h2>
 <p>In Tasklist, a user can ony work on a task (i.e., filling in the task form) if the task is assigned to that user. This means that a user must <code>claim</code> a task if it is not yet assigned to him.
 Claiming a task sets the assignee of the task to the user who claimed the task.</p>
 <p>See the <a href="/manual/2.0-ee/webapps/tasklist/dashboard/#claim-unclaim-and-reassign-tasks">Claiming, unclaiming and reassigning tasks</a> section for more information.</p>

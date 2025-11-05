@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -265,7 +267,8 @@
   <p>DMN is a modeling language for <em>decisions</em>, whereas BPMN is a language for <em>processes</em>. This tutorial is about decisions. However, due to BPMN-focused heritage of CIB seven, the Java project contains classes and files with names like <code>ProcessApplication</code> and <code>processes.xml</code>. These are in fact generally applicable and can be used with both processes and decisions.</p>
 </div>
 
-<h1 id="create-a-new-maven-project">Create a new Maven Project</h1>
+
+<h2 id="create-a-new-maven-project">Create a new Maven Project</h2>
 
 <div class="note bg-info docs-info">
   <h3>Fancy to save work and use a project template instead?</h3>
@@ -282,7 +285,8 @@
 <p>On the first page of the <em>New Maven Project Wizard</em> select <em>Create a simple project (skip archetype selection)</em>. Click Next.</p>
 <p>On the second page (see screenshot), configure the Maven coordinates for the project. Since we are setting up a WAR Project, make sure to select <code>Packaging: war</code>.</p>
 <p>When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the <em>Project Explorer</em> View.</p>
-<h1 id="add-cib-seven-maven-dependencies">Add CIB seven Maven Dependencies</h1>
+
+<h2 id="add-cib-seven-maven-dependencies">Add CIB seven Maven Dependencies</h2>
 <p>The next step consists of setting up the Maven dependencies for your new process application. Add the following dependencies to the <code>pom.xml</code> file of your project:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -374,7 +378,8 @@
   </div>
 </div>
 
-<h1 id="add-a-process-application-class">Add a Process Application Class</h1>
+
+<h2 id="add-a-process-application-class">Add a Process Application Class</h2>
 <p>Next, you need to create a package, e.g., <code>org.cibseven.getstarted.dmn</code> and add a Process Application class to it. The Process Application class constitutes the interface between your application and the process engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.dmn</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -386,7 +391,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">//empty implementation</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="add-a-meta-infprocessesxml-deployment-descriptor">Add a META-INF/processes.xml Deployment Descriptor</h1>
+</span></span></span></code></pre></div>
+<h2 id="add-a-meta-infprocessesxml-deployment-descriptor">Add a META-INF/processes.xml Deployment Descriptor</h2>
 <p>The last step to set up the process application is to add the <code>META-INF/processes.xml</code> deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) this process application makes to the process engine.</p>
 <p>This file needs to be added to the <code>src/main/resources/META-INF</code> folder of the Maven project.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,17 +3192,21 @@
     <div class="col-xs-12 content-text">
       <p>Timer events are events which are triggered by a defined timer. They can be used as start event, intermediate event or boundary event. Boundary events can be interrupting or not.</p>
 <div data-bpmn-diagram="../bpmn/event-timer" ></div>
-<h1 id="configuration">Configuration</h1>
+
+<h2 id="configuration">Configuration</h2>
 <p>Timers are only fired when the <a href="/manual/latest/user-guide/process-engine/the-job-executor/">Job Executor</a> is enabled.</p>
-<h1 id="defining-a-timer">Defining a Timer</h1>
+
+<h2 id="defining-a-timer">Defining a Timer</h2>
 <p>Timers are configured using an <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> time format. A timer definition must have exactly one of the following elements.</p>
-<h2 id="time-date">Time Date</h2>
+
+<h3 id="time-date">Time Date</h3>
 <p>This format specifies a fixed time and date in adhering to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format, when the trigger will be fired.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;timerEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;timeDate&gt;</span>2011-03-11T12:13:14Z<span class="nt">&lt;/timeDate&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/timerEventDefinition&gt;</span>
-</span></span></code></pre></div><h2 id="time-duration">Time Duration</h2>
+</span></span></code></pre></div>
+<h3 id="time-duration">Time Duration</h3>
 <p>To specify how long the timer should run before it is fired, a timeDuration can be specified as a sub-element of timerEventDefinition. It is possible to define the duration in two different <a href="http://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> formats:</p>
 <ul>
   <li>PnYnMnDTnHnMnS</li>
@@ -3208,7 +3216,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;timerEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;timeDuration&gt;</span>P10D<span class="nt">&lt;/timeDuration&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/timerEventDefinition&gt;</span>
-</span></span></code></pre></div><h2 id="time-cycle">Time Cycle</h2>
+</span></span></code></pre></div>
+<h3 id="time-cycle">Time Cycle</h3>
 <p>Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring <a href="#time-duration">time duration</a>, as specified by the <a href="http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals">ISO 8601 Repeating Intervals</a> standard.</p>
 <p>Example (3 repeating intervals, each lasting 10 hours):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;timerEventDefinition&gt;</span>
@@ -3219,20 +3228,23 @@
 </code></pre><p>Please see the <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> for additional information about using cron expressions.</p>
 <p>Note: The first symbol denotes seconds, not minutes as in normal Unix cron.</p>
 <p>The recurring time duration option is better suited for handling relative timers, which are calculated in respect to some particular point in time (e.g., the time when a user task was started), while cron expressions can handle absolute timers - which is particularly useful for timer start events.</p>
-<h3 id="modify-a-time-cycle">Modify a Time Cycle</h3>
+
+<h4 id="modify-a-time-cycle">Modify a Time Cycle</h4>
 <p>A timer&rsquo;s repeat cycle can be controlled via the <a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST API</a> or by calling the ManagementService. By setting the due date of a timer, it is possible to change the point in time when a timer is executed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">setJobDuedate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">jobId</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">newDuedate</span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p>Changes to one timer instance do not automatically affect subsequent timer instances. For example, a certain recurring timer produces a timer event every 30 minutes. If the due date of one timer event is changed (e.g. +15minutes), it would be executed 45 minutes after the previous timer. However, the following timer would follow the old pattern and would execute 15 minutes after the changed timer.</p>
 <p>If the desired outcome is to calculate the due dates of all subsequent timers based on the changes made, then it is possible to pass a <code>cascade</code> flag (when using the <a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST API</a>) or use the following Java API method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">setJobDuedate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">jobId</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">newDuedate</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">cascade</span><span class="p">)</span><span class="w">
-</span></span></span></code></pre></div><h2 id="expressions">Expressions</h2>
+</span></span></span></code></pre></div>
+<h3 id="expressions">Expressions</h3>
 <p>You can use expressions for the timer event definitions. By doing so you can influence the timer definition based on process variables. The process variables must contain the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> (or cron for cycle type) string for the appropriate timer type.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&#34;escalationTimer&#34;</span> <span class="na">cancelActivity=</span><span class="s">&#34;true&#34;</span> <span class="na">attachedToRef=</span><span class="s">&#34;firstLineSupport&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;timerEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;timeDuration&gt;</span>${duration}<span class="nt">&lt;/timeDuration&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/timerEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/boundaryEvent&gt;</span>
-</span></span></code></pre></div><h3 id="re-evaluate-a-time-cycle">Re-evaluate a time cycle</h3>
+</span></span></code></pre></div>
+<h4 id="re-evaluate-a-time-cycle">Re-evaluate a time cycle</h4>
 <p>A timer&rsquo;s repeat cycle can be updated if the defined expression is changed. This is achieved by re-evaluation of the expression next time when a timer is fired. So the new cycle will be effective from the next scheduled timer.</p>
 <p>Let&rsquo;s observe a scenario with the following timer defined where <code>myBean.getCycle()=&quot;R3/PT2H&quot;</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;startEvent</span> <span class="na">id=</span><span class="s">&#34;theStart&#34;</span><span class="nt">&gt;</span>
@@ -3266,9 +3278,11 @@
 </p>
 </div>
 
-<h2 id="handling-of-timezones">Handling of Timezones</h2>
+
+<h3 id="handling-of-timezones">Handling of Timezones</h3>
 <p>The configuration <code>2022-03-11T12:13:14</code> does not specify a time zone. At runtime, such a date is interpreted in the local time zone of the JVM executing the process. This can be problematic in various cases, such as when running multiple CIB seven nodes in different time zones or when you cannot assume the time zone the platform runs in. Furthermore, there can be glitches with respect to daylight saving time (DST). If in doubt, specify the time in UTC (e.g., <code>2022-03-11T12:13:14Z</code>) or with a UTC-relative offset (e.g., <code>2022-03-11T12:13:14+01</code>).</p>
-<h2 id="cib-seven-extensions">CIB seven Extensions</h2>
+
+<h3 id="cib-seven-extensions">CIB seven Extensions</h3>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
@@ -3293,7 +3307,8 @@
     <td>&ndash;</td>
   </tr>
 </table>
-<h1 id="timer-start-event">Timer Start Event</h1>
+
+<h2 id="timer-start-event">Timer Start Event</h2>
 <p>A timer start event is used to create process instance at a given time. It can be used both for processes which should start only once and for processes that should start in specific time intervals.</p>
 <p>Note: A subprocess cannot have a timer start event.</p>
 <p>Note: A timer start event is scheduled as soon as process is deployed. There is no need to call <code>startProcessInstanceBy...</code>, although calling start process methods is not restricted and will cause one more start of the process at the time of the <code>startProcessInstanceBy...</code> invocation.</p>
@@ -3309,7 +3324,8 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;timeDate&gt;</span>2022-03-11T12:13:14Z<span class="nt">&lt;/timeDate&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/timerEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/startEvent&gt;</span>
-</span></span></code></pre></div><h1 id="timer-intermediate-catching-event">Timer Intermediate Catching Event</h1>
+</span></span></code></pre></div>
+<h2 id="timer-intermediate-catching-event">Timer Intermediate Catching Event</h2>
 <p>A timer intermediate event acts as a stopwatch. When an execution arrives in catching event activity, a timer is started. When the timer fires (e.g., after a specified interval), the sequence flow going out of the timer intermediate event is followed.</p>
 <p>A timer intermediate event is defined as an intermediate catching event. The specific type sub-element in this case is a timerEventDefinition element.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;intermediateCatchEvent</span> <span class="na">id=</span><span class="s">&#34;timer&#34;</span><span class="nt">&gt;</span>
@@ -3317,7 +3333,8 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;timeDuration&gt;</span>PT5M<span class="nt">&lt;/timeDuration&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/timerEventDefinition&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/intermediateCatchEvent&gt;</span>
-</span></span></code></pre></div><h1 id="timer-boundary-event">Timer Boundary Event</h1>
+</span></span></code></pre></div>
+<h2 id="timer-boundary-event">Timer Boundary Event</h2>
 <p>A timer boundary event acts as a stopwatch and as an alarm clock. When an execution arrives in the activity to which the boundary event is attached, a timer is started. When the timer fires (e.g.,  after a specified interval), the activity is interrupted and the sequence flow going out of the timer boundary event are followed.</p>
 <p>There is the difference between an interrupting and a non interrupting timer event. The interrupting event is the default. The non-interrupting event leads to the original activity not being interrupted, the activity stays there. Instead, an additional execution is created and sent over the outgoing transition of the event. In the XML representation, the cancelActivity attribute is set to false:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&#34;escalationTimer&#34;</span> <span class="na">cancelActivity=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>

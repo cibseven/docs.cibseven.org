@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>CIB seven allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc&hellip;</p>
 <p>Authorization has a performance cost and introduces some complexity. It should only be used if required.</p>
-<h1 id="when-is-authorization-required">When is Authorization required?</h1>
+
+<h2 id="when-is-authorization-required">When is Authorization required?</h2>
 <p>Not every CIB seven setup needs to enable authorization. In many scenarios, CIB seven is embedded into an application and the application itself ensures that users can only access data they are authorized to access. Generally speaking, authorization is only required if untrusted parties interact with the process engine API directly. If you embed the process engine into a Java application, you usually do not need to enable authorization. The application can control how the API is accessed.</p>
 <p>Situations in which authorization is required:</p>
 <ul>
@@ -3205,8 +3210,10 @@
 <p>Assume that you have the following authorization requirement: <em>As a regular user, I can only see the tasks that are assigned to me.</em></p>
 <p>If the engine is embedded into a Java application, the application can easily ensure this by restricting the task query on the <code>assignee</code> property. The application can guarantee this since the CIB seven API is not directly exposed to the user.</p>
 <p>By contrast, if the CIB seven Rest API is directly exposed over the network to a Javascript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.</p>
-<h1 id="basic-principles">Basic Principles</h1>
-<h2 id="authorizations">Authorizations</h2>
+
+<h2 id="basic-principles">Basic Principles</h2>
+
+<h3 id="authorizations">Authorizations</h3>
 <p>An Authorization assigns a set of Permissions to an identity to interact with a given Resource.</p>
 <p><strong>Examples</strong></p>
 <ul>
@@ -3214,9 +3221,11 @@
 <li>Group &lsquo;marketing&rsquo; is not authorized to delete the Group &lsquo;sales&rsquo;</li>
 <li>Group &lsquo;marketing&rsquo; is not allowed to use the tasklist application.</li>
 </ul>
-<h2 id="identities">Identities</h2>
+
+<h3 id="identities">Identities</h3>
 <p>CIB seven distinguishes between two types of identities: users and groups. Authorizations can either range over all users (userId = ANY), an individual user or a group of users.</p>
-<h2 id="permissions">Permissions</h2>
+
+<h3 id="permissions">Permissions</h3>
 <p>A Permission defines the way an identity is allowed to interact with a certain resource.</p>
 <p>The basic permissions available in the engine are:</p>
 <ul>
@@ -3235,7 +3244,8 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">authorization</span><span class="p">.</span><span class="na">addPermission</span><span class="p">(</span><span class="n">Permissions</span><span class="p">.</span><span class="na">READ</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">authorization</span><span class="p">.</span><span class="na">addPermission</span><span class="p">(</span><span class="n">Permissions</span><span class="p">.</span><span class="na">UPDATE</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">authorization</span><span class="p">.</span><span class="na">addPermission</span><span class="p">(</span><span class="n">Permissions</span><span class="p">.</span><span class="na">DELETE</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="resources">Resources</h2>
+</span></span></span></code></pre></div>
+<h3 id="resources">Resources</h3>
 <p>Resources are the entities the user interacts with.</p>
 <p>The following resources are available:</p>
 <table class="table matrix-table table-condensed table-hover table-bordered">
@@ -3351,7 +3361,8 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
   </tr>
 </table>
 <p><strong>Note:</strong> The Resource Id should be &lsquo;*&rsquo; when you create new authorization with CREATE permissions only.</p>
-<h2 id="authorization-type">Authorization Type</h2>
+
+<h3 id="authorization-type">Authorization Type</h3>
 <p>There are three types of authorizations:</p>
 <table class="table matrix-table table-condensed table-hover table-bordered">
   <tr>
@@ -3381,7 +3392,8 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
   <p>See the <a href="#performance-considerations">Performance Considerations</a> section on this Page.</p>
 </div>
 
-<h2 id="authorization-precedence">Authorization Precedence</h2>
+
+<h3 id="authorization-precedence">Authorization Precedence</h3>
 <p>Authorizations may range over all users, an individual user or a group of users, or they may apply to an individual resource instance or all instances of the same type (resourceId = ANY). The precedence is as follows:</p>
 <ul>
 <li>An authorization applying to an individual resource instance precedes over an authorization applying to all instances of the same resource type.</li>
@@ -3390,7 +3402,8 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
 <li>A Group GRANT authorization precedes over a Group REVOKE authorization.</li>
 <li>A User GRANT authorization precedes over a User REVOKE authorization.</li>
 </ul>
-<h2 id="when-are-authorizations-checked">When are Authorizations checked?</h2>
+
+<h3 id="when-are-authorizations-checked">When are Authorizations checked?</h3>
 <p>Authorizations are checked if</p>
 <ul>
 <li>the configuration option <code>authorizationEnabled</code> is set to <code>true</code> (default value is <code>false</code>).</li>
@@ -3406,7 +3419,8 @@ When embedding the process engine into a custom application, the application nee
   <p>Authentication and Authorization are two distinct concepts as explained <a href="https://en.wikipedia.org/wiki/Authentication#Authorization">here</a>.</p>
 </div>
 
-<h2 id="authorizations-and-access-to-ui-features">Authorizations and access to UI features</h2>
+
+<h3 id="authorizations-and-access-to-ui-features">Authorizations and access to UI features</h3>
 <p>CIB seven frontend uses a dedicated <code>/authorization</code> endpoint to determine which UI elements (tiles) a user can see.
 This process includes the following steps:</p>
 <ul>
@@ -3431,7 +3445,8 @@ various other permission checks.</p>
 </p>
 </div>
 
-<h3 id="permission-configuration">Permission Configuration:</h3>
+
+<h4 id="permission-configuration">Permission Configuration:</h4>
 <p>The required permissions for each features are defined in <code>config.json</code>.
 For example, to access authorization management, a user needs <code>ALL</code> permission on the <code>authorization</code> resource:
 &ldquo;authorizationsManagement&rdquo;: { &ldquo;authorization&rdquo;: [&ldquo;ALL&rdquo;] }</p>
@@ -3439,9 +3454,11 @@ For example, to access authorization management, a user needs <code>ALL</code> p
 <p>User administration access is controller by the <code>userManagement</code> permissions set, defined in <code>config.json</code>:</p>
 <p>&ldquo;usersManagement&rdquo;: {&ldquo;user&rdquo;:[&ldquo;ALL&rdquo;]}</p>
 <p>This means a user needs the <code>ALL</code> permission on the <code>user</code> resource type to access user administration.</p>
-<h1 id="permissions-by-resource">Permissions by Resource</h1>
+
+<h2 id="permissions-by-resource">Permissions by Resource</h2>
 <p>This section explains which permissions are available on which resources.</p>
-<h2 id="read-update-create-delete">Read, Update, Create, Delete</h2>
+
+<h3 id="read-update-create-delete">Read, Update, Create, Delete</h3>
 <p>The permissions <strong>Read</strong>, <strong>Update</strong>, <strong>Create</strong>, and <strong>Delete</strong> are available for most of the resources.
 The following table gives an overview for which resources they are available:</p>
 <table class="table matrix-table table-condensed table-hover table-bordered">
@@ -3578,7 +3595,8 @@ The following table gives an overview for which resources they are available:</p
 </table>
 <p>To execute an operation <a href="/manual/2.0-ee/user-guide/process-engine/batch/">asynchronously</a>, only a <strong>Create</strong> permission on the Batch Resource is required. However, when executing the same operation synchronously, the specific permissions (e.g. <strong>Delete</strong> on <strong>Process Instance Resource</strong>) are checked.</p>
 <p>For example, a user without the <strong>Update</strong> permission on the <strong>Process Instance Resource</strong> and granted <strong>Create</strong> permission on the <strong>Batch Resource</strong> can modify multiple process instances asynchronously by creating a batch. However, the user can&rsquo;t execute this operation synchronously.</p>
-<h2 id="additional-task-permissions">Additional Task Permissions</h2>
+
+<h3 id="additional-task-permissions">Additional Task Permissions</h3>
 <p>In addition to <strong>Update</strong>, <strong>Read</strong>, and <strong>Delete</strong>, the following permissions are available on the Task Resource:</p>
 <ul>
 <li>Task Assign</li>
@@ -3717,11 +3735,13 @@ The intuition behind <strong>Task Work</strong> is that it only authorizes the u
   </tbody>
 </table>
 <p>GRANT and REVOKE authorizations with <strong>Task Work</strong>, <strong>Task Assign</strong>, and <strong>Update Variable</strong> permissions precede over <strong>Update</strong> and <strong>Update Task</strong>.</p>
-<h3 id="default-task-permissions">Default Task Permissions</h3>
+
+<h4 id="default-task-permissions">Default Task Permissions</h4>
 <p>When a user is related to a task as an assignee, a candidate user, a part of a candidate group, or an owner, these users
 obtain the default permissions as either <strong>Task Work</strong> or <strong>Update</strong>, based on the process engine configuration property <strong>defaultUserPermissionNameForTask</strong>.</p>
 <p>If the &ldquo;defaultUserPermissionNameForTask&rdquo; configuration option is not set, then by default <strong>Update</strong> permission is granted.</p>
-<h2 id="additional-process-definition-permissions">Additional Process Definition Permissions</h2>
+
+<h3 id="additional-process-definition-permissions">Additional Process Definition Permissions</h3>
 <p>In Addition to <strong>Update</strong>, <strong>Read</strong> and <strong>Delete</strong>, the following permissions are available on the Process Definition Resource:</p>
 <ul>
 <li>Read Task</li>
@@ -3751,7 +3771,8 @@ obtain the default permissions as either <strong>Task Work</strong> or <strong>U
 
 <p>GRANT and REVOKE authorizations with <strong>Retry Job</strong>, <strong>Suspend</strong>, <strong>Suspend Instance</strong>, <strong>Update Instance Variable</strong>, and <strong>Update Task Variable</strong> permissions precede over <strong>Update</strong>.
 Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.</p>
-<h2 id="additional-process-instance-permissions">Additional Process Instance Permissions</h2>
+
+<h3 id="additional-process-instance-permissions">Additional Process Instance Permissions</h3>
 <p>In addition to <strong>Create</strong>, <strong>Read</strong>, <strong>Update</strong>, and <strong>Delete</strong>, the following permissions are available on the Process Instance Resource:</p>
 <ul>
 <li>Retry Job</li>
@@ -3760,7 +3781,8 @@ Keep in mind that user who is allowed to perform variable updates could trigger 
 </ul>
 <p>GRANT and REVOKE authorizations with <strong>Retry Job</strong>, <strong>Suspend</strong>, and <strong>Update Variable</strong> permissions precede over <strong>Update</strong>.
 Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.</p>
-<h2 id="additional-decision-definition-permissions">Additional Decision Definition Permissions</h2>
+
+<h3 id="additional-decision-definition-permissions">Additional Decision Definition Permissions</h3>
 <p>In addition to <strong>Update</strong>, <strong>Read</strong>, and <strong>Delete</strong>, the following permissions are available on the Decision Definition Resource:</p>
 <ul>
 <li>Create Instance</li>
@@ -3768,7 +3790,8 @@ Keep in mind that user who is allowed to perform variable updates could trigger 
 <li>Delete History</li>
 </ul>
 <p>The <strong>Create Instance</strong> permission is required to evaluate decisions with the decision service.</p>
-<h2 id="additional-batch-permissions">Additional Batch Permissions</h2>
+
+<h3 id="additional-batch-permissions">Additional Batch Permissions</h3>
 <p>In addition to <strong>Create</strong>, <strong>Update</strong>, <strong>Read</strong>, and <strong>Delete</strong>, the following permissions are available on the Batch Resource:</p>
 <ul>
 <li>Read History</li>
@@ -3787,7 +3810,8 @@ Keep in mind that user who is allowed to perform variable updates could trigger 
 <li>Create Batch Correlate Messages</li>
 </ul>
 <p>GRANT and REVOKE authorizations with &ldquo;Create Batch …&rdquo; permissions precede over Create.</p>
-<h2 id="default-read-variable-permissions">Default Read Variable Permissions</h2>
+
+<h3 id="default-read-variable-permissions">Default Read Variable Permissions</h3>
 <p>When the <code>enforceSpecificVariablePermission</code> process engine configuration is enabled, in order to read variables, the user needs to be granted the following permissions:</p>
 <p>In case of Tasks</p>
 <ul>
@@ -3803,7 +3827,8 @@ Keep in mind that user who is allowed to perform variable updates could trigger 
 <li>Read History Variable (for historic variables)</li>
 <li>Read Task Variable (for runtime task variables)</li>
 </ul>
-<h2 id="application-permissions">Application Permissions</h2>
+
+<h3 id="application-permissions">Application Permissions</h3>
 <p>The resource &ldquo;Application&rdquo; uniquely supports the <strong>Access</strong> permission.
 The <strong>Access</strong> permission controls whether a user has access to a CIB seven webclient or not. Out of the box, it can be granted for the following applications (resource ids):</p>
 <ul>
@@ -3813,7 +3838,8 @@ The <strong>Access</strong> permission controls whether a user has access to a C
 <li><code>optimize</code></li>
 <li><code>*</code> (Any / All)</li>
 </ul>
-<h2 id="user-operation-log-permissions">User Operation Log Permissions</h2>
+
+<h3 id="user-operation-log-permissions">User Operation Log Permissions</h3>
 <p>The resource &ldquo;User Operation Log Category&rdquo; controls whether a user can access user operation log entries from the specified categories.
 Out of the box, it can be granted for the following categories (resource ids):</p>
 <ul>
@@ -3822,7 +3848,8 @@ Out of the box, it can be granted for the following categories (resource ids):</
 <li><code>Operator</code></li>
 <li><code>*</code> (Any / All)</li>
 </ul>
-<h2 id="historic-instance-permissions">Historic Instance Permissions</h2>
+
+<h3 id="historic-instance-permissions">Historic Instance Permissions</h3>
 <p>The resources control whether a user can read the history related to a specific instance.</p>
 <p>Compared to runtime permissions, historic permissions are not immediately removed when the related
 instance has been finished. The <a href="/manual/2.0-ee/user-guide/process-engine/history/history-cleanup/#removal-time-based-strategy">Removal-Time-based History Cleanup Strategy</a> removes historic
@@ -3837,7 +3864,8 @@ More complex queries may degrade the performance.</li>
 to read the associated history (e. g. for the Task, Variable, or Identity Link History).
 For CIB seven versions &lt;= 7.12, the history is not readable in this case.</li>
 </ol>
-<h3 id="historic-task-permissions">Historic Task Permissions</h3>
+
+<h4 id="historic-task-permissions">Historic Task Permissions</h4>
 <p>When permission is granted to a Historic Task, you can use the following queries to retrieve the
 entities related to the Historic Task:</p>
 <ul>
@@ -3847,7 +3875,8 @@ entities related to the Historic Task:</p>
 <li>Identity Link Log Query</li>
 <li>User Operation Log Query</li>
 </ul>
-<h3 id="historic-process-instance-permissions">Historic Process Instance Permissions</h3>
+
+<h4 id="historic-process-instance-permissions">Historic Process Instance Permissions</h4>
 <p>When permission is granted to a Historic Process Instance, you can use the following queries to
 retrieve the entities related to the Historic Process Instance:</p>
 <ul>
@@ -3862,7 +3891,8 @@ retrieve the entities related to the Historic Process Instance:</p>
 <li>External Task Log Query</li>
 <li>User Operation Log Query</li>
 </ul>
-<h2 id="system-permissions">System permissions</h2>
+
+<h3 id="system-permissions">System permissions</h3>
 <p>Permissions for the system resource are usually granted to operations engineers who supervise processes and applications and ensure they run smoothly from a technical perspective.
 Typically, those people do not need full access to the system like an administrator does. They must be able to access and change system information, including system properties, metrics, database information, telemetry, and license key data. Administrators will not need to have system permissions because their role already grants them access to all features. See also the <a href="#Administrators">Administrators</a> section.</p>
 <p>The following table gives an overview of the features that the system permissions grant access to.</p>
@@ -4010,9 +4040,11 @@ Typically, those people do not need full access to the system like an administra
     </tr>
   </tbody>
 </table>
-<h1 id="administrators">Administrators</h1>
+
+<h2 id="administrators">Administrators</h2>
 <p>CIB seven has no explicit concept of &ldquo;administrator&rdquo; beyond it being a user who has been granted all authorizations on all resources.</p>
-<h2 id="the-camunda-admin-group">The &ldquo;camunda-admin&rdquo; Group</h2>
+
+<h3 id="the-camunda-admin-group">The &ldquo;camunda-admin&rdquo; Group</h3>
 <p>When downloading the CIB seven distribution, the invoice example application creates a group with id <code>camunda-admin</code> and grants all authorizations on all resources to this group.</p>
 <p>In absense of the demo application, this task is performed by the <a href="/manual/2.0-ee/webapps/admin/user-management/#initial-user-setup">CIB seven Admin Web Application</a>. If the CIB seven webclient is started for the first time and no user exists in the database, it asks you to perform the &ldquo;initial setup&rdquo;. In this process, the <code>camunda-admin</code> group is created and granted all permissions on all resources.</p>
 
@@ -4021,7 +4053,8 @@ Typically, those people do not need full access to the system like an administra
   <p>The group &ldquo;camunda-admin&rdquo; is not created when using LDAP (since LDAP is only accessed in a read-only way). Also see the below section on the administrator authorization plugin.</p>
 </div>
 
-<h2 id="the-administrator-authorization-plugin">The Administrator Authorization Plugin</h2>
+
+<h3 id="the-administrator-authorization-plugin">The Administrator Authorization Plugin</h3>
 <p>The administrator authorization plugin is a process engine plugin with the following functionality: when the process engine is started, it grants administrative access to a configured group or user. Effectively this means that it grants all permissions on all resources to the configured group or user.</p>
 <p>Usually this is used to bootstrap an LDAP installation: granting administrative access to an initial user who can then log in to Admin and configure additional authorizations using the UI.</p>
 <p>The following is an example of how to configure the administrator authorization plugin in bpm-platform.xml / processes.xml:</p>
@@ -4058,13 +4091,17 @@ Typically, those people do not need full access to the system like an administra
     <td>The name of the administrator group. If this name is set to a non-null and non-empty value, the plugin will create group-level Administrator authorizations on all built-in resources.</td>
   </tr>
 </table>
-<h1 id="configuration-options">Configuration Options</h1>
+
+<h2 id="configuration-options">Configuration Options</h2>
 <p>This section explains available process engine configuration options related to authorization.</p>
-<h2 id="enable-authorization-checks">Enable Authorization Checks</h2>
+
+<h3 id="enable-authorization-checks">Enable Authorization Checks</h3>
 <p>Authorization checks can be globally enabled or disabled using the configuration option <code>authorizationEnabled</code>. The default setting for this configuration option is <code>false</code>.</p>
-<h2 id="enable-authorization-checks-for-user-code">Enable Authorization Checks for User Code</h2>
+
+<h3 id="enable-authorization-checks-for-user-code">Enable Authorization Checks for User Code</h3>
 <p>The configuration option <code>authorizationEnabledForCustomCode</code> controls whether authorization checks are performed for commands executed by delegation code (i.e., a Java Delegate). The default setting for this configuration option is <code>false</code>.</p>
-<h2 id="check-revoke-authorizations">Check Revoke Authorizations</h2>
+
+<h3 id="check-revoke-authorizations">Check Revoke Authorizations</h3>
 <p>The configuration option <code>authorizationCheckRevokes</code> controls whether authorization checks take into account authorizations of type <code>Revoke</code>.</p>
 <p>Available values are:</p>
 <ul>
@@ -4079,7 +4116,8 @@ Typically, those people do not need full access to the system like an administra
 </li>
 </ul>
 <p>Also see the <a href="#performance-considerations">Performance Considerations</a> section on this page.</p>
-<h1 id="java-api-example">Java API example</h1>
+
+<h2 id="java-api-example">Java API example</h2>
 <p>An authorization is created between a user/group and a resource. It describes the user/group&rsquo;s permissions to access that resource. An authorization may express different permissions, such as the permission to <strong>Read</strong>, <strong>Update</strong>, and <strong>Delete</strong> the resource. (See Authorization for details).</p>
 <p>To grant the permission to access a certain resource, an authorization object is created. For example, to give access to a certain filter:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Authorization</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">authorizationService</span><span class="p">.</span><span class="na">createNewAuthorization</span><span class="p">(</span><span class="n">AUTH_TYPE_GRANT</span><span class="p">);</span><span class="w">
@@ -4126,13 +4164,17 @@ Typically, those people do not need full access to the system like an administra
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">authorizationService</span><span class="p">.</span><span class="na">saveAuthorization</span><span class="p">(</span><span class="n">authProcessDefinition</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">authorizationService</span><span class="p">.</span><span class="na">saveAuthorization</span><span class="p">(</span><span class="n">authProcessInstance</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="cib-seven-admin-webapp">CIB seven Admin Webapp</h1>
+</span></span></span></code></pre></div>
+<h2 id="cib-seven-admin-webapp">CIB seven Admin Webapp</h2>
 <p>The CIB seven Admin Webapp provides an out of the box <a href="/manual/2.0-ee/webapps/admin/authorization-management/">UI for configuring Authorizations</a>.</p>
-<h1 id="performance-considerations">Performance Considerations</h1>
+
+<h2 id="performance-considerations">Performance Considerations</h2>
 <p>Authorizations are calculated by the database which is most efficient. Example: when performing a task query, the database query only returns the tasks for which the user has a READ authorization.</p>
-<h2 id="performance-of-checking-grant-authorizations">Performance of Checking Grant Authorizations</h2>
+
+<h3 id="performance-of-checking-grant-authorizations">Performance of Checking Grant Authorizations</h3>
 <p>When only Grant authorizations are used, the check is very efficient since the authorization table can be joined with the resource table (task table, process instance table,    etc&hellip;).</p>
-<h2 id="performance-of-checking-revoke-authorizations">Performance of Checking Revoke Authorizations</h2>
+
+<h3 id="performance-of-checking-revoke-authorizations">Performance of Checking Revoke Authorizations</h3>
 <p>Revoke authorizations are expensive to check. The check needs to consider the precedence of authorizations. Example: a user level Grant is stronger than a group level Revoke. A sequence of nested SQL <code>CASE</code> statements and a subselect is used to account for the precedence. This has two downsides:</p>
 <ul>
 <li>The check scales linearly with the cardinality of the resource table (doubling the number of tasks makes the query twice as slow)</li>

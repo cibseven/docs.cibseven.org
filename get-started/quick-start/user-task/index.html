@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,7 +261,8 @@
 
     <div class="col-xs-12 content-text">
       <p>In this section, you&rsquo;ll learn how to involve humans in your process by using BPMN 2.0 <em>User Tasks</em>.</p>
-<h1 id="add-a-user-task">Add a User Task</h1>
+
+<h2 id="add-a-user-task">Add a User Task</h2>
 <p>We want to modify our process so that we can involve humans.</p>
 <p>To do so, open the process in the Camunda Modeler.</p>
 <p>Select the create/remove space tool (&lt;||&gt;) from the Modeler&rsquo;s left-hand menu, and use it to create space between the Start Event and the &ldquo;Charge Credit Card&rdquo; Service Task (click and drag the cursor to the right).</p>
@@ -277,7 +280,8 @@
        /></span>
 </figure>
 </p>
-<h1 id="configure-a-user-task">Configure a User Task</h1>
+
+<h2 id="configure-a-user-task">Configure a User Task</h2>
 <p>Next, open the properties view. If the properties view is not already visible, click on the &ldquo;Properties Panel&rdquo; label on the right-hand side of the Modeler canvas.</p>
 <p>Select the User Task on the canvas. This will update the selection in the properties view. Scroll to the property named <code>Assignee</code>.
 Type <em>demo</em> to automatically assign the task to the <em>demo</em> user once the process runs.
@@ -287,7 +291,8 @@ Type <em>demo</em> to automatically assign the task to the <em>demo</em> user on
        /></span>
 </figure>
 </p>
-<h1 id="configure-a-basic-form-in-the-user-task">Configure a basic form in the User Task</h1>
+
+<h2 id="configure-a-basic-form-in-the-user-task">Configure a basic form in the User Task</h2>
 <p>This step will also take place in the properties panel. If the panel is not already visible, click on the &ldquo;Properties Panel&rdquo; label on the right-hand side of the Modeler canvas.</p>
 <p>Select the User Task on the canvas. This will update the selection in the properties view.</p>
 <p>Click on the Tab <code>Forms</code> in the properties panel.</p>
@@ -358,7 +363,8 @@ Add the following three form fields:</p>
 </figure>
 
 Finally, save the form as <code>payment.form</code>.</p>
-<h1 id="deploy-the-process">Deploy the Process</h1>
+
+<h2 id="deploy-the-process">Deploy the Process</h2>
 <ol>
 <li>Switch back to the process diagram</li>
 <li>Click the Deploy button in the Camunda Modeler</li>
@@ -371,7 +377,8 @@ Finally, save the form as <code>payment.form</code>.</p>
        /></span>
 </figure>
 
-<h1 id="work-on-the-task">Work on the Task</h1>
+
+<h2 id="work-on-the-task">Work on the Task</h2>
 <p>Go to Tasklist (<a href="http://localhost:8080/camunda/app/tasklist/">http://localhost:8080/camunda/app/tasklist/</a>) and log in with the credentials &ldquo;demo / demo&rdquo;.
 Click on the <button class="btn btn-xs">
   <i class="glyphicon glyphicon-list-alt" ></i> Start process

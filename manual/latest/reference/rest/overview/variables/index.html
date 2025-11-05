@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3194,9 +3198,11 @@ form:</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;valueInfo&#34;</span><span class="p">:</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>The REST API supports the <a href="/manual/latest/user-guide/process-engine/variables/#supported-variable-values">Value Types</a> supported by the process engine.</p>
-<h1 id="capitalization-of-type-names">Capitalization of Type Names</h1>
+
+<h2 id="capitalization-of-type-names">Capitalization of Type Names</h2>
 <p>In the REST API, the type names start with a capital letter, i.e., <code>String</code> instead of <code>string</code>.</p>
-<h1 id="serialized-and-deserialized-object-values">Serialized and Deserialized Object Values</h1>
+
+<h2 id="serialized-and-deserialized-object-values">Serialized and Deserialized Object Values</h2>
 <p>Object Values are instances of (non primitive) Java types. When working with the REST API, it is
 generally advisable to work with the serialized value of a variable. In that case the value is
 retrieved from the database and directly returned in the http response. If the client you are
@@ -3208,7 +3214,8 @@ building is not a Java Applications by itself, make sure you use a text-based
   <p>To retrieve the serialized form of a variable, use the <code>deserializeValues=false</code> GET parameter.</p>
 </div>
 
-<h1 id="serialize-variables-of-type-object-in-rest-api">Serialize Variables of type Object in REST API</h1>
+
+<h2 id="serialize-variables-of-type-object-in-rest-api">Serialize Variables of type Object in REST API</h2>
 <p>In the REST API, <a href="/manual/latest/user-guide/process-engine/variables/">process variables</a> of type Object can be serialized in JSON or XML format.</p>
 <p>Serializing Object into JSON format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl">	<span class="p">{</span>

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,14 +3193,16 @@
       <p>Hidden input elements are HTML controls in the form of</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>They are not displayed in the form, but can be used to retrieve values to be used in the context of the form (e.g., using Angular bindings).</p>
-<h1 id="binding-a-hidden-element-to-a-process-variable">Binding a Hidden Element to a Process Variable</h1>
+
+<h2 id="binding-a-hidden-element-to-a-process-variable">Binding a Hidden Element to a Process Variable</h2>
 <p>A hidden input can be bound to a process variable using the <code>cam-variable-type</code> and <code>cam-variable-name</code> directives:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">cam-variable-name</span><span class="o">=</span><span class="s">&#34;CUSTOMER_ID&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">cam-variable-type</span><span class="o">=</span><span class="s">&#34;String&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">value</span><span class="o">=</span><span class="s">&#34;testuser&#34;</span> <span class="p">/&gt;</span>
 </span></span></code></pre></div><p>In the example above, the hidden input field is bound to the variable named <code>CUSTOMER_ID</code> of type <code>String</code> and contains the value <code>testuser</code>.</p>
-<h1 id="supported-variable-types-for-hidden-elements">Supported Variable Types for Hidden Elements</h1>
+
+<h2 id="supported-variable-types-for-hidden-elements">Supported Variable Types for Hidden Elements</h2>
 <p>The hidden input field supports the same variable types as the single line text input <code>&lt;input type=&quot;text&quot;&gt;&lt;/input&gt;</code>. See the section on <a href="/manual/latest/reference/forms/embedded-forms/controls/inputs/#supported-variable-types-for-text-inputs">Supported Variable Types</a> for details.</p>
 
     </div>

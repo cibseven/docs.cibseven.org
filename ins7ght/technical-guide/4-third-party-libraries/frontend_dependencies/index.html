@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Frontend Dependencies | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/ins7ght/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/" id="logolink">
+      <img src="/ins7ght/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  ><a href="/manual">CIB seven</a></li>
+      
+      <li  class="active"  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/ins7ght/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_overview/" >Introduction</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/1-introduction/introduction_purpose/" >Purpose</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/" >App Navigation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/app_navigation_global_overview/" >Global Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/app_navigation_process_analysis/" >Process Analysis</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/bottleneck/app_navigation_process_analysis_bottleneck/" >Process Analysis - Bottleneck</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/" >Interacting with the App</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_app_importing_data/" >Importing Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_filtering_and_searching/" >Interacting with the App – Filtering and Searching</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/3-interacting-with-the-app/interacting_with_the_app_exporting_data/" >Exporting Data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/4-use-cases/use_cases/" >Use Case: Data-Driven Process Insights</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/5-limitations/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/6-faq/faq/" >FAQ</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/" >Release notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_upcoming_features/" >Upcoming Features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/7-release-notes/release_notes_update_notes/" >Release Notes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/" >Technical Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/" >Setup CIB ins7ght</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" >Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions/" >Security Instructions</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app/" >Ins7ght Web Application</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/3-ins7ght-explained/polling-client/data_copy_and_import/" >Polling Client - Data Copy and Import</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/" >Third Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/backend_dependencies/" >Backend Dependencies</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/4-third-party-libraries/frontend_dependencies/" >Frontend Dependencies</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/" >Rest API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/api_overview/" >Rest API Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" >Overview Statistics API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck/" >Process Analysis API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/info/" >Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/process/" >Process API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Frontend Dependencies</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="frontend-dependencies">Frontend Dependencies</h2>
+<p>CIB ins7ght frontend uses the following third-party libraries and frameworks.</p>
+<hr>
+
+<h3 id="core-framework">Core Framework</h3>
+
+<h4 id="vuejs">Vue.js</h4>
+<ul>
+<li><strong>Version:</strong> 3.5.13</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Progressive JavaScript framework for building user interfaces</li>
+</ul>
+
+<h4 id="vue-router">Vue Router</h4>
+<ul>
+<li><strong>Version:</strong> 4.0.13</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Official routing library for Vue.js applications</li>
+</ul>
+
+<h4 id="vuex">Vuex</h4>
+<ul>
+<li><strong>Version:</strong> 4.0.2</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> State management pattern and library for Vue.js applications</li>
+</ul>
+<hr>
+
+<h3 id="http-client">HTTP Client</h3>
+
+<h4 id="axios">Axios</h4>
+<ul>
+<li><strong>Version:</strong> 1.7.9</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Promise-based HTTP client for making REST API calls</li>
+</ul>
+<hr>
+
+<h3 id="data-visualization">Data Visualization</h3>
+
+<h4 id="apexcharts">ApexCharts</h4>
+<ul>
+<li><strong>Version:</strong> 1.8.0 (vue3-apexcharts)</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Modern charting library for creating interactive charts and graphs</li>
+<li><strong>Website:</strong> <a href="https://apexcharts.com/">https://apexcharts.com/</a></li>
+</ul>
+<hr>
+
+<h3 id="bpmn-visualization">BPMN Visualization</h3>
+
+<h4 id="bpmn-js">bpmn-js</h4>
+<ul>
+<li><strong>Version:</strong> 18.2.0</li>
+<li><strong>License:</strong> bpmn.io License</li>
+<li><strong>Purpose:</strong> BPMN 2.0 rendering toolkit and web modeler</li>
+<li><strong>Website:</strong> <a href="https://bpmn.io/toolkit/bpmn-js/">https://bpmn.io/toolkit/bpmn-js/</a></li>
+</ul>
+
+<h4 id="bpmn-ioform-js">@bpmn-io/form-js</h4>
+<ul>
+<li><strong>Version:</strong> 1.15.0</li>
+<li><strong>License:</strong> bpmn.io License</li>
+<li><strong>Purpose:</strong> Form rendering for BPMN process forms</li>
+</ul>
+<hr>
+
+<h3 id="ui-and-styling">UI and Styling</h3>
+
+<h4 id="bootstrap">Bootstrap</h4>
+<ul>
+<li><strong>Version:</strong> 5.3.3</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> CSS framework for responsive design and UI components</li>
+</ul>
+
+<h4 id="material-design-icons">Material Design Icons</h4>
+<ul>
+<li><strong>Version:</strong> 7.4.47 (@mdi/font)</li>
+<li><strong>License:</strong> Apache License 2.0 / SIL OFL 1.1</li>
+<li><strong>Purpose:</strong> Icon library for Material Design icons</li>
+</ul>
+<hr>
+
+<h3 id="utilities">Utilities</h3>
+
+<h4 id="momentjs">Moment.js</h4>
+<ul>
+<li><strong>Version:</strong> 2.30.1</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Date and time manipulation library</li>
+</ul>
+
+<h4 id="mitt">Mitt</h4>
+<ul>
+<li><strong>Version:</strong> 3.0.1</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Tiny functional event emitter / pubsub</li>
+</ul>
+
+<h4 id="platformjs">Platform.js</h4>
+<ul>
+<li><strong>Version:</strong> 1.3.6</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Platform detection library for browsers</li>
+</ul>
+
+<h4 id="vue-global-events">Vue Global Events</h4>
+<ul>
+<li><strong>Version:</strong> 3.0.1</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Global event handling for Vue 3</li>
+</ul>
+<hr>
+
+<h3 id="internationalization">Internationalization</h3>
+
+<h4 id="vue-i18n">Vue I18n</h4>
+<ul>
+<li><strong>Version:</strong> 11.0.0-rc.1</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Internationalization plugin for Vue.js</li>
+<li><strong>Languages:</strong> German, English, Spanish</li>
+</ul>
+<hr>
+
+<h3 id="build-tools">Build Tools</h3>
+
+<h4 id="vite">Vite</h4>
+<ul>
+<li><strong>Version:</strong> 6.2.3</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Next-generation frontend build tool and dev server</li>
+</ul>
+
+<h4 id="vitejsplugin-vue">@vitejs/plugin-vue</h4>
+<ul>
+<li><strong>Version:</strong> 6.0.0</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Official Vue 3 plugin for Vite</li>
+</ul>
+<hr>
+
+<h3 id="development-tools">Development Tools</h3>
+
+<h4 id="eslint">ESLint</h4>
+<ul>
+<li><strong>Version:</strong> 9.18.0</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> JavaScript linter for code quality</li>
+</ul>
+<p><strong>ESLint Plugins:</strong></p>
+<ul>
+<li><code>@eslint/js</code>: 9.18.0</li>
+<li><code>eslint-plugin-vue</code>: 9.32.0</li>
+<li><code>@vitest/eslint-plugin</code>: 1.3.4</li>
+</ul>
+
+<h4 id="prettier">Prettier</h4>
+<ul>
+<li><strong>Version:</strong> 3.4.2</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Opinionated code formatter</li>
+</ul>
+
+<h4 id="vueeslint-config-prettier">@vue/eslint-config-prettier</h4>
+<ul>
+<li><strong>Version:</strong> 10.1.0</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> ESLint config for Prettier integration with Vue</li>
+</ul>
+<hr>
+
+<h3 id="testing">Testing</h3>
+
+<h4 id="vitest">Vitest</h4>
+<ul>
+<li><strong>Version:</strong> 3.0.5</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Vite-native unit test framework</li>
+</ul>
+
+<h4 id="vuetest-utils">@vue/test-utils</h4>
+<ul>
+<li><strong>Version:</strong> 2.4.6</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Official testing utilities for Vue.js</li>
+</ul>
+
+<h4 id="jsdom">jsdom</h4>
+<ul>
+<li><strong>Version:</strong> 26.0.0</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> JavaScript implementation of web standards for Node.js</li>
+</ul>
+
+<h4 id="start-server-and-test">start-server-and-test</h4>
+<ul>
+<li><strong>Version:</strong> 2.0.10</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Start server, wait for URL, then run test command</li>
+</ul>
+<hr>
+
+<h3 id="additional-development-tools">Additional Development Tools</h3>
+
+<h4 id="cross-env">cross-env</h4>
+<ul>
+<li><strong>Version:</strong> 7.0.3</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Run scripts that set environment variables across platforms</li>
+</ul>
+
+<h4 id="vite-plugin-vue-devtools">vite-plugin-vue-devtools</h4>
+<ul>
+<li><strong>Version:</strong> 7.7.1</li>
+<li><strong>License:</strong> MIT License</li>
+<li><strong>Purpose:</strong> Vue DevTools integration for Vite</li>
+</ul>
+<hr>
+
+<h3 id="complete-dependency-summary">Complete Dependency Summary</h3>
+
+<h4 id="production-dependencies">Production Dependencies</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Library</th>
+          <th>Version</th>
+          <th>License</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Vue</td>
+          <td>3.5.13</td>
+          <td>MIT</td>
+          <td>UI framework</td>
+      </tr>
+      <tr>
+          <td>Vue Router</td>
+          <td>4.0.13</td>
+          <td>MIT</td>
+          <td>Routing</td>
+      </tr>
+      <tr>
+          <td>Vuex</td>
+          <td>4.0.2</td>
+          <td>MIT</td>
+          <td>State management</td>
+      </tr>
+      <tr>
+          <td>Axios</td>
+          <td>1.7.9</td>
+          <td>MIT</td>
+          <td>HTTP client</td>
+      </tr>
+      <tr>
+          <td>vue3-apexcharts</td>
+          <td>1.8.0</td>
+          <td>MIT</td>
+          <td>Charts</td>
+      </tr>
+      <tr>
+          <td>bpmn-js</td>
+          <td>18.2.0</td>
+          <td>bpmn.io</td>
+          <td>BPMN visualization</td>
+      </tr>
+      <tr>
+          <td>@bpmn-io/form-js</td>
+          <td>1.15.0</td>
+          <td>bpmn.io</td>
+          <td>BPMN forms</td>
+      </tr>
+      <tr>
+          <td>Bootstrap</td>
+          <td>5.3.3</td>
+          <td>MIT</td>
+          <td>CSS framework</td>
+      </tr>
+      <tr>
+          <td>@mdi/font</td>
+          <td>7.4.47</td>
+          <td>Apache 2.0 / SIL OFL</td>
+          <td>Icons</td>
+      </tr>
+      <tr>
+          <td>Moment.js</td>
+          <td>2.30.1</td>
+          <td>MIT</td>
+          <td>Date/time</td>
+      </tr>
+      <tr>
+          <td>Vue i18n</td>
+          <td>11.0.0-rc.1</td>
+          <td>MIT</td>
+          <td>Internationalization</td>
+      </tr>
+      <tr>
+          <td>Mitt</td>
+          <td>3.0.1</td>
+          <td>MIT</td>
+          <td>Event emitter</td>
+      </tr>
+      <tr>
+          <td>Platform.js</td>
+          <td>1.3.6</td>
+          <td>MIT</td>
+          <td>Platform detection</td>
+      </tr>
+      <tr>
+          <td>vue-global-events</td>
+          <td>3.0.1</td>
+          <td>MIT</td>
+          <td>Global events</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="development-dependencies">Development Dependencies</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Library</th>
+          <th>Version</th>
+          <th>License</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Vite</td>
+          <td>6.2.3</td>
+          <td>MIT</td>
+          <td>Build tool</td>
+      </tr>
+      <tr>
+          <td>@vitejs/plugin-vue</td>
+          <td>6.0.0</td>
+          <td>MIT</td>
+          <td>Vue plugin for Vite</td>
+      </tr>
+      <tr>
+          <td>ESLint</td>
+          <td>9.18.0</td>
+          <td>MIT</td>
+          <td>Linting</td>
+      </tr>
+      <tr>
+          <td>Prettier</td>
+          <td>3.4.2</td>
+          <td>MIT</td>
+          <td>Code formatting</td>
+      </tr>
+      <tr>
+          <td>Vitest</td>
+          <td>3.0.5</td>
+          <td>MIT</td>
+          <td>Testing</td>
+      </tr>
+      <tr>
+          <td>@vue/test-utils</td>
+          <td>2.4.6</td>
+          <td>MIT</td>
+          <td>Vue testing</td>
+      </tr>
+      <tr>
+          <td>jsdom</td>
+          <td>26.0.0</td>
+          <td>MIT</td>
+          <td>DOM implementation</td>
+      </tr>
+      <tr>
+          <td>cross-env</td>
+          <td>7.0.3</td>
+          <td>MIT</td>
+          <td>Cross-platform env vars</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="nodejs-and-npm">Node.js and npm</h3>
+<ul>
+<li><strong>Node.js Version:</strong> 22.14.0</li>
+<li><strong>npm Version:</strong> 10.9.2</li>
+</ul>
+<hr>
+
+<h3 id="license-compliance">License Compliance</h3>
+<p>All frontend dependencies use open-source licenses compatible with commercial use:</p>
+<ul>
+<li><strong>MIT License:</strong> Most dependencies (permissive, allows commercial use)</li>
+<li><strong>Apache License 2.0:</strong> Material Design Icons</li>
+<li><strong>bpmn.io License:</strong> BPMN visualization libraries</li>
+<li><strong>SIL OFL 1.1:</strong> Material Design Icons fonts</li>
+</ul>
+<hr>
+
+<h3 id="support-and-documentation">Support and Documentation</h3>
+<ul>
+<li><strong>Vue.js:</strong> <a href="https://vuejs.org/">https://vuejs.org/</a></li>
+<li><strong>Vue Router:</strong> <a href="https://router.vuejs.org/">https://router.vuejs.org/</a></li>
+<li><strong>Vuex:</strong> <a href="https://vuex.vuejs.org/">https://vuex.vuejs.org/</a></li>
+<li><strong>Vite:</strong> <a href="https://vitejs.dev/">https://vitejs.dev/</a></li>
+<li><strong>Axios:</strong> <a href="https://axios-http.com/">https://axios-http.com/</a></li>
+<li><strong>ApexCharts:</strong> <a href="https://apexcharts.com/">https://apexcharts.com/</a></li>
+<li><strong>bpmn-js:</strong> <a href="https://bpmn.io/toolkit/bpmn-js/">https://bpmn.io/toolkit/bpmn-js/</a></li>
+<li><strong>Bootstrap:</strong> <a href="https://getbootstrap.com/">https://getbootstrap.com/</a></li>
+<li><strong>Vitest:</strong> <a href="https://vitest.dev/">https://vitest.dev/</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#core-framework">Core Framework</a>
+      <ul>
+        <li><a href="#vuejs">Vue.js</a></li>
+        <li><a href="#vue-router">Vue Router</a></li>
+        <li><a href="#vuex">Vuex</a></li>
+      </ul>
+    </li>
+    <li><a href="#http-client">HTTP Client</a>
+      <ul>
+        <li><a href="#axios">Axios</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-visualization">Data Visualization</a>
+      <ul>
+        <li><a href="#apexcharts">ApexCharts</a></li>
+      </ul>
+    </li>
+    <li><a href="#bpmn-visualization">BPMN Visualization</a>
+      <ul>
+        <li><a href="#bpmn-js">bpmn-js</a></li>
+        <li><a href="#bpmn-ioform-js">@bpmn-io/form-js</a></li>
+      </ul>
+    </li>
+    <li><a href="#ui-and-styling">UI and Styling</a>
+      <ul>
+        <li><a href="#bootstrap">Bootstrap</a></li>
+        <li><a href="#material-design-icons">Material Design Icons</a></li>
+      </ul>
+    </li>
+    <li><a href="#utilities">Utilities</a>
+      <ul>
+        <li><a href="#momentjs">Moment.js</a></li>
+        <li><a href="#mitt">Mitt</a></li>
+        <li><a href="#platformjs">Platform.js</a></li>
+        <li><a href="#vue-global-events">Vue Global Events</a></li>
+      </ul>
+    </li>
+    <li><a href="#internationalization">Internationalization</a>
+      <ul>
+        <li><a href="#vue-i18n">Vue I18n</a></li>
+      </ul>
+    </li>
+    <li><a href="#build-tools">Build Tools</a>
+      <ul>
+        <li><a href="#vite">Vite</a></li>
+        <li><a href="#vitejsplugin-vue">@vitejs/plugin-vue</a></li>
+      </ul>
+    </li>
+    <li><a href="#development-tools">Development Tools</a>
+      <ul>
+        <li><a href="#eslint">ESLint</a></li>
+        <li><a href="#prettier">Prettier</a></li>
+        <li><a href="#vueeslint-config-prettier">@vue/eslint-config-prettier</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing">Testing</a>
+      <ul>
+        <li><a href="#vitest">Vitest</a></li>
+        <li><a href="#vuetest-utils">@vue/test-utils</a></li>
+        <li><a href="#jsdom">jsdom</a></li>
+        <li><a href="#start-server-and-test">start-server-and-test</a></li>
+      </ul>
+    </li>
+    <li><a href="#additional-development-tools">Additional Development Tools</a>
+      <ul>
+        <li><a href="#cross-env">cross-env</a></li>
+        <li><a href="#vite-plugin-vue-devtools">vite-plugin-vue-devtools</a></li>
+      </ul>
+    </li>
+    <li><a href="#complete-dependency-summary">Complete Dependency Summary</a>
+      <ul>
+        <li><a href="#production-dependencies">Production Dependencies</a></li>
+        <li><a href="#development-dependencies">Development Dependencies</a></li>
+      </ul>
+    </li>
+    <li><a href="#nodejs-and-npm">Node.js and npm</a></li>
+    <li><a href="#license-compliance">License Compliance</a></li>
+    <li><a href="#support-and-documentation">Support and Documentation</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/ins7ght/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

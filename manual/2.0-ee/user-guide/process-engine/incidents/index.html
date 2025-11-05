@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,14 +3197,16 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Incidents are stored in the ACT_RU_INCIDENT database table.</p>
 <p>If you want to customize the incident handling behavior, it is possible to replace the default incident handlers in the process engine configuration and provide custom implementations (see below).</p>
-<h1 id="incident-types">Incident Types</h1>
+
+<h2 id="incident-types">Incident Types</h2>
 <p>There are different types of incidents. Currently the process engine supports the following incidents:</p>
 <ul>
 <li><strong>failedJob</strong>: is raised when automatic retries for a job (timer or asynchronous continuation) have been depleted. The incident indicates that the corresponding execution is stuck and will not continue automatically. Administrative action is necessary. The incident is resolved when the job is manually executed or when the retries for the corresponding job are set to a value &gt; 0.</li>
 <li><strong>failedExternalTask</strong>: is raised when a worker of an <a href="/manual/2.0-ee/user-guide/process-engine/external-tasks/">External Task</a> reports a failure and the given retries are set to a value &lt;= 0. The incident indicates that the corresponding external task is stuck and will not be fetched by a worker. Administrative action is necessary to reset the retries.</li>
 </ul>
 <p>It is possible to create custom incidents of any type with the Java API.</p>
-<h1 id="creating-and-resolving-custom-incidents">Creating and Resolving Custom Incidents</h1>
+
+<h2 id="creating-and-resolving-custom-incidents">Creating and Resolving Custom Incidents</h2>
 <p>An incident of any type can be created by calling <code>RuntimeService#createIncident</code> &hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="p">.</span><span class="na">createIncident</span><span class="p">(</span><span class="s">&#34;someType&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;someExecution&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;someConfiguration&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;someMessage&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>&hellip; or directly <code>DelegateExecution#createIncident</code>.</p>
@@ -3208,13 +3214,15 @@
 </span></span></span></code></pre></div><p>Custom incidents must always be related to an existing Execution.</p>
 <p>An incident of any type, except for <strong>failedJob</strong> and <strong>failedExternalTask</strong>, can be resolved by calling <code>RuntimeService#resolveIncident</code>.</p>
 <p>Incidents can be <a href="/manual/2.0-ee/reference/rest/specification/#tag/Execution/operation/createIncident">created</a> and <a href="/manual/2.0-ee/reference/rest/specification/#tag/Incident/operation/resolveIncident">resolved</a> through the REST API as well.</p>
-<h1 id="de-activate-incidents">(De-)Activate Incidents</h1>
+
+<h2 id="de-activate-incidents">(De-)Activate Incidents</h2>
 <p>The process engine allows you to configure  whether certain incidents should be raised or not, based on the incident type.
 The following properties are available in the <code>org.cibseven.bpm.engine.ProcessEngineConfiguration</code> class:</p>
 <ul>
 <li><code>createIncidentOnFailedJobEnabled</code>: indicates whether Failed Job incidents should be raised or not.</li>
 </ul>
-<h1 id="implement-custom-incident-handlers">Implement Custom Incident Handlers</h1>
+
+<h2 id="implement-custom-incident-handlers">Implement Custom Incident Handlers</h2>
 <p>Incident Handlers are responsible for handling incidents of a certain type (see <a href="#incident-types">Incident Types</a> ).</p>
 <p>An Incident Handler implements the following interface:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">IncidentHandler</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3237,7 +3245,8 @@ The following properties are available in the <code>org.cibseven.bpm.engine.Proc
   <p>Please be aware that this API is <strong>not</strong> part of the <a href="/manual/2.0-ee/introduction/public-api/">public API</a> and may change in later releases.</p>
 </div>
 
-<h1 id="composite-incident-handlers">Composite Incident Handlers</h1>
+
+<h2 id="composite-incident-handlers">Composite Incident Handlers</h2>
 <p>By default, an incident can only be handled by one handler with a same type.
 Composite incident handlers allow defining one main and multiple sub handlers. Only the result from the &ldquo;main&rdquo; incident handler will be returned.</p>
 <p>To enable composite incident handlers, configure the following property:</p>

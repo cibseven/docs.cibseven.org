@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3191,7 +3195,8 @@ in the same process model (to be precise: in the same sub process). Hence you ca
 alternative to a sequence flow as shown in the following example.</p>
 <div data-bpmn-diagram="../bpmn/event-link"></div>
 <p>Note that you might have the same event source (throwing intermediate link event with the same event definition name) multiple times, but the event target (catching intermediate link event) has to be unique according to the BPMN 2.0 specification.</p>
-<h1 id="link-event-definition">Link Event Definition</h1>
+
+<h2 id="link-event-definition">Link Event Definition</h2>
 <p>The name of the link is set by a LinkEventDefinition within the XML. Please note that this should always correspond to the name
 of the intermediate event, otherwise this gets really confusing to everybody looking at the diagram (however, the engine just
 gives a warning as it is valid BPMN 2.0).</p>
@@ -3205,7 +3210,8 @@ gives a warning as it is valid BPMN 2.0).</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/intermediateCatchEvent&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process&gt;</span>
-</span></span></code></pre></div><h1 id="camunda-extensions">Camunda Extensions</h1>
+</span></span></code></pre></div>
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>

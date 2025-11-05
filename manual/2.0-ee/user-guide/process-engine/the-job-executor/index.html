@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3201,15 +3205,18 @@
        /></span>
 </figure>
 
-<h1 id="job-executor-activation">Job Executor Activation</h1>
+
+<h2 id="job-executor-activation">Job Executor Activation</h2>
 <p>When using an <strong>embedded process engine</strong>, by default, the Job Executor is not activated when the process engine boots. Specify</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jobExecutorActivate&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>in the process engine configuration when you want the JobExecutor to be activated upon booting the process engine.</p>
 <p>When using a <strong>shared process engine</strong>, the default is reversed: if you do not specify the <code>jobExecutorActivate</code> property on the process engine configuration, the job executor is automatically started. In order to turn it off, you have to explicitly set the property to false:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jobExecutorActivate&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="job-executor-in-a-unit-test">Job Executor in a Unit Test</h1>
+</span></span></code></pre></div>
+<h2 id="job-executor-in-a-unit-test">Job Executor in a Unit Test</h2>
 <p>For unit testing scenarios it is cumbersome to work with this background component. Therefore the Java API offers to query for (<code>ManagementService.createJobQuery</code>) and execute jobs (<code>ManagementService.executeJob</code>) <em>by hand</em>, which allows to control job execution from within a unit test.</p>
-<h1 id="job-creation">Job Creation</h1>
+
+<h2 id="job-creation">Job Creation</h2>
 <p>Jobs are created for a range of purposes by the process engine. The following job types exist:</p>
 <ul>
 <li>Asynchronous continuations to set <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/">transaction boundaries</a> in the process</li>
@@ -3217,7 +3224,8 @@
 <li>Asynchronous handling of BPMN events</li>
 </ul>
 <p>During creation, jobs can receive a priority for acquisition and execution.</p>
-<h2 id="job-prioritization">Job Prioritization</h2>
+
+<h3 id="job-prioritization">Job Prioritization</h3>
 <p>In practice, the amount of jobs processed is seldomly spread evenly across the day. Instead, there are peaks of high load, for example when batch operations are run overnight. In such a situation, the job executor can be temporarily overloaded: the database contains many more jobs than the job executor can handle at a time. <em>Job Prioritization</em> can help cope with these situations in a well-defined matter by defining an order of importance and enabling execution by that order.</p>
 <p>In general, there are two types of use cases that can be tackled with job prioritization:</p>
 <ul>
@@ -3233,7 +3241,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="the-job-priority">The Job Priority</h2>
+
+<h3 id="the-job-priority">The Job Priority</h3>
 <p>A priority is a natural number in the range of a Java <code>long</code> value. A higher number represents a higher priority. Once assigned, the priority is static, meaning that the process engine will not go through the process of assigning a priority for that job again at any point in the future.</p>
 <p>Job priorities affect two phases during process execution: job creation and job acquisition. During job creation, a job is assigned a priority. During job acquisition, the process engine can evaluate the given job priorities to order their execution accordingly. That means, jobs are strictly acquired by the order of priorities.</p>
 
@@ -3245,18 +3254,22 @@
 </p>
 </div>
 
-<h2 id="configure-the-process-engine-for-job-priorities">Configure the Process Engine for Job Priorities</h2>
+
+<h3 id="configure-the-process-engine-for-job-priorities">Configure the Process Engine for Job Priorities</h3>
 <p>This section explains how to enable and disable job priorities in the configuration. There are two relevant configuration properties which can be set on the process engine configuration:</p>
 <p><code>producePrioritizedJobs</code>: Controls whether the process engine assigns priorities to jobs. The default value is <code>true</code>. If priorities are not needed, the process engine configuration property <code>producePrioritizedJobs</code> can be set to <code>false</code>. In this case, all jobs receive a priority of 0.
 For details on how to specify job priorities and how the process engine assigns them, see the following section on <a href="#specify-job-priorities">Specifying Job Priorities</a>.</p>
 <p><code>jobExecutorAcquireByPriority</code>: Controls whether jobs are acquired according to their priority. The default value is <code>false</code> which means that it needs to be explicitly enabled. Hint: when enabling this, additional database indexes should be created as well: See the section <a href="#the-job-order-of-job-acquisition">The Order of Job Acquisition</a> for details.</p>
-<h2 id="specify-job-priorities">Specify Job Priorities</h2>
+
+<h3 id="specify-job-priorities">Specify Job Priorities</h3>
 <p>Job priorities can be specified in the BPMN model as well as overridden at runtime via API.</p>
-<h3 id="priorities-in-bpmn-xml">Priorities in BPMN XML</h3>
+
+<h4 id="priorities-in-bpmn-xml">Priorities in BPMN XML</h4>
 <p>Job Priorities can be assigned at the process or the activity level. To achieve this the Camunda extension attribute <code>camunda:jobPriority</code> can be used.</p>
 <p>For specifying the priority, both constant values and <a href="/manual/2.0-ee/user-guide/process-engine/expression-language/">expressions</a> are supported. When using a constant value, the same priority is assigned to all instances of the process or activity. Expressions, on the other hand, allow assigning a different priority to each instance of the process or activity. Expression must evaluate to a number in the Java <code>long</code> range.
 The concrete value can be the result of a complex calculation and be based on user-provided data (resulting from a task form or other sources).</p>
-<h4 id="priorities-at-the-process-level">Priorities at the Process Level</h4>
+
+<h5 id="priorities-at-the-process-level">Priorities at the Process Level</h5>
 <p>When configuring job priorities at the process instance level, the <code>camunda:jobPriority</code> attribute needs to be applied to the bpmn <code>&lt;process ...&gt;</code> element:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bpmn:process</span> <span class="na">id=</span><span class="s">&#34;Process_1&#34;</span> <span class="na">isExecutable=</span><span class="s">&#34;true&#34;</span> <span class="na">camunda:jobPriority=</span><span class="s">&#34;8&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
@@ -3268,7 +3281,8 @@ See also: <a href="#job-priority-precedence-schema">Job Priority Precedence Sche
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:process&gt;</span>
 </span></span></code></pre></div><p>In the above example the priority is determined based on the property <code>priority</code> of the variable <code>order</code>.</p>
-<h4 id="priorities-at-the-activity-level">Priorities at the Activity Level</h4>
+
+<h5 id="priorities-at-the-activity-level">Priorities at the Activity Level</h5>
 <p>When configuring job priorities at the activity level, the <code>camunda:jobPriority</code> attribute needs to be applied
 to the corresponding bpmn element:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bpmn:serviceTask</span> <span class="na">id=</span><span class="s">&#34;ServiceTask_1&#34;</span>
@@ -3283,7 +3297,8 @@ The priority overrides a process level priority. See also: <a href="#job-priorit
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:asyncBefore=</span><span class="s">&#34;true&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:jobPriority=</span><span class="s">&#34;${customer.status == &#39;VIP&#39; ? 10 : 0}&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>In the above example the priority is determined based on the property <code>status</code> of the current customer.</p>
-<h4 id="resolution-context-of-priority-expressions">Resolution Context of Priority Expressions</h4>
+
+<h5 id="resolution-context-of-priority-expressions">Resolution Context of Priority Expressions</h5>
 <p>This section explains which context variables and functions are available when evaluating priority expressions.
 For some general documentation on this, see the corresponding <a href="/manual/2.0-ee/user-guide/process-engine/expression-language/unified-expression-language/#availability-of-variables-and-functions-inside-expression-language">documentation section</a>.</p>
 <p>All priority expressions are evaluated in the context of an existing execution. This means that variable <code>execution</code> is implicitly defined as well as all of the execution&rsquo;s variables by their name.</p>
@@ -3293,13 +3308,16 @@ Examples:</p>
 <li>Timer Start Event</li>
 <li>Asynchronous Signal Start Event</li>
 </ul>
-<h4 id="priority-propagation-to-called-process-instances">Priority Propagation to Called Process Instances</h4>
+
+<h5 id="priority-propagation-to-called-process-instances">Priority Propagation to Called Process Instances</h5>
 <p>When starting a process instance via a call activity, you sometimes want the process instance to &ldquo;inherit&rdquo; the priority of the calling process instance.
 The easiest way to achieve this is by passing the priority using a variable and referencing it using an expression in the called process.
 See also <a href="/manual/2.0-ee/reference/bpmn20/subprocesses/call-activity/#passing-variables">Call Activity Parameters</a> for details on how to pass variables using call activities.</p>
-<h3 id="set-job-definition-priorities-via-managementservice-api">Set Job Definition Priorities via ManagementService API</h3>
+
+<h4 id="set-job-definition-priorities-via-managementservice-api">Set Job Definition Priorities via ManagementService API</h4>
 <p>Sometimes job priorities need to be changed at runtime to deal with unforeseen circumstances. For example: consider the service task <em>Process Payment</em> of an order process: the service task invokes some external payment service which may be overloaded and thus respond slowly. The job executor is therefore blocked waiting for responses. Other concurrent jobs with the same or lower priorities cannot proceed, although this is desirable in this exceptional situation.</p>
-<h4 id="override-priority-by-job-definition">Override Priority by Job Definition</h4>
+
+<h5 id="override-priority-by-job-definition">Override Priority by Job Definition</h5>
 <p>While expressions may help in these cases to a certain extent, it is cumbersome to change process data for all involved process instances and to make sure to restore it when the exceptional condition is over. Thus the ManagementService API allows to temporarily set an overriding priority for a job definition. The following operation can be performed to downgrade the priority for all future jobs of a given job definition:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// find the job definition</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">JobDefinition</span><span class="w"> </span><span class="n">jobDefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">managementService</span><span class="w">
@@ -3313,11 +3331,13 @@ See also <a href="/manual/2.0-ee/reference/bpmn20/subprocesses/call-activity/#pa
 <p>Optionally, the overriding priority can be applied to all the existing jobs of that definition by using the <code>cascade</code> parameter:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">setOverridingJobPriorityForJobDefinition</span><span class="p">(</span><span class="n">jobDefinition</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">0L</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>Note that this will not lead to preemption of jobs that are currently executed.</p>
-<h4 id="reset-priority-by-job-definition">Reset Priority by Job Definition</h4>
+
+<h5 id="reset-priority-by-job-definition">Reset Priority by Job Definition</h5>
 <p>When the service has recovered from the overload situation, overriding priority can be cleared again as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">managementService</span><span class="p">.</span><span class="na">clearOverridingJobPriorityForJobDefinition</span><span class="p">(</span><span class="n">jobDefinition</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w">
 </span></span></span></code></pre></div><p>From now on, all new jobs receive the priorities specified in the BPMN XML again.</p>
-<h3 id="job-priority-precedence-schema">Job Priority Precedence Schema</h3>
+
+<h4 id="job-priority-precedence-schema">Job Priority Precedence Schema</h4>
 <p>The following diagram sums up the precedence of priority sources when a job&rsquo;s priority is determined:</p>
 <figure class="image">
   <span><img
@@ -3327,15 +3347,19 @@ See also <a href="/manual/2.0-ee/reference/bpmn20/subprocesses/call-activity/#pa
        /></span>
 </figure>
 
-<h3 id="set-job-priorities-via-managementservice-api">Set Job Priorities via ManagementService API</h3>
+
+<h4 id="set-job-priorities-via-managementservice-api">Set Job Priorities via ManagementService API</h4>
 <p>The ManagementService also offers a method to change a single job&rsquo;s priority via <code>ManagementService#setJobPriority(String jobId, long priority)</code>.</p>
-<h1 id="job-acquisition">Job Acquisition</h1>
+
+<h2 id="job-acquisition">Job Acquisition</h2>
 <p>Job acquisition is the process of retrieving jobs from the database that are to be executed next. Therefore jobs must be persisted to the database together with properties determining whether a job can be executed. For example, a job created for a timer event may not be executed before the defined time span has passed.</p>
-<h2 id="persistence">Persistence</h2>
+
+<h3 id="persistence">Persistence</h3>
 <p>Jobs are persisted to the database, in the <code>ACT_RU_JOB</code> table. This database table has the following columns (among others):</p>
 <pre tabindex="0"><code>ID_ | REV_ | LOCK_EXP_TIME_ | LOCK_OWNER_ | RETRIES_ | DUEDATE_
 </code></pre><p>Job acquisition is concerned with polling this database table and locking jobs.</p>
-<h2 id="acquirable-jobs">Acquirable Jobs</h2>
+
+<h3 id="acquirable-jobs">Acquirable Jobs</h3>
 <p>A job is acquirable, i.e., a candidate for execution, if it fulfills all following conditions:</p>
 <ul>
 <li>it is due, meaning that the value in the <code>DUEDATE_</code> column is in the past</li>
@@ -3343,17 +3367,20 @@ See also <a href="/manual/2.0-ee/reference/bpmn20/subprocesses/call-activity/#pa
 <li>its retries have not been depleted, meaning that the value in the <code>RETRIES_</code> column is greater than zero.</li>
 </ul>
 <p>In addition, the process engine has a concept of job suspension. For example, a job gets suspended when the process instance it belongs gets suspended. A job is only acquirable if it is not suspended.</p>
-<h3 id="job-acquisition-performance-optimization">Job Acquisition performance optimization</h3>
+
+<h4 id="job-acquisition-performance-optimization">Job Acquisition performance optimization</h4>
 <p>To optimize the acquisition of jobs that need to be executed immediately, the <code>DUEDATE_</code> column is not set (<code>null</code>) and a (positive) null check is added as a condition for acquisition.</p>
 <p>In case each job must have a <code>DUEDATE_</code> set, the optimization can be disabled. This can be done by setting the <code>ensureJobDueDateNotNull</code> <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/process-engine/#ensureJobDueDateNotNull">process engine configuration flag</a> to <code>true</code>.</p>
 <p>However, any jobs created with a <code>null</code> value for <code>DUEDATE_</code> before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the <strong>Set Due Date</strong> <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29">Java</a>
 /<a href="/manual/2.0-ee/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST</a> or <strong>Set Retries</strong> <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ManagementService.html#setJobRetries%28int%29">Java</a>
 /<a href="/manual/2.0-ee/reference/rest/specification/#tag/Job/operation/setJobRetries">REST</a> APIs.</p>
-<h2 id="the-two-phases-of-job-acquisition">The Two Phases of Job Acquisition</h2>
+
+<h3 id="the-two-phases-of-job-acquisition">The Two Phases of Job Acquisition</h3>
 <p>Job acquisition has two phases. In the first phase the job executor queries for a configurable amount of acquirable jobs. If at least one job can be found, it enters the second phase, locking the jobs. Locking is necessary in order to ensure that jobs are executed exactly once. In a clustered scenario, it is customary to operate multiple job executor instances (one for each node) that all poll the same ACT_RU_JOB table. Locking a job ensures that it is only acquired by a single job executor instance. Locking a job means updating its values in the LOCK_EXP_TIME_ and LOCK_OWNER_ columns. The LOCK_EXP_TIME_ column is updated with a timestamp signifying a date that lies in the future. The intuition behind this is that we want to lock the job until that date is reached. The LOCK_OWNER_ column is updated with a value uniquely identifying the current job executor instance. In a clustered scenario this could be a node name uniquely identifying the current cluster node.</p>
 <p>The situation where multiple job executor instances attempt to lock the same job concurrently is accounted for by using optimistic locking (see REV_ column).</p>
 <p>After having locked a job, the job executor instance has effectively reserved a time slot for executing the job: once the date written to the LOCK_EXP_TIME_ column is reached it will be visible to job acquisition again. In order to execute the acquired jobs, they are passed to the acquired jobs queue.</p>
-<h2 id="the-job-order-of-job-acquisition">The Job Order of Job Acquisition</h2>
+
+<h3 id="the-job-order-of-job-acquisition">The Job Order of Job Acquisition</h3>
 <p>By default the job executor does not impose an order in which acquirable
 jobs are acquired. This means that the job acquisition order depends on the
 database and its configuration. That&rsquo;s why job acquisition is assumed to be
@@ -3448,19 +3475,24 @@ add an index on the corresponding column(s) of the <code>ACT_RU_JOB</code> table
     <td><code>ACT_RU_JOB(TYPE_ DESC, DUEDATE_ ASC)</code></td>
   </tr>
 </table>
-<h2 id="job-executor-priority-range">Job Executor priority range</h2>
+
+<h3 id="job-executor-priority-range">Job Executor priority range</h3>
 <p>By default, the Job Executor executes all jobs regardless of their priorities. Some jobs might be more important to finish quicker than others, so we assign them priorities and set <code>jobExecutorAcquireByPriority</code> to <code>true</code> as described above. Depending on the workload, the Job Executor might be able to execute all jobs eventually. But if the load is high enough, we might face starvation where a Job Executor is always busy working on high-priority jobs and never manages to execute the lower priority jobs.</p>
 <p>To prevent this, you can specify a priority range for the job executor by setting values for <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/process-engine/#jobExecutorPriorityRangeMin"><code>jobExecutorPriorityRangeMin</code></a> or <a href="/manual/2.0-ee/reference/deployment-descriptors/tags/process-engine/#jobExecutorPriorityRangeMax"><code>jobExecutorPriorityRangeMax</code></a> (or both). The Job Executor will only acquire jobs that are inside its priority range (inclusive). Both properties are optional, so it is fine only to set one of them.</p>
 <p>To avoid job starvation, make sure to have no gaps between Job Executor priority ranges. If, for example, Job Executor A has a priority range of 0 to 100 and Job Executor B executes jobs from priority 200 to <code>Long.MAX_VALUE</code> any job that receives a priority of 101 to 199 will never be executed. Job starvation can also occur with <code>batch jobs</code> and <code>history cleanup jobs</code> as both types of jobs also receive priorities (default: <code>0</code>). You can configure them via their respective properties: <code>batchJobPriority</code> and <code>historyCleanupJobPriority</code>.</p>
 <p>This feature is particularly useful if you want to separate multiple types of jobs from each other. For example, short-running, urgent jobs with high priority and long-running jobs that are not urgent but should finish eventually. Setting up a Job Executor priority range for both types will ensure that long-running jobs can not block urgent ones.</p>
-<h2 id="backoff-strategy">Backoff Strategy</h2>
+
+<h3 id="backoff-strategy">Backoff Strategy</h3>
 <p>The Job Executor uses a backoff strategy to avoid acquisition conflicts in clusters and to reduce the database load when no jobs are due. The second point may result in a delay between job creation and job execution as the job acquisition by default doubles the delay to the next acquisition run.
 The default maximum wait time is 60 seconds. You can decrease the delay by setting the configuration parameter <code>maxWait</code> to a value lower than 60000 milliseconds.</p>
-<h1 id="job-execution">Job Execution</h1>
-<h2 id="thread-pool">Thread Pool</h2>
+
+<h2 id="job-execution">Job Execution</h2>
+
+<h3 id="thread-pool">Thread Pool</h3>
 <p>Acquired jobs are executed by a thread pool. The thread pool consumes jobs from the acquired jobs queue. The acquired jobs queue is an in-memory queue with a fixed capacity. When an executor starts executing a job, it is first removed from the queue.</p>
 <p>In the scenario of an embedded process engine, the default implementation for this thread pool is a <code>java.util.concurrent.ThreadPoolExecutor</code>. However, this is not allowed in Java EE environments. There we hook into the application server capabilities of thread management. See the platform-specific information in the <a href="/manual/2.0-ee/user-guide/runtime-container-integration/">Runtime Container Integration</a> section on how this achieved.</p>
-<h2 id="failed-jobs">Failed Jobs</h2>
+
+<h3 id="failed-jobs">Failed Jobs</h3>
 <p>Upon failure of job execution, e.g., if a service task invocation throws an exception, a job will be retried a number of times (by default 2 so that the job is tried three times in total).
 It is not immediately retried and added back to the acquisition queue, but the value of the RETRIES_ column is decreased and the executor unlocks the job.
 The process engine thus performs bookkeeping for failed jobs. The unlocking also includes erasing the time LOCK_EXP_TIME_ and the owner of the lock LOCK_OWNER_
@@ -3479,7 +3511,8 @@ Incidents and historic incidents related to the job can be requested via Java AP
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">HistoricIncident</span><span class="o">&gt;</span><span class="w"> </span><span class="n">historicIncidents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engineRule</span><span class="p">.</span><span class="na">getHistoryService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">createHistoricIncidentQuery</span><span class="p">().</span><span class="na">configuration</span><span class="p">(</span><span class="n">jobId</span><span class="p">).</span><span class="na">list</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="retry-time-cycle-configuration">Retry Time Cycle Configuration</h3>
+</span></span></span></code></pre></div>
+<h4 id="retry-time-cycle-configuration">Retry Time Cycle Configuration</h4>
 <p>By default, a failed job will be retried three times and the retries are performed immediately after the failure. In daily business it might be useful to configure a retry strategy, i.e., by setting how often a job is retried and how long the engine should wait until it tries to execute a job again. This configuration can be specified globally in the process engine configuration.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-engine</span> <span class="na">name=</span><span class="s">&#34;default&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
@@ -3495,7 +3528,8 @@ Incidents and historic incidents related to the job can be requested via Java AP
 <li><a href="#use-a-custom-job-retry-configuration-for-events">Events</a></li>
 <li><a href="#use-a-custom-job-retry-configuration-for-multi-instance-activities">Multi-Instance Activities </a></li>
 </ul>
-<h4 id="use-a-custom-job-retry-configuration-for-activities">Use a Custom Job Retry Configuration for Activities</h4>
+
+<h5 id="use-a-custom-job-retry-configuration-for-activities">Use a Custom Job Retry Configuration for Activities</h5>
 <p>As soon as the retry configuration is enabled, it can be applied to tasks, call activities, embedded subprocesses and transactions subprocesses. For instance, the job retry in a task can be configured in the CIB seven engine in the BPMN 2.0 XML as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions</span> <span class="na">xmlns:camunda=</span><span class="s">&#34;http://camunda.org/schema/1.0/bpmn&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
@@ -3509,7 +3543,8 @@ Incidents and historic incidents related to the job can be requested via Java AP
 </span></span></code></pre></div><p>You can also set an expression as in the retry configuration. For example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;camunda:failedJobRetryTimeCycle&gt;</span>${retryCycle}<span class="nt">&lt;/camunda:failedJobRetryTimeCycle&gt;</span>
 </span></span></code></pre></div><p>The LOCK_EXP_TIME_ is used to define when the job can be executed again, meaning the failed job will automatically be retried once the LOCK_EXP_TIME_ date is expired.</p>
-<h4 id="use-a-custom-job-retry-configuration-for-events">Use a Custom Job Retry Configuration for Events</h4>
+
+<h5 id="use-a-custom-job-retry-configuration-for-events">Use a Custom Job Retry Configuration for Events</h5>
 <p>The job retries can also be configured for the following events:</p>
 <ul>
 <li>Timer Start Event</li>
@@ -3532,7 +3567,8 @@ Incidents and historic incidents related to the job can be requested via Java AP
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
 </span></span></code></pre></div><p>Reminder: a retry may be required if there are any failures during the transaction which follows the timer.</p>
-<h4 id="use-a-custom-job-retry-configuration-for-multi-instance-activities">Use a Custom Job Retry Configuration for Multi-Instance Activities</h4>
+
+<h5 id="use-a-custom-job-retry-configuration-for-multi-instance-activities">Use a Custom Job Retry Configuration for Multi-Instance Activities</h5>
 <p>If the retry configuration is set for a multi-instance activity then the configuration is applied to the <a href="/manual/2.0-ee/user-guide/process-engine/transactions-in-processes/#asynchronous-continuations-of-multi-instance-activities">multi-instance body</a>. Additionally, the retries of the inner activities can also be configured using the extension element as child of the <code>multiInstanceLoopCharacteristics</code> element.</p>
 <p>The following example defines the retries of a multi-instance service task with asynchronous continuation of the multi-instance body and the inner activity. If a failure occur during one of the five parallel instances then the job of the failed instance will be retried up to 3 times with a delay of 5 seconds. In case all instances ended successful and a failure occur during the transaction which follows the task, the job will be retried up to 5 times with a delay of 5 minutes.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions</span> <span class="na">xmlns:camunda=</span><span class="s">&#34;http://camunda.org/schema/1.0/bpmn&#34;</span><span class="nt">&gt;</span>
@@ -3552,7 +3588,8 @@ Incidents and historic incidents related to the job can be requested via Java AP
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/serviceTask&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
-</span></span></code></pre></div><h3 id="retry-intervals">Retry Intervals</h3>
+</span></span></code></pre></div>
+<h4 id="retry-intervals">Retry Intervals</h4>
 <p>The retry time cycle (e.g. R5/PT5M) allows to define the number of retries and an interval when the failed job should be retried. Regardless of the values, the interval is always (at least) 5 minutes. You can configure the list of retry intervals (separated by comma) on a global level or for a specific job configuration. The local configuration takes precedence.
 Here is an example of a global process engine configuration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-engine</span> <span class="na">name=</span><span class="s">&#34;default&#34;</span><span class="nt">&gt;</span>
@@ -3570,7 +3607,8 @@ Here is an example of a global process engine configuration:</p>
 <li>A job fails for the fourth time: the job will <strong>NOT</strong> be retried again and the next due date is in 20 minutes (PT20M is applied again).</li>
 </ul>
 <p>If the user decides to increase the retry number during retries, the last interval of the list would be applied within the difference between the new value and the size of the list. After that, it would continue with the normal flow as above. The API to increase the number of retries also supports passing a new due date for the job which will determine when the job will be picked up again. This is useful in cases where you want to control when a failed job should be tried again. For example, an incident has been resolved and the job should run as soon as possible instead of waiting for the next retry cycle. In this case, setting the job due date to the current date or a date in the past would make the job executor pick up the job immediately.</p>
-<h3 id="custom-retry-configuration">Custom Retry Configuration</h3>
+
+<h4 id="custom-retry-configuration">Custom Retry Configuration</h4>
 <p>You can configure an custom retry configuration by adding the <code>customPostBPMNParseListeners</code> property and specify your custom <code>FailedJobParseListener</code> to the process engine configuration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;processEngineConfiguration&#34;</span> <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- Your defined properties! --&gt;</span>
@@ -3582,7 +3620,8 @@ Here is an example of a global process engine configuration:</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
-</span></span></code></pre></div><h1 id="concurrent-job-execution">Concurrent Job Execution</h1>
+</span></span></code></pre></div>
+<h2 id="concurrent-job-execution">Concurrent Job Execution</h2>
 <p>The Job Executor makes sure that <strong>jobs from a single process instance are never executed concurrently</strong>. Why is this? Consider the following process definition:</p>
 <figure class="image">
   <span><img
@@ -3596,7 +3635,8 @@ Here is an example of a global process engine configuration:</p>
 <p>This is usually a good thing. However it also bears an inherent problem: consistency. Consider the parallel join after the service tasks. When the execution of a service task is completed, we arrive at the parallel join and need to decide whether to wait for the other executions or whether we can move forward. That means, for each branch arriving at the parallel join, we need to take a decision whether we can continue or whether we need to wait for one or more other executions from the other branches.</p>
 <p>This requires synchronization between the branches of execution. The engine addresses this problem with optimistic locking. Whenever we take a decision based on data that might not be current (because another transaction might modify it before we commit), we make sure to increment the revision of the same database row in both transactions. This way, whichever transaction commits first wins and the other ones fail with an optimistic locking exception. This solves the problem in the case of the process discussed above: if multiple executions arrive at the parallel join concurrently, they all assume that they have to wait, increment the revision of their parent execution (the process instance) and then try to commit. Whichever execution is first will be able to commit and the other ones will fail with an optimistic locking exception. Since the executions are triggered by a job, the job executor will retry to perform the same job after waiting for a certain amount of time and hopefully this time pass the synchronizing gateway.</p>
 <p>However, while this is a perfectly fine solution from the point of view of persistence and consistency, this might not always be desirable behavior at a higher level, especially if the execution has non-transactional side effects, which will not be rolled back by the failing transaction. For instance, if the <em>book concert tickets</em> service does not share the same transaction as the process engine, we might book multiple tickets if we retry the job. That is why jobs of the same process instance are processed <em>exclusively</em> by default.</p>
-<h2 id="exclusive-jobs">Exclusive Jobs</h2>
+
+<h3 id="exclusive-jobs">Exclusive Jobs</h3>
 <p>An exclusive job cannot be performed at the same time as another exclusive job from the same process instance. Consider the process shown in the section above: if the jobs corresponding to the service tasks are treated as exclusive, the job executor will try to avoid that they are executed in parallel. Instead, it will ensure that whenever it acquires an exclusive job from a certain process instance, it also acquires all other exclusive jobs from the same process instance and delegates them to the same worker thread. This enforces sequential execution of these jobs and in most cases avoids optimistic locking exceptions. However, this behavior is a heuristic, meaning that the job executor can only enforce sequential execution of the jobs that are available during <strong>lookup time</strong>. If a potentially conflicting job is created after that, is currently running or is already scheduled for execution, the job may be processed by another job execution thread in parallel.</p>
 <p><strong>Exclusive Jobs are the default configuration</strong>. All asynchronous continuations and timer events are thus exclusive by default. In addition, if you want a job to be non-exclusive, you can configure it as such using <code>camunda:exclusive=&quot;false&quot;</code>. For example, the following service task would be asynchronous but non-exclusive.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;service&#34;</span> <span class="na">camunda:expression=</span><span class="s">&#34;${myService.performBooking(hotel, dates)}&#34;</span> <span class="na">camunda:asyncBefore=</span><span class="s">&#34;true&#34;</span> <span class="na">camunda:exclusive=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
@@ -3605,7 +3645,8 @@ Here is an example of a global process engine configuration:</p>
 <li>It can be turned off if you are an expert and know what you are doing (and have understood this section). Other than that, it is more intuitive for most users if things like asynchronous continuations and timers just work. Note: one strategy to deal with OptimisticLockingExceptions at a parallel gateway is to configure the gateway to use asynchronous continuations. This way the job executor can be used to retry the gateway until the exception resolves.</li>
 <li>It is actually not a performance issue. Performance is an issue under heavy load. Heavy load means that all worker threads of the job executor are busy all the time. With exclusive jobs the engine will simply distribute the load differently. Exclusive jobs means that jobs from a single process instance are performed by the same thread sequentially. But consider: you have more than one single process instance. Jobs from other process instances are delegated to other threads and executed concurrently. This means that with exclusive jobs the engine will not execute jobs from the same process instance concurrently but it will still execute multiple instances concurrently. From an overall throughput perspective this is desirable in most scenarios as it usually leads to individual instances being done more quickly.</li>
 </ul>
-<h2 id="exclusive-jobs-of-process-hierarchies">Exclusive Jobs of Process Hierarchies</h2>
+
+<h3 id="exclusive-jobs-of-process-hierarchies">Exclusive Jobs of Process Hierarchies</h3>
 <p>As explained above, the <code>exclusive</code> asynchronous continuation will instruct the job executor to acquire and execute the jobs of a given process instance by one thread.</p>
 <p>How does <code>exclusive</code> behave when a process contains hierarchies e.g. when multiple parallel subprocesses can be spawned by a root process?</p>
 <p>By default, the exclusive <em>acquisition</em> &amp; <em>execution</em> is only guaranteed for the jobs that originate from the root process instance. In a multi-instance call activity setting, the subprocess instances that will be spawned can run in parallel despite selecting <code>exclusive</code> asynchronous continuation as depicted in the image below.</p>
@@ -3634,7 +3675,8 @@ Here is an example of a global process engine configuration:</p>
 </p>
 </div>
 
-<h1 id="the-job-executor-and-multiple-process-engines">The Job Executor and Multiple Process Engines</h1>
+
+<h2 id="the-job-executor-and-multiple-process-engines">The Job Executor and Multiple Process Engines</h2>
 <p>In the case of a single, application-embedded process engine, the job executor setup is the following:</p>
 <figure class="image">
   <span><img
@@ -3663,7 +3705,8 @@ See the platform-specific information in the <a href="/manual/2.0-ee/user-guide/
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-engine&gt;</span>
 </span></span></code></pre></div><p>Job acquisitions have to be declared in CIB seven&rsquo;s deployment descriptor, see <a href="/manual/2.0-ee/user-guide/runtime-container-integration/">the container-specific configuration options</a>.</p>
-<h1 id="cluster-setups">Cluster Setups</h1>
+
+<h2 id="cluster-setups">Cluster Setups</h2>
 <p>When running CIB seven in a cluster, there is a distinction between <em>homogeneous</em> and <em>heterogeneous</em> setups. We define a cluster as a set of network nodes that all run CIB seven against the same database (at least for one engine on each node). In the <em>homogeneous</em> case, the same process applications (and thus custom classes like JavaDelegates) are deployed to all of the nodes, as depicted below.</p>
 <figure class="image">
   <span><img
@@ -3682,7 +3725,8 @@ See the platform-specific information in the <a href="/manual/2.0-ee/user-guide/
        /></span>
 </figure>
 
-<h2 id="job-execution-in-heterogeneous-clusters">Job Execution in Heterogeneous Clusters</h2>
+
+<h3 id="job-execution-in-heterogeneous-clusters">Job Execution in Heterogeneous Clusters</h3>
 <p>A heterogeneous cluster setup as described above poses additional challenges to the job executor. Both platforms declare the same engine, i.e. they run against the same database. This means that jobs will be inserted into the same table. However, in the default configuration the job acquisition thread of node 1 will lock any executable jobs of that table and submit them to the local job execution pool. This means that jobs created in the context of process application B (so on node 2) may be executed on node 1 and vice versa. As the job execution may involve classes that are part of B&rsquo;s deployment, you are likely going to see a <code>ClassNotFoundExeception</code> or any of the likes.</p>
 <p>To prevent the job acquisition on node 1 from picking jobs that <em>belong</em> to node 2, the process engine can be configured as <em>deployment aware</em>, by the setting following property in the process engine configuration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-engine</span> <span class="na">name=</span><span class="s">&#34;default&#34;</span><span class="nt">&gt;</span>

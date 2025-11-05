@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3213,7 +3217,8 @@
 <li><strong>OnPart</strong>: A trigger that occurs when a certain transition in the lifecycle of a plan item or a case file item is performed.</li>
 <li><strong>IfPart</strong>: A condition that is checked when all OnParts are fulfilled. This condition is defined on case data.</li>
 </ul>
-<h1 id="onpart">OnPart</h1>
+
+<h2 id="onpart">OnPart</h2>
 <p>OnParts are defined on lifecycle transitions for plan items or case file items. As the CIB seven engine does not currently support case file items, it is only possible to use <em>plan item OnParts</em>. A sentry with an OnPart can be defined as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;sentry</span> <span class="na">id=</span><span class="s">&#34;Sentry_1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;planItemOnPart</span> <span class="na">sourceRef=</span><span class="s">&#34;PlanItem_1&#34;</span><span class="nt">&gt;</span>
@@ -3223,7 +3228,8 @@
 </span></span></code></pre></div><p>A <code>planItemOnPart</code> must always reference a plan item by the attribute <code>sourceRef</code>. This plan item must be contained by the same stage the sentry is defined in. The child element <code>standardEvent</code> can the identifier of any lifecycle transition from that plan item&rsquo;s lifecycle and that is supported by the CIB seven engine. Note that different plan item definitions define different lifecycles. For details on valid lifecycle transitions, see the <a href="/manual/2.0-ee/reference/cmmn11/concepts/lifecycle/">Lifecycles</a> section.</p>
 <p>As an alternative to <code>sourceRef</code>, the CMMN specification allows to define an attribute <code>sentryRef</code> responsible for referencing another sentry such that the onPart is fulfilled when the plan item that sentry references performs the <em>exit</em> state transition. This attribute is currently not supported by the CIB seven engine.</p>
 <p>Note that it is possible to have any number of OnParts which allows to combine multiple events. All OnParts must be fulfilled for a sentry to occur, i.e., specifying multiple OnParts is a conjunction of multiple events. An OnPart is fulfilled as soon as the element it is defined on performs the specified lifecycle transition. It is irrelevant whether this element performs any other subsequent lifecycle transitions.</p>
-<h1 id="ifpart">IfPart</h1>
+
+<h2 id="ifpart">IfPart</h2>
 <p>An IfPart defines an additional condition that is checked when all OnParts of the sentry are fulfilled. Only if the IfPart evaluates to <code>true</code>, the sentry is fulfilled. In Camunda, a sentry with an IfPart looks as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;sentry</span> <span class="na">id=</span><span class="s">&#34;Sentry_1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;ifPart&gt;</span>
@@ -3239,8 +3245,10 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/sentry&gt;</span>
 </span></span></code></pre></div><p>The CMMN specification allows to reference a case file item by the sentry attribute <code>contextRef</code>. This attribute is not supported by the CIB seven engine and therefore ignored.</p>
 <p>The engine evaluates IfParts at every lifecycle transition of a plan item contained in the sentry&rsquo;s stage. That means, if an IfPart is not satisfied immediately when all OnParts have occurred, the sentry may still occur at any later lifecycle transition.</p>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
-<h1 id="variableonpart">VariableOnPart</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
+
+<h2 id="variableonpart">VariableOnPart</h2>
 <p>VariableOnParts are defined on lifecycle transitions of a variable. Sentry with VariableOnPart is evaluated when the variable undergoes a transition (create or delete or update).
 A sentry can have more than one variableOnPart and can have at most one <code>variable event</code> each.
 In Camunda, a sentry with a variableOnPart looks as follows</p>
@@ -3252,7 +3260,8 @@ In Camunda, a sentry with a variableOnPart looks as follows</p>
   &lt;/extensionElements&gt;	
 &lt;/sentry&gt;  
 </code></pre><p>In the above example, sentry is evaluated when the <code>create</code> event on the variable <code>variable_1</code> occurs.</p>
-<h1 id="variableonpart-evaluation">VariableOnPart Evaluation</h1>
+
+<h2 id="variableonpart-evaluation">VariableOnPart Evaluation</h2>
 <p>Variable event that occurs in the scope of the execution triggers the sentry with variableOnParts in the following conditions:</p>
 <ul>
 <li><code>variableName</code> and <code>variableEvent</code> defined in the variableOnPart of the sentry matches the occurred variable event and the associated variable name.</li>
@@ -3274,7 +3283,8 @@ Each human task is attached with a entry criterion sentry and both the sentries 
 <li>When the variable <code>foo</code> is updated in the scope of the case model, then only the <code>HumanTask1</code> gets enabled.</li>
 <li>When the variable <code>foo</code> is updated in the scope of the stage, then only the <code>HumanTask_2</code> gets enabled.</li>
 </ul>
-<h1 id="combining-onparts-ifparts-and-variableonparts">Combining OnParts, IfParts and VariableOnParts</h1>
+
+<h2 id="combining-onparts-ifparts-and-variableonparts">Combining OnParts, IfParts and VariableOnParts</h2>
 <p>Sentries allow a flexible definition of event occurrences and data-based conditions to be fulfilled. The following rules apply for combining OnParts, IfParts and VariableOnParts.</p>
 <ul>
 <li>A valid sentry must have at least one of the sentry parts (OnPart or IfPart or VariableOnPart).</li>

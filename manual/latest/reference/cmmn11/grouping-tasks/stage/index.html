@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3241,7 +3245,8 @@
 <p>A stage in state <code>ENABLED</code> can be started manually using the <code>CaseService</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">caseService</span><span class="p">.</span><span class="na">manuallyStartCaseExecution</span><span class="p">(</span><span class="s">&#34;aCaseExecutionId&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>When the stage becomes <code>ACTIVE</code>, the contained plan items are instantiated and reach the state <code>AVAILABLE</code>. A stage in this state always contains at least one stage or task instance in the state <code>AVAILABLE</code>, <code>ENABLED</code>, or <code>ACTIVE</code>. In other words, a stage completes automatically if a user has no option to do further work on its contained plan items. This means that if a contained plan item completes or is disabled, the stage is notified about that state transition and checks if it is able to complete. A stage instance can only complete if there are no contained plan items in the state <code>ACTIVE</code>, and all are either in state <code>DISABLED</code> or <code>COMPLETED</code>. In case the check succeeds, the stage instance completes.</p>
-<h1 id="camunda-extensions">Camunda Extensions</h1>
+
+<h2 id="camunda-extensions">Camunda Extensions</h2>
 <table class="table table-striped">
   <tr>
     <th>Extension Elements</th>

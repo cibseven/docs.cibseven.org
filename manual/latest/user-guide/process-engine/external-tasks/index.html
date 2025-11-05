@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3193,7 +3197,8 @@
 </ol>
 <p>The first option is used when code is implemented as <a href="/manual/latest/user-guide/process-engine/delegation-code/">Delegation Code</a> or as a <a href="/manual/latest/user-guide/process-engine/scripting/">Script</a>. By contrast, external (service) tasks work in a way that the process engine publishes a unit of work to a worker to fetch and complete. We refer to this as the <em>external task pattern</em>.</p>
 <p>Note that the above distinction does not say whether the actual &ldquo;business logic&rdquo; is implemented locally or as a remote service. The Java Delegate invoked by an internal service task may either implement the business logic itself or it may call out to a web/rest service, send a message to another system and so forth. The same is true for an external worker. The worker can implement the business logic directly or again delegate to a remote system.</p>
-<h1 id="the-external-task-pattern">The External Task Pattern</h1>
+
+<h2 id="the-external-task-pattern">The External Task Pattern</h2>
 <p>The flow of executing external tasks can be conceptually separated into three steps, as depicted in the following image:</p>
 <figure class="image">
   <span><img
@@ -3224,9 +3229,11 @@ User tasks are created by the process engine and added to a task list. The proce
 <li><strong>Fine-Grained Scaling</strong>: If there is high load concentrated on service task processing, the number of external workers for the respective topics can be scaled out independently of the process engine.</li>
 <li><strong>Independent Maintenance</strong>: Workers can be maintained independently of the process engine without breaking operations. For example, if a worker for a specific topic has a downtime (e.g., due to an update), there is no immediate impact on the process engine. Execution of external tasks for such workers degrades gracefully: They are stored in the external task list until the external worker resumes operation.</li>
 </ul>
-<h1 id="working-with-external-tasks">Working with External Tasks</h1>
+
+<h2 id="working-with-external-tasks">Working with External Tasks</h2>
 <p>To work with external tasks they have to be declared in the BPMN XML. At runtime, external task instances can be accessed via Java and REST API. The following explains the API concepts and focuses on the Java API. Often the REST API is more suitable in this context, especially when implementing workers running in different environments with different technologies.</p>
-<h2 id="bpmn">BPMN</h2>
+
+<h3 id="bpmn">BPMN</h3>
 <p>In the BPMN XML of a process definition, a service task can be declared to be performed by an external worker by using the attributes <code>camunda:type</code> and <code>camunda:topic</code>. For example, a service task <em>Validate Address</em> can be configured to provide an external task instance for the topic <code>AddressValidation</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;validateAddressTask&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">name=</span><span class="s">&#34;Validate Address&#34;</span>
@@ -3234,7 +3241,8 @@ User tasks are created by the process engine and added to a task list. The proce
 </span></span><span class="line"><span class="cl">  <span class="na">camunda:topic=</span><span class="s">&#34;AddressValidation&#34;</span> <span class="nt">/&gt;</span>
 </span></span></code></pre></div><p>It is possible to define the topic name by using an <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/#delegation-code">expression</a> instead of a constant value.</p>
 <p>In addition, other <em>service-task-like</em> elements such as send tasks, business rule tasks, and throwing message events can be implemented with the external task pattern. See the <a href="/manual/latest/reference/bpmn20/">BPMN 2.0 implementation reference</a> for details.</p>
-<h3 id="error-event-definitions">Error Event Definitions</h3>
+
+<h4 id="error-event-definitions">Error Event Definitions</h4>
 <p>External tasks allow for the definition of error events that throw a specified BPMN error. This can be done by adding a <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-elements/#erroreventdefinition">camunda:errorEventDefinition</a> extension element to the task&rsquo;s definition. Compared to the <code>bpmn:errorEventDefinition</code>, the <code>camunda:errorEventDefinition</code> elements accept an additional <code>expression</code> attribute which supports any JUEL expression. Within the expression, you have access to the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a>
  object via the key <code>externalTask</code> which provides getter methods
 for <code>errorMessage</code>, <code>errorDetails</code>, <code>workerId</code>, <code>retries</code> and more.</p>
@@ -3252,9 +3260,11 @@ for <code>errorMessage</code>, <code>errorDetails</code>, <code>workerId</code>,
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/serviceTask&gt;</span>
 </span></span></code></pre></div><p>Further information on the functionality of error event definitions on external tasks can be found in the <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/#external-task-error-handling">expression language user guide</a>.</p>
-<h2 id="rest-api">Rest API</h2>
+
+<h3 id="rest-api">Rest API</h3>
 <p>See the <a href="/manual/latest/reference/rest/specification/#tag/External-Task">REST API documentation</a> for how the API operations can be accessed via HTTP.</p>
-<h3 id="long-polling-to-fetch-and-lock-external-tasks">Long Polling to Fetch and Lock External Tasks</h3>
+
+<h4 id="long-polling-to-fetch-and-lock-external-tasks">Long Polling to Fetch and Lock External Tasks</h4>
 <p>Ordinary HTTP requests are immediately answered by the server, regardless of whether the requested information
 is available or not. This inevitably leads to a situation where the client has to perform multiple recurring requests until
 the information is available (polling). This approach can obviously be expensive in terms of resources.</p>
@@ -3270,7 +3280,8 @@ configurable period of time (timeout).</p>
 <p>Long polling significantly reduces the number of requests and enables using resources more efficiently on both
 the server and the client side.</p>
 <p>Please also see the <a href="/manual/latest/reference/rest/specification/#tag/External-Task/operation/fetchAndLock">REST API documentation</a>.</p>
-<h4 id="unique-worker-request">Unique Worker Request</h4>
+
+<h5 id="unique-worker-request">Unique Worker Request</h5>
 <p>By default, multiple workers can use the same <code>workerId</code>. In order to ensure <code>workerId</code> uniqueness on server-side, the
 &lsquo;Unique Worker Request&rsquo; flag can be activated. This configuration flag affects only long-polling requests and not ordinary
 &lsquo;Fetch and Lock&rsquo; requests. If the &lsquo;Unique Worker Request&rsquo; flag is activated, pending requests with the same <code>workerId</code> are
@@ -3286,7 +3297,8 @@ consider the following configuration snippet:</p>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/context-param&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c">&lt;!-- ... --&gt;</span>
-</span></span></code></pre></div><h4 id="blocking-queue-capacity">Blocking Queue Capacity</h4>
+</span></span></code></pre></div>
+<h5 id="blocking-queue-capacity">Blocking Queue Capacity</h5>
 <p>By default, the blocking queue of long-polling &lsquo;Fetch and Lock&rsquo; requests has a capacity of 200, meaning that exceeding this number of requests will return an error. This value can be changed by setting the <code>fetch-and-lock-queue-capacity</code> property as a context parameter in the <code>engine-rest/WEB-INF/web.xml</code> file of the <em>engine-rest</em> artifact. If this property is absent or its value invalid, the default value will be used.</p>
 <p>Please consider the following configuration snippet:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- ... --&gt;</span>
@@ -3297,7 +3309,8 @@ consider the following configuration snippet:</p>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/context-param&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c">&lt;!-- ... --&gt;</span>
-</span></span></code></pre></div><h2 id="java-api">Java API</h2>
+</span></span></code></pre></div>
+<h3 id="java-api">Java API</h3>
 <p>The entry point to the Java API for external tasks is the <code>ExternalTaskService</code>. It can be accessed via <code>processEngine.getExternalTaskService()</code>.</p>
 <p>The following is an example of an interaction which fetches 10 tasks,
 works on these tasks in a loop and for each task, either completes the task or marks it as failed.</p>
@@ -3330,7 +3343,8 @@ works on these tasks in a loop and for each task, either completes the task or m
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>The following sections address the different interactions with the <code>ExternalTaskService</code> in greater detail.</p>
-<h3 id="fetching-tasks">Fetching Tasks</h3>
+
+<h4 id="fetching-tasks">Fetching Tasks</h4>
 <p>In order to implement a polling worker, a fetching operation can be executed by using the method <code>ExternalTaskService#fetchAndLock</code>. This method returns a fluent builder that allows to define a set of topics to fetch tasks for. Consider the following code snippet:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">LockedExternalTask</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">externalTaskService</span><span class="p">.</span><span class="na">fetchAndLock</span><span class="p">(</span><span class="n">10</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;externalWorkerId&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">topic</span><span class="p">(</span><span class="s">&#34;AddressValidation&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">60L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">1000L</span><span class="p">)</span><span class="w">
@@ -3383,23 +3397,28 @@ works on these tasks in a loop and for each task, either completes the task or m
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// work on task for that topic</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="external-task-prioritization">External Task Prioritization</h3>
+</span></span></span></code></pre></div>
+<h4 id="external-task-prioritization">External Task Prioritization</h4>
 <p>External task prioritization is similar to job prioritization. The same problem exists with starvation which should be considered.
 For further details, see the section on <a href="/manual/latest/user-guide/process-engine/the-job-executor/#the-job-priority">Job Prioritization</a>.</p>
-<h3 id="configure-the-process-engine-for-external-task-priorities">Configure the Process Engine for External Task Priorities</h3>
+
+<h4 id="configure-the-process-engine-for-external-task-priorities">Configure the Process Engine for External Task Priorities</h4>
 <p>This section explains how to enable and disable external task priorities in the configuration. There are two relevant configuration properties which can be set on the process engine configuration:</p>
 <p><code>producePrioritizedExternalTasks</code>: Controls whether the process engine assigns priorities to external tasks. The default value is <code>true</code>.
 If priorities are not needed, the process engine configuration property <code>producePrioritizedExternalTasks</code> can be set to <code>false</code>. In this case, all external tasks receive a priority of 0.
 For details on how to specify external task priorities and how the process engine assigns them, see the following section on <a href="#specify-external-task-priorities">Specifying External Task Priorities</a>.</p>
-<h3 id="specify-external-task-priorities">Specify External Task Priorities</h3>
+
+<h4 id="specify-external-task-priorities">Specify External Task Priorities</h4>
 <p>External task priorities can be specified in the BPMN model as well as overridden at runtime via API.</p>
-<h4 id="priorities-in-bpmn-xml">Priorities in BPMN XML</h4>
+
+<h5 id="priorities-in-bpmn-xml">Priorities in BPMN XML</h5>
 <p>External task priorities can be assigned at the process or the activity level. To achieve this, the Camunda extension attribute <code>camunda:taskPriority</code> can be used.</p>
 <p>For specifying the priority, both constant values and <a href="/manual/latest/user-guide/process-engine/expression-language/">expressions</a> are supported.
 When using a constant value, the same priority is assigned to all instances of the process or activity.
 Expressions, on the other hand, allow assigning a different priority to each instance of the process or activity. Expression must evaluate to a number in the Java <code>long</code> range.
 The concrete value can be the result of a complex calculation and be based on user-provided data (resulting from a task form or other sources).</p>
-<h4 id="priorities-at-the-process-level">Priorities at the Process Level</h4>
+
+<h5 id="priorities-at-the-process-level">Priorities at the Process Level</h5>
 <p>When configuring external task priorities at the process instance level, the <code>camunda:taskPriority</code> attribute needs to be applied to the bpmn <code>&lt;process ...&gt;</code> element:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bpmn:process</span> <span class="na">id=</span><span class="s">&#34;Process_1&#34;</span> <span class="na">isExecutable=</span><span class="s">&#34;true&#34;</span> <span class="na">camunda:taskPriority=</span><span class="s">&#34;8&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
@@ -3411,7 +3430,8 @@ If different process instances need to be executed with different priorities, an
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bpmn:process&gt;</span>
 </span></span></code></pre></div><p>In the above example the priority is determined based on the property <code>priority</code> of the variable <code>order</code>.</p>
-<h4 id="priorities-at-the-service-task-level">Priorities at the Service Task Level</h4>
+
+<h5 id="priorities-at-the-service-task-level">Priorities at the Service Task Level</h5>
 <p>When configuring external task priorities at the service task level, the <code>camunda:taskPriority</code> attribute needs to be applied to the bpmn <code>&lt;serviceTask ...&gt;</code> element.
 The service task must be an external task with the attribute <code>camunda:type=&quot;external&quot;</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  ...
@@ -3430,8 +3450,10 @@ If different process instances need to be executed with different external task 
 </span></span><span class="line"><span class="cl">			   <span class="na">camunda:taskPriority=</span><span class="s">&#34;${order.priority}&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span></code></pre></div><p>In the above example the priority is determined based on the property <code>priority</code> of the variable <code>order</code>.</p>
-<h3 id="fetch-external-task">Fetch external task</h3>
-<h4 id="by-priority">By priority</h4>
+
+<h4 id="fetch-external-task">Fetch external task</h4>
+
+<h5 id="by-priority">By priority</h5>
 <p>To fetch external tasks based on their priority, the overloaded method <code>ExternalTaskService#fetchAndLock</code> with the parameter <code>usePriority</code> can be used.
 The method without the boolean parameter returns the external tasks arbitrarily. If the parameter is given, the returned external tasks are ordered descendingly.
 See the following example which regards the priority of the external tasks:</p>
@@ -3446,7 +3468,8 @@ See the following example which regards the priority of the external tasks:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// work on task for that topic</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h4 id="by-create-time">By create time</h4>
+</span></span></span></code></pre></div>
+<h5 id="by-create-time">By create time</h5>
 <p>External tasks can also be fetched using their <code>createTime</code> in LIFO or FIFO order. This behavior allows clients to optimize their processing and avoid starvation in scenarios where the age of tasks and consumption are not aligned.</p>
 <p>Method <code>ExternalTaskService#fetchAndLock()</code> can be combined with the following methods to configure the ordering:</p>
 <p><strong><code>asc()</code></strong> - Tasks will be sorted using ascending order. The first task (at zero index) will have the earliest time and the last will have the oldest.</p>
@@ -3473,7 +3496,8 @@ See the following example which regards the priority of the external tasks:</p>
   <p>External tasks created with engine versions &lt; 7.21.0 will not have the <code>createTime</code> attribute. When using fetch and lock by <code>createTime</code> on them the behavior depends on how your database handles sorting of null values.</p>
 </div>
 
-<h4 id="multi-level-sorting">Multi-level sorting</h4>
+
+<h5 id="multi-level-sorting">Multi-level sorting</h5>
 <p>Multiple sorting criteria can be combined when fetching external tasks. For example passing <code>true</code> to the parameter <code>usePriority</code> and selecting an effective sorting value for <code>createTime</code> configuration leads to external tasks being sorted with priority descending first; when two tasks share the same priority, the selected <code>createTime</code> order will be used for sorting the results with priority equality.</p>
 <p>This is an example demonstration of the above example:</p>
 <p>Given the following indicative tasks:</p>
@@ -3499,7 +3523,8 @@ See the following example which regards the priority of the external tasks:</p>
   <p><code>Priority</code> will always take precedence over any other sorting property.</p>
 </div>
 
-<h3 id="completing-tasks">Completing Tasks</h3>
+
+<h4 id="completing-tasks">Completing Tasks</h4>
 <p>After fetching and performing the requested work, a worker can complete an external task by calling the <code>ExternalTaskService#complete</code> method. A worker can only complete tasks that it fetched and locked before. If the task has been locked by a different worker in the meantime, an exception is raised.</p>
 
 <div class="note bg-info docs-info">
@@ -3507,9 +3532,11 @@ See the following example which regards the priority of the external tasks:</p>
   <p>External tasks can include <a href="/manual/latest/user-guide/process-engine/external-tasks/#error-event-definitions">error event definitions</a> that can cancel the execution of <code>#complete</code> in case the error event&rsquo;s expression evaluates to <code>true</code>. In case an error event&rsquo;s expression evaluation raises an exception, the call to <code>#complete</code> will fail with that same exception.</p>
 </div>
 
-<h3 id="extending-of-locks-on-external-tasks">Extending of Locks on External Tasks</h3>
+
+<h4 id="extending-of-locks-on-external-tasks">Extending of Locks on External Tasks</h4>
 <p>When an external task is locked by a worker, the lock duration can be extended by calling the method <code>ExternalTaskService#extendLock</code>. A worker can specify the amount of time (in milliseconds) to update the timeout. A lock can only be extended by the worker who owns a lock on the given external task.</p>
-<h3 id="reporting-task-failure">Reporting Task Failure</h3>
+
+<h4 id="reporting-task-failure">Reporting Task Failure</h4>
 <p>A worker may not always be able to complete a task successfully. In this case it can report a failure to the process engine by using <code>ExternalTaskService#handleFailure</code>. Like <code>#complete</code>, <code>#handleFailure</code> can only be invoked by the worker possessing the most recent lock for a task. The <code>#handleFailure</code> method takes four additional arguments: <code>errorMessage</code>,<code>errorDetails</code>, <code>retries</code>, <code>retryTimeout</code>. The error message can contain a description of the nature of the problem and is limited to 666 characters. It can be accessed when the task is fetched again or is queried for. The <code>errorDetails</code> can contain the full error description and are unlimited in length. Error details are accessible through the separate method <code>ExternalTaskService#getExternalTaskErrorDetails</code>, based on task id parameter. With <code>retries</code> and <code>retryTimout</code>, workers can specify a retry strategy. When setting <code>retries</code> to a value &gt; 0, the task can be fetched again after <code>retryTimeout</code> expires. When setting retries to 0, a task can no longer be fetched and an incident is created for this task.</p>
 <p>Consider the following code snippet:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">LockedExternalTask</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">externalTaskService</span><span class="p">.</span><span class="na">fetchAndLock</span><span class="p">(</span><span class="n">10</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;externalWorkerId&#34;</span><span class="p">)</span><span class="w">
@@ -3539,7 +3566,8 @@ See the following example which regards the priority of the external tasks:</p>
   <p>External tasks can include <a href="/manual/latest/user-guide/process-engine/external-tasks/#error-event-definitions">error event definitions</a> that can cancel the execution of <code>#handleFailure</code> in case the error event&rsquo;s expression evaluates to <code>true</code>. In case an error event&rsquo;s expression evaluation raises an exception, this expression will be considered as evaluating to <code>false</code>.</p>
 </div>
 
-<h3 id="reporting-bpmn-error">Reporting BPMN Error</h3>
+
+<h4 id="reporting-bpmn-error">Reporting BPMN Error</h4>
 <p>See the documentation for <a href="/manual/latest/reference/bpmn20/events/error-events/#error-boundary-event">Error Boundary Events</a>.</p>
 <p>For some reason a business error can appear during execution. In this case, the worker can report a BPMN error to the process engine by using <code>ExternalTaskService#handleBpmnError</code>.
 Like <code>#complete</code> or <code>#handleFailure</code>, it can only be invoked by the worker possessing the most recent lock for a task.
@@ -3563,9 +3591,11 @@ the current activity instance simply ends and the error is not handled.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">variables</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>A BPMN error with the error code <code>bpmn-error</code> is propagated. If a boundary event with this error code exists, the BPMN error will be caught and handled.
 The error message and variables are optional. They can provide additional information for the error. The variables will be passed to the execution if the BPMN error is caught.</p>
-<h3 id="querying-tasks">Querying Tasks</h3>
+
+<h4 id="querying-tasks">Querying Tasks</h4>
 <p>A query for external tasks can be made via <code>ExternalTaskService#createExternalTaskQuery</code>. Contrary to <code>#fetchAndLock</code>, this is a reading query that does not set any locks.</p>
-<h3 id="managing-operations">Managing Operations</h3>
+
+<h4 id="managing-operations">Managing Operations</h4>
 <p>Additional management operations are <code>ExternalTaskService#unlock</code>, <code>ExternalTaskService#setRetries</code> and <code>ExternalTaskService#setPriority</code> to clear the current lock, to set the retries and to set the priority of an external task.
 Setting the retries is useful when a task has 0 retries left and must be resumed manually. With the last method the priority can
 be set to a higher value for more important or to a lower value for less important external tasks.</p>

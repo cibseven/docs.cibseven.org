@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>The decision service is a part of the process engine&rsquo;s <a href="/manual/latest/user-guide/process-engine/process-engine-api/#services-api">Services API</a>. It allows
 to evaluate a deployed decision definition independently from BPMN and CMMN.</p>
-<h1 id="evaluating-a-decision">Evaluating a Decision</h1>
+
+<h2 id="evaluating-a-decision">Evaluating a Decision</h2>
 <p>To evaluate a deployed decision, reference it by id or a combination of key and version. If
 a key is used but no version is specified then the latest version of decision
 definition with the given key is evaluated.</p>
@@ -3208,24 +3213,28 @@ definition with the given key is evaluated.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">evaluateDecisionTableByKey</span><span class="p">(</span><span class="s">&#34;decision-key&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">variables</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">evaluate</span><span class="p">();</span><span class="w"> 
-</span></span></span></code></pre></div><h2 id="the-decision-key">The Decision Key</h2>
+</span></span></span></code></pre></div>
+<h3 id="the-decision-key">The Decision Key</h3>
 <p>The key of a decision definition is specified by the <code>id</code> attribute of the
 <code>decision</code> element in the DMN XML. The different naming is related to the
 <a href="/manual/latest/user-guide/process-engine/decisions/repository/#versioning-of-decisions">Versioning of Decisions</a>. Since a key can reference multiple versions of a
 decision definition, the id specifies exactly one version.</p>
-<h2 id="passing-data">Passing Data</h2>
+
+<h3 id="passing-data">Passing Data</h3>
 <p>A decision may reference one or more variables. For example, a variable can be
 referenced in an input expression or an input entry of a decision table. The
 variables are passed to the decision service as key-value pairs. Each pair
 specifies the name and the value of a variable.</p>
 <p>For more information on the different expressions see the <a href="/manual/latest/reference/dmn/decision-table/">DMN 1.3 reference</a>.</p>
-<h1 id="authorizations-for-evaluating-decisions">Authorizations for Evaluating Decisions</h1>
+
+<h2 id="authorizations-for-evaluating-decisions">Authorizations for Evaluating Decisions</h2>
 <p>The user needs the permission <code>CREATE_INSTANCE</code> on the resource
 <code>DECISION_DEFINITION</code> to evaluate decisions. The resource id of the
 authorization is the decision definition key.</p>
 <p>For more information about authorizations please refer to the <a href="/manual/latest/user-guide/process-engine/authorization-service/">Authorization
 Service</a> section.</p>
-<h1 id="working-with-the-decision-result">Working with the Decision Result</h1>
+
+<h2 id="working-with-the-decision-result">Working with the Decision Result</h2>
 <p>The result of an evaluation is called decision result. The decision result is a complex object
 of type <code>DmnDecisionResult</code>. Think of it as a list of key-value pairs.</p>
 <p>If the decision is implemented as <a href="/manual/latest/reference/dmn/decision-table/">decision table</a> then each entry in the list represents one matched rule. The output entries of this
@@ -3258,7 +3267,8 @@ A complete list of all methods can be found in the <a href="/javadoc/cibseven/2.
  methods. In this case, the evaluation returns a <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a>
  which is semantically equal and provide the same methods as a
 <code>DmnDecisionResult</code>.</p>
-<h1 id="history-of-evaluated-decisions">History of Evaluated Decisions</h1>
+
+<h2 id="history-of-evaluated-decisions">History of Evaluated Decisions</h2>
 <p>When a decision is evaluated, a new history entry of type
 <code>HistoricDecisionInstance</code> is created which contains the inputs and outputs of
 the decision. The history can be queried by the history service.</p>

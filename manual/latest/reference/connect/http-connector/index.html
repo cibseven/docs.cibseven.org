@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3190,11 +3194,14 @@
 every connector in the classpath. It can be used to get the HTTP connector
 instance by its connector ID, which is <code>http-connector</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HttpConnector</span><span class="w"> </span><span class="n">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Connectors</span><span class="p">.</span><span class="na">getConnector</span><span class="p">(</span><span class="n">HttpConnector</span><span class="p">.</span><span class="na">ID</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="configure-apache-http-client">Configure Apache HTTP Client</h1>
+</span></span></span></code></pre></div>
+<h2 id="configure-apache-http-client">Configure Apache HTTP Client</h2>
 <p>Camunda Connect HTTP client uses the Apache HTTP client to make HTTP requests. Accordingly, it supports the same configuration options.</p>
-<h2 id="default-configuration">Default Configuration</h2>
+
+<h3 id="default-configuration">Default Configuration</h3>
 <p>By default, the HTTP client uses Apache&rsquo;s default configuration and respects the <a href="https://hc.apache.org/httpcomponents-client-4.5.x/current/httpclient/apidocs/org/apache/http/impl/client/HttpClientBuilder.html">system properties that are supported by HTTP client</a>.</p>
-<h2 id="custom-configuration">Custom Configuration</h2>
+
+<h3 id="custom-configuration">Custom Configuration</h3>
 <p>If you want to reconfigure the client going beyond the default configuration options, e.g. you want to configure another connection manager, the easiest way is to register
 a new connector configurator.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.connect.example</span><span class="p">;</span><span class="w">
@@ -3224,8 +3231,10 @@ a new connector configurator.</p>
 <code>resources/META-INF/services</code> directory with class name as content. For more
 information see the <a href="/manual/latest/reference/connect/extending-connect/">extending Connect</a> section.</p>
 <pre tabindex="0"><code>org.cibseven.connect.example.HttpConnectorConfigurator
-</code></pre><h1 id="requests">Requests</h1>
-<h2 id="create-a-simple-http-request">Create a Simple HTTP Request</h2>
+</code></pre>
+<h2 id="requests">Requests</h2>
+
+<h3 id="create-a-simple-http-request">Create a Simple HTTP Request</h3>
 <p>The HTTP connector can be used to create a new request, set a HTTP method, URL,
 content type and payload.</p>
 <p>A simple GET request:</p>
@@ -3242,7 +3251,8 @@ content type and payload.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>The HTTP methods PUT, DELETE, PATCH, HEAD, OPTIONS, TRACE
 are also available.</p>
-<h2 id="adding-http-headers-to-a-request">Adding HTTP Headers to a Request</h2>
+
+<h3 id="adding-http-headers-to-a-request">Adding HTTP Headers to a Request</h3>
 <p>To add own headers to the HTTP request the method <code>header</code> is
 available.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HttpResponse</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="na">createRequest</span><span class="p">()</span><span class="w">
@@ -3250,7 +3260,8 @@ available.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">header</span><span class="p">(</span><span class="s">&#34;Accept&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;application/json&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">url</span><span class="p">(</span><span class="s">&#34;http://camunda.org&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="enabling-http-response-error-handling">Enabling HTTP Response Error Handling</h2>
+</span></span></span></code></pre></div>
+<h3 id="enabling-http-response-error-handling">Enabling HTTP Response Error Handling</h3>
 <p>By default, the HTTP connector does not seamlessly handle 4XX and 5XX related response errors during HTTP call.
 To activate the handling of these errors without additional scripting, set the <code>throw-http-error</code> property to <code>TRUE</code> via the <code>configOption</code> method. Once enabled, the client will throw an exception in case of http response errors (status code 400-599).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HttpResponse</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="na">createRequest</span><span class="p">()</span><span class="w">
@@ -3258,7 +3269,8 @@ To activate the handling of these errors without additional scripting, set the <
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;throw-http-error&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;TRUE&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">url</span><span class="p">(</span><span class="s">&#34;http://camunda.org&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="using-the-generic-api">Using the Generic API</h2>
+</span></span></span></code></pre></div>
+<h3 id="using-the-generic-api">Using the Generic API</h3>
 <p>Besides the configuration methods also a generic API exists to
 set parameters of a request. The following parameters are
 available:</p>
@@ -3289,14 +3301,16 @@ available:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">request</span><span class="p">.</span><span class="na">setRequestParameter</span><span class="p">(</span><span class="s">&#34;method&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;GET&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">request</span><span class="p">.</span><span class="na">setRequestParameter</span><span class="p">(</span><span class="s">&#34;url&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;http://camunda.org&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">request</span><span class="p">.</span><span class="na">setRequestParameter</span><span class="p">(</span><span class="s">&#34;payload&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;hello world!&#34;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="response">Response</h1>
+</span></span></span></code></pre></div>
+<h2 id="response">Response</h2>
 <p>A response contains the status code, response headers and body.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Integer</span><span class="w"> </span><span class="n">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getStatusCode</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">contentTypeHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getHeader</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">getResponse</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>After the response was processed it should be closed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">response</span><span class="p">.</span><span class="na">close</span><span class="p">()</span><span class="w">
-</span></span></span></code></pre></div><h2 id="using-the-generic-api-1">Using the Generic API</h2>
+</span></span></span></code></pre></div>
+<h3 id="using-the-generic-api-1">Using the Generic API</h3>
 <p>Besides the response methods a generic API is provided
 to gather the response parameters. The following parameters
 are available:</p>

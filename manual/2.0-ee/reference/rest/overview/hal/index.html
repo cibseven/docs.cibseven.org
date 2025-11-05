@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3202,12 +3206,15 @@ response of a <code>HAL</code> request always has the following structure:</p>
 associated resources. A <code>_links</code> property contains at least a <code>self</code> relational link. The
 property <code>_embedded</code> includes other linked resources in the representing resource. Each
 embedded resource will be structured as a <code>HAL</code> resource.</p>
-<h1 id="example-resource">Example: Resource</h1>
-<h2 id="request">Request</h2>
+
+<h2 id="example-resource">Example: Resource</h2>
+
+<h3 id="request">Request</h3>
 <p>GET <code>/task/a-task-id</code></p>
 <p>Request Header:</p>
 <pre tabindex="0"><code>Accept: application/hal+json
-</code></pre><h2 id="response">Response</h2>
+</code></pre>
+<h3 id="response">Response</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;_links&#34;</span> <span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;self&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -3237,12 +3244,15 @@ embedded resource will be structured as a <code>HAL</code> resource.</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;assignee&#34;</span><span class="p">:</span> <span class="s2">&#34;demo&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="err">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h1 id="example-collection">Example: Collection</h1>
-<h2 id="request-1">Request</h2>
+</span></span></code></pre></div>
+<h2 id="example-collection">Example: Collection</h2>
+
+<h3 id="request-1">Request</h3>
 <p>GET <code>/task</code></p>
 <p>Request Header:</p>
 <pre tabindex="0"><code>Accept: application/hal+json
-</code></pre><h2 id="response-1">Response</h2>
+</code></pre>
+<h3 id="response-1">Response</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;_links&#34;</span> <span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;self&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -3284,7 +3294,8 @@ embedded resource will be structured as a <code>HAL</code> resource.</p>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;count&#34;</span> <span class="p">:</span> <span class="mi">2</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h1 id="caching-of-hal-relations">Caching of HAL Relations</h1>
+</span></span></code></pre></div>
+<h2 id="caching-of-hal-relations">Caching of HAL Relations</h2>
 <p>During the generation of a HAL response, linked resources are resolved to embed
 them.  Some of these resolved resources, like process definitions or users, are
 rarely modified. Also, if user information is stored in an external system (such as
@@ -3330,7 +3341,8 @@ case the REST API is embedded into the Camunda Web Application).</p>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/web-app&gt;</span>
-</span></span></code></pre></div><h2 id="the-halrelationcachebootstrap-listener">The HalRelationCacheBootstrap Listener</h2>
+</span></span></code></pre></div>
+<h3 id="the-halrelationcachebootstrap-listener">The HalRelationCacheBootstrap Listener</h3>
 <p>To bootstrap the caching, the <code>HalRelationCacheBootstrap</code> context listener is
 used:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;listener&gt;</span>
@@ -3362,7 +3374,8 @@ as JSON and consists of two properties:</p>
     </td>
   </tr>
 </table>
-<h2 id="defaulthalresourcecache-configuration-options">DefaultHalResourceCache Configuration Options</h2>
+
+<h3 id="defaulthalresourcecache-configuration-options">DefaultHalResourceCache Configuration Options</h3>
 <p>The simple default cache implementation <code>DefaultHalResourceCache</code> provides following configuration
 options:</p>
 <table class="table table-striped">
@@ -3384,7 +3397,8 @@ options:</p>
     </td>
   </tr>
 </table>
-<h2 id="list-of-resources-which-support-caching">List of Resources Which Support Caching</h2>
+
+<h3 id="list-of-resources-which-support-caching">List of Resources Which Support Caching</h3>
 <ul>
 <li>Case Definition: <code>org.cibseven.bpm.engine.rest.hal.caseDefinition.HalCaseDefinition</code></li>
 <li>Group: <code>org.cibseven.bpm.engine.rest.hal.group.HalGroup</code></li>

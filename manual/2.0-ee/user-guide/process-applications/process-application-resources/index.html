@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3195,7 +3199,8 @@
        /></span>
 </figure>
 
-<h1 id="context-switch">Context Switch</h1>
+
+<h2 id="context-switch">Context Switch</h2>
 <p>When executing a process instance, the process engine has to know which process application provides the corresponding resources. It then internally performs a <em>context switch</em>. This has the following effects:</p>
 <ul>
 <li>The thread context class loader is set to the process application classloader. This enables loading classes from the process application, e.g., a Java Delegate implementation.</li>
@@ -3213,9 +3218,11 @@
 <li><strong>Delegation Code Invocation</strong>: Whenever delegation code like Java Delegates, execution/task listeners (Java code or scripts), etc. is called by the process engine</li>
 <li><strong>Explicit Process Application Context Declaration</strong>: For every engine API invocation, when a process application was declared using the utility class <code>org.cibseven.bpm.application.ProcessApplicationContext</code></li>
 </ul>
-<h1 id="declare-process-application-context">Declare Process Application Context</h1>
+
+<h2 id="declare-process-application-context">Declare Process Application Context</h2>
 <p>Process application context must be declared whenever custom code uses the engine API that is not part of delegation code and when a context switch is needed for proper function.</p>
-<h2 id="example">Example</h2>
+
+<h3 id="example">Example</h3>
 <p>To clarify the use case, we assume that a process application employs the <a href="/manual/2.0-ee/user-guide/data-formats/json/#serializing-process-variables">feature to serialize object-type variables in the JSON format</a>. However, for that application JSON serialization shall be customized (think about the numerous ways to serialize a date as a JSON string). The process application therefore contains a Camunda Spin data format configurator implementation that configures the Spin JSON data format in the desired way. In turn, the process engine manages a Spin data format for that specific process application to serialize object values with. Now, we assume that a Java servlet calls the process engine API to submit a Java object and serialize it with the JSON format. The code might look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ObjectValueServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3239,9 +3246,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ProcessApplicationContext</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>Now, the process engine knows in which context to execute the <code>#setVariable</code> call in. It therefore can access the correct JSON data format and serializes the variable correctly.</p>
-<h2 id="java-api">Java API</h2>
+
+<h3 id="java-api">Java API</h3>
 <p>The methods <code>ProcessApplicationContext#setCurrentProcessApplication</code> declare process application context for all following API invocations until <code>ProcessApplicationContext#clear</code> is called. It is therefore advised to use a try-finally block to ensure clearance even when exceptions are raised. In addition, the methods <code>ProcessApplicationContext#withProcessApplicationContext</code> execute a Callable and declare the context during the Callable&rsquo;s execution.</p>
-<h2 id="programming-model-integration">Programming Model Integration</h2>
+
+<h3 id="programming-model-integration">Programming Model Integration</h3>
 <p>Declaring process application context whenever engine API is invoked can result in highly repetitive code. Depending on your programming model, you may consider declaring the context in a place that applies to all the desired business logic in a cross-cutting manner. For example, in CDI it is possible to define method invocation interceptors that trigger based on the presence of annotations. Such an interceptor can identify the process application based on the annotation and declare the context transparently.</p>
 
     </div>

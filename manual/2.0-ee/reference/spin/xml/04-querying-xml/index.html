@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,51 +3191,60 @@
 
     <div class="col-xs-12 content-text">
       <p>The XML datatype supports querying with the XPath 1.0 query language.</p>
-<h1 id="querying-an-element">Querying an Element</h1>
+
+<h2 id="querying-an-element">Querying an Element</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinXmlTreeElement</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;/root/child&#34;</span><span class="p">).</span><span class="na">element</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-an-element-list">Querying an Element List</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-an-element-list">Querying an Element List</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinList</span><span class="o">&lt;</span><span class="n">SpinXmlTreeElement</span><span class="o">&gt;</span><span class="w"> </span><span class="n">childs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;/root/child/a&#34;</span><span class="p">).</span><span class="na">elementList</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-an-attribute">Querying an Attribute</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-an-attribute">Querying an Attribute</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinXmlTreeAttribute</span><span class="w"> </span><span class="n">attribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;/root/child/@id&#34;</span><span class="p">).</span><span class="na">attribute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-an-attribute-list">Querying an Attribute List</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-an-attribute-list">Querying an Attribute List</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinList</span><span class="o">&lt;</span><span class="n">SpinXmlTreeAttribute</span><span class="o">&gt;</span><span class="w"> </span><span class="n">attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;/root/child/a/@id&#34;</span><span class="p">).</span><span class="na">attributeList</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-a-string">Querying a String</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-a-string">Querying a String</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;string(/root/child/@id)&#34;</span><span class="p">).</span><span class="na">string</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-a-number">Querying a Number</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-a-number">Querying a Number</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Double</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;count(/root/child/a)&#34;</span><span class="p">).</span><span class="na">number</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-a-boolean">Querying a Boolean</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-a-boolean">Querying a Boolean</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root&gt;&lt;child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;a id=\&#34;b\&#34;/&gt;&lt;/child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Boolean</span><span class="w"> </span><span class="n">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;boolean(/root/child)&#34;</span><span class="p">).</span><span class="na">bool</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h1 id="querying-with-namespaces">Querying with Namespaces</h1>
+</span></span></span></code></pre></div>
+<h2 id="querying-with-namespaces">Querying with Namespaces</h2>
 <p>To use namespaces in spin with XML, you can choose one of the following methods or combine both of them.</p>
-<h2 id="1-using-a-single-prefix---uri-pair">1. Using a Single Prefix - URI Pair</h2>
+
+<h3 id="1-using-a-single-prefix---uri-pair">1. Using a Single Prefix - URI Pair</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root xmlns:t=\&#34;http://camunda.org\&#34;&gt;&lt;t:child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;/t:child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">
@@ -3239,7 +3252,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinXmlTreeElement</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XML</span><span class="p">(</span><span class="n">xml</span><span class="p">).</span><span class="na">xPath</span><span class="p">(</span><span class="s">&#34;/root/t:child&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">                                   </span><span class="p">.</span><span class="na">ns</span><span class="p">(</span><span class="s">&#34;t&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;http://camunda.org&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">                                   </span><span class="p">.</span><span class="na">element</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="2-using-a-map-of-prefix---uri-pairs">2. Using a Map of Prefix - URI Pairs</h2>
+</span></span></span></code></pre></div>
+<h3 id="2-using-a-map-of-prefix---uri-pairs">2. Using a Map of Prefix - URI Pairs</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.XML</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&lt;root xmlns:t=\&#34;http://camunda.org\&#34;&gt;&lt;t:child id=\&#34;child\&#34;&gt;&lt;a id=\&#34;a\&#34;/&gt;&lt;/t:child&gt;&lt;/root&gt;&#34;</span><span class="p">;</span><span class="w">

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,18 +3190,21 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="creating-a-client">Creating a Client</h1>
+      
+<h2 id="creating-a-client">Creating a Client</h2>
 <p>The Forms SDK uses an instance of the <code>CamSDK.Client</code> to communicate with the process engine (over the REST API):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">camClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CamSDK</span><span class="p">.</span><span class="nx">Client</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">mock</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">apiUri</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8080/engine-rest&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></div><h1 id="creating-a-form">Creating a Form</h1>
+</span></span></code></pre></div>
+<h2 id="creating-a-form">Creating a Form</h2>
 <p>In order to create a form, you need to create an instance of <code>CamSDK.Form</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">new</span> <span class="nx">CamSDK</span><span class="p">.</span><span class="nx">Form</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// ...
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
-</span></span></code></pre></div><h2 id="providing-a-task-id">Providing a Task Id</h2>
+</span></span></code></pre></div>
+<h3 id="providing-a-task-id">Providing a Task Id</h3>
 <p>In case the form is a task form (i.e., the submission of the form should trigger the completing of a task), you need to provide a <code>taskId</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">new</span> <span class="nx">CamSDK</span><span class="p">.</span><span class="nx">Form</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">client</span><span class="o">:</span> <span class="nx">camClient</span><span class="p">,</span>
@@ -3207,7 +3214,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">//...
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
-</span></span></code></pre></div><h2 id="providing-a-process-definition-id">Providing a Process Definition Id</h2>
+</span></span></code></pre></div>
+<h3 id="providing-a-process-definition-id">Providing a Process Definition Id</h3>
 <p>In case the form is a start form (i.e., the submission of the form should trigger a new process instance to start), you need to provide a <code>processDefinitionId</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">new</span> <span class="nx">CamSDK</span><span class="p">.</span><span class="nx">Form</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">client</span><span class="o">:</span> <span class="nx">camClient</span><span class="p">,</span>
@@ -3217,7 +3225,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">//...
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
-</span></span></code></pre></div><h2 id="loading-a-form-from-a-url">Loading a Form from a URL</h2>
+</span></span></code></pre></div>
+<h3 id="loading-a-form-from-a-url">Loading a Form from a URL</h3>
 <p>The Forms SDK can automatically load forms from a URL.
 The URL from which the form should be loaded is referenced using the <code>formElement</code> property.</p>
 <p>In that case you need to create a container element somewhere in the DOM:</p>
@@ -3240,7 +3249,8 @@ The URL from which the form should be loaded is referenced using the <code>formE
 </span></span><span class="line"><span class="cl">    <span class="c1">// ..
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></div><h2 id="using-a-form-existing-in-the-dom">Using a form existing in the DOM</h2>
+</span></span></code></pre></div>
+<h3 id="using-a-form-existing-in-the-dom">Using a form existing in the DOM</h3>
 <p>It is also possible to initialize the Form SDK for a form already existing in the DOM.</p>
 <p>Assuming that you have an HTML <code>&lt;form ...&gt;</code> element present in the DOM:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;myForm&#34;</span><span class="p">&gt;</span>

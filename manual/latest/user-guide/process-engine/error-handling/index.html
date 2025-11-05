@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,21 +3190,25 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="error-handling-strategies">Error Handling Strategies</h1>
+      
+<h2 id="error-handling-strategies">Error Handling Strategies</h2>
 <p>There are a couple of basic strategies to handle errors and exceptions within processes. The decision which strategy to use depends on:</p>
 <ul>
 <li>Technical vs. Business Errors: Does the error have some business meaning and causes an alternative process flow (like &ldquo;item not on stock&rdquo;) or is it a technical malfunction (like &ldquo;network currently down&rdquo;)?</li>
 <li>Explicit error handling or generic approach: For some situations you want to explicitly model what should happen in case of an error (typically for business errors). For a lot of situations you don&rsquo;t want to do that but have some generic mechanism which applies for errors, simplifying your process models (typical for technical errors, imagine you would have to model network outage on every task were it might possibly occur? You wouldn&rsquo;t be able to recognize your business process any more).</li>
 </ul>
 <p>In the context of the process engine, errors are normally raised as Java exceptions which you have to handle. Let&rsquo;s have a look at how to handle them.</p>
-<h2 id="transaction-rollbacks">Transaction Rollbacks</h2>
+
+<h3 id="transaction-rollbacks">Transaction Rollbacks</h3>
 <p>The standard handling strategy is that exceptions are thrown to the client, meaning that the current transaction is rolled back. This means that the process state is rolled back to the last wait state. This behavior is described in detail in the <a href="/manual/latest/user-guide/process-engine/transactions-in-processes/">Transactions in Processes</a> section of the <a href="/manual/latest/user-guide/">User Guide</a>. Error handling is delegated to the client by the engine.</p>
 <p>Let&rsquo;s show this in a concrete example: the user gets an error dialog on the frontend stating that the stock management software is currently not reachable due to network errors. To perform a retry, the user might have to click the same button again. Even if this is often not desired it is still a simple strategy applicable in a lot of situations.</p>
-<h2 id="async-and-failed-jobs">Async and Failed Jobs</h2>
+
+<h3 id="async-and-failed-jobs">Async and Failed Jobs</h3>
 <p>If you don&rsquo;t want the exception being shown to the user, one option is to make service calls, which might cause an error, async (as described in <a href="/manual/latest/user-guide/process-engine/transactions-in-processes/">Transactions in Processes</a>). In that case the exception is stored in the process engine database and the <a href="/manual/latest/user-guide/process-engine/the-job-executor/">Job</a> in the background is marked as failed (to be more precise, the exception is stored and some retry counter is decremented).</p>
 <p>In the example above this means that the user will not see an error but an &ldquo;everything successful&rdquo; dialog. The exception is stored on the job. Now either a clever retry strategy will automatically re-trigger the job later on (when the network is available again) or an operator needs to have a look at the error and trigger an additional retry. This is shown later in more detail.</p>
 <p>This strategy is pretty powerful and applied often in real-life projects, however, it still hides the error in the BPMN diagram, so for business errors which you want to be visible in the process diagram, it would be better to use <a href="#bpmn-2-0-error-event">Error Events</a>.</p>
-<h2 id="catch-exception-and-use-data-based-xor-gateway">Catch Exception and use Data Based XOR-Gateway</h2>
+
+<h3 id="catch-exception-and-use-data-based-xor-gateway">Catch Exception and use Data Based XOR-Gateway</h3>
 <p>If you call Java Code which can throw an exception, you can catch the exception within the Java Delegate, CDI Bean or whatsoever. Maybe it is already sufficient to log some information and go on, meaning that you ignore the error. More often you write the result into a process variable and model an XOR-Gateway later in the process flow to take a different path if that error occurs.</p>
 <p>In that case you model the error handling explicitly in the process model but you make it look like a normal result and not like an error. From a business perspective it is not an error but a result, so the decision should not be made lightly. A rule of thumb is that results can be handled this way, exceptional errors should not. However, the BPMN perspective does not always have to match the technical implementation.</p>
 <p>Example:</p>
@@ -3213,7 +3221,8 @@
 </figure>
 
 <p>We trigger a &ldquo;check data completeness&rdquo; task. The Java Service might throw a &ldquo;DataIncompleteException&rdquo;. However, if we check for completeness, incomplete data is not an exception, but an expected result, so we prefer to use an XOR-Gateway in the process flow which evaluates a process variable, e.g., &ldquo;#{dataComplete==false}&rdquo;.</p>
-<h2 id="bpmn-20-error-event">BPMN 2.0 Error Event</h2>
+
+<h3 id="bpmn-20-error-event">BPMN 2.0 Error Event</h3>
 <p>The BPMN 2.0 error event gives you the possibility to explicitly model errors, tackling the use case of business errors. The most prominent example is the &ldquo;intermediate catching error event&rdquo;, which can be attached to the boundary of an activity. Defining a boundary error event makes most sense on an embedded subprocess, a call activity or a Service Task. An error will cause the alternative process flow to be triggered:</p>
 <figure class="image">
   <span><img
@@ -3224,13 +3233,17 @@
 </figure>
 
 <p>See the <a href="/manual/latest/reference/bpmn20/events/error-events/">Error Events</a> section of the <a href="/manual/latest/reference/bpmn20/">BPMN 2.0 Implementation Reference</a> and the <a href="/manual/latest/user-guide/process-engine/delegation-code/#throw-bpmn-errors-from-delegation-code">Throwing Errors from Delegation Code</a> section of the <a href="/manual/latest/user-guide/">User Guide</a> for more information.</p>
-<h2 id="bpmn-20-compensation-and-business-transactions">BPMN 2.0 Compensation and Business Transactions</h2>
+
+<h3 id="bpmn-20-compensation-and-business-transactions">BPMN 2.0 Compensation and Business Transactions</h3>
 <p>BPMN 2.0 transactions and compensations allow you to model business transaction boundaries (however, not in a technical ACID manner) and make sure already executed actions are compensated during a rollback. Compensation means to make the effect of the action invisible, e.g. book in goods if you have previously booked out the goods. See the <a href="/manual/latest/reference/bpmn20/events/cancel-and-compensation-events/">BPMN Compensation event</a> and the <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/">BPMN Transaction Subprocess</a> sections of the <a href="/manual/latest/reference/bpmn20/">BPMN 2.0 Implementation Reference</a> for details.</p>
-<h1 id="monitoring-and-recovery-strategies">Monitoring and Recovery Strategies</h1>
+
+<h2 id="monitoring-and-recovery-strategies">Monitoring and Recovery Strategies</h2>
 <p>In case the error occurred, different recovery strategies can be applied.</p>
-<h2 id="let-the-user-retry">Let the User Retry</h2>
+
+<h3 id="let-the-user-retry">Let the User Retry</h3>
 <p>As mentioned above, the simplest error handling strategy is to throw the exception to the client, meaning that the user has to retry the action himself. How he does that is up to the user, normally reloading the page or clicking again.</p>
-<h2 id="retry-failed-jobs">Retry Failed Jobs</h2>
+
+<h3 id="retry-failed-jobs">Retry Failed Jobs</h3>
 <p>If you use Jobs (<code>async</code>), you can leverage Cockpit as monitoring tool to handle failed jobs, in this case no end user sees the exception. Then you normally see failures in cockpit when the retries are depleted (see the <a href="/manual/latest/user-guide/process-engine/the-job-executor/#failed-jobs">Failed Jobs</a> section of the <a href="/manual/latest/webapps/cockpit/">Web Applications</a> for more information).</p>
 <p>See the <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/">Failed Jobs in Cockpit</a> section of the <a href="/manual/latest/webapps/cockpit/">Web Applications</a> for more details.</p>
 <p>If you don&rsquo;t want to use Cockpit, you can also find the failed jobs via the API yourself:</p>
@@ -3238,7 +3251,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Job</span><span class="w"> </span><span class="n">failedJob</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">failedJobs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">().</span><span class="na">setJobRetries</span><span class="p">(</span><span class="n">failedJob</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="explicit-modeling">Explicit Modeling</h2>
+</span></span></span></code></pre></div>
+<h3 id="explicit-modeling">Explicit Modeling</h3>
 <p>Of course you can always explicitly model a retry mechanism as pointed out in <a href="http://www.bpm-guide.de/2012/06/15/where-is-the-retry-in-bpmn-2-0/">Where is the retry in BPMN 2.0</a>:</p>
 <figure class="image">
   <span><img
@@ -3249,7 +3263,8 @@
 </figure>
 
 <p>We would recommend to limit it to cases where you want to see it in the process diagram for a good reason. We prefer asynchronous continuation, as it doesn&rsquo;t bloat your process diagram and basically can do the same thing with even less runtime overhead, as &ldquo;walking&rdquo; through the modeled loop involves additional action, e.g., writing an audit log.</p>
-<h2 id="user-tasks-for-operations">User Tasks for Operations</h2>
+
+<h3 id="user-tasks-for-operations">User Tasks for Operations</h3>
 <p>We often see something like this in projects:</p>
 <figure class="image">
   <span><img
@@ -3261,7 +3276,8 @@
 
 <p>Actually this is a valid approach in which you assign errors to an operator as User Tasks and model what options he has to solve the problem. However, this is a strange mixture: We want to handle a technical error we but add it to our business process model. Where do we stop? Do we have to model it on every Service Task now?</p>
 <p>Having a failed jobs list instead of using the &ldquo;normal&rdquo; task list feels like a more natural approach for this situation, which is why we normally recommend the other possibility and do not consider this to be best practice.</p>
-<h1 id="exception-codes">Exception codes</h1>
+
+<h2 id="exception-codes">Exception codes</h2>
 <p>Sometimes an API call doesn&rsquo;t succeed because a problem occurs. The Java programming model uses exceptions
 to handle these situations. Exceptions that occur on the process engine&rsquo;s application level are
 of the type <code><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>
@@ -3284,15 +3300,19 @@ evaluating exception messages in an automated way is not a good idea since:</p>
 <p>This is why we introduced static exception codes your business logic can rely on to determine specific
 problems and react accordingly.</p>
 <p>You can access error codes via Java as well as <a href="/manual/latest/reference/rest/overview/#exception-codes">REST API</a>.</p>
-<h2 id="built-in-codes">Built-in codes</h2>
+
+<h3 id="built-in-codes">Built-in codes</h3>
 <p>We identified common situations in which the engine throws an exception and assigned a built-in
 error code to the exception. You can look up the built-in codes in the <a href="#categories-ranges-and-codes">Categories, ranges, and codes</a> section.</p>
-<h2 id="custom-codes">Custom codes</h2>
+
+<h3 id="custom-codes">Custom codes</h3>
 <p>Sometimes you may want to assign codes to specific errors Camunda hasn&rsquo;t covered so far.
 You can either define custom codes from delegation code or by <a href="#register-a-custom-code-provider">registering your custom <code>ExceptionCodeProvider</code></a>.</p>
-<h3 id="delegation-code">Delegation code</h3>
+
+<h4 id="delegation-code">Delegation code</h4>
 <p>Learn more on how to assign a custom error code to an exception in the documentation about <a href="/manual/latest/user-guide/process-engine/delegation-code/#exception-codes">Delegation Code</a>.</p>
-<h2 id="configuration">Configuration</h2>
+
+<h3 id="configuration">Configuration</h3>
 <p>You can configure the exception error codes feature in your <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#exception-codes">process engine configuration</a>:</p>
 <ul>
 <li>To disable the exception codes feature entirely, set the flag <code>disableExceptionCode</code>
@@ -3301,7 +3321,8 @@ in your process engine configuration to <code>true</code>.</li>
 in your process engine configuration to <code>true</code>. Disabling the built-in exception code
 provider allows overriding the <a href="#reserved-code-range">reserved code range</a> with your custom exception codes.</li>
 </ul>
-<h3 id="register-a-custom-code-provider">Register a Custom Code Provider</h3>
+
+<h4 id="register-a-custom-code-provider">Register a Custom Code Provider</h4>
 <p>With the help of a <a href="/manual/latest/user-guide/process-engine/process-engine-plugins/"><code>ProcessEnginePlugin</code></a> you can register a custom <code><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/impl/errorcode/ExceptionCodeProvider.html">ExceptionCodeProvider</a>
 </code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">engineConfig</span><span class="p">.</span><span class="na">setCustomExceptionCodeProvider</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExceptionCodeProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3327,7 +3348,8 @@ provider allows overriding the <a href="#reserved-code-range">reserved code rang
   <p>If your custom error code violates the <a href="#reserved-code-range">reserved code range</a>, it will be overridden with <code>0</code> unless you disable the built-in code provider.</p>
 </div>
 
-<h2 id="categories-ranges-and-codes">Categories, ranges, and codes</h2>
+
+<h3 id="categories-ranges-and-codes">Categories, ranges, and codes</h3>
 <p>In the table below, you will find an overview of all categories, ranges, and codes:</p>
 <table class="table table-striped">
   <thead>
@@ -3384,7 +3406,8 @@ provider allows overriding the <a href="#reserved-code-range">reserved code rang
     </tr>
   </tbody>
 </table>
-<h3 id="reserved-code-range">Reserved code range</h3>
+
+<h4 id="reserved-code-range">Reserved code range</h4>
 <p>The codes &lt;= 19,999 and &gt;= 40,000 are reserved for built-in codes. If you disable the built-in code provider,
 you can also use the reserved code range for your custom codes.</p>
 

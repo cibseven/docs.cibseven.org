@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3191,39 +3195,47 @@ This library contains the Spring Security and Spring Security OAuth2 dependencie
 configuration classes that integrate Spring Security with CIB seven Webapp&rsquo;s authentication.</p>
 <p>This is available both for Spring Boot and CIB seven.</p>
 <p>CIB seven&rsquo;s integration comes with multiple components and configurations. In the next sections you can find more details to each of them.</p>
-<h1 id="activate-oauth2">Activate OAuth2</h1>
-<h2 id="spring-boot">Spring Boot</h2>
+
+<h2 id="activate-oauth2">Activate OAuth2</h2>
+
+<h3 id="spring-boot">Spring Boot</h3>
 <p>In order to enable the Spring Security OAuth2 integration in Spring Boot, add the following dependency to your project:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-security<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h2 id="cib-seven-run">CIB seven Run</h2>
+</span></span></code></pre></div>
+<h3 id="cib-seven-run">CIB seven Run</h3>
 <p>CIB seven Run already contains the required libraries, all you need to do is to activate them.
 In order to enable the Spring Security OAuth2 integration in CIB seven Run, start Run with an extra <code>--oauth2</code> argument:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">./start.sh --webapps --rest --oauth2
-</span></span></code></pre></div><h1 id="auto-configuration">Auto Configuration</h1>
+</span></span></code></pre></div>
+<h2 id="auto-configuration">Auto Configuration</h2>
 <p>The CIB seven integration has two default auto configurations. Depending on the OAuth2 client
 registration in the application properties (<code>spring.security.oauth2.client.registration</code>) either the
 <code>CamundaSpringSecurityOAuth2AutoConfiguration</code> or the <code>CamundaBpmSpringSecurityDisableAutoConfiguration</code> will be activated.</p>
-<h2 id="oauth2-enabled-configuration">OAuth2 Enabled Configuration</h2>
+
+<h3 id="oauth2-enabled-configuration">OAuth2 Enabled Configuration</h3>
 <p>Configuration activates if there is OAuth2 client registration configured. This class configures the Spring
 Security filter chain to secure the CIB seven Webapps.</p>
 <p>Spring auto configuration class: <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/impl/CamundaSpringSecurityOAuth2AutoConfiguration.html">CamundaSpringSecurityOAuth2AutoConfiguration</a>
 </p>
-<h2 id="spring-security-disabled-auto-configuration">Spring Security Disabled Auto Configuration</h2>
+
+<h3 id="spring-security-disabled-auto-configuration">Spring Security Disabled Auto Configuration</h3>
 <p>Configuration activates if there is <strong>no</strong> OAuth2 client registration configured. This class configures the Spring
 Security filter chain to a permit all mode.</p>
 <p>Spring auto configuration class: <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/impl/CamundaBpmSpringSecurityDisableAutoConfiguration.html">CamundaBpmSpringSecurityDisableAutoConfiguration</a>
 </p>
-<h1 id="oauth2-client-registration">OAuth2 Client Registration</h1>
+
+<h2 id="oauth2-client-registration">OAuth2 Client Registration</h2>
 <p>For the client registration, please refer to the official Spring
 Security&rsquo;s <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html">OAuth2 Core Configuration</a> documentation to configure your choice of
 identity provider.</p>
 <p>Once there is an OAuth2 client registration configured and the CIB seven Spring Security OAuth2
 integration is enabled, the Webapps will use the configured OAuth2 provider for
 authentication.</p>
-<h1 id="user-name-mapping">User Name Mapping</h1>
+
+<h2 id="user-name-mapping">User Name Mapping</h2>
 <p>CIB seven&rsquo;s integration uses the <strong>name</strong> field from Spring Security&rsquo;s principal object as the User ID
 in the Webapps.</p>
 <p>Spring Security by default uses the subject (<code>sub</code>) claim as the principal name. As the User ID in CIB seven is
@@ -3237,7 +3249,8 @@ above-mentioned <a href="https://docs.spring.io/spring-security/reference/servle
   <p>Make sure to correctly configure which token attribute should be used as the User ID.</p>
 </div>
 
-<h2 id="configuring-initial-authorizations">Configuring Initial Authorizations</h2>
+
+<h3 id="configuring-initial-authorizations">Configuring Initial Authorizations</h3>
 <p>For creating initial authorizations in your application, you have the following options available:</p>
 <ol>
 <li>The <code>camunda.bpm.admin-user</code> property to create an administrator user with authorizations:
@@ -3256,7 +3269,8 @@ above-mentioned <a href="https://docs.spring.io/spring-security/reference/servle
 <li>The <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>
 to grant administrator authorizations for a particular OAuth2 user or group.</li>
 </ol>
-<h1 id="oauth2-identity-provider">OAuth2 Identity Provider</h1>
+
+<h2 id="oauth2-identity-provider">OAuth2 Identity Provider</h2>
 <p>Additionally to the OAuth2 login, CIB seven also provides support to use groups from OAuth2.
 This is achieved with a custom <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/">identity service</a>, called <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/impl/OAuth2IdentityProvider.html">OAuth2IdentityProvider</a>
 .</p>
@@ -3267,7 +3281,8 @@ This identity provider also supports the default CIB seven Database Identity Ser
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span></span></span></code></pre></div><p>See <a href="#configuration">Configuration</a> section for more information.</p>
-<h2 id="granted-authorities-mapper">Granted Authorities Mapper</h2>
+
+<h3 id="granted-authorities-mapper">Granted Authorities Mapper</h3>
 <p>We also provide a default granted authorities mapper, that can override the Spring Security
 authorities, that are by default populated with the scope (<code>scp</code>) claim.</p>
 <p>This mapper can be enabled with the <code>group-name-attribute</code> property:</p>
@@ -3280,12 +3295,14 @@ It supports claims with types of collection of <code>String</code>s and <code>St
 If the claim is a <code>String</code>, it will try to split it with a delimiter which is comma by default.
 You can override the default delimiter with the <code>group-name-delimiter</code> property.</p>
 <p>See <a href="#configuration">Configuration</a> section for more information.</p>
-<h3 id="custom-granted-authorities-mapper">Custom Granted Authorities Mapper</h3>
+
+<h4 id="custom-granted-authorities-mapper">Custom Granted Authorities Mapper</h4>
 <p>Alternatively, you can also define your own <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/login/advanced.html#oauth2login-advanced-map-authorities">GrantedAuthoritiesMapper</a>, if you need more customization.</p>
 <p>In Spring Boot this can be done by registering your own <code>GrantedAuthoritiesMapper</code> bean.</p>
 <p>In CIB seven Run a JAR file needs to be built and copied into the <code>userlib</code> folder.
 This needs to contain a <a href="https://docs.spring.io/spring-boot/reference/features/developing-auto-configuration.html#features.developing-auto-configuration.locating-auto-configuration-candidates">Spring auto configuration</a> with the custom granted authorities mapper bean.</p>
-<h2 id="configuration">Configuration</h2>
+
+<h3 id="configuration">Configuration</h3>
 <p>All configuration properties of the identity provider start with the prefix <code>camunda.bpm.oauth2.identity-provider</code>.
 The following properties are available:</p>
 <table class="table table-striped">
@@ -3316,22 +3333,26 @@ The following properties are available:</p>
     <td><code>,</code> (comma)</td>
   </tr>
 </table>
-<h2 id="limitations">Limitations</h2>
+
+<h3 id="limitations">Limitations</h3>
 <p>As previously mentioned, this provider is a read-only provider, so creating users, groups or memberships is not available.
 Due to the fallback to DB Identity Service this provider is still defined as writeable which means the create buttons are still visible on the Admin pages, but are non-functional.</p>
 <p>OAuth2 doesn&rsquo;t return information about other users or groups. This means users and even admins can only see their own user and groups on the Admin pages.</p>
 <p>Furthermore, it only shows groups from OAuth2 and doesn&rsquo;t show groups configured in CIB seven database.</p>
-<h2 id="disabling-identity-provider">Disabling Identity Provider</h2>
+
+<h3 id="disabling-identity-provider">Disabling Identity Provider</h3>
 <p>With the <a href="#configuration">above-mentioned property</a>, the identity provider can be deactivated.
 Without identity provider OAuth2 is only used for authentication. This means, that the user needs to
 be also configured with the matching User ID in CIB seven database.</p>
 <p>If the user is not available or doesn&rsquo;t have sufficient authorizations, they won&rsquo;t be able to access
 the Webapps.</p>
-<h1 id="logout">Logout</h1>
+
+<h2 id="logout">Logout</h2>
 <p>We provide support for local and client initiated SSO logout as well.
 In order to support both logouts, the CIB seven integration also contains a Frontend Plugin that overrides the Webapps default logout behaviour.
 As a consequence, when the Webapp user clicks on the logout, it invokes Spring&rsquo;s logout endpoint (<code>/logout</code>) instead of CIB seven.</p>
-<h2 id="client-initiated-sso-logout">Client Initiated SSO Logout</h2>
+
+<h3 id="client-initiated-sso-logout">Client Initiated SSO Logout</h3>
 <p>We support client initiated OIDC SSO logout.
 Please refer Spring&rsquo;s <a href="https://docs.spring.io/spring-security/reference/reactive/oauth2/login/logout.html#oauth2login-advanced-oidc-logout">OpenID Connect 1.0 Client-Initiated Logout</a> section for more information.</p>
 <p>In order to configure this feature, use the following properties:</p>
@@ -3339,7 +3360,8 @@ Please refer Spring&rsquo;s <a href="https://docs.spring.io/spring-security/refe
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">sso-logout</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">postLogoutRedirectUri</span><span class="p">:</span><span class="w"> </span><span class="l">https://example.org/</span><span class="w">
-</span></span></span></code></pre></div><h2 id="configuration-1">Configuration</h2>
+</span></span></span></code></pre></div>
+<h3 id="configuration-1">Configuration</h3>
 <p>All configuration properties of the identity provider start with the prefix <code>camunda.bpm.oauth2.sso-logout</code>.
 The following properties are available:</p>
 <table class="table table-striped">
@@ -3359,13 +3381,16 @@ The following properties are available:</p>
     <td><code>{baseUrl}</code></td>
   </tr>
 </table>
-<h2 id="limitations-1">Limitations</h2>
+
+<h3 id="limitations-1">Limitations</h3>
 <p>Currently, it&rsquo;s not possible to change the default Spring logout endpoint, which is <code>/logout</code>.</p>
-<h1 id="security-recommendations">Security Recommendations</h1>
+
+<h2 id="security-recommendations">Security Recommendations</h2>
 <p>CIB seven&rsquo;s integration heavily relies on Spring Security&rsquo;s OAuth2 support.</p>
 <p>If you decide to use OAuth2 for login in CIB seven, we highly recommend to consult and implement the current industry recommended security standards.
 Additionally, also follow the security recommendations specified by your identity provider.</p>
-<h2 id="token-lifetime">Token Lifetime</h2>
+
+<h3 id="token-lifetime">Token Lifetime</h3>
 <p>As OAuth2 works with the exchange of tokens and tokens are valid until the specified expiration (<code>exp</code>),
 it is inevitable that in a few cases tokens might outlive the main SSO session.
 Meaning, the user might be already logged out but still have valid tokens on other pages.</p>
@@ -3373,13 +3398,15 @@ Meaning, the user might be already logged out but still have valid tokens on oth
 refresh tokens.
 Refresh tokens can be revoked, and issuing new access tokens require interaction with the provider,
 which means the user session can be revalidated more frequently.</p>
-<h1 id="logging">Logging</h1>
+
+<h2 id="logging">Logging</h2>
 <p>You can switch the level of the following logger to track bean registrations, user authentication or logout, and token authorizations.
 Logging can be enabled for the package via the following property:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">logging</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.cibseven.bpm.spring.boot.starter.security.oauth2</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
-</span></span></span></code></pre></div><h1 id="example">Example</h1>
+</span></span></span></code></pre></div>
+<h2 id="example">Example</h2>
 <p>In this section we provide an example configuration with OKTA as OIDC provider.
 Additionally, we also mark and explain a few lines:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.oauth2</span><span class="p">:</span><span class="w">
@@ -3422,7 +3449,8 @@ Additionally, we also mark and explain a few lines:</p>
 </li>
 <li>Configures the <code>preferred_username</code> as the username attribute, which is also used as the CIB seven User ID.</li>
 </ol>
-<h1 id="disable-auto-configuration">Disable Auto Configuration</h1>
+
+<h2 id="disable-auto-configuration">Disable Auto Configuration</h2>
 <p>If you wish to use Spring Security but without CIB seven&rsquo;s integration classes, you can do so by
 excluding the two auto configuration classes:</p>
 <p>Either with the <code>@EnableAutoConfiguration</code> annotation:</p>

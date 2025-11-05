@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,8 +3192,10 @@
     <div class="col-xs-12 content-text">
       <p>Diagnostics data is constantly collected and can be collected only by you. This allows you to access the collected data through the Java and REST APIs of CIB seven.
 Being able to easily access the collected data is helpful when asking for help in our <a href="https://github.com/orgs/cibseven/discussions">discussions</a> or when opening issues in our <a href="https://app.camunda.com/jira">issue tracker</a> as it contains many of the information that are usually necessary to understand your Camunda setup.</p>
-<h2 id="how-to-access-the-data">How to access the data</h2>
-<h3 id="java-api">Java API</h3>
+
+<h3 id="how-to-access-the-data">How to access the data</h3>
+
+<h4 id="java-api">Java API</h4>
 <p>To fetch the collected data via the Java API, you can use the <code>ManagementService</code> class. For example, the following code retrieves the detected JDK vendor and version:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngine</span><span class="w"> </span><span class="n">processEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ManagementService</span><span class="w"> </span><span class="n">managementService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getManagementService</span><span class="p">();</span><span class="w">
@@ -3199,18 +3205,22 @@ Being able to easily access the collected data is helpful when asking for help i
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">jdkVendor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productInternals</span><span class="p">.</span><span class="na">getJdk</span><span class="p">().</span><span class="na">getVendor</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">jdkVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productInternals</span><span class="p">.</span><span class="na">getJdk</span><span class="p">().</span><span class="na">getVersion</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="rest-api">REST API</h3>
+</span></span></span></code></pre></div>
+<h4 id="rest-api">REST API</h4>
 <p>You can fetch the collected data via the REST API by calling the <a href="/manual/latest/reference/rest/specification/#tag/Telemetry/operation/getTelemetryData">Get Telemetry Data</a> endpoint.</p>
-<h2 id="collected-data">Collected data</h2>
+
+<h3 id="collected-data">Collected data</h3>
 <p>Below you find the full list of data the diagnostic collector collects, followed by a real-world example. On a conceptual level, they can be categorized into general data, meta/environment data, and usage data.</p>
-<h3 id="general-data">General data</h3>
+
+<h4 id="general-data">General data</h4>
 <p>The &ldquo;General Data&rdquo; category contains information about the process engine:</p>
 <ul>
 <li>Installation - an id that is stored as process engine configuration property</li>
 <li>Product name - the name of the product (i.e., <code>CIB seven Runtime</code>)</li>
 <li>Product version - the version of the process engine (i.e., <code>2.X.Y</code>)</li>
 </ul>
-<h3 id="meta-and-environment-data">Meta and environment data</h3>
+
+<h4 id="meta-and-environment-data">Meta and environment data</h4>
 <p>The &ldquo;Meta/Environment Data&rdquo; category contains information about the environmental setup:</p>
 <ul>
 <li>Database vendor and version</li>
@@ -3220,7 +3230,8 @@ Being able to easily access the collected data is helpful when asking for help i
 </ul>
 <p>The application server information cannot be obtained in an embedded process engine setup where no web application (e.g. Tasklist, Cockpit, REST application) is deployed and used.</p>
 <p>In case of Azul Zulu JDK, the vendor will be send as &ldquo;Oracle Corporation&rdquo; as it cannot be distinguished programmatically from an Oracle JDK.</p>
-<h3 id="usage-data">Usage data</h3>
+
+<h4 id="usage-data">Usage data</h4>
 <p>The &ldquo;Usage Data&rdquo; category contains information about the used features and components of the process engine:</p>
 <ul>
 <li>Commands count - the count of executed commands after the last retrieved data. It could be from the previous 24 hours if the data have been reported then, and the process engine has not been closed during that time. Whenever the process engine is shutdown, the currently collected data is reported immediately.</li>
@@ -3228,7 +3239,8 @@ Being able to easily access the collected data is helpful when asking for help i
 The counts are collected from the start of the engine or the last reported time if the engine is already running for more than 24 hours.</li>
 <li>Camunda integration - a flag that shows if any of the CIB seven integrations are used: Spring boot starter, CIB seven Platform Run, WildFly subsystem or CIB seven ejb service (e.g. WebSphere/WebLogic Application servers).</li>
 </ul>
-<h3 id="example">Example</h3>
+
+<h4 id="example">Example</h4>
 <pre tabindex="0"><code>{
   &#34;installation&#34;: &#34;b569c782-cc23-45a0-bdca-2807ea97c6d1&#34;,
   &#34;product&#34;: {
@@ -3337,7 +3349,8 @@ The counts are collected from the start of the engine or the last reported time 
     }
   }
 }
-</code></pre><h2 id="source-code">Source code</h2>
+</code></pre>
+<h3 id="source-code">Source code</h3>
 <p>In case you want further details, you can have a look at the implementation of the diagnostics topic in <a href="https://github.com/cibseven/cibseven/blob/main/engine/src/main/java/org/cibseven/bpm/engine/impl/diagnostics/DiagnosticsCollector.java">the codebase</a>. The link leads you to the current <code>master</code> version of the feature.</p>
 
     </div>

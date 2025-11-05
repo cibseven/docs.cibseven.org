@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>CMMN case instances and plan items go through a lifecycle of states during their execution. Depending on their state, different actions may be carried out to interact with them. Moreover, state transitions may automatically trigger changes in other plan items. The concrete lifecycle of a plan item depends on its plan item definition.</p>
 <p>The following descriptions cover the CMMN lifecycles as supported by the CIB seven engine. This is a subset of states and transitions that the CMMN standard defines. Any state or transition that is currently not supported is marked in grey.</p>
 <p>The descriptions in this section are general for the constructs they describe. Considerations that are specific for individual plan item definitions can be found in the respective sections of this guide.</p>
-<h1 id="lifecycles-by-example">Lifecycles By Example</h1>
+
+<h2 id="lifecycles-by-example">Lifecycles By Example</h2>
 <p>To understand the role lifecycles play for CMMN execution, consider the following case:</p>
 <figure class="image">
   <span><img
@@ -3249,7 +3254,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">caseExecution</span><span class="p">.</span><span class="na">isCompleted</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
 </span></span></span></code></pre></div><p>Note that a <code>CaseExecution</code> object corresponds to a plan item, here the plan item for Task A.</p>
-<h1 id="case-instance-lifecycle">Case Instance Lifecycle</h1>
+
+<h2 id="case-instance-lifecycle">Case Instance Lifecycle</h2>
 <p><em>Case instance</em> refers to an instance of the case plan model. More specific, it is an instance of the single top-level stage in a case definition. The lifecycle of a case instance is the following:</p>
 <figure class="image">
   <span><img
@@ -3296,7 +3302,8 @@
     </td>
   </tr>
 </table>
-<h1 id="taskstage-lifecycle">Task/Stage Lifecycle</h1>
+
+<h2 id="taskstage-lifecycle">Task/Stage Lifecycle</h2>
 <p>The lifecycle of a task or stage plan item is the following:</p>
 <figure class="image">
   <span><img
@@ -3359,7 +3366,8 @@
     </td>
   </tr>
 </table>
-<h1 id="milestone-lifecycle">Milestone Lifecycle</h1>
+
+<h2 id="milestone-lifecycle">Milestone Lifecycle</h2>
 <p>The lifecycle of a milestone plan item is the following:</p>
 <figure class="image">
   <span><img

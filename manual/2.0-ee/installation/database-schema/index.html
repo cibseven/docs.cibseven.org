@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3206,11 +3210,13 @@ You may have to change the default setting on your database when installing CIB 
 For more information see the documentation on <a href="/manual/2.0-ee/user-guide/process-engine/database/database-configuration/#isolation-level-configuration">isolation levels</a>.</p>
 </div>
 
-<h1 id="installation">Installation</h1>
+
+<h2 id="installation">Installation</h2>
 <p>You can either install your database schema using Liquibase or using the provided SQL scripts manually. You can switch between those mechanisms when updating your CIB seven version at a later stage if desired.
 However, this might come with additional preparation work to work reliably.
 The <a href="#update">update</a> paragraph provides more details on this topic.</p>
-<h2 id="liquibase-installation">Liquibase installation</h2>
+
+<h3 id="liquibase-installation">Liquibase installation</h3>
 <p>CIB seven comes with a maintained changelog file that Liquibase can consume.
 This changelog defines which SQL statements to execute on a database.
 You can find the changelog and its referenced resources on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
@@ -3242,7 +3248,8 @@ Consult the <a href="/manual/2.0-ee/installation/full/">manual installation guid
 </p>
 </div>
 
-<h2 id="manual-installation">Manual installation</h2>
+
+<h3 id="manual-installation">Manual installation</h3>
 <p>To install the database schema required for CIB seven, we provide a set of scripts with prepared DDL statements.
 Those scripts create all required tables and default indices. You can find the provided SQL scripts on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
 Select the respective version (<code>$PLATFORM_VERSION</code>) and download the scripts as a <code>zip</code> or <code>tar.gz</code> file.
@@ -3264,12 +3271,14 @@ Consult the <a href="/manual/2.0-ee/installation/full/">manual installation guid
   <p>If you have defined a specific prefix for the entities of your database, you will have to manually adjust the <code>create</code> scripts accordingly so that the tables are created with the prefix.</p>
 </div>
 
-<h1 id="update">Update</h1>
+
+<h2 id="update">Update</h2>
 <p>Updating to a newer CIB seven minor version also requires a database schema update. You can reuse all the options available for a <a href="#installation">schema installation</a> here as well.
 If you are switching from one option to another, you might need to perform additional preparation work to update reliably.
 The individual sections on the mechanisms will provide details if necessary.</p>
 <p>In case you are just updating to a newer patch level of your CIB seven installation, a schema update might not be necessary.</p>
-<h2 id="liquibase-update">Liquibase update</h2>
+
+<h3 id="liquibase-update">Liquibase update</h3>
 <p>This section assumes you are already set up with Liquibase as described in the <a href="#liquibase-installation">installation section</a>.
 In case you have not set up Liquibase itself yet and want to update a database that you <a href="#manual-installation">manually installed</a> and updated until now, please consult the <a href="#migrate-to-liquibase">migration section</a> first.</p>
 <p>Camunda comes with a maintained changelog file that Liquibase can consume.
@@ -3291,7 +3300,8 @@ You can pass on the connection details to your database instance via parameters 
   <p>Liquibase provides additional commands to preview all changes applied by commands that execute SQL statements on a database. For the <code>update</code> command, you can execute the <a href="https://docs.liquibase.com/commands/community/updatesql.html">updateSql</a> command to inspect all statements that Liquibase will issue on your database without actually executing them.</p>
 </div>
 
-<h3 id="migrate-to-liquibase">Migrate to Liquibase</h3>
+
+<h4 id="migrate-to-liquibase">Migrate to Liquibase</h4>
 <p>Liquibase provides workflows to update databases that were not set up using Liquibase from the very beginning.
 For such a scenario to work, you need to populate a tracking table that represents the current state of your database with regards to the changelog file you want to update against.
 In other words, you need to let Liquibase know which parts of the changelog your database already contains.</p>
@@ -3306,7 +3316,8 @@ You can pass on the connection details to your database instance via parameters 
 <p>Liquibase uses this information to create the tracking tables and mark all changesets until the tag you defined as executed.
 Liquibase determines if there are any changes that it needs to apply to your database for any subsequent <code>update</code> commands.
 You have migrated your manual installation to Liquibase.</p>
-<h2 id="manual-update">Manual update</h2>
+
+<h3 id="manual-update">Manual update</h3>
 <p>Updating from your current minor version (<code>$X</code>) to its follow-up version (<code>$Y</code>) requires updating the database schema as well.
 Follow the outlined procedure to perform this update:</p>
 <ol>
@@ -3328,7 +3339,8 @@ The scripts update the database from one minor version to the next and change th
 <p>We highly recommend checking for any existing patch scripts for your database that are within the bounds of the new minor version you are updating to (<code>$Y</code>). Execute them in ascending order by version number. The procedure is the same as in step 1, only for the new minor version.</p>
 </li>
 </ol>
-<h2 id="patch-level-update">Patch level update</h2>
+
+<h3 id="patch-level-update">Patch level update</h3>
 <p>This section explains how to perform a patch-level update for your database schema. The <em>patch level</em> is the version number &ldquo;after the second dot&rdquo;. For example, update from <code>7.14.2</code> to <code>7.14.3</code>.</p>
 <p>Between patch levels, the structure of the database schema does not change. The database structure of all patch releases is backward compatible with the corresponding minor version. For example, the database schema of all <code>7.14.x</code> versions are backward compatible with the <code>7.14.0</code> schema.</p>
 <p>The one exception to this is a bug in the database schema itself. If you are affected by such a bug, you have the option to run a patch script. The following list contains all available patch scripts, information on what the fixes are related to, and a link to the corresponding <a href="https://jira.camunda.com/projects/CAM">Camunda Jira</a> issue:</p>
@@ -3756,12 +3768,14 @@ The scripts update the database from one minor version to the next and change th
     </tr>
   </tbody>
 </table>
-<h3 id="liquibase-patch-level-update">Liquibase patch level update</h3>
+
+<h4 id="liquibase-patch-level-update">Liquibase patch level update</h4>
 <p>CIB seven comes with a maintained changelog file that Liquibase can consume.
 This changelog helps Liquibase to keep track of the changes that have been made to your database already.
 Based on that changelog and the tracking tables, Liquibase determines which changes it needs to apply when instructing it to update your schema.
 Therefore, the procedure for patch-level updates is equivalent to that for <a href="#liquibase-update">minor version updates</a>.</p>
-<h3 id="manual-patch-level-update">Manual patch level update</h3>
+
+<h4 id="manual-patch-level-update">Manual patch level update</h4>
 <p>You can find the necessary scripts on our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/distro/cibseven-sql-scripts/">Artifact Repository</a>.
 Select the respective patch version you want to update to (<code>$Y</code>) and download the scripts as a <code>zip</code> or <code>tar.gz</code> file.
 Open the <code>cibseven-sql-scripts-$Y/upgrade</code> folder to find all available patch scripts.

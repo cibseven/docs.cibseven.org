@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3192,11 +3196,14 @@
 <li><strong>Queries</strong>: Queries offer the ability to include expressions for certain parameters (currently task queries only). This enables users to define reusable queries that can be repeatedly executed and dynamically adapted to changing circumstances. For example, a task query <code>taskService.createTaskQuery().dueBeforeExpression(${now()}).list();</code> uses an expression to always return the tasks currently due. Camunda <a href="/manual/2.0-ee/webapps/tasklist/">Tasklist</a> makes use of this feature in the form of <a href="/manual/2.0-ee/webapps/tasklist/filters/">task filters</a>.</li>
 </ul>
 <p>Only trusted users should be authorized to interact with these endpoints. How access can be restricted is outlined in the next sections.</p>
-<h1 id="cib-seven-in-a-trusted-environment">CIB seven in a Trusted Environment</h1>
+
+<h2 id="cib-seven-in-a-trusted-environment">CIB seven in a Trusted Environment</h2>
 <p>When CIB seven is deployed in an environment where only trusted parties can access the system (for example due to firewall policies), no untrusted party can access the APIs for submitting custom code and the following suggestions need not be adhered to.</p>
-<h1 id="deployments">Deployments</h1>
+
+<h2 id="deployments">Deployments</h2>
 <p>Access to performing deployments can be restricted by using the <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/">authorization infrastructure</a> and activating authentication checks for any endpoint a potentially untrusted party may access. The crucial permission for making deployments is <code>Deployment/Create</code>. Untrusted users should not be granted this permission.</p>
-<h1 id="queries">Queries</h1>
+
+<h2 id="queries">Queries</h2>
 <p>Query access cannot be generally restricted with authorizations. Instead, a query&rsquo;s result is reduced to entities a user is authorized to access. Thus, authorization permissions cannot be used to guard expression evaluation in queries.</p>
 <p>The process engine configuration offers two flags to toggle expression evaluation in <em>adhoc</em> and <em>stored</em> queries. Adhoc queries are directly submitted queries. For example, <code>taskService.createTaskQuery().list();</code> creates and executes an adhoc query. In contrast, a stored query is persisted along with a filter and executed when the filter is executed. Expressions in adhoc queries can be disabled by setting the configuration property <code>enableExpressionsInAdhocQueries</code> to <code>false</code>. Accordingly, the property <code>enableExpressionsInStoredQueries</code> disables expressions in stored queries. If an expression is used although expression evaluation is disabled, the process engine raises an exception before evaluating any expression, thereby preventing malicious code from being executed.</p>
 <p>The following configuration combinations exist:</p>

@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -265,7 +267,8 @@
   <p>BPMN diagrams must be created for the process engine they intend to be deployed on. You cannot run a BPMN diagram modeled for Camunda Platform in Camunda Cloud, or vice versa, at this time.</p>
 </div>
 
-<h1 id="use-the-camunda-modeler-to-deploy-the-process">Use the Camunda Modeler to Deploy the Process</h1>
+
+<h2 id="use-the-camunda-modeler-to-deploy-the-process">Use the Camunda Modeler to Deploy the Process</h2>
 <p>In order to deploy the Process, click on the deploy button in the Camunda Modeler, then give it the Deployment Name &ldquo;Payment Retrieval&rdquo; and click the Deploy button. From version 3.0.0 on, you will be required to provide an URL for an Endpoint Configuration along with Deployment Details. This can be either the root endpoint to the REST API (e.g. <code>http://localhost:8080/engine-rest</code>) or an exact endpoint to the deployment creation method (e.g. <code>http://localhost:8080/engine-rest/deployment/create</code>).</p>
 <p><figure class="image">
   <span><img
@@ -287,7 +290,8 @@ You should see a success message in the Camunda Modeler:
 </figure>
 </p>
 <p>More details regarding the deployment from Camunda Modeler you can find <a href="https://blog.camunda.com/post/2019/01/camunda-modeler-3.0.0-0-released/#completely-reworked-deployment-tool">here</a>. For Camunda Modeler 2.2.4 and earlier, read <a href="https://blog.camunda.com/post/2018/03/camunda-modeler-1120-alpha-3-released/">this blog post</a>.</p>
-<h1 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h1>
+
+<h2 id="verify-the-deployment-with-cockpit">Verify the Deployment with Cockpit</h2>
 <p>Next, use Cockpit to see if the process was successfully deployed. Go to <a href="http://localhost:8080/camunda/app/cockpit/">http://localhost:8080/camunda/app/cockpit/</a> and log in with the credentials demo / demo. Your process <em>Payment Retrieval</em> should be visible on the dashboard.</p>
 <figure class="image">
   <span><img
@@ -295,14 +299,17 @@ You should see a success message in the Camunda Modeler:
        /></span>
 </figure>
 
-<h1 id="start-a-process-instance">Start a Process Instance</h1>
+
+<h2 id="start-a-process-instance">Start a Process Instance</h2>
 <p>In Camunda, there are different ways to start a new process instance.
 You can leverage the Camunda REST API to start a new process instance by sending a POST Request.</p>
-<h2 id="a-curl">a) curl</h2>
+
+<h3 id="a-curl">a) curl</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -X POST -d <span class="s1">&#39;{&#34;variables&#34;: {&#34;amount&#34;: {&#34;value&#34;:555,&#34;type&#34;:&#34;integer&#34;}, &#34;item&#34;: {&#34;value&#34;:&#34;item-xyz&#34;} } }&#39;</span> http://localhost:8080/engine-rest/process-definition/key/payment-retrieval/start
 </span></span></code></pre></div><p>In your worker, you should now see the output in your console.
 This means you have successfully started and executed your first simple process.</p>
-<h2 id="b-rest-client">b) REST Client</h2>
+
+<h3 id="b-rest-client">b) REST Client</h3>
 <p>If you don&rsquo;t feel comfortable using curl for the REST request, you can instead make use of any REST client.</p>
 <p>Make a POST request to the following endpoint:
 <code>http://localhost:8080/engine-rest/process-definition/key/payment-retrieval/start</code></p>

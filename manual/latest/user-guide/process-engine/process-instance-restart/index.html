@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3194,7 +3198,8 @@ This can, for example, be useful when termination did not proceed in a desired w
 </ul>
 <p>To perform such an operation the process engine offers <em>the process instance restart API</em>, that is entered via <code>RuntimeService.restartProcessInstances(...)</code>. This API allows to specify multiple instantiation instructions in one call by using a fluent builder.</p>
 <p>Note that these operations are also available via REST: <a href="/manual/latest/reference/rest/specification/#tag/Process-Definition/operation/restartProcessInstance">Restart Process Instance</a> and <a href="/manual/latest/reference/rest/specification/#tag/Process-Definition/operation/restartProcessInstanceAsyncOperation">Restart Process Instance (async)</a></p>
-<h1 id="process-instance-restart-by-example">Process Instance Restart by Example</h1>
+
+<h2 id="process-instance-restart-by-example">Process Instance Restart by Example</h2>
 <p>As an example, consider the following process model where the red dots mark active tasks:</p>
 <figure class="image">
   <span><img
@@ -3224,9 +3229,11 @@ The ids of the historic and the restarted process instance are different.</p>
 </p>
 </div>
 
-<h1 id="operational-semantics">Operational Semantics</h1>
+
+<h2 id="operational-semantics">Operational Semantics</h2>
 <p>In the following, the exact semantics of the process instance restart feature are documented. Reading this section is recommended to fully understand the effects, power and limitations of this feature.</p>
-<h2 id="instantiation-instruction-types">Instantiation Instruction Types</h2>
+
+<h3 id="instantiation-instruction-types">Instantiation Instruction Types</h3>
 <p>The fluent process instance restart builder offers the following instructions to be submitted:</p>
 <ul>
 <li><code>startBeforeActivity(String activityId)</code></li>
@@ -3235,11 +3242,13 @@ The ids of the historic and the restarted process instance are different.</p>
 </ul>
 <p>For information about the instruction types, please refer to the similar
 <a href="/manual/latest/user-guide/process-engine/process-instance-modification/#modification-instruction-types">modification instruction types</a> section.</p>
-<h2 id="selecting-process-instances-to-restart">Selecting process instances to restart</h2>
+
+<h3 id="selecting-process-instances-to-restart">Selecting process instances to restart</h3>
 <p>Process instances can be selected for restart by either providing a set of process instance ids
 or providing a historic process instance query. It is also possible to specify both, a list of process instance ids and a query.
 The process instances to be restarted will then be the union of the resulting sets.</p>
-<h3 id="list-of-process-instances">List of Process Instances</h3>
+
+<h4 id="list-of-process-instances">List of Process Instances</h4>
 <p>The process instances which should be restarted can either
 be specified as a list of the process instance ids:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
@@ -3259,7 +3268,8 @@ be specified as a list of the process instance ids:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">startBeforeActivity</span><span class="p">(</span><span class="s">&#34;activity&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processInstanceIds</span><span class="p">(</span><span class="n">instance1</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">instance2</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="historic-process-instance-query">Historic Process Instance Query</h3>
+</span></span></span></code></pre></div>
+<h4 id="historic-process-instance-query">Historic Process Instance Query</h4>
 <p>If the instances are not known beforehand, the process instances can be selected by a historic process instance query:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">HistoricProcessInstanceQuery</span><span class="w"> </span><span class="n">historicProcessInstanceQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">historyService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createHistoricProcessInstanceQuery</span><span class="p">()</span><span class="w">
@@ -3270,7 +3280,8 @@ be specified as a list of the process instance ids:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">startBeforeActivity</span><span class="p">(</span><span class="s">&#34;activity&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">historicProcessInstanceQuery</span><span class="p">(</span><span class="n">historicProcessInstanceQuery</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="skipping-listeners-and-inputoutput-mappings">Skipping Listeners and Input/Output Mappings</h2>
+</span></span></span></code></pre></div>
+<h3 id="skipping-listeners-and-inputoutput-mappings">Skipping Listeners and Input/Output Mappings</h3>
 <p>It is possible to skip invocations of execution and task listeners as well as input/output mappings for the transaction that performs the restart. This can be useful when the restart is executed on a system that has no access to the involved process application deployments and their contained classes.</p>
 <p>In the API, the two methods <code>#skipCustomListeners</code> and <code>#skipIoMappings</code>
 can be used for this purpose:</p>
@@ -3283,7 +3294,8 @@ can be used for this purpose:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">skipCustomListeners</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">skipIoMappings</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="restarting-a-process-instance-with-the-initial-set-of-variables">Restarting a Process Instance With the Initial Set of Variables</h2>
+</span></span></span></code></pre></div>
+<h3 id="restarting-a-process-instance-with-the-initial-set-of-variables">Restarting a Process Instance With the Initial Set of Variables</h3>
 <p>By default, a process instance is restarted with the last set of variables.
 To alternatively choose the initial set of variables, the <code>initialSetOfVariables</code> method is used.</p>
 <p>This feature does not only copy the start variables, but will copy the first version of all process variables that have been set in the start activity of the old process instance.</p>
@@ -3296,7 +3308,8 @@ To alternatively choose the initial set of variables, the <code>initialSetOfVari
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">initialSetOfVariables</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>The initial set of variables can not be set if the historic process instance has no unique start activity. In that case, no variables are taken over.</p>
-<h2 id="omitting-the-business-key-of-a-historic-process-instance">Omitting the Business Key of a Historic Process Instance</h2>
+
+<h3 id="omitting-the-business-key-of-a-historic-process-instance">Omitting the Business Key of a Historic Process Instance</h3>
 <p>By default, a process instance is restarted with the same business key as the historic process instance.
 By using the method <code>withoutBusinessKey</code>, the business key of the restarted process instance is not set.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
@@ -3307,7 +3320,8 @@ By using the method <code>withoutBusinessKey</code>, the business key of the res
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processInstanceIds</span><span class="p">(</span><span class="n">processInstanceIds</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">withoutBusinessKey</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="execution">Execution</h2>
+</span></span></span></code></pre></div>
+<h3 id="execution">Execution</h3>
 <p>The restart can either be executed synchronously (blocking) or asynchronously
 (non-blocking) by using a <a href="/manual/latest/user-guide/process-engine/batch/">batch</a> .</p>
 <p>The following are some reasons to prefer either one or the other:</p>
@@ -3332,7 +3346,8 @@ executor should handle the execution</li>
 </ul>
 </li>
 </ul>
-<h3 id="synchronous-execution">Synchronous execution</h3>
+
+<h4 id="synchronous-execution">Synchronous execution</h4>
 <p>To execute the restart synchronously, the <code>execute</code> method is used. It will
 block until the restart is completed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
@@ -3343,7 +3358,8 @@ block until the restart is completed.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processInstanceIds</span><span class="p">(</span><span class="n">processInstanceIds</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Restart is successful if all process instances can be restarted.</p>
-<h3 id="asynchronous-batch-execution">Asynchronous batch execution</h3>
+
+<h4 id="asynchronous-batch-execution">Asynchronous batch execution</h4>
 <p>To execute the restart asynchronously, the <code>executeAsync</code> method is used. It will
 return immediately with a reference to the batch that executes the restart.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">ProcessDefinition</span><span class="w"> </span><span class="n">processDefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">

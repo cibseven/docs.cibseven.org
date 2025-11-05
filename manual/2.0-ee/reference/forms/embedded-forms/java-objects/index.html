@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3195,7 +3199,8 @@ If Java Classes are serialized using JAX-B, you need to add custom XML parsing a
 to the embedded form. Java Objects serialized using Java Serialization cannot be used in forms.</p>
 </div>
 
-<h1 id="fetching-an-existing-serialized-java-object-variable">Fetching an existing Serialized Java Object Variable</h1>
+
+<h2 id="fetching-an-existing-serialized-java-object-variable">Fetching an existing Serialized Java Object Variable</h2>
 <p>The Form SDK will only fetch those variables which are actually used in a form. Since a Complex Java
 Object is usually not bound to a single input field, we cannot use the <code>cam-variable-name</code> directive.
 We thus need to fetch the variable programatically:</p>
@@ -3209,7 +3214,8 @@ We thus need to fetch the variable programatically:</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">invoiceData</span> <span class="o">=</span> <span class="nx">camForm</span><span class="p">.</span><span class="nx">variableManager</span><span class="p">.</span><span class="nx">variableValue</span><span class="p">(</span><span class="s1">&#39;invoiceData&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">});</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="creating-a-new-serialized-java-object">Creating a new Serialized Java Object</h1>
+</span></span></code></pre></div>
+<h2 id="creating-a-new-serialized-java-object">Creating a new Serialized Java Object</h2>
 <p>In case the variable does not yet exist (for instance in a Start Form), you have to create the variable and specify the necessary meta data in order for the process engine to correctly handle the variable as Java Object.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -3233,7 +3239,8 @@ We thus need to fetch the variable programatically:</p>
 </span></span><span class="line"><span class="cl">  <span class="p">});</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="full-example">Full Example</h1>
+</span></span></code></pre></div>
+<h2 id="full-example">Full Example</h2>
 <p>A full example of this feature can be found in the <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/usertask/task-form-embedded-serialized-java-object">CIB seven Examples Repository</a>.</p>
 
     </div>

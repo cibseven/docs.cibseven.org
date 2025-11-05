@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <hr>
 <p>All process definitions are cached (after they have been parsed) to avoid polling the database every time a process definition is needed and because process definition data doesn&rsquo;t change. This reduces the latency of referencing the process definitions and thus improves the performance of the system.</p>
-<h1 id="customize-the-maximum-capacity-of-the-cache">Customize the maximum Capacity of the Cache</h1>
+
+<h2 id="customize-the-maximum-capacity-of-the-cache">Customize the maximum Capacity of the Cache</h2>
 <p>If one has many process definitions, the cache might occupy a large amount of memory and the capacity of the working memory may reach its limits. Therefore, after the maximum capacity is reached the least recently used process definition entry is evicted from the cache to satisfy the capacity condition. However, if one still meets out of memory issues, it can be necessary to lower the maximum capacity of the cache.</p>
 <p>By changing the maximum capacity, the configuration effects all of the following cache components:</p>
 <ul>
@@ -3205,7 +3210,8 @@
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheCapacity&#34;</span> <span class="na">value=</span><span class="s">&#34;120&#34;</span> <span class="nt">/&gt;</span>  
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
 </span></span></code></pre></div><p><strong>Note:</strong> The same capacity is used for all of the components stated above and it is not possible to set the capacity size individually for each component. Furthermore, in the default cache implementation corresponds the capacity size to the maximum number of elements in the cache that are used. That means, the absolute amount of physical storage (e.g. mega bytes) you use up depends on the size needed for the respective process definitions.</p>
-<h1 id="provide-a-custom-cache-implementation">Provide a custom Cache Implementation</h1>
+
+<h2 id="provide-a-custom-cache-implementation">Provide a custom Cache Implementation</h2>
 <p>The default implementation of the cache evicts the least recently used entry as soon as the maximum capacity is exceeded. If it is necessary to choose the evicted cache entries by a different criteria, one can provide its own cache implementation.</p>
 <p>One can do this by implementing the Cache interface from <em>org.cibseven.util.commons package</em>. Let&rsquo;s assume for example that the following class has been implemented:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyCacheImplementation</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Cache</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">

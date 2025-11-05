@@ -41,6 +41,8 @@
       
       <li  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -259,9 +261,11 @@
 
     <div class="col-xs-12 content-text">
       <p>First, let&rsquo;s set up your first process application project in the IDE of your choice, the following description uses Eclipse.</p>
-<h1 id="requirements">Requirements</h1>
+
+<h2 id="requirements">Requirements</h2>
 <p>The project requires Java 17/21.</p>
-<h1 id="set-up-a-java-project">Set Up a Java Project</h1>
+
+<h2 id="set-up-a-java-project">Set Up a Java Project</h2>
 <p>We will start by setting up a Spring Boot application as an Apache Maven Project inside Eclipse. This consists of three steps:</p>
 <ol>
 <li>Create a new Maven Project in Eclipse</li>
@@ -269,7 +273,8 @@
 <li>Add a main class as an entry point for launching the Spring Boot application.</li>
 </ol>
 <p>In the following sections, we go through this process step by step.</p>
-<h2 id="create-a-new-maven-project">Create a new Maven Project</h2>
+
+<h3 id="create-a-new-maven-project">Create a new Maven Project</h3>
 <p>First, we set up a new Apache Maven based project.</p>
 <figure class="image">
   <span><img
@@ -285,7 +290,8 @@
 </figure>
 
 <p>When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the <em>Project Explorer</em> view.</p>
-<h2 id="add-cib-seven--spring-boot-dependencies">Add CIB seven &amp; Spring Boot Dependencies</h2>
+
+<h3 id="add-cib-seven--spring-boot-dependencies">Add CIB seven &amp; Spring Boot Dependencies</h3>
 <p>The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the <code>pom.xml</code> file of the project.</p>
 <p>We add the Spring Boot BOM in the dependencyManagement section and the CIB seven Spring Boot Starter for Webapps, which will automatically include the CIB seven engine and webapps in the app.
 We also use <code>spring-boot-maven-plugin</code>, which does all the magic for packaging Spring Boot application content together.</p>
@@ -361,7 +367,8 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/build&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
-</span></span></code></pre></div><h2 id="add-main-class-to-our-spring-boot-application">Add Main Class to our Spring Boot Application</h2>
+</span></span></code></pre></div>
+<h3 id="add-main-class-to-our-spring-boot-application">Add Main Class to our Spring Boot Application</h3>
 <p>Next, we create an application class in the org.cibseven.getstarted.loadapproval package under the src/main/java directory.
 This class contains a main method that serves as the entry point for launching the Spring Boot application.
 It is annotated with @SpringBootApplication the annotation <code>@SpringBootApplication</code> on it,
@@ -379,7 +386,8 @@ which implicitly adds several convenient features (autoconfiguration, component 
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="build-and-run">Build and Run</h2>
+</span></span></span></code></pre></div>
+<h3 id="build-and-run">Build and Run</h3>
 <p>Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a right-click and select <code>Run As / Maven Install</code>.</p>
 <p>Our first CIB seven Spring Boot application is ready now. As a result of the build, you will have a JAR-file in your <code>target</code> folder. This JAR is a Spring Boot application,
 which embeds inside Tomcat as a web container, CIB seven engine and web applications resources.

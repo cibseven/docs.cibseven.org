@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>The <strong>CIB seven External Task Client</strong> allows you to set up remote service tasks for your workflow. There is a supported <a href="https://github.com/cibseven/cibseven/tree/master/clients/java">Java</a>
 as well as <a href="https://github.com/cibseven/cibseven-external-task-client-js">JavaScript</a> implementation.</p>
-<h2 id="features">Features</h2>
+
+<h3 id="features">Features</h3>
 <ul>
 <li>Complete External Tasks</li>
 <li>Extend the lock duration of External Tasks</li>
@@ -3196,7 +3201,8 @@ as well as <a href="https://github.com/cibseven/cibseven-external-task-client-js
 <li>Report BPMN errors and failures</li>
 <li>Share variables with the Workflow Engine</li>
 </ul>
-<h2 id="bootstrapping-the-client">Bootstrapping the Client</h2>
+
+<h3 id="bootstrapping-the-client">Bootstrapping the Client</h3>
 <figure class="image">
   <span><img
       src="img/externalTaskCient.png"
@@ -3207,15 +3213,19 @@ as well as <a href="https://github.com/cibseven/cibseven-external-task-client-js
 
 <p>The client allows to handle service tasks of type &ldquo;external&rdquo;. In order to configure and instantiate the client, all supported implementations offer a convenient interface.
 The communication between the client and the CIB seven workflow engine is HTTP. Hence, the respective URL of the REST API is a mandatory information.</p>
-<h3 id="request-interceptors">Request Interceptors</h3>
+
+<h4 id="request-interceptors">Request Interceptors</h4>
 <p>To add additional HTTP headers to the performed REST API requests, the request interceptor method can be used. This becomes necessary,
 in the context of e.g. authentication.</p>
-<h4 id="basic-authentication">Basic Authentication</h4>
+
+<h5 id="basic-authentication">Basic Authentication</h5>
 <p>In some cases it is necessary to secure the REST API of the CIB seven workflow engine via Basic Authentication. For such
 situations a Basic Authentication implementation is provided by the client. Once configured with user credentials, the basic authentication header is added to each REST API request.</p>
-<h4 id="custom-interceptor">Custom Interceptor</h4>
+
+<h5 id="custom-interceptor">Custom Interceptor</h5>
 <p>Custom interceptors can be added while bootstrapping the client. For more details regarding the implementation please check the documentation related to the client of interest.</p>
-<h3 id="topic-subscription">Topic Subscription</h3>
+
+<h4 id="topic-subscription">Topic Subscription</h4>
 <p>If a Service Task of the type &ldquo;External&rdquo; is placed inside a workflow, a topic name must be specified. The corresponding
 BPMN 2.0 XML could look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
@@ -3230,45 +3240,56 @@ Workflow Engine. Each fetched External Task is marked with a temporary lock. Lik
 certain External Task in the meanwhile. A lock is valid for the specified period of time and can be extended.</p>
 <p>When setting up a new topic subscription, it is mandatory to specify the topic name and a handler function.
 Once a topic has been subscribed, the client can start receiving work items by polling the process engine’s API.</p>
-<h3 id="handler">Handler</h3>
+
+<h4 id="handler">Handler</h4>
 <p>Handlers can be used to implement custom methods which are invoked whenever an External Task is fetched and locked successfully.
 For each topic subscription an External Task handler interface is provided.</p>
 <p>The handlers are invoked sequentially for each fetched-and-locked external task.</p>
-<h3 id="completing-tasks">Completing Tasks</h3>
+
+<h4 id="completing-tasks">Completing Tasks</h4>
 <p>Once the custom methods specified in the handler are completed, the External Task can be completed. This means for the Workflow Engine that the execution will
 move on. For this purpose, all supported implementations have a <code>complete</code> method which can be called within the handler function. However, the
 External Task can only be completed, if it is currently locked by the client.</p>
-<h3 id="extending-the-lock-duration-of-tasks">Extending the Lock Duration of Tasks</h3>
+
+<h4 id="extending-the-lock-duration-of-tasks">Extending the Lock Duration of Tasks</h4>
 <p>Sometimes the completion of custom methods takes longer than expected. In this case the lock duration needs to be extended.
 This action can be performed by calling an <code>extendLock</code> method passing the new lock duration.
 The lock duration can only be extended, if the External Task is currently locked by the client.</p>
-<h3 id="unlocking-tasks">Unlocking Tasks</h3>
+
+<h4 id="unlocking-tasks">Unlocking Tasks</h4>
 <p>If an External Task is supposed to be unlocked so that other clients are allowed to fetch and lock this task again,
 an <code>unlock</code> method can be called. The External Task can only be unlocked, if the task is currently locked by the client.</p>
-<h3 id="reporting-failures">Reporting Failures</h3>
+
+<h4 id="reporting-failures">Reporting Failures</h4>
 <p>If the client faces a problem that makes it impossible to complete the External Task successfully, this problem can be reported to
 the Workflow Engine. A failure can only be reported, if the External Task is currently locked by the client.
 You can find a detailed documentation about this action in the CIB seven <a href="/manual/latest/user-guide/process-engine/external-tasks/#reporting-task-failure">User Guide</a>.</p>
-<h3 id="reporting-bpmn-errors">Reporting BPMN Errors</h3>
+
+<h4 id="reporting-bpmn-errors">Reporting BPMN Errors</h4>
 <p><a href="/manual/latest/reference/bpmn20/events/error-events/#error-boundary-event">Error boundary events</a>
 are triggered by BPMN errors. A BPMN error can only be reported, if the External Task is currently locked by the client.
 You can find a detailed documentation about this action in the CIB seven <a href="/manual/latest/user-guide/process-engine/external-tasks/#reporting-bpmn-error">User Guide</a>.</p>
-<h3 id="variables">Variables</h3>
+
+<h4 id="variables">Variables</h4>
 <p>Both external tasks clients are compatible with all data types the CIB seven Engine <a href="/manual/latest/user-guide/process-engine/variables/#supported-variable-values">supports</a>.
 Variables can be accessed/altered using typed or the untyped API.</p>
-<h4 id="process-and-local-variables">Process and Local Variables</h4>
+
+<h5 id="process-and-local-variables">Process and Local Variables</h5>
 <p>Variables can be treated as process or local variables.
 The former is set on the highest possible hierarchy of the variable scope and available to its child scopes in the entire process.
 If a variable, in contrast, is supposed to be set exactly on the provided execution scope, the local type can be used.</p>
 <p><strong>Note:</strong> setting variables does not make sure that variables are persisted. Variables which were set locally on client-side
 are only available during runtime and get lost if they are not shared with the Workflow Engine by successfully completing
 the External Task of the current lock.</p>
-<h4 id="untyped-variables">Untyped Variables</h4>
+
+<h5 id="untyped-variables">Untyped Variables</h5>
 <p>Untyped variables are stored by using the respective type of their values. It is possible to store/retrieve only a single variable or multiple variables at once.</p>
-<h4 id="typed-variables">Typed Variables</h4>
+
+<h5 id="typed-variables">Typed Variables</h5>
 <p>Setting typed variables requires the type to be specified explicitly. Typed variables can also be retrieved, the received object provides a variety of information besides type and
 value. Of course it is also possible to set and get multiple typed variables.</p>
-<h5 id="example-using-typed-json-xml-and-object-variables">Example: Using Typed JSON, XML and Object variables</h5>
+
+<h6 id="example-using-typed-json-xml-and-object-variables">Example: Using Typed JSON, XML and Object variables</h6>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// obtained via subscription</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ExternalTaskService</span><span class="w"> </span><span class="n">externalTaskService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">..;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ExternalTask</span><span class="w"> </span><span class="n">externalTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">..;</span><span class="w">
@@ -3292,7 +3313,8 @@ value. Of course it is also possible to set and get multiple typed variables.</p
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">serializationDataFormat</span><span class="p">(</span><span class="s">&#34;application/xml&#34;</span><span class="p">).</span><span class="na">create</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">externalTaskService</span><span class="p">.</span><span class="na">complete</span><span class="p">(</span><span class="n">externalTask</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="logging">Logging</h3>
+</span></span></span></code></pre></div>
+<h4 id="logging">Logging</h4>
 <p>The client implementations support logging various events in the client lifecycle.
 Hence situations like the following can be reported:</p>
 <ul>
@@ -3307,7 +3329,8 @@ Hence situations like the following can be reported:</p>
 </li>
 </ul>
 <p>For more details, please check the documentation related to the client of interest.</p>
-<h3 id="accessing-the-internal-apache-httpclientbuilder">Accessing the internal Apache HttpClientBuilder</h3>
+
+<h4 id="accessing-the-internal-apache-httpclientbuilder">Accessing the internal Apache HttpClientBuilder</h4>
 <p>If there is a need to even further customize the communication of the client, you can get access to
 the Apache <code>HttpClientBuilder</code> using the <code><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/client/ExternalTaskClientBuilder.html">ExternalTaskClientBuilder</a>
 </code>&rsquo;s <code>customizeHttpClient</code> method.
@@ -3319,10 +3342,12 @@ The method accepts a <code>Consumer</code> as parameter that gives you access to
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">setResponseTimeout</span><span class="p">(</span><span class="n">Timeout</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="n">30</span><span class="p">))</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">()))</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="examples">Examples</h2>
+</span></span></span></code></pre></div>
+<h3 id="examples">Examples</h3>
 <p>Complete examples of how to set up the different External Task Clients can be found on Camunda&rsquo;s GitHub (<a href="https://github.com/camunda/camunda-bpm-examples/tree/7.22/clients/java">Java</a>,
 <a href="https://github.com/cibseven/cibseven-external-task-client-js/tree/master/examples">JavaScript</a>).</p>
-<h2 id="external-task-throughput">External task throughput</h2>
+
+<h3 id="external-task-throughput">External task throughput</h3>
 <p>For a high throughput of external tasks, you should balance between the number of external task instances, the number of clients and the duration of handling the work.</p>
 <p>A rule of thumb for long running tasks (maybe more than 30 secs) would be, to fetch-and-lock the tasks one by one (maskTasks = 1) and adjust the Long Polling interval to your needs (maybe 60 secs, asyncResponseTime = 60000).
 The Java client supports exponential backoff, default by 500 ms with factor 2, limited by 60000 ms. This could be shorted to your needs, too.</p>

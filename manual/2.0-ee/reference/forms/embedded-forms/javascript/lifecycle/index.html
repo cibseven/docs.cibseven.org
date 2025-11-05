@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>It is possible to participate in the lifecycle of the form. See <a href="/manual/2.0-ee/reference/forms/embedded-forms/lifecycle/">Form Lifecycle and
 Events</a> for more details.</p>
-<h1 id="fetching-additional-variables">Fetching Additional Variables</h1>
+
+<h2 id="fetching-additional-variables">Fetching Additional Variables</h2>
 <p>When loading the form, the values of all variables used in the form are fetched from the
 backend. This means that the form SDK only fetches those variables which are actually used in the
 form. The most convenient way to use a variable is the <code>cam-variable-name</code> directive. However,
@@ -3215,7 +3220,8 @@ useful to declare additional variables programmatically:</p>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="submitting-additional-variables">Submitting Additional Variables</h1>
+</span></span></code></pre></div>
+<h2 id="submitting-additional-variables">Submitting Additional Variables</h2>
 <p>Similar to fetching additional variables using a script, it is also possible to add additional
 variables to the submit:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;form&#34;</span><span class="p">&gt;</span>
@@ -3239,7 +3245,8 @@ variables to the submit:</p>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h1 id="implementing-custom-fields">Implementing Custom Fields</h1>
+</span></span></code></pre></div>
+<h2 id="implementing-custom-fields">Implementing Custom Fields</h2>
 <p>The following is a small usage example which combines some of the features explained so far.
 It uses custom JavaScript to implement a custom interaction with a form field which does not
 use any <code>cam-variable-*</code> directives.</p>

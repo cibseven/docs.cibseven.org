@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3215,7 +3219,8 @@ canceling an activity instance before migration and starting a new instance afte
 <div data-bpmn-diagram="../bpmn/process-instance-migration/example1"></div>
 <p>Process <code>exampleProcess:2</code>:</p>
 <div data-bpmn-diagram="../bpmn/process-instance-migration/example2"></div>
-<h1 id="process-instance-migration-by-example">Process Instance Migration by Example</h1>
+
+<h2 id="process-instance-migration-by-example">Process Instance Migration by Example</h2>
 <p>We can define a migration plan using the API entrance point <code>RuntimeService#createMigrationPlan</code>.
 It returns a fluent builder to create a migration plan. For our example, the code looks like:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">MigrationPlan</span><span class="w"> </span><span class="n">migrationPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getRuntimeService</span><span class="p">()</span><span class="w">
@@ -3257,10 +3262,12 @@ variable instances are preserved.</p>
 in the tasklist of an accountant to perform the <em>Validate Address</em> activity. After migration, the same task instance still exists and can be completed
 successfully. It still has the same properties such as assignee or name.
 From the accountant&rsquo;s perspective, migration is completely transparent while working on a task.</p>
-<h1 id="api">API</h1>
+
+<h2 id="api">API</h2>
 <p>The following gives a structured overview of the Java API for process instance migration. Note that these operations are also available
 via <a href="/manual/2.0-ee/reference/rest/specification/#tag/Migration">REST</a>.</p>
-<h2 id="creating-a-migration-plan">Creating a Migration Plan</h2>
+
+<h3 id="creating-a-migration-plan">Creating a Migration Plan</h3>
 <p>A migration plan can be created by using the API <code>RuntimeService#createMigrationPlan</code>.
 It defines how migration should be performed.
 A migration plan contains the IDs of the source and target process definition
@@ -3292,12 +3299,14 @@ about this in the section about <a href="#aspects-not-covered-by-validation">asp
 validation</a>.</p>
 </div>
 
-<h3 id="one-to-one-relation-instruction">One-to-One Relation Instruction</h3>
+
+<h4 id="one-to-one-relation-instruction">One-to-One Relation Instruction</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">MigrationPlanBuilder</span><span class="err">#</span><span class="n">mapActivities</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sourceActivityId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">targetActivityId</span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p>Defining a one-to-one relation instruction means that an instance of the source activity
 is migrated into an instance of the target activity. Activity instance, task instance and variable
 instance state is preserved when migration is executed.</p>
-<h3 id="updating-event-triggers">Updating Event Triggers</h3>
+
+<h4 id="updating-event-triggers">Updating Event Triggers</h4>
 <p>When migrating events, it is possible to decide whether the corresponding event
 triggers should be updated or not.  See the <a href="#events">BPMN-specific considerations on
 events</a> for details. When generating a migration
@@ -3318,7 +3327,8 @@ updates its event trigger during migration.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">mapActivities</span><span class="p">(</span><span class="s">&#34;boundary&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;boundary&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">updateEventTrigger</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="set-variables-to-process-instances">Set Variables to Process Instances</h3>
+</span></span></span></code></pre></div>
+<h4 id="set-variables-to-process-instances">Set Variables to Process Instances</h4>
 <p>Sometimes it is necessary to add variables after migrating the process instances to a new version
 of the process definition. For example, when the new process model has a new input mapping which
 requires a specific variable which isn&rsquo;t yet present in the migrated process instance. The variables
@@ -3329,10 +3339,12 @@ are set to the process instances&rsquo; scope.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">mapEqualActivities</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setVariables</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h4 id="known-limitation">Known Limitation</h4>
+</span></span></span></code></pre></div>
+<h5 id="known-limitation">Known Limitation</h5>
 <p>Currently, it is not possible to set transient variables asynchronously. However,
 you can <a href="/manual/2.0-ee/user-guide/process-engine/variables/#transient-variables">set transient variables</a> synchronously.</p>
-<h2 id="generating-a-migration-plan">Generating a migration plan</h2>
+
+<h3 id="generating-a-migration-plan">Generating a migration plan</h3>
 <p>In addition to manually specifying all migration instructions, the <code>MigrationPlanBuilder</code>
 is able to generate migration instructions for all <em>equal</em> activities in the source
 and target process definitions. This can reduce the effort for creating a migration
@@ -3352,7 +3364,8 @@ Process definitions are always equal.</li>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>It creates generated migration instructions for the equal activities
 <code>assessCreditWorthiness</code>. It adds an additional mapping from <code>validateAddress</code> to <code>validateProcessAddress</code>.</p>
-<h3 id="updating-event-triggers-1">Updating Event Triggers</h3>
+
+<h4 id="updating-event-triggers-1">Updating Event Triggers</h4>
 <p>Like for individual instructions, it is possible to specify the event trigger update flag
 for generated migration instructions by using the <code>updateEventTriggers</code> method.
 This is equal to calling <code>updateEventTrigger</code> on all event migration instructions
@@ -3362,7 +3375,8 @@ which are generated.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">mapEqualActivities</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">updateEventTriggers</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h2 id="executing-a-migration-plan">Executing a migration plan</h2>
+</span></span></span></code></pre></div>
+<h3 id="executing-a-migration-plan">Executing a migration plan</h3>
 <p>Migration plans can be applied to a set of process instances of the source process
 definition by using the API Method <code>RuntimeService#newMigration</code>.</p>
 <p>The migration can either be executed synchronously (blocking) or asynchronously
@@ -3389,11 +3403,13 @@ executor should handle the execution</li>
 </ul>
 </li>
 </ul>
-<h3 id="selecting-process-instances-to-migrate">Selecting process instances to migrate</h3>
+
+<h4 id="selecting-process-instances-to-migrate">Selecting process instances to migrate</h4>
 <p>Process instances can be selected for migration by either providing a set of process instance IDs
 or providing a process instance query. It is also possible to specify both, a list of process instance IDs and a query.
 The process instances to be migrated will then be the union of the resulting sets.</p>
-<h4 id="list-of-process-instances">List of process instances</h4>
+
+<h5 id="list-of-process-instances">List of process instances</h5>
 <p>The process instances which should be migrated by a migration plan can either
 be specified as a list of the process instance IDs:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">MigrationPlan</span><span class="w"> </span><span class="n">migrationPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
@@ -3412,7 +3428,8 @@ be specified as a list of the process instance IDs:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">newMigration</span><span class="p">(</span><span class="n">migrationPlan</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processInstanceIds</span><span class="p">(</span><span class="n">instance1</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">instance2</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h4 id="process-instance-query">Process Instance Query</h4>
+</span></span></span></code></pre></div>
+<h5 id="process-instance-query">Process Instance Query</h5>
 <p>If the instances are not known beforehand, the process instances can be selected by a process instance query:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">MigrationPlan</span><span class="w"> </span><span class="n">migrationPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3423,7 +3440,8 @@ be specified as a list of the process instance IDs:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">runtimeService</span><span class="p">.</span><span class="na">newMigration</span><span class="p">(</span><span class="n">migrationPlan</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">processInstanceQuery</span><span class="p">(</span><span class="n">processInstanceQuery</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="skipping-listeners-and-inputoutput-mappings">Skipping Listeners and Input/Output Mappings</h3>
+</span></span></span></code></pre></div>
+<h4 id="skipping-listeners-and-inputoutput-mappings">Skipping Listeners and Input/Output Mappings</h4>
 <p>During migration, activity instances may end or new activity instances may emerge.
 Per default, their activities&rsquo; execution listeners and input/output mappings
 are going to be invoked as appropriate. This may not always be the desired behavior.</p>
@@ -3440,7 +3458,8 @@ can be used for this purpose:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">skipCustomListeners</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">skipIoMappings</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
-</span></span></span></code></pre></div><h3 id="synchronous-migration-execution">Synchronous migration execution</h3>
+</span></span></span></code></pre></div>
+<h4 id="synchronous-migration-execution">Synchronous migration execution</h4>
 <p>To execute the migration synchronously, the <code>execute</code> method is used. It will
 block until the migration is completed.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">MigrationPlan</span><span class="w"> </span><span class="n">migrationPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
@@ -3452,7 +3471,8 @@ block until the migration is completed.</p>
 </span></span></span></code></pre></div><p>Migration is successful if all process instances can be migrated. Confer the
 <a href="#validation">chapter on validation</a> to learn which kind of validation is performed before
 a migration plan is executed.</p>
-<h3 id="asynchronous-batch-migration-execution">Asynchronous batch migration execution</h3>
+
+<h4 id="asynchronous-batch-migration-execution">Asynchronous batch migration execution</h4>
 <p>To execute the migration asynchronously, the <code>executeAsync</code> method is used. It will
 return immediately with a reference to the batch which executes the migration.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">MigrationPlan</span><span class="w"> </span><span class="n">migrationPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
@@ -3473,7 +3493,8 @@ and if no retries are left, an incident is created. In this case, manual action
 is necessary to complete the batch migration: The job&rsquo;s retries can be incremented
 or the job can be deleted. Deletion cancels migration of the specific instance but
 does not affect the batch beyond that.</p>
-<h4 id="batch-migration-in-a-heterogeneous-cluster">Batch migration in a heterogeneous cluster</h4>
+
+<h5 id="batch-migration-in-a-heterogeneous-cluster">Batch migration in a heterogeneous cluster</h5>
 <p>As described in the <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/#job-execution-in-heterogeneous-clusters">job executor</a> section of the user guide, the process engine
 can be used in a heterogeneous cluster where deployments are unevenly distributed across cluster nodes.
 The <em>deployment-aware</em> job executor only executes jobs for deployments registered with it.
@@ -3486,13 +3507,17 @@ migration may fail when executing custom code (e.g., execution listeners) in the
 of the target process. Note that it is also possible to
 <a href="#skipping-listeners-and-input-output-mappings">skip the execution of custom code</a>
 during migration.</p>
-<h1 id="bpmn-specific-api-and-effects">BPMN-specific API and Effects</h1>
+
+<h2 id="bpmn-specific-api-and-effects">BPMN-specific API and Effects</h2>
 <p>Depending on the type of the activities a process model contains, migration has varying effects.</p>
-<h2 id="tasks">Tasks</h2>
-<h3 id="user-task">User Task</h3>
+
+<h3 id="tasks">Tasks</h3>
+
+<h4 id="user-task">User Task</h4>
 <p>When a user task is migrated, all properties of the task instance (i.e., <code>org.cibseven.bpm.engine.task.Task</code>) are preserved apart
 from the process definition id and task definition key. The task is not reinitialized: Attributes like assignee or name do not change.</p>
-<h4 id="timeout-task-listeners">Timeout Task Listeners</h4>
+
+<h5 id="timeout-task-listeners">Timeout Task Listeners</h5>
 <p>User tasks with attached task listeners of event type <code>timeout</code> define persistent event triggers that can be updated or preserved during migration.
 For the associated timers, the considerations of <a href="#events">catching events</a> apply here as well. On migration of the user task,
 the following semantics are applied:</p>
@@ -3501,15 +3526,19 @@ the following semantics are applied:</p>
 <li>If a timeout task listener in the source process definition is not found in the target definition based on its <code>id</code>, then its event trigger is deleted during migration</li>
 <li>If a timeout task listener of the target definition is not the target of a migration instruction, then a new event trigger is initialized during migration</li>
 </ul>
-<h3 id="receive-task">Receive Task</h3>
+
+<h4 id="receive-task">Receive Task</h4>
 <p>A receive task defines a persistent event trigger that can be updated or preserved during migration.
 The considerations for <a href="#events">intermediate catch events</a> apply here as well.</p>
-<h3 id="external-task">External Task</h3>
+
+<h4 id="external-task">External Task</h4>
 <p>When an active <a href="/manual/2.0-ee/user-guide/process-engine/external-tasks/">external task</a> is migrated, all properties of the external task instance (i.e., <code>org.cibseven.bpm.engine.externaltask.ExternalTask</code>) are preserved
 apart from activity id, process definition key, and process definition id. In particular, this means that attributes like topic and lock state do not change.</p>
 <p>It is possible to map activities that are implemented as external tasks to each other even if they have different types. For example, an external send task can be mapped to an external service task.</p>
-<h2 id="gateways">Gateways</h2>
-<h3 id="inclusive--parallel-gateway">Inclusive &amp; Parallel Gateway</h3>
+
+<h3 id="gateways">Gateways</h3>
+
+<h4 id="inclusive--parallel-gateway">Inclusive &amp; Parallel Gateway</h4>
 <p>Instances of inclusive and parallel gateways represent waiting tokens before the gateway is able to trigger.
 They can be migrated to a gateway of the same type in the target process by supplying a migration instruction.</p>
 <p>In addition, the following conditions must hold:</p>
@@ -3518,11 +3547,13 @@ They can be migrated to a gateway of the same type in the target process by supp
 <li>There must be a valid migration instruction for the scope in which the gateway is contained in</li>
 <li>At most one gateway of the source process definition can be mapped to every gateway in the target process definition</li>
 </ul>
-<h3 id="event-based-gateway">Event-based Gateway</h3>
+
+<h4 id="event-based-gateway">Event-based Gateway</h4>
 <p>To migrate an event-based gateway instance, a migration instruction to another event-based gateway must be part of the migration plan.
 In order to migrate the gateway&rsquo;s event triggers (event subscriptions, jobs), the events following to the gateway can be mapped as well.
 See the <a href="#events">events section</a> for the semantics of instructions between events.</p>
-<h2 id="events">Events</h2>
+
+<h3 id="events">Events</h3>
 <p>For all kinds of catching events (start, intermediate, boundary), a migration instruction can be supplied if they define a persistent event
 trigger. This is the case for message, conditional, timer, and signal events.</p>
 <p>When mapping events, there are two configuration options:</p>
@@ -3555,24 +3586,29 @@ timer job configuration is preserved. In effect, it is going to trigger five day
   <p>The usage of <code>#updateEventTrigger</code> is mandatory for migrating conditional events. The condition is overridden by the condition of the new conditional event.</p>
 </div>
 
-<h3 id="boundary-event">Boundary Event</h3>
+
+<h4 id="boundary-event">Boundary Event</h4>
 <p>Boundary events can be mapped from the source to the target process definition along with the activity that they are attached to. The following applies:</p>
 <ul>
 <li>If a boundary event is mapped, its persistent event trigger (for timers, conditionals, messages, and signals) is migrated</li>
 <li>If a boundary event in the source process definition is not mapped, then its event trigger is deleted during migration</li>
 <li>If a boundary event of the target definition is not the target of a migration instruction, then a new event trigger is initialized during migration</li>
 </ul>
-<h3 id="start-event">Start Event</h3>
+
+<h4 id="start-event">Start Event</h4>
 <p>Start events of event sub processes can be mapped from source to target with similar semantics as boundary events. In particular:</p>
 <ul>
 <li>If a start event is mapped, its persistent event trigger (for timers, conditionals, messages, and signals) is migrated</li>
 <li>If a start event in the source process definition is not mapped, then its event trigger is deleted during migration</li>
 <li>If a start event of the target definition is not the target of a migration instruction, then a new event trigger is initialized during migration</li>
 </ul>
-<h3 id="intermediate-catch-event">Intermediate Catch Event</h3>
+
+<h4 id="intermediate-catch-event">Intermediate Catch Event</h4>
 <p>Intermediate catch events must be mapped if a process instance is waiting for that event during migration.</p>
-<h3 id="compensation-event">Compensation Event</h3>
-<h4 id="migrating-compensation-events">Migrating Compensation Events</h4>
+
+<h4 id="compensation-event">Compensation Event</h4>
+
+<h5 id="migrating-compensation-events">Migrating Compensation Events</h5>
 <p>When migrating process instances with active compensation subscriptions, the following rules apply:</p>
 <ul>
 <li>The corresponding compensation catch events must be mapped</li>
@@ -3608,7 +3644,8 @@ trigger compensation of the <em>Archive Application</em> activity but only the o
   <p>Migrating process instances with active compensation handlers is not supported yet.</p>
 </div>
 
-<h4 id="adding-compensation-events">Adding Compensation Events</h4>
+
+<h5 id="adding-compensation-events">Adding Compensation Events</h5>
 <p>New compensation boundary events contained in the target process definition only take effect for activity instances that are not started or not finished yet.
 For example, consider the following two processes:</p>
 <p>Process <code>compensation:1</code>:</p>
@@ -3620,25 +3657,32 @@ For example, consider the following two processes:</p>
 └── Assess Credit Worthiness
 </code></pre><p>If this process instance is migrated (with <em>Assess Credit Worthiness</em> being mapped to its equivalent), then triggering compensation
 afterwards is <strong>not</strong> going to compensate <em>Archive Application</em>.</p>
-<h2 id="subprocess">Subprocess</h2>
+
+<h3 id="subprocess">Subprocess</h3>
 <p>If a migration instruction applies to an embedded/event/transaction sub process, it is migrated to its target sub process in the target process definition.
 This preserves sub process state such as variables. In case no instruction applies, the instance is cancelled before migration is performed.
 Should the target process definition contain new sub processes that no existing instance migrates to, then these are instantiated as needed during migration.</p>
 <p>Embedded/Event/Transaction sub processes can be mapped interchangeably. For example, it is possible to map an embedded sub process to an event sub process.</p>
-<h3 id="call-activity">Call Activity</h3>
+
+<h4 id="call-activity">Call Activity</h4>
 <p>Call activities are migrated like any other activity. The called instance, be it a BPMN process or a CMMN case, is not changed. It can be migrated separately.</p>
-<h2 id="flow-node-markers">Flow Node Markers</h2>
-<h3 id="multi-instance">Multi-Instance</h3>
+
+<h3 id="flow-node-markers">Flow Node Markers</h3>
+
+<h4 id="multi-instance">Multi-Instance</h4>
 <p>Active multi-instance activities can be migrated if</p>
 <ul>
 <li>the target activity is multi-instance of the same type (parallel or sequential)</li>
 <li>the target activity is not a multi-instance activity.</li>
 </ul>
-<h4 id="migrating-a-multi-instance-activity">Migrating a Multi-instance Activity</h4>
+
+<h5 id="migrating-a-multi-instance-activity">Migrating a Multi-instance Activity</h5>
 <p>When migrating instances of a multi-instance activity to another multi-instance activity, the migration plan needs to contain two instructions: One for the <em>inner activity</em>, i.e., the activity that has multi-instance loop characteristics. And another one for the <em>multi-instance body</em>. The body is a BPMN scope that contains the inner activity and that is not visually represented. By convention, it has the id <code>&lt;id of inner activity&gt;#multiInstanceBody</code>. When migrating a multi-instance body and its inner activity, the multi-instance state is preserved. That means, if a parallel multi-instance activity is migrated with two instances out of five being active, then the state is the same after migration.</p>
-<h4 id="removing-a-multi-instance-marker">Removing a Multi-Instance Marker</h4>
+
+<h5 id="removing-a-multi-instance-marker">Removing a Multi-Instance Marker</h5>
 <p>If the target activity is not a multi-instance activity, it is sufficient to have an instruction for the inner activity. During migration, the multi-instance variables <code>nrOfInstances</code>, <code>nrOfActiveInstances</code> and <code>nrOfCompletedInstances</code> are removed. The number of inner activity instances is preserved. That means, if there are two out of five active instances before migration, then there are going to be two instances of the target activity after migration. In addition, their <code>loopCounter</code> and collection element variables are kept.</p>
-<h3 id="asynchronous-continuations">Asynchronous Continuations</h3>
+
+<h4 id="asynchronous-continuations">Asynchronous Continuations</h4>
 <p>When an asynchronous continuation is active, i.e., the corresponding job has not been completed by the job executor yet, it is represented in the form of a <em>transition instance</em>. For example, this is the case when job execution failed and an incident has been created. For transition instances the mapping instructions apply just like for activity instances. That means, when there is an instruction from activity <code>userTask</code> to activity <code>newUserTask</code>, all transition instances that represent an asynchronous continuation before or after <code>userTask</code> are migrated to <code>newUserTask</code>. In order for this to succeed, the target activity must be asynchronous as well.</p>
 
 <div class="note bg-warning docs-warning">
@@ -3650,9 +3694,11 @@ Should the target process definition contain new sub processes that no existing 
 </ul></p>
 </div>
 
-<h1 id="operational-semantics">Operational Semantics</h1>
+
+<h2 id="operational-semantics">Operational Semantics</h2>
 <p>In the following, the exact semantics of migration are documented. Reading this section is recommended to fully understand the effects, power, and limitations of process instance migration.</p>
-<h2 id="migration-procedure">Migration Procedure</h2>
+
+<h3 id="migration-procedure">Migration Procedure</h3>
 <p>Migration of a process instance follows these steps:</p>
 <ol>
 <li>Assignment of migration instructions to activity instances</li>
@@ -3661,10 +3707,12 @@ Should the target process definition contain new sub processes that no existing 
 <li>Migration of mapped activity instances and their dependent instances,
 instantiation of newly introduced BPMN scopes, and handler creation for newly introduced events</li>
 </ol>
-<h3 id="assignment-of-migration-instructions">Assignment of Migration Instructions</h3>
+
+<h4 id="assignment-of-migration-instructions">Assignment of Migration Instructions</h4>
 <p>In the first step, migration instructions are assigned to activity instances
 of a process instance that is going to be migrated.</p>
-<h3 id="validation-of-instruction-assignment">Validation of Instruction Assignment</h3>
+
+<h4 id="validation-of-instruction-assignment">Validation of Instruction Assignment</h4>
 <p>The created assignment must be executable by the migration logic which is
 ensured by the validation step. In particular, the following conditions must hold:</p>
 <ul>
@@ -3672,7 +3720,8 @@ ensured by the validation step. In particular, the following conditions must hol
 <li>At most one instruction must apply to a non-leaf activity instance (e.g., embedded subprocess)</li>
 <li>The overall assignment must be executable. See the <a href="#validation">validation chapter</a> for details.</li>
 </ul>
-<h3 id="cancellation-of-unmapped-activity-instances-and-event-handler-entities">Cancellation of Unmapped Activity Instances and Event-Handler Entities</h3>
+
+<h4 id="cancellation-of-unmapped-activity-instances-and-event-handler-entities">Cancellation of Unmapped Activity Instances and Event-Handler Entities</h4>
 <p>Non-leaf activity instances to which no migration instructions apply are cancelled. Event handler entities
 (e.g., message event subscriptions or timer jobs) are removed when their BPMN elements (e.g., boundary events)
 are not migrated. Cancellation is performed before any migration instruction is applied,
@@ -3682,7 +3731,8 @@ so the process instance is still in the pre-migration state.</p>
 <li>The activity instance tree is traversed in a bottom-up fashion and unmapped instances are cancelled</li>
 <li>Activity instance cancellation invokes the activity&rsquo;s end execution listeners and output variable mappings</li>
 </ul>
-<h3 id="migrationcreation-of-activity-instances">Migration/Creation of Activity Instances</h3>
+
+<h4 id="migrationcreation-of-activity-instances">Migration/Creation of Activity Instances</h4>
 <p>Finally, activity instances are migrated and new ones are created as needed.</p>
 <p>The semantics are:</p>
 <ul>
@@ -3692,7 +3742,8 @@ is migrated, then a new activity instance is created</li>
 <li>Creation invokes the activity&rsquo;s start execution listeners and input variable mappings</li>
 <li>An activity instance is migrated according to its assigned migration instruction</li>
 </ul>
-<h4 id="activity-instance-migration">Activity instance migration</h4>
+
+<h5 id="activity-instance-migration">Activity instance migration</h5>
 <p>Migrating an activity instance updates the references to the activity and process definition
 in the activity instance tree and its execution representation. Furthermore, it migrates or removes
 <em>dependent</em> instances that belong to the activity instance. Dependent instances are:</p>
@@ -3701,14 +3752,16 @@ in the activity instance tree and its execution representation. Furthermore, it 
 <li>Task instances (for user tasks)</li>
 <li>Event subscription instances</li>
 </ul>
-<h2 id="validation">Validation</h2>
+
+<h3 id="validation">Validation</h3>
 <p>A migration plan is validated at two points in time: When it is created, its
 instructions are validated for static aspects. When it is applied to a
 process instance, its instructions are matched to activity instances
 and this assignment is validated.</p>
 <p>Validation ensures that none of the limitations stated in this guide lead
 to an inconsistent process instance state with undefined behavior after migration.</p>
-<h3 id="creation-time-validation">Creation Time Validation</h3>
+
+<h4 id="creation-time-validation">Creation Time Validation</h4>
 <p>For an instruction to be valid when a migration plan is created, it has to fulfill
 the following requirements:</p>
 <ul>
@@ -3726,7 +3779,8 @@ the following requirements:</p>
 <p>If validation reports errors, migration fails with a <code>MigrationPlanValidationException</code>
 providing a <code>MigrationPlanValidationReport</code> object with details on the
 validation errors.</p>
-<h4 id="hierarchy-preservation">Hierarchy Preservation</h4>
+
+<h5 id="hierarchy-preservation">Hierarchy Preservation</h5>
 <p>An activity must stay a descendant of its closest ancestor scope that migrates (i.e., that is not cancelled during migration).</p>
 <p>Consider the following migration plan for the example processes shown at the
 <a href="/manual/2.0-ee/user-guide/process-engine/process-instance-migration/">beginning of this chapter</a>:</p>
@@ -3744,7 +3798,8 @@ hierarchy preservation requirement is violated: The activity <em>Validate
 Address</em> is supposed to be migrated to <em>Validate Postal Address</em>. However, the
 parent scope <em>Assess Credit Worthiness</em> is migrated to <em>Handle
 Application Receipt</em>,  which does not contain <em>Validate Postal Address</em>.</p>
-<h3 id="execution-time-validation">Execution Time Validation</h3>
+
+<h4 id="execution-time-validation">Execution Time Validation</h4>
 <p>When a migration plan is applied to a process instance, it is validated beforehand
 that the plan is applicable. In particular, the following aspects are checked:</p>
 <ul>
@@ -3756,7 +3811,8 @@ activity instances can be migrated</li>
 <p>If validation reports errors, migration fails with a <code>MigratingProcessInstanceValidationException</code>
 providing a <code>MigratingProcessInstanceValidationReport</code> object with details on the
 validation errors.</p>
-<h4 id="completeness">Completeness</h4>
+
+<h5 id="completeness">Completeness</h5>
 <p>Migration is only meaningful if a migration instruction applies to every instance of a leaf activity. Assume a migration plan as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">MigrationPlan</span><span class="w"> </span><span class="n">migrationPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processEngine</span><span class="p">.</span><span class="na">getRuntimeService</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createMigrationPlan</span><span class="p">(</span><span class="s">&#34;exampleProcess:1&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;exampleProcess:2&#34;</span><span class="p">)</span><span class="w">
@@ -3772,7 +3828,8 @@ validation errors.</p>
 └── Assess Credit Worthiness
     └── Validate Address
 </code></pre><p>The migration plan is not valid with respect to this instance because there is no instruction that applies to the instance of <em>Validate Address</em>.</p>
-<h4 id="instruction-applicability">Instruction Applicability</h4>
+
+<h5 id="instruction-applicability">Instruction Applicability</h5>
 <p>Migration instructions are used to migrate activity instances as well as transition instances (i.e., active asynchronous continuations). Some
 instructions can only be used to migrate transition instances but not activity instances. In general, activity instances can only be
 migrated if they are instances of the following element types:</p>
@@ -3812,11 +3869,14 @@ migrated if they are instances of the following element types:</p>
 </li>
 </ul>
 <p>Transition instances can be migrated for any activity type.</p>
-<h3 id="aspects-not-covered-by-validation">Aspects Not Covered by Validation</h3>
-<h4 id="data-consistency">Data Consistency</h4>
+
+<h4 id="aspects-not-covered-by-validation">Aspects Not Covered by Validation</h4>
+
+<h5 id="data-consistency">Data Consistency</h5>
 <p>Process instances contain data such as variables that are specific to how a process is implemented.
 Validation cannot ensure that such data is useful in the context of the target process definition.</p>
-<h4 id="deserialization-of-object-variables">Deserialization of Object Variables</h4>
+
+<h5 id="deserialization-of-object-variables">Deserialization of Object Variables</h5>
 <p><a href="/manual/2.0-ee/user-guide/process-engine/variables/#supported-variable-values">Object type variables</a> represent Java objects. That means they have a serialized value along with a Java type name that is used to deserialize the value into a Java object. When migrating between processes of different process
 applications, it may occur that an Object variable refers to a Java class that does not exist in the process
 application of the target process.</p>

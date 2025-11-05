@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>The JSON datatype supports reading JSON from Strings or Readers.</p>
-<h1 id="reading-json-from-a-string">Reading JSON from a String:</h1>
+
+<h2 id="reading-json-from-a-string">Reading JSON from a String:</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.DataFormats.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3198,7 +3203,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinJsonNode</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JSON</span><span class="p">(</span><span class="s">&#34;{\&#34;customer\&#34;: \&#34;Kermit\&#34;}&#34;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><p>String values that represent JSON primitive values can also be read. For example, <code>JSON(&quot;true&quot;)</code> returns a <code>SpinJsonNode</code> that represents the boolean value <code>true</code>.</p>
-<h1 id="reading-json-from-a-reader">Reading JSON from a Reader:</h1>
+
+<h2 id="reading-json-from-a-reader">Reading JSON from a Reader:</h2>
 <p>Spin also supports reading JSON from an instance of <code>java.io.Reader</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.DataFormats.*</span><span class="p">;</span><span class="w">
@@ -3210,10 +3216,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">fis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&#34;/tmp/customer.json&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">InputStreamReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">fis</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;utf-8&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinJsonNode</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JSON</span><span class="p">(</span><span class="n">reader</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h1 id="reading-json-using-a-script-language">Reading JSON using a Script Language</h1>
+</span></span></span></code></pre></div>
+<h2 id="reading-json-using-a-script-language">Reading JSON using a Script Language</h2>
 <p>JSON can be read from script languages in the same way as from Java. Since script languages use dynamic typing, you do not need to hint the data format but you can use autodetection. The following example demonstrates how to read JSON in Javascript:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">customer</span> <span class="o">=</span> <span class="nx">S</span><span class="p">(</span><span class="s1">&#39;{&#34;customer&#34;: &#34;Kermit&#34;}&#39;</span><span class="p">);</span>
-</span></span></code></pre></div><h1 id="reading-json-properties">Reading JSON Properties</h1>
+</span></span></code></pre></div>
+<h2 id="reading-json-properties">Reading JSON Properties</h2>
 <p>To fetch properties from the JSON tree you can use <code>.prop(&quot;name&quot;)</code>. This will return the property as SpinJsonNode and you can use this to get the value of the property as the following examples will demonstrate:</p>
 <p>in Java:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
@@ -3225,14 +3233,16 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">S</span><span class="p">(</span><span class="s1">&#39;{&#34;customer&#34;: &#34;Kermit&#34;}&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">customerProperty</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&#34;customer&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">customerName</span> <span class="o">=</span> <span class="nx">customerProperty</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
-</span></span></code></pre></div><h2 id="the-different-value-types">The Different Value Types</h2>
+</span></span></code></pre></div>
+<h3 id="the-different-value-types">The Different Value Types</h3>
 <p>The method <code>SpinJsonNode#value()</code> can be used to get the Java equivalent of a String/Boolean/Number or <code>null</code> JSON property. It throws an exception for Object and Array properties. There are also:</p>
 <ul>
 <li><code>#stringValue()</code> - gets a Java <code>String</code> representation of the value or throws an exception if the value is not a String</li>
 <li><code>#numberValue()</code> - gets a Java <code>Number</code> representation of the value or throws an exception if the value is not a Number</li>
 <li><code>#boolValue()</code> - gets a Java <code>Boolean</code> representation of the value or throws an exception if the value is not a Boolean</li>
 </ul>
-<h2 id="value-type-checks-of-the-property">Value type checks of the property</h2>
+
+<h3 id="value-type-checks-of-the-property">Value type checks of the property</h3>
 <ol>
 <li><code>isObject()</code> returns boolean</li>
 <li><code>hasProp()</code> returns boolean</li>
@@ -3246,7 +3256,8 @@
 <p>Script example (JavaScript):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">S</span><span class="p">(</span><span class="s1">&#39;{&#34;over18&#34;:false}&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nx">json</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;over18&#39;</span><span class="p">).</span><span class="nx">isBoolean</span><span class="p">()</span> <span class="c1">//returns true
-</span></span></span></code></pre></div><h2 id="fetch-array-of-data">Fetch Array of Data</h2>
+</span></span></span></code></pre></div>
+<h3 id="fetch-array-of-data">Fetch Array of Data</h3>
 <p>You can also fetch a list of items if your property is an array of data.</p>
 <p>in Java:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
@@ -3262,7 +3273,8 @@
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">customers</span> <span class="o">=</span> <span class="nx">customerProperty</span><span class="p">.</span><span class="nx">elements</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">customer</span> <span class="o">=</span> <span class="nx">customers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">customerName</span> <span class="o">=</span> <span class="nx">customer</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
-</span></span></code></pre></div><h2 id="fetch-field-names">Fetch Field Names</h2>
+</span></span></code></pre></div>
+<h3 id="fetch-field-names">Fetch Field Names</h3>
 <p>Spin allows us to use the <code>.fieldNames()</code> method to fetch the names of all child nodes and properties in a node. The following example shows you how to use <code>.fieldNames()</code> in Java and Javascript.</p>
 <p>in Java:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
@@ -3274,7 +3286,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">S</span><span class="p">(</span><span class="s1">&#39;{&#34;customer&#34;: [&#34;Kermit&#34;, &#34;Waldo&#34;]}&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">fieldNames</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">fieldNames</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">fieldName1</span> <span class="o">=</span> <span class="nx">fieldNames</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span></span></code></pre></div><h1 id="set-json-properties">Set JSON Properties</h1>
+</span></span></code></pre></div>
+<h2 id="set-json-properties">Set JSON Properties</h2>
 <p>To set a property you can use the <code>.prop(&quot;name&quot;, object)</code> method. This allows you to set one of the following 5 simple types:</p>
 <ul>
 <li>String - Example: <code>.prop(&quot;name&quot;, &quot;Waldo&quot;)</code></li>
@@ -3319,7 +3332,8 @@
 </span></span><span class="line"><span class="cl"><span class="nx">json</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&#34;new_array&#34;</span><span class="p">,</span> <span class="nx">object</span><span class="p">);</span>
 </span></span></code></pre></div></li>
 </ul>
-<h1 id="remove-json-properties">Remove JSON Properties</h1>
+
+<h2 id="remove-json-properties">Remove JSON Properties</h2>
 <p>There are 2 ways to remove properties from a JSON object.</p>
 <ul>
 <li><code>.deleteProp(&quot;name&quot;)</code> - Removes a property with given name.</li>
@@ -3348,7 +3362,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// removes customer and language
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">json</span><span class="p">.</span><span class="nx">deleteProp</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span>
-</span></span></code></pre></div><h1 id="work-with-json-arrays">Work with JSON Arrays</h1>
+</span></span></code></pre></div>
+<h2 id="work-with-json-arrays">Work with JSON Arrays</h2>
 <p>JSON arrays represent a list of objects. Spin offers the following methods to manipulate this list:</p>
 <ul>
 <li><code>.indexOf(&lt;Object&gt;)</code> - Fetches the index of the FIRST occurrence of the searched object.</li>
@@ -3375,7 +3390,8 @@
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>So let&rsquo;s see how we can manipulate this list in some examples.</p>
-<h2 id="example-1---get-the-index-of-testdata2-and-the-last-occurrence-of-1">Example 1 - Get the Index of &rsquo;testdata2&rsquo; and the Last Occurrence of &lsquo;1&rsquo;:</h2>
+
+<h3 id="example-1---get-the-index-of-testdata2-and-the-last-occurrence-of-1">Example 1 - Get the Index of &rsquo;testdata2&rsquo; and the Last Occurrence of &lsquo;1&rsquo;:</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinJsonNode</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JSON</span><span class="p">(</span><span class="s">&#34;{\&#34;test-array\&#34; : [\&#34;testdata1\&#34;,\&#34;testdata2\&#34;,1,2,true,1,false,1]}&#34;</span><span class="p">);</span><span class="w">
@@ -3388,7 +3404,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;testdata2&#34;</span><span class="p">);</span> <span class="c1">// should be 1
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// Should be &#39;7&#39;
-</span></span></span></code></pre></div><h2 id="example-2---add-and-remove-data-tofrom-the-list">Example 2 - Add and Remove Data to/from the list:</h2>
+</span></span></span></code></pre></div>
+<h3 id="example-2---add-and-remove-data-tofrom-the-list">Example 2 - Add and Remove Data to/from the list:</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import static</span><span class="w"> </span><span class="nn">org.cibseven.spin.Spin.*</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpinJsonNode</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JSON</span><span class="p">(</span><span class="s">&#34;{\&#34;test-array\&#34; : [\&#34;testdata1\&#34;,\&#34;testdata2\&#34;,1,2,true,1,false,1]}&#34;</span><span class="p">);</span><span class="w">

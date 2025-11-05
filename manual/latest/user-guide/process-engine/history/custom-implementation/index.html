@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h2 id="provide-a-custom-history-backend">Provide a custom history backend</h2>
+      
+<h3 id="provide-a-custom-history-backend">Provide a custom history backend</h3>
 <p>In order to understand how to provide a custom history backend, it is useful to first look at a more detailed view of the history architecture:</p>
 <figure class="image">
   <span><img
@@ -3217,7 +3222,8 @@
   <p>Note that providing your custom <code>HistoryEventHandler</code> in a Spring Boot Starter environment works slightly differently. By default, the CIB seven Spring Boot starter uses a <code>CompositeHistoryEventHandler</code> which wraps a list of HistoryEventHandler implementations that you can provide via the <code>customHistoryEventHandlers</code> engine configuration property. If you want to override the default <code>DbHistoryEventHandler</code>, you have to explicitly set the <code>enableDefaultDbHistoryEventHandler</code> engine configuration property to <code>false</code>.</p>
 </div>
 </p>
-<h2 id="implement-a-custom-history-level">Implement a custom history level</h2>
+
+<h3 id="implement-a-custom-history-level">Implement a custom history level</h3>
 <p>To provide a custom history level the interface <code>org.cibseven.bpm.engine.impl.history.HistoryLevel</code> has to be implemented. The custom history level implementation
 then has to be added to the process engine configuration, either by configuration or a process engine plugin.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
@@ -3254,7 +3260,8 @@ handles such history events. If the method returns <code>false</code>, the engin
 any history events of this type again. This means that if your history level only wants to generate the history
 event for some instances of an event it must still return <code>true</code> if <code>entity</code> is <code>null</code>.</p>
 <p>Please have a look at this <a href="https://github.com/camunda/camunda-bpm-examples/tree/master/process-engine-plugin/custom-history-level">complete example</a> to get a better overview.</p>
-<h3 id="removal-time-inheritance">Removal time inheritance</h3>
+
+<h4 id="removal-time-inheritance">Removal time inheritance</h4>
 <p>Historic instances inherit the <a href="#removal-time">removal time</a> from the respective historic top-level
 instance. If the custom history level is configured in a way, so that the historic top-level instance is not written,
 the removal time is not available.</p>
@@ -3264,7 +3271,8 @@ the removal time is not available.</p>
 <li>Root process instance</li>
 <li>Root decision instance</li>
 </ul>
-<h3 id="user-operation-logs-and-custom-history-level">User operation logs and custom history level</h3>
+
+<h4 id="user-operation-logs-and-custom-history-level">User operation logs and custom history level</h4>
 <p>The following implementation is required in order to enable User Operation Logs:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isHistoryEventProduced</span><span class="p">(</span><span class="n">HistoryEventType</span><span class="w"> </span><span class="n">eventType</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">entity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">eventType</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">HistoryEventTypes</span><span class="p">.</span><span class="na">USER_OPERATION_LOG</span><span class="p">)){</span><span class="w">

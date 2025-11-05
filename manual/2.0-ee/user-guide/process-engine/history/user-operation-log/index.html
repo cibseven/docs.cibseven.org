@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,11 +3191,14 @@
 
     <div class="col-xs-12 content-text">
       <p>The user operation log contains entries for many API operations and can be used for auditing purposes. It provides data on what kind of operations are performed as well as details on the changes involved in the operation. Operations are logged when the operation is performed in the context of a logged in user. To use the operation log, the process engine history level must be set to <code>FULL</code>.</p>
-<h2 id="write-log-entries-regardless-of-user-authentication-context">Write log entries regardless of user authentication context</h2>
+
+<h3 id="write-log-entries-regardless-of-user-authentication-context">Write log entries regardless of user authentication context</h3>
 <p>If it is desired that operations are logged regardless whether they are performed in the context of a logged in user or not, then the process engine configuration flag named <code>restrictUserOperationLogToAuthenticatedUsers</code> can be set to <code>false</code>.</p>
-<h2 id="access-the-user-operation-log">Access the user operation log</h2>
+
+<h3 id="access-the-user-operation-log">Access the user operation log</h3>
 <p>The user operation log can be accessed via the Java API. The history service can be used to execute a <code>UserOperationLogQuery</code> by calling <code>historyService.createUserOperationLogQuery().execute()</code>. The query can be restricted with various filtering options. The query is also <a href="/manual/2.0-ee/reference/rest/specification/#tag/Historic-User-Operation-Log/operation/queryUserOperationEntries">exposed in the REST API</a>.</p>
-<h2 id="user-operation-log-entries">User operation log entries</h2>
+
+<h3 id="user-operation-log-entries">User operation log entries</h3>
 <p>The log consists of <em>operations</em> and <em>entries</em>. An operation corresponds to one performed action and consists of multiple entries, at least one. Entries contain the detailed changes being part of the operation. When making a user operation log query, the returned entities are of type <code>UserOperationLogEntry</code>, corresponding to entries. All entries of one operation are linked by an operation id.</p>
 <p>A user operation log entry has the following properties:</p>
 <ul>
@@ -3211,7 +3218,8 @@
 <li><strong>Old Property Value</strong>: The previous value of the changed property. A  <code>null</code> value either indicates that the property was previously <code>null</code> or is not known.</li>
 <li><strong>New Property Value</strong>: The new value of the changed property.</li>
 </ul>
-<h2 id="annotation-of-user-operation-logs">Annotation of user operation logs</h2>
+
+<h3 id="annotation-of-user-operation-logs">Annotation of user operation logs</h3>
 <p>User Operation Logs are helpful to audit manual operations. To make it obvious why a certain
 operation was performed, sometimes it is not enough to only log technical information (e. g.
 timestamp, operation type, etc.) but also add an annotation that puts the operation in the right
@@ -3233,7 +3241,8 @@ business context.</p>
 </span></span></span></code></pre></div><p><strong>Please note:</strong> Annotations are present on all entries that belong to an operation log.</p>
 <p>Please also see the REST API reference for <a href="/manual/2.0-ee/reference/rest/specification/#tag/Historic-User-Operation-Log/operation/setAnnotationUserOperationLog">setting</a> and
 <a href="/manual/2.0-ee/reference/rest/specification/#tag/Historic-User-Operation-Log/operation/clearAnnotationUserOperationLog">clearing</a> annotations.</p>
-<h2 id="glossary-of-operations-logged-in-the-user-operation-log">Glossary of operations logged in the user operation log</h2>
+
+<h3 id="glossary-of-operations-logged-in-the-user-operation-log">Glossary of operations logged in the user operation log</h3>
 <p>The following describes the operations logged in the user operation log and the entries that are created as part of it:</p>
 <table class="table table-striped">
   <tr>

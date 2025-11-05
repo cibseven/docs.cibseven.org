@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,7 +3190,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="composite-authentication">Composite Authentication</h1>
+      
+<h2 id="composite-authentication">Composite Authentication</h2>
 <p>From version 2.0.0, the REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. By default, this is implemented as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
 <p>This setup enables secure communication between the engine and the CIB seven web application. By default, it is switched off but can be activated by adding a servlet filter as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;filter&gt;</span>
@@ -3326,7 +3331,8 @@
 </div>
 
 <p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file, comment out the <code>cibseven-pseudo-auth</code> filter and remove the comment markers from the above mentioned filter declaration to activate JWT-based authentication.</p>
-<h1 id="http-basic-authentication">HTTP Basic Authentication</h1>
+
+<h2 id="http-basic-authentication">HTTP Basic Authentication</h2>
 
 <div class="note bg-info docs-info">
   <h3></h3>
@@ -3353,7 +3359,8 @@
 <p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file and, comment out the <code>cibseven-pseudo-auth</code> filter and add the above mentioned filter declaration to activate HTTP Basic authentication.</p>
 <p>Note that HTTP Basic Authentication <em>does not provide encryption</em> and should be secured by an SSL connection.</p>
 <p>The authentication provider is exchangeable. You can implement the interface <code>org.cibseven.bpm.engine.rest.security.auth.AuthenticationProvider</code> to provide another authentication method and change the filter&rsquo;s initialization parameter accordingly.</p>
-<h1 id="resteasy-specifics">RESTEasy Specifics</h1>
+
+<h2 id="resteasy-specifics">RESTEasy Specifics</h2>
 <p>The authentication filter works fine whenever the JAX-RS application containing the REST API is deployed as a servlet. This is not necessarily the case. One such case we are aware of is with some types of RESTEasy deployments:</p>
 <p>RESTEasy allows deployment of a JAX-RS application as a servlet filter (see the <a href="http://docs.jboss.org/resteasy/docs/2.3.5.Final/userguide/html/Installation_Configuration.html#filter">RESTEasy docs</a>). If you choose this method to deploy the REST API application, which we also do in the Tomcat distribution, the authentication filter requires an extra init-param named <code>rest-url-pattern-prefix</code>. The value has to correspond to the servlet path (see <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletRequest.html#getServletPath%28%29">HttpServletRequest#getServletPath()</a>) as in the case that the JAX-RS application is deployed as a servlet.</p>
 <p>Example: If the RESTEasy configuration is</p>

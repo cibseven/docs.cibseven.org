@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,9 +3191,11 @@
 
     <div class="col-xs-12 content-text">
       <p>This page explains how to configure the full distribution for the JBoss EAP/WildFly application server.</p>
-<h2 id="ldap">LDAP</h2>
+
+<h3 id="ldap">LDAP</h3>
 <p>In order to setup LDAP for the JBoss EAP/WildFly Application Server distribution, you have to perform the following steps:</p>
-<h3 id="adjust-the-process-engine-configuration">Adjust the Process Engine Configuration</h3>
+
+<h4 id="adjust-the-process-engine-configuration">Adjust the Process Engine Configuration</h4>
 <p>Edit the file <code>standalone.xml</code> (or <code>domain.xml</code>) provided by the JBoss EAP/WildFly Application Server and add the <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Provider Plugin</a> and the <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;subsystem</span> <span class="na">xmlns=</span><span class="s">&#34;urn:org.cibseven.bpm.jboss:1.1&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;process-engines&gt;</span>
@@ -3236,7 +3242,8 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/subsystem&gt;</span>
 </span></span></code></pre></div><p>The <code>administratorUserName</code> property should contain the user id of the LDAP user you want to grant administrator authorizations to. You can then use this user to log in to the web application and grant authorizations to additional users.</p>
 <p>See our user guide for complete documentation on the <a href="/manual/2.0-ee/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Provider Plugin</a> and the <a href="/manual/2.0-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>.</p>
-<h2 id="hal-resource-caching">HAL Resource Caching</h2>
+
+<h3 id="hal-resource-caching">HAL Resource Caching</h3>
 <p>If you use LDAP as Identity Provider, you should consider <a href="/manual/2.0-ee/reference/rest/overview/hal/#caching-of-hal-relations">activating caching</a> of
 Users and Groups in the CIB seven web application. In order to activate this, add the following
 configuration to the <code>web.xml</code> file of the CIB seven web application
@@ -3274,7 +3281,8 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/web-app&gt;</span>
-</span></span></code></pre></div><h2 id="add-custom-engine-plugins">Add Custom Engine Plugins</h2>
+</span></span></code></pre></div>
+<h3 id="add-custom-engine-plugins">Add Custom Engine Plugins</h3>
 <ol>
 <li>
 <p>Add an additional engine plugin as a module to the folder $WILDFLY_HOME/modules/</p>
@@ -3294,7 +3302,8 @@ configuration to the <code>web.xml</code> file of the CIB seven web application
 <p><a href="/manual/2.0-ee/user-guide/runtime-container-integration/jboss/#extend-a-process-engine-using-process-engine-plugins">Configure the process engine plugin</a> in the standalone.xml/domain.xml configuration file</p>
 </li>
 </ol>
-<h2 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h2>
+
+<h3 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h3>
 <p>The REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. It is configured as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
 <p>By default it is switched off, but you can activate it by adding a servlet filter under <code>WEB-INF/web.xml</code> as described in the <a href="/manual/2.0-ee/reference/rest/overview/authentication/#composite-authentication">Authentication</a> section.
 Additionally, as explained in the referred section, a <code>cibseven-webclient.properties</code> file must be placed on the classpath. To ensure configuration files are available at runtime in WildFly, they should be placed in a custom module, such as the <code>org/cibseven/config</code> module directory on the filesystem. The corresponding module (<code>org.cibseven.config</code>) should then be added to the <code>EE</code> subsystem in `standalone.xml&rsquo; , as shown below:</p>
@@ -3304,7 +3313,8 @@ Additionally, as explained in the referred section, a <code>cibseven-webclient.p
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;/global-modules&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/subsystem&gt;</span>
-</span></span></code></pre></div><h2 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h2>
+</span></span></code></pre></div>
+<h3 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h3>
 <p>The deployment descriptor of the Web applications needs to be adjusted to configure the <strong>Session Cookie</strong>.</p>
 <p>You can find it under <code>WEB-INF/web.xml</code>. Please watch out for the following section:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">...
@@ -3318,7 +3328,8 @@ Additionally, as explained in the referred section, a <code>cibseven-webclient.p
 </span></span></code></pre></div><p>Please note that security-related configurations for the <strong>Session Cookie</strong> can only be applied with the Deployment Descriptor (<code>web.xml</code>) version set to 3.0.</p>
 <p>To adjust the <code>SameSite</code> flag of the session cookie, you can configure a <code>SameSiteCookieHandler</code> as described in related the <a href="https://www.wildfly.org/news/2020/05/04/WildFly-1910-Released/">WildFly documentation</a>.
 This can be used with WildFly versions &gt;= 19.1.0.</p>
-<h2 id="security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</h2>
+
+<h3 id="security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</h3>
 <p>To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
 to be adjusted. You can find it under <code>WEB-INF/web.xml</code>.</p>
 <p>Please watch out for the following section:</p>

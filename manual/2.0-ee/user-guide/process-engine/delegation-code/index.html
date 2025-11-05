@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3196,7 +3200,8 @@ certain events occur during process execution.</p>
 <li><strong>Task Listeners</strong> can be attached to events within the user task lifecycle, e.g., creation or completion of a user task.</li>
 </ul>
 <p>You can create generic Delegation Code and configure this via the BPMN 2.0 XML using so called Field Injection.</p>
-<h1 id="java-delegate">Java Delegate</h1>
+
+<h2 id="java-delegate">Java Delegate</h2>
 <p>To implement a class that can be called during process execution, this class needs to implement the <code>org.cibseven.bpm.engine.delegate.JavaDelegate</code>
 interface and provide the required logic in the <code>execute</code>
 method. When process execution arrives at this particular step, it
@@ -3233,10 +3238,12 @@ first time, an instance of that class will be created. If the class cannot be fo
 a <code>ProcessEngineException</code> will be thrown. The reason for this is that the environment (and
 more specifically the classpath) when you are deploying is often different than the actual runtime
 environment.</p>
-<h1 id="activity-behavior">Activity Behavior</h1>
+
+<h2 id="activity-behavior">Activity Behavior</h2>
 <p>Instead of writing a Java Delegate, it is also possible to provide a class that implements the <code>org.cibseven.bpm.engine.impl.pvm.delegate.ActivityBehavior</code>
 interface. Implementations then have access to the more powerful <code>ActivityExecution</code> that for example also allows to influence the control flow of the process. However, note that this is not a very good practice and should be avoided as much as possible. So, it is advised to only use the <code>ActivityBehavior</code> interface for advanced use cases and if you know exactly what you&rsquo;re doing.</p>
-<h1 id="field-injection">Field Injection</h1>
+
+<h2 id="field-injection">Field Injection</h2>
 <p>It is possible to inject values into the fields of the delegated classes. The following types of injection are supported:</p>
 <ul>
 <li>Fixed string values</li>
@@ -3335,7 +3342,8 @@ them using the current <code>DelegateExecution</code>.</p>
   <p>For the same reasons as mentioned above, field injection should not be (usually) used with Spring beans, which are singletons by default. Otherwise, you may run into inconsistencies due to concurrent modification of the bean fields.</p>
 </div>
 
-<h1 id="delegate-variable-mapping">Delegate Variable Mapping</h1>
+
+<h2 id="delegate-variable-mapping">Delegate Variable Mapping</h2>
 <p>To implement a class that delegates the input and output variable mapping for a call activity, this class needs to implement the <code>org.cibseven.bpm.engine.delegate.DelegateVariableMapping</code>
 interface. The implementation must provide the methods <code>mapInputVariables(DelegateExecution, VariableMap)</code> and <code>mapOutputVariables(DelegateExecution, VariableScope)</code>.
 See the following example:</p>
@@ -3356,7 +3364,8 @@ The input variables should be put into the given variables map.
 The <code>mapOutputVariables</code> method is called after the call activity was executed, to map the output variables.
 The output variables can be directly set into the caller execution.
 The behavior of the class loading is similar to the class loading on <a href="/manual/2.0-ee/user-guide/process-engine/delegation-code/#java-delegate">Java Delegates</a>.</p>
-<h1 id="execution-listener">Execution Listener</h1>
+
+<h2 id="execution-listener">Execution Listener</h2>
 <p>Execution listeners allow you to execute external Java code or evaluate an expression when certain events occur during process execution. The events that can be captured are:</p>
 <ul>
 <li>Start and end of a process instance.</li>
@@ -3431,14 +3440,16 @@ tasks).</p>
 <p>As with other expressions, execution variables are resolved and can be used. Because the execution implementation object has a property that exposes the event name, it&rsquo;s possible to pass the event-name to your methods using execution.eventName.</p>
 <p>Execution listeners also support using a delegateExpression, similar to a service task.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;camunda:executionListener</span> <span class="na">event=</span><span class="s">&#34;start&#34;</span> <span class="na">delegateExpression=</span><span class="s">&#34;${myExecutionListenerBean}&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h1 id="task-listener">Task Listener</h1>
+</span></span></code></pre></div>
+<h2 id="task-listener">Task Listener</h2>
 <p>A task listener is used to execute custom Java logic or an expression upon the occurrence of a certain task-related event. It can only be added in the process definition as a child element of a user task. Note that this also must happen as a child of the BPMN 2.0 extensionElements and in the Camunda namespace, since a task listener is a construct specifically for the CIB seven engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;myTask&#34;</span> <span class="na">name=</span><span class="s">&#34;My Task&#34;</span> <span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:taskListener</span> <span class="na">event=</span><span class="s">&#34;create&#34;</span> <span class="na">class=</span><span class="s">&#34;org.cibseven.bpm.MyTaskCreateListener&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/userTask&gt;</span>
-</span></span></code></pre></div><h2 id="task-listener-event-lifecycle">Task Listener Event Lifecycle</h2>
+</span></span></code></pre></div>
+<h3 id="task-listener-event-lifecycle">Task Listener Event Lifecycle</h3>
 <p>The execution of Task Listeners is dependent on the order of firing of
 the following task-related events:</p>
 <p>The <strong>create</strong> event fires when the task has been created as a transient object with all task properties. No
@@ -3475,7 +3486,8 @@ results in an end of the task event lifecycle.</p>
 </ol>
 <p>No other event is fired after the <em>delete</em> event since it results in an end of the task event
 lifecycle. This means that the <em>delete</em> event is mutually exclusive with the <em>complete</em> event.</p>
-<h3 id="task-event-chaining">Task Event Chaining</h3>
+
+<h4 id="task-event-chaining">Task Event Chaining</h4>
 <p>The descriptions above lay out the order in which Task Events are fired. However, this order may be
 disrupted under the following conditions:</p>
 <ol>
@@ -3492,7 +3504,8 @@ This would cancel the Task and cause a <strong>delete</strong> event to be fired
 </ol>
 <p>Under the above-mentioned conditions, users should be careful not to accidentally create a Task
 event loop.</p>
-<h2 id="defining-a-task-listener">Defining a Task Listener</h2>
+
+<h3 id="defining-a-task-listener">Defining a Task Listener</h3>
 <p>A task listener supports the following attributes:</p>
 <ul>
 <li>
@@ -3552,7 +3565,8 @@ The execution of the user task will <strong>not</strong> be interrupted by this.
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;/camunda:taskListener&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/userTask&gt;</span>
-</span></span></code></pre></div><h1 id="field-injection-on-listener">Field Injection on Listener</h1>
+</span></span></code></pre></div>
+<h2 id="field-injection-on-listener">Field Injection on Listener</h2>
 <p>When using listeners configured with the class attribute, Field Injection can be applied. This is exactly the same mechanism as described for Java Delegates, which contains an overview of the possibilities provided by field injection.</p>
 <p>The fragment below shows a simple example process with an execution listener with fields injected:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="nt">&lt;process</span> <span class="na">id=</span><span class="s">&#34;executionListenersProcess&#34;</span><span class="nt">&gt;</span>
@@ -3603,7 +3617,8 @@ The execution of the user task will <strong>not</strong> be interrupted by this.
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Result is a concatenation of fixed injected field and injected expression</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">assertEquals</span><span class="p">(</span><span class="s">&#34;Yes, I am listening!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">varSetByListener</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="access-process-engine-services">Access Process Engine Services</h1>
+</span></span></span></code></pre></div>
+<h2 id="access-process-engine-services">Access Process Engine Services</h2>
 <p>It is possible to access the public API services (<code>RuntimeService</code>, <code>TaskService</code>, <code>RepositoryService</code> &hellip;) from the Delegation Code. The following is an example showing
 how to access the <code>TaskService</code> from a <code>JavaDelegate</code> implementation.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DelegateExample</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3614,7 +3629,8 @@ how to access the <code>TaskService</code> from a <code>JavaDelegate</code> impl
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="throw-bpmn-errors-from-delegation-code">Throw BPMN Errors from Delegation Code</h1>
+</span></span></span></code></pre></div>
+<h2 id="throw-bpmn-errors-from-delegation-code">Throw BPMN Errors from Delegation Code</h2>
 <p>It is possible to throw <code>BpmnError</code> from delegation code (Java Delegate, Execution and Task Listeners). This is done by using a provided Java exception class from within your Java code (e.g., in the JavaDelegate):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BookOutGoodsDelegate</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3627,7 +3643,8 @@ how to access the <code>TaskService</code> from a <code>JavaDelegate</code> impl
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="throw-bpmn-errors-from-listeners">Throw BPMN Errors from Listeners</h2>
+</span></span></span></code></pre></div>
+<h3 id="throw-bpmn-errors-from-listeners">Throw BPMN Errors from Listeners</h3>
 <p>When implementing an error catch event, keep in mind that the <code>BpmnError</code> will be caught when they are thrown in normal flow of the following listeners:</p>
 <ul>
 <li>start and end execution listeners on activity, gateway, and intermediate events</li>
@@ -3652,7 +3669,8 @@ how to access the <code>TaskService</code> from a <code>JavaDelegate</code> impl
   <p>Throwing a <code>BpmnError</code> in the delegation code behaves like modelling an error end event. See the <a href="/manual/2.0-ee/reference/bpmn20/events/error-events/#error-boundary-event">reference guide</a> about the details on the behavior, especially the error boundary event. If no error boundary event is found on the scope, the execution is ended.</p>
 </div>
 
-<h1 id="set-business-key-from-delegation-code">Set Business Key from Delegation Code</h1>
+
+<h2 id="set-business-key-from-delegation-code">Set Business Key from Delegation Code</h2>
 <p>The option to set a new value of business key to already running process instance is shown in the example below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BookOutGoodsDelegate</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3664,7 +3682,8 @@ how to access the <code>TaskService</code> from a <code>JavaDelegate</code> impl
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="exception-codes">Exception codes</h1>
+</span></span></span></code></pre></div>
+<h2 id="exception-codes">Exception codes</h2>
 <p>You can throw a <code><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>
 </code>
 from your delegation code and define your custom error code by passing it to the constructor or by

@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,7 +3191,8 @@
 
     <div class="col-xs-12 content-text">
       <p>If you use <a href="/manual/2.0-ee/user-guide/process-engine/delegation-code/">Delegation Code</a>, you can access the BPMN model instance and current element of the executed process. If a BPMN model is accessed, it will be cached to avoid redundant database queries.</p>
-<h1 id="java-delegate">Java Delegate</h1>
+
+<h2 id="java-delegate">Java Delegate</h2>
 <p>If your class implements the <code>org.cibseven.bpm.engine.delegate.JavaDelegate</code> interface, you can access the BPMN model instance
 and the current flow element. In the following example the <code>JavaDelegate</code> was added to a service task in the BPMN model.
 Therefore the returned flow element can be cast to a <code>ServiceTask</code>.</p>
@@ -3198,7 +3203,8 @@ Therefore the returned flow element can be cast to a <code>ServiceTask</code>.</
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">ServiceTask</span><span class="w"> </span><span class="n">serviceTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceTask</span><span class="p">)</span><span class="w"> </span><span class="n">execution</span><span class="p">.</span><span class="na">getBpmnModelElementInstance</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="execution-listener">Execution Listener</h1>
+</span></span></span></code></pre></div>
+<h2 id="execution-listener">Execution Listener</h2>
 <p>If your class implements the <code>org.cibseven.bpm.engine.delegate.ExecutionListener</code> interface, you can access the BPMN model instance
 and the current flow element. As an Execution Listener can be added to several elements like process, events, tasks, gateways
 and sequence flows, it can not be guaranteed which type the flow element will be.</p>
@@ -3209,7 +3215,8 @@ and sequence flows, it can not be guaranteed which type the flow element will be
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">FlowElement</span><span class="w"> </span><span class="n">flowElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">execution</span><span class="p">.</span><span class="na">getBpmnModelElementInstance</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="task-listener">Task Listener</h1>
+</span></span></span></code></pre></div>
+<h2 id="task-listener">Task Listener</h2>
 <p>If your class implements the <code>org.cibseven.bpm.engine.delegate.TaskListener</code> interface, you can access the BPMN model instance
 and the current user task since a Task Listener can only be added to a user task.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExampleTaskListener</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">TaskListener</span><span class="w"> </span><span class="p">{</span><span class="w">

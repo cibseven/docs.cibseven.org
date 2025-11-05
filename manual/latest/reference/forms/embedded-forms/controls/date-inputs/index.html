@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3187,17 +3191,20 @@
 
     <div class="col-xs-12 content-text">
       <p>Date input is supported using an <code>&lt;input type=&quot;text&quot;&gt;</code> control.</p>
-<h1 id="binding-to-a-process-variable">Binding to a Process Variable</h1>
+
+<h2 id="binding-to-a-process-variable">Binding to a Process Variable</h2>
 <p>To bind the input field to a Java <code>Date</code> variable, the directive
 <code>cam-variable-type=&quot;Date&quot;</code> must be used.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">cam-variable-name</span><span class="o">=</span><span class="s">&#34;CONTRACT_START_DATE&#34;</span>
 </span></span><span class="line"><span class="cl">       <span class="na">cam-variable-type</span><span class="o">=</span><span class="s">&#34;Date&#34;</span> <span class="p">/&gt;</span>
-</span></span></code></pre></div><h1 id="date-format">Date Format</h1>
+</span></span></code></pre></div>
+<h2 id="date-format">Date Format</h2>
 <p>Currently only the ISO Date Format <code>yyyy-MM-dd'T'HH:mm:ss</code> is supported.
 Example value: <code>2013-01-23T13:42:42</code></p>
-<h1 id="using-a-date-picker">Using a Date Picker</h1>
+
+<h2 id="using-a-date-picker">Using a Date Picker</h2>
 <p>The Form SDK itself does not provide any custom components or widgets. As such it also does not provide a date picker. However, you can integrate third party libraries providing such widgets or write one yourself (see <a href="/manual/latest/reference/forms/embedded-forms/javascript/">Custom JavaScript</a>).</p>
 
 <div class="note ">

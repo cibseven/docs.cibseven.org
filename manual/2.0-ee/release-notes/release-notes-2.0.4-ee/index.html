@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3186,9 +3190,11 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <h1 id="release-notes">Release Notes</h1>
+      
+<h2 id="release-notes">Release Notes</h2>
 <p><em>Release Date: October 16, 2025</em></p>
-<h2 id="highlights">Highlights</h2>
+
+<h3 id="highlights">Highlights</h3>
 <ul>
 <li><strong>Human Tasks Dashboard</strong> with advanced search, filtering, and task management capabilities</li>
 <li><strong>Live DMN Editor</strong> for real-time decision model editing and deployment</li>
@@ -3206,8 +3212,10 @@
   <p>Starting from this release, our Enterprise version is based on the Community+ version. To build it, please switch from the <a href="https://artifacts.cibseven.org/repository/enterprise/">enterprise</a> repository to the <a href="https://artifacts.cibseven.org/repository/enterprise-group/">enterprise-group</a> repository: <a href="https://artifacts.cibseven.org/repository/enterprise-group/">https://artifacts.cibseven.org/repository/enterprise-group/</a></p>
 </div>
 
-<h2 id="new-features">New Features</h2>
-<h3 id="human-tasks--dashboard-management">Human Tasks &amp; Dashboard Management</h3>
+
+<h3 id="new-features">New Features</h3>
+
+<h4 id="human-tasks--dashboard-management">Human Tasks &amp; Dashboard Management</h4>
 <ul>
 <li>Human Tasks Dashboard with task counts by type and candidate group</li>
 <li>Advanced user task search with intelligent criteria exclusion</li>
@@ -3216,7 +3224,8 @@
 <li>Custom navigation links for enhanced task management</li>
 <li>Licensed version with enterprise-specific capabilities</li>
 </ul>
-<h3 id="dmn--decision-management">DMN &amp; Decision Management</h3>
+
+<h4 id="dmn--decision-management">DMN &amp; Decision Management</h4>
 <ul>
 <li>Live DMN editor for real-time decision model editing</li>
 <li>DMN version switching with proper endpoint handling</li>
@@ -3224,7 +3233,8 @@
 <li>DMN redeploy functionality for existing deployments</li>
 <li>Decision search improvements with better grid display and count visualization</li>
 </ul>
-<h3 id="oauth2--security">OAuth2 &amp; Security</h3>
+
+<h4 id="oauth2--security">OAuth2 &amp; Security</h4>
 <ul>
 <li>Access token forwarding to engine REST API with intelligent caching</li>
 <li>Configurable token forwarding via <code>cibseven.webclient.sso.forwardToken</code> property</li>
@@ -3232,7 +3242,8 @@
 <li>Concurrent request handling with token cache as synchronization mechanism</li>
 <li>Authorization property checking with configurable enablement</li>
 </ul>
-<h3 id="variable-management">Variable Management</h3>
+
+<h4 id="variable-management">Variable Management</h4>
 <ul>
 <li>Variable type conversion support allowing dynamic type changes</li>
 <li>Support for Object, JSON, Integer, Double, String, Date, and null type conversions</li>
@@ -3241,7 +3252,8 @@
 <li>Variable addition with comprehensive error handling and validation</li>
 <li>File variable handling with deserialized value support</li>
 </ul>
-<h3 id="batch-operations--process-management">Batch Operations &amp; Process Management</h3>
+
+<h4 id="batch-operations--process-management">Batch Operations &amp; Process Management</h4>
 <ul>
 <li>Enhanced batch operations with variable editing capabilities</li>
 <li>Batch variable manager with modal integration and edit mode</li>
@@ -3250,7 +3262,8 @@
 <li>Migration variable handling with Object type valueInfo support</li>
 <li>Process instance suspension with proper permission validation</li>
 </ul>
-<h3 id="deployment-management">Deployment Management</h3>
+
+<h4 id="deployment-management">Deployment Management</h4>
 <ul>
 <li>New deployment creation service with comprehensive error handling</li>
 <li>Instant deployment deletion functionality</li>
@@ -3259,14 +3272,16 @@
 <li>Extension points for advanced deployment actions</li>
 <li>Deployment success event handling and error management</li>
 </ul>
-<h3 id="cleanup--maintenance">Cleanup &amp; Maintenance</h3>
+
+<h4 id="cleanup--maintenance">Cleanup &amp; Maintenance</h4>
 <ul>
 <li>Comprehensive cleanup view with process instance management</li>
 <li>Manual cleanup capabilities for on-demand maintenance</li>
 <li>Lazy loading for processes tab with performance optimization</li>
 <li>&ldquo;Only with finished&rdquo; filter for targeted cleanup operations</li>
 </ul>
-<h3 id="operation-logging--history">Operation Logging &amp; History</h3>
+
+<h4 id="operation-logging--history">Operation Logging &amp; History</h4>
 <ul>
 <li>User operation annotation functionality for comprehensive audit trails</li>
 <li>History detail fetching with complete logging capabilities</li>
@@ -3274,7 +3289,8 @@
 <li>Variable history logging for complete audit tracking</li>
 <li>Job log enhancement with better loading and management</li>
 </ul>
-<h3 id="search--filtering">Search &amp; Filtering</h3>
+
+<h4 id="search--filtering">Search &amp; Filtering</h4>
 <ul>
 <li>Quote-aware search treating quoted numbers as string values</li>
 <li>TagEdit enhancement with correctValue method for like/non-like operators</li>
@@ -3283,15 +3299,18 @@
 <li>Advanced search box with validation for &rsquo;like&rsquo; criteria patterns</li>
 <li>Configurable task filter numbers for optimized performance</li>
 </ul>
-<h3 id="history-level-support">History Level Support</h3>
+
+<h4 id="history-level-support">History Level Support</h4>
 <ul>
 <li>Runtime API integration for history level &ldquo;none&rdquo; environments</li>
 <li>Dynamic instance counting using runtime API when history is disabled</li>
 <li>Conditional display logic based on history level configuration</li>
 <li>Seamless switching between history and runtime data sources</li>
 </ul>
-<h2 id="user-experience-improvements">User Experience Improvements</h2>
-<h3 id="interface--design-enhancements">Interface &amp; Design Enhancements</h3>
+
+<h3 id="user-experience-improvements">User Experience Improvements</h3>
+
+<h4 id="interface--design-enhancements">Interface &amp; Design Enhancements</h4>
 <ul>
 <li>Enhanced deployments view UI with improved layout and functionality</li>
 <li>Consistent UI design with updated button styles and link variants</li>
@@ -3299,7 +3318,8 @@
 <li>Improved layout consistency with adjusted margins and padding</li>
 <li>Enhanced modal customization with new dialogClass and contentClass properties</li>
 </ul>
-<h3 id="search--navigation-experience">Search &amp; Navigation Experience</h3>
+
+<h4 id="search--navigation-experience">Search &amp; Navigation Experience</h4>
 <ul>
 <li>Intelligent search filtering with automatic criteria exclusion</li>
 <li>Enhanced search box with validation and pattern recognition</li>
@@ -3308,14 +3328,16 @@
 <li>Enhanced navigation with custom task links and routing</li>
 <li>Warning dialogs for critical operations like process definition deletion</li>
 </ul>
-<h3 id="form--document-handling">Form &amp; Document Handling</h3>
+
+<h4 id="form--document-handling">Form &amp; Document Handling</h4>
 <ul>
 <li>Dynamic authentication token injection for secure document access</li>
 <li>Cache busting prevention for stale document previews</li>
 <li>Enhanced form value type determination using schema definitions</li>
 <li>Improved Camunda forms referencing and validation</li>
 </ul>
-<h3 id="data-management--visualization">Data Management &amp; Visualization</h3>
+
+<h4 id="data-management--visualization">Data Management &amp; Visualization</h4>
 <ul>
 <li>Enhanced variable display with improved value formatting</li>
 <li>Better error messaging and user feedback throughout the interface</li>
@@ -3324,7 +3346,8 @@
 <li>Column definition corrections for proper data grouping</li>
 <li>Better handling of null values and edge cases</li>
 </ul>
-<h3 id="process--task-visualization">Process &amp; Task Visualization</h3>
+
+<h4 id="process--task-visualization">Process &amp; Task Visualization</h4>
 <ul>
 <li>Process definition actions with direct key usage</li>
 <li>Enhanced dashboard navigation with enterprise capabilities</li>
@@ -3332,8 +3355,10 @@
 <li>Better task type visualization and categorization</li>
 <li>Enhanced instance state management and display</li>
 </ul>
-<h2 id="bug-fixes">Bug Fixes</h2>
-<h3 id="search--navigation-fixes">Search &amp; Navigation Fixes</h3>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+
+<h4 id="search--navigation-fixes">Search &amp; Navigation Fixes</h4>
 <ul>
 <li>Fixed batch operations redirection errors for processes and batches</li>
 <li>Corrected copyable action handling with proper baseUrl consideration</li>
@@ -3341,7 +3366,8 @@
 <li>Improved resource navigation bar modal layout and display logic</li>
 <li>Enhanced search grid functionality for decisions</li>
 </ul>
-<h3 id="variable--form-fixes">Variable &amp; Form Fixes</h3>
+
+<h4 id="variable--form-fixes">Variable &amp; Form Fixes</h4>
 <ul>
 <li>Fixed file variable name handling using proper deserialized values</li>
 <li>Corrected variable deletion according to permission validation</li>
@@ -3350,7 +3376,8 @@
 <li>Fixed type conversion issues in deployed forms and start forms</li>
 <li>Enhanced variable modal behavior and validation</li>
 </ul>
-<h3 id="authorization--permission-fixes">Authorization &amp; Permission Fixes</h3>
+
+<h4 id="authorization--permission-fixes">Authorization &amp; Permission Fixes</h4>
 <ul>
 <li>Fixed authorization table sorting by properly populating userIdGroupId property</li>
 <li>Corrected permission checks for process instance suspension operations</li>
@@ -3358,7 +3385,8 @@
 <li>Enhanced authorization-enabled property checking and defaulting</li>
 <li>Improved permission-based UI element visibility</li>
 </ul>
-<h3 id="ui--component-fixes">UI &amp; Component Fixes</h3>
+
+<h4 id="ui--component-fixes">UI &amp; Component Fixes</h4>
 <ul>
 <li>Fixed operation log scrolling by moving scroll outside table for proper dropdown display</li>
 <li>Resolved Vue component warnings for extraneous non-props attributes</li>
@@ -3366,14 +3394,17 @@
 <li>Corrected DMN version switching endpoint handling</li>
 <li>Enhanced component integration and modal handling</li>
 </ul>
-<h3 id="service--backend-fixes">Service &amp; Backend Fixes</h3>
+
+<h4 id="service--backend-fixes">Service &amp; Backend Fixes</h4>
 <ul>
 <li>Corrected ProcessDefinitionActions to use directly provided definition keys</li>
 <li>Enhanced migration variable type object handling</li>
 <li>Improved upload response validation and error handling</li>
 </ul>
-<h2 id="technical-updates">Technical Updates</h2>
-<h3 id="dependencies--framework-updates">Dependencies &amp; Framework Updates</h3>
+
+<h3 id="technical-updates">Technical Updates</h3>
+
+<h4 id="dependencies--framework-updates">Dependencies &amp; Framework Updates</h4>
 <ul>
 <li>Updated Spring Boot to version 3.5.6 for enhanced performance and security</li>
 <li>Updated OpenAPI starter webmvc UI to version 2.8.13</li>
@@ -3383,7 +3414,8 @@
 <li>Upgraded Axios from 1.10.0 to 1.12.2 for improved HTTP handling</li>
 <li>Updated common-auth to version 1.2.0</li>
 </ul>
-<h3 id="architecture--code-quality">Architecture &amp; Code Quality</h3>
+
+<h4 id="architecture--code-quality">Architecture &amp; Code Quality</h4>
 <ul>
 <li>Version information extraction into dedicated bean for better management</li>
 <li>Enhanced context path configuration for InfoService</li>
@@ -3392,7 +3424,8 @@
 <li>Enhanced test utilities for Vuex store testing</li>
 <li>Comprehensive unit tests for critical components</li>
 </ul>
-<h3 id="data-management--performance">Data Management &amp; Performance</h3>
+
+<h4 id="data-management--performance">Data Management &amp; Performance</h4>
 <ul>
 <li>Store implementation for batch operation data persistence</li>
 <li>Variable API integration using latest API specifications</li>
@@ -3400,7 +3433,8 @@
 <li>Enhanced caching mechanisms for better performance</li>
 <li>Improved resource management and cleanup processes</li>
 </ul>
-<h3 id="search--query-optimization">Search &amp; Query Optimization</h3>
+
+<h4 id="search--query-optimization">Search &amp; Query Optimization</h4>
 <ul>
 <li>Advanced query logic for user task search functionality</li>
 <li>Criteria pair exclusions in search box filtering</li>
@@ -3409,7 +3443,8 @@
 <li>Enhanced search indexing and performance optimization</li>
 <li>Better query result caching and management</li>
 </ul>
-<h3 id="security--configuration">Security &amp; Configuration</h3>
+
+<h4 id="security--configuration">Security &amp; Configuration</h4>
 <ul>
 <li>Enhanced token management with proper caching and expiration</li>
 <li>Improved configuration management with proper exclusions</li>
@@ -3418,7 +3453,8 @@
 <li>Improved configuration option management</li>
 <li>Better environment-specific configuration handling</li>
 </ul>
-<h3 id="testing--quality-assurance">Testing &amp; Quality Assurance</h3>
+
+<h4 id="testing--quality-assurance">Testing &amp; Quality Assurance</h4>
 <ul>
 <li>License header verification for all Vue and JS files</li>
 <li>Enhanced unit tests for shortcuts and utility functions</li>

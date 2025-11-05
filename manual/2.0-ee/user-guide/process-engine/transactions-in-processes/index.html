@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3188,7 +3192,8 @@
     <div class="col-xs-12 content-text">
       <p>The process engine is a piece of passive Java code which works in the Thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server&rsquo;s http-thread-pool will invoke the API method <code>runtimeService.startProcessInstanceByKey(...)</code>, thus <em>entering</em> the process engine and starting a new process instance. We call this &ldquo;borrowing the client thread&rdquo;.</p>
 <p>On any such <em>external</em> trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed <em>later</em>, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an <em>internal</em> trigger. That is why the engine also needs an active component, the <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/">job executor</a>, which is able to fetch registered jobs and process them asynchronously.</p>
-<h1 id="wait-states">Wait States</h1>
+
+<h2 id="wait-states">Wait States</h2>
 <p>We talked about wait states as transaction boundaries where the process state is stored to the database, the thread returns to the client and the transaction is committed. The following BPMN elements are always wait states:</p>
 <div class="row"><div class="col-xs-12 col-md-6">
 <div><a href="/manual/2.0-ee/reference/bpmn20/tasks/receive-task/"><svg height="90" version="1.1" width="110" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: -0.84375px;"><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><rect x="5" y="5" width="100" height="80" r="5" rx="5" ry="5" fill="#ffffff" stroke="#808080" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="1" id="svg_1"></rect><text x="55" y="45" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial, Helvetica, sans-serif;" font-size="12px" font-family="Arial, Helvetica, sans-serif"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4">Receive Task</tspan></text><path fill="#ffffff" stroke="#808080" d="M7,10L7,20L23,20L23,10ZM7,10L15,16L23,10" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="1" transform="matrix(1,0,0,1,5,5)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;"></path></svg></a></div>
@@ -3206,7 +3211,8 @@
 <p><a href="../external-tasks"><div class="bpmn-symbol"><img src="/manual/2.0-ee//img/short-codes/bpmn-service-task.png" /></div>
 </a></p>
 <p>Keep in mind that <a href="#asynchronous-continuations">Asynchronous Continuations</a> can add transaction boundaries to other tasks as well.</p>
-<h1 id="transaction-boundaries">Transaction Boundaries</h1>
+
+<h2 id="transaction-boundaries">Transaction Boundaries</h2>
 <p>The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occuring during its execution. This is illustrated in the following example:</p>
 <figure class="image">
   <span><img
@@ -3218,8 +3224,10 @@
 
 <p>We see a segment of a BPMN process with a user task, a service task and a timer event. The timer event marks the next wait state. Completing the user task and validating the address is therefore part of the same unit of work, so it should succeed or fail atomically. That means that if the service task throws an exception we want to roll back the current transaction, so that the execution tracks back to the user task and the user task is still present in the database. This is also the default behavior of the process engine.</p>
 <p>In <strong>1</strong>, an application or client thread completes the task. In that same thread the engine runtime is now executing the service task and advances until it reaches the wait state at the timer event (<strong>2</strong>). Then it returns the control to the caller (<strong>3</strong>) potentially committing the transaction (if it was started by the engine).</p>
-<h1 id="asynchronous-continuations">Asynchronous Continuations</h1>
-<h2 id="why-asynchronous-continuations">Why Asynchronous Continuations?</h2>
+
+<h2 id="asynchronous-continuations">Asynchronous Continuations</h2>
+
+<h3 id="why-asynchronous-continuations">Why Asynchronous Continuations?</h3>
 <p>In some cases the synchronous behavior is not desired. Sometimes it is useful to have custom control over transaction boundaries in a process.
 The most common motivation is the requirement to scope <em>logical units of work</em>. Consider the following process fragment:</p>
 <figure class="image">
@@ -3235,7 +3243,8 @@ Ideally, the process engine would complete the user task (<strong>1</strong>), c
 control to the calling application (<strong>2</strong>). In a background thread (<strong>3</strong>), it would generate the invoice.
 This is the exact behavior offered by asynchronous continuations: they allow us to scope transaction
 boundaries in the process.</p>
-<h2 id="configure-asynchronous-continuations">Configure Asynchronous Continuations</h2>
+
+<h3 id="configure-asynchronous-continuations">Configure Asynchronous Continuations</h3>
 <p>Asynchronous Continuations can be configured <em>before</em> and <em>after</em> an activity. Additionally, a
 process instance itself may be configured to be started asynchronously.</p>
 <p>An asynchronous continuation before an activity is enabled using the <code>camunda:asyncBefore</code> extension
@@ -3251,7 +3260,8 @@ will be deferred. Also, execution listeners will not be invoked synchronously. T
 in various situations such as <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/#cluster-setups">heterogeneous clusters</a>,
 when the execution listener class is not available on the node that instantiates the process.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;startEvent</span> <span class="na">id=</span><span class="s">&#34;theStart&#34;</span> <span class="na">name=</span><span class="s">&#34;Invoice Received&#34;</span> <span class="na">camunda:asyncBefore=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-</span></span></code></pre></div><h2 id="asynchronous-continuations-of-multi-instance-activities">Asynchronous Continuations of Multi-Instance Activities</h2>
+</span></span></code></pre></div>
+<h3 id="asynchronous-continuations-of-multi-instance-activities">Asynchronous Continuations of Multi-Instance Activities</h3>
 <p>A <a href="/manual/2.0-ee/reference/bpmn20/tasks/task-markers/#multiple-instances">multi-instance activity</a> can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously <em>before</em> the instances of that activity are created or <em>after</em> all instances have ended.</p>
 <p>Additionally, the inner activity can also be configured for asynchronous continuation using the <code>camunda:asyncBefore</code> and <code>camunda:asyncAfter</code> extension attributes on the <code>multiInstanceLoopCharacteristics</code> element:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;serviceTask</span> <span class="na">id=</span><span class="s">&#34;service1&#34;</span> <span class="na">name=</span><span class="s">&#34;Generate Invoice&#34;</span> <span class="na">camunda:class=</span><span class="s">&#34;my.custom.Delegate&#34;</span><span class="nt">&gt;</span>
@@ -3260,7 +3270,8 @@ when the execution listener class is not available on the node that instantiates
 </span></span><span class="line"><span class="cl">	<span class="nt">&lt;/multiInstanceLoopCharacteristics&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/serviceTask&gt;</span>
 </span></span></code></pre></div><p>Declaring asynchronous continuation of the inner activity makes each instance of the multi-instance activity asynchronous. In the above example, all instances of the parallel multi-instance activity will be created but their execution will be deferred. This can be useful to take more control over the transaction boundaries of the multi-instance activity or to enable true parallelism in case of a parallel multi-instance activity.</p>
-<h2 id="understand-asynchronous-continuations">Understand Asynchronous Continuations</h2>
+
+<h3 id="understand-asynchronous-continuations">Understand Asynchronous Continuations</h3>
 <p>To understand how asynchronous continuations work, we first need to understand how an activity is
 executed:</p>
 <figure class="image">
@@ -3308,7 +3319,8 @@ continuation before or after an activity creates a transaction boundary before o
 
 <p>What&rsquo;s more, asynchronous continuations are always executed by the <a href="/manual/2.0-ee/user-guide/process-engine/the-job-executor/">Job
 Executor</a>.</p>
-<h1 id="rollback-on-exception">Rollback on Exception</h1>
+
+<h2 id="rollback-on-exception">Rollback on Exception</h2>
 <p>We want to emphasize that in case of a non handled exception, the current transaction gets rolled back and the process instance is in the last wait state (save point). The following image visualizes that.</p>
 <figure class="image">
   <span><img
@@ -3319,7 +3331,8 @@ Executor</a>.</p>
 </figure>
 
 <p>If an exception occurs when calling <code>startProcessInstanceByKey</code> the process instance will not be saved to the database at all.</p>
-<h1 id="reasoning-for-this-design">Reasoning for This Design</h1>
+
+<h2 id="reasoning-for-this-design">Reasoning for This Design</h2>
 <p>The above sketched solution normally leads to discussion, as people expect the process engine to stop in case the task caused an exception. Also, other BPM suites often implement every task as a wait state. However, this approach has a couple of <strong>advantages</strong>:</p>
 <ul>
 <li>In test cases you know the exact state of the engine after the method call, which makes assertions on process state or service call results easy.</li>
@@ -3341,10 +3354,12 @@ Executor</a>.</p>
        /></span>
 </figure>
 
-<h1 id="transaction-integration">Transaction Integration</h1>
+
+<h2 id="transaction-integration">Transaction Integration</h2>
 <p>The process engine can either manage transactions on its own (&ldquo;Standalone&rdquo; transaction management)
 or integrate with a platform transaction manager.</p>
-<h2 id="standalone-transaction-management">Standalone Transaction Management</h2>
+
+<h3 id="standalone-transaction-management">Standalone Transaction Management</h3>
 <p>If the process engine is configured to perform standalone transaction management, it always opens a
 new transaction for each command which is executed. To configure the process engine to use
 standalone transaction management, use the
@@ -3361,7 +3376,8 @@ systems.</p>
   <p>In the Tomcat distribution the process engine is configured using standalone transaction management.</p>
 </div>
 
-<h2 id="transaction-manager-integration">Transaction Manager Integration</h2>
+
+<h3 id="transaction-manager-integration">Transaction Manager Integration</h3>
 <p>The process engine can be configured to integrate with a transaction manager (or transaction
 management systems). Out of the box, the process engine supports integration with Spring and JTA
 transaction management. More information can be found in the following chapters:</p>
@@ -3385,7 +3401,8 @@ you have configured for the process engine. If that is not the case, the data so
 This can lead to inconsistencies in the database, because transaction commits and rollbacks are no longer performed.</p>
 </div>
 
-<h2 id="transactions-and-the-process-engine-context">Transactions and the Process Engine Context</h2>
+
+<h3 id="transactions-and-the-process-engine-context">Transactions and the Process Engine Context</h3>
 <p>When a Process Engine Command is executed, the engine
 will create a Process Engine Context. The Context caches database
 entities, so that multiple operations on the same entity do not
@@ -3423,14 +3440,17 @@ shows how the class can be used:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// clear declaration for new Process Engine Context</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ProcessEngineContext</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 id="optimistic-locking">Optimistic Locking</h1>
+</span></span></span></code></pre></div>
+<h2 id="optimistic-locking">Optimistic Locking</h2>
 <p>The CIB seven engine can be used in multi threaded applications. In such a setting, when multiple threads interact with the process engine concurrently, it can happen that these threads attempt to do changes to the same data. For example: two threads attempt to complete the same User Task at the same time (concurrently). Such a situation is a conflict: the task can be completed only once.</p>
 <p>CIB seven engine uses a well known technique called &ldquo;Optimistic Locking&rdquo; (or Optimistic Concurrently Control) to detect and resolve such situations.</p>
 <p>This section is structured in two parts: The first part introduces Optimistic Locking as a concept. You can skip this section in case you are already familiar with Optimistic Locking as such. The second part explains the usage of Optimistic Locking in Camunda.</p>
-<h2 id="what-is-optimistic-locking">What is Optimistic Locking?</h2>
+
+<h3 id="what-is-optimistic-locking">What is Optimistic Locking?</h3>
 <p>Optimistic Locking (also Optimistic Concurrency Control) is a method for concurrency control, which is used in
 transaction based systems. Optimistic Locking is most efficient in situations in which data is read more frequently than it is changed. Many threads can read the same data objects at the same time without excluding each other. Consistency is then ensured by detecting conflicts and preventing updates in situations in which multiple threads attempt to change the same data objects concurrently. If such a conflict is detected, it is ensured that only one update succeeds and all others fail.</p>
-<h3 id="example">Example</h3>
+
+<h4 id="example">Example</h4>
 <p>Assume we have a database table with the following entry:</p>
   <table border="1" width="400" align="center" class="table table-condensed">
     <tr>
@@ -3469,33 +3489,39 @@ transaction based systems. Optimistic Locking is most efficient in situations in
 <code>Transaction 2</code> starts at the same time and reads the same user data, and also works on the data. When <code>Transaction 2</code> attempts to update the user address a conflict is detected (since <code>Transaction 1</code> has already deleted the user).</p>
 <p>The conflict is detected because the current state of the user data is read when <code>Transaction 2</code> performs the update. At that time, the concurrent <code>Transaction 1</code> has already marked the row to be deleted. The database now waits for <code>Transaction 1</code> to end. After it is ended, <code>Transaction 2 </code> can proceed. At this time, the row does not exist anymore and the update succeeds but reports to have changed <code>0</code> rows. An application can react to this and rollback <code>Transaction 2</code> to prevent other changes made by that transaction to become effective.</p>
 <p>The application (or the user using it) can further decide whether <code>Transaction 2</code> should be retried. In our example, the transaction would then not find the user data and report that the user has been deleted.</p>
-<h3 id="optimistic-locking-vs-pessimistic-locking">Optimistic Locking vs. Pessimistic Locking</h3>
+
+<h4 id="optimistic-locking-vs-pessimistic-locking">Optimistic Locking vs. Pessimistic Locking</h4>
 <p>Pessimistic Locking works with read locks. A read lock locks a data object on read, preventing other concurrent transactions from reading it as well. This way, conflicts are prevented from occurring.</p>
 <p>In the example above, <code>Transaction 1</code> would lock the user data once it reads it. When attempting to read is as well, <code>Transaction 2</code> is blocked from making progress. Once <code>Transaction 1</code> completes, <code>Transaction 2</code> can progress and reads the latest state. This way conflicts are prevented as transactions always exclusively work on the latest state of data.</p>
 <p>Pessimistic Locking is efficient in situations where writes are as frequent as reads and with high contention.</p>
 <p>However, since pessimistic locks are exclusive, concurrency is reduced, degrading performance. Optimistic Locking, which detects conflicts rather than preventing them to occur, is therefore preferable in the context of high levels of concurrency and where reads are more frequent than writes. Also, Pessimistic Locking can quickly lead to deadlocks.</p>
-<h3 id="further-reading">Further Reading</h3>
+
+<h4 id="further-reading">Further Reading</h4>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Optimistic_concurrency_control">[1] Wikipedia: Optimistic concurrency control</a></li>
 <li><a href="http://stackoverflow.com/questions/129329/optimistic-vs-pessimistic-locking">[2] Stackoverflow: Optimistic vs. Pessimistic Locking</a></li>
 </ul>
-<h2 id="optimistic-locking-in-cib-seven">Optimistic Locking in CIB seven</h2>
+
+<h3 id="optimistic-locking-in-cib-seven">Optimistic Locking in CIB seven</h3>
 <p>CIB seven uses Optimistic Locking for concurrency control. If a concurrency conflict is detected,
 an exception is thrown and the transaction is rolled back. Conflicts are detected when <em>UPDATE</em> or <em>DELETE</em> statements are executed.
 The execution of delete or update statements return an affected rows count.
 If this count is equal to zero, it indicates that the row was previously updated or deleted.
 In such cases a conflict is detected and an <code>OptimisticLockingException</code> is thrown.</p>
-<h3 id="the-optimisticlockingexception">The OptimisticLockingException</h3>
+
+<h4 id="the-optimisticlockingexception">The OptimisticLockingException</h4>
 <p>The <code>OptimisticLockingException</code> can be thrown by API methods.
 Consider the following invocation of the <code>completeTask(...)</code> method:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">taskService</span><span class="p">.</span><span class="na">completeTask</span><span class="p">(</span><span class="n">aTaskId</span><span class="p">);</span><span class="w"> </span><span class="c1">// may throw OptimisticLockingException</span><span class="w">
 </span></span></span></code></pre></div><p>The above method may throw an <code>OptimisticLockingException</code> in case executing the method call leads to concurrent modification of data.</p>
 <p>Job execution can also cause an <code>OptimisticLockingException</code> to be thrown. Since this is expected, the execution will be retried.</p>
-<h4 id="handling-optimistic-locking-exceptions">Handling Optimistic Locking exceptions</h4>
+
+<h5 id="handling-optimistic-locking-exceptions">Handling Optimistic Locking exceptions</h5>
 <p>In case the current Command is triggered by the Job Executor, <code>OptimisticLockingException</code>s are handled automatically using retries. Since this exception is expected to occur, it does not decrement the retry count.</p>
 <p>If the current Command is triggered by an external API call, the CIB seven engine rolls back the current transaction to the last save point (wait state). Now the user has to decide how the exception should be handled, if the transaction should be retried or not. Also consider that even if the transaction was rolled back, it may have had non-transactional side effects which have not been rolled back.</p>
 <p>To control the scope of transactions, explicit save points can be added before and after activities using Asynchronous Continuations.</p>
-<h3 id="common-places-where-optimistic-locking-exceptions-are-thrown">Common Places Where Optimistic Locking Exceptions Are Thrown</h3>
+
+<h4 id="common-places-where-optimistic-locking-exceptions-are-thrown">Common Places Where Optimistic Locking Exceptions Are Thrown</h4>
 <p>There a some common places where an <code>OptimisticLockingException</code> can be thrown.
 For example</p>
 <ul>
@@ -3516,11 +3542,13 @@ In most cases, one of the user tasks will be completed first. Execution then wai
 <p>However, it is also possible that both user tasks are completed concurrently. Say the user task above is completed. The transaction assumes he is the first on the closing parallel gateway.
 The user task below is completed concurrently and the transaction also assumes he is the first on the closing parallel gateway.
 Both transactions try to update a row, which indicates that they are the first on the closing parallel gateway. In such cases an <code>OptimisticLockingException</code> is thrown. One of the transactions is rolled back and the other one succeeds to update the row.</p>
-<h3 id="optimistic-locking-and-non-transactional-side-effects">Optimistic Locking and Non-Transactional Side Effects</h3>
+
+<h4 id="optimistic-locking-and-non-transactional-side-effects">Optimistic Locking and Non-Transactional Side Effects</h4>
 <p>After the occurrence of an <code>OptimisticLockingException</code>, the transaction is rolled back. Any transactional work will be undone.
 Non-transactional work like creation of files or the effects of invoking non-transactional web services will not be undone. This can end in inconsistent state.</p>
 <p>There are several solutions to this problem, the most common one is eventual consolidation using retries.</p>
-<h3 id="internal-implementation-details">Internal Implementation Details</h3>
+
+<h4 id="internal-implementation-details">Internal Implementation Details</h4>
 <p>Most of the CIB seven engine database tables contain a column called <code>REV_</code>. This column represents the revision version.
 When reading a row, data is read at a given &ldquo;revision&rdquo;. Modifications (UPDATEs and DELETEs) always attempt to update the revision which was read by the current command. Updates increment the revision. After executing a modification statement, the affected rows count is checked. If the count is <code>1</code> it is deduced that the version read was still current when executing the modification. In case the affected rows count is <code>0</code>, other transaction modified the same data while this transaction was running. This means that a concurrency conflict is detected and this transaction must not be allowed to commit. Subsequently, the transaction is rolled back (or marked rollback-only) and an <code>OptimisticLockingException</code> is thrown.</p>
 

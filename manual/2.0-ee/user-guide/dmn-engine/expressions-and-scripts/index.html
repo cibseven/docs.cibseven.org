@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>Decision tables and decision literal expressions allow specifying different types of expressions.
 This section describes which types of expressions exist.
 It lists which expression languages are supported and demonstrates how to change the used expression language for an expression.</p>
-<h1 id="expressions-in-dmn">Expressions in DMN</h1>
+
+<h2 id="expressions-in-dmn">Expressions in DMN</h2>
 <p>As shown in the <a href="/manual/2.0-ee/reference/dmn/decision-table/">decision table</a> and <a href="/manual/2.0-ee/reference/dmn/decision-literal-expression/">decision literal expression</a> reference, four types of expressions are supported:</p>
 <ul>
 <li><em>Input Expression</em>: sets the input value for an input column
@@ -3235,7 +3240,8 @@ elements <code>inputExpression</code>, <code>inputEntry</code>, <code>outputEntr
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/decision&gt;</span>
 </span></span><span class="line"><span class="cl">  
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
-</span></span></code></pre></div><h1 id="supported-expression-languages">Supported Expression Languages</h1>
+</span></span></code></pre></div>
+<h2 id="supported-expression-languages">Supported Expression Languages</h2>
 <p>The Camunda DMN engine supports two expression languages out of the box:</p>
 <ul>
 <li><code>JUEL</code>: A Camunda-maintained <a href="http://juel.sourceforge.net/">implementation</a> of the Java <a href="https://jakarta.ee/specifications/expression-language/4.0/">Unified Expression Language</a></li>
@@ -3283,7 +3289,8 @@ to your project <code>pom.xml</code>:</p>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>groovy-datetime<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${GROOVY_VERSION}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h1 id="default-expression-languages">Default Expression Languages</h1>
+</span></span></code></pre></div>
+<h2 id="default-expression-languages">Default Expression Languages</h2>
 <p>The default expression languages of the different expression types in the
 DMN engine are as follows:</p>
 <ul>
@@ -3311,7 +3318,8 @@ the <code>definitions</code> element:</p>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/decision&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/definitions&gt;</span>
 </span></span></code></pre></div><p>Additionally, it is possible to change the default expression language in the default DMN engine configuration as described in the <a href="/manual/2.0-ee/user-guide/dmn-engine/embed/#change-default-expression-languages">user guide</a>.</p>
-<h1 id="configuring-the-expression-language">Configuring the Expression Language</h1>
+
+<h2 id="configuring-the-expression-language">Configuring the Expression Language</h2>
 <p>It is also possible to set the language for each expression individually using the <code>expressionLanguage</code> attribute:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;definitions</span> <span class="na">xmlns=</span><span class="s">&#34;https://www.omg.org/spec/DMN/20191111/MODEL/&#34;</span> <span class="na">id=</span><span class="s">&#34;definitions&#34;</span> <span class="na">name=</span><span class="s">&#34;definitions&#34;</span> <span class="na">namespace=</span><span class="s">&#34;http://camunda.org/schema/1.0/dmn&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  

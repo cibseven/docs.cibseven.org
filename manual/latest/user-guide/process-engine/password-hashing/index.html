@@ -41,6 +41,8 @@
       
       <li  class="active"  ><a href="/manual">CIB seven</a></li>
       
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
       <li  ><a href="/security">Security</a></li>
       
     </ul>
@@ -92,6 +94,8 @@
       
     
        <span class="name">CIB seven</span> 
+    
+      
     
       
     
@@ -3189,7 +3193,8 @@
       <p>This chapter is about how cryptographic password hashing is done in CIB seven. In particular, the hashing algorithm that is being used and the salt generation. If you are not familiar with these topics, we recommend reading the articles about <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a>, <a href="https://en.wikipedia.org/wiki/Salt_(cryptography)">salt</a> and <a href="https://crackstation.net/hashing-security.htm">secure password hashing</a>.</p>
 <p>The Camunda version 7.6 and earlier use the cryptographic hash function <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a>. Since Camunda version 7.7 the hash function <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-512</a> is used. If there is a need for another custom hash function, it is possible to plugin a <a href="#customize-the-hashing-algorithm">custom password hashing algorithm</a> in Camunda.</p>
 <p>At salt generation, a random 16-byte per-user value is created, which is generated with <a href="http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html">SecureRandom</a>. It is also possible to <a href="#customize-the-salt-generation">customize the salt generation</a> if desired.</p>
-<h1 id="customize-the-hashing-algorithm">Customize the Hashing Algorithm</h1>
+
+<h2 id="customize-the-hashing-algorithm">Customize the Hashing Algorithm</h2>
 <p>If it is necessary to use a more secure hash algorithm, you can provide your own implementation.</p>
 <p>You can do this by implementing the <code>PasswordEncryptor</code> interface from the <code>org.cibseven.bpm.engine.impl.digest</code> package. The interface ensures that all necessary functions for password hashing are implemented. You can have a look at the classes <code>Base64EncodedHashDigest</code> and <code>ShaHashDigest</code> from the <code>org.cibseven.bpm.engine.impl.digest</code> package to see how this is done in Camunda. A template for your own implementation could look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyPasswordEncryptor</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PasswordEncryptor</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3218,7 +3223,8 @@
   <p>Please do not use your own implementation of a hash function, but rather a standard that has been peer reviewed!</p>
 </div>
 
-<h1 id="customize-the-salt-generation">Customize the Salt generation</h1>
+
+<h2 id="customize-the-salt-generation">Customize the Salt generation</h2>
 <p>Similar to the hashing algorithm, the salt generation can be adjusted. First, implement the <code>SaltGenerator</code> interface from the <code>org.cibseven.bpm.engine.impl.digest</code>. This ensures that all necessary functions are implemented. You can have a look at the classes <code>Base64EncodedSaltGenerator</code> and <code>Default16ByteSaltGenerator</code> from the <code>org.cibseven.bpm.engine.impl.digest</code> package to see how this is done in Camunda. A template for your own implementation could look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyCustomSaltGenerator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">SaltGenerator</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
