@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3203,12 +3203,12 @@
 <p>A user operation log entry has the following properties:</p>
 <ul>
 <li><strong>Operation ID</strong>: A generated id that uniquely identifies a performed operation. Multiple log entries that are part of one operation reference the same operation ID.</li>
-<li><strong>Operation Type</strong>: The name of the performed operation. Available operation types are listed in the interface <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/history/UserOperationLogEntry.html">org.cibseven.bpm.engine.history.UserOperationLogEntry</a>
+<li><strong>Operation Type</strong>: The name of the performed operation. Available operation types are listed in the interface <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/history/UserOperationLogEntry.html">org.cibseven.bpm.engine.history.UserOperationLogEntry</a>
 . Note that one operation can consist of multiple types, for example a cascading API operation is one user operation, but is split into multiple types of operations.</li>
-<li><strong>Entity Type</strong>: An identifier of the type of the entity that was addressed by the operation. Available entity types are listed in the class <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/EntityTypes.html">org.cibseven.bpm.engine.EntityTypes</a>
+<li><strong>Entity Type</strong>: An identifier of the type of the entity that was addressed by the operation. Available entity types are listed in the class <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/EntityTypes.html">org.cibseven.bpm.engine.EntityTypes</a>
 . Like the operation type, one operation may address more than one type of entity.</li>
-<li><strong>Category</strong>: The name of the category the operation is associated with. Available categories are listed in the interface <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/history/UserOperationLogEntry.html">org.cibseven.bpm.engine.history.UserOperationLogEntry</a>
-. For example, all task related runtime operations like claiming and completing tasks fall into the category <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/history/UserOperationLogEntry.html#CATEGORY_TASK_WORKER">TaskWorker</a>
+<li><strong>Category</strong>: The name of the category the operation is associated with. Available categories are listed in the interface <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/history/UserOperationLogEntry.html">org.cibseven.bpm.engine.history.UserOperationLogEntry</a>
+. For example, all task related runtime operations like claiming and completing tasks fall into the category <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/history/UserOperationLogEntry.html#CATEGORY_TASK_WORKER">TaskWorker</a>
 .</li>
 <li><strong>Annotation</strong>: An arbitrary text annotation set by a user for auditing reasons. Multiple log entries that belong to an operation have the same annotation.</li>
 <li><strong>Entity IDs</strong>: A job log entry contains the entity IDs that serve to identify the entities addressed by the operation. For example, an operation log entry on a task contains the id of the task as well as the id of the process instance the task belongs to. As a second example, a log entry for suspending all process instances of a process definition does not contain individual process instance IDs but only the process definition ID.</li>

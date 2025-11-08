@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3190,12 +3190,12 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The DMN engine <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnEngine.html">interface</a>
+      <p>The DMN engine <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/DmnEngine.html">interface</a>
  exposes methods
 for parsing and evaluating DMN Decisions.</p>
 
 <h2 id="parse-decisions">Parse Decisions</h2>
-<p>Decisions can be parsed from an <code>InputStream</code> or transformed from a <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/model/dmn/DmnModelInstance.html">DmnModelInstance</a>
+<p>Decisions can be parsed from an <code>InputStream</code> or transformed from a <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/model/dmn/DmnModelInstance.html">DmnModelInstance</a>
 .</p>
 <p>This example shows how to parse a decision from an input stream:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// create a default DMN engine</span><span class="w">
@@ -3266,7 +3266,7 @@ key which corresponds to the <code>id</code> attribute in the XML file.</p>
 </span></span></span></code></pre></div><p>The DRG is represented in the XML by the <code>definitions</code> element. The <code>id</code> of the DRG in the XML is called <code>key</code> in the context of the DMN engine.</p>
 
 <h3 id="decision-tables-only">Decision Tables only</h3>
-<p>It is possible to check if a parsed decision is implemented as <a href="/manual/latest/reference/dmn/decision-table/">decision table</a> by using the method <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnDecision.html#isDecisionTable%28%29">isDecisionTable()</a>
+<p>It is possible to check if a parsed decision is implemented as <a href="/manual/latest/reference/dmn/decision-table/">decision table</a> by using the method <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/DmnDecision.html#isDecisionTable%28%29">isDecisionTable()</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// create a default DMN engine</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">DmnEngine</span><span class="w"> </span><span class="n">dmnEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DmnEngineConfiguration</span><span class="w">
@@ -3288,7 +3288,7 @@ key which corresponds to the <code>id</code> attribute in the XML file.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
 <h2 id="evaluate-decisions">Evaluate Decisions</h2>
-<p>To evaluate (or &ldquo;execute&rdquo;) a decision, either pass an already transformed <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnDecision.html">DmnDecision</a>
+<p>To evaluate (or &ldquo;execute&rdquo;) a decision, either pass an already transformed <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/DmnDecision.html">DmnDecision</a>
  or use a DMN model instance or input stream in combination with a decision key.</p>
 <p>As input to the evaluation, a set of input variables must be provided.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// create a default DMN engine</span><span class="w">
@@ -3326,7 +3326,7 @@ Java <code>Map&lt;String, Object&gt;</code>, resp. a <code>VariableMap</code> or
 Use the <code>VariableContext</code> to support lazy-loading of variables.</p>
 
 <h3 id="interpret-the-decision-result">Interpret the Decision Result</h3>
-<p>The evaluation of a DMN decision returns a <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnDecisionResult.html">DmnDecisionResult</a>
+<p>The evaluation of a DMN decision returns a <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/DmnDecisionResult.html">DmnDecisionResult</a>
 . If the decision is implemented as <a href="/manual/latest/reference/dmn/decision-table/">decision table</a> then the result is a list of the
 matching decision rule results. These results represent a mapping from an output name to an output value.</p>
 <p>If the decision is instead implemented as <a href="/manual/latest/reference/dmn/decision-literal-expression/">decision literal expression</a> then the result is a list
@@ -3383,8 +3383,8 @@ The <code>DmnDecisionResult</code> thus consists of one <code>DmnDecisionResultE
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// - combine getSingleResult() and getSingleEntry()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">decisionResult</span><span class="p">.</span><span class="na">getSingleEntry</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>Note that the decision can also be evaluated using the
-<a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnEngine.html##evaluateDecisionTable%28org.cibseven.bpm.dmn.engine.DmnDecision,%20java.util.Map%29">evaluateDecisionTable()</a>
- method if it is implemented as <a href="/manual/latest/reference/dmn/decision-table/">decision table</a>. In this case, evaluation returns a <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a>
+<a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/DmnEngine.html##evaluateDecisionTable%28org.cibseven.bpm.dmn.engine.DmnDecision,%20java.util.Map%29">evaluateDecisionTable()</a>
+ method if it is implemented as <a href="/manual/latest/reference/dmn/decision-table/">decision table</a>. In this case, evaluation returns a <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a>
  which is semantically equal and provides the same methods as a
 <code>DmnDecisionResult</code>.</p>
 

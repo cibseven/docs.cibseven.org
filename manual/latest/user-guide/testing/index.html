@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3197,14 +3197,14 @@ This section explains how to write unit tests and integration tests with CIB sev
 <p>CIB seven provides helper classes to write unit tests for JUnit versions 3, 4 and 5.</p>
 
 <h3 id="junit-5">JUnit 5</h3>
-<p>CIB seven since 1.0 (also includin 7.22.0-cibseven versions) ships with a <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/junit5/ProcessEngineExtension.html">JUnit 5 extension</a>
+<p>CIB seven since 1.0 (also includin 7.22.0-cibseven versions) ships with a <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/test/junit5/ProcessEngineExtension.html">JUnit 5 extension</a>
  that provides access to the process engine and services through getter methods.</p>
 <p>The extensions process engine is configured by the default configuration file called <code>camunda.cfg.xml</code>, which needs to be placed on the classpath. A custom configuration file can be passed to the extension when creating the <code>ProcessEngineExtension</code> object.</p>
 <p>If you want to use the JUnit 5  <code>ProcessEngineExtension</code>, you need to add the following dependency to your <code>pom.xml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-junit5<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>2.1.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><p>The following code snippets show examples of how to use the extension.</p>
@@ -3270,7 +3270,7 @@ This section explains how to write unit tests and integration tests with CIB sev
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
 <h3 id="junit-4">JUnit 4</h3>
-<p>Using the JUnit 4 style of writing unit tests, the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a>
+<p>Using the JUnit 4 style of writing unit tests, the <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a>
  must be used. Through this rule, the process engine and services are available through getters.</p>
 <p>This rule will look for the default configuration file on the classpath called <code>camunda.cfg.xml</code>. When constructing the ProcessEngineRule object you can pass a custom configuration file to the rule. Process engines are statically cached over multiple unit tests when using the same configuration resource.</p>
 <p>The following code snippet shows an example of using the JUnit 4 style of testing and the usage of the ProcessEngineRule.</p>
@@ -3301,7 +3301,7 @@ This section explains how to write unit tests and integration tests with CIB sev
 
 
 <h3 id="junit-3">JUnit 3</h3>
-<p>In the JUnit 3 style, the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/ProcessEngineTestCase.html">ProcessEngineTestCase</a>
+<p>In the JUnit 3 style, the <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/test/ProcessEngineTestCase.html">ProcessEngineTestCase</a>
  must be extended. This will make the ProcessEngine and the services available through protected member fields. In the <code>setup()</code> of the test, the processEngine will be initialized by default with the <code>camunda.cfg.xml</code> resource on the classpath. To specify a different configuration file, override the getConfigurationResource() method. Process engines are cached statically over multiple unit tests when the configuration resource is the same.</p>
 <p>A JUnit 3 style test can look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyBusinessProcessTest</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ProcessEngineTestCase</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3319,16 +3319,16 @@ This section explains how to write unit tests and integration tests with CIB sev
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
 <h3 id="deploy-test-resources">Deploy Test Resources</h3>
-<p>You can annotate test classes and methods with <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/Deployment.html">@Deployment</a>
+<p>You can annotate test classes and methods with <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/test/Deployment.html">@Deployment</a>
 . Before the test is run, a resource file named <code>TestClassName.bpmn20.xml</code> (for a class-level annotation) or <code>TestClassName.testMethod.bpmn20.xml</code> (for a method-level annotation), in the same package as the test class, will be deployed. At the end of the test the deployment will be deleted, including all related process instances, tasks, etc. The <code>@Deployment</code> annotation also supports setting the resource location explicitly.</p>
 <pre tabindex="0"><code>@Deployment(resources = {&#34;myProcess.bpmn&#34;, &#34;mySubprocess.bpmn&#34;})
 </code></pre><p>will pick the files <code>myProcess.bpmn</code> and <code>mySubProcess.bpmn</code> directly from the top of the classpath.</p>
-<p>Method-level annotations override class-level annotations. See the Javadocs for <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/Deployment.html">@Deployment</a>
+<p>Method-level annotations override class-level annotations. See the Javadocs for <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/test/Deployment.html">@Deployment</a>
 more details.</p>
 <p>The annotation is supported for <a href="#junit-3">JUnit 3</a> and <a href="#junit-4">JUnit 4</a> style of testing.</p>
 
 <h3 id="specify-the-required-history-level">Specify the required History Level</h3>
-<p>If a test requires a specific history level (e.g., because it uses the HistoryService) then you can annotate the test class or method with <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/test/RequiredHistoryLevel.html">@RequiredHistoryLevel</a>
+<p>If a test requires a specific history level (e.g., because it uses the HistoryService) then you can annotate the test class or method with <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/test/RequiredHistoryLevel.html">@RequiredHistoryLevel</a>
  and specify the required history level (e.g., &ldquo;activity&rdquo;, &ldquo;full&rdquo;). Before the test is run, it checks the current history level of the process engine and skip the test if the history level is lower than the specified one.</p>
 <p>A JUnit 4 style test can look as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyBusinessProcessTest</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3412,7 +3412,7 @@ more details.</p>
 
 
 <h2 id="cib-seven-assertions">CIB seven Assertions</h2>
-<p>Additional to normal JUnit assertions, <a href="https://github.com/cibseven/cibseven/tree/v2.0-ee.0/test-utils/assert">CIB seven Assert</a> adds a fluent API for asserting typical scenarios in a process integrating with <a href="https://joel-costigliola.github.io/assertj/">AssertJ</a>.</p>
+<p>Additional to normal JUnit assertions, <a href="https://github.com/cibseven/cibseven/tree/v2.1.0/test-utils/assert">CIB seven Assert</a> adds a fluent API for asserting typical scenarios in a process integrating with <a href="https://joel-costigliola.github.io/assertj/">AssertJ</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">assertThat</span><span class="p">(</span><span class="n">processInstance</span><span class="p">).</span><span class="na">isWaitingAt</span><span class="p">(</span><span class="s">&#34;UserTask_InformCustomer&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">assertThat</span><span class="p">(</span><span class="n">task</span><span class="p">()).</span><span class="na">hasCandidateGroup</span><span class="p">(</span><span class="s">&#34;Sales&#34;</span><span class="p">).</span><span class="na">isNotAssigned</span><span class="p">();</span><span class="w">
 </span></span></span></code></pre></div><p>You can find a more extensive guide with examples under <a href="/manual/latest/user-guide/testing/assert-examples/">Assert Examples</a>.</p>
@@ -3420,7 +3420,7 @@ more details.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-assert<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>2.1.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div><p>Also, you will have to add the AssertJ library to your dependencies. Make sure that the version is correct. You can find the correct version in the compatibility matrix below.</p>

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3220,7 +3220,7 @@ Configure it as needed and then build a new DMN engine from it.</p>
 <p>This section gives more insights of embedded DMN engine configuration. In case you want to use DMN engine as part of the BPMN engine, please refer to the <a href="/manual/latest/user-guide/process-engine/decisions/configuration/">DMN Engine Configuration</a>  section of the <a href="/manual/latest/user-guide/">User Guide</a> for the configuration in that scenario.</p>
 
 <h3 id="decision-table-evaluation-listeners">Decision Table Evaluation Listeners</h3>
-<p>The DMN engine configuration allows you add a custom decision table <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html">evaluation listener</a>
+<p>The DMN engine configuration allows you add a custom decision table <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html">evaluation listener</a>
 . A decision table evaluation listener is
 notified after a decision table has been evaluated. It receives an evaluation event
 which contains the result of the evaluation. You can decide if the
@@ -3239,7 +3239,7 @@ listener should be notified before or after the default listeners.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// notify after default listeners</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">configuration</span><span class="p">.</span><span class="na">getCustomPostDecisionTableEvaluationListeners</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">myListener</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><p>A specialized evaluation listener is the <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/spi/DmnEngineMetricCollector.html">metric collector</a>
+</span></span></span></code></pre></div><p>A specialized evaluation listener is the <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/spi/DmnEngineMetricCollector.html">metric collector</a>
 , which records the number of executed decision
 elements. This metric can be used to monitor the workload of a decision engine.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// create default DMN engine configuration</span><span class="w">
@@ -3253,7 +3253,7 @@ elements. This metric can be used to monitor the workload of a decision engine.<
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">configuration</span><span class="p">.</span><span class="na">setEngineMetricCollector</span><span class="p">(</span><span class="n">metricCollector</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div>
 <h3 id="decision-evaluation-listeners">Decision Evaluation Listeners</h3>
-<p>The DMN engine configuration allows you add a custom <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.html">decision evaluation listener</a>
+<p>The DMN engine configuration allows you add a custom <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.html">decision evaluation listener</a>
 . A decision evaluation listener is
 notified after a decision with all the required decisions has been evaluated. It receives an evaluation event
 which contains the result of the evaluation. You can decide if the
@@ -3280,17 +3280,17 @@ listener should be notified before or after the default listeners.</p>
   <p>Please be aware that these APIs are <strong>not</strong> part of the <a href="/manual/latest/introduction/public-api/">public API</a> and may change in later releases.</p>
 </div>
 
-<p>The <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html">default DMN engine configuration</a>
+<p>The <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html">default DMN engine configuration</a>
  has further customization and
 extension points.</p>
 
 <h3 id="customize-dmn-transformation">Customize DMN Transformation</h3>
-<p>It is possible to customize the transformation of DMN by providing a <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnTransformer.html">DMN transformer</a>
- or configuring the <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/impl/transform/DefaultDmnTransformer.html">default one</a>
+<p>It is possible to customize the transformation of DMN by providing a <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnTransformer.html">DMN transformer</a>
+ or configuring the <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/impl/transform/DefaultDmnTransformer.html">default one</a>
 .</p>
 
 <h4 id="register-dmn-transform-listeners">Register DMN Transform Listeners</h4>
-<p>The simplest customization is to provide a <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnTransformListener.html">transform listener</a>
+<p>The simplest customization is to provide a <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnTransformListener.html">transform listener</a>
 . The Listener is notified after a DMN element is
 transformed. The listener can modify the transformed object.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// with a default DMN engine configuration</span><span class="w">
@@ -3307,10 +3307,10 @@ transformed. The listener can modify the transformed object.</p>
 </span></span></span></code></pre></div>
 <h4 id="register-dmn-element-transform-handler">Register DMN Element Transform Handler</h4>
 <p>While the transform listener allows modifying of the transformed objects, it does not support instantiating custom subclasses.
-This can be achieved using a custom <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnElementTransformHandler.html">transform handler</a>
+This can be achieved using a custom <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/dmn/engine/impl/spi/transform/DmnElementTransformHandler.html">transform handler</a>
 .</p>
 <p>A transform handler is registered for a given <a href="https://github.com/cibseven/cibseven/tree/master/model-api/dmn-model">DMN model API</a> type like a <code>DecisionTable</code>.</p>
-<p>First, implement a transform handler which can transform a <a href="/javadoc/cibseven/2.0-ee/?org/cibseven/bpm/model/dmn/instance/DecisionTable.html">decision table</a>
+<p>First, implement a transform handler which can transform a <a href="/javadoc/cibseven/2.1/?org/cibseven/bpm/model/dmn/instance/DecisionTable.html">decision table</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w">  </span><span class="kd">class</span> <span class="nc">MyDecisionTableHandler</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">DmnElementTransformHandler</span><span class="o">&lt;</span><span class="n">DecisionTable</span><span class="p">,</span><span class="w"> </span><span class="n">MyDecisionTableImpl</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3416,7 +3416,7 @@ Just make sure that the corresponding libraries are available on the classpath a
 <h3 id="customize-expression-and-script-resolving">Customize Expression and Script Resolving</h3>
 <p>The default DMN engine resolves the supported expression and script languages
 using different providers.</p>
-<p>To evaluate <code>JUEL</code> expressions, the DMN engine uses the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/impl/spi/el/ElProvider.html">ElProvider</a>
+<p>To evaluate <code>JUEL</code> expressions, the DMN engine uses the <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/impl/spi/el/ElProvider.html">ElProvider</a>
  configured in the
 DMN engine configuration. To use another implementation of the Unified Expression Language, replace this implementation.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// with a default DMN engine configuration</span><span class="w">
@@ -3425,7 +3425,7 @@ DMN engine configuration. To use another implementation of the Unified Expressio
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// set a custom el provider</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">configuration</span><span class="p">.</span><span class="na">setElProvider</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyElProvider</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><p>To configure the <code>FEEL</code> engine used you can provide a custom <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/feel/impl/FeelEngineFactory.html">FeelEngineFactory</a>
+</span></span></span></code></pre></div><p>To configure the <code>FEEL</code> engine used you can provide a custom <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/feel/impl/FeelEngineFactory.html">FeelEngineFactory</a>
 .</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// with a default DMN engine configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">DefaultDmnEngineConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultDmnEngineConfiguration</span><span class="p">)</span><span class="w"> </span><span class="n">DmnEngineConfiguration</span><span class="w">
@@ -3433,7 +3433,7 @@ DMN engine configuration. To use another implementation of the Unified Expressio
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// set a custom feel engine factory</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">configuration</span><span class="p">.</span><span class="na">setFeelEngineFactory</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyFeelEngineFactory</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div><p>Script languages are resolved by the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/dmn/engine/impl/spi/el/DmnScriptEngineResolver.html">DmnScriptEngineResolver</a>
+</span></span></span></code></pre></div><p>Script languages are resolved by the <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/dmn/engine/impl/spi/el/DmnScriptEngineResolver.html">DmnScriptEngineResolver</a>
 . To customize the script engine resolving, provide an own implementation.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// with a default DMN engine configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">DefaultDmnEngineConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultDmnEngineConfiguration</span><span class="p">)</span><span class="w"> </span><span class="n">DmnEngineConfiguration</span><span class="w">

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3371,8 +3371,8 @@ See also <a href="/manual/latest/reference/bpmn20/subprocesses/call-activity/#pa
 <h4 id="job-acquisition-performance-optimization">Job Acquisition performance optimization</h4>
 <p>To optimize the acquisition of jobs that need to be executed immediately, the <code>DUEDATE_</code> column is not set (<code>null</code>) and a (positive) null check is added as a condition for acquisition.</p>
 <p>In case each job must have a <code>DUEDATE_</code> set, the optimization can be disabled. This can be done by setting the <code>ensureJobDueDateNotNull</code> <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#ensureJobDueDateNotNull">process engine configuration flag</a> to <code>true</code>.</p>
-<p>However, any jobs created with a <code>null</code> value for <code>DUEDATE_</code> before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the <strong>Set Due Date</strong> <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29">Java</a>
-/<a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST</a> or <strong>Set Retries</strong> <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ManagementService.html#setJobRetries%28int%29">Java</a>
+<p>However, any jobs created with a <code>null</code> value for <code>DUEDATE_</code> before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the <strong>Set Due Date</strong> <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29">Java</a>
+/<a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST</a> or <strong>Set Retries</strong> <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/ManagementService.html#setJobRetries%28int%29">Java</a>
 /<a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobRetries">REST</a> APIs.</p>
 
 <h3 id="the-two-phases-of-job-acquisition">The Two Phases of Job Acquisition</h3>

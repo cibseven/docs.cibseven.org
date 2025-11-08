@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3192,15 +3192,15 @@
     <div class="col-xs-12 content-text">
       <p>Docker images can be found on <a href="https://github.com/cibseven/cibseven-docker">GitHub</a> and <a href="https://hub.docker.com/r/cibseven/cibseven/">Docker Hub</a>.</p>
 <p>Please note that by default the Apache Tomcat distribution is used. For a guide on how to use one of the other distributions, see the <a href="https://github.com/cibseven/cibseven-docker/#supported-tagsreleases">tag schema</a>.
-For example, tags like <code>2.0.0</code> or <code>latest</code> without explicit distribution mark are delivering Tomcat version of CIB seven.</p>
+For example, tags like <code>2.1.0</code> or <code>latest</code> without explicit distribution mark are delivering Tomcat version of CIB seven.</p>
 
 <h2 id="start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</h2>
 <p>To start the latest CIB seven Tomcat version, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:tomcat-latest
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-latest
-</span></span></code></pre></div><p>or following command to use explicit version 2.0.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:tomcat-2.0.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-2.0.0
+</span></span></code></pre></div><p>or following command to use explicit version 2.1.0:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:tomcat-2.1.0
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-2.1.0
 </span></span></code></pre></div><p>If neither the distribution nor the version is specified then the latest CIB seven Tomcat version will be delivered:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven
@@ -3209,17 +3209,17 @@ For example, tags like <code>2.0.0</code> or <code>latest</code> without explici
 <p>To start <a href="/manual/latest/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-latest
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-latest
-</span></span></code></pre></div><p>or following command to use explicit version 2.0.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-2.0.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-2.0.0
+</span></span></code></pre></div><p>or following command to use explicit version 2.1.0:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-2.1.0
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-2.1.0
 </span></span></code></pre></div>
 <h2 id="start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</h2>
 <p>To start CIB seven Wildfly version, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-latest
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-latest
-</span></span></code></pre></div><p>or following command to use explicit version 2.0.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-2.0.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-2.0.0
+</span></span></code></pre></div><p>or following command to use explicit version 2.1.0:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-2.1.0
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-2.1.0
 </span></span></code></pre></div>
     </div>
   </div>

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3278,10 +3278,13 @@ unless the <code>--detached</code> argument is explicitly passed to the <code>st
   <tr>
       <td><code>--oauth2</code></td>
       <td>
-        Enables Spring Security OAuth2 integration.
+        Enables Spring Security OAuth2 integration.      
+        <br>
         See dedicated <a href="/manual/latest/user-guide/spring-boot-integration/spring-security/">Spring Security OAuth2 Integration</a> documentation for details.
+        <br>
+        <strong>Do not use this when authentication filters are enabled</strong>. See: <a href="#authentication">Authentication</a>
       </td>
-      <td><code>false</code></td>
+      <td><code>disabled</code></td>
   </tr>
   <tr>
       <td><code>--help</code></td>
@@ -3427,10 +3430,27 @@ All <a href="/manual/latest/user-guide/spring-boot-integration/configuration/#ci
   </tr>
   <tr>
       <td><code>.authentication</code></td>
-      <td>Authentication method, currently only basic is supported.</td>
-      <td>basic</td>
+      <td>Authentication method:
+        <ul>
+            <li><code>composite</code>: JWT-based authentication with basic access as fallback.</li>
+            <li><code>basic</code>: Enables <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a></li>
+            <li><code>pseudo</code>: It "authenticates" always, just by checking the User-id custom header.</li>
+        </ul>        
+      </td>
+      <td><code>pseudo</code></td>
   </tr>
 </table>
+
+<div class="note bg-info docs-info">
+  <h3>Heads up!</h3>
+  <p><p>When using authentication filters for CIB seven Run, <strong>Spring Security OAuth2 integration must be disabled</strong>.
+Enabling both will cause conflicts, resulting in CIB seven webapp requests being rejected by Engine REST.</p>
+<p>The composite authentication filter first attempts JWT authentication using <code>cibseven.webclient.authentication.jwtSecret</code>,
+so it does not support OAuth2 tokens. Basic authentication will not work either, as it does not use JWTs.</p>
+<p>For further details, refer to <a href="/manual/latest/reference/rest/overview/authentication/#composite-authentication">Composite authentication</a>.</p>
+</p>
+</div>
+
 
 <h3 id="cross-origin-resource-sharing">Cross-Origin Resource Sharing</h3>
 <p>If you want to allow cross-origin requests to the <a href="/manual/latest/reference/rest/overview/">REST API</a>, you need to enable CORS.</p>
@@ -3910,7 +3930,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>Whether to follow LDAP referrals. <br />Example: follow</td>
   </tr>
   <tr>
-      <td rowspan="9">cibseven.webclient.sso</td>
+      <td rowspan="11">cibseven.webclient.sso</td>
       <td>.endpoints.token</td>
       <td>OAuth2 token endpoint</td>
   </tr>
@@ -3921,6 +3941,14 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   <tr>
       <td>.endpoints.authorization</td>
       <td>authorization token endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.user</td>
+      <td>OAuth2 user endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.introspection</td>
+      <td>OAuth2 introspection endpoint</td>
   </tr>
   <tr>
       <td>.clientId</td>
@@ -3940,7 +3968,13 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   </tr>
   <tr>
       <td>.active</td>
-      <td>Activates the redirect in the frontend to login with the sso provider</td>
+      <td>Activates the redirect in the frontend to login with the sso provider
+      <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.accessTokenToEngineRest</td>
+      <td>Activates the forwarding of the access token to the engine REST. Required when starter-security is used to secure engine REST with Spring Security
+      <br />Default value: false</td>
   </tr>
   <tr>
       <td>.scopes</td>

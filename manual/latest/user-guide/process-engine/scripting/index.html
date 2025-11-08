@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3556,11 +3556,11 @@ JRuby where you have to access the variable as a ruby global variable (prepend w
 i.e., <code>$sum</code>)</p>
 <p>There are also special variables:</p>
 <ol>
-<li><code>execution</code>, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
+<li><code>execution</code>, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
 ).</li>
-<li><code>task</code>, which is available if the script is executed in a task scope (e.g., a task listener) (<a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
+<li><code>task</code>, which is available if the script is executed in a task scope (e.g., a task listener) (<a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
 ).</li>
-<li><code>connector</code>, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a camunda:connector) (<a href="/javadoc/cibseven/2.0-ee/org/cibseven/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>
+<li><code>connector</code>, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a camunda:connector) (<a href="/javadoc/cibseven/2.1/org/cibseven/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>
 ).</li>
 </ol>
 <p>These variables correspond to the <code>DelegateExecution</code>, <code>DelegateTask</code> or resp. <code>ConnectorVariableScope</code>
@@ -3579,9 +3579,9 @@ interface which means that it can be used to get and set variables or access pro
 </span></span></span></code></pre></div>
 <h2 id="accessing-process-engine-services-using-scripts">Accessing Process Engine Services using Scripts</h2>
 <p>CIB seven&rsquo;s Java API provides access to CIB seven&rsquo;s process engine services; these services can be accessed using Scripts:</p>
-<p><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
+<p><a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
  \</p>
-<a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/package-summary.html">Public Java API of CIB seven Engine</a>
+<a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/package-summary.html">Public Java API of CIB seven Engine</a>
 
 <p>Example of creating a BPMN Message that correlates with the message key &ldquo;work&rdquo;:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">execution</span><span class="p">.</span><span class="nx">getProcessEngineServices</span><span class="p">().</span><span class="nx">getRuntimeService</span><span class="p">().</span><span class="nx">createMessageCorrelation</span><span class="p">(</span><span class="s2">&#34;work&#34;</span><span class="p">).</span><span class="nx">correlateWithResult</span><span class="p">();</span>

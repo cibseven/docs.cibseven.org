@@ -1,0 +1,3761 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>CIB seven 2.1.0 CE - Release Notes | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/manual/2.1/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/manual/2.1/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1/release-notes/release-notes-2.1.0-ce/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/manual/2.1/" id="logolink">
+      <img src="/manual/2.1/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  class="active"  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+<div class="version versioned">
+    
+      
+    
+       <span class="name">CIB seven</span> 
+    
+      
+    
+      
+    
+
+    <span class="number">2.1</span>
+</div>
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/downloading-cibseven/" >Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/licenses/" >Licenses</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/implemented-standards/" >Implemented Standards</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/architecture/" >Architecture Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/supported-environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/extensions/" >Extensions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/third-party-libraries/" >Third-Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/introduction/public-api/" >Public API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/" >Process Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-engine-bootstrapping/" >Process Engine Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-engine-api/" >Process Engine API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-engine-concepts/" >Process Engine Concepts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/variables/" >Process Variables</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-instance-modification/" >Process Instance Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/scripting/" >Scripting</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/templating/" >Templating</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/securing-custom-code/" >Custom Code &amp; Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/external-tasks/" >External Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/connectors/" >Connectors</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-versioning/" >Process Versioning</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/database/" >Database</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/database/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/database/database-configuration/" >Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/database/mssql-configuration/" >Microsoft SQL Server and Azure SQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/database/mysql-configuration/" >MySQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/database/performance/" >Performance</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/history/" >History</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/history/history-configuration/" >History configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/history/user-operation-log/" >User operation log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/history/history-cleanup/" >History cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/history/custom-implementation/" >Custom implementation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/deployment-cache/" >Deployment Cache</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/password-hashing/" >Password Hashing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/password-policy/" >Password Policy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/transactions-in-processes/" >Transactions in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/the-job-executor/" >The Job Executor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/multi-tenancy/" >Multi-Tenancy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/id-generator/" >Id Generators</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/metrics/" >Metrics</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/incidents/" >Incidents</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-engine-plugins/" >Process Engine Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/identity-service/" >Identity Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/authorization-service/" >Authorization Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/deployments/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/process-diagram-api/" >Process Diagram Visualization</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/time-zones/" >Time zones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/decisions/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/decisions/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/decisions/repository/" >Repository</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/decisions/decision-service/" >Decision Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/decisions/bpmn-cmmn/" >Decisions in BPMN &amp; CMMN</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/decisions/history/" >History</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/batch/" >Batch</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/batch-operations/" >Batch operations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/error-handling/" >Error Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-engine/diagnostics-data/" >Diagnostics data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-applications/" >Process Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-applications/the-process-application-class/" >The Process Application class</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-applications/the-processes-xml-deployment-descriptor/" >The processes.xml Deployment Descriptor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-applications/process-application-event-listeners/" >Process Application Event Listeners</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-applications/process-application-resources/" >Process Application Resource Access</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/process-applications/maven-archetypes/" >Maven Project Templates (Archetypes)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/runtime-container-integration/" >Runtime Container Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/runtime-container-integration/bpm-platform-services/" >CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/" >JNDI Bindings for CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/runtime-container-integration/tomcat/" >Apache Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/runtime-container-integration/jboss/" >WildFly</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/runtime-container-integration/job-execution-with-managed-resources/" >Job Execution with Managed Resources</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cibseven-run/" >CIB seven Run</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-framework-integration/" >Spring Framework Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-framework-integration/configuration/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-framework-integration/transactions/" >Transactions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-framework-integration/deployment/" >Deployment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-framework-integration/expressions/" >Spring Bean Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-framework-integration/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/" >Spring Boot Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/webapps/" >Web Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/process-applications/" >Process Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/the-spring-event-bridge/" >Spring Eventing Bridge</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/develop-and-test/" >Developing and Testing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/spring-boot-integration/spring-security/" >Spring Security OAuth2 Integration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/quarkus-integration/" >Quarkus Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/quarkus-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/quarkus-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/quarkus-integration/cdi-integration/" >Engine CDI Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/quarkus-integration/deployments/" >Resource Deployments</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cdi-java-ee-integration/jta-transaction-integration/" >JTA Transaction Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cdi-java-ee-integration/expression-resolving/" >Expression Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cdi-java-ee-integration/contextual-programming-model/" >Contextual Programming Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cdi-java-ee-integration/built-in-beans/" >Built-In Beans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/" >CDI Event Bridge</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/testing/" >Testing</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/testing/assert-examples/" >Assert Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/" >Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/" >BPMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/fluent-builder-api/" >Fluent Builder API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/respository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/bpmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/" >CMMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/cmmn-model-api/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/dmn-model-api/" >DMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/dmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/dmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/dmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/model-api/dmn-model-api/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/data-formats/" >Data Formats (XML, JSON, Other)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/data-formats/configuring-spin-integration/" >Configuring Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/data-formats/data-formats-in-processes/" >Data Formats in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/data-formats/xml/" >XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/data-formats/json/" >JSON</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/task-forms/" >User Task Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/task-forms/jsf-task-forms/" >JSF Task Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/" >DMN Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/embed/" >Embed</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/evaluate-decisions/" >Evaluate Decisions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/expressions-and-scripts/" >Expressions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/feel/" >FEEL Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/feel/type-handling/" >Type Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/feel/custom-functions/" >Custom Functions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/feel/spin-integration/" >Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/feel/legacy-behavior/" >Legacy Behavior</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/dmn-engine/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/logging/" >Logging</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/security/" >Security Instructions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/ext-client/" >External Task Client</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/ext-client/spring-boot-starter/" >Spring Boot Starter</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/user-guide/ext-client/compatibility-matrix/" >Version Compatibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/" >REST API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/" >Overview</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/authentication/" >Configure Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/distro-use/" >Usage with a Pre-Built Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/embeddability/" >Embed the API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/hal/" >Hypertext Application Language (HAL)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/variables/" >Variables in the REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/overview/date-format/" >Date Format</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/openapi/" >OpenAPI</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/specification/" >Specification ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/javadoc/" >Javadoc ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/" >BPMN 2.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/service-task/" >Service Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/send-task/" >Send Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/user-task/" >User Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/business-rule-task/" >Business Rule Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/script-task/" >Script Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/receive-task/" >Receive Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/manual-task/" >Manual Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/tasks/task-markers/" >Task Markers</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/gateways/" >Gateways</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/gateways/exclusive-gateway/" >Data-based Exclusive Gateway (XOR)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/gateways/sequence-flow/" >Conditional and Default Sequence Flows</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/gateways/parallel-gateway/" >Parallel Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/gateways/inclusive-gateway/" >Inclusive Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/gateways/event-based-gateway/" >Event-based Gateway</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/" >Events</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/start-events/" >Start Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/none-events/" >None Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/message-events/" >Message Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/timer-events/" >Timer Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/error-events/" >Error Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/escalation-events/" >Escalation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/signal-events/" >Signal Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/cancel-and-compensation-events/" >Cancel and Compensation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/conditional-events/" >Conditional Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/link-events/" >Link Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/events/terminate-event/" >Terminate Events</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/subprocesses/" >Subprocess</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/subprocesses/embedded-subprocess/" >Embedded Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/subprocesses/call-activity/" >Call Activity</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/subprocesses/event-subprocess/" >Event Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/custom-extensions/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/bpmn20/custom-extensions/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/" >DMN 1.3</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/decision-table/" >Decision Table</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/decision-table/input/" >Input</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/decision-table/output/" >Output</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/decision-table/rule/" >Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/decision-table/hit-policy/" >Hit Policy</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/decision-literal-expression/" >Decision Literal Expression</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/feel/" >FEEL</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/feel/legacy/" >Legacy FEEL Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/feel/legacy/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/feel/legacy/language-elements/" >Language Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/dmn/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/" >CMMN 1.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/api/classic-vs-fluent/" >Classic vs Fluent API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/concepts/" >CMMN Concepts</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/concepts/plan-items/" >Plan Items and Item Definitions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/concepts/lifecycle/" >Plan Item Lifecycles</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/concepts/entry-exit-criteria/" >Entry and Exit Criteria</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/tasks/human-task/" >Human Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/tasks/process-task/" >Process Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/tasks/case-task/" >Case Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/tasks/decision-task/" >Decision Task</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/grouping-tasks/" >Grouping Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/grouping-tasks/stage/" >Stage</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/milestone/" >Milestones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/sentry/" >Sentries</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/markers/" >Markers</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/markers/manual-activation-rule/" >Manual Activation Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/markers/required-rule/" >Required Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/markers/auto-complete/" >Auto Complete</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/markers/repetition-rule/" >Repetition Rule</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/custom-extensions/camunda-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/migration/" >Migration between Specification Versions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/cmmn11/migration/10-to-11/" >1.0 to 1.1</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/" >Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/" >Embedded Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/" >Controls</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/inputs/" >Text Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/textarea/" >Textareas</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/date-inputs/" >Date Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/boolean-inputs/" >Boolean Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/select/" >Selects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/hidden/" >Hidden Input Fields</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/files/" >File Upload and Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/controls/bpmn-buttons/" >BPMN Event Buttons</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/" >Javascript</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/cam-script/" >The cam-script Directive</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/api/" >Available API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/lifecycle/" >Participating in the Form Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/debugging/" >Debugging Scripts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/generating-businesskey/" >Generating a Business Key</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/javascript/examples/" >Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/lifecycle/" >Lifecycle and Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/json-data/" >Working with Json Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/java-objects/" >Working with Java Objects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/integrate/" >Integrating the Forms SDK</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/integrate/getting-a-distribution/" >Getting a Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/integrate/bootstrapping/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/integrate/angular-js/" >AngularJS Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/embedded-forms/integrate/full-examples/" >Full Example</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/" >Spin Dataformats</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/" >XML</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/01-reading-xml/" >Reading XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/02-manipulating-xml/" >Manipulating XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/03-writing-xml/" >Writing XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/04-querying-xml/" >Querying XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/05-mapping-xml/" >Mapping XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/xml/06-configuring-xml/" >Configuring XML Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/json/" >JSON</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/json/01-reading-json/" >Reading JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/json/02-writing-json/" >Writing JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/json/03-querying-json/" >Querying JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/json/04-mapping-json/" >Mapping JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/json/05-configuring-json/" >Configuring JSON Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/spin/extending-spin/" >Extending Spin</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/connect/" >Connectors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/connect/http-connector/" >HTTP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/connect/soap-connector/" >SOAP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/connect/extending-connect/" >Extending Connect</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/" >Deployment Descriptors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/descriptors/bpm-platform-xml/" >bpm-platform.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/descriptors/processes-xml/" >processes.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/tags/" >Tags</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/tags/job-executor/" >&lt;job-executor /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/tags/process-archive/" >&lt;process-archive /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/reference/deployment-descriptors/tags/process-engine/" >&lt;process-engine /&gt;</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/cibseven-run/" >Remote Engine Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/" >Shared Engine Distribution</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/tomcat/" >Tomcat</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/tomcat/pre-packaged/" >Pre-Packaged Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/tomcat/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/tomcat/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/jboss/" >JBoss EAP/WildFly</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/jboss/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/full/jboss/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/docker/" >Docker</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/installation/spring-boot/" >Spring Boot</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/webapps/" >Web Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/" >Tasklist</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/working-with-tasklist/" >Working with Tasklist</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/filters/" >Filters</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/user-assignment/" >User Assignment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/tasklist-plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/tasklist/accessibility/" >Accessibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/" >Cockpit</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/" >Processes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/dashboard/" >Process Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-definition-view/" >Process Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-view/" >Process Instance View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/suspension/" >Suspension</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/drilldown/" >Collapsed Subprocesses</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/dmn/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/dmn/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/dmn/decision-definition-view/" >Decision Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/dmn/decision-instance-view/" >Decision Instance View</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/tasks-dashboard/" >Human Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/deployment-view/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/extend/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/extend/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/" >Admin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/user-management/" >Users</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/group-management/" >Groups</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/tenant-management/" >Tenants</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/authorization-management/" >Authorizations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/system-management/" >System</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/admin/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/welcome/" >Welcome</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/welcome/welcome-plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/welcome/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/shared-options/" >Shared Configuration Options</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/shared-options/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/shared-options/cookie-security/" >Cookie Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/shared-options/csrf-prevention/" >CSRF Prevention</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/shared-options/header-security/" >HTTP Header Security</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/examples/" >Examples</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/update/" >Update &amp; Migration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/rolling-update/" >Rolling Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/camunda/" >Camunda Migration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1/release-notes/" >Release Notes</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">CIB seven 2.1.0 CE - Release Notes</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="release-notes">Release Notes</h2>
+<p><em>Release Date: November 7, 2025</em></p>
+
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li>Multi-engine support enabling management of multiple process engines from a single interface</li>
+<li>Enhanced incidents management with pagination, filtering, and comprehensive data display</li>
+<li>Variable management improvements with type conversion capabilities</li>
+<li>Comprehensive Apache HTTP Client 5.x migration across the platform</li>
+<li>OAuth2 access token forwarding with caching mechanism</li>
+<li>Improved user preferences with customizable date/time formats and start page options</li>
+<li>WildFly 37 and WildFly 28 support with HTTP5 adaptation</li>
+<li>External task query extensions for process variables and definitions</li>
+<li>Spring Boot updates to 3.5.6 with Spring Framework 6.2.10</li>
+</ul>
+
+<h3 id="new-features">New Features</h3>
+
+<h4 id="multi-engine-support">Multi-Engine Support</h4>
+<ul>
+<li>Implement multi-engine dashboard functionality</li>
+<li>Engine selection and switching with proper user authentication per engine</li>
+<li>Engine-specific embedded forms handling</li>
+<li>Multi-engine support for SSO authentication</li>
+<li>Engine context preservation across sessions</li>
+<li>Logout functionality on engine change for security</li>
+</ul>
+
+<h4 id="incidents-management">Incidents Management</h4>
+<ul>
+<li>Pagination support for incidents tables in process definitions (configurable, default 50 per page)</li>
+<li>Filter incidents by message (incidentMessageLike) and failed activity</li>
+<li>Display business key in incidents tab</li>
+<li>Fetch incidents from both runtime and history tables based on history level</li>
+<li>Resizable and show/hide columns in incidents table</li>
+<li>Enhanced incident state visualization with proper state display</li>
+<li>Activity-based incident filtering with BPMN diagram integration (failedActivityId)</li>
+<li>Improved incident timestamp display with execution details</li>
+<li>Support for runtime incidents table for &lsquo;audit&rsquo; history level</li>
+<li>Annotation button clickable only if incident is not resolved</li>
+<li>Enhanced incident type, activity ID, and annotation cells display</li>
+</ul>
+
+<h4 id="variable-management">Variable Management</h4>
+<ul>
+<li>Change variable type functionality (convert between String, Integer, Double, Boolean, JSON, Object, etc.)</li>
+<li>Enhanced display of JSON and object variables in tables</li>
+<li>Support for null-value variables with proper handling</li>
+<li>Checkbox input for boolean variables</li>
+<li>File variable handling improvements with proper download support for FileValueDataSource</li>
+<li>Dynamic actions component for variable table items</li>
+<li>Correct handling of serialized objects with org.camunda namespace</li>
+<li>Edit null-typed variables with proper validation</li>
+<li>Value conversion logic for type changes (string to number, JSON to object, etc.)</li>
+<li>Enhanced error handling for variable operations with user-friendly messages</li>
+</ul>
+
+<h4 id="user-preferences">User Preferences</h4>
+<ul>
+<li>User options/preferences page accessible from profile</li>
+<li>Configurable start page (dashboard, tasklist, processes, cockpit)</li>
+<li>Date and time format customization with multiple format options</li>
+<li>Task notification settings with assignment help popover option</li>
+<li>Preferences accessible across different user providers</li>
+<li>Extension point (ProfilePreferencesPlugin) for custom preferences</li>
+<li>General settings section with intuitive UI</li>
+</ul>
+
+<h4 id="deployment-management">Deployment Management</h4>
+<ul>
+<li>Enhanced deployment view UI with improved layout and modal design</li>
+<li>Create and redeploy deployments functionality with file handling</li>
+<li>DMN display from deployments view</li>
+<li>Deployment refresh capabilities after creation/deletion</li>
+<li>Delete deployment performance improvements</li>
+<li>Service to create deployment with proper error handling</li>
+<li>Models list properly cleared when deployment is deleted</li>
+</ul>
+
+<h4 id="job-management">Job Management</h4>
+<ul>
+<li>Change and recalculate job due dates</li>
+<li>Enhanced job definitions display with proper start/end events</li>
+<li>Query for all executing jobs (withExecuting filter)</li>
+</ul>
+
+<h4 id="external-task-enhancements">External Task Enhancements</h4>
+<ul>
+<li>Filter external tasks by process variables</li>
+<li>Filter external tasks by process definition key</li>
+<li>Filter external tasks by process definition name</li>
+<li>Support for variable queries in external task queries</li>
+<li>Add createTime property to external task REST endpoint and OpenAPI</li>
+<li>Expose extensionProperties in external task data</li>
+</ul>
+
+<h4 id="query-enhancements">Query Enhancements</h4>
+<ul>
+<li>Variable creation time support for variable queries</li>
+<li>Decision instance ordering by ID</li>
+<li>Task definition keys &ldquo;Not In&rdquo; query support</li>
+<li>Historic process instance orQuery support for multiple statuses with incidents</li>
+<li>Filter process instances by rootProcessInstanceId</li>
+<li>Process definition data added to history events</li>
+<li>afterId filter support for historic variable instance queries</li>
+<li>Historic variable instance ordering by variable ID</li>
+</ul>
+
+<h4 id="oauth2--security">OAuth2 &amp; Security</h4>
+<ul>
+<li>Forward OAuth2 access token to engine REST API</li>
+<li>Token caching mechanism for multiple users with expiration tracking</li>
+<li>Concurrent request handling with proper locking</li>
+<li>Scheduled cleanup of expired tokens</li>
+<li>Proper permissions handling for OAuth2-authenticated users</li>
+<li>JWT token security improvements (avoid exposure in iframe URLs via post message)</li>
+<li>JWT secret validation on startup</li>
+<li>Support for cibseven.webclient.sso.accessTokenToEngineRest configuration</li>
+</ul>
+
+<h3 id="user-experience-improvements">User Experience Improvements</h3>
+
+<h4 id="user-interface">User Interface</h4>
+<ul>
+<li>Consistent button styling according to UX/UI guidelines (primary, secondary, cancel buttons)</li>
+<li>Enhanced deployments view with improved visual hierarchy</li>
+<li>Improved batches view and tables with proper status filtering</li>
+<li>Better decision lists structure and search functionality</li>
+<li>Optimized scrollable tabs with better usability</li>
+<li>Running instances badge on service tasks in BPMN diagrams</li>
+<li>Improved table usability to prevent unintended clicks</li>
+<li>Enhanced &ldquo;Called process instances&rdquo; tab with better field display</li>
+<li>Improved modal content height in deployments view</li>
+<li>Better visualization of process instance states (suspended, active with proper icons)</li>
+<li>Flow table styles for display more columns dropdown</li>
+<li>Stack trace modal UI improvements with adjusted padding</li>
+<li>Badge visibility improvements in sidebars</li>
+</ul>
+
+<h4 id="navigation--usability">Navigation &amp; Usability</h4>
+<ul>
+<li>Automatic scroll to opened task on tasklist startup</li>
+<li>Proper navigation to called process definitions with correct URLs</li>
+<li>BPMN viewer back navigation support for linked processes</li>
+<li>Improved navigation shortcuts (resolved conflicts with cursor/selection shortcuts)</li>
+<li>Deployment ID in URL properly utilized</li>
+<li>Instances tab selected by default when switching process definition versions</li>
+<li>Navbar brand link points to start page without redirects</li>
+<li>Proper handling of candidate users when refreshing tasklist pages</li>
+</ul>
+
+<h4 id="forms--input">Forms &amp; Input</h4>
+<ul>
+<li>Full support for Generated Forms</li>
+<li>Dynamic input support for Generated Forms</li>
+<li>File upload/download functionality in Generated Forms with proper file picker support</li>
+<li>DocumentPreview component support for Generated Forms</li>
+<li>Embedded forms properly working when deployed via modeler</li>
+<li>Generated Forms referenced as embedded (formKey) now working correctly</li>
+<li>Type conversion for form data (preventing all data from being stored as strings)</li>
+<li>Consistent null variable submission across tasklist and start process</li>
+<li>Unified header configuration for embedded forms using bpm-sdk</li>
+<li>Prevent passing authorization headers for external form URLs</li>
+</ul>
+
+<h4 id="performance">Performance</h4>
+<ul>
+<li>Optimized findTasksCountByFilter to avoid duplicate calls</li>
+<li>Faster deployment date/title grouping switching</li>
+<li>Reduced duplicate requests when accessing tasklist and instances tab</li>
+<li>Improved process search performance</li>
+<li>Optimized filter counts display in tasklist</li>
+<li>Show number of tasks for selected task filter</li>
+<li>Configurable task count intervals (selectedFilterTasksNumber with 60000ms default)</li>
+<li>Better loading state handling for candidate group tasks</li>
+</ul>
+
+<h4 id="localization--translations">Localization &amp; Translations</h4>
+<ul>
+<li>Complete translations finalized across all files</li>
+<li>Task time-ago dates properly updating with language changes</li>
+<li>History versions translations</li>
+<li>Enhanced tooltip translations for date/time with seconds/milliseconds</li>
+<li>API for translations retrieval for Selenium test automation</li>
+<li>Translation for instance suspended state</li>
+<li>Russian language capitalization corrections</li>
+<li>German language improvements for date format handling</li>
+<li>Notifications section translations in preferences</li>
+</ul>
+
+<h4 id="bpmn-viewer">BPMN Viewer</h4>
+<ul>
+<li>Resizable BPMN viewer with improved toggle button functionality</li>
+<li>Optimized default viewer height for small displays</li>
+<li>Viewer overlays slot for extensions</li>
+<li>Better display of start/end events in Job Definitions tab</li>
+<li>Proper handling of collapsed sub-processes with back navigation</li>
+<li>Activity instance history handling based on history level</li>
+</ul>
+
+<h4 id="process--decision-management">Process &amp; Decision Management</h4>
+<ul>
+<li>Title updates in header to show &ldquo;Processes&rdquo;/&ldquo;Process Definition&rdquo;/&ldquo;Process Instance&rdquo;</li>
+<li>Title for pages in decisions sub section</li>
+<li>Decision requirements definition column slot</li>
+<li>Improved decision instance search with proper date handling</li>
+<li>Extension points for EE resource actions</li>
+<li>Process definition actions plugin with incident and active filtering props</li>
+</ul>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+
+<h4 id="forms--variables">Forms &amp; Variables</h4>
+<ul>
+<li>Fixed embedded forms not working when deployed via modeler</li>
+<li>Fixed JSON-Object variable values not displaying correctly in table</li>
+<li>Fixed inability to change JSON-Object variables in cockpit</li>
+<li>Fixed variable handling based on instance state (runtime vs historic)</li>
+<li>Fixed file download for FileValueDataSource cases</li>
+<li>Fixed null variable submission inconsistencies between tasklist and start process</li>
+<li>Fixed object display in variables table with proper value rendering</li>
+<li>Fixed deletion of runtime variables affecting historic variables</li>
+<li>Fixed variable name handling for file variables using deserialized value</li>
+</ul>
+
+<h4 id="incidents">Incidents</h4>
+<ul>
+<li>Fixed incidents crashing with console errors</li>
+<li>Fixed historic incidents not being fetched properly</li>
+<li>Fixed sorting incidents by state or end date</li>
+<li>Fixed incident display in parent processes with complete error messages</li>
+<li>Fixed &ldquo;Open Incident&rdquo; action not working on diagram click</li>
+<li>Fixed &ldquo;Process Instance&rdquo; column showing incorrectly in single instance incident tab</li>
+<li>Fixed incident overflow scrolling behavior</li>
+<li>Fixed URL parameter encoding for incident queries</li>
+</ul>
+
+<h4 id="ui--display">UI &amp; Display</h4>
+<ul>
+<li>Fixed duplicated CSS imports from cib-common-components</li>
+<li>Fixed icon display problems across the application</li>
+<li>Fixed models list not clearing when deployment deleted</li>
+<li>Fixed process favorites not appearing after page refresh</li>
+<li>Fixed scrolling issues in deployments view</li>
+<li>Fixed infinite scroll in instances table</li>
+<li>Fixed layout issues causing horizontal scrollbar</li>
+<li>Fixed management view table CSS impurities</li>
+<li>Fixed whitescreen/cache issues</li>
+<li>Fixed wrong tooltip on suspended process instance icon</li>
+<li>Fixed copyable action handling with new-tab feature and baseUrl</li>
+</ul>
+
+<h4 id="navigation--routing">Navigation &amp; Routing</h4>
+<ul>
+<li>Fixed navigation to called process definition with wrong URL</li>
+<li>Fixed BPMN diagram reference to &ldquo;Called Process Definition&rdquo;</li>
+<li>Fixed back navigation from collapsed sub-processes</li>
+<li>Fixed process search errors when starting process from tasklist with errors</li>
+<li>Fixed called process instances showing wrong status</li>
+<li>Fixed instance state calculation based on suspended and ended conditions</li>
+</ul>
+
+<h4 id="authentication--permissions">Authentication &amp; Permissions</h4>
+<ul>
+<li>Fixed login issues for various deployment scenarios (Atos, DigitalFabrix, ITZ-Bund)</li>
+<li>Fixed authorization permissions not checked when opened for edit</li>
+<li>Fixed user options access for non-SevenUserProvider users</li>
+<li>Fixed recovery email sending from profile settings</li>
+<li>Fixed candidate user handling when refreshing tasklist pages with unassigned tasks</li>
+<li>Fixed bean initialization for security components</li>
+<li>Fixed user ID/group ID population for authorization table sorting</li>
+</ul>
+
+<h4 id="process--task-management">Process &amp; Task Management</h4>
+<ul>
+<li>Fixed task assignment not updating in top bar</li>
+<li>Fixed new processes not visible without page reload</li>
+<li>Fixed tasklist reminder setting errors</li>
+<li>Fixed decision display errors on processes view</li>
+<li>Fixed decision instances search with dates</li>
+<li>Fixed task service method spelling (findHistoryTasksCount)</li>
+<li>Fixed retry modal option selection using label</li>
+</ul>
+
+<h4 id="platform--container-issues">Platform &amp; Container Issues</h4>
+<ul>
+<li>Fixed Wildfly 28 jackson errors when loading engine-rest and webclient</li>
+<li>Fixed Wildfly domain configuration issues</li>
+<li>Fixed JBoss 7.4 compatibility issues</li>
+<li>Fixed bean initialization in Spring Boot context</li>
+<li>Fixed server.servlet.context.path issues in Spring Boot</li>
+<li>Fixed conflicts when running in other web containers</li>
+<li>Fixed Spring Boot dependencies in webapp</li>
+</ul>
+
+<h4 id="other">Other</h4>
+<ul>
+<li>Fixed version display showing as &ldquo;n/a&rdquo; in About section</li>
+<li>Fixed deployment deletion timeout issues</li>
+<li>Fixed resize toggle button in BpmnViewer</li>
+<li>Fixed modal content height in deployments view</li>
+<li>Fixed package URLs to use HTTPS instead of HTTP</li>
+<li>Fixed notifications data management errors</li>
+<li>Fixed historic batches fetch logic (use &lsquo;completed&rsquo; instead of &lsquo;finished&rsquo;)</li>
+<li>Fixed resource path formatting in test deployments</li>
+</ul>
+
+<h3 id="technical-updates">Technical Updates</h3>
+
+<h4 id="framework--dependencies---frontend">Framework &amp; Dependencies - Frontend</h4>
+<ul>
+<li>Updated Spring Boot to 3.5.6</li>
+<li>Updated Spring Framework to 6.2.10</li>
+<li>Updated commons-lang3 to 3.18.0</li>
+<li>Updated openapi-starter-webmvc-ui to 2.8.13</li>
+<li>Updated Swagger version in release-parent</li>
+<li>Updated Vite from 6.3.5 to 6.4.1</li>
+<li>Updated bpm-sdk, cib-common-components, and cibseven-components libraries to 2.1.0</li>
+<li>Updated Nimbus DS to 9.37.4 for security</li>
+<li>Resolved dependency convergence issues with maven-enforcer-plugin</li>
+<li>Excluded transitive dependencies from springdoc-openapi-starter-webmvc-ui</li>
+</ul>
+
+<h4 id="framework--dependencies---backend">Framework &amp; Dependencies - Backend</h4>
+<ul>
+<li>Comprehensive migration from Apache HTTP Client 4.x to 5.x (httpclient5 5.4.3, httpcore5 5.3.4)</li>
+<li>Upgraded Jackson to 2.19.2 (with support for 2.15.2 for JDK17)</li>
+<li>Updated json-smart to 2.5.2 for security</li>
+<li>Updated feel-scala to 1.19.3</li>
+<li>Updated Mockito core version</li>
+<li>Upgraded commons-fileupload via Renovate</li>
+<li>Support for Quarkus 3.27.0 LTS</li>
+<li>Migration to modern pagination for DB2</li>
+<li>Support for cron-utils in CycleBusinessCalendar (replacing CronExpression)</li>
+</ul>
+
+<h4 id="http-client-migration">HTTP Client Migration</h4>
+<ul>
+<li>Complete codebase migration from Apache HTTP Client 4.x to 5.x</li>
+<li>Updated package structure from org.apache.http.* to org.apache.hc.*</li>
+<li>Replaced CloseableHttpResponse with ClassicHttpResponse</li>
+<li>Replaced HttpRequestBase with BasicClassicHttpRequest</li>
+<li>Updated timeout configuration to use new Timeout API</li>
+<li>Modernized entity handling with ContentType.parse()</li>
+<li>Updated WildFly module definitions for HttpClient 5.x</li>
+<li>Added SLF4J dependencies for new logging requirements</li>
+<li>Migrated integration tests from Jersey Apache Client 4 to Unirest HTTP client</li>
+<li>Updated Connect module with new RequestConfigOption enum</li>
+<li>Removed commons-logging and commons-codec dependencies</li>
+</ul>
+
+<h4 id="platform-support">Platform Support</h4>
+<ul>
+<li>Comprehensive WildFly 37 support</li>
+<li>WildFly 28.0.1 support with Jakarta integration</li>
+<li>WildFly 28 HTTP5 adaptation</li>
+<li>WildFly domain configuration support</li>
+<li>Tomcat 9 QA integration tests (Java 11 requirement)</li>
+<li>JBoss 7.4 compatibility improvements</li>
+<li>Support for various web containers (removed Spring Boot annotation conflicts)</li>
+<li>Removed support for WildFly 26, WebSphere Application Server, and Tomcat 9 environments</li>
+<li>Jackson StreamReadConstraints support for Jackson 2.15.0+</li>
+<li>Removed jackson exclusions from jboss-deployment-structure.xml</li>
+</ul>
+
+<h4 id="code-quality--testing">Code Quality &amp; Testing</h4>
+<ul>
+<li>Added unit tests for critical components (bpm-sdk, stores, utilities, shortcuts, TaskStore)</li>
+<li>Recovered and enhanced QA integration tests for Tomcat and WildFly</li>
+<li>Added license header verification for all Vue and JS files</li>
+<li>Improved test coverage with proper exclusions for Cobertura</li>
+<li>Matrix unit tests execution in CI/CD</li>
+<li>Enhanced Java code warnings resolution</li>
+<li>Fixed flaky tests with proper job execution isolation</li>
+<li>Common test utilities for Vuex store testing</li>
+<li>Config.json consistency validation tests</li>
+<li>Migrated test fixtures to org.cibseven namespace</li>
+<li>Archiving of test reports in Jenkins</li>
+</ul>
+
+<h4 id="rest-api--backend">REST API &amp; Backend</h4>
+<ul>
+<li>Return correct HTTP status codes from backend</li>
+<li>Refactored findProcessesWithInfo to use process definition statistics</li>
+<li>Implemented checkCockpitRights on HistoryProcessService methods</li>
+<li>History endpoints support with HistoryLevel: None</li>
+<li>Proper handling when historyLevel is set to &rsquo;none&rsquo; (use runtime tables)</li>
+<li>Replace deprecated UriComponentsBuilder.fromHttpUrl() with fromUriString()</li>
+<li>Task serialization refactored to use ObjectMapper</li>
+<li>Removed obsolete HISTORY enum and fixed resource type references</li>
+<li>Enhanced OpenAPI documentation with missing properties</li>
+<li>Fixed deleteProcessDefinition description in REST API docs</li>
+<li>URL parameter encoding fixes (do not encode twice)</li>
+<li>Fixed resourcesFromLastDeploymentWithName functionality</li>
+</ul>
+
+<h4 id="configuration--deployment">Configuration &amp; Deployment</h4>
+<ul>
+<li>Support for camunda.bpm.authorization.enabled configuration check (default: false)</li>
+<li>Support for webclient.engineRest.path configuration</li>
+<li>Fixed basePath default value issues</li>
+<li>Support for server.servlet.context path</li>
+<li>Conditional REST API enable/disable support</li>
+<li>CI/CD improvements with proper branch handling (main instead of master)</li>
+<li>Jenkins pipeline optimizations and build pod resource configurations</li>
+<li>DevOps improvements for npm error handling</li>
+<li>FetchAndLockHandler configurations exposed (queue-capacity, unique-worker-request)</li>
+<li>Jenkinsfile parameter renamed from PACKAGE to VERIFY</li>
+</ul>
+
+<h4 id="security">Security</h4>
+<ul>
+<li>JWT token not exposed in iframe URLs via post message mechanism</li>
+<li>Enhanced JWT secret validation on startup</li>
+<li>Proper bean initialization for security components</li>
+<li>Access token forwarding with caching and expiration handling</li>
+<li>Spring Security integration for CIB seven Run</li>
+<li>Security updates for CVE-2025-53506 (Tomcat and Spring framework)</li>
+<li>JSON-smart vulnerability mitigation (SEC-1515)</li>
+</ul>
+
+<h4 id="documentation">Documentation</h4>
+<ul>
+<li>Updated documentation for 2.1.0 release</li>
+<li>Documentation for webclient.engineRest.path</li>
+<li>Spring Boot Get Started guide improvements</li>
+<li>Authorization filters setup documentation</li>
+<li>Added workarounds section to bug report template</li>
+<li>Updated issue templates to remove tasklists</li>
+</ul>
+
+<h4 id="architecture--structure">Architecture &amp; Structure</h4>
+<ul>
+<li>Improved project code structure and organization</li>
+<li>Cleaned up duplicated compiled files</li>
+<li>Improved notifications data management</li>
+<li>Enhanced extension points for EE functionality</li>
+<li>Refactored code for better maintainability</li>
+<li>Externalized preferences component</li>
+<li>Added slots for custom columns in flow tables</li>
+<li>Profile and account tabs restructuring with ContentBlock component</li>
+<li>Version info extracted into bean</li>
+<li>Package namespace migration to org.cibseven across test files</li>
+<li>Removed obsolete test classes (JobDeclarationRetriesTest, LegacyJobDeclarationRetriesTest)</li>
+</ul>
+
+<h4 id="migration--compatibility">Migration &amp; Compatibility</h4>
+<ul>
+<li>Migration of serialized objects handling</li>
+<li>BPMN namespace migration from embedded Javascript</li>
+<li>Correct handling of JSON and XML serialized objects with org.camunda namespace</li>
+<li>Tomcat catalina maven coordinates migration</li>
+<li>Simple-jndi added in QA tests</li>
+<li>Preparation for 7.24 development cycle</li>
+</ul>
+
+<h4 id="engine-enhancements">Engine Enhancements</h4>
+<ul>
+<li>Initial retry counter fix for job declarations</li>
+<li>CandidateGroupLike NULL handling with OR queries</li>
+<li>Fetch task variables functionality</li>
+<li>SubProcessInstanceId support in TransitionInstanceImpl</li>
+<li>URL resolver initialization with null base URL fix</li>
+<li>Process definition data in history events</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#release-notes">Release Notes</a>
+      <ul>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#new-features">New Features</a>
+          <ul>
+            <li><a href="#multi-engine-support">Multi-Engine Support</a></li>
+            <li><a href="#incidents-management">Incidents Management</a></li>
+            <li><a href="#variable-management">Variable Management</a></li>
+            <li><a href="#user-preferences">User Preferences</a></li>
+            <li><a href="#deployment-management">Deployment Management</a></li>
+            <li><a href="#job-management">Job Management</a></li>
+            <li><a href="#external-task-enhancements">External Task Enhancements</a></li>
+            <li><a href="#query-enhancements">Query Enhancements</a></li>
+            <li><a href="#oauth2--security">OAuth2 &amp; Security</a></li>
+          </ul>
+        </li>
+        <li><a href="#user-experience-improvements">User Experience Improvements</a>
+          <ul>
+            <li><a href="#user-interface">User Interface</a></li>
+            <li><a href="#navigation--usability">Navigation &amp; Usability</a></li>
+            <li><a href="#forms--input">Forms &amp; Input</a></li>
+            <li><a href="#performance">Performance</a></li>
+            <li><a href="#localization--translations">Localization &amp; Translations</a></li>
+            <li><a href="#bpmn-viewer">BPMN Viewer</a></li>
+            <li><a href="#process--decision-management">Process &amp; Decision Management</a></li>
+          </ul>
+        </li>
+        <li><a href="#bug-fixes">Bug Fixes</a>
+          <ul>
+            <li><a href="#forms--variables">Forms &amp; Variables</a></li>
+            <li><a href="#incidents">Incidents</a></li>
+            <li><a href="#ui--display">UI &amp; Display</a></li>
+            <li><a href="#navigation--routing">Navigation &amp; Routing</a></li>
+            <li><a href="#authentication--permissions">Authentication &amp; Permissions</a></li>
+            <li><a href="#process--task-management">Process &amp; Task Management</a></li>
+            <li><a href="#platform--container-issues">Platform &amp; Container Issues</a></li>
+            <li><a href="#other">Other</a></li>
+          </ul>
+        </li>
+        <li><a href="#technical-updates">Technical Updates</a>
+          <ul>
+            <li><a href="#framework--dependencies---frontend">Framework &amp; Dependencies - Frontend</a></li>
+            <li><a href="#framework--dependencies---backend">Framework &amp; Dependencies - Backend</a></li>
+            <li><a href="#http-client-migration">HTTP Client Migration</a></li>
+            <li><a href="#platform-support">Platform Support</a></li>
+            <li><a href="#code-quality--testing">Code Quality &amp; Testing</a></li>
+            <li><a href="#rest-api--backend">REST API &amp; Backend</a></li>
+            <li><a href="#configuration--deployment">Configuration &amp; Deployment</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#architecture--structure">Architecture &amp; Structure</a></li>
+            <li><a href="#migration--compatibility">Migration &amp; Compatibility</a></li>
+            <li><a href="#engine-enhancements">Engine Enhancements</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/manual/2.1/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

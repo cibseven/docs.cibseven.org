@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.0-ee</span>
+    <span class="number">2.1</span>
 </div>
 
 
@@ -3214,7 +3214,7 @@ interface, which requires us to implement the <code>execute(DelegateExecution)</
 method. It&rsquo;s this operation that will be called by the engine and
 which needs to contain the business logic. Process instance
 information such as process variables and other information can be accessed and
-manipulated through the <a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
+manipulated through the <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
  interface (click on the link for a detailed Javadoc of its operations).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ToUppercase</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">JavaDelegate</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3684,7 +3684,7 @@ how to access the <code>TaskService</code> from a <code>JavaDelegate</code> impl
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
 <h2 id="exception-codes">Exception codes</h2>
-<p>You can throw a <code><a href="/javadoc/cibseven/2.0-ee/org/cibseven/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>
+<p>You can throw a <code><a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>
 </code>
 from your delegation code and define your custom error code by passing it to the constructor or by
 calling <code>ProcessEngineException#setCode</code>.</p>
