@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/2.1/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.1/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3192,7 +3230,7 @@
     <div class="col-xs-12 content-text">
       
 <h2 id="jndi-bindings">JNDI Bindings</h2>
-<p>To use the JNDI Bindings for CIB seven Services on Apache Tomcat you have to add the file <code>META-INF/context.xml</code> to your process application and add the following ResourceLinks (<a href="http://tomcat.apache.org/tomcat-9.0-doc/config/context.html#Resource_Links">Tomcat 9</a>, <a href="https://tomcat.apache.org/tomcat-10.1-doc/config/context.html#Resource_Links">Tomcat 10.1</a>):</p>
+<p>To use the JNDI Bindings for CIB seven Services on Apache Tomcat you have to add the file <code>META-INF/context.xml</code> to your process application and add the following ResourceLinks (<a href="https://tomcat.apache.org/tomcat-10.1-doc/config/context.html#Resource_Links">Tomcat 10.1</a>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Context&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;ResourceLink</span> <span class="na">name=</span><span class="s">&#34;ProcessEngineService&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">global=</span><span class="s">&#34;global/camunda-bpm-platform/process-engine/ProcessEngineService!org.cibseven.bpm.ProcessEngineService&#34;</span>

@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/2.1/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.1/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3190,24 +3228,26 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>In Camunda Connect a <code>Connectors</code> class exists which automatically detects
+      <p>In CIB seven Connect a <code>Connectors</code> class exists which automatically detects
 every connector in the classpath. It can be used to get the HTTP connector
 instance by its connector ID, which is <code>http-connector</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HttpConnector</span><span class="w"> </span><span class="n">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Connectors</span><span class="p">.</span><span class="na">getConnector</span><span class="p">(</span><span class="n">HttpConnector</span><span class="p">.</span><span class="na">ID</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div>
 <h2 id="configure-apache-http-client">Configure Apache HTTP Client</h2>
-<p>Camunda Connect HTTP client uses the Apache HTTP client to make HTTP requests. Accordingly, it supports the same configuration options.</p>
+<p>CIB seven Connect HTTP client uses the Apache HTTP client to make HTTP requests. Accordingly, it supports the same configuration options.</p>
 
 <h3 id="default-configuration">Default Configuration</h3>
-<p>By default, the HTTP client uses Apache&rsquo;s default configuration and respects the <a href="https://hc.apache.org/httpcomponents-client-4.5.x/current/httpclient/apidocs/org/apache/http/impl/client/HttpClientBuilder.html">system properties that are supported by HTTP client</a>.</p>
+<p>By default, the HTTP client uses Apache&rsquo;s default configuration and respects the <a href="https://hc.apache.org/httpcomponents-client-5.3.x/current/httpclient5/apidocs/org/apache/hc/client5/http/impl/classic/HttpClientBuilder.html">system properties that are supported by HTTP client</a>.</p>
 
 <h3 id="custom-configuration">Custom Configuration</h3>
 <p>If you want to reconfigure the client going beyond the default configuration options, e.g. you want to configure another connection manager, the easiest way is to register
 a new connector configurator.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.connect.example</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.http.impl.client.CloseableHttpClient</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.http.impl.client.HttpClients</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.hc.client5.http.impl.classic.CloseableHttpClient</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.hc.client5.http.impl.classic.HttpClients</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.connect.httpclient.HttpConnector</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.connect.httpclient.impl.AbstractHttpConnector</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.connect.spi.ConnectorConfigurator</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3218,6 +3258,10 @@ a new connector configurator.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpConnector</span><span class="w"> </span><span class="n">connector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">PoolingHttpClientConnectionManager</span><span class="w"> </span><span class="n">connectionManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PoolingHttpClientConnectionManager</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">connectionManager</span><span class="p">.</span><span class="na">setDefaultMaxPerRoute</span><span class="p">(</span><span class="n">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">connectionManager</span><span class="p">.</span><span class="na">setMaxTotal</span><span class="p">(</span><span class="n">200</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">CloseableHttpClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpClients</span><span class="p">.</span><span class="na">custom</span><span class="p">()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">setMaxConnPerRoute</span><span class="p">(</span><span class="n">10</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">setMaxConnTotal</span><span class="p">(</span><span class="n">200</span><span class="p">)</span><span class="w">
@@ -3232,6 +3276,12 @@ a new connector configurator.</p>
 information see the <a href="/manual/2.1/reference/connect/extending-connect/">extending Connect</a> section.</p>
 <pre tabindex="0"><code>org.cibseven.connect.example.HttpConnectorConfigurator
 </code></pre>
+<div class="note bg-info docs-info">
+  <h3>Apache HTTP Client 5.x Migration</h3>
+  <p>Starting from CIB seven 2.1.0, the Connect HTTP connector uses Apache HTTP Client 5.x. While the high-level Connect API remains the same, custom configurations and extensions need to use the new HttpClient 5.x packages (<code>org.apache.hc.client5.*</code> and <code>org.apache.hc.core5.*</code>) instead of the previous 4.x packages (<code>org.apache.http.*</code>).</p>
+</div>
+
+
 <h2 id="requests">Requests</h2>
 
 <h3 id="create-a-simple-http-request">Create a Simple HTTP Request</h3>

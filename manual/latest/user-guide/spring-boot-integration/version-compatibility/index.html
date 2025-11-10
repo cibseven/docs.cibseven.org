@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3212,7 +3250,12 @@ Other combinations must be thoroughly tested before being used in production.</p
   <tr>
     <td>2.0.x</td>
     <td>2.0.x</td>
-    <td>3.4.x</td>
+    <td>3.4.x (**)</td>
+  </tr>
+  <tr>
+    <td>2.1.x</td>
+    <td>2.1.x</td>
+    <td>3.5.x</td>
   </tr>
 </table>
 <p>* For these versions, use the following Maven coordinates:</p>
@@ -3230,7 +3273,23 @@ Other combinations must be thoroughly tested before being used in production.</p
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/repository&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repositories&gt;</span>
 </span></span></code></pre></div><p>Since version 1.1.0 CIB seven is availabale in Maven Central repositories. No extra repository tweaks are required. However you can still use <a href="https://artifacts.cibseven.org/">https://artifacts.cibseven.org/</a> for fetching CIB seven artifacts.</p>
-
+<p>** For these versions, all listed Spring Boot versions are supported
+while the oldest one is used by default. If you want to use a newer supported version,
+configure <code>dependencyManagement</code> in your application, e.g. add the following when using Maven:</p>
+<pre tabindex="0"><code>&lt;dependencyManagement&gt;
+  &lt;dependencies&gt;
+  ...
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+      &lt;version&gt;2.x.y.RELEASE&lt;/version&gt; &lt;!-- set correct version here --&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+      &lt;scope&gt;import&lt;/scope&gt;
+    &lt;/dependency&gt;
+  ...
+  &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre>
     </div>
   </div>
 </div>

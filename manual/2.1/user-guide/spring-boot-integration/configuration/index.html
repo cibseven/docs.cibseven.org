@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/2.1/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.1/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3350,7 +3388,7 @@ can be found in the <a href="/get-started/spring-boot/configuration/">Spring Boo
   <th>Default value</th>
   </tr>
 <tr><td colspan="4"><b>General</b></td></tr>
-<tr><td rowspan="15"><code>camunda.bpm</code></td>
+<tr><td rowspan="14"><code>camunda.bpm</code></td>
 <td><code>.enabled</code></td>
 <td>Switch to disable the CIB seven auto-configuration. Use to exclude CIB seven in integration tests.</td>
 <td><code>true</code></td>
@@ -3875,6 +3913,19 @@ When setting to <code>/</code>, the legacy behavior of CIB seven Spring Boot Sta
     <strong>Note:</strong> Ignored when <code>.enabled</code> is set to <code>false</code></li>
   </td>
   <td><code>300,000</code></td>
+</tr>
+<tr><td colspan="4"><b>REST API</b></td></tr>
+<tr>
+<td><code>camunda.bpm.rest-api.fetch-and-lock</code></td>
+<td><code>.queue-capacity</code></td>
+<td>Configure the blocking queue limit of long-polling ‘Fetch and Lock’ requests.</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>.unique-worker-request</code></td>
+<td>If the flag is activated, pending requests with the same workerId are cancelled when a new request is received.</td>
+<td><code>false</code></td>
 </tr>
 <tr><td colspan="4"><b>Authorization</b></td></tr>
 <tr>

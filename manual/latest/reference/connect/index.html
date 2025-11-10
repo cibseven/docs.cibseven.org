@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3249,7 +3287,7 @@ to ensure correct versions for every CIB seven project.</p>
 <p>CIB seven Connect uses <a href="https://github.com/cibseven/cibseven/tree/master/commons/logging">cibseven-commons-logging</a> which itself uses <a href="http://slf4j.org">SLF4J</a> as
 a logging backend. To enable logging a SLF4J implementation has to be part of
 your classpath. For example <code>slf4j-simple</code>, <code>log4j12</code> or <code>logback-classic</code>.</p>
-<p>To also enable logging for the Apache HTTP client you can use a <a href="http://www.slf4j.org/legacy.html">SLF4J bridge</a> like <code>jcl-over-slf4j</code> as the Apache HTTP Client doesn&rsquo;t support SLF4J.</p>
+<p>Apache HTTP Client 5.x has built-in SLF4J support, so no additional bridges are required for HTTP client logging.</p>
 
     </div>
   </div>

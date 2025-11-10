@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3259,7 +3297,7 @@ To resolve this, move the weld library away from the war and place it into the <
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/GlobalNamingResources&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/Server&gt;</span>
 </span></span></code></pre></div><p>For more information on the creation of JDBC datasources have a look at the documentation of your Tomcat version:
-<a href="https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html">9.0</a>.</p>
+<a href="https://tomcat.apache.org/tomcat-10.1-doc/jndi-datasource-examples-howto.html">10.1</a>.</p>
 
 <h3 id="add-camunda-services">Add Camunda Services</h3>
 <p>Copy the following blocks from <code>${TOMCAT_DISTRIBUTION}/server/apache-tomcat-${TOMCAT_VERSION}/conf/server.xml</code>
@@ -3307,7 +3345,6 @@ into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 </span></span></code></pre></div>
 <h3 id="secure-tomcat">Secure Tomcat</h3>
 <p>Follow the Tomcat Security Howto of your Tomcat version:
-<a href="https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html">9.0</a>,
 <a href="https://tomcat.apache.org/tomcat-10.1-doc/security-howto.html">10.1</a>.</p>
 <p>In particular, go to <code>${TOMCAT_HOME}/webapps/</code> and remove the directories
 <code>ROOT</code>, <code>docs</code>, <code>examples</code>, <code>manager</code> and <code>host-manager</code>.</p>
@@ -3323,7 +3360,6 @@ into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 Choose the correct version named <code>cibseven-engine-rest-2.1.0-tomcat.war</code>.</p>
 <ul>
 <li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest-jakarta/2.1.0/">Tomcat 10</a>, the name of the artifact is <code>cibseven-engine-rest-jakarta-2.1.0-tomcat.war</code>.</li>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/2.1.0/">Tomcat 9</a>, the name of the artifact is <code>cibseven-engine-rest-2.1.0-tomcat.war</code>.</li>
 </ul>
 </li>
 <li>
@@ -3341,7 +3377,8 @@ Optionally you may name it differently or extract it to a folder to deploy it to
 <h3 id="rest-api">REST API</h3>
 <p>The following steps are required to deploy the REST API:</p>
 <ol>
-<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/2.1.0/">Artifact Repository</a>.</li>
+<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.de/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/2.1.0/">Artifact Repository</a>.
+Or switch to the private repository for the enterprise version (User and password from license required).</li>
 <li>Copy the war file to <code>$TOMCAT_HOME/webapps</code>.
 Optionally you may rename it or extract it to a folder to deploy it to a specific context like <code>/engine-rest</code>.</li>
 <li>Startup Tomcat.</li>

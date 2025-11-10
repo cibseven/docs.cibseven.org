@@ -3149,6 +3149,44 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/rolling-update/" >Rolling Update</a>
     
   </li>
@@ -3193,8 +3231,14 @@
       <p>The conditional event defines an event which is triggered if a given condition is evaluated to true.
 It can be used as start event of an event sub process, as intermediate event and boundary event.
 The start and boundary event can be interrupting and non interrupting.</p>
-<p>In Camunda, conditional events are triggered with the help of process variables.
+<p>In CIB seven, conditional events are triggered with the help of process variables.
 See the <a href="#trigger-conditional-events">Trigger Conditional Events</a> section for details.</p>
+
+<div class="note bg-warning docs-warning">
+  <h3>We recommend to avoid asynchronous continuations in combination with conditional events as the conditional event trigger may be lost.</h3>
+  <p>This is because when the conditional event is <a href="#trigger-conditional-events">triggered</a>, it is placed into a queue of &ldquo;deferred actions&rdquo; to evaluate whether any other elements are catching the trigger. When the flow node that triggered the conditional event is executed async, a job is created and the process execution continued asynchronously. The deferred actions are not persisted, resulting in the loss of the conditional event trigger.</p>
+</div>
+
 <p>In the following BPMN model, all supported conditional events are used.</p>
 <figure class="image">
   <span><img
