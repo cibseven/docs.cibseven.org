@@ -3360,19 +3360,19 @@ modules from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code>, if present:
 <h3 id="update-rest-api">Update REST API</h3>
 <p>The following steps are required to update the CIB seven REST API on a JBoss/WildFly instance:</p>
 <ol>
-<li>Undeploy an existing web application with a name like <code>cibseven-engine-rest</code>.</li>
-<li>Download the REST API web application archive from our Maven Artifactory.
+<li>Undeploy an existing web application with a name like <code>engine-rest</code> or <code>cibseven-engine-rest</code>.</li>
+<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.org/repository/public/org/cibseven/bpm/cibseven-engine-rest/2.1.0/cibseven-engine-rest-2.1.0-tomcat.war">Artifact Repository</a>.
 Alternatively, switch to the private repository for the enterprise version (credentials from license required).</li>
-<li>Deploy the web application archive to your JBoss/WildFly instance.</li>
+<li>Deploy the REST API web application archive to your JBoss/WildFly instance.</li>
 </ol>
 
 <h3 id="cib-seven-webclient">CIB seven webclient</h3>
 <p>The following steps are required to update the CIB seven webclient on a JBoss/WildFly instance:</p>
 <ol>
-<li>Un-deploy an existing web application with a name like <code>cibseven-webclient</code>.</li>
-<li>Download the Camunda web application that contains the web applications from our Maven Artifactory.
+<li>Un-deploy an existing web application with a name like <code>webapp</code> or &lsquo;cibseven-webclient-web&rsquo;.</li>
+<li>Download the CIB seven webclient archive from our <a href="https://artifacts.cibseven.org/repository/public/org/cibseven/webapp/cibseven-webclient-web/2.1.0/cibseven-webclient-web-2.1.0.war">Artifact Repository</a>.
 Alternatively, switch to the private repository for the enterprise version (credentials from license required).</li>
-<li>Deploy the web application archive to your JBoss/WildFly instance.</li>
+<li>Deploy the webclient archive to your JBoss/WildFly instance.</li>
 </ol>
 
     </div>
