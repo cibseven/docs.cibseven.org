@@ -2865,6 +2865,14 @@
           
   <li>
     
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
     
   </li>
@@ -2930,6 +2938,14 @@
 
         
       </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
     
   </li>
 
@@ -3448,6 +3464,28 @@ start editing by clicking on the value. You can expand the value in a modal dial
 </figure>
 
 
+<h3 id="delete-all-process-definition-versions">Delete All Process Definition Versions</h3>
+<figure class="image">
+  <span><img
+      src="../../img/dashboard-delete-process-definitions-01.png"
+      
+          title="Process Management: Delete Process Definitions - Overview"
+       /></span>
+</figure>
+
+<p>There is a delete action for every process definition. Via this action it is possible to delete all versions of a process. Clicking the bin icon will promt a confirmation dialog with further options.
+Here you can choose to enable or disable skipping custom listeners as well as skipping IO Mappings.</p>
+<p>If the process definition has running instances, then you have to enable the cascading checkbox.
+With this enabled, all instances related to this process definition key will be deleted. This also includes historic instances.</p>
+<figure class="image">
+  <span><img
+      src="../../img/dashboard-delete-process-definitions-02.png"
+      
+          title="Process Management: Delete Process Definitions - Overview"
+       /></span>
+</figure>
+
+
     </div>
   </div>
 </div>
@@ -3460,6 +3498,7 @@ start editing by clicking on the value. You can expand the value in a modal dial
     <li><a href="#enterprise-features">Enterprise features</a>
       <ul>
         <li><a href="#process-instance-search">Process Instance Search</a></li>
+        <li><a href="#delete-all-process-definition-versions">Delete All Process Definition Versions</a></li>
       </ul>
     </li>
   </ul>

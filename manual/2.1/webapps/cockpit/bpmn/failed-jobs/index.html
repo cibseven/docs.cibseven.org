@@ -2865,6 +2865,14 @@
           
   <li>
     
+      <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
     
   </li>
@@ -2930,6 +2938,14 @@
 
         
       </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
     
   </li>
 
@@ -3231,7 +3247,7 @@
       <p>Unresolved incidents of a process instance or a sub process instance are indicated by Cockpit as failed jobs. To localize which instance of a process failed, navigate to the <strong>incidents tab</strong> in the <a href="/manual/2.1/webapps/cockpit/bpmn/process-instance-view/#detailed-information-panel">Detailed Information Panel</a>.</p>
 <figure class="image">
   <span><img
-      src="../../img/cockpit-failed-job-drill-down.png"
+      src="../../img/cockpit-failed-job-overview.png"
       
           title="Failed Job Drill Down"
        /></span>
@@ -3260,6 +3276,32 @@
 </figure>
 
 
+<h2 id="bulk-retry">Bulk Retry</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Information</h3>
+  <p>Please note that this feature is only included in the enterprise edition of CIB seven.</p>
+</div>
+
+<p>It is also possible to do a bulk retry of failed jobs. To do so, switch to the &lsquo;Job definitions&rsquo; tab in the process definition view and locate the corresponding failed activity. Clicking the retry button here allows you to set the number of retries for all the defined jobs of the process definition.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-failed-job-bulk01.png"
+      
+          title="Failed Job Bulk Operation"
+       /></span>
+</figure>
+
+<p>The following dialog allows you, just as with retries described above for single failed jobs, to decide whether to keep the due date or set a date of your choice.</p>
+<figure class="image">
+  <span><img
+      src="../../img/cockpit-failed-job-bulk02.png"
+      
+          title="Failed Job Bulk Operation"
+       /></span>
+</figure>
+
+
     </div>
   </div>
 </div>
@@ -3269,6 +3311,7 @@
   <nav id="TableOfContents">
   <ul>
     <li><a href="#retry-a-failed-job">Retry a Failed Job</a></li>
+    <li><a href="#bulk-retry">Bulk Retry</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

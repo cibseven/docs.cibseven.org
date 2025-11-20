@@ -2865,6 +2865,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
     
   </li>
@@ -2930,6 +2938,14 @@
 
         
       </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
     
   </li>
 
@@ -3228,11 +3244,13 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Docker images can be found on <a href="https://github.com/cibseven/cibseven-docker">GitHub</a> and <a href="https://hub.docker.com/r/cibseven/cibseven/">Docker Hub</a>.</p>
+      
+<h2 id="community-edition">Community Edition</h2>
+<p>The Community Edition docker images can be found on <a href="https://github.com/cibseven/cibseven-docker">GitHub</a> and <a href="https://hub.docker.com/r/cibseven/cibseven/">Docker Hub</a>.</p>
 <p>Please note that by default the Apache Tomcat distribution is used. For a guide on how to use one of the other distributions, see the <a href="https://github.com/cibseven/cibseven-docker/#supported-tagsreleases">tag schema</a>.
 For example, tags like <code>2.1.0</code> or <code>latest</code> without explicit distribution mark are delivering Tomcat version of CIB seven.</p>
 
-<h2 id="start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</h2>
+<h3 id="start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</h3>
 <p>To start the latest CIB seven Tomcat version, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:tomcat-latest
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-latest
@@ -3243,7 +3261,7 @@ For example, tags like <code>2.1.0</code> or <code>latest</code> without explici
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven
 </span></span></code></pre></div>
-<h2 id="start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</h2>
+<h3 id="start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</h3>
 <p>To start <a href="/manual/latest/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-latest
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-latest
@@ -3251,7 +3269,7 @@ For example, tags like <code>2.1.0</code> or <code>latest</code> without explici
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-2.1.0
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-2.1.0
 </span></span></code></pre></div>
-<h2 id="start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</h2>
+<h3 id="start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</h3>
 <p>To start CIB seven Wildfly version, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-latest
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-latest
@@ -3259,6 +3277,52 @@ For example, tags like <code>2.1.0</code> or <code>latest</code> without explici
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-2.1.0
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-2.1.0
 </span></span></code></pre></div>
+<h2 id="community-plus-edition">Community Plus Edition</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Community&#43; Feature</h3>
+  <p>Please note that these docker images are offered only for CIB seven Community+ Edition.</p>
+</div>
+
+<p>Since version 2.0 we offer to our customers a Docker image for the Community+ edition of CIB seven.</p>
+<p>These images are hosted on our dedicated Docker repository and are available to Community+ customers only. You can browse the available images in our <a href="https://artifacts.cibseven.org/#browse/browse:docker-ce-plus:v2%2Fcibseven%2Ftags">Docker repository</a> after logging-in with your credentials.</p>
+<p>Please note that these images are built using the same Dockerfile of the Community image, but including the Community+ version of CIB seven. For this reason, the same <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">documentation</a> applies.</p>
+<p>Make sure to log-in correctly before trying to pull the image:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker login artifacts.cibseven.org
+</span></span></code></pre></div><p>To start CIB seven Tomcat version 2.0.4, execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ce-plus/cibseven:tomcat-2.0.4
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-2.0.4
+</span></span></code></pre></div><p>To start <a href="/manual/latest/user-guide/cibseven-run/">CIB seven Run</a> version 2.0.4, execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ce-plus/cibseven:run-2.0.4
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-2.0.4
+</span></span></code></pre></div><p>To start CIB seven Wildfly version 2.0.4, execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ce-plus/cibseven:wildfly-2.0.4
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-2.0.4
+</span></span></code></pre></div><p>If you want to build an community+ image yourself, follow the steps described on <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">GitHub</a>.</p>
+
+<h2 id="enterprise-edition">Enterprise Edition</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Enterprise Feature</h3>
+  <p>Please note that these docker images are offered only for CIB seven Enterprise Edition.</p>
+</div>
+
+<p>Since version 2.0 we offer to our customers a Docker image for the Enterprise edition of CIB seven.</p>
+<p>These images are hosted on our dedicated Docker repository and are available to Enterprise customers only. You can browse the available images in our <a href="https://artifacts.cibseven.org/#browse/browse:docker-ee:v2%2Fcibseven%2Ftags">Docker repository</a> after logging-in with your credentials.</p>
+<p>Please note that these images are built using the same Dockerfile of the Community image, but including the Enterprise version of CIB seven. For this reason, the same <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">documentation</a> applies.</p>
+<p>Make sure to log-in correctly before trying to pull the image:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker login artifacts.cibseven.org
+</span></span></code></pre></div><p>To start CIB seven Tomcat, execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:tomcat-2.1.0-ee
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-2.1.0-ee
+</span></span></code></pre></div><p>To start <a href="/manual/latest/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:run-2.1.0-ee
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-2.1.0-ee
+</span></span></code></pre></div><p>To start CIB seven Wildfly version, execute the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:wildfly-2.1.0-ee
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-2.1.0-ee
+</span></span></code></pre></div><p>If you want to build an enterprise image yourself, follow the steps described on <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">GitHub</a>.</p>
+
     </div>
   </div>
 </div>
@@ -3267,9 +3331,15 @@ For example, tags like <code>2.1.0</code> or <code>latest</code> without explici
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</a></li>
-    <li><a href="#start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</a></li>
-    <li><a href="#start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</a></li>
+    <li><a href="#community-edition">Community Edition</a>
+      <ul>
+        <li><a href="#start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</a></li>
+        <li><a href="#start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</a></li>
+        <li><a href="#start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</a></li>
+      </ul>
+    </li>
+    <li><a href="#community-plus-edition">Community Plus Edition</a></li>
+    <li><a href="#enterprise-edition">Enterprise Edition</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">
