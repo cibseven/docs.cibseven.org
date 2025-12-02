@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Run CIB seven using Docker | docs.cibseven.org</title>
+  <title>CIB seven 2.0.5 EE - Release Notes | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/2.1/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/manual/2.1/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
-  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1/installation/docker/" />
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1/release-notes/release-notes-2.0.5-ee/" />
 </head>
 <body class="">
 
@@ -3240,88 +3240,50 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Run CIB seven using Docker</h1>
+      <h1 class="page-title">CIB seven 2.0.5 EE - Release Notes</h1>
     </div>
 
     <div class="col-xs-12 content-text">
       
-<h2 id="community-edition">Community Edition</h2>
-<p>The Community Edition docker images can be found on <a href="https://github.com/cibseven/cibseven-docker">GitHub</a> and <a href="https://hub.docker.com/r/cibseven/cibseven/">Docker Hub</a>.</p>
-<p>Please note that by default the Apache Tomcat distribution is used. For a guide on how to use one of the other distributions, see the <a href="https://github.com/cibseven/cibseven-docker/#supported-tagsreleases">tag schema</a>.
-For example, tags like <code>2.1.0</code> or <code>latest</code> without explicit distribution mark are delivering Tomcat version of CIB seven.</p>
+<h2 id="release-notes">Release Notes</h2>
+<p><em>Release Date: Desember 2, 2025</em></p>
 
-<h3 id="start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</h3>
-<p>To start the latest CIB seven Tomcat version, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:tomcat-latest
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-latest
-</span></span></code></pre></div><p>or following command to use explicit version 2.1.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:tomcat-2.1.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:tomcat-2.1.0
-</span></span></code></pre></div><p>If neither the distribution nor the version is specified then the latest CIB seven Tomcat version will be delivered:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven
-</span></span></code></pre></div>
-<h3 id="start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</h3>
-<p>To start <a href="/manual/2.1/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-latest
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-latest
-</span></span></code></pre></div><p>or following command to use explicit version 2.1.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-2.1.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-2.1.0
-</span></span></code></pre></div>
-<h3 id="start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</h3>
-<p>To start CIB seven Wildfly version, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-latest
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-latest
-</span></span></code></pre></div><p>or following command to use explicit version 2.1.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-2.1.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-2.1.0
-</span></span></code></pre></div>
-<h2 id="community-plus-edition">Community Plus Edition</h2>
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li>Updated Spring Boot framework to version 3.5.7</li>
+<li>Fixed timezone handling issues for improved date accuracy</li>
+</ul>
 
-<div class="note bg-info docs-info">
-  <h3>Community&#43; Feature</h3>
-  <p>Please note that these docker images are offered only for CIB seven Community+ Edition.</p>
-</div>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fixed timezone adjustment in <code>splitDate</code> function for accurate date handling</li>
+</ul>
 
-<p>Since version 2.0 we offer to our customers a Docker image for the Community+ edition of CIB seven.</p>
-<p>These images are hosted on our dedicated Docker repository and are available to Community+ customers only. You can browse the available images in our <a href="https://community-plus.artifacts.cibseven.org/#browse/browse:docker-ce-plus">Docker repository</a> after logging-in with your credentials.</p>
-<p>Please note that these images are built using the same Dockerfile of the Community image, but including the Community+ version of CIB seven. For this reason, the same <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">documentation</a> applies.</p>
-<p>Make sure to log-in correctly before trying to pull the image:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker login community-plus.artifacts.cibseven.org
-</span></span></code></pre></div><p>To start CIB seven Tomcat version 2.0.4, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull community-plus.artifacts.cibseven.org/cibseven:tomcat-2.0.4
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 community-plus.artifacts.cibseven.org/cibseven:tomcat-2.0.4
-</span></span></code></pre></div><p>To start <a href="/manual/2.1/user-guide/cibseven-run/">CIB seven Run</a> version 2.0.4, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull community-plus.artifacts.cibseven.org/cibseven:run-2.0.4
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 community-plus.artifacts.cibseven.org/cibseven:run-2.0.4
-</span></span></code></pre></div><p>To start CIB seven Wildfly version 2.0.4, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull community-plus.artifacts.cibseven.org/cibseven:wildfly-2.0.4
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 community-plus.artifacts.cibseven.org/cibseven:wildfly-2.0.4
-</span></span></code></pre></div><p>If you want to build an community+ image yourself, follow the steps described on <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">GitHub</a>.</p>
+<h3 id="technical-updates">Technical Updates</h3>
 
-<h2 id="enterprise-edition">Enterprise Edition</h2>
+<h4 id="dependency-updates">Dependency Updates</h4>
+<ul>
+<li>Update Spring Boot from 3.5.6 to 3.5.7</li>
+<li>Update Logback to 1.2.13</li>
+<li>Update Tomcat to 10.1.48</li>
+<li>Update WildFly to 35.0.1.Final</li>
+</ul>
 
-<div class="note bg-info docs-info">
-  <h3>Enterprise Feature</h3>
-  <p>Please note that these docker images are offered only for CIB seven Enterprise Edition.</p>
-</div>
+<h4 id="resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</h4>
 
-<p>Since version 2.0 we offer to our customers a Docker image for the Enterprise edition of CIB seven.</p>
-<p>These images are hosted on our dedicated Docker repository and are available to Enterprise customers only. You can browse the available images in our <a href="https://artifacts.cibseven.org/#browse/browse:docker-ee:v2%2Fcibseven%2Ftags">Docker repository</a> after logging-in with your credentials.</p>
-<p>Please note that these images are built using the same Dockerfile of the Community image, but including the Enterprise version of CIB seven. For this reason, the same <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">documentation</a> applies.</p>
-<p>Make sure to log-in correctly before trying to pull the image:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker login artifacts.cibseven.org
-</span></span></code></pre></div><p>To start CIB seven Tomcat, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:tomcat-2.1.0-ee
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:tomcat-2.1.0-ee
-</span></span></code></pre></div><p>To start <a href="/manual/2.1/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:run-2.1.0-ee
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:run-2.1.0-ee
-</span></span></code></pre></div><p>To start CIB seven Wildfly version, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:wildfly-2.1.0-ee
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:wildfly-2.1.0-ee
-</span></span></code></pre></div><p>If you want to build an enterprise image yourself, follow the steps described on <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">GitHub</a>.</p>
+<h5 id="medium-severity">Medium Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-11226">CVE-2025-11226</a></strong> - CVSS 6.4 (RedHat). Package: <code>ch.qos.logback:logback-core</code></li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-53057">CVE-2025-53057</a></strong> - CVSS 5.9 (RedHat). Package: <code>openjdk17-jre-headless</code></li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-53066">CVE-2025-53066</a></strong> - CVSS 4.8 (RedHat). Package: <code>openjdk17-jre-headless</code></li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-58251">CVE-2024-58251</a></strong> - Multiple packages affected: <code>busybox</code>, <code>busybox-binsh</code>, <code>ssl_client</code></li>
+</ul>
+
+<h5 id="low-severity">Low Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-61795">CVE-2025-61795</a></strong> - CVSS 5.3 (RedHat). Package: <code>org.apache.tomcat.embed:tomcat-embed-core</code></li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46394">CVE-2025-46394</a></strong> - CVSS 3.3 (NVD). Packages: <code>busybox</code>, <code>busybox-binsh</code>, <code>ssl_client</code></li>
+</ul>
 
     </div>
   </div>
@@ -3331,15 +3293,18 @@ For example, tags like <code>2.1.0</code> or <code>latest</code> without explici
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#community-edition">Community Edition</a>
+    <li><a href="#release-notes">Release Notes</a>
       <ul>
-        <li><a href="#start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</a></li>
-        <li><a href="#start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</a></li>
-        <li><a href="#start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</a></li>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#bug-fixes">Bug Fixes</a></li>
+        <li><a href="#technical-updates">Technical Updates</a>
+          <ul>
+            <li><a href="#dependency-updates">Dependency Updates</a></li>
+            <li><a href="#resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#community-plus-edition">Community Plus Edition</a></li>
-    <li><a href="#enterprise-edition">Enterprise Edition</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">
