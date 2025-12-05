@@ -3246,6 +3246,17 @@
     <div class="col-xs-12 content-text">
       <p>This page describes the process of migrating a custom project, which uses Camunda BPM, to using CIB seven.</p>
 
+<h3 id="migration-to-cib-seven-21">Migration to CIB seven 2.1</h3>
+<p>The backend of CIB seven 2.1.0 is based on Camunda 7.24.0, so before the migration, please check your Camunda version: it should be Camunda 7.24.0. If the version of Camunda is less than 7.24.0 then update it to 7.24.0, first.</p>
+
+<div class="note bg-info docs-info">
+  <h3>My Camunda version is less than 7.24.0!</h3>
+  <p>For Camunda versions before 7.24.0, please do minor updates, before migrating to CIB seven, as described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a>.</p>
+</div>
+
+<p>In the rest, the migration process from Camunda 7.24.0 to CIB seven 2.1.0 follows the same steps as described in the section: Migration to CIB seven 2.0.</p>
+<p>Please note that the considerations outlined in the <a href="#authorization-configuration">Authorization Configuration</a> section are also actual to 2.1.0 and 2.1.1 versions.</p>
+
 <h3 id="migration-to-cib-seven-20">Migration to CIB seven 2.0</h3>
 <p>The backend of CIB seven 2.0.0 is based on Camunda 7.23.0, so before the migration, please check your Camunda version: it should be Camunda 7.23.0. If the version of Camunda is less than 7.23.0 then update it to 7.23.0, first.</p>
 
@@ -3270,6 +3281,10 @@ This configuration file should contain a jwtSecret property with the same value:
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl">   <span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
 </span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
 <p>Alternatively, the JWT secret can be specified via the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
+
+<h4 id="authorization-configuration">Authorization configuration</h4>
+<p>Important note: when upgrading to CIB Seven version 2.0.4, verify the authorization settings in the engine configuration.
+If the authorization is enabled for the engine REST, ensure that the camunda.bpmn.authorization.enabled property is also added to the <a href="/manual/2.1/user-guide/cibseven-run/#cib-seven-webclient-properties">webclient configuration</a> and is set to true.</p>
 
 <h4 id="migration-to-cib-seven-namespace">Migration to CIB seven namespace</h4>
 <p>In some cases, processes created for Camunda may reference classes from the org.camunda namespace.
@@ -3348,9 +3363,11 @@ Enabling these properties ensures smooth access to objects and prevents class lo
   <ul>
     <li>
       <ul>
+        <li><a href="#migration-to-cib-seven-21">Migration to CIB seven 2.1</a></li>
         <li><a href="#migration-to-cib-seven-20">Migration to CIB seven 2.0</a>
           <ul>
             <li><a href="#migration-to-cib-seven-webclient">Migration to CIB seven webclient</a></li>
+            <li><a href="#authorization-configuration">Authorization configuration</a></li>
             <li><a href="#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></li>
           </ul>
         </li>
