@@ -3279,9 +3279,17 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/timerEventDefinition&gt;</span>
 </span></span></code></pre></div><p>Additionally, you can specify a time cycle using cron expressions, the example below shows a trigger firing every 5 minutes, starting at full hour:</p>
 <pre tabindex="0"><code>0 0/5 * * * ?
-</code></pre><p>Please see the <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/support/CronExpression.html#parse(java.lang.String)">Spring documentation</a> for additional information about using cron expressions.</p>
+</code></pre><p>Please see the <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> for additional information about using cron expressions.</p>
 <p>Note: The first symbol denotes seconds, not minutes as in normal Unix cron.</p>
 <p>The recurring time duration option is better suited for handling relative timers, which are calculated in respect to some particular point in time (e.g., the time when a user task was started), while cron expressions can handle absolute timers - which is particularly useful for timer start events.</p>
+
+<h4 id="support-for-multiple-cron-dialects">Support for Multiple Cron Dialects</h4>
+<p>Starting from version <code>2.1.2</code>, CIB seven supports two cron dialects: Spring 5.3 and Quartz 2.5 (including legacy Quartz 1.8 syntax).
+Users can specify the desired dialect via the <code>cronType</code> option, setting it to <code>QUARTZ</code> or <code>SPRING53</code>.
+Additionally, there is an option <code>supportLegacyQuartzSyntax</code> (true/false) to enable support for legacy Quartz 1.8 syntax.
+By default, the system supports Quartz with compatibility for Quartz 1.8.
+The configuration can be changed in the relevant server configuration files: <code>standalone.xml</code> or <code>domain.xml</code> for the WildFly distribution, <code>bpm-platform.xml</code> for the Tomcat distribution, and <code>production.yml/default.yml</code> for the Run distributions.
+For more information about the syntax and using cron expressions see <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> and <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/support/CronExpression.html#parse(java.lang.String)">Spring documentation</a></p>
 
 <h4 id="modify-a-time-cycle">Modify a Time Cycle</h4>
 <p>A timer&rsquo;s repeat cycle can be controlled via the <a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST API</a> or by calling the ManagementService. By setting the due date of a timer, it is possible to change the point in time when a timer is executed.</p>
@@ -3412,6 +3420,7 @@
         <li><a href="#time-duration">Time Duration</a></li>
         <li><a href="#time-cycle">Time Cycle</a>
           <ul>
+            <li><a href="#support-for-multiple-cron-dialects">Support for Multiple Cron Dialects</a></li>
             <li><a href="#modify-a-time-cycle">Modify a Time Cycle</a></li>
           </ul>
         </li>
