@@ -3336,7 +3336,7 @@ Of the predefined resources at the moment this would be:</p>
        /></span>
 </figure>
 
-<p>First of all, we have to provide the permission to access Cockpit (also see the <a href="#application-acces">Application Access</a> section).</p>
+<p>First of all, we have to provide the permission to access Cockpit (also see the <a href="#application-access">Application Access</a> section).</p>
 <figure class="image">
   <span><img
       src="../img/admin_proc_def_group_read_access.png"
@@ -3351,7 +3351,7 @@ Of the predefined resources at the moment this would be:</p>
 
 <h2 id="restrict-process-permissions">Restrict Process Permissions</h2>
 <p>Not every process has to be managed by every user/group and with regards to different organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.</p>
-<p>In this use case we want to give the group <em>accounting</em>, which we will assume is already present and has access to Cockpit (see <a href="/manual/latest/webapps/admin/authorization-management/#application-specific-permissions">Application-Specific Permission</a> and <a href="#application-acces">Application Access</a>), full access to the &ldquo;invoice&rdquo; process and only to this process.</p>
+<p>In this use case we want to give the group <em>accounting</em>, which we will assume is already present and has access to Cockpit (see <a href="/manual/latest/webapps/admin/authorization-management/#application-specific-permissions">Application-Specific Permission</a> and <a href="#application-access">Application Access</a>), full access to the &ldquo;invoice&rdquo; process and only to this process.</p>
 <p>For groups and users to be able to see process definitions they need at least <code>READ</code> permission for the &ldquo;Process Definition&rdquo; resource. To see running process instances the same permission is required for the &ldquo;Process Instance&rdquo; resource.</p>
 <figure class="image">
   <span><img
