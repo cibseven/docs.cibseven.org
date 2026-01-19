@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.1</span>
+    <span class="number">2.1-ee/ce&#43;</span>
 </div>
 
 
@@ -3135,6 +3135,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3247,7 +3255,7 @@
       <p>The process engine reports runtime metrics to the database that can help draw conclusions about usage, load, and performance of CIB seven. Metrics are reported in the database tables <code>ACT_RU_METER_LOG</code> and <code>ACT_RU_TASK_METER_LOG</code>. Single metric entries in <code>ACT_RU_METER_LOG</code> consist of a metric identifier, a value as natural number in the Java <code>long</code> range that the metric took in a certain timespan and a name identifying the metric reporter. Task metric entries in <code>ACT_RU_TASK_METER_LOG</code> comprise a fixed-length, pseudonymized assignee value and the point in time it was assigned at. There is a set of built-in metrics that are reported by default.</p>
 
 <h2 id="built-in-metrics">Built-in Metrics</h2>
-<p>The following table describes the built-in metrics. The identifiers of all built-in metrics are available as constants of the class <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/management/Metrics.html">org.cibseven.bpm.engine.management.Metrics</a>
+<p>The following table describes the built-in metrics. The identifiers of all built-in metrics are available as constants of the class <a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/management/Metrics.html">org.cibseven.bpm.engine.management.Metrics</a>
 .</p>
 <table class="table table-striped">
   <tr>
@@ -3350,7 +3358,7 @@
 </table>
 
 <h2 id="querying">Querying</h2>
-<p>Metrics can be queried by making a <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/management/MetricsQuery.html">MetricsQuery</a>
+<p>Metrics can be queried by making a <a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/management/MetricsQuery.html">MetricsQuery</a>
  offered by the <code>ManagementService</code>. For example, the following query retrieves the number of all executed activity instances throughout the entire history of reporting:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">long</span><span class="w"> </span><span class="n">numCompletedActivityInstances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">managementService</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">createMetricsQuery</span><span class="p">()</span><span class="w">
@@ -3393,14 +3401,14 @@
 reports to individual engine instances when making a metrics query. For example in a cluster, load
 metrics can be related to individual cluster nodes. By default the process engine generates a
 reporter id as <code>&lt;local IP&gt;$&lt;engine name&gt;</code>. The generation can be customized by implementing the
-interface <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/impl/history/event/HostnameProvider.html">org.cibseven.bpm.engine.impl.history.event.HostnameProvider</a>
+interface <a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/impl/history/event/HostnameProvider.html">org.cibseven.bpm.engine.impl.history.event.HostnameProvider</a>
 
 and setting the engine property <code>hostnameProvider</code> to an instance of that class.</p>
 
 <div class="note bg-info docs-info">
   <h3>Heads Up!</h3>
   <p><p>The
-<a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/impl/metrics/MetricsReporterIdProvider.html">org.cibseven.bpm.engine.impl.metrics.MetricsReporterIdProvider</a></p>
+<a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/impl/metrics/MetricsReporterIdProvider.html">org.cibseven.bpm.engine.impl.metrics.MetricsReporterIdProvider</a></p>
 <p>interface and the corresponding <code>metricsReporterIdProvider</code> engine property have been deprecated.</p>
 </p>
 </div>

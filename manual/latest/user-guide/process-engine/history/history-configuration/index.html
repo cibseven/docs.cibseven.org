@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.1</span>
+    <span class="number">2.1-ee/ce&#43;</span>
 </div>
 
 
@@ -3135,6 +3135,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3278,7 +3286,7 @@
 </li>
 <li><code>AUTO</code>: The level <code>auto</code> is useful if you are planning to run multiple engines on the same database. In that case, all engines have to use the same history level. Instead of manually keeping your configurations in sync, use the level <code>auto</code> and the engine determines the level already configured in the database automatically. If none is found, the default value <code>audit</code> is used. Keep in mind: If you are planning to use custom history levels, you have to register the custom levels for every configuration, otherwise an exception is thrown.</li>
 </ul>
-<p>If you need to customize the amount of history events logged, you can provide a custom implementation <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/impl/history/producer/HistoryEventProducer.html">HistoryEventProducer</a>
+<p>If you need to customize the amount of history events logged, you can provide a custom implementation <a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/impl/history/producer/HistoryEventProducer.html">HistoryEventProducer</a>
  and wire it in the process engine configuration.</p>
 <p>In case of specific needs, you can also create a <a href="/manual/latest/user-guide/process-engine/history/custom-implementation/#implement-a-custom-history-level">custom history level</a>.</p>
 

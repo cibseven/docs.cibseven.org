@@ -1,0 +1,4261 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>CIB seven Run | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/manual/2.1-ee/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/manual/2.1-ee/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1-ee/user-guide/cibseven-run/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/manual/2.1-ee/" id="logolink">
+      <img src="/manual/2.1-ee/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  class="active"  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+<div class="version versioned">
+    
+      
+    
+       <span class="name">CIB seven</span> 
+    
+      
+    
+      
+    
+
+    <span class="number">2.1-ee/ce&#43;</span>
+</div>
+
+
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/downloading-cibseven/" >Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/licenses/" >Licenses</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/implemented-standards/" >Implemented Standards</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/architecture/" >Architecture Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/supported-environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/extensions/" >Extensions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/third-party-libraries/" >Third-Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/introduction/public-api/" >Public API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/" >Process Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-engine-bootstrapping/" >Process Engine Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-engine-api/" >Process Engine API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-engine-concepts/" >Process Engine Concepts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/variables/" >Process Variables</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-instance-modification/" >Process Instance Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/scripting/" >Scripting</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/templating/" >Templating</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/securing-custom-code/" >Custom Code &amp; Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/external-tasks/" >External Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/connectors/" >Connectors</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-versioning/" >Process Versioning</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/database/" >Database</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/database/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/database/database-configuration/" >Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/database/mssql-configuration/" >Microsoft SQL Server and Azure SQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/database/mysql-configuration/" >MySQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/database/performance/" >Performance</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/history/" >History</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/history/history-configuration/" >History configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/history/user-operation-log/" >User operation log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/history/history-cleanup/" >History cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/history/custom-implementation/" >Custom implementation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/deployment-cache/" >Deployment Cache</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/password-hashing/" >Password Hashing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/password-policy/" >Password Policy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/transactions-in-processes/" >Transactions in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/the-job-executor/" >The Job Executor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/multi-tenancy/" >Multi-Tenancy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/id-generator/" >Id Generators</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/metrics/" >Metrics</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/incidents/" >Incidents</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-engine-plugins/" >Process Engine Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/identity-service/" >Identity Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/authorization-service/" >Authorization Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/deployments/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/process-diagram-api/" >Process Diagram Visualization</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/time-zones/" >Time zones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/decisions/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/decisions/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/decisions/repository/" >Repository</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/decisions/decision-service/" >Decision Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/decisions/bpmn-cmmn/" >Decisions in BPMN &amp; CMMN</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/decisions/history/" >History</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/batch/" >Batch</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/batch-operations/" >Batch operations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/error-handling/" >Error Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-engine/diagnostics-data/" >Diagnostics data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-applications/" >Process Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-applications/the-process-application-class/" >The Process Application class</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-applications/the-processes-xml-deployment-descriptor/" >The processes.xml Deployment Descriptor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-applications/process-application-event-listeners/" >Process Application Event Listeners</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-applications/process-application-resources/" >Process Application Resource Access</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/process-applications/maven-archetypes/" >Maven Project Templates (Archetypes)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/runtime-container-integration/" >Runtime Container Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/runtime-container-integration/bpm-platform-services/" >CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/" >JNDI Bindings for CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/runtime-container-integration/tomcat/" >Apache Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/runtime-container-integration/jboss/" >WildFly</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/runtime-container-integration/job-execution-with-managed-resources/" >Job Execution with Managed Resources</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cibseven-run/" >CIB seven Run</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-framework-integration/" >Spring Framework Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-framework-integration/configuration/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-framework-integration/transactions/" >Transactions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-framework-integration/deployment/" >Deployment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-framework-integration/expressions/" >Spring Bean Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-framework-integration/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/" >Spring Boot Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/webapps/" >Web Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/process-applications/" >Process Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/the-spring-event-bridge/" >Spring Eventing Bridge</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/develop-and-test/" >Developing and Testing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/spring-boot-integration/spring-security/" >Spring Security OAuth2 Integration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/quarkus-integration/" >Quarkus Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/quarkus-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/quarkus-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/quarkus-integration/cdi-integration/" >Engine CDI Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/quarkus-integration/deployments/" >Resource Deployments</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cdi-java-ee-integration/jta-transaction-integration/" >JTA Transaction Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cdi-java-ee-integration/expression-resolving/" >Expression Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cdi-java-ee-integration/contextual-programming-model/" >Contextual Programming Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cdi-java-ee-integration/built-in-beans/" >Built-In Beans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/" >CDI Event Bridge</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/testing/" >Testing</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/testing/assert-examples/" >Assert Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/" >Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/" >BPMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/fluent-builder-api/" >Fluent Builder API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/respository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/bpmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/" >CMMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/cmmn-model-api/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/dmn-model-api/" >DMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/dmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/dmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/dmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/model-api/dmn-model-api/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/data-formats/" >Data Formats (XML, JSON, Other)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/data-formats/configuring-spin-integration/" >Configuring Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/data-formats/data-formats-in-processes/" >Data Formats in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/data-formats/xml/" >XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/data-formats/json/" >JSON</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/task-forms/" >User Task Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/task-forms/jsf-task-forms/" >JSF Task Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/" >DMN Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/embed/" >Embed</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/evaluate-decisions/" >Evaluate Decisions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/expressions-and-scripts/" >Expressions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/feel/" >FEEL Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/feel/type-handling/" >Type Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/feel/custom-functions/" >Custom Functions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/feel/spin-integration/" >Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/feel/legacy-behavior/" >Legacy Behavior</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/dmn-engine/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/logging/" >Logging</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/security/" >Security Instructions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/ext-client/" >External Task Client</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/ext-client/spring-boot-starter/" >Spring Boot Starter</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/user-guide/ext-client/compatibility-matrix/" >Version Compatibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/" >REST API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/" >Overview</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/authentication/" >Configure Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/distro-use/" >Usage with a Pre-Built Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/embeddability/" >Embed the API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/hal/" >Hypertext Application Language (HAL)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/variables/" >Variables in the REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/overview/date-format/" >Date Format</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/openapi/" >OpenAPI</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/specification/" >Specification ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/javadoc/" >Javadoc ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/" >BPMN 2.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/service-task/" >Service Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/send-task/" >Send Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/user-task/" >User Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/business-rule-task/" >Business Rule Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/script-task/" >Script Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/receive-task/" >Receive Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/manual-task/" >Manual Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/tasks/task-markers/" >Task Markers</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/gateways/" >Gateways</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/gateways/exclusive-gateway/" >Data-based Exclusive Gateway (XOR)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/gateways/sequence-flow/" >Conditional and Default Sequence Flows</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/gateways/parallel-gateway/" >Parallel Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/gateways/inclusive-gateway/" >Inclusive Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/gateways/event-based-gateway/" >Event-based Gateway</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/" >Events</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/start-events/" >Start Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/none-events/" >None Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/message-events/" >Message Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/timer-events/" >Timer Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/error-events/" >Error Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/escalation-events/" >Escalation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/signal-events/" >Signal Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/cancel-and-compensation-events/" >Cancel and Compensation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/conditional-events/" >Conditional Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/link-events/" >Link Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/events/terminate-event/" >Terminate Events</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/subprocesses/" >Subprocess</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/subprocesses/embedded-subprocess/" >Embedded Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/subprocesses/call-activity/" >Call Activity</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/subprocesses/event-subprocess/" >Event Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/custom-extensions/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/bpmn20/custom-extensions/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/" >DMN 1.3</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/decision-table/" >Decision Table</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/decision-table/input/" >Input</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/decision-table/output/" >Output</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/decision-table/rule/" >Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/decision-table/hit-policy/" >Hit Policy</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/decision-literal-expression/" >Decision Literal Expression</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/feel/" >FEEL</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/feel/legacy/" >Legacy FEEL Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/feel/legacy/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/feel/legacy/language-elements/" >Language Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/dmn/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/" >CMMN 1.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/api/classic-vs-fluent/" >Classic vs Fluent API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/concepts/" >CMMN Concepts</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/concepts/plan-items/" >Plan Items and Item Definitions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/concepts/lifecycle/" >Plan Item Lifecycles</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/concepts/entry-exit-criteria/" >Entry and Exit Criteria</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/tasks/human-task/" >Human Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/tasks/process-task/" >Process Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/tasks/case-task/" >Case Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/tasks/decision-task/" >Decision Task</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/grouping-tasks/" >Grouping Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/grouping-tasks/stage/" >Stage</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/milestone/" >Milestones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/sentry/" >Sentries</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/markers/" >Markers</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/markers/manual-activation-rule/" >Manual Activation Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/markers/required-rule/" >Required Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/markers/auto-complete/" >Auto Complete</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/markers/repetition-rule/" >Repetition Rule</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/custom-extensions/camunda-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/migration/" >Migration between Specification Versions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/cmmn11/migration/10-to-11/" >1.0 to 1.1</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/" >Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/" >Embedded Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/" >Controls</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/inputs/" >Text Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/textarea/" >Textareas</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/date-inputs/" >Date Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/boolean-inputs/" >Boolean Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/select/" >Selects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/hidden/" >Hidden Input Fields</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/files/" >File Upload and Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/controls/bpmn-buttons/" >BPMN Event Buttons</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/" >Javascript</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/cam-script/" >The cam-script Directive</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/api/" >Available API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/lifecycle/" >Participating in the Form Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/debugging/" >Debugging Scripts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/generating-businesskey/" >Generating a Business Key</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/javascript/examples/" >Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/lifecycle/" >Lifecycle and Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/json-data/" >Working with Json Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/java-objects/" >Working with Java Objects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/integrate/" >Integrating the Forms SDK</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/integrate/getting-a-distribution/" >Getting a Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/integrate/bootstrapping/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/integrate/angular-js/" >AngularJS Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/embedded-forms/integrate/full-examples/" >Full Example</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/" >Spin Dataformats</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/" >XML</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/01-reading-xml/" >Reading XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/02-manipulating-xml/" >Manipulating XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/03-writing-xml/" >Writing XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/04-querying-xml/" >Querying XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/05-mapping-xml/" >Mapping XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/xml/06-configuring-xml/" >Configuring XML Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/json/" >JSON</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/json/01-reading-json/" >Reading JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/json/02-writing-json/" >Writing JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/json/03-querying-json/" >Querying JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/json/04-mapping-json/" >Mapping JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/json/05-configuring-json/" >Configuring JSON Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/spin/extending-spin/" >Extending Spin</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/connect/" >Connectors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/connect/http-connector/" >HTTP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/connect/soap-connector/" >SOAP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/connect/extending-connect/" >Extending Connect</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/" >Deployment Descriptors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/descriptors/bpm-platform-xml/" >bpm-platform.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/descriptors/processes-xml/" >processes.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/tags/" >Tags</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/tags/job-executor/" >&lt;job-executor /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/tags/process-archive/" >&lt;process-archive /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/reference/deployment-descriptors/tags/process-engine/" >&lt;process-engine /&gt;</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/cibseven-run/" >Remote Engine Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/" >Shared Engine Distribution</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/tomcat/" >Tomcat</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/tomcat/pre-packaged/" >Pre-Packaged Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/tomcat/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/tomcat/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/jboss/" >JBoss EAP/WildFly</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/jboss/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/full/jboss/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/docker/" >Docker</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/installation/spring-boot/" >Spring Boot</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/" >Web Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/" >Tasklist</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/working-with-tasklist/" >Working with Tasklist</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/filters/" >Filters</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/user-assignment/" >User Assignment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/tasklist-plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/tasklist/accessibility/" >Accessibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/" >Cockpit</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/" >Processes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/dashboard/" >Process Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-definition-view/" >Process Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-instance-view/" >Process Instance View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/suspension/" >Suspension</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/drilldown/" >Collapsed Subprocesses</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/dmn/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/dmn/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/dmn/decision-definition-view/" >Decision Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/dmn/decision-instance-view/" >Decision Instance View</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/tasks-dashboard/" >Human Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/deployment-view/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/extend/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/cockpit/extend/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/" >Admin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/user-management/" >Users</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/group-management/" >Groups</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/tenant-management/" >Tenants</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/authorization-management/" >Authorizations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/system-management/" >System</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/admin/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/welcome/" >Welcome</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/welcome/welcome-plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/welcome/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/shared-options/" >Shared Configuration Options</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/shared-options/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/shared-options/cookie-security/" >Cookie Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/shared-options/csrf-prevention/" >CSRF Prevention</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/shared-options/header-security/" >HTTP Header Security</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/examples/" >Examples</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/update/" >Update &amp; Migration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/update/rolling-update/" >Rolling Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.1-ee/update/camunda/" >Camunda Migration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.1-ee/release-notes/" >Release Notes</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">CIB seven Run</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>This guide gives an introduction to CIB seven Run, a pre-packaged, lightweight distribution of CIB seven. CIB seven Run is easy to configure and does not require Java knowledge.</p>
+
+<h2 id="prerequisites-and-audience">Prerequisites and audience</h2>
+<p>To use this guide, you should at least know what CIB seven is and what it does. Check out the <a href="/get-started/quick-start/">Get Started guides</a> if you have never used CIB seven before. The <a href="/manual/2.1-ee/installation/cibseven-run/">Installation guide</a> is also worth looking at if you are completely new to CIB seven.</p>
+<p>This guide will teach you about CIB seven Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install CIB seven Run. Head over to the <a href="/manual/2.1-ee/installation/cibseven-run/">Installation guide</a> for details on how to install and start CIB seven Run.</p>
+
+<h2 id="what-is-cib-seven-run">What is CIB seven Run?</h2>
+<p>CIB seven Run is a full distribution of CIB seven. It includes:</p>
+<ul>
+<li>CIB seven web applications
+<ul>
+<li>Cockpit</li>
+<li>Tasklist</li>
+<li>Admin</li>
+</ul>
+</li>
+<li><a href="/manual/2.1-ee/reference/rest/overview/">REST API</a></li>
+<li><a href="#example-application">An example application</a></li>
+</ul>
+
+<h2 id="starting-with-cib-seven-run">Starting with CIB seven Run</h2>
+<p>To start with CIB seven Run, download the <a href="https://cibseven.org/downloads/">distribution</a> and unpacking it. You will find the following structure:</p>
+<pre tabindex="0"><code>cibseven-run
+├── configuration/
+│   ├── keystore/
+│   │   └── put your SSL key store here if you want to use HTTPS
+│   ├── resources/
+│   │   └── put your BPMN files, forms and scripts here
+│   ├── sql/
+│   │   └── necessary SQL scripts to prepare your database system
+│   ├── userlib/
+│   │   └── put your database driver and other required JARs here
+│   ├── default.yml
+│   └── production.yml
+├── internal/
+├── start.bat
+└── start.sh
+└── shutdown.sh
+└── shutdown.bat
+</code></pre><p>Execute one of the two start scripts (<code>start.bat</code> for Windows, <code>start.sh</code> for Linux/Mac). After a few seconds, you can
+access the CIB seven web apps via http://localhost:8080/camunda/app/, the REST API via
+http://localhost:8080/engine-rest/.</p>
+<p>When executing one of the two start scripts without any arguments, CIB seven Run will start with a default configuration
+as a detached process. To shut down CIB seven Run in &ldquo;detached&rdquo; mode, use one of the two shutdown scripts (<code>shutdown.bat</code>
+for Windows, <code>shutdown.sh</code> for Linux/Mac).</p>
+<p>By explicitly passing arguments to one of the two CIB seven Run start scripts, the default detached mode is disabled and
+you can configure CIB seven Run according to your needs. Furthermore, CIB seven Run will start as a foreground process
+unless the <code>--detached</code> argument is explicitly passed to the <code>start.bat</code> or <code>start.sh</code> script.</p>
+
+<h3 id="start-script-arguments">Start script arguments</h3>
+<p>The start scripts (<code>start.bat</code> for Windows, <code>start.sh</code> for Linux/Mac) accept the following arguments:</p>
+<table class="table desc-table">
+  <tr>
+      <th>Argument</th>
+      <th>Description</th>
+      <th>Default state</th>
+  </tr>
+  <tr>
+      <td><code>--webapps</code></td>
+      <td>Enables the CIB seven web apps</td>
+      <td><code>enabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--rest</code></td>
+      <td>Enables the REST API</td>
+      <td><code>enabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--example</code></td>
+      <td>Enables the example application.</td>
+      <td><code>enabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--production</code></td>
+      <td>Applies the `production.yaml` configuration file.</td>
+      <td><code>disabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--detached</code></td>
+      <td>
+        Starts CIB seven Run as a detached process. This is the default behavior of the start scripts. To disable it, 
+        explicitly pass a valid argument to the script.
+      </td>
+      <td><code>enabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--oauth2</code></td>
+      <td>
+        Enables Spring Security OAuth2 integration.      
+        <br>
+        See dedicated <a href="/manual/2.1-ee/user-guide/spring-boot-integration/spring-security/">Spring Security OAuth2 Integration</a> documentation for details.
+        <br>
+        <strong>Do not use this when authentication filters are enabled</strong>. See: <a href="#authentication">Authentication</a>
+      </td>
+      <td><code>disabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--help</code></td>
+      <td>Prints a message showing the available start script arguments.</td>
+      <td><code>-</code></td>
+  </tr>
+</table>
+
+<h3 id="starting-cib-seven-run-using-docker">Starting CIB seven Run using Docker</h3>
+<p>CIB seven Run is also available as a Docker image. Please see the CIB seven Run section of the CIB seven Docker documentation <a href="/manual/2.1-ee/installation/docker/#start-cibseven-using-docker">here</a> for more details.</p>
+
+<h3 id="optional-components">Optional components</h3>
+<p>By default, CIB seven Run launches with the web apps, REST API and example modules. If you want to enable only a subset of them, execute the start script through a command-line interface with any of the <code>--webapps</code>, <code>--rest</code> or <code>--example</code> properties to enable the specific modules.</p>
+
+<h4 id="example-application">Example application</h4>
+<p>By default, CIB seven Run deploys and launches an example application on startup.
+When launched, this application creates deployments with multiple BPMN and DMN definitions as well as form resources
+and starts instances of the defined processes.</p>
+<p>You can disable the <em>deployment</em> of the example application itself by enabling any combination of the other modules with the <code>--webapps</code> and <code>--rest</code> properties of the start script.
+That way, the example application will not be launched and its resources will not be present on the classpath of CIB seven Run.</p>
+<p>You can also disable the <em>launch</em> of the example application by setting the application property <code>camunda.bpm.run.example.enabled</code> to <code>false</code>
+or removing it from the application properties.
+That way, the example application and its resources will be present on the classpath of CIB seven Run.
+However, the example application will not be started.</p>
+<p>Disabling the example application with any of those mechanisms will <strong>NOT</strong> delete any deployments or process instances from CIB seven Run once they are created.
+You have to delete this data manually through the <a href="/manual/2.1-ee/webapps/cockpit/deployment-view/#delete">web apps</a>, the
+<a href="/manual/2.1-ee/reference/rest/specification/#tag/Deployment/operation/deleteDeployment">REST API</a>, or by cleaning the database
+<a href="#database">configured in the application properties</a>.</p>
+
+<h3 id="choose-between-default-and-production-configuration">Choose between default and production configuration</h3>
+<p>CIB seven Run ships with two different configuration files which are both located in the <code>configuration</code> folder.</p>
+<ul>
+<li>The <code>default.yml</code> configuration only contains necessary configuration like the H2 database, a demo user and <a href="#cross-origin-resource-sharing">CORS</a> for REST calls from a client application.</li>
+<li>The <code>production.yml</code> configuration is intended to provide the recommended properties according to the <a href="/manual/2.1-ee/user-guide/security/">Security Instructions</a>.
+When using CIB seven Run in a production environment, make sure to base your custom configuration on this one and carefully read through the security instructions.</li>
+</ul>
+<p>By default, Run launches with the <code>default.yml</code> configuration. To enable the <code>production.yml</code> configuration, execute the start script with the <code>--production</code> property.
+Using <code>--production</code> disables the example application. It can be enabled by explicitly passing <code>--example</code> to the start script.
+However, we do not recommended to use the example application in production.</p>
+
+<h3 id="connect-to-a-database">Connect to a Database</h3>
+<p>CIB seven Run is pre-configured to use a file-based H2 database for testing. The database schema and all required tables are automatically created when the engine starts up for the first time. If you want to use a custom standalone database, follow these steps:</p>
+<ol>
+<li>Make sure your database is among the <a href="/manual/2.1-ee/introduction/supported-environments/#supported-database-products">supported database systems</a>.</li>
+<li>Create a database schema for CIB seven yourself.</li>
+<li>Install the database schema to create all required tables and default indices using our <a href="/manual/2.1-ee/installation/database-schema/">database schema installation guide</a>.</li>
+<li>Drop a JDBC driver jar for your database system in the <code>configuration/userlib</code> folder.</li>
+<li>Add the JDBC URL and login credentials to the configuration file like described <a href="#database">below</a>.</li>
+<li>Restart CIB seven Run</li>
+</ol>
+
+<h3 id="deploy-bpmn-models">Deploy BPMN Models</h3>
+<p>In the unpacked distro, you will find a <code>resources</code> folder. All files (including BPMN, DMN, CMMN, form, and script files) will be deployed when you start CIB seven Run.</p>
+<p>You can reference forms and scripts in the BPMN diagram with <code>embedded:deployment:/my-form.html</code>, <code>cibseven-forms:deployment:/myform.form</code>, or <code>deployment:/my-script.js</code>. The deployment requires adding an extra <code>/</code> as a prefix to the filename.</p>
+<p>Deployments via the <a href="/manual/2.1-ee/reference/rest/specification/#tag/Deployment/operation/createDeployment">REST API</a> are still possible.</p>
+
+<h2 id="configure-cib-seven-run">Configure CIB seven Run</h2>
+<p>Just like all the other distros, you can tailor CIB seven Run to your needs. To do this, you only have to edit one of the <a href="#choose-between-default-and-production-configuration">configuration files</a> that you can find in the configuration folder.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Note:</h3>
+  <p>CIB seven Run is based on the <a href="https://github.com/cibseven/cibseven/tree/master/spring-boot-starter">CIB seven Spring Boot Starter</a>.
+All <a href="/manual/2.1-ee/user-guide/spring-boot-integration/configuration/#cib-seven-engine-properties">configuration properties</a> from the camunda-spring-boot-starter are available to customize CIB seven Run.</p>
+</div>
+
+
+<h3 id="migration-from-camunda">Migration from Camunda</h3>
+<p>If you are planning to migrate data from Camunda to CIB seven, you may need to activate the following properties in the <a href="#choose-between-default-and-production-configuration">configuration file</a>: <code>production.yml</code> or <code>default.yml</code></p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="2"><code>camunda.bpm.generic-properties.properties</code></td>
+      <td><code>.useCibSevenNamespaceInScripting</code></td>
+      <td>Allows to handle org.camunda classes, used in a script, when the script is launched by a process.</td>
+      <td><code>false</code></td>
+  </tr>
+  <tr>
+      <td><code>.useCibSevenNamespaceInReflection</code></td>
+      <td>Allows to convert serialized objects, stored in the database, from the camunda namespace to the cibseven namespace</td>
+      <td><code>false</code></td>
+  </tr>
+</table>
+<p>These properties are already included inside the configuration files, but they are disabled by default.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Important</h3>
+  <p>Activation of <code>useCibSevenNamespaceInReflection</code> modifies names of the objects stored in the database, therefore, it is recommended to create a backup of the database beforehand.</p>
+</div>
+
+<p>For more information about the migration to CIB seven, see the following sections: <a href="/manual/2.1-ee/update/camunda/#migration-to-cib-seven-20">Migration to CIB seven</a> and <a href="/manual/2.1-ee/update/camunda/#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></p>
+
+<h3 id="database">Database</h3>
+<p>The distro comes with a file-based h2 database for testing. It is recommended to connect to a standalone database system for use in production.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>spring.datasource</code></td>
+      <td><code>.url</code></td>
+      <td>The jdbc URL for the database.</td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.driver-class-name</code></td>
+      <td>The class name of the JDBC driver for your database system. Remember to put the driver jar for your database system in <code>configuration/userlib</code>.</td>
+      <td>-</td>
+  </tr>
+  <tr>
+      <td><code>.username</code></td>
+      <td>The username for the database connection.</td>
+      <td>-</td>
+  </tr>
+  <tr>
+      <td><code>.password</code></td>
+      <td>The password for the database connection.</td>
+      <td>-</td>
+  </tr>
+</table>
+
+<h3 id="authentication">Authentication</h3>
+<p>To add authentication to requests against the <a href="/manual/2.1-ee/reference/rest/overview/">REST API</a>, you can enable basic authentication.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.auth</code></td>
+      <td><code>.enabled</code></td>
+      <td>Switch to enable basic authentication for requests to the REST API.</td>
+      <td><code>false</code></td>
+  </tr>
+  <tr>
+      <td><code>.authentication</code></td>
+      <td>Authentication method:
+        <ul>
+            <li><code>composite</code>: JWT-based authentication with basic access as fallback.</li>
+            <li><code>basic</code>: Enables <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a></li>
+            <li><code>pseudo</code>: It "authenticates" always, just by checking the User-id custom header.</li>
+        </ul>        
+      </td>
+      <td><code>pseudo</code></td>
+  </tr>
+</table>
+
+<div class="note bg-info docs-info">
+  <h3>Heads up!</h3>
+  <p><p>When using authentication filters for CIB seven Run, <strong>Spring Security OAuth2 integration must be disabled</strong>.
+Enabling both will cause conflicts, resulting in CIB seven webapp requests being rejected by Engine REST.</p>
+<p>The composite authentication filter first attempts JWT authentication using <code>cibseven.webclient.authentication.jwtSecret</code>,
+so it does not support OAuth2 tokens. Basic authentication will not work either, as it does not use JWTs.</p>
+<p>For further details, refer to <a href="/manual/2.1-ee/reference/rest/overview/authentication/#composite-authentication">Composite authentication</a>.</p>
+</p>
+</div>
+
+
+<h3 id="cross-origin-resource-sharing">Cross-Origin Resource Sharing</h3>
+<p>If you want to allow cross-origin requests to the <a href="/manual/2.1-ee/reference/rest/overview/">REST API</a>, you need to enable CORS.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.cors</code></td>
+      <td><code>.enabled</code></td>
+      <td>Switch to enable CORS.</td>
+      <td><code>false</code></td>
+  </tr>
+  <tr>
+      <td><code>.allowed-origins</code></td>
+      <td>Origins that are allowed to make CORS requests. Multiple origins can be separated with commas. To support both HTTP authentication and CORS, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials"><code>allowed-origins</code> must not be</a> <code>\*</code>. To allow Camunda Modeler to deploy with authentication, including <code>file://</code> in the allowed origins.</td>
+      <td><code>\*</code> (all origins, including <code>file://</code>)</td>
+  </tr>
+  <tr>
+      <td><code>.allowed-headers</code></td>
+      <td>Headers that are allowed to be passed with CORS requests. Multiple headers can be separated with commas.</td>
+      <td><code>Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers</code></td>
+  </tr>
+  <tr>
+      <td><code>.exposed-headers</code></td>
+      <td>Headers that can be read by browsers from a CORS response. Simple response headers should not be 
+          included in this list. Multiple headers can be separated with commas.
+      </td>
+      <td>None</td>
+  </tr>
+  <tr>
+      <td><code>.allow-credentials</code></td>
+      <td>A boolean flag that helps a browser determine it can make a CORS request using credentials.</td>
+      <td><code>false</code></td>
+  </tr>
+  <tr>
+      <td><code>.preflight-maxage</code></td>
+      <td>Determines how long a browser can cache the result of a pre-flight request in seconds.</td>
+      <td><code>1800</code></td>
+  </tr>
+</table>
+
+<h3 id="rest">REST</h3>
+<p>CIB seven Run can be configured to disable the REST endpoint which exposes the WADL file via a property.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.rest</code></td>
+      <td><code>.disable-wadl</code></td>
+      <td>Disables the REST endpoint <code>/application.wadl</code>. Web Application Description Language (WADL) is an XML description of the deployed RESTful web application.</td>
+      <td><code>false</code></td>
+  </tr>
+</table>
+
+<h3 id="deployment">Deployment</h3>
+<p>CIB seven Run also supports configuration options for customizing the deployment.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.deployment</code></td>
+      <td><code>.deploy-changed-only</code></td>
+      <td>
+          <ul>
+            <li>When set to <code>true</code>, only deployments with changed resources will be deployed to the engine database.</li>
+            <li>When set to <code>false</code>, all deployments will be deployed without filtering their resources.</li>
+          </ul>
+          The property can be useful for controlling the deployment behaviour of the engine in case of restarts, similar to the
+          <a href="/manual/2.1-ee/user-guide/spring-framework-integration/deployment/">Spring Framework Integration</a>
+      </td>
+      <td><code>true</code></td>
+  </tr>
+</table>
+
+<h3 id="ldap-identity-service">LDAP Identity Service</h3>
+<p>CIB seven can manage users and authorizations on its own, but if you want to use an existing LDAP authentication database you can enable the <a href="/manual/2.1-ee/user-guide/process-engine/identity-service/#the-ldap-identity-service">LDAP Identity Service Plugin</a>
+which provides read-only access to the LDAP repository.</p>
+<p>Find all available configuration properties in the <a href="/manual/2.1-ee/user-guide/process-engine/identity-service/#configuration-properties-of-the-ldap-plugin">LDAP Plugin Guide</a></p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.ldap</code></td>
+      <td><code>.enabled</code></td>
+      <td>Switch to enable the LDAP identity service plugin.</td>
+      <td><code>false</code></td>
+  </tr>
+</table>
+
+<h4 id="ldap-administrator-authorization">LDAP Administrator Authorization</h4>
+<p>You can also use the <a href="/manual/2.1-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization plugin</a>
+to ensure the appropriate LDAP user or group gains administrative access. Review all the available
+configuration options in the <a href="/manual/2.1-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization plugin section</a>
+of our documentation.</p>
+<p>In the table below, observe the CIB seven Run-specific properties for the Administrator Authorization plugin.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.admin-auth</code></td>
+      <td><code>.enabled</code></td>
+      <td>Switch to enable the Administrator Authorization plugin.</td>
+      <td><code>false</code></td>
+  </tr>
+</table>
+
+<h3 id="plugin-registration">Plugin registration</h3>
+<p>CIB seven Run supports two types of plugins.</p>
+<ul>
+<li><a href="/manual/2.1-ee/user-guide/process-engine/process-engine-plugins/">Process engine plugins</a> can be used to extend the process engine configuration to add more functionality.</li>
+<li><a href="/manual/2.1-ee/webapps/cockpit/extend/plugins/">Webapp plugins</a> are used to extend one of the CIB seven webapps (i.e. Cockpit, Tasklist, Admin, Welcome).</li>
+</ul>
+<p>Both types of plugins are supported in CIB seven Run but have to be registered differently.</p>
+
+<h4 id="process-engine-plugin-registration">Process engine plugin registration</h4>
+<p>CIB seven provides a process engine plugin mechanism to enable users to add and adjust
+process engine features by extending the process engine configuration. You can use plugins developed by CIB, Camunda, or by
+third-party developers.</p>
+<p>Get more details on how process engine plugins work on the dedicated <a href="/manual/2.1-ee/user-guide/process-engine/process-engine-plugins/">process engine plugins</a>
+documentation section.</p>
+<p>In the table below, observe the CIB seven Run-specific properties for registering process engine plugins.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td><code>camunda.bpm.run</code></td>
+      <td><code>.process-engine-plugins</code></td>
+      <td>Define your process engine plugin configurations under this YAML property.</td>
+      <td>Empty <code>List</code></td>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.process-engine-plugins</code></td>
+      <td><code>.plugin-class</code></td>
+      <td>Part of a <code>process-engine-plugins</code> list item. Defines the process engine plugin class.</td>
+      <td>none</td>
+  </tr>
+  <tr>
+      <td><code>.plugin-parameters</code></td>
+      <td>
+          Part of a <code>process-engine-plugins</code> list item. Defines the process engine plugin parameters 
+          as <code>key:value</code> pairs.
+      </td>
+      <td>Empty <code>Map</code></td>
+  </tr>
+</table>
+<p>Perform the following steps in CIB seven Run to register process engine plugins:</p>
+<ol>
+<li>Find and read the process engine plugin documentation.</li>
+</ol>
+<ul>
+<li>Find the canonical name of the process engine plugin Java class that implements the <code>ProcessEnginePlugin</code> interface.</li>
+<li>Find out if the process engine plugin provides any configuration parameters. You will be able to configure your plugin using those parameters. If the plugin does not provide any properties, skip this step.</li>
+</ul>
+<ol>
+<li>Download the process engine plugin <code>.jar</code> file and place it to the <code>${RUN_HOME}/configuration/userlib/</code> directory.</li>
+<li>In your CIB seven Run configuration file, add the process engine plugin class and any configuration parameters as
+list items under the <code>process-engine-plugins</code> YAML property.</li>
+</ol>
+<p>Once complete, your YAML configuration file should look similar to the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">camunda.bpm.run.process-engine-plugins</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">plugin-class</span><span class="p">:</span><span class="w"> </span><span class="l">canonical.name.of.the.PluginClass</span><span class="w">
+</span></span></span></code></pre></div>
+<h5 id="example-process-engine-plugin-registration">Example process engine plugin registration</h5>
+<p>Let&rsquo;s say that you want to register a process engine plugin called <code>TestPlugin</code>. The following information is
+available:</p>
+<ul>
+<li>The plugin is provided in a <code>.jar</code> archive called <code>camunda-bpm-test-plugin.jar</code>.</li>
+<li>The name of the Java class that implements the <code>ProcessEnginePlugin</code> interface is <code>TestPlugin</code>. The canonical name of this class is
+<code>org.cibseven.bpm.run.test.plugins.TestPlugin</code>.</li>
+<li>The <code>TestPlugin</code> exposes the following two configuration parameters:
+<ul>
+<li><code>parameterOne</code> - a <code>String</code> value</li>
+<li><code>parameterTwo</code> - a <code>Boolean</code> value</li>
+</ul>
+</li>
+</ul>
+<p>We&rsquo;ll take the following steps:</p>
+<ol>
+<li>
+<p>Place the <code>camunda-bpm-test-first-plugin.jar</code> archive in
+the <code>${RUN_HOME}/configuration/userlib/</code> directory.</p>
+</li>
+<li>
+<p>Add the following content to your CIB seven Run YAML configuration file.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.run.process-engine-plugins</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">plugin-class</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.bpm.run.test.plugins.TestPlugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">plugin-parameters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">parameterOne</span><span class="p">:</span><span class="w"> </span><span class="l">valueOne</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">parameterTwo</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>In the example above, we use the <code>TestPlugin</code> canonical name as a YAML key. The YAML value consists of a
+collection of key-value pairs that represent the configuration parameters for the <code>TestPlugin</code> and their values.
+Some process engine plugins don&rsquo;t have configuration parameters. For these, you only need to define the <code>plugin-class</code>
+YAML property, like so:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.run.process-engine-plugins</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">plugin-class</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.bpm.run.test.plugins.TestPlugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">plugin-class</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.bpm.run.test.plugins.AnotherPlugin</span><span class="w">
+</span></span></span></code></pre></div><ol start="3">
+<li>Start CIB seven Run. The <code>TestPlugin</code> will be read from the YAML configuration and registered with the
+process engine.</li>
+</ol>
+
+<h4 id="webapp-plugin-registration">Webapp plugin registration</h4>
+<p>CIB seven provides a mechanism to extend the CIB seven Webapps with your own functionality. You can add plugins at various plugin points. For example, the processes dashboard in Cockpit.</p>
+<p>A webapp plugin is a maven jar project that provides a server-side and a client-side extension to the webapp. You can find more information about how to structure your plugins <a href="/manual/2.1-ee/webapps/cockpit/extend/plugins/#the-nature-of-a-cockpit-plugin">here</a>.</p>
+<p>To register a webapp plugin, simply drop the jar file into the <code>configuration/userlib</code> folder. See <a href="#starting-with-camunda-platform-run">the Starting with CIB seven Run section</a> of this guide to find out how to navigate the directories of CIB seven Run.</p>
+
+<h3 id="example-application-launch">Example application launch</h3>
+<p>CIB seven Run comes with a <a href="#example-application">demo application</a> that deploys resources and starts process instances.
+You can disable the start of that application so it does not create deployments and process instances. The resources of the application
+are however still accessible on the classpath of CIB seven Run. Consult the <a href="#example-application">example application section</a> for further details.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>camunda.bpm.run.example</code></td>
+      <td><code>.enabled</code></td>
+      <td>Switch to enable the example application.</td>
+      <td><code>false</code></td>
+  </tr>
+</table>
+
+<h3 id="https">HTTPS</h3>
+<p>CIB seven Run supports HTTPS over SSL. To enable it, you will need a valid SSL certificate signed by a trusted provider and stored in a key store file (either .jks or .p12), and add the following properties to your configuration file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ssl</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-store</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:keystore.p12</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-store-password</span><span class="p">:</span><span class="w"> </span><span class="l">camunda</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-store-type</span><span class="p">:</span><span class="w"> </span><span class="l">pkcs12</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-alias</span><span class="p">:</span><span class="w"> </span><span class="l">camunda</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-password</span><span class="p">:</span><span class="w"> </span><span class="l">camunda</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8443</span><span class="w">
+</span></span></span></code></pre></div><p>After starting CIB seven Run, you can access the CIB seven webapp via https://localhost:8443/webapp, the legacy Camunda webapps via https://localhost:8443/camunda/app/ and the REST API via https://localhost:8443/engine-rest/.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Important:</h3>
+  <p>The CIB seven web app requires the <code>cibseven.webapp.engineRest.url</code> property to be updated accordingly; it should be set to https://localhost:8443</p>
+</div>
+
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>server.ssl</code></td>
+      <td><code>.key-store</code></td>
+      <td>Name of the key store file that holds the SSL certificate. This file must be placed in the <code>configuration/keystore</code> folder and has to be either a .jks or a .p12 file.</td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.key-store-password</code></td>
+      <td>Password to access the key store.</td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.key-store-type</code></td>
+      <td>Type of the key store. Can either be <code>jks</code> or <code>p12</code></td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.key-alias</code></td>
+      <td>Name that identifies the SSL certificate in the key store.</td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.key-password</code></td>
+      <td>Password to access the SSL certificate in the key store.</td>
+      <td><code>-</code></td>
+  </tr>
+</table>
+
+<h3 id="logging">Logging</h3>
+<p>CIB seven provides fine-grained and customizable logging. An overview of the available logging categories can be found in the <a href="/manual/2.1-ee/user-guide/logging/#process-engine">Logging User Guide</a>.
+To configure the logging behavior in CIB seven Run, customize your configuration file with the following properties.</p>
+<p>For more information on logging configuration visit the <a href="https://docs.spring.io/spring-boot/docs/2.4.0/reference/html/spring-boot-features.html#boot-features-logging">Spring Boot Logging Guide</a>.</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
+  </tr>
+  <tr>
+      <td rowspan="15"><code>logging</code></td>
+      <td><code>.level.root</code></td>
+      <td>Set a logging level for all available logging categories. Value can be one of the following: <code>OFF</code>. <code>ERROR</code>. <code>WARN</code>. <code>INFO</code>. <code>DEBUG</code>. <code>FATAL</code>. <code>TRACE</code></td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.level.{logger-name}</code></td>
+      <td>Set a logging level for a specific logging category. Find an overview over the available categories in the <a href="/manual/2.1-ee/user-guide/logging/#process-engine">Logging User Guide</a>.
+      Value can be one of the following: <code>OFF</code>. <code>ERROR</code>. <code>WARN</code>. <code>INFO</code>. <code>DEBUG</code>. <code>FATAL</code>. <code>TRACE</code></td>
+      <td><code>-</code></td>
+  </tr>
+  <tr>
+      <td><code>.file.name</code></td>
+      <td>Specify a log file location. (e.g. <code>logs/cibseven-run-log.txt</code>)</td>
+      <td><code>-</code></td>
+  </tr>
+</table>
+
+<h3 id="cib-seven-webclient-properties">CIB seven webclient properties</h3>
+<p>Below is a brief description of the properties for CIB seven webclient, which can by used with the <a href="#choose-between-default-and-production-configuration">configuration files</a></p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+  </tr>
+    <tr>
+      <td>camunda.bpm.webapp</td>
+      <td>.enabled</td>
+      <td>Specifies whether Camunda web applications REST API is enabled. <br />Default value: true</td>
+  </tr>
+    <tr>
+      <td rowspan="4">camunda.bpm.webapp</td>
+      <td>.applicationPath</td>
+      <td>The deployment path of CIB seven web application (CIB seven webclient). <br />Default value: /webapp</td>
+  </tr>
+  <tr>
+      <td>.legacyApplicationPath</td>
+      <td>The deployment path of Camunda web applications. <br />Default value: /camunda</td>
+  </tr>
+  <tr>
+      <td>.webjarClassPath</td>
+      <td>The classpath of CIB seven web application (CIB seven webclient). <br />Default value: /META-INF/resources/webjars/webapp</td>
+  </tr>
+  <tr>
+      <td>.legacyWebjarClassPath</td>
+      <td>The classpath of Camunda web applications. <br />Default value: /META-INF/resources/webjars/camunda</td>
+  </tr>
+    <tr>
+      <td>cibseven.webclient</td>
+      <td>.enabled</td>
+      <td>Specifies whether CIB seven web application (CIB seven webclient) REST API is enabled. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td rowspan="4">cibseven.webclient</td>
+      <td>.api.common.title</td>
+      <td>API title for Swagger. <br />Example: CIB seven webclient API</td>
+  </tr>
+  <tr>
+      <td>.api.common.description</td>
+      <td>API description for Swagger</td>
+  </tr>
+  <tr>
+      <td>.api.common.license</td>
+      <td>License name</td>
+  </tr>
+  <tr>
+      <td>.api.common.contact</td>
+      <td>Contains a few sub-properties with the contact name, url and email</td>
+  </tr>
+  <tr id="tr-cibseven-webclient-authentication">
+      <td rowspan="3">cibseven.webclient</td>
+      <td>.authentication.jwtSecret</td>
+      <td>Secret used to sign JWT tokens</td>
+  </tr>
+  <tr>
+      <td>.authentication.tokenValidMinutes</td>
+      <td>Authentication token expiration in minutes</td>
+  </tr>
+  <tr>
+      <td>.authentication.tokenProlongMinutes</td>
+      <td>Authentication token extension time in minutes</td>
+  </tr> 
+  <tr>
+      <td rowspan="16">cibseven.webclient</td>
+      <td>.bpm.provider</td>
+      <td>BPM provider implementation class. <br />Example: org.cibseven.webapp.providers.SevenProvider</td>
+  </tr>
+  <tr>
+      <td>.engineRest.url</td>
+      <td>CIB seven engine REST API URL. <br />Example: http://localhost:8080</td>
+  </tr>
+    <tr>
+      <td>.engineRest.path</td>
+      <td>CIB seven engine REST path allows to customize the engine REST API path to support different Jersey application configurations. <br />Default value: /engine-rest</td>
+  </tr>
+    <tr>
+      <td>.engineRest.displayName</td>
+      <td>CIB seven engine REST name, displayed in CIB seven webclient</td>
+  </tr>
+    <tr>
+      <td>.engineRest.additionalEngineRest</td>
+      <td>Specifies optional CIB seven engines that can be accessible from the CIB seven webclient. </td>
+  </tr>    
+  <tr>
+      <td>.historyLevel</td>
+      <td>CIB seven history tracking level. <br />Possible values: audit/full/activity/none</td>
+  </tr>
+  <tr>
+      <td>.cockpit.url</td>
+      <td>Old cockpit access path. <br />Example: /camunda/app/cockpit/default</td>
+  </tr>
+  <tr>
+      <td>.datasource.fileValue.enabled</td>
+      <td>Enable/disable file value handling. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.fetchInstances</td>
+      <td>Whether to fetch process instances. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.fetchIncidents</td>
+      <td>Whether to fetch incidents. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.services.basePath</td>
+      <td>Relative path, location of the backend services starting from applicationPath. <br />Default value: services/v1</td>
+  </tr>
+  <tr id="tr-cibseven-webclient-theme">
+      <td>.theme</td>
+      <td>UI theme based on Bootstrap, currently only cib theme is supported. <br />Example: cib</td>
+  </tr>
+  <tr>
+      <td>.token.secret</td>
+      <td>Secret for external token validation</td>
+  </tr>
+  <tr>
+      <td>.token.deny.external.ip</td>
+      <td>Deny external IP token user creation. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.user.provider</td>
+      <td>User provider implementation class. <br />Example: org.cibseven.webapp.auth.SevenUserProvider</td>
+  </tr>
+  <tr>
+      <td>.users.search.wildcard</td>
+      <td>Wildcard for user search (default "*")</td>
+  </tr>
+  <tr id="tr-cibseven-webclient-ldap">
+      <td rowspan="6">cibseven.webclient.ldap</td>
+      <td>.url</td>
+      <td>LDAP server URL. <br />Example: ldap://ldap.cibseven.org </td>
+  </tr>
+  <tr>
+      <td>.folder</td>
+      <td>Base DN for LDAP searches. <br />Example: DC=cibseven,DC=org </td>
+  </tr>
+  <tr>
+      <td>.userNameAttribute</td>
+      <td>LDAP attribute for username. <br />Example: samAccountName</td>
+  </tr>
+  <tr>
+      <td>.userDisplayNameAttribute</td>
+      <td>LDAP attribute for display name. <br />Example: name</td>
+  </tr>
+  <tr>
+      <td>.modifiedDateFormat</td>
+      <td>Date format for modified timestamp. <br />Example: yyyyMMddHHmmss</td>
+  </tr>
+  <tr>
+      <td>.followReferrals</td>
+      <td>Whether to follow LDAP referrals. <br />Example: follow</td>
+  </tr>
+  <tr>
+      <td rowspan="12">cibseven.webclient.sso</td>
+      <td>.endpoints.token</td>
+      <td>OAuth2 token endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.jwks</td>
+      <td>OAuth2 jwks endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.authorization</td>
+      <td>authorization token endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.user</td>
+      <td>OAuth2 user endpoint</td>
+  </tr>
+  <tr>
+      <td>.endpoints.introspection</td>
+      <td>OAuth2 introspection endpoint</td>
+  </tr>
+  <tr>
+      <td>.clientId</td>
+      <td>OAuth2 Client id of the application</td>
+  </tr>
+  <tr>
+      <td>.clientSecret</td>
+      <td>OAuth2 Client secret of the application</td>
+  </tr>
+  <tr>
+      <td>.userIdProperty</td>
+      <td>Property in the Id-Token where the userid is taken from</td>
+  </tr>
+  <tr>
+      <td>.userNameProperty</td>
+      <td>Property in the Id-Token where the username is taken from</td>
+  </tr>
+  <tr>
+      <td>.active</td>
+      <td>Activates the redirect in the frontend to login with the sso provider
+      <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.accessTokenToEngineRest</td>
+      <td>Activates the forwarding of the access token to the engine REST. Required when starter-security is used to secure engine REST with Spring Security
+      <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.scopes</td>
+      <td> OAuth2 scopes to include in the authorization request</td>
+  </tr>
+  <tr>
+      <td rowspan="14">cibseven.webclient.rest</td>
+      <td>.enabled</td>
+      <td>Whether the custom RestTemplate is enabled. If false, a default RestTemplate will be used.  <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.keepAlive</td>
+      <td>Whether the socket connection should be kept alive between requests. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.socketTimeout</td>
+      <td>Socket read timeout in seconds (0 = infinite). Maximum time to wait for data from an established connection. <br />Default value: 3600</td>
+  </tr>
+  <tr>
+      <td>.connectTimeout</td>
+      <td>Time in seconds to establish connection (0 = infinite). Maximum time to wait while establishing a connection. <br />Default value: 30</td>
+  </tr>
+  <tr>
+      <td>.connectionRequestTimeout</td>
+      <td>Time to wait in seconds for a connection from the connection pool. <br />Default value: 180</td>
+  </tr>
+  <tr>
+      <td>.connectionResponseTimeout</td>
+      <td>Max response wait time in seconds (0 = infinite). If not set, the socketTimeout value will be used.</td>
+  </tr>
+  <tr>
+      <td>.maxConnPerRoute</td>
+      <td>Max HTTP connections per route. Limits the number of connections to a specific host. <br />Default value: 20</td>
+  </tr>
+  <tr>
+      <td>.maxConnTotal</td>
+      <td>Total max HTTP connections across all routes. Defaults to 2 * maxConnPerRoute if not specified.</td>
+  </tr>
+  <tr>
+      <td>.connectionTimeToLive</td>
+      <td>Connection time to live in milliseconds. Maximum time a connection can be reused. <br />Default value: 50000</td>
+  </tr>
+  <tr>
+      <td>.connectionPoolingEnabled</td>
+      <td>Whether to enable connection pooling. Improves performance by reusing connections. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.connectionReuseEnabled</td>
+      <td>Whether to enable connection reuse. Allows reusing connections for multiple requests. <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td>.metricsEnabled</td>
+      <td>Whether to enable Micrometer metrics for monitoring connection pool usage. <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.requestLoggingEnabled</td>
+      <td>Whether to enable request/response logging for debugging purposes. <br />Default value: false</td>
+  </tr>
+  <tr>
+      <td>.followRedirects</td>
+      <td>Whether to automatically follow HTTP redirects (status codes 3xx). <br />Default value: true</td>
+  </tr>
+  <tr>
+      <td rowspan="9">management</td>
+      <td>.endpoints.enabled-by-default</td>
+      <td>Disable all actuator endpoints by default. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.endpoints.web.exposure.include:</td>
+      <td>Expose only health and info endpoints. <br />Example: health,info</td>
+  </tr>
+  <tr>
+      <td>.endpoint.info.enabled</td>
+      <td>Enable actuator info. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.endpoint.health.enabled</td>
+      <td>Enable actuator health. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.endpoint.health.probes.enabled</td>
+      <td>Enable health probes. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.info.build.enabled</td>
+      <td>Include build info in actuator info. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.info.git.enabled</td>
+      <td>Include git info in actuator info. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>.info.git.mode:</td>
+      <td>Show full git information. <br />Possible values: full/none</td>
+  </tr>
+  <tr>
+      <td>.info.java.enabled</td>
+      <td>Include Java info in actuator info. <br />Possible values: true/false</td>
+  </tr>
+  <tr>
+      <td>spring</td>
+      <td>.config.import</td>
+      <td>List of optional config files to import if available. <br />Example:<br />- optional:classpath:cibseven-webclient.properties<br />- optional:classpath:cibseven-webclient.yaml</td>
+  </tr>
+  <tr>
+      <td rowspan="5">springdoc</td>
+      <td>.swagger-ui.path</td>
+      <td>Swagger UI path. <br />Example: /webapp/swagger-ui</td>
+  </tr>
+  <tr>
+      <td>.swagger-ui.operationsSorter</td>
+      <td>Sort operations alphabetically. <br />Possible values: alpha/none <br />Example: alpha</td>
+  </tr>
+  <tr>
+      <td>.swagger-ui.tagsSorter</td>
+      <td>Sort tags alphabetically. <br />Possible values: alpha/none <br />Example: alpha</td>
+  </tr>
+  <tr>
+      <td>.swagger-ui.doc-expansion</td>
+      <td>Swagger doc expansion setting. <br />Possible values: full/list/none <br />Example: full</td>
+  </tr>
+  <tr>
+      <td>.cibsevenWebclient.serverUrl</td>
+      <td>Server URL override for Swagger UI</td>
+  </tr>
+</table>
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites-and-audience">Prerequisites and audience</a></li>
+    <li><a href="#what-is-cib-seven-run">What is CIB seven Run?</a></li>
+    <li><a href="#starting-with-cib-seven-run">Starting with CIB seven Run</a>
+      <ul>
+        <li><a href="#start-script-arguments">Start script arguments</a></li>
+        <li><a href="#starting-cib-seven-run-using-docker">Starting CIB seven Run using Docker</a></li>
+        <li><a href="#optional-components">Optional components</a>
+          <ul>
+            <li><a href="#example-application">Example application</a></li>
+          </ul>
+        </li>
+        <li><a href="#choose-between-default-and-production-configuration">Choose between default and production configuration</a></li>
+        <li><a href="#connect-to-a-database">Connect to a Database</a></li>
+        <li><a href="#deploy-bpmn-models">Deploy BPMN Models</a></li>
+      </ul>
+    </li>
+    <li><a href="#configure-cib-seven-run">Configure CIB seven Run</a>
+      <ul>
+        <li><a href="#migration-from-camunda">Migration from Camunda</a></li>
+        <li><a href="#database">Database</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#cross-origin-resource-sharing">Cross-Origin Resource Sharing</a></li>
+        <li><a href="#rest">REST</a></li>
+        <li><a href="#deployment">Deployment</a></li>
+        <li><a href="#ldap-identity-service">LDAP Identity Service</a>
+          <ul>
+            <li><a href="#ldap-administrator-authorization">LDAP Administrator Authorization</a></li>
+          </ul>
+        </li>
+        <li><a href="#plugin-registration">Plugin registration</a>
+          <ul>
+            <li><a href="#process-engine-plugin-registration">Process engine plugin registration</a></li>
+            <li><a href="#webapp-plugin-registration">Webapp plugin registration</a></li>
+          </ul>
+        </li>
+        <li><a href="#example-application-launch">Example application launch</a></li>
+        <li><a href="#https">HTTPS</a></li>
+        <li><a href="#logging">Logging</a></li>
+        <li><a href="#cib-seven-webclient-properties">CIB seven webclient properties</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/manual/2.1-ee/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

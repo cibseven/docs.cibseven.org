@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.1</span>
+    <span class="number">2.1-ee/ce&#43;</span>
 </div>
 
 
@@ -3135,6 +3135,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3297,7 +3305,7 @@ User tasks are created by the process engine and added to a task list. The proce
 <p>In addition, other <em>service-task-like</em> elements such as send tasks, business rule tasks, and throwing message events can be implemented with the external task pattern. See the <a href="/manual/latest/reference/bpmn20/">BPMN 2.0 implementation reference</a> for details.</p>
 
 <h4 id="error-event-definitions">Error Event Definitions</h4>
-<p>External tasks allow for the definition of error events that throw a specified BPMN error. This can be done by adding a <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-elements/#erroreventdefinition">camunda:errorEventDefinition</a> extension element to the task&rsquo;s definition. Compared to the <code>bpmn:errorEventDefinition</code>, the <code>camunda:errorEventDefinition</code> elements accept an additional <code>expression</code> attribute which supports any JUEL expression. Within the expression, you have access to the <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a>
+<p>External tasks allow for the definition of error events that throw a specified BPMN error. This can be done by adding a <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-elements/#erroreventdefinition">camunda:errorEventDefinition</a> extension element to the task&rsquo;s definition. Compared to the <code>bpmn:errorEventDefinition</code>, the <code>camunda:errorEventDefinition</code> elements accept an additional <code>expression</code> attribute which supports any JUEL expression. Within the expression, you have access to the <a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a>
  object via the key <code>externalTask</code> which provides getter methods
 for <code>errorMessage</code>, <code>errorDetails</code>, <code>workerId</code>, <code>retries</code> and more.</p>
 <p>The expression is evaluated on invocations of <code>ExternalTaskService#complete</code> and

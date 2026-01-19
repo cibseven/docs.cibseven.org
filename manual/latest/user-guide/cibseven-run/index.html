@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.1</span>
+    <span class="number">2.1-ee/ce&#43;</span>
 </div>
 
 
@@ -3135,6 +3135,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3874,7 +3882,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>Specifies whether CIB seven web application (CIB seven webclient) REST API is enabled. <br />Default value: true</td>
   </tr>
   <tr>
-      <td rowspan="21">cibseven.webclient</td>
+      <td rowspan="4">cibseven.webclient</td>
       <td>.api.common.title</td>
       <td>API title for Swagger. <br />Example: CIB seven webclient API</td>
   </tr>
@@ -3890,7 +3898,8 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>.api.common.contact</td>
       <td>Contains a few sub-properties with the contact name, url and email</td>
   </tr>
-  <tr>
+  <tr id="tr-cibseven-webclient-authentication">
+      <td rowspan="3">cibseven.webclient</td>
       <td>.authentication.jwtSecret</td>
       <td>Secret used to sign JWT tokens</td>
   </tr>
@@ -3903,6 +3912,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>Authentication token extension time in minutes</td>
   </tr> 
   <tr>
+      <td rowspan="16">cibseven.webclient</td>
       <td>.bpm.provider</td>
       <td>BPM provider implementation class. <br />Example: org.cibseven.webapp.providers.SevenProvider</td>
   </tr>
@@ -3913,7 +3923,15 @@ To configure the logging behavior in CIB seven Run, customize your configuration
     <tr>
       <td>.engineRest.path</td>
       <td>CIB seven engine REST path allows to customize the engine REST API path to support different Jersey application configurations. <br />Default value: /engine-rest</td>
-  </tr> 
+  </tr>
+    <tr>
+      <td>.engineRest.displayName</td>
+      <td>CIB seven engine REST name, displayed in CIB seven webclient</td>
+  </tr>
+    <tr>
+      <td>.engineRest.additionalEngineRest</td>
+      <td>Specifies optional CIB seven engines that can be accessible from the CIB seven webclient. </td>
+  </tr>    
   <tr>
       <td>.historyLevel</td>
       <td>CIB seven history tracking level. <br />Possible values: audit/full/activity/none</td>
@@ -3938,7 +3956,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>.services.basePath</td>
       <td>Relative path, location of the backend services starting from applicationPath. <br />Default value: services/v1</td>
   </tr>
-  <tr>
+  <tr id="tr-cibseven-webclient-theme">
       <td>.theme</td>
       <td>UI theme based on Bootstrap, currently only cib theme is supported. <br />Example: cib</td>
   </tr>
@@ -3958,7 +3976,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>.users.search.wildcard</td>
       <td>Wildcard for user search (default "*")</td>
   </tr>
-  <tr>
+  <tr id="tr-cibseven-webclient-ldap">
       <td rowspan="6">cibseven.webclient.ldap</td>
       <td>.url</td>
       <td>LDAP server URL. <br />Example: ldap://ldap.cibseven.org </td>
@@ -3984,7 +4002,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
       <td>Whether to follow LDAP referrals. <br />Example: follow</td>
   </tr>
   <tr>
-      <td rowspan="11">cibseven.webclient.sso</td>
+      <td rowspan="12">cibseven.webclient.sso</td>
       <td>.endpoints.token</td>
       <td>OAuth2 token endpoint</td>
   </tr>

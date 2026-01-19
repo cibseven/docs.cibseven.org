@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.1</span>
+    <span class="number">2.1-ee/ce&#43;</span>
 </div>
 
 
@@ -3135,6 +3135,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3244,11 +3252,11 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>This section of the Camunda Quarkus extension documentation covers the configuration options for the process engine
+      <p>This section of the CIB seven Quarkus extension documentation covers the configuration options for the process engine
 within a Quarkus application.</p>
-<p>The documentation on the Camunda Quarkus Extension Configuration is intended for Quarkus application developers. It
+<p>The documentation on the CIB seven Quarkus Extension Configuration is intended for Quarkus application developers. It
 requires some knowledge on <a href="https://quarkus.io/guides/cdi-reference">Quarkus CDI support</a>, <a href="https://quarkus.io/guides/config-reference">Quarkus configuration</a>, as well as
-Camunda Process Engine Configuration properties.</p>
+CIB seven Process Engine Configuration properties.</p>
 
 <h3 id="process-engine-configuration">Process Engine Configuration</h3>
 <p>An instance of the <code>QuarkusProcessEngineConfiguration</code> class configures the process engine in a Quarkus application.
@@ -3284,7 +3292,7 @@ A <code>QuarkusProcessEngineConfiguration</code> instance provides the following
   <tr>
     <td><code>idGenerator</code></td>
     <td>
-      An instance of <a href="/javadoc/cibseven/2.1/org/cibseven/bpm/engine/impl/persistence/StrongUuidGenerator.html">StrongUuidGenerator</a>
+      An instance of <a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/engine/impl/persistence/StrongUuidGenerator.html">StrongUuidGenerator</a>
 
       is used.
     </td>
@@ -3307,21 +3315,21 @@ A <code>QuarkusProcessEngineConfiguration</code> instance provides the following
       <code>history</code>
     </td>
     <td>
-      Camunda Cockpit works best with history level 
+      CIB seven Cockpit works best with history level 
       <a href="/manual/latest/user-guide/process-engine/history/history-configuration/#choose-a-history-level">FULL</a>.
     </td>
     <td><code>full</code></td>
   </tr>
 </table>
 <p>Quarkus allows to configure a Quarkus application via a <a href="https://www.eclipse.org/community/eclipse_newsletter/2017/september/article3.php">MicroProfile Config</a> source. You can read more about
-configuring a Quarkus application in the <a href="https://quarkus.io/guides/config-reference">Quarkus configuration</a> page. The Camunda Quarkus extension
+configuring a Quarkus application in the <a href="https://quarkus.io/guides/config-reference">Quarkus configuration</a> page. The CIB seven Quarkus extension
 docs use the <code>application.properties</code> format in the examples, but you can use any supported Quarkus config source.</p>
-<p>You can set any process engine configuration properties under the <code>quarkus.camunda</code> prefix. The
+<p>You can set any process engine configuration properties under the <code>quarkus.cibseven</code> prefix. The
 <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#configuration-properties">Process Engine Configuration Properties</a> page documents all the available properties. Please
 convert any property names from <code>camelCase</code> to the <code>kebab-case</code> format, like in the following example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.cmmn-enabled</span><span class="o">=</span><span class="s">false</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.dmn-enabled</span><span class="o">=</span><span class="s">false</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.history</span><span class="o">=</span><span class="s">none</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.cmmn-enabled</span><span class="o">=</span><span class="s">false</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.dmn-enabled</span><span class="o">=</span><span class="s">false</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.history</span><span class="o">=</span><span class="s">none</span>
 </span></span></code></pre></div>
 <h4 id="programmatic-configuration">Programmatic Configuration</h4>
 <p>You can also configure the process engine programmatically, by providing a <code>QuarkusProcessEngineConfiguration</code> CDI bean.</p>
@@ -3336,23 +3344,23 @@ convert any property names from <code>camelCase</code> to the <code>kebab-case</
 properties defined in a Quarkus config source.</p>
 <p>In the above example, a <code>QuarkusProcessEngineConfiguration</code> CDI bean defines &ldquo;customEngine&rdquo; as the <code>processEngineName</code>.
 However, if you define the following in an <code>application.properties</code> file</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.process-engine-name</span><span class="o">=</span><span class="s">quarkusEngine</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.process-engine-name</span><span class="o">=</span><span class="s">quarkusEngine</span>
 </span></span></code></pre></div><p>then &ldquo;quarkusEngine&rdquo; will be used as the process engine name since Quarkus config sources have a higher ordinal than a
 <code>QuarkusProcessEngineConfiguration</code> CDI bean.</p>
 
 <h3 id="job-executor-configuration">Job Executor Configuration</h3>
 <p>As with the process engine configuration properties <a href="#process-engine-configuration">above</a>, you can set any job executor
-configuration properties under the <code>quarkus.camunda.job-executor</code> prefix. The <a href="/manual/latest/reference/deployment-descriptors/tags/job-executor/#job-acquisition-configuration-properties">Job Executor Configuration Properties</a>
+configuration properties under the <code>quarkus.cibseven.job-executor</code> prefix. The <a href="/manual/latest/reference/deployment-descriptors/tags/job-executor/#job-acquisition-configuration-properties">Job Executor Configuration Properties</a>
 page documents all the available properties. Convert any property names you intend to use from <code>camelCase</code> to the
 <code>kebab-case</code> format, like in the following example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.max-jobs-per-acquisition</span><span class="o">=</span><span class="s">5</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.lock-time-in-millis</span><span class="o">=</span><span class="s">500000</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.wait-time-in-millis</span><span class="o">=</span><span class="s">7000</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.max-wait</span><span class="o">=</span><span class="s">65000</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.max-jobs-per-acquisition</span><span class="o">=</span><span class="s">5</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.lock-time-in-millis</span><span class="o">=</span><span class="s">500000</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.wait-time-in-millis</span><span class="o">=</span><span class="s">7000</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.max-wait</span><span class="o">=</span><span class="s">65000</span>
 </span></span></code></pre></div>
 <h3 id="quarkus-extension-configuration">Quarkus Extension Configuration</h3>
 <p>In addition to the general process engine and job executor configuration properties mentioned in the previous
-sections, the Camunda Quarkus extension provides some Quarkus-specific configuration properties. They can be set
+sections, the CIB seven Quarkus extension provides some Quarkus-specific configuration properties. They can be set
 through a Quarkus config source, but not through the <code>QuarkusProcessEngineConfiguration</code> class. You can find all
 the Quarkus-specific properties in the following table:</p>
 <table class="table desc-table">
@@ -3364,7 +3372,7 @@ the Quarkus-specific properties in the following table:</p>
   </tr>
   <tr><td colspan="4"><b>Data Source</b></td></tr>
   <tr>
-    <td rowspan="1"><code>quarkus.camunda</code></td>
+    <td rowspan="1"><code>quarkus.cibseven</code></td>
     <td><code>.datasource</code></td>
     <td>
       Specifies which Quarkus datasource to use. If not defined, the primary Quarkus datasource will be used. 
@@ -3375,7 +3383,7 @@ the Quarkus-specific properties in the following table:</p>
   </tr>
   <tr><td colspan="4"><b>Job Executor</b></td></tr>
   <tr>
-    <td rowspan="2"><code>quarkus.camunda.job-executor.thread-pool</code></td>
+    <td rowspan="2"><code>quarkus.cibseven.job-executor.thread-pool</code></td>
     <td><code>.max-pool-size</code></td>
     <td>Sets the maximum number of threads that can be present in the thread pool.</td>
     <td><code>10</code></td>
@@ -3391,41 +3399,41 @@ the Quarkus-specific properties in the following table:</p>
 <p>The Engine Extension integrates with a JDBC Connection Pool and a Jakarta Transaction Manager provided
 by <a href="https://quarkus.io/guides/datasource">Quarkus</a>. The latter allows you to integrate your business logic into database
 transactions of the Engine. Read more about it under <a href="/manual/latest/user-guide/cdi-java-ee-integration/jta-transaction-integration/">JTA Transaction Integration</a>.
-A datasource is required to run the Camunda process engine.</p>
+A datasource is required to run the CIB seven process engine.</p>
 
 <h4 id="choose-from-multiple-datasources">Choose from multiple datasources</h4>
 <p>When multiple datasources are available in your application, you can choose the one the Engine Extension
-should use by its name via the <code>camunda.datasource</code> configuration property. Consider the example configuration below:</p>
+should use by its name via the <code>cibseven.datasource</code> configuration property. Consider the example configuration below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">quarkus.datasource.engine-datasource.db-kind</span><span class="o">=</span><span class="s">oracle</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.engine-datasource.username</span><span class="o">=</span><span class="s">my-username</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.engine-datasource.password</span><span class="o">=</span><span class="s">my-password</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.engine-datasource.jdbc.url</span><span class="o">=</span><span class="s">jdbc:oracle:thin:@localhost:1521:ORCL</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.datasource</span><span class="o">=</span><span class="s">engine-datasource</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.datasource</span><span class="o">=</span><span class="s">engine-datasource</span>
 </span></span></code></pre></div>
 <h3 id="example">Example</h3>
 <p>The following is an example of a Quarkus <code>application.properties</code> file that provides custom values for the process
 engine configuration, job executor and data source:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1"># process engine configuration</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.cmmn-enabled</span><span class="o">=</span><span class="s">false</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.dmn-enabled</span><span class="o">=</span><span class="s">false</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.generic-config.history</span><span class="o">=</span><span class="s">none</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.cmmn-enabled</span><span class="o">=</span><span class="s">false</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.dmn-enabled</span><span class="o">=</span><span class="s">false</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.generic-config.history</span><span class="o">=</span><span class="s">none</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># job executor configuration</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.thread-pool.max-pool-size</span><span class="o">=</span><span class="s">12</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.thread-pool.queue-size</span><span class="o">=</span><span class="s">5</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.max-jobs-per-acquisition</span><span class="o">=</span><span class="s">5</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.lock-time-in-millis</span><span class="o">=</span><span class="s">500000</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.wait-time-in-millis</span><span class="o">=</span><span class="s">7000</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.max-wait</span><span class="o">=</span><span class="s">65000</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.job-executor.generic-config.backoff-time-in-millis</span><span class="o">=</span><span class="s">5</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.thread-pool.max-pool-size</span><span class="o">=</span><span class="s">12</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.thread-pool.queue-size</span><span class="o">=</span><span class="s">5</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.max-jobs-per-acquisition</span><span class="o">=</span><span class="s">5</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.lock-time-in-millis</span><span class="o">=</span><span class="s">500000</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.wait-time-in-millis</span><span class="o">=</span><span class="s">7000</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.max-wait</span><span class="o">=</span><span class="s">65000</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.job-executor.generic-config.backoff-time-in-millis</span><span class="o">=</span><span class="s">5</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># custom data source configuration and selection</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.my-datasource.db-kind</span><span class="o">=</span><span class="s">h2</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.my-datasource.username</span><span class="o">=</span><span class="s">camunda</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.my-datasource.password</span><span class="o">=</span><span class="s">camunda</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.my-datasource.username</span><span class="o">=</span><span class="s">cibseven</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.my-datasource.password</span><span class="o">=</span><span class="s">cibseven</span>
 </span></span><span class="line"><span class="cl"><span class="na">quarkus.datasource.my-datasource.jdbc.url</span><span class="o">=</span><span class="s">jdbc:h2:mem:camunda;TRACE_LEVEL_FILE=0;DB_CLOSE_ON_EXIT=FALSE</span>
-</span></span><span class="line"><span class="cl"><span class="na">quarkus.camunda.datasource</span><span class="o">=</span><span class="s">my-datasource</span>
+</span></span><span class="line"><span class="cl"><span class="na">quarkus.cibseven.datasource</span><span class="o">=</span><span class="s">my-datasource</span>
 </span></span></code></pre></div>
     </div>
   </div>

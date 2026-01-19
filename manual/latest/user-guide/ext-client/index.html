@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.1</span>
+    <span class="number">2.1-ee/ce&#43;</span>
 </div>
 
 
@@ -3135,6 +3135,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3386,7 +3394,7 @@ Hence situations like the following can be reported:</p>
 
 <h4 id="accessing-the-internal-apache-httpclientbuilder">Accessing the internal Apache HttpClientBuilder</h4>
 <p>If there is a need to even further customize the communication of the client, you can get access to
-the Apache <code>HttpClientBuilder</code> using the <code><a href="/javadoc/cibseven/2.1/org/cibseven/bpm/client/ExternalTaskClientBuilder.html">ExternalTaskClientBuilder</a>
+the Apache <code>HttpClientBuilder</code> using the <code><a href="/javadoc/cibseven/2.1-ee/ce&#43;/org/cibseven/bpm/client/ExternalTaskClientBuilder.html">ExternalTaskClientBuilder</a>
 </code>&rsquo;s <code>customizeHttpClient</code> method.
 The method accepts a <code>Consumer</code> as parameter that gives you access to the internal Apache <code>HttpClientBuilder</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ExternalTaskClient</span><span class="p">.</span><span class="na">create</span><span class="p">()</span><span class="w">
