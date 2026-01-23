@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Configuration | docs.cibseven.org</title>
+  <title>CIB seven 2.1.3 EE - Release Notes | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/2.1-ee/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/manual/2.1-ee/css/docs.4514ad9d3348b03834bdeeb55c9ba0c48ac8456db7fba0ef125ec832d89ed339.css" integrity="sha256-RRStnTNIsDg0ve61XJugxIrIRW23&#43;6DvEl7IMtie0zk=">
-  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1-ee/webapps/configuration-options/" />
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1-ee/release-notes/release-notes-2.1.3-ee/" />
 </head>
 <body class="">
 
@@ -3248,275 +3248,187 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Configuration</h1>
+      <h1 class="page-title">CIB seven 2.1.3 EE - Release Notes</h1>
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>CIB Seven weblient is configured through two primary configuration files: UI configuration file <code>config.json</code>, which is transferred to the browser and manages its behavior, and <code>application.yaml</code> file, which serves as the core configuration for the webclient.</p>
+      
+<h2 id="release-notes">Release Notes</h2>
+<p><em>Release Date: January 22, 2026</em></p>
 
-<h2 id="webclient-ui-configuration">Webclient UI Configuration</h2>
-<p>The UI configuration is stored in the <code>config.json</code> file, which can be found in the <code>webapps\webapp\WEB-INF\classes\public</code> directory.</p>
-
-<h3 id="themes-and-logo">Themes and Logo</h3>
-<p>A theme defines the visual aspect of the webclient, such as its colors, fonts and the appearances of the UI controls.<br>
-Themes are located inside the <code>webapps\webapp\WEB-INF\classes\public\themes</code> directory. By default, CIB seven webclient uses the <code>cib</code> theme.
-You can slightly modify the appearance of the webclient by editing the user stylesheet file <code>styles.css</code> or by replacing the logo image within the specified theme directory.
-The active theme can be specified with the <a href="/manual/2.1-ee/user-guide/cibseven-run/#tr-cibseven-webclient-theme"><code>cibseven.webclient.theme</code></a> property in the <code>application.yaml</code> <a href="#webclient-core-configuration">configuration file</a>.</p>
-
-<h3 id="localization">Localization</h3>
-<p>CIB seven webclient supports localization. CIB seven maintains English, German, Russian, Spanish and Ukrainian translation files.
-The webclient automatically selects a locale based on the browser&rsquo;s language settings. You can set the <code>supportedLanguages</code> property in the configuration file <code>config.json</code> to provide a list of available locales.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="s2">&#34;supportedLanguages&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;de&#34;</span><span class="p">,</span> <span class="s2">&#34;en&#34;</span><span class="p">],</span>
-</span></span></code></pre></div><p>Each locale in the list must have a locale file with the corresponding language code.</p>
-<p>If the browser uses a language which is not available, the weblient uses English as a fallback.</p>
-
-<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
-<p>To make working with the CIB seven webclient easier, you can use keyboard shortcuts to jump to certain parts or to perform special operations.
-You can customize these shortcuts by editing the <code>shortcuts</code> section in the <code>config.json</code> file.
-By default, we support the following actions via keyboard shortcuts:</p>
-<table class="table table-striped">
-  <tr>
-    <th>Shortcut</th>
-    <th>Action</th>
-     </tr>
-  <tr>
-    <td>CTRL + ALT + 1</td>
-    <td><code>Start a process</code></td>
-  </tr>
-  <tr>
-    <td>CTRL + ALT + 2</td>
-    <td><code>Open task list</code></td>
-  </tr>
-  <tr>
-    <td>CTRL + ALT + 3</td>
-    <td><code>Open process list</code></td>
-  </tr>
-  <tr>
-    <td>CTRL + ALT + C</td>
-    <td><code>Claim task</code></td>
-  </tr>
-  <tr>
-    <td>CTRL + ALT + P</td>
-    <td><code>Open the start process modal dialog</code></td>
-  </tr>
-  <tr>
-    <td>ALT + 1</td>
-    <td><code>Focus filters</code></td>
-  </tr>
-  <tr>
-    <td>ALT + 2</td>
-    <td><code>Focus tasks</code></td>
-  </tr>
-  <tr>
-    <td>ALT + 3</td>
-    <td><code>Focus task</code></td>
-  </tr>
-</table>
-<p>All shortcuts can be modified in the <code>config.json</code> file.<br>
-Additionally, available shortcuts can be viewed in the webclient&rsquo;s Help menu.</p>
-
-<h3 id="refresh-intervals">Refresh intervals</h3>
-<p>Refresh interval can be configured for Tasklist, Processes and Dashboard views.
-The interval is specified in milliseconds and determines how often data in these views is refreshed from the database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="s2">&#34;dashboard&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;autoUpdate&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;enabled&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;interval&#34;</span><span class="o">:</span> <span class="mi">60000</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;processes&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;autoUpdate&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;enabled&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;interval&#34;</span><span class="o">:</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span></code></pre></div>
-<h2 id="webclient-core-configuration">Webclient Core Configuration</h2>
-<p>The core webclient configuration is stored in YAML format.
-For CIB seven Tomcat or WildFly distributions, the configuration is typically located in the <code>application.yaml</code> file.
-For CIB seven Run distrubution, the webclient configuration can be combined with the distrubution <a href="/manual/2.1-ee/user-guide/cibseven-run/#choose-between-default-and-production-configuration">configuration files</a>.</p>
-
-<h3 id="authentication">Authentication</h3>
-<p>Authentication means verifying a user&rsquo;s identity against the CIB seven webclient.</p>
-<p>A user authenticates on the login page by providing a username and password. If the authentication is successful, the user gets access to the webclient and can work on tasks in Tasklist or perform operations in Cockpit, for example.</p>
-<p>The authentication information consists of the following:</p>
+<h3 id="highlights">Highlights</h3>
 <ul>
-<li>Process engine name</li>
-<li>Username</li>
-<li>Group memberships</li>
-<li>Tenant memberships</li>
+<li>Major upgrade to <code>Wildfly 37.0.1.Final</code> with enhanced Jakarta support and improved security.</li>
+<li>Enhanced multi-engine support with token caching, authentication optimization, and flexible configuration.</li>
+<li>Ability to add new file variable for process instances.</li>
+<li>Comprehensive accessibility improvements with <code>eslint-plugin-vuejs-accessibility</code> integration.</li>
+<li>Resolved multiple high-severity CVE vulnerabilities in <code>log4j</code>, <code>qs</code>, <code>org.lz4</code>, and <code>netty</code>.</li>
 </ul>
-<p>The CIB seven webclient correlate the authentication information against <a href="/manual/2.1-ee/user-guide/process-engine/authorization-service/">authorizations</a> to determine
-what data the user can query for and which operations the user can perform.
-There are several options to configure <a href="/manual/2.1-ee/reference/rest/overview/authentication/">authentication</a> in CIB seven, see <a href="/manual/2.1-ee/user-guide/cibseven-run/#tr-cibseven-webclient-authentication"><code>cibseven.webclient.authentication</code></a>.</p>
 
-<h3 id="ldap">LDAP</h3>
-<p>If you connect CIB seven with the LDAP identity service, you have read-only access to the users and groups. Create new users and groups via the LDAP system, but not in the admin application. Find more information about how to configure the process engine in order to use the LDAP identity service <a href="/manual/2.1-ee/user-guide/process-engine/identity-service/#the-ldap-identity-service">here</a>.
-Options to configure CIB seven webclient with LDAP support: <a href="/manual/2.1-ee/user-guide/cibseven-run/#tr-cibseven-webclient-ldap"><code>cibseven.webclient.ldap</code></a>.</p>
-
-<h3 id="multi-engine-support">Multi-engine support</h3>
-<p>CIB seven webclient supports connections to multiple engine REST.
-The multi-engine feature allows using a single webclient instance to view and manage multiple CIB seven engines.
-This is particularly useful for developers or administrators who need to switch quickly between environments such as testing, development or production.
-Additional engines can be optionally specified via the <code>additionalEngineRest</code> sub-property:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">engineRest</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/engine-rest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Local Server</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tooltip</span><span class="p">:</span><span class="w"> </span><span class="l">Local environment</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">additionalEngineRest</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://dev.cibseven.de/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/engine-rest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Dev Server</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">tooltip</span><span class="p">:</span><span class="w"> </span><span class="l">Development environment</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;SECRET_OF_THE_ADDITINAL_ENGINE&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://qa.cibseven.de/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/engine-rest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">QA Server</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">tooltip</span><span class="p">:</span><span class="w"> </span><span class="l">QA environment</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;SECRET_OF_THE_ADDITINAL_ENGINE&gt;</span><span class="w">
-</span></span></span></code></pre></div><p>After configuring, an icon with additional engines should appear at the top menu of the CIB seven webclient.</p>
-
-<h3 id="other-core-configuration-options">Other Core Configuration Options</h3>
-<p>Complete list of the core webclient options with short descriptions can be found here: <a href="/manual/2.1-ee/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webclient options</a>.</p>
-
-    </div>
-
-    <div class="col-xs-12 menu-pages">
-      
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-    
-    
-
-  
-  
-  
-
-
-
-    
-      
-
-        
-
-        
-      
-    
-
-        
-
-        
-      
-    
-
-        
-
-        
-      
-    
-
-        
-
-        
-      
-    
-
-        
-
-        
-      
-    
-
-        
-          
-        
-    
-
-  
-
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-  
-
-  
-
-
-
-
-
-
-
+<h3 id="new-features">New Features</h3>
+
+<h4 id="multi-engine-support">Multi-Engine Support</h4>
+<ul>
+<li>Support connections to multiple engines from a single CIB seven webclient.</li>
+<li>Implemented token caching mechanism for logged-in engines to improve performance and user experience.</li>
+<li>Enhanced multi-engine REST configuration with support for custom <code>jwtSecret</code> at URL and path level.</li>
+<li>Improved multi-engine REST with customizable text, tooltips, and correct mapping.</li>
+<li>Fallback path to <code>/engine-rest</code> if not explicitly set.</li>
+<li>Implemented pseudo-authentication filter for multi-engine environments.</li>
+</ul>
+
+<h4 id="multi-engine-support-for-embedded-forms">Multi-Engine Support for Embedded Forms</h4>
+<ul>
+<li>Use middleware for embedded forms instead of direct calls to <code>engine-rest</code> from <code>bpm-sdk</code>.</li>
+<li>Construct embedded form URLs based on engine configuration.</li>
+<li>Added endpoints to retrieve rendered HTML forms.</li>
+<li>Implemented middleware proxy for form content to resolve CORS issues.</li>
+<li>Updated deployed form retrieval to return bytes and proper content type.</li>
+</ul>
+
+<h4 id="engine-configuration">Engine Configuration</h4>
+<ul>
+<li>Added <code>authGroupFilterThreshold</code> option to optimize authentication group filtering and improve SQL query performance.</li>
+<li>Refactored configuration prefixes from <code>quarkus.camunda</code> to <code>quarkus.cibseven</code>.</li>
+</ul>
+
+<h4 id="variables">Variables</h4>
+<ul>
+<li>Ability to add new file variable for process instances.</li>
+<li>Ability to change existing variables to file type.</li>
+<li>Added file download handlers and endpoint for task variable data retrieval.</li>
+</ul>
+
+<h4 id="batch-operations">Batch Operations</h4>
+<ul>
+<li>Added <code>skipSubprocesses</code> parameter for batch stop of process instances (asynchronous).</li>
+<li>Improved internationalization for batch operations.</li>
+</ul>
+
+<h4 id="human-tasks">Human Tasks</h4>
+<ul>
+<li>Added ability to toggle &rsquo;task id&rsquo; column in Human Tasks table.</li>
+</ul>
+
+<h3 id="user-experience-improvements">User Experience Improvements</h3>
+<ul>
+<li>Improved consistency and accessibility for action buttons across tables.</li>
+<li>Added deployment date display in process definition.</li>
+<li>Improved TTL (Time To Live) handling: allow setting to unlimited, enhanced UI, and improved modal layout.</li>
+<li>Improved mobile navigation menu and header for better usability on small screens.</li>
+<li>Improved assignee cell interaction with copyable button and action button.</li>
+<li>Improved sorting criteria modal dialog.</li>
+<li>Improved tab navigation in decisions section.</li>
+<li>Improved login form and secure input with button components for better accessibility.</li>
+<li>Improved profile user tab handling and data structure.</li>
+<li>Improved action buttons for forms in Tasklist on small screens.</li>
+</ul>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fixed: Modify/restart process instance functionality now works correctly.</li>
+<li>Fixed: Service task with running incidents can now be canceled.</li>
+<li>Fixed: Alignment of definition version header in <code>ProcessInstancesBatchTable</code>.</li>
+<li>Fixed: Enhanced <code>drawToolButtons</code> to combine active activity IDs from historic and runtime statistics.</li>
+<li>Fixed: Http-connector module for Wildfly distribution.</li>
+<li>Fixed: <code>IconButton.vue</code> duplication issue resolved.</li>
+<li>Fixed: Header display and layout issues for small screens.</li>
+<li>Fixed: Added null checks and error handling for zoom functionality in <code>BpmnViewer</code>.</li>
+<li>Fixed: Various embedded forms issues including URL construction, API URI handling, and error logging.</li>
+<li>Fixed: JWT secret decoding in multi-engine configuration.</li>
+<li>Fixed: Handling of empty path strings in multi-engine REST.</li>
+</ul>
+
+<h3 id="technical-updates">Technical Updates</h3>
+
+<h4 id="dependency-updates">Dependency Updates</h4>
+<ul>
+<li>Update <code>Wildfly</code> from <code>37.0.0.Final</code> to <code>37.0.1.Final</code></li>
+<li>Update <code>Spring Boot</code> from <code>3.5.7</code> to <code>3.5.9</code></li>
+<li>Update <code>log4j</code> to <code>2.25.3</code></li>
+<li>Update <code>qs</code> from <code>6.14.0</code> to <code>6.14.1</code></li>
+<li>Update <code>cibseven-components</code> to <code>2.1.3</code></li>
+<li>Update <code>jib-maven-plugin</code> to <code>3.5.1</code></li>
+<li>Update <code>tomcat</code> from <code>10.1.48</code> to <code>10.1.49</code></li>
+<li>Update <code>jackson</code> from <code>2.15.2</code> to <code>2.19.4</code></li>
+</ul>
+
+<h4 id="resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</h4>
+
+<h5 id="high-severity">High Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-66566">CVE-2025-66566</a></strong> - Fixed in <code>org.lz4</code> and <code>netty</code> modules for Wildfly.</li>
+<li><strong><a href="https://github.com/advisories/GHSA-6rw7-vpxm-498p">CVE-2025-15284</a></strong> - qs&rsquo;s arrayLimit bypass allowing DoS via memory exhaustion. Fixed in <code>qs</code> &lt; <code>6.14.1</code> via <code>@cypress/request</code> dependency. Note: This package is used only for testing and is not present in the production code of the CIB seven platform deployed at customer sites.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68161">CVE-2025-68161</a></strong> - Fixed in <code>log4j</code> by updating to <code>2.25.3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-13151">CVE-2025-13151</a></strong> - Fixed Stack-based buffer overflow in <code>libtasn1</code> by updating to <code>4.21.0-r0</code>. The vulnerable library was included transitively via the Alpine base image.</li>
+</ul>
+
+<h4 id="testing--quality">Testing &amp; Quality</h4>
+<ul>
+<li>Added and enhanced Cypress e2e tests: login/logout, add/remove variables.</li>
+<li>Reduced test output during test runs and cleaned up test source code.</li>
+<li>Added simple unit tests for authentication group filtering logic.</li>
+<li>Added tests for latest header changes.</li>
+<li>Added use cases for file variables.</li>
+</ul>
+
+<h4 id="build--configuration">Build &amp; Configuration</h4>
+<ul>
+<li>Updated Tomcat ports to dynamic allocation with port reservation during initialization.</li>
+<li>Removed old <code>wildfly26</code> distribution and related profiles.</li>
+<li>Updated QA files for Wildfly to use Jakarta.</li>
+<li>Adapted embedded-engine-rest QA profile to newer Wildfly versions.</li>
+<li>Optimized Docker image build process with updated Jib settings.</li>
+<li>Improved npm publish scripts and added additional exports.</li>
+<li>Exported <code>createProvideObject</code> method for shared functionality.</li>
+<li>Refactored configuration prefix from <code>quarkus.camunda</code> to <code>quarkus.cibseven</code>.</li>
+<li>Updated dependency names from <code>camunda-engine-cdi-jakarta</code> to <code>cibseven-engine-cdi-jakarta</code>.</li>
+<li>Updated feature name from <code>camunda-platform-engine</code> to <code>cibseven-engine</code>.</li>
+<li>Updated documentation, badges, and branding for Quarkus Extensions.</li>
+<li>Improved code readability and maintainability with modern JavaScript patterns.</li>
+</ul>
 
     </div>
   </div>
 </div>
 
 <div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#release-notes">Release Notes</a>
+      <ul>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#new-features">New Features</a>
+          <ul>
+            <li><a href="#multi-engine-support">Multi-Engine Support</a></li>
+            <li><a href="#multi-engine-support-for-embedded-forms">Multi-Engine Support for Embedded Forms</a></li>
+            <li><a href="#engine-configuration">Engine Configuration</a></li>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#batch-operations">Batch Operations</a></li>
+            <li><a href="#human-tasks">Human Tasks</a></li>
+          </ul>
+        </li>
+        <li><a href="#user-experience-improvements">User Experience Improvements</a></li>
+        <li><a href="#bug-fixes">Bug Fixes</a></li>
+        <li><a href="#technical-updates">Technical Updates</a>
+          <ul>
+            <li><a href="#dependency-updates">Dependency Updates</a></li>
+            <li><a href="#resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</a></li>
+            <li><a href="#testing--quality">Testing &amp; Quality</a></li>
+            <li><a href="#build--configuration">Build &amp; Configuration</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   <div class="docs-banner" style="display:none">
  :(
 </div>
 
 </div>
+
 
     
     <footer class="page-footer">
