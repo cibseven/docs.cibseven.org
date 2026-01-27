@@ -3846,6 +3846,31 @@ To configure the logging behavior in CIB seven Run, customize your configuration
   </tr>
 </table>
 
+<h3 id="generic-properties">Generic properties</h3>
+<p>Some properties are implemented to address specific use cases, such as database migration or tuning particular configurations.
+These properties are defined within the generic namespace: <code>camunda.bpm.generic-properties.properties</code>.
+Some of the properties are listed in the table below:</p>
+<table class="table desc-table">
+  <tr>
+      <th>Prefix</th>
+      <th>Property name</th>
+      <th>Description</th>
+  </tr>
+<tr>
+      <td rowspan="3"><code>camunda.bpm.generic-properties.properties</code></td>
+      <td><code>.useCibSevenNamespaceInScripting</code></td>
+      <td>Allows to handle org.camunda classes, used in a script, when the script is launched by a process, see <a href="#migration-from-camunda">migration from Camunda</a> <br />Default value: false </td>
+  </tr>
+  <tr>
+      <td><code>.useCibSevenNamespaceInReflection</code></td>
+      <td>Allows to convert serialized objects, stored in the database, from the camunda namespace to the cibseven namespace, see <a href="#migration-from-camunda">migration from Camunda</a> <br />Default value: false </td>
+  </tr>
+  <tr>
+      <td><code>.authGroupFilterThreshold</code></td>
+      <td>Allows to skip auxiliary SQL request to ACT_RU_AUTHORIZATION table when a user belongs to a number of groups which is less than specified by the property. It can improve performance for very large ACT_RU_AUTHORIZATION tables. <br />Default value: 0</td>
+  </tr>
+</table>
+
 <h3 id="cib-seven-webclient-properties">CIB seven webclient properties</h3>
 <p>Below is a brief description of the properties for CIB seven webclient, which can by used with the <a href="#choose-between-default-and-production-configuration">configuration files</a></p>
 <table class="table desc-table">
@@ -4219,6 +4244,7 @@ To configure the logging behavior in CIB seven Run, customize your configuration
         <li><a href="#example-application-launch">Example application launch</a></li>
         <li><a href="#https">HTTPS</a></li>
         <li><a href="#logging">Logging</a></li>
+        <li><a href="#generic-properties">Generic properties</a></li>
         <li><a href="#cib-seven-webclient-properties">CIB seven webclient properties</a></li>
       </ul>
     </li>
