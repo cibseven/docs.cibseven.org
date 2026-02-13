@@ -370,6 +370,15 @@ The full list of supported configuration parameters can be found <a href="/manua
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
+<h4 id="general-url-pattern">General URL Pattern</h4>
+<p>Starting with CIB seven 2.1.0, the filter configuration mechanism was simplified. It is no longer necessary to manually list all REST API endpoints in the FilterConfiguration class.
+Instead, we recommend using the following general URL pattern:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">urlPatterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&#34;/*&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">stream</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">pattern</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">addUrl</span><span class="p">(</span><span class="n">restApiPathPattern</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">toArray</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="p">::</span><span class="k">new</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Using the <code>/*</code> pattern ensures that the authentication filter is applied automatically to all required endpoints, including newly added ones. This reduces maintenance overhead and prevents issues caused by missing or outdated endpoint entries.</p>
+
 <h3 id="build-and-run">Build and Run</h3>
 <p>Now you can rebuild and rerun the application.
 Make sure to run
@@ -421,7 +430,11 @@ After you logged in, you can go to Tasklist and see that a filter named &ldquo;A
     <li>
       <ul>
         <li><a href="#customize-configuration">Customize Configuration</a></li>
-        <li><a href="#add-authentication-filter">Add Authentication filter</a></li>
+        <li><a href="#add-authentication-filter">Add Authentication filter</a>
+          <ul>
+            <li><a href="#general-url-pattern">General URL Pattern</a></li>
+          </ul>
+        </li>
         <li><a href="#build-and-run">Build and Run</a></li>
       </ul>
     </li>
