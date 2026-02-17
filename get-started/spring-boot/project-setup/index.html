@@ -302,8 +302,8 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;properties&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cibseven.version&gt;</span>2.0.0<span class="nt">&lt;/cibseven.version&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;spring-boot.version&gt;</span>3.4.4<span class="nt">&lt;/spring-boot.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cibseven.version&gt;</span>2.1.0<span class="nt">&lt;/cibseven.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;spring-boot.version&gt;</span>3.5.6<span class="nt">&lt;/spring-boot.version&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;maven.compiler.release&gt;</span>17<span class="nt">&lt;/maven.compiler.release&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -334,15 +334,29 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>com.h2database<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>h2<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>com.sun.xml.bind<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>jaxb-impl<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>4.0.3<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependencies&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">   <span class="nt">&lt;build&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>maven-enforcer-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>3.4.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;executions&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;execution&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;id&gt;</span>enforce-dependency-convergence<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;goals&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&lt;goal&gt;</span>enforce<span class="nt">&lt;/goal&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/goals&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&lt;rules&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DependencyConvergence/&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&lt;/rules&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&lt;fail&gt;</span>false<span class="nt">&lt;/fail&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/execution&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/executions&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/plugin&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;plugin&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
@@ -364,8 +378,7 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>3.11.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;/plugin&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/plugins&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/build&gt;</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/build&gt;</span>  
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
 </span></span></code></pre></div>
 <h3 id="add-main-class-to-our-spring-boot-application">Add Main Class to our Spring Boot Application</h3>
