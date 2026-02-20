@@ -439,6 +439,7 @@
 <li><strong>Process Name:</strong> The process you wish to investigate.</li>
 <li><strong>Process Version:</strong> The version of the process to analyze.</li>
 <li><strong>Timeframe:</strong> The time interval over which data will be considered.</li>
+<li><strong>Calendar:</strong> Select a specific time intervale to be analyzed.</li>
 </ul>
 <p>Once your selections are made, all visuals and metrics on the page will automatically adjust to reflect the chosen process, version, and timeframe.</p>
 <hr>
@@ -457,12 +458,12 @@ It can be viewed in two different modes:</p>
 </ul>
 <figure class="image">
   <span><img
-      src="/ins7ght/user-guide/img/waiting_time.png"
+      src="img/waiting_time.png"
        /></span>
 </figure>
 
 <p>You will also find a <strong>BPMN overview</strong> of the selected process.<br>
-This visualization helps you quickly understand the structure of the process and how its activities are connected.</p>
+This visualization helps you quickly understand the structure of the process and how its activities are connected. You can also fullscreen the BPMN for improved visualization.</p>
 <hr>
 
 <h3 id="instance-duration-graph-and-outlier-instances">Instance Duration Graph and Outlier Instances</h3>
@@ -470,7 +471,7 @@ This visualization helps you quickly understand the structure of the process and
 This helps you visualize the spread of execution times and easily identify instances that took significantly longer or shorter than average (<strong>outliers</strong>).</p>
 <figure class="image">
   <span><img
-      src="/ins7ght/user-guide/img/instance_duration_outlier.png"
+      src="img/instance_duration_outlier.png"
        /></span>
 </figure>
 
@@ -485,7 +486,7 @@ This helps you visualize the spread of execution times and easily identify insta
 </li>
 </ul>
 <p>This section helps you understand not only which processes are slow but <strong>why</strong> they may be slower, by correlating instance-level data with specific activities.</p>
-<p>This chart uses the Interquartile Range (IQR) rule to detect outliers. Any duration below Q1 - 1.5 x IQR or above Q3 + 1.5 x IQR is considered an outlier and shown in the outlier bar.</p>
+<p>This chart uses the Interquartile Range (IQR) rule to detect outliers. Any duration below Q1 - 1.5 x IQR or above Q3 + 1.5 x IQR is considered an outlier and shown in the outlier bar. You can also select between Logarithmic and Linear scale to populate this table</p>
 <hr>
 
 <h3 id="version-duration-graph">Version Duration Graph</h3>
@@ -498,7 +499,7 @@ This feature is especially useful to:</p>
 </ul>
 <figure class="image">
   <span><img
-      src="/ins7ght/user-guide/img/version_duration.png"
+      src="img/version_duration.png"
        /></span>
 </figure>
 
