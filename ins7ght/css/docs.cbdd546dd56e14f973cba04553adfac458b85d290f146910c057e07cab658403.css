@@ -7571,6 +7571,20 @@ code {
   color: black;
   transform: scale(1.2);
 }
+/* line 417, styles\_content.less */
+.simplepatch-summary {
+  cursor: pointer;
+  padding: 4px 0;
+  font-weight: 400;
+  border-bottom: 3px solid #ccc;
+  /* underline */
+  margin-bottom: 6px;
+  font-size: 160%;
+}
+/* line 426, styles\_content.less */
+.simplepatch-body {
+  padding: 8px 0 0 0;
+}
 /* line 1, styles\_page-toc.less */
 .page-toc {
   font-size: 14px;
