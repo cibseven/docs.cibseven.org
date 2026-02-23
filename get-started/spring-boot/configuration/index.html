@@ -303,7 +303,8 @@ The full list of supported configuration parameters can be found <a href="/manua
 </span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication. However, it is not sufficient on its own: an authentication filter must also be applied.</p>
 
 <h3 id="add-authentication-filter">Add Authentication filter</h3>
-<p>To enable JWT-based authentication, we need to register an authentication filter as a @Bean and configure it to use the Composite authentication provider. This filter will intercept requests to the specified endpoints.</p>
+<p>To enable JWT-based authentication, you need to register an authentication filter as a @Bean and configure it to use the Composite authentication provider. This filter will intercept requests to the specified endpoints.</p>
+<p>If you are using CIB version earlier than 2.1.0, configure the filter as described below. For version 2.1.0 or later, configure the filter using the <a href="#general-url-pattern">General URL Pattern</a>, as described in the next sub-section.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">org.cibseven.getstarted.loanapproval</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.cibseven.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilter</span><span class="p">;</span><span class="w">
