@@ -7572,7 +7572,7 @@ code {
   transform: scale(1.2);
 }
 /* line 417, styles\_content.less */
-.simplepatch-summary {
+.collapsible-content-summary {
   cursor: pointer;
   padding: 4px 0;
   font-weight: 400;
@@ -7582,7 +7582,7 @@ code {
   font-size: 160%;
 }
 /* line 426, styles\_content.less */
-.simplepatch-body {
+.collapsible-content-body {
   padding: 8px 0 0 0;
 }
 /* line 1, styles\_page-toc.less */

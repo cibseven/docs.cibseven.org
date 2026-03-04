@@ -21,7 +21,7 @@
 
   
 
-  <link rel="stylesheet" href="/manual/latest/css/docs.cbdd546dd56e14f973cba04553adfac458b85d290f146910c057e07cab658403.css" integrity="sha256-y91UbdVuFPlzy6BFU636xFi4XSkPFGkQwFfgfKtlhAM=">
+  <link rel="stylesheet" href="/manual/latest/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
   <link rel="canonical" href="https://docs.cibseven.org/manual/latest/introduction/architecture/" />
 </head>
 <body class="">
@@ -3390,6 +3390,60 @@ Camunda web applications used the engine as a library, CIB seven webclient uses 
 <p>CIB seven includes its own authentication service which ensures secure communication between the webclient and the engine.
 For more information about CIB seven authentication, see the following section: <a href="/manual/latest/reference/rest/overview/authentication/">Authentication</a>.</p>
 
+<h2 id="secure-communication-architecture">Secure Communication Architecture</h2>
+<p>CIB seven provides a secure communication architecture for the webclient and the engine REST API as depicted in the following diagram:
+<figure class="image">
+  <span><img
+      src="../img/secure-communication-architecture.png"
+      
+          title="Secure Communication Architecture in CIB seven 2.0.0"
+       /></span>
+</figure>
+</p>
+<ul>
+<li>
+<p>User Provider: It provides the login mechanism for the CIB seven webclient.</p>
+<ul>
+<li><code>SevenUserProvider</code>, which uses <code>/identity/verify</code> endpoint for authenticating users with the engine.</li>
+<li><code>KeycloakUserProvider</code>, for OIDC authentication with any Identity Provider that supports OIDC protocol.</li>
+<li><code>LdapUserProvider</code>, for webclient login via LDAP credentials.</li>
+<li>Custom user provider</li>
+</ul>
+</li>
+<li>
+<p>Authentication Provider: The servlet filter intercepts the request and delegates to an authentication provider,
+which extracts authentication data, validates it, and resolves the authenticated user.</p>
+<ul>
+<li><a href="/manual/latest/reference/rest/overview/authentication/#composite-authentication">Composite authentication provider</a></li>
+<li><a href="/manual/latest/reference/rest/overview/authentication/#http-basic-authentication">HTTP Basic authentication provider</a></li>
+<li><a href="http://docs.cibseven.org/javadoc/cibseven/2.0/org/cibseven/bpm/engine/rest/security/auth/impl/JwtTokenAuthenticationProvider.html">Jwt Token authentication provider</a></li>
+<li><a href="https://docs.cibseven.org/javadoc/cibseven/2.0/org/cibseven/bpm/engine/rest/security/auth/impl/PseudoAuthenticationProvider.html">Pseudo authentication provider</a></li>
+<li><a href="https://docs.cibseven.org/javadoc/cibseven/2.0/org/cibseven/bpm/engine/rest/security/auth/impl/ContainerBasedAuthenticationProvider.html">ContainerBased authentication provider</a></li>
+</ul>
+</li>
+<li>
+<p>Identity Provider Plugin: It connects the engine to an external Identity Provider in order to
+authenticate users and retrieve their identity information.</p>
+<ul>
+<li><a href="/manual/latest/user-guide/process-engine/identity-service/">LDAP identity provider</a></li>
+<li><a href="/manual/latest/user-guide/spring-boot-integration/spring-security/#oauth2-identity-provider">OAuth2 identity provider</a></li>
+<li><a href="/manual/latest/user-guide/spring-boot-integration/spring-security/#keycloak-identity-provider-plugin">Keycloak identity provider</a></li>
+</ul>
+</li>
+</ul>
+
+<h3 id="oauth2-security">OAuth2 security</h3>
+<p>CIB seven provides Spring Security OAuth2 integration with the cibseven-bpm-spring-boot-starter-security library.</p>
+<p>For further information about the Spring Security integration, see <a href="/manual/latest/user-guide/spring-boot-integration/spring-security/">Spring Security OAuth2 Integration</a>.
+<figure class="image">
+  <span><img
+      src="../img/secure-communication-architecture-spring-security.png"
+      
+          title="Secure Communication Architecture in CIB seven 2.0.0"
+       /></span>
+</figure>
+</p>
+
     </div>
   </div>
 </div>
@@ -3420,6 +3474,11 @@ For more information about CIB seven authentication, see the following section: 
     <li><a href="#web-application-architecture">Web Application Architecture</a>
       <ul>
         <li><a href="#frontend-backend-interaction">Frontend-Backend Interaction</a></li>
+      </ul>
+    </li>
+    <li><a href="#secure-communication-architecture">Secure Communication Architecture</a>
+      <ul>
+        <li><a href="#oauth2-security">OAuth2 security</a></li>
       </ul>
     </li>
   </ul>
