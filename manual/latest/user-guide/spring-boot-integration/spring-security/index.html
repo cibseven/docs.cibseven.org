@@ -3476,16 +3476,18 @@ the Webapps.</p>
 <h5 id="securing-engine-rest">Securing Engine REST</h5>
 <p>In this section we provide an example configuration using Keycloak as OIDC provider.
 Additionally, we highlight and explain a few lines for clarity:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">group-name-attribute</span><span class="p">:</span><span class="w"> </span><span class="l">keycloak-groups</span><span class="w"> </span><span class="c"># 4</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">group-name-attribute</span><span class="p">:</span><span class="w"> </span><span class="l">keycloak-groups</span><span class="w"> </span><span class="c"># 4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run.auth.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 8</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring.security</span><span class="p">:</span><span class="w"> </span><span class="c"># 5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">resourceserver</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">jwt</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># principal-claim-name: preferred_username # 7</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">jwk-set-uri</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;certsUri&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">resourceserver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">jwt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># principal-claim-name: preferred_username # 7</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">jwk-set-uri</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;certsUri&gt;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cibseven.webclient</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">
@@ -3503,7 +3505,7 @@ Additionally, we highlight and explain a few lines for clarity:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userIdProperty</span><span class="p">:</span><span class="w"> </span><span class="l">preferred_username</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userNameProperty</span><span class="p">:</span><span class="w"> </span><span class="l">name</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">accessTokenToEngineRest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication.jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w"> </span><span class="c"># 8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication.jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w"> </span><span class="c"># 9</span><span class="w">
 </span></span></span></code></pre></div><ol>
 <li>Using <code>KeycloakUserProvider</code>.</li>
 <li>SSO login enabled for CIB seven webclient.</li>
@@ -3520,6 +3522,8 @@ Additionally, we highlight and explain a few lines for clarity:</p>
 <li>CIB seven defaults the <code>principal-claim.name</code> value to <code>preferred_username</code>.</li>
 </ul>
 </li>
+<li>If we are running <a href="/manual/latest/user-guide/cibseven-run/">CIB seven Run distro</a>, we need to disable the servlet filter based authentication
+to not interfere with the Spring Security OAuth2 authentication.</li>
 <li>Last but not least: even if the engine REST is secured with OAuth2 and
 CIB seven custom JWT mechanism is not used for webclient-to-engine REST communication,
 CIB seven webclient still relies on a secret for its own frontend-webclient JWT mechanism.</li>
@@ -3529,10 +3533,11 @@ CIB seven webclient still relies on a secret for its own frontend-webclient JWT 
 
 <div class="note bg-info docs-info">
   <h3>Azure Entra ID</h3>
-  <p><p>Configuration with v2-types requires us to include additional scopes:</p>
+  <p><p>Configuration with v2-types requires specific configuration:</p>
 <ul>
-<li><code>api://&lt;clientId&gt;/user_impersonation</code> to be able to accept Microsoft Graph access tokens. <em>Permissions must be configured in Azure.</em></li>
-<li><code>offline_access</code> to be able to use refresh tokens.</li>
+<li><code>offline_access</code> as scope to be able to use refresh tokens</li>
+<li>custom scope defined in <code>Expose an API</code> (e.g. <code>api://&lt;clientId&gt;/cibseven</code>)</li>
+<li>add the permission for the custom scope in API permissions &gt; APIs my organization uses &gt; Your app registration &gt; Delegated permissions (Admin consent required)</li>
 </ul></p>
 </div>
 
