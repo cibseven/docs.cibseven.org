@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Update from 2.0 to 2.1 | docs.cibseven.org</title>
+  <title>CIB seven 2.0.4 hotfix2 EE - Release Notes | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/2.1-ee/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/manual/2.1-ee/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
-  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1-ee/update/minor/20-to-21/" />
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.1-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" />
 </head>
 <body class="">
 
@@ -3256,181 +3256,35 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Update from 2.0 to 2.1</h1>
+      <h1 class="page-title">CIB seven 2.0.4 hotfix2 EE - Release Notes</h1>
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>This document guides you through the update from CIB seven <code>2.0.x</code> to <code>2.1.0</code> and covers the following use cases:</p>
-<ol>
-<li>For administrators and developers: <a href="#database-updates">Database updates</a></li>
-<li>For administrators and developers: <a href="#full-distribution">Full distribution update</a></li>
-<li>For administrators and developers: <a href="#docker-base-image-update">Docker Base Image Update</a></li>
-<li>For administrators and developers: <a href="#jmx-prometheus-javaagent-upgrade">JMX Prometheus Javaagent Update</a></li>
-<li>For administrators and developers: <a href="#legacyjobretrybehaviorenabled-process-engine-flag">LegacyJobRetryBehaviorEnabled process engine flag</a></li>
-<li>For administrators and developers: <a href="#connect-apache-http-client-migration-from-4-to-5">Connect: Apache HTTP Client migration from 4 to 5</a></li>
-<li>For developers: <a href="#cron-expression">Cron expression</a></li>
-<li>For developers: <a href="#quarkus-3-27-extension-update">Quarkus 3.27 extension update</a></li>
-<li>For developers: <a href="#spring-boot-3-5-update">Spring Boot 3.5 update</a></li>
-<li>For administrators and developers: <a href="#authorization-configuration">Authorization configuration</a></li>
-</ol>
-<p>This guide covers mandatory migration steps and optional considerations for the initial configuration of new functionality included in CIB seven 2.1.</p>
+      
+<h2 id="release-notes">Release Notes</h2>
+<p><em>Release Date: April 24, 2026</em></p>
 
-<h2 id="database-updates">Database updates</h2>
-<p>Every CIB seven installation requires a database schema update. Check our <a href="/manual/2.1-ee/installation/database-schema/#update">database schema update guide</a>
-for further instructions.</p>
-
-<h2 id="full-distribution">Full distribution</h2>
-<p>This section is applicable if you installed the
-<a href="/manual/2.1-ee/introduction/downloading-cibseven/#full-distribution">Full Distribution</a>
-with a <strong>shared process engine</strong>.</p>
-<p>The following steps are required:</p>
-<ol>
-<li>Update the CIB seven libraries and applications inside the application server.</li>
-<li>Migrate custom process applications.</li>
-</ol>
-<p>Before starting, ensure you have downloaded the CIB seven 2.1 distribution for the application server you use. This contains the SQL scripts and libraries required for the update. This guide assumes you have unpacked the distribution to a path named <code>$DISTRIBUTION_PATH</code>.</p>
-
-<h2 id="docker-base-image-update">Docker Base Image Update</h2>
-<p>The Docker base image has been updated from Alpine Linux 3.18 to Alpine Linux 3.22.</p>
-
-<h3 id="migration-steps">Migration Steps</h3>
-<p>For standard Docker image usage, <strong>no action is required</strong> beyond pulling the 2.1.0 image.</p>
-<p>For custom Docker configurations:</p>
-<ol>
-<li><strong>Assess Custom Code</strong>: Review any Alpine-specific customizations for version 3.22 compatibility</li>
-<li><strong>Update Dependencies</strong>: Check that the additional packages you install are available in Alpine 3.22</li>
-<li><strong>Rebuild Custom Images</strong>: Update Dockerfiles that extend the CIB seven base image</li>
-<li><strong>Test Migration</strong>: Verify functionality after updating to the new base image</li>
-</ol>
-<p>For detailed information about changes across Alpine versions, refer to the following release notes:</p>
+<h3 id="highlights">Highlights</h3>
 <ul>
-<li><a href="https://alpinelinux.org/posts/Alpine-3.19.0-released.html">Alpine Linux 3.19 Release Notes</a></li>
-<li><a href="https://alpinelinux.org/posts/Alpine-3.20.0-released.html">Alpine Linux 3.20 Release Notes</a></li>
-<li><a href="https://alpinelinux.org/posts/Alpine-3.21.0-released.html">Alpine Linux 3.21 Release Notes</a></li>
-<li><a href="https://alpinelinux.org/posts/Alpine-3.22.0-released.html">Alpine Linux 3.22 Release Notes</a></li>
-</ul>
-<p>See the <a href="https://wiki.alpinelinux.org/wiki/Release_Notes_for_Alpine_3.22.0">Alpine Linux documentation</a> for comprehensive change details.</p>
-
-<h2 id="jmx-prometheus-javaagent-upgrade">JMX Prometheus Javaagent Upgrade</h2>
-<p>This minor upgrades the JMX Prometheus Javaagent used in the CIB seven docker image to version 1.0.1.
-For a complete list of changes for this upgrade, please refer to the <a href="https://github.com/prometheus/jmx_exporter/releases/tag/1.0.1">JMX Prometheus release notes</a>.</p>
-
-<h2 id="legacyjobretrybehaviorenabled-process-engine-flag">LegacyJobRetryBehaviorEnabled process engine flag</h2>
-<p>Starting with versions 2.1.0, the process engine introduces a new configuration flag: <code>legacyJobRetryBehaviorEnabled</code>.</p>
-<p>By default, when a job is created, its retry count is determined based on the camunda:failedJobRetryTimeCycle expression defined in the BPMN model.
-However, setting <code>legacyJobRetryBehaviorEnabled</code> to <code>true</code> enables the legacy behavior, where the job is initially assigned a fixed number of retries (typically 3), regardless of the retry configuration.</p>
-<p>Why enable the legacy behavior?</p>
-<ul>
-<li>Your process logic may depend on the legacy retry count behavior.</li>
-<li>The legacy behavior avoids loading the full BPMN model and evaluating expressions during job creation, which can improve performance.</li>
-</ul>
-<p>In 2.1.0+ the default value is <code>false</code> for <code>legacyJobRetryBehaviorEnabled</code> .</p>
-
-<h2 id="connect-apache-http-client-migration-from-4-to-5">Connect: Apache HTTP Client migration from 4 to 5</h2>
-<p>CIB seven 2.1 migrates the Connect HTTP and SOAP HTTP connectors from Apache HttpClient 4.x to 5.x.</p>
-
-<h3 id="changes-overview">Changes Overview</h3>
-<p>The main changes include:</p>
-<ul>
-<li><strong>Dependency Update</strong>: Apache HttpClient dependency changed from <code>org.apache.httpcomponents:httpclient:4.5.14</code> to <code>org.apache.httpcomponents.client5:httpclient5:5.4.3</code></li>
-<li><strong>Package Structure</strong>: Core classes moved from <code>org.apache.http.*</code> to <code>org.apache.hc.*</code> packages</li>
-<li><strong>API Changes</strong>: Several interface and method signatures have been updated</li>
-<li><strong>Configuration Options</strong>: Some request configuration options have been renamed or replaced</li>
+<li><strong>Incidents</strong>: Fixed issues where incident badges were not displayed on the BPMN diagram and where stack traces were not visible when using a non-full <a href="https://docs.cibseven.org/manual/latest/user-guide/process-engine/history/history-configuration/">history level</a> configuration</li>
+<li><strong>Process Instance Search</strong>: Runtime mode now displays an incidents icon along with the total number of incidents</li>
+<li><strong>Batch Operations</strong>: Fixed an issue where the instances table was not visible for a given search</li>
 </ul>
 
-<h3 id="breaking-changes">Breaking Changes</h3>
+<h3 id="user-experience-improvements-in-web-client">User Experience Improvements in Web Client</h3>
 
-<h4 id="request-configuration-options">Request Configuration Options</h4>
-<p>Several configuration options for HTTP requests have changed:</p>
-<p><strong>Removed Options:</strong></p>
+<h4 id="incidents">Incidents</h4>
 <ul>
-<li><code>decompression-enabled</code> - No longer available in HttpClient 5</li>
-<li><code>local-address</code> - Removed from the configuration API</li>
-<li><code>normalize-uri</code> - No longer configurable</li>
-<li><code>relative-redirects-allowed</code> - Merged into general redirect handling</li>
-<li><code>socket-timeout</code> - Replaced with <code>response-timeout</code></li>
-<li><code>stale-connection-check-enabled</code> - No longer needed</li>
-</ul>
-<p><strong>Updated Options:</strong></p>
-<ul>
-<li><code>connection-timeout</code>, <code>connection-request-timeout</code>, and <code>response-timeout</code> now use <code>Timeout</code> objects instead of integer milliseconds</li>
-<li><code>redirects-enabled</code> replaces <code>relative-redirects-allowed</code></li>
-</ul>
-<p><strong>New Options:</strong></p>
-<ul>
-<li><code>connection-keep-alive</code> - Controls connection keep-alive timeout</li>
-<li><code>hard-cancellation-enabled</code> - Enables hard cancellation of requests</li>
-<li><code>response-timeout</code> - Replaces <code>socket-timeout</code></li>
+<li>Improved stack trace visibility for <a href="https://docs.cibseven.org/manual/latest/webapps/cockpit/bpmn/failed-jobs/">incidents</a> originating from the selected process and its subprocesses</li>
+<li>Fixed an issue where incident badges were not shown on the BPMN diagram in both the process definition view and the process instance view</li>
+<li>Fixed an issue where subprocess incident badges were not displayed in the main process instance view</li>
 </ul>
 
-<h4 id="api-changes">API Changes</h4>
-<p>If you have custom code that extends or uses Connect HTTP internal API directly:</p>
+<h4 id="process-instance-search">Process Instance Search</h4>
 <ul>
-<li><strong>Response Interface</strong>: <code>CloseableHttpResponse</code> is now <code>ClassicHttpResponse</code></li>
-<li><strong>Request Classes</strong>: HTTP method classes moved to <code>org.apache.hc.client5.http.classic.methods.*</code></li>
-<li><strong>Status Code Access</strong>: Use <code>response.getCode()</code> instead of <code>response.getStatusLine().getStatusCode()</code></li>
-<li><strong>Header Access</strong>: Use <code>response.getHeaders()</code> instead of <code>response.getAllHeaders()</code></li>
+<li>Added an incidents icon with the total incident count in both runtime and historic <a href="https://docs.cibseven.org/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a> views</li>
+<li>Fixed an issue where the instances table was not displayed for a given <a href="https://docs.cibseven.org/manual/latest/webapps/cockpit/bpmn/batch/">batch operation</a> search</li>
 </ul>
-
-<h3 id="migration-steps-1">Migration Steps</h3>
-
-<h4 id="for-standard-usage">For Standard Usage</h4>
-<p>If you only use Connect through CIB seven standard APIs (service tasks), <strong>no changes are required</strong>.</p>
-
-<h4 id="for-custom-extensions">For Custom Extensions</h4>
-<p>If you have custom code that:</p>
-<ul>
-<li>Extends Connect HTTP connector classes</li>
-<li>Directly uses Apache HttpClient APIs with Connect</li>
-<li>Configures HTTP request options programmatically</li>
-</ul>
-<p>You need to:</p>
-<ol>
-<li><strong>Update Dependencies</strong>: Replace Apache HttpClient 4.x dependencies with 5.x versions in your project</li>
-<li><strong>Update Imports</strong>: Change package imports from <code>org.apache.http.*</code> to <code>org.apache.hc.*</code></li>
-<li><strong>Review Configuration</strong>: Update any custom request configuration code to use the new option names and types</li>
-<li><strong>Test Thoroughly</strong>: Verify that your HTTP connections work as expected with the new client</li>
-</ol>
-
-<h4 id="configuration-migration-example">Configuration Migration Example</h4>
-<p><strong>Before (HttpClient 4.x):</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">request</span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;socket-timeout&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">30000</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;connection-timeout&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">5000</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;stale-connection-check-enabled&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><p><strong>After (HttpClient 5.x):</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">request</span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;response-timeout&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">Timeout</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="n">30</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;connection-timeout&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">Timeout</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="n">5</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="c1">// stale-connection-check-enabled no longer needed</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="p">.</span><span class="na">configOption</span><span class="p">(</span><span class="s">&#34;hard-cancellation-enabled&#34;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div>
-<h3 id="additional-notes">Additional Notes</h3>
-<ul>
-<li>The migration maintains backward compatibility for all standard Connect connector usage</li>
-<li>The <code>commons-codec</code> dependency is no longer needed and has been removed</li>
-</ul>
-<p>For more details about HttpClient 5.x changes, refer to the <a href="https://hc.apache.org/httpcomponents-client-5.0.x/migration-guide/index.html">Apache HttpClient 5.x migration guide</a>.</p>
-
-<h2 id="cron-expression">Cron expression</h2>
-<p>With this minor, the cron expression support in timer events is provided through <code>cron-utils</code> library.
-In the library, the cron expression looks like: <code>0 0 * * * *</code>.
-In contrast with the previously used Quartz library (<code>0 0 * * * * *</code>), the 7th optional field for year is not supported.
-Please check your models and adjust any cron expressions accordingly.
-The library supports variaty of cron expressions like macros, weekday, and <code>n</code>-th day of week.</p>
-<p>For reference, check <code>cron-util</code> documentation <a href="https://github.com/jmrozanec/cron-utils">here</a>.</p>
-<p><strong>Important note:</strong> Users of CIB seven 2.1.0 and CIB seven 2.1.1 should update their process definitions that use timer events to conform to the new cron syntax, redeploy the updated process definitions and migrate running processes to the new versions.
-Information about process migration could be found in this section: <a href="/manual/2.1-ee/webapps/cockpit/bpmn/process-instance-migration/">Process Instance Migration</a></p>
-<p>Starting from CIB seven 2.1.2 version, a new configurable cronType parameter has been introduced to support both Quartz 2.5.0 and Spring 5.3 syntaxes. This allows to avoid complex migration process.</p>
-
-<h2 id="spring-boot-35-update">Spring Boot 3.5 update</h2>
-<p>Spring Boot Starter has been upgraded to use Spring Boot 3.5. Follow the Spring Boot guide to update accordingly, check the <a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.5-Release-Notes">Spring Boot release notes</a>.</p>
-
-<h2 id="quarkus-327-extension-update">Quarkus 3.27 extension update</h2>
-<p>The CIB seven Quarkus extension has been updated to use Quarkus 3.27. This version brings its own features and changes. For a complete list, check the <a href="https://quarkus.io/blog/quarkus-3-27-released/">Quarkus 3.27 LTS release blog post</a>.</p>
-
-<h2 id="authorization-configuration">Authorization configuration</h2>
-<p><strong>Important note:</strong> when upgrading to CIB seven versions 2.0.4, 2.0.5, 2.1.0 or 2.1.1, adjust the authorization settings in the CIB seven webclient configuration to match the engine authorization settings.
-If the authorization is enabled for the engine REST, ensure that the <code>camunda.bpmn.authorization.enabled</code> property is also added to the <a href="/manual/2.1-ee/user-guide/cibseven-run/#cib-seven-webclient-properties">webclient configuration</a> and is set to true.</p>
-<p>This duplication is necessary for the correct display of user resources in the webclient, and it might be eliminated in future versions.</p>
 
     </div>
   </div>
@@ -3440,38 +3294,17 @@ If the authorization is enabled for the engine REST, ensure that the <code>camun
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#database-updates">Database updates</a></li>
-    <li><a href="#full-distribution">Full distribution</a></li>
-    <li><a href="#docker-base-image-update">Docker Base Image Update</a>
+    <li><a href="#release-notes">Release Notes</a>
       <ul>
-        <li><a href="#migration-steps">Migration Steps</a></li>
-      </ul>
-    </li>
-    <li><a href="#jmx-prometheus-javaagent-upgrade">JMX Prometheus Javaagent Upgrade</a></li>
-    <li><a href="#legacyjobretrybehaviorenabled-process-engine-flag">LegacyJobRetryBehaviorEnabled process engine flag</a></li>
-    <li><a href="#connect-apache-http-client-migration-from-4-to-5">Connect: Apache HTTP Client migration from 4 to 5</a>
-      <ul>
-        <li><a href="#changes-overview">Changes Overview</a></li>
-        <li><a href="#breaking-changes">Breaking Changes</a>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#user-experience-improvements-in-web-client">User Experience Improvements in Web Client</a>
           <ul>
-            <li><a href="#request-configuration-options">Request Configuration Options</a></li>
-            <li><a href="#api-changes">API Changes</a></li>
+            <li><a href="#incidents">Incidents</a></li>
+            <li><a href="#process-instance-search">Process Instance Search</a></li>
           </ul>
         </li>
-        <li><a href="#migration-steps-1">Migration Steps</a>
-          <ul>
-            <li><a href="#for-standard-usage">For Standard Usage</a></li>
-            <li><a href="#for-custom-extensions">For Custom Extensions</a></li>
-            <li><a href="#configuration-migration-example">Configuration Migration Example</a></li>
-          </ul>
-        </li>
-        <li><a href="#additional-notes">Additional Notes</a></li>
       </ul>
     </li>
-    <li><a href="#cron-expression">Cron expression</a></li>
-    <li><a href="#spring-boot-35-update">Spring Boot 3.5 update</a></li>
-    <li><a href="#quarkus-327-extension-update">Quarkus 3.27 extension update</a></li>
-    <li><a href="#authorization-configuration">Authorization configuration</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

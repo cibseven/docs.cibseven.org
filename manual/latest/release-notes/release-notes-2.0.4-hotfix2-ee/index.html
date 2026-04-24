@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Spring Security OAuth2 Integration | docs.cibseven.org</title>
+  <title>CIB seven 2.0.4 hotfix2 EE - Release Notes | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/manual/latest/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/manual/latest/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
-  <link rel="canonical" href="https://docs.cibseven.org/manual/latest/user-guide/spring-boot-integration/spring-security/" />
+  <link rel="canonical" href="https://docs.cibseven.org/manual/latest/release-notes/release-notes-2.0.4-hotfix2-ee/" />
 </head>
 <body class="">
 
@@ -3256,412 +3256,36 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Spring Security OAuth2 Integration</h1>
+      <h1 class="page-title">CIB seven 2.0.4 hotfix2 EE - Release Notes</h1>
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>CIB seven provides Spring Security OAuth2 integration with the <code>cibseven-bpm-spring-boot-starter-security</code> library.
-This library contains the Spring Security and Spring Security OAuth2 dependencies along with
-configuration classes that integrate Spring Security with the CIB seven engine REST and the legacy Camunda Webapp&rsquo;s authentication.</p>
-<p>This is available both for Spring Boot and CIB seven.</p>
-<p>CIB seven&rsquo;s integration comes with multiple components and configurations. In the next sections you can find more details to each of them.</p>
+      
+<h2 id="release-notes">Release Notes</h2>
+<p><em>Release Date: April 24, 2026</em></p>
 
-<h2 id="activate-oauth2">Activate OAuth2</h2>
-
-<h3 id="spring-boot">Spring Boot</h3>
-<p>In order to enable the Spring Security OAuth2 integration in Spring Boot, add the following dependency to your project:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-security<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div>
-<h3 id="cib-seven-run">CIB seven Run</h3>
-<p>CIB seven Run already contains the required libraries, all you need to do is to activate them.
-In order to enable the Spring Security OAuth2 integration in CIB seven Run, start Run with an extra <code>--oauth2</code> argument:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">./start.sh --webapps --rest --oauth2
-</span></span></code></pre></div>
-<h2 id="oauth2-configuration">OAuth2 Configuration</h2>
-
-<h3 id="auto-configuration">Auto Configuration</h3>
-<p>The CIB seven integration provides several default auto configurations. Depending on the OAuth2 client
-registration defined in the application properties (<code>spring.security.oauth2.client.registration</code>) either the
-<code>CamundaSpringSecurityOAuth2WebappAutoConfiguration</code> or the <code>CamundaBpmSpringSecurityDisableAutoConfiguration</code> will be activated.</p>
-<p>Additionaly, if the OAuth2 resource server configuration is defined in the application properties, the <code>CamundaSpringSecurityOAuth2EngineAutoConfiguration</code> will be activated.</p>
-
-<h4 id="oauth2-enabled-configuration-for-the-engine-rest">OAuth2 Enabled Configuration for the Engine REST</h4>
-<p>This configuration activates when OAuth2 resource server registration is defined. This class configures the Spring
-Security filter chain to secure the engine REST.</p>
-<p>Spring auto configuration class: <a href="/javadoc/cibseven/2.1-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/CamundaSpringSecurityOAuth2EngineAutoConfiguration.html">CamundaSpringSecurityOAuth2EngineAutoConfiguration</a>
-</p>
-
-<div class="note bg-info docs-info">
-  <h3>Heads Up!</h3>
-  <p><p>When OAuth2 security via Spring Security is enabled on the Engine REST, <strong>the CIB seven Webapp can securely communicate with it</strong>.</p>
-<p>The CIB seven Webapp can be configured to manage OIDC login using its <code>OAuth2UserProvider</code> along with a few additional properties, making authentication seamless.</p>
-<p>However, note that the <code>OAuth2UserProvider</code> does not support rolling refresh tokens, which should be taken into consideration when configuring authentication.</p>
-<p>See <a href="#securing-engine-rest">the example to secure engine REST</a> section for more information.</p>
-</p>
-</div>
-
-
-<h4 id="oauth2-configurations-for-legacy-camunda-webapp">OAuth2 Configurations for legacy Camunda Webapp</h4>
-
-<h5 id="oauth2-enabled-configuration">OAuth2 Enabled Configuration</h5>
-<p>This configuration activates when OAuth2 client registration is defined. This class configures the Spring
-Security filter chain to secure the legacy Camunda Webapp.</p>
-<p>Spring auto configuration class: <a href="/javadoc/cibseven/2.1-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/CamundaSpringSecurityOAuth2WebappAutoConfiguration.html">CamundaSpringSecurityOAuth2WebappAutoConfiguration</a>
-</p>
-
-<h5 id="spring-security-disabled-configuration">Spring Security Disabled Configuration</h5>
-<p>This configuration activates when <strong>no</strong> OAuth2 client registration is defined. This class configures the Spring
-Security filter chain to allow all requests related to the legacy Camunda webapp.</p>
-<p>Spring auto configuration class: <a href="/javadoc/cibseven/2.1-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/CamundaBpmSpringSecurityDisableAutoConfiguration.html">CamundaBpmSpringSecurityDisableAutoConfiguration</a>
-</p>
-
-<h4 id="disable-auto-configuration">Disable Auto Configuration</h4>
-<p>If you wish to use Spring Security but without CIB seven&rsquo;s integration classes, you can do so by
-excluding the auto configuration classes:</p>
-<p>Either with the <code>@EnableAutoConfiguration</code> annotation:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@EnableAutoConfiguration</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">CamundaSpringSecurityOAuth2EngineAutoConfiguration</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">CamundaSpringSecurityOAuth2WebappAutoConfiguration</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">CamundaBpmSpringSecurityDisableAutoConfiguration</span><span class="p">.</span><span class="na">class</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">});</span><span class="w">
-</span></span></span></code></pre></div><p>Or in the application properties:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">autoconfigure</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">exclude</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">org.cibseven.bpm.spring.boot.starter.security.oauth2.CamundaSpringSecurityOAuth2EngineAutoConfiguration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">org.cibseven.bpm.spring.boot.starter.security.oauth2.CamundaSpringSecurityOAuth2WebappAutoConfiguration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">org.cibseven.bpm.spring.boot.starter.security.oauth2.CamundaBpmSpringSecurityDisableAutoConfiguration</span><span class="w">
-</span></span></span></code></pre></div><p>For more information, please refer to Spring&rsquo;s <a href="https://docs.spring.io/spring-boot/reference/using/auto-configuration.html#using.auto-configuration.disabling-specific">Disabling Specific Auto-configuration Classes</a> documentation.</p>
-
-<h3 id="oauth2-client-registration">OAuth2 Client Registration</h3>
-<p>For the client registration, please refer to the official Spring
-Security&rsquo;s <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html">OAuth2 Core Configuration</a> documentation to configure your choice of
-identity provider.</p>
-<p>Once there is an OAuth2 client registration configured and the CIB seven Spring Security OAuth2
-integration is enabled, the legacy Camunda webapps will use the configured OAuth2 provider for
-authentication.</p>
-
-<h3 id="oauth2-resource-server">OAuth2 Resource Server</h3>
-<p>For the resource server configuration, please refer to the official Spring Security
-<a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html#oauth2-resource-server">OAuth2 Resource Server Configuration</a> documentation to configure your preferred settings.</p>
-<p>Once the OAuth2 resource server is configured and the CIB seven Spring Security OAuth2
-integration is enabled, the CIB seven Engine REST will use the configured OAuth2 settings for authentication.</p>
-
-<h3 id="user-name-mapping">User Name Mapping</h3>
-<p>CIB seven&rsquo;s integration uses the <strong>name</strong> field from Spring Security&rsquo;s principal object as the User ID
-in the Webapps.</p>
-<p>Spring Security by default uses the subject (<code>sub</code>) claim as the principal name. As the User ID in CIB seven is
-an important part for authorizations, it&rsquo;s important that the right claim is used.</p>
-<p>When configuring Spring Security as an OAuth2 client, it provides a way to change the default attribute used for the username.
-This is done via the <code>spring.security.oauth2.client.provider.[providerId].user-name-attribute</code> from the
-above-mentioned <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html">OAuth2 Core Configuration</a>.</p>
-<p>On the other hand, if we configure Spring Security as an OAuth2 resource server to secure engine REST,
-we can set our custom principal name via <code>spring.security.oauth2.resourceserver.jwt.principal-claim-name</code>.
-CIB seven defaulted it to be <code>preferred_username</code>.</p>
-
-<div class="note bg-info docs-info">
-  <h3>Heads Up!</h3>
-  <p>Make sure to correctly configure which token attribute should be used as the User ID.</p>
-</div>
-
-
-<h4 id="configuring-initial-authorizations">Configuring Initial Authorizations</h4>
-<p>For creating initial authorizations in your application, you have the following options available:</p>
-<ol>
-<li>The <code>camunda.bpm.admin-user</code> property to create an administrator user with authorizations:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">admin-user</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">firstName</span><span class="p">:</span><span class="w"> </span><span class="l">Demo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">lastName</span><span class="p">:</span><span class="w"> </span><span class="l">Demo</span><span class="w">
-</span></span></span></code></pre></div></li>
-</ol>
+<h3 id="highlights">Highlights</h3>
 <ul>
-<li>See <a href="/manual/latest/user-guide/spring-boot-integration/configuration/#cib-seven-engine-properties">CIB seven Engine Properties</a> documentation for more details.</li>
+<li><strong>Incidents</strong>: Fixed issues where incident badges were not displayed on the BPMN diagram and where stack traces were not visible when using a non-full <a href="https://docs.cibseven.org/manual/latest/user-guide/process-engine/history/history-configuration/">history level</a> configuration</li>
+<li><strong>Process Instance Search</strong>: Runtime mode now displays an incidents icon along with the total number of incidents</li>
+<li><strong>Batch Operations</strong>: Fixed an issue where the instances table was not visible for a given search</li>
 </ul>
-<ol start="2">
-<li>The <a href="/manual/latest/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>
-to grant administrator authorizations for a particular OAuth2 user or group.</li>
-</ol>
 
-<h2 id="oauth2-identity-providers">OAuth2 Identity Providers</h2>
-<p>For a broader overview, see the CIB seven <a href="/manual/latest/introduction/architecture/#secure-communication-architecture">Secure communication architecture</a>.</p>
+<h3 id="user-experience-improvements-in-web-client">User Experience Improvements in Web Client</h3>
 
-<h3 id="oauth2-identity-provider">OAuth2 Identity Provider</h3>
-<p>Additionally to the OAuth2 login, CIB seven also provides support to use groups from OAuth2.
-This is achieved with a custom <a href="/manual/latest/user-guide/process-engine/identity-service/">identity service</a>, called <a href="/javadoc/cibseven/2.1-ee/org/cibseven/bpm/spring/boot/starter/security/oauth2/impl/OAuth2IdentityProvider.html">OAuth2IdentityProvider</a>
-.</p>
-<p>This is a read-only identity provider that configures user&rsquo;s groups from the <a href="https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html">Spring Security&rsquo;s granted authorities</a>.
-This identity provider also supports the default CIB seven Database Identity Service as a fallback for authentications for the REST API.</p>
-<p>The identity provider is activated by default. You can override this with the following properties:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span></code></pre></div><p>See <a href="#configuration">Configuration</a> section for more information.</p>
-
-<h4 id="granted-authorities-mapper">Granted Authorities Mapper</h4>
-<p>We also provide a mechanisms to override the Spring Security
-authorities, which are by default populated with the scope (<code>scp</code>) claim.
-Specifically, these are a default granted authorities mapper and a JWT authentication converter.</p>
-<p>These can be enabled using the <code>group-name-attribute</code> property:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">group-name-attribute</span><span class="p">:</span><span class="w"> </span><span class="l">cognito:groups</span><span class="w">
-</span></span></span></code></pre></div><p>Then, the mapper and the authentication converter are activated automatically,
-depending on whether an OAuth2 client is registered or an OAuth2 resource server is configured, respectively.</p>
-<p>These mechanisms support claims with types of collection of <code>String</code>s and <code>String</code>.
-If the claim is a <code>String</code>, it will try to split it with a delimiter which is comma by default.
-You can override the default delimiter with the <code>group-name-delimiter</code> property.</p>
-<p>See <a href="#configuration">Configuration</a> section for more information.</p>
-
-<h5 id="custom-granted-authorities-mapper">Custom Granted Authorities Mapper</h5>
-<p>Alternatively, you can also define your own <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/login/advanced.html#oauth2login-advanced-map-authorities">GrantedAuthoritiesMapper</a>
-or <a href="JwtAuthenticationConverter">JwtAuthenticationConverter</a>, if you need more customization.</p>
-<p>In Spring Boot this can be done by registering your own <code>GrantedAuthoritiesMapper</code> bean or <code>JwtAuthenticationConverter</code> bean.</p>
-<p>In CIB seven Run a JAR file needs to be built and copied into the <code>userlib</code> folder.
-This needs to contain a <a href="https://docs.spring.io/spring-boot/reference/features/developing-auto-configuration.html#features.developing-auto-configuration.locating-auto-configuration-candidates">Spring auto configuration</a> with the custom granted authorities mapper bean.</p>
-
-<h4 id="configuration">Configuration</h4>
-<p>All configuration properties of the identity provider start with the prefix <code>camunda.bpm.oauth2.identity-provider</code>.
-The following properties are available:</p>
-<table class="table table-striped">
-  <tr>
-    <th style="min-width: 150px">Property name</th>
-    <th>Description</th>
-    <th style="min-width: 100px">Default value</th>
-  </tr>
-  <tr>
-    <th>enabled</th>
-    <td>
-      Enables the OAuth2 identity provider.<br/>
-      <b>Enabled by default!</b>
-    </td>
-    <td><code>true</code></td>
-  </tr>
-  <tr>
-    <th>group-name-attribute</th>
-    <td>Enables and configures the OAuth2 Granted Authorities Mapper.</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <th>group-name-delimiter</th>
-    <td>
-      Configures the delimiter used in the OAuth2 Granted Authorities Mapper.
-      It's only used if the configured <code>group-name-attribute</code> contains <code>String</code> value.
-    </td>
-    <td><code>,</code> (comma)</td>
-  </tr>
-</table>
-
-<h4 id="limitations">Limitations</h4>
-<p>As previously mentioned, this provider is a read-only provider, so creating users, groups or memberships is not available.
-Due to the fallback to DB Identity Service this provider is still defined as writeable which means the create buttons are still visible on the Admin pages, but are non-functional.</p>
-<p>OAuth2 doesn&rsquo;t return information about other users or groups. This means users and even admins can only see their own user and groups on the Admin pages.</p>
-<p>Furthermore, it only shows groups from OAuth2 and doesn&rsquo;t show groups configured in CIB seven database.</p>
-
-<h4 id="disabling-identity-provider">Disabling Identity Provider</h4>
-<p>With the <a href="#configuration">above-mentioned property</a>, the identity provider can be deactivated.
-Without identity provider OAuth2 is only used for authentication. This means, that the user needs to
-be also configured with the matching User ID in CIB seven database.</p>
-<p>If the user is not available or doesn&rsquo;t have sufficient authorizations, they won&rsquo;t be able to access
-the Webapps.</p>
-
-<h4 id="examples">Examples</h4>
-
-<h5 id="securing-engine-rest">Securing Engine REST</h5>
-<p>In this section we provide an example configuration using Keycloak as OIDC provider.
-Additionally, we highlight and explain a few lines for clarity:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">group-name-attribute</span><span class="p">:</span><span class="w"> </span><span class="l">keycloak-groups</span><span class="w"> </span><span class="c"># 4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run.auth.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 8</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring.security</span><span class="p">:</span><span class="w"> </span><span class="c"># 5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">resourceserver</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">jwt</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># principal-claim-name: preferred_username # 7</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">jwk-set-uri</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;certsUri&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cibseven.webclient</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.webapp.auth.OAuth2UserProvider</span><span class="w"> </span><span class="c"># 1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sso</span><span class="p">:</span><span class="w"> </span><span class="c"># 2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">endpoints</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;authUri&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;tokenUri&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">jwks</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;certsUri&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;usersUri&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;clientId&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;clientSecret&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="l">openid email profile</span><span class="w"> </span><span class="c"># 6</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userIdProperty</span><span class="p">:</span><span class="w"> </span><span class="l">preferred_username</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userNameProperty</span><span class="p">:</span><span class="w"> </span><span class="l">name</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">accessTokenToEngineRest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication.jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w"> </span><span class="c"># 9</span><span class="w">
-</span></span></span></code></pre></div><ol>
-<li>Using <code>OAuth2UserProvider</code>.</li>
-<li>SSO login enabled for CIB seven webclient.</li>
-<li>CIB seven webclient enabled for OAuth2 communication with the engine REST.</li>
-<li>Identity provider groups are loaded from custom <code>keycloak-groups</code> claim.
+<h4 id="incidents">Incidents</h4>
 <ul>
-<li>This must also be configured on the provider page so that the id token includes the claim.</li>
+<li>Improved stack trace visibility for <a href="https://docs.cibseven.org/manual/latest/webapps/cockpit/bpmn/failed-jobs/">incidents</a> originating from the selected process and its subprocesses</li>
+<li>Fixed an issue where incident badges were not shown on the BPMN diagram in both the process definition view and the process instance view</li>
+<li>Fixed an issue where subprocess incident badges were not displayed in the main process instance view</li>
 </ul>
-</li>
-<li>Uses the traditional Spring Security properties to configure our resource server.</li>
-<li>Defines the <code>openid</code>, <code>profile</code> and <code>email</code> scopes.</li>
-<li>Configures the <code>preferred_username</code> as the principal claim name, which is also used as the CIB seven User ID.
+
+<h4 id="process-instance-search">Process Instance Search</h4>
 <ul>
-<li>CIB seven defaults the <code>principal-claim.name</code> value to <code>preferred_username</code>.</li>
+<li>Added an incidents icon with the total incident count in both runtime and historic <a href="https://docs.cibseven.org/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a> views</li>
+<li>Fixed an issue where the instances table was not displayed for a given <a href="https://docs.cibseven.org/manual/latest/webapps/cockpit/bpmn/batch/">batch operation</a> search</li>
 </ul>
-</li>
-<li>If we are running <a href="/manual/latest/user-guide/cibseven-run/">CIB seven Run distro</a>, we need to disable the servlet filter based authentication
-to not interfere with the Spring Security OAuth2 authentication.</li>
-<li>Last but not least: even if the engine REST is secured with OAuth2 and
-CIB seven custom JWT mechanism is not used for webclient-to-engine REST communication,
-CIB seven webclient still relies on a secret for its own frontend-webclient JWT mechanism.</li>
-</ol>
-<p>For additional information, check
-<a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webclient properties</a>.</p>
 
-<div class="note bg-info docs-info">
-  <h3>Azure Entra ID</h3>
-  <p><p>Configuration with v2-types requires specific configuration:</p>
-<ul>
-<li><code>offline_access</code> as scope to be able to use refresh tokens</li>
-<li>custom scope defined in <code>Expose an API</code> (e.g. <code>api://&lt;clientId&gt;/cibseven</code>)</li>
-<li>add the permission for the custom scope in API permissions &gt; APIs my organization uses &gt; Your app registration &gt; Delegated permissions (Admin consent required)</li>
-</ul></p>
-</div>
-
-
-<h5 id="securing-legacy-camunda-webapp">Securing legacy Camunda Webapp</h5>
-<p>In this section we provide an example configuration with OKTA as OIDC provider.
-Additionally, we also mark and explain a few lines:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nt">sso-logout</span><span class="p">:</span><span class="w"> </span><span class="c"># 1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">postLogoutRedirectUri</span><span class="p">:</span><span class="w"> </span><span class="l">https://example.org/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nt">identity-provider</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">group-name-attribute</span><span class="p">:</span><span class="w"> </span><span class="l">okta-groups</span><span class="w"> </span><span class="c"># 2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring.security</span><span class="p">:</span><span class="w"> </span><span class="c"># 3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">client</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">registration</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="nt">okta</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;clientId&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;clientSecret&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l">openid,profile,email,offline_access</span><span class="w"> </span><span class="c"># 4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">provider</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="nt">okta</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="nt">issuerUri</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;issuerUri&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="nt">user-name-attribute</span><span class="p">:</span><span class="w"> </span><span class="l">preferred_username</span><span class="w"> </span><span class="c"># 5</span><span class="w">
-</span></span></span></code></pre></div><ol>
-<li>Client initiated SSO activated, redirect uri overridden.</li>
-<li>Identity provider groups loaded from custom <code>okta-groups</code> claim.
-<ul>
-<li>This also needs to be configured on the provider page in order for the id token to contain the claim.</li>
-</ul>
-</li>
-<li>Uses the traditional Spring Security properties.
-<ul>
-<li>Alternatively, <code>okta-spring-security-oauth2</code> library and its properties could be used too.</li>
-</ul>
-</li>
-<li>Defines the <code>openid,profile,email,offline_access</code> scopes.
-<ul>
-<li>Scopes are provider dependent. <code>openid</code> is required usually.</li>
-<li>In case of OKTA, <code>profile</code> and <code>email</code> are useful to access firstname, lastname and email in CIB seven but not mandatory.</li>
-<li><code>offline_access</code> activates the refresh_token grant, not mandatory.</li>
-</ul>
-</li>
-<li>Configures the <code>preferred_username</code> as the username attribute, which is also used as the CIB seven User ID.</li>
-</ol>
-
-<h3 id="keycloak-identity-provider-plugin">Keycloak Identity Provider Plugin</h3>
-<p>The <a href="https://github.com/cibseven-community-hub/cibseven-keycloak/blob/main/README.md">Community&rsquo;s Keycloak Identity Provider Plugin</a> provides fully integrated solution for using Keycloak as an Identity Provider in CIB seven.</p>
-<p>The plugin also contains a <a href="https://github.com/cibseven-community-hub/cibseven-keycloak/blob/main/examples/sso-kubernetes/README.md">showcase example</a> for using Keycloak as an OIDC provider plus securing the engine REST with Spring Security OAuth2.</p>
-
-<div class="note bg-info docs-info">
-  <h3>Heads Up!</h3>
-  <p>Notice that when using <code>cibseven-bpm-spring-boot-starter-security</code> as dependency, and registering
-a <a href="#oauth2-client-registration">client</a> or a <a href="#oauth2-resource-server">resource server</a>,
-the <code>OAuth2IdentityProvider</code> is activated by default.
-Therefore, we need to <a href="oauth2-identity-provider">disable it explicitly</a>.</p>
-</div>
-
-
-<h2 id="logout-for-legacy-camunda-webapp">Logout for legacy Camunda Webapp</h2>
-<p>We provide support for local and client initiated SSO logout as well.
-In order to support both logouts, the CIB seven integration also contains a Frontend Plugin that overrides the Webapps default logout behaviour.
-As a consequence, when the Webapp user clicks on the logout, it invokes Spring&rsquo;s logout endpoint (<code>/logout</code>) instead of legacy Camunda&rsquo;s.</p>
-
-<h3 id="client-initiated-sso-logout">Client Initiated SSO Logout</h3>
-<p>We support client initiated OIDC SSO logout.
-Please refer Spring&rsquo;s <a href="https://docs.spring.io/spring-security/reference/reactive/oauth2/login/logout.html#oauth2login-advanced-oidc-logout">OpenID Connect 1.0 Client-Initiated Logout</a> section for more information.</p>
-<p>In order to configure this feature, use the following properties:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.oauth2</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">sso-logout</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">postLogoutRedirectUri</span><span class="p">:</span><span class="w"> </span><span class="l">https://example.org/</span><span class="w">
-</span></span></span></code></pre></div>
-<h3 id="configuration-1">Configuration</h3>
-<p>All configuration properties of the identity provider start with the prefix <code>camunda.bpm.oauth2.sso-logout</code>.
-The following properties are available:</p>
-<table class="table table-striped">
-  <tr>
-    <th style="min-width: 150px">Property name</th>
-    <th>Description</th>
-    <th style="min-width: 100px">Default value</th>
-  </tr>
-  <tr>
-    <th>enabled</th>
-    <td>Activates the client initiated OIDC logout feature.</td>
-    <td><code>false</code></td>
-  </tr>
-  <tr>
-    <th>post-logout-redirect-uri</th>
-    <td>Configures the URI the user is redirected after SSO logout from the provider.</td>
-    <td><code>{baseUrl}</code></td>
-  </tr>
-</table>
-
-<h3 id="limitations-1">Limitations</h3>
-<p>Currently, it&rsquo;s not possible to change the default Spring logout endpoint, which is <code>/logout</code>.</p>
-
-<h2 id="security-recommendations">Security Recommendations</h2>
-<p>CIB seven&rsquo;s integration heavily relies on Spring Security&rsquo;s OAuth2 support.</p>
-<p>If you decide to use OAuth2 for login in CIB seven, we highly recommend to consult and implement the current industry recommended security standards.
-Additionally, also follow the security recommendations specified by your identity provider.</p>
-
-<h3 id="token-lifetime">Token Lifetime</h3>
-<p>As OAuth2 works with the exchange of tokens and tokens are valid until the specified expiration (<code>exp</code>),
-it is inevitable that in a few cases tokens might outlive the main SSO session.
-Meaning, the user might be already logged out but still have valid tokens on other pages.</p>
-<p>In order to minimize the risk of this, we recommend the use of short-lived access tokens along with
-refresh tokens.
-Refresh tokens can be revoked, and issuing new access tokens require interaction with the provider,
-which means the user session can be revalidated more frequently.</p>
-
-<h2 id="logging">Logging</h2>
-<p>You can switch the level of the following logger to track bean registrations, user authentication or logout, and token authorizations.
-Logging can be enabled for the package via the following property:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">logging</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.cibseven.bpm.spring.boot.starter.security.oauth2</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
-</span></span></span></code></pre></div><p>To inspect granted authorities, you can add this log level:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">logging</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
-</span></span></span></code></pre></div>
     </div>
   </div>
 </div>
@@ -3670,57 +3294,17 @@ Logging can be enabled for the package via the following property:</p>
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#activate-oauth2">Activate OAuth2</a>
+    <li><a href="#release-notes">Release Notes</a>
       <ul>
-        <li><a href="#spring-boot">Spring Boot</a></li>
-        <li><a href="#cib-seven-run">CIB seven Run</a></li>
-      </ul>
-    </li>
-    <li><a href="#oauth2-configuration">OAuth2 Configuration</a>
-      <ul>
-        <li><a href="#auto-configuration">Auto Configuration</a>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#user-experience-improvements-in-web-client">User Experience Improvements in Web Client</a>
           <ul>
-            <li><a href="#oauth2-enabled-configuration-for-the-engine-rest">OAuth2 Enabled Configuration for the Engine REST</a></li>
-            <li><a href="#oauth2-configurations-for-legacy-camunda-webapp">OAuth2 Configurations for legacy Camunda Webapp</a></li>
-            <li><a href="#disable-auto-configuration">Disable Auto Configuration</a></li>
-          </ul>
-        </li>
-        <li><a href="#oauth2-client-registration">OAuth2 Client Registration</a></li>
-        <li><a href="#oauth2-resource-server">OAuth2 Resource Server</a></li>
-        <li><a href="#user-name-mapping">User Name Mapping</a>
-          <ul>
-            <li><a href="#configuring-initial-authorizations">Configuring Initial Authorizations</a></li>
+            <li><a href="#incidents">Incidents</a></li>
+            <li><a href="#process-instance-search">Process Instance Search</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#oauth2-identity-providers">OAuth2 Identity Providers</a>
-      <ul>
-        <li><a href="#oauth2-identity-provider">OAuth2 Identity Provider</a>
-          <ul>
-            <li><a href="#granted-authorities-mapper">Granted Authorities Mapper</a></li>
-            <li><a href="#configuration">Configuration</a></li>
-            <li><a href="#limitations">Limitations</a></li>
-            <li><a href="#disabling-identity-provider">Disabling Identity Provider</a></li>
-            <li><a href="#examples">Examples</a></li>
-          </ul>
-        </li>
-        <li><a href="#keycloak-identity-provider-plugin">Keycloak Identity Provider Plugin</a></li>
-      </ul>
-    </li>
-    <li><a href="#logout-for-legacy-camunda-webapp">Logout for legacy Camunda Webapp</a>
-      <ul>
-        <li><a href="#client-initiated-sso-logout">Client Initiated SSO Logout</a></li>
-        <li><a href="#configuration-1">Configuration</a></li>
-        <li><a href="#limitations-1">Limitations</a></li>
-      </ul>
-    </li>
-    <li><a href="#security-recommendations">Security Recommendations</a>
-      <ul>
-        <li><a href="#token-lifetime">Token Lifetime</a></li>
-      </ul>
-    </li>
-    <li><a href="#logging">Logging</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

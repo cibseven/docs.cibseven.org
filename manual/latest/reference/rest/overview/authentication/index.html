@@ -3285,12 +3285,14 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;filter-name&gt;</span>cibseven-composite-auth<span class="nt">&lt;/filter-name&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/filter-mapping&gt;</span>
-</span></span></code></pre></div><p>JWT-based authentication requires a shared secret to validate the incoming tokens, so you must create a file named <code>cibseven-webclient.properties</code> on the classpath. This configuration file should define the following property with a 155-character alphanumeric secret value:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
 </span></span></code></pre></div>
 <div class="note bg-info docs-info">
-  <h3></h3>
-  <p>An alternative method for setting the JWT secret is to use the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
+  <h3>Heads up!</h3>
+  <p><p>JWT-based authentication requires a shared secret to validate the incoming tokens, so you must create a file named <code>cibseven-webclient.properties</code> on the classpath. This configuration file should define the following property with a 155-character alphanumeric secret value:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
+</span></span></code></pre></div><p>An alternative method for setting the JWT secret is to use the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
+<p>The JWT secret can also be overridden using a JVM system property. System properties take the highest precedence and override both the environment variable and the value defined in the cibseven-webclient.properties file.</p>
+</p>
 </div>
 
 <p>In the pre-built distributions, the engine authentication is switched off by default. You may have a look at the distribution&rsquo;s <code>web.xml</code> file, comment out the <code>cibseven-pseudo-auth</code> filter and remove the comment markers from the above mentioned filter declaration to activate JWT-based authentication.</p>

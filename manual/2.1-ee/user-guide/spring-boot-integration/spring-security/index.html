@@ -3297,8 +3297,8 @@ Security filter chain to secure the engine REST.</p>
 <div class="note bg-info docs-info">
   <h3>Heads Up!</h3>
   <p><p>When OAuth2 security via Spring Security is enabled on the Engine REST, <strong>the CIB seven Webapp can securely communicate with it</strong>.</p>
-<p>The CIB seven Webapp can be configured to manage OIDC login using its <code>KeycloakUserProvider</code> along with a few additional properties, making authentication seamless.</p>
-<p>However, note that the <code>KeycloakUserProvider</code> does not support rolling refresh tokens, which should be taken into consideration when configuring authentication.</p>
+<p>The CIB seven Webapp can be configured to manage OIDC login using its <code>OAuth2UserProvider</code> along with a few additional properties, making authentication seamless.</p>
+<p>However, note that the <code>OAuth2UserProvider</code> does not support rolling refresh tokens, which should be taken into consideration when configuring authentication.</p>
 <p>See <a href="#securing-engine-rest">the example to secure engine REST</a> section for more information.</p>
 </p>
 </div>
@@ -3491,7 +3491,7 @@ Additionally, we highlight and explain a few lines for clarity:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cibseven.webclient</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.webapp.auth.KeycloakUserProvider</span><span class="w"> </span><span class="c"># 1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.webapp.auth.OAuth2UserProvider</span><span class="w"> </span><span class="c"># 1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sso</span><span class="p">:</span><span class="w"> </span><span class="c"># 2</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">endpoints</span><span class="p">:</span><span class="w">
@@ -3507,7 +3507,7 @@ Additionally, we highlight and explain a few lines for clarity:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">accessTokenToEngineRest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication.jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w"> </span><span class="c"># 9</span><span class="w">
 </span></span></span></code></pre></div><ol>
-<li>Using <code>KeycloakUserProvider</code>.</li>
+<li>Using <code>OAuth2UserProvider</code>.</li>
 <li>SSO login enabled for CIB seven webclient.</li>
 <li>CIB seven webclient enabled for OAuth2 communication with the engine REST.</li>
 <li>Identity provider groups are loaded from custom <code>keycloak-groups</code> claim.
