@@ -3384,6 +3384,18 @@ Additionally, as explained in the referred section, a <code>cibseven-webclient.p
 </span></span><span class="line"><span class="cl">      <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/subsystem&gt;</span>
 </span></span></code></pre></div>
+<h3 id="cib-seven-webapp-fine-tuning">CIB seven Webapp fine-tuning</h3>
+<p><a href="/manual/2.1-ee/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webapp properties</a> can be configured by editing the <code>application.yaml</code> file.
+In a packaged WAR deployment, this file is located under <code>WEB-INF/classes</code>.</p>
+<p>However, WildFly allows overriding properties defined in the <code>application.yaml</code> file by using system properties.
+These are JVM system properties passed to the WildFly server via startup arguments or configured in the server configuration.</p>
+<p>This mechanism enables adjusting CIB seven webapp properties without modifying the <code>application.yaml</code> file directly,
+as shown in the example below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;system-properties&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cibseven.webclient.sso.active&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/system-properties&gt;</span>
+</span></span></code></pre></div>
 <h3 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h3>
 <p>The deployment descriptor of the Web applications needs to be adjusted to configure the <strong>Session Cookie</strong>.</p>
 <p>You can find it under <code>WEB-INF/web.xml</code>. Please watch out for the following section:</p>
@@ -3456,6 +3468,7 @@ to be adjusted. You can find it under <code>WEB-INF/web.xml</code>.</p>
         <li><a href="#hal-resource-caching">HAL Resource Caching</a></li>
         <li><a href="#add-custom-engine-plugins">Add Custom Engine Plugins</a></li>
         <li><a href="#composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</a></li>
+        <li><a href="#cib-seven-webapp-fine-tuning">CIB seven Webapp fine-tuning</a></li>
         <li><a href="#session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</a></li>
         <li><a href="#security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</a></li>
       </ul>
