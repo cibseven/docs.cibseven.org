@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -515,7 +531,7 @@
       <tr>
           <td><code>spring.datasource.url</code></td>
           <td>JDBC connection URL to the database</td>
-          <td><code>jdbc:postgresql://localhost:5432/cibseven-optimize</code></td>
+          <td><code>jdbc:postgresql://localhost:5432/cibseven-ins7ght</code></td>
       </tr>
       <tr>
           <td><code>spring.datasource.username</code></td>
@@ -588,6 +604,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeProcessInstances</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeIncidents</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">batchIntervalInHours</span><span class="p">:</span><span class="w"> </span><span class="m">24</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">minimumDelay</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">forceMerge</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backupInterval</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;12:20&#34;</span><span class="w">
 </span></span></span></code></pre></div><p><strong>Polling Properties:</strong></p>
 <table>
   <thead>
@@ -633,6 +652,21 @@
           <td>Interval for batch processing operations in hours</td>
           <td><code>24</code></td>
       </tr>
+      <tr>
+          <td><code>polling.minimumDelay</code></td>
+          <td>Minimum delay between polling cycles in seconds (now - minimumDelay). Ensures a slight delay for the engine to record the information before we poll</td>
+          <td><code>5</code></td>
+      </tr>
+      <tr>
+          <td><code>polling.forceMerge</code></td>
+          <td>Will always merge polling data</td>
+          <td><code>false</code></td>
+      </tr>
+      <tr>
+          <td><code>polling.backupInterval</code></td>
+          <td>Backup time in 24-hour format (HH:MM) for daily data extraction</td>
+          <td><code>&quot;12:20&quot;</code></td>
+      </tr>
   </tbody>
 </table>
 <p><strong>Performance Tuning:</strong></p>
@@ -640,6 +674,7 @@
 <li>Lower <code>time</code> values provide more real-time data but increase server load</li>
 <li>Increase <code>maxPageSize*</code> values for systems with high process volumes</li>
 <li>Adjust <code>batchIntervalInHours</code> based on data volume and processing needs</li>
+<li><code>minimumDelay</code> adds a small delay to the polls when extracting newly historic data.</li>
 </ul>
 <hr>
 
@@ -656,7 +691,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
 </span></span></span></code></pre></div>
 <h5 id="option-2-webclient-authentication">Option 2: WebClient Authentication</h5>
-<p>Authentication via CIB Seven WebClient:</p>
+<p>Authentication via CIB seven WebClient:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">polling</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">auth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">webclient</span><span class="w">
@@ -688,28 +723,18 @@
   <tbody>
       <tr>
           <td><code>polling.auth.type</code></td>
-          <td>Authentication method to use for CIB seven connection</td>
+          <td>Authentication method for CIB seven connection</td>
           <td><code>basic</code>, <code>webclient</code>, or <code>sso</code></td>
       </tr>
       <tr>
-          <td><strong>Basic Authentication</strong></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
           <td><code>polling.auth.basic.username</code></td>
-          <td>Username for direct Camunda engine authentication</td>
+          <td>Username for direct engine authentication</td>
           <td><code>demo</code></td>
       </tr>
       <tr>
           <td><code>polling.auth.basic.password</code></td>
-          <td>Password for direct Camunda engine authentication</td>
+          <td>Password for direct engine authentication</td>
           <td><code>demo</code> or <code>${ENGINE_PASSWORD}</code></td>
-      </tr>
-      <tr>
-          <td><strong>WebClient Authentication</strong></td>
-          <td></td>
-          <td></td>
       </tr>
       <tr>
           <td><code>polling.auth.webclient.url</code></td>
@@ -761,14 +786,79 @@
 <p><strong>Choosing an Authentication Method:</strong></p>
 <ul>
 <li><strong>Basic</strong>: Simplest option, direct access to Camunda engine</li>
-<li><strong>WebClient</strong>: When using CIB Seven WebClient for centralized authentication</li>
+<li><strong>WebClient</strong>: When using CIB seven WebClient for centralized authentication</li>
 <li><strong>SSO</strong>: Enterprise environments with OAuth2/OpenID Connect identity providers</li>
 </ul>
 <hr>
 
+<h4 id="required-cib-seven-authorizations-for-polling">Required CIB seven Authorizations for Polling</h4>
+<p>CIB ins7ght only reads from the engine. The user configured under <code>polling.auth.*</code> needs specific permissions to access CIB seven data. This applies when <code>authorization.enabled=true</code> in the engine.</p>
+<p><strong>Required Permissions:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Endpoint</th>
+          <th>Resource</th>
+          <th>Permission</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>GET /engine-rest/deployment</code></td>
+          <td>Deployment</td>
+          <td><code>READ</code></td>
+      </tr>
+      <tr>
+          <td><code>GET /engine-rest/process-definition</code></td>
+          <td>Process definition</td>
+          <td><code>READ</code></td>
+      </tr>
+      <tr>
+          <td><code>GET /engine-rest/process-definition/{id}/xml</code></td>
+          <td>Process definition</td>
+          <td><code>READ</code></td>
+      </tr>
+      <tr>
+          <td><code>GET /engine-rest/history/process-instance</code></td>
+          <td>Process definition</td>
+          <td><code>READ_HISTORY</code></td>
+      </tr>
+      <tr>
+          <td><code>GET /engine-rest/history/activity-instance</code></td>
+          <td>Process definition</td>
+          <td><code>READ_HISTORY</code></td>
+      </tr>
+      <tr>
+          <td><code>POST /engine-rest/history/activity-instance</code> (query)</td>
+          <td>Process definition</td>
+          <td><code>READ_HISTORY</code></td>
+      </tr>
+      <tr>
+          <td><code>GET /engine-rest/history/incident</code></td>
+          <td>Process definition</td>
+          <td><code>READ_HISTORY</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Grant Summary:</strong></p>
+<ul>
+<li><code>READ</code> on <strong>Deployment</strong> (resource type <code>9</code>), <code>resourceId = *</code></li>
+<li><code>READ</code> on <strong>Process definition</strong> (resource type <code>6</code>), <code>resourceId = *</code></li>
+<li><code>READ_HISTORY</code> on <strong>Process definition</strong> (resource type <code>6</code>), <code>resourceId = *</code></li>
+</ul>
+<p>You can scope grants per process-definition key instead of <code>*</code> to surface only specific processes.</p>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li>On multi-tenant engines, grants must match the tenant or history queries return empty data</li>
+<li>Missing <code>READ_HISTORY</code> does not return <code>403</code> — history queries silently omit unauthorized rows</li>
+<li>WebClient and SSO modes first authenticate with CIB seven; grants must exist for the resolved user identity</li>
+<li>CIB ins7ght never creates, updates, or deletes engine data</li>
+</ul>
+<hr>
+
 <h4 id="webclient-cockpit-url">WebClient Cockpit URL</h4>
-<p>Configure the URL to the CIB Seven webclient cockpit (used by the frontend):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">webclientCockpitUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/webapp/#/seven/auth/processes/dashboard</span><span class="w">
+<p>Configure the URL to the CIB seven webclient cockpit (used by the frontend):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">webclientCockpitUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/webapp/#</span><span class="w">
 </span></span></span></code></pre></div><p><strong>Property:</strong></p>
 <table>
   <thead>
@@ -781,12 +871,11 @@
   <tbody>
       <tr>
           <td><code>webclientCockpitUrl</code></td>
-          <td>URL to CIB Seven webclient dashboard, used by frontend for navigation</td>
-          <td><code>http://localhost:8080/webapp/#/seven/auth/processes/dashboard</code></td>
+          <td>URL to CIB seven webclient dashboard, used by frontend for navigation</td>
+          <td><code>http://localhost:8080/webapp/#</code></td>
       </tr>
   </tbody>
 </table>
-<hr>
 <hr>
 
 <h3 id="complete-configuration-example">Complete Configuration Example</h3>
@@ -820,7 +909,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">order_inserts</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">order_updates</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">webclientCockpitUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/webapp/#/seven/auth/processes/dashboard</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">webclientCockpitUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/webapp/#</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">polling</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
@@ -830,6 +919,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeProcessInstances</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeIncidents</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">batchIntervalInHours</span><span class="p">:</span><span class="w"> </span><span class="m">24</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">minimumDelay</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">forceMerge</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backupInterval</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;12:20&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">auth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">basic</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">basic</span><span class="p">:</span><span class="w">
@@ -845,6 +937,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">useWebclient</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">webclientUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/cib-seven-webclient/rest/login</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ins7ght</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">authentication</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span></span></span></code></pre></div>
 <h4 id="production-configuration-cib-ins7ghtyaml">Production Configuration (cib-ins7ght.yaml)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
@@ -889,7 +985,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Database credentials</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">DB_PASSWORD</span><span class="o">=</span>secure_db_password
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># CIB Seven engine authentication</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># CIB seven engine authentication</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ENGINE_USERNAME</span><span class="o">=</span>your_username
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ENGINE_PASSWORD</span><span class="o">=</span>your_password
 </span></span><span class="line"><span class="cl">
@@ -944,9 +1040,9 @@
 
 <h3 id="related-documentation">Related Documentation</h3>
 <ul>
-<li><a href="./installation.md">Installation Guide</a> - Installing and setting up CIB ins7ght</li>
-<li><a href="./security_instructions.md">Security Instructions</a> - Security best practices</li>
-<li><a href="../1%20Supported%20Environments/supported_environments.md">Supported Environments</a> - System requirements</li>
+<li><a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation">Installation Guide</a> - Installing and setting up CIB ins7ght</li>
+<li><a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions">Security Instructions</a> - Security best practices</li>
+<li><a href="/ins7ght/technical-guide/1-supported-environments/supported_environments">Supported Environments</a> - System requirements</li>
 </ul>
 
     </div>
@@ -964,6 +1060,7 @@
         <li><a href="#database-configuration">Database Configuration</a></li>
         <li><a href="#polling-configuration">Polling Configuration</a></li>
         <li><a href="#polling-authentication-configuration">Polling Authentication Configuration</a></li>
+        <li><a href="#required-cib-seven-authorizations-for-polling">Required CIB seven Authorizations for Polling</a></li>
         <li><a href="#webclient-cockpit-url">WebClient Cockpit URL</a></li>
       </ul>
     </li>

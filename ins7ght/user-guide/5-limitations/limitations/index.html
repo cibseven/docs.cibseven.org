@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -437,7 +453,7 @@
 <ul>
 <li>
 <p>If you deploy a process definition, delete it, and then deploy it again, you may see <strong>duplicate versions</strong> in CIB ins7ght.
-This happens because historical deployments are <strong>not deleted</strong> in the insight layer.</p>
+This happens because historical deployments are <strong>not deleted</strong> in the ins7ght layer.</p>
 </li>
 <li>
 <p>Some filters may not fully reflect concurrent or highly dynamic process changes if they occur during ongoing data extraction.</p>
@@ -457,6 +473,14 @@ For example, if a task repeats 10 times in a single process instance, only the <
 <li><strong>Real-time data</strong> is subject to the polling interval of the client fetching CIB seven data.</li>
 <li>Very recent changes in process instances or deployments may <strong>not immediately appear</strong> until the next polling cycle.</li>
 </ul>
+<hr>
+
+<h3 id="performance">Performance</h3>
+<ul>
+<li>The <strong>performance</strong> of CIB ins7ght is tied to two main topics: database specifications and data size.</li>
+<li>Internal testing shows calculations work properly (without timeouts) in a a single non-autoscaling db.m7g.xlarge with 4 vCPUs and 16 GB of RAM, also used with other apps running at the same time.</li>
+<li>Data quantity testing results show that calculations work fine with 766200 rows in act_hi_procinst table and 11240560 in act_hi_actinst table. If performance is downgraded a solution is to execute SQL DELETE statements on the CIB ins7ght database in order to remove data from it.</li>
+</ul>
 
     </div>
   </div>
@@ -469,6 +493,7 @@ For example, if a task repeats 10 times in a single process instance, only the <
     <li><a href="#filters">Filters</a></li>
     <li><a href="#waiting-time-between-two-activities">Waiting Time Between Two Activities</a></li>
     <li><a href="#data-completeness">Data Completeness</a></li>
+    <li><a href="#performance">Performance</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -432,6 +448,8 @@
 <h2 id="process-analysis-api">Process Analysis API</h2>
 <p>The Process Analysis API provides detailed activity-level metrics, bottleneck detection, outlier identification, and duration analysis for individual process definitions.</p>
 <p><strong>Base Path:</strong> <code>/process-analysis</code></p>
+<p><strong>License:</strong> These endpoints require a <strong>valid enterprise license</strong> (HTTP 403 otherwise).</p>
+<p><strong>State filter:</strong> For most operations you must pass one or more <code>states</code> query parameters (Spring style: repeat <code>states=</code> for each value, e.g. <code>states=ACTIVE&amp;states=COMPLETED</code>). Values are engine state names.</p>
 <hr>
 
 <h3 id="endpoints">Endpoints</h3>
@@ -463,6 +481,12 @@
           <td>Process version</td>
       </tr>
       <tr>
+          <td><code>states</code></td>
+          <td>string[]</td>
+          <td><strong>Yes</strong></td>
+          <td>At least one instance state</td>
+      </tr>
+      <tr>
           <td><code>startDate</code></td>
           <td>string</td>
           <td>No</td>
@@ -476,8 +500,11 @@
       </tr>
   </tbody>
 </table>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;successFullInstances&#34;</span><span class="p">:</span> <span class="mi">1205</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;averageInstanceDuration&#34;</span><span class="p">:</span> <span class="mi">3600000</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;activityInstances&#34;</span><span class="p">:</span> <span class="p">[</span>
@@ -486,7 +513,9 @@
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;activityCount&#34;</span><span class="p">:</span> <span class="mi">1205</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;minDuration&#34;</span><span class="p">:</span> <span class="mi">120000</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;maxDuration&#34;</span><span class="p">:</span> <span class="mi">1200000</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;averageDuration&#34;</span><span class="p">:</span> <span class="mi">300000</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;averageDuration&#34;</span><span class="p">:</span> <span class="mi">300000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;processDefinitionKey&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Review Invoice&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_2&#34;</span><span class="p">,</span>
@@ -547,6 +576,16 @@
           <td>long</td>
           <td>Average duration (ms)</td>
       </tr>
+      <tr>
+          <td><code>activityInstances[].processDefinitionKey</code></td>
+          <td>string</td>
+          <td>Present when provided by the backend</td>
+      </tr>
+      <tr>
+          <td><code>activityInstances[].name</code></td>
+          <td>string</td>
+          <td>Human-readable activity label when available</td>
+      </tr>
   </tbody>
 </table>
 <hr>
@@ -590,6 +629,12 @@
           <td>End activity BPMN ID</td>
       </tr>
       <tr>
+          <td><code>states</code></td>
+          <td>string[]</td>
+          <td><strong>Yes</strong></td>
+          <td>At least one instance state</td>
+      </tr>
+      <tr>
           <td><code>startDate</code></td>
           <td>string</td>
           <td>No</td>
@@ -603,8 +648,11 @@
       </tr>
   </tbody>
 </table>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;startActivityId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_1&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;endActivityId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_5&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;averageDuration&#34;</span><span class="p">:</span> <span class="mi">2100000</span>
@@ -665,6 +713,12 @@
           <td>Process version</td>
       </tr>
       <tr>
+          <td><code>states</code></td>
+          <td>string[]</td>
+          <td><strong>Yes</strong></td>
+          <td>At least one instance state</td>
+      </tr>
+      <tr>
           <td><code>lowerThresholdIqr</code></td>
           <td>long</td>
           <td><strong>Yes</strong></td>
@@ -702,8 +756,11 @@
       </tr>
   </tbody>
 </table>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
 </span></span><span class="line"><span class="cl">  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;procInstId&#34;</span><span class="p">:</span> <span class="s2">&#34;pi-12345&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;startTime&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
@@ -792,6 +849,12 @@
           <td>Process version</td>
       </tr>
       <tr>
+          <td><code>states</code></td>
+          <td>string[]</td>
+          <td><strong>Yes</strong></td>
+          <td>At least one instance state</td>
+      </tr>
+      <tr>
           <td><code>startDate</code></td>
           <td>string</td>
           <td>No</td>
@@ -805,8 +868,11 @@
       </tr>
   </tbody>
 </table>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
 </span></span><span class="line"><span class="cl">  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1800000</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">120</span>
@@ -888,8 +954,11 @@
       </tr>
   </tbody>
 </table>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;lowerThreshold&#34;</span><span class="p">:</span> <span class="mi">1200000</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;upperThreshold&#34;</span><span class="p">:</span> <span class="mi">5400000</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -938,21 +1007,18 @@
           <td>Process definition key</td>
       </tr>
       <tr>
-          <td><code>startDate</code></td>
-          <td>string</td>
-          <td>No</td>
-          <td>Start date (ISO 8601)</td>
-      </tr>
-      <tr>
-          <td><code>endDate</code></td>
-          <td>string</td>
-          <td>No</td>
-          <td>End date (ISO 8601)</td>
+          <td><code>states</code></td>
+          <td>string[]</td>
+          <td><strong>Yes</strong></td>
+          <td>At least one instance state</td>
       </tr>
   </tbody>
 </table>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
 </span></span><span class="line"><span class="cl">  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;avgDurationMs&#34;</span><span class="p">:</span> <span class="mi">3600000</span><span class="p">,</span>
@@ -1010,25 +1076,49 @@
 <h3 id="usage-examples">Usage Examples</h3>
 
 <h4 id="get-activity-statistics">Get Activity Statistics</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/activity?processKey=invoice-process&amp;version=1&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process-analysis/activity&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;states=COMPLETED&#34;</span>
 </span></span></code></pre></div>
 <h4 id="get-duration-between-activities">Get Duration Between Activities</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/activity-duration?processKey=invoice-process&amp;version=1&amp;startActivityId=Task_1&amp;endActivityId=Task_5&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process-analysis/activity-duration&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;startActivityId=Task_1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;endActivityId=Task_5&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;states=COMPLETED&#34;</span>
 </span></span></code></pre></div>
 <h4 id="get-outliers">Get Outliers</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/outliers?processKey=invoice-process&amp;version=1&amp;lowerThresholdIqr=1000000&amp;upperThresholdIqr=5000000&amp;minResults=5&amp;maxResults=50&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process-analysis/outliers&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;states=COMPLETED&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;lowerThresholdIqr=1000000&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;upperThresholdIqr=5000000&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;minResults=5&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;maxResults=50&#34;</span>
 </span></span></code></pre></div>
 <h4 id="get-duration-distribution">Get Duration Distribution</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/duration?processKey=invoice-process&amp;version=1&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process-analysis/duration&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;states=COMPLETED&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;startDate=2026-01-01T00:00:00Z&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;endDate=2026-01-31T23:59:59Z&#34;</span>
 </span></span></code></pre></div>
 <h4 id="get-version-comparison">Get Version Comparison</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/version-duration?processKey=invoice-process&amp;startDate=2025-01-01T00:00:00Z&amp;endDate=2025-01-31T23:59:59Z&#34;</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process-analysis/version-duration&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;states=COMPLETED&#34;</span>
+</span></span></code></pre></div><p>Each command above returns <strong>HTTP 200</strong> with <code>Content-Type: application/json</code> when the license is valid and parameters are accepted; the JSON matches the <strong>example HTTP response</strong> for that endpoint in the sections above.</p>
+<hr>
 
 <h3 id="notes">Notes</h3>
 <ul>
 <li>All duration values are in milliseconds</li>
-<li>The <code>processKey</code> and <code>version</code> parameters are required for most endpoints</li>
+<li>The <code>processKey</code> and <code>version</code> parameters are required for all endpoints except <code>version-duration</code>, which only needs <code>processKey</code> and <code>states</code></li>
+<li>Pass <strong>at least one</strong> <code>states</code> value on <code>/activity</code>, <code>/activity-duration</code>, <code>/outliers</code>, <code>/duration</code>, and <code>/version-duration</code></li>
 <li>Thresholds are typically calculated using the IQR (Interquartile Range) method</li>
 <li>Activity IDs correspond to BPMN element IDs in the process definition</li>
 <li>Returns empty array or <code>null</code> if no matching process is found</li>

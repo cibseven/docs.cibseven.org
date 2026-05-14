@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -463,17 +479,17 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">cib_ins7ght</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ins7ght_user</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div>
 <h4 id="3-configure-application-properties">3. Configure Application Properties</h4>
-<p>Navigate to the configuration directory and edit the <code>application.yml</code> or <code>cib-ins7ght.yaml</code> file.</p>
+<p>Navigate to the configuration directory and edit the <code>application.yml</code> or <code>CIB ins7ght.yaml</code> file.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8899</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">banner</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:banner/cib-ins7ght-banner.txt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:banner/CIB ins7ght-banner.txt</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">import</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">optional:classpath:environment-config.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">optional:classpath:cib-ins7ght.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">optional:classpath:CIB ins7ght.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:h2:file:/ins7ght-h2-dbs/cib_ins7ght_db</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">sa</span><span class="w">
@@ -508,7 +524,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">demo</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/cib-seven-webclient/rest/login</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/CIB seven-webclient/rest/login</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">admin</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">admin</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sso</span><span class="p">:</span><span class="w">
@@ -516,8 +532,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">useWebclient</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">webclientUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/cib-seven-webclient/rest/login</span><span class="w">
-</span></span></span></code></pre></div><p>For production configuration options, see the <a href="./configuration.md">Configuration Guide</a>.</p>
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">webclientUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/CIB seven-webclient/rest/login</span><span class="w">
+</span></span></span></code></pre></div><p>For production configuration options, see the <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration">Configuration Guide</a>.</p>
 
 <h4 id="4-initialize-the-database">4. Initialize the Database</h4>
 <p>The database schema will be automatically created on first startup:</p>
@@ -528,17 +544,17 @@
 
 <h4 id="5-start-the-backend-application">5. Start the Backend Application</h4>
 <p>Launch the CIB ins7ght backend server:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -jar cib-ins7ght-web.war
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -jar CIB ins7ght-web.war
 </span></span></code></pre></div><p>Or deploy the WAR file to Tomcat 10+:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy to Tomcat webapps directory</span>
-</span></span><span class="line"><span class="cl">cp cib-ins7ght-web.war /opt/tomcat/webapps/ins7ght.war
+</span></span><span class="line"><span class="cl">cp CIB ins7ght-web.war /opt/tomcat/webapps/ins7ght.war
 </span></span></code></pre></div><p>The application will start on the configured port (default: 8899). Check the logs to confirm successful startup.</p>
 
 <h4 id="6-deploy-the-frontend-application">6. Deploy the Frontend Application</h4>
 <p>The frontend can be deployed as static files to any web server (Nginx, Apache, etc.) or served directly by the backend.</p>
 <p><strong>Option A: Standalone Web Server</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy frontend files to web server</span>
-</span></span><span class="line"><span class="cl">cp -r frontend/dist/* /var/www/cib-ins7ght/
+</span></span><span class="line"><span class="cl">cp -r frontend/dist/* /var/www/CIB ins7ght/
 </span></span></code></pre></div><p><strong>Option B: Embedded with Backend</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Frontend is automatically served by the backend at http://localhost:8080</span>
 </span></span></code></pre></div>

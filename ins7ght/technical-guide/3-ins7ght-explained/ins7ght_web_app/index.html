@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -448,7 +464,7 @@
 <li><strong>Framework:</strong> Spring Boot 3.5.1</li>
 <li><strong>Language:</strong> Java 17</li>
 <li><strong>Database Access:</strong> Spring Data JPA with Hibernate</li>
-<li><strong>CIB Seven Integration:</strong> Camunda REST Client 7.22.0</li>
+<li><strong>CIB seven Integration:</strong> Camunda REST Client 7.22.0</li>
 <li><strong>Supported Databases:</strong> PostgreSQL 12+, H2 2.0.202+</li>
 </ul>
 
@@ -543,9 +559,9 @@
 <p><strong>Tomcat Deployment:</strong>
 Deploy the WAR file to Apache Tomcat 10 or higher. The frontend is served by the backend at the same URL.</p>
 <p><strong>Container Deployment:</strong>
-The application can be deployed as a container using the pre-built images from <code>harbor.cib.de/dev/cib-ins7ght</code>.</p>
+The application can be deployed as a container using the pre-built images from <code>harbor.cib.de/dev/CIB ins7ght</code>.</p>
 <p>Default port: <strong>8899</strong></p>
-<p>See <a href="../../2%20Setup%20CIB%20ins7ght/installation.md">Installation Guide</a> for deployment instructions.</p>
+<p>See <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation">Installation Guide</a> for deployment instructions.</p>
 <hr>
 
 <h3 id="configuration">Configuration</h3>
@@ -565,7 +581,7 @@ The application can be deployed as a container using the pre-built images from <
 <li>API base URL</li>
 <li>Default locale</li>
 </ul>
-<p>See <a href="../../2%20Setup%20CIB%20ins7ght/configuration.md">Configuration Guide</a> for details.</p>
+<p>See <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration">Configuration Guide</a> for details.</p>
 <hr>
 
 <h3 id="supported-languages">Supported Languages</h3>
@@ -618,7 +634,7 @@ The application can be deployed as a container using the pre-built images from <
 <p><strong>No data appearing:</strong></p>
 <ul>
 <li>Verify CIB seven connection is configured correctly</li>
-<li>Check polling status via <code>/pollinfo</code> endpoint</li>
+<li>Check polling status via <code>/poll-info</code> endpoint</li>
 <li>Ensure CIB seven REST API is accessible</li>
 <li>Review authentication configuration</li>
 </ul>
@@ -658,7 +674,7 @@ The application can be deployed as a container using the pre-built images from <
 </ul>
 <hr>
 
-<h3 id="integration-with-cib-seven">Integration with CIB Seven</h3>
+<h3 id="integration-with-cib-seven">Integration with CIB seven</h3>
 <p>CIB ins7ght connects to CIB seven as a read-only analytics tool:</p>
 <ul>
 <li>Accesses historical data via CIB seven REST API</li>
@@ -724,7 +740,7 @@ The application can be deployed as a container using the pre-built images from <
       </ul>
     </li>
     <li><a href="#limitations">Limitations</a></li>
-    <li><a href="#integration-with-cib-seven">Integration with CIB Seven</a></li>
+    <li><a href="#integration-with-cib-seven">Integration with CIB seven</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

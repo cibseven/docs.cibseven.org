@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -441,8 +457,11 @@
 <p><strong>Purpose:</strong> Get the current version of the CIB ins7ght application.</p>
 <p><strong>Parameters:</strong> None</p>
 <p><strong>Response Example:</strong></p>
-<pre tabindex="0"><code>0.0.2-SNAPSHOT
-</code></pre><p><strong>Response Type:</strong> <code>text/plain</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">text/plain;charset=UTF-8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0.0.2-SNAPSHOT</span> <span class="err">2026-01-29-1200</span>
+</span></span></code></pre></div><p><strong>Response Type:</strong> <code>text/plain</code></p>
 <p><strong>Response Format:</strong></p>
 <ul>
 <li>For release versions: Version number (e.g., <code>0.0.2</code>)</li>
@@ -452,11 +471,14 @@
 
 <h4 id="get-infoproperties">GET /info/properties</h4>
 <p>Returns application configuration properties.</p>
-<p><strong>Purpose:</strong> Get frontend-relevant configuration properties such as the CIB Seven webclient URL.</p>
+<p><strong>Purpose:</strong> Get frontend-relevant configuration properties such as the CIB seven webclient URL.</p>
 <p><strong>Parameters:</strong> None</p>
 <p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;webclientCockpitUrl&#34;</span><span class="p">:</span> <span class="s2">&#34;http://localhost:8080/webapp/#/seven/auth/processes/dashboard&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;webclientCockpitUrl&#34;</span><span class="p">:</span> <span class="s2">&#34;http://localhost:8080/webapp/#&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p><strong>Response Fields:</strong></p>
 <table>
@@ -471,7 +493,7 @@
       <tr>
           <td><code>webclientCockpitUrl</code></td>
           <td>string</td>
-          <td>URL to CIB Seven webclient dashboard</td>
+          <td>URL to CIB seven webclient dashboard</td>
       </tr>
   </tbody>
 </table>
@@ -482,13 +504,19 @@
 <h4 id="get-application-version">Get Application Version</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/info&#34;</span>
 </span></span></code></pre></div><p><strong>Response:</strong></p>
-<pre tabindex="0"><code>0.0.2-SNAPSHOT 2025-01-29-1200
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">text/plain;charset=UTF-8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0.0.2-SNAPSHOT</span> <span class="err">2026-01-29-1200</span>
+</span></span></code></pre></div>
 <h4 id="get-configuration-properties">Get Configuration Properties</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/info/properties&#34;</span>
 </span></span></code></pre></div><p><strong>Response:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;webclientCockpitUrl&#34;</span><span class="p">:</span> <span class="s2">&#34;http://localhost:8080/webapp/#/seven/auth/processes/dashboard&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;webclientCockpitUrl&#34;</span><span class="p">:</span> <span class="s2">&#34;http://localhost:8080/webapp/#&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><hr>
 

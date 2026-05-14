@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -430,7 +446,7 @@
     <div class="col-xs-12 content-text">
       
 <h2 id="process-analysis--bottleneck">Process Analysis – Bottleneck</h2>
-<p>The <strong>Process Analysis – Bottleneck</strong> page allows you to perform a detailed analysis of a specific process, helping you identify where time is being spent, which activities may be causing delays, and how process performance varies across versions. Please note that this analysis only takes into account successfully terminated instances, disregarding active and canceled instances.</p>
+<p>The <strong>Process Analysis – Bottleneck</strong> page allows you to perform a detailed analysis of a specific process, helping you identify where time is being spent, which activities may be causing delays, and how process performance varies across versions. Please note that this analysis can be filtered using the Process state filter (process instance state).</p>
 <hr>
 
 <h3 id="page-navigation">Page Navigation</h3>
@@ -440,9 +456,20 @@
 <li><strong>Process Version:</strong> The version of the process to analyze.</li>
 <li><strong>Timeframe:</strong> The time interval over which data will be considered.</li>
 <li><strong>Calendar:</strong> Select a specific time intervale to be analyzed.</li>
+<li><strong>Process State:</strong> Select all, one or multiple process instance states to analyze. You can select between successfully completed, active, suspended, internally terminated and externally terminated.</li>
 </ul>
-<p>Once your selections are made, all visuals and metrics on the page will automatically adjust to reflect the chosen process, version, and timeframe.</p>
+<p>Once your selections are made, all visuals and metrics on the page will automatically adjust to reflect the chosen process, version, timeframe and process state.</p>
 <hr>
+
+<h3 id="key-metrics">Key Metrics</h3>
+<p>The page highlights <strong>four main KPIs</strong>, which summarize overall process execution and performance:</p>
+<ul>
+<li><strong>Successful Instances:</strong> Number of process instances that completed successfully.</li>
+<li><strong>Canceled Instances:</strong> Number of process instances that were canceled before completion.</li>
+<li><strong>Average Process Duration:</strong> Average time taken for process instances to complete.</li>
+<li><strong>Average User Task Duration:</strong> Average time spent to complete user tasks.</li>
+</ul>
+<p>More main KPIs can be found on the Global Overview page.</p>
 
 <h3 id="bpmn-heatmap">BPMN Heatmap</h3>
 <p>The <strong>BPMN Heatmap</strong> provides a visual representation of process performance at the activity level.<br>
@@ -453,17 +480,24 @@ It can be viewed in two different modes:</p>
 </ul>
 <p>You can interact directly with the heatmap:</p>
 <ul>
-<li><strong>Select any two activities</strong> to see the <strong>average waiting time between them</strong>, helping you understand the flow and timing between key steps of your process.</li>
-<li>This feature is particularly useful for pinpointing slow transitions or handoffs.</li>
+<li><strong>Select any two activities</strong> to see the <strong>average waiting time between them</strong>, helping you understand the flow and timing between key steps of your process. This feature is particularly useful for pinpointing slow transitions or handoffs.</li>
+<li>When hovering on a specific activity you can click the <strong>&ldquo;Hide from heatmap&rdquo;</strong> button to exclude one specific activity from the calculated heatmap. This can be used if you consider one activity to be skewing the analysis.</li>
 </ul>
 <figure class="image">
   <span><img
-      src="img/waiting_time.png"
+      src="../img/waiting_time.png"
        /></span>
 </figure>
 
+<p><strong>Heatmap settings</strong> are also available to give you another layer of data analysis and in-depth overview of BPMN process data.</p>
+<ul>
+<li><strong>Color Scale:</strong> Chose between Linear (colors distributed linearly by average time, providing a direct and intuitive view of absolute differences between value) or Logarithmic (colors distributed logarithmically by average time, making it easier to analyze wide-ranging data by highlighting relative differences and subtle patterns)</li>
+<li><strong>Invert Colors:</strong> Number of process instances that were canceled before completion.</li>
+<li><strong>Exclude activity type:</strong> Remove specific activity types that you don&rsquo;t want to be taken into account on your heatmap analysis.</li>
+</ul>
 <p>You will also find a <strong>BPMN overview</strong> of the selected process.<br>
 This visualization helps you quickly understand the structure of the process and how its activities are connected. You can also fullscreen the BPMN for improved visualization.</p>
+<p>A <strong>fullscreen</strong> button is also present to allow for better visualization of larger BPMN processes.</p>
 <hr>
 
 <h3 id="instance-duration-graph-and-outlier-instances">Instance Duration Graph and Outlier Instances</h3>
@@ -471,7 +505,7 @@ This visualization helps you quickly understand the structure of the process and
 This helps you visualize the spread of execution times and easily identify instances that took significantly longer or shorter than average (<strong>outliers</strong>).</p>
 <figure class="image">
   <span><img
-      src="img/instance_duration_outlier.png"
+      src="../img/instance_duration_outlier.png"
        /></span>
 </figure>
 
@@ -486,7 +520,8 @@ This helps you visualize the spread of execution times and easily identify insta
 </li>
 </ul>
 <p>This section helps you understand not only which processes are slow but <strong>why</strong> they may be slower, by correlating instance-level data with specific activities.</p>
-<p>This chart uses the Interquartile Range (IQR) rule to detect outliers. Any duration below Q1 - 1.5 x IQR or above Q3 + 1.5 x IQR is considered an outlier and shown in the outlier bar. You can also select between Logarithmic and Linear scale to populate this table</p>
+<p>This chart uses the Interquartile Range (IQR) rule to detect outliers. Any duration below Q1 - 1.5 x IQR or above Q3 + 1.5 x IQR is considered an outlier and shown in the outlier bar. You can also select between Logarithmic and Linear scale to populate this table.</p>
+<p>You can select between Linear scale (bar heights are proportional to the values, allowing straightforward comparison of absolute differences) and Logarithmic scale (bar heights are scaled logarithmically, making it easier to compare values across a wide range by emphasizing relative differences).</p>
 <hr>
 
 <h3 id="version-duration-graph">Version Duration Graph</h3>
@@ -499,7 +534,7 @@ This feature is especially useful to:</p>
 </ul>
 <figure class="image">
   <span><img
-      src="img/version_duration.png"
+      src="../img/version_duration.png"
        /></span>
 </figure>
 
@@ -523,6 +558,7 @@ This feature is especially useful to:</p>
   <nav id="TableOfContents">
   <ul>
     <li><a href="#page-navigation">Page Navigation</a></li>
+    <li><a href="#key-metrics">Key Metrics</a></li>
     <li><a href="#bpmn-heatmap">BPMN Heatmap</a></li>
     <li><a href="#instance-duration-graph-and-outlier-instances">Instance Duration Graph and Outlier Instances</a></li>
     <li><a href="#version-duration-graph">Version Duration Graph</a></li>

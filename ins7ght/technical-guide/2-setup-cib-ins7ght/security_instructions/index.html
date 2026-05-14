@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -436,12 +452,12 @@
 <h3 id="application-security">Application Security</h3>
 
 <h4 id="user-authentication">User Authentication</h4>
-<p><strong>CIB ins7ght does not have user authentication.</strong></p>
-<p>The application has no login system, user management, or access control. All REST API endpoints are publicly accessible without authentication.</p>
-<p>If access control is required, it must be implemented externally (e.g., through network security, firewalls, VPNs, or reverse proxies).</p>
+<p><strong>Optional UI authentication:</strong> In <code>application.yaml</code>, <code>ins7ght.authentication.enabled</code> can be set to <code>true</code> so requests are handled by the embedded CIB seven web stack. When disabled (default), users are not challenged by ins7ght itself.</p>
+<p><strong>Enterprise license:</strong> Analytics, process, and incident REST endpoints require a <strong>valid license file</strong> and otherwise respond with HTTP <strong>403</strong>. Endpoints such as <code>GET /info</code> and <code>GET /poll-info</code> are not gated by that license check.</p>
+<p><strong>External protection:</strong> For deployments that must not expose the UI or API broadly, still enforce network boundaries, firewalls, VPNs, or authenticated reverse proxies regardless of the flags above.</p>
 <hr>
 
-<h3 id="cib-seven-connection-authentication">CIB Seven Connection Authentication</h3>
+<h3 id="cib-seven-connection-authentication">CIB seven Connection Authentication</h3>
 <p>CIB ins7ght authenticates with CIB seven to poll process data. Three authentication methods are available:</p>
 
 <h4 id="option-1-basic-authentication">Option 1: Basic Authentication</h4>
@@ -458,7 +474,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">auth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">webclient</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/cib-seven-webclient/rest/login</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/CIB seven-webclient/rest/login</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${WEBCLIENT_USERNAME}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">${WEBCLIENT_PASSWORD}</span><span class="w">
 </span></span></span></code></pre></div>
@@ -471,7 +487,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">client-id</span><span class="p">:</span><span class="w"> </span><span class="l">${SSO_CLIENT_ID}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="l">${SSO_CLIENT_SECRET}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">useWebclient</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">webclientUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/cib-seven-webclient/rest/login</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">webclientUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/CIB seven-webclient/rest/login</span><span class="w">
 </span></span></span></code></pre></div><hr>
 
 <h3 id="database-security">Database Security</h3>
@@ -513,7 +529,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">de.cib.cibflow.ins7ght</span><span class="p">:</span><span class="w"> </span><span class="l">DEBUG</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org.springframework.web</span><span class="p">:</span><span class="w"> </span><span class="l">INFO</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">file</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">/var/log/cib-ins7ght/application.log</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">/var/log/CIB ins7ght/application.log</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="l">100MB</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">max-history</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
 </span></span></span></code></pre></div><p><strong>Monitor:</strong></p>
@@ -542,7 +558,7 @@
         <li><a href="#user-authentication">User Authentication</a></li>
       </ul>
     </li>
-    <li><a href="#cib-seven-connection-authentication">CIB Seven Connection Authentication</a>
+    <li><a href="#cib-seven-connection-authentication">CIB seven Connection Authentication</a>
       <ul>
         <li><a href="#option-1-basic-authentication">Option 1: Basic Authentication</a></li>
         <li><a href="#option-2-webclient-authentication">Option 2: WebClient Authentication</a></li>

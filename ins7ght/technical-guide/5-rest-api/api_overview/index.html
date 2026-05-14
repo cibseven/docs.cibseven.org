@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -430,73 +446,126 @@
     <div class="col-xs-12 content-text">
       
 <h2 id="rest-api-overview">REST API Overview</h2>
-<p>CIB ins7ght exposes a REST API for accessing process analytics, statistics, and configuration data. All endpoints are accessible without authentication.</p>
+<p>CIB ins7ght exposes a REST API for accessing process analytics, statistics, incidents, and configuration data.</p>
 <p><strong>Base URL:</strong> <code>http://localhost:8899</code> (configurable via <code>server.port</code>)</p>
+<p><strong>License and access:</strong> Most analytics, process, and incident endpoints require a <strong>valid enterprise license</strong> and return <strong>HTTP 403</strong> when the license is missing or invalid. Optional user authentication is controlled with <code>ins7ght.authentication.enabled</code>.</p>
 <hr>
 
 <h3 id="api-categories">API Categories</h3>
 
 <h4 id="1-overview-statistics-api">1. Overview Statistics API</h4>
 <p><strong>Base Path:</strong> <code>/overview</code></p>
-<p>Provides aggregated metrics and time-series data for process instances.</p>
+<p>Aggregated metrics and time-series data. All routes use <strong>POST</strong> with a JSON body (<code>OverviewRequest</code>: <code>processKey</code>, <code>version</code>, <code>startDate</code>, <code>endDate</code>).</p>
 <p><strong>Endpoints:</strong></p>
 <ul>
-<li><code>GET /overview</code> - Get summary statistics</li>
-<li><code>GET /overview/graph/started-instances</code> - Time series of started instances</li>
-<li><code>GET /overview/graph/finalized-instances</code> - Time series of finalized instances</li>
-<li><code>GET /overview/graph/successful-instances</code> - Time series of successful instances</li>
-<li><code>GET /overview/graph/canceled-instances</code> - Time series of canceled instances</li>
-<li><code>GET /overview/graph/incident-instances</code> - Time series of instances with incidents</li>
+<li><code>POST /overview/graph/started-instances</code> — Time series of started instances</li>
+<li><code>POST /overview/graph/finalized-instances</code> — Time series of finalized instances</li>
+<li><code>POST /overview/graph/successful-instances</code> — Time series of successful instances</li>
+<li><code>POST /overview/graph/canceled-instances</code> — Time series of canceled instances</li>
+<li><code>POST /overview/graph/incident-instances</code> — Time series of instances with incidents</li>
+<li><code>POST /overview/started-instances</code> — Count of started instances</li>
+<li><code>POST /overview/finalized-instances</code> — Count of finalized instances</li>
+<li><code>POST /overview/successful-instances</code> — Count of successful instances</li>
+<li><code>POST /overview/avg-process-duration</code> — Average process duration (ms)</li>
+<li><code>POST /overview/canceled-instances-internally-terminated</code> — Canceled (internal)</li>
+<li><code>POST /overview/canceled-instances-externally-terminated</code> — Canceled (external)</li>
+<li><code>POST /overview/error-start-event-instances</code> — Error start event instances</li>
+<li><code>POST /overview/incident-instances</code> — Instances with incidents (count)</li>
+<li><code>POST /overview/completed-user-tasks-percentage</code> — Completed user tasks (%)</li>
+<li><code>POST /overview/avg-user-task-duration</code> — Average user task duration (ms)</li>
+<li><code>POST /overview/top-user-tasks</code> — Top user tasks</li>
 </ul>
-<p><a href="./overview_statistics.md">View Details →</a></p>
+<p><a href="/ins7ght/technical-guide/5-rest-api/overview_statistics">View Details →</a></p>
 <hr>
 
 <h4 id="2-process-analysis-api">2. Process Analysis API</h4>
 <p><strong>Base Path:</strong> <code>/process-analysis</code></p>
-<p>Provides detailed activity-level metrics, bottleneck detection, and outlier identification.</p>
+<p>Activity-level metrics, bottleneck detection, and outlier identification (GET with query parameters; <strong><code>states</code></strong> is required where noted).</p>
 <p><strong>Endpoints:</strong></p>
 <ul>
-<li><code>GET /process-analysis/activity</code> - Activity-level statistics</li>
-<li><code>GET /process-analysis/activity-duration</code> - Duration between activities</li>
-<li><code>GET /process-analysis/outliers</code> - Outlier process instances</li>
-<li><code>GET /process-analysis/duration</code> - Duration distribution</li>
-<li><code>GET /process-analysis/thresholds</code> - Calculated outlier thresholds</li>
-<li><code>GET /process-analysis/version-duration</code> - Version comparison statistics</li>
+<li><code>GET /process-analysis/activity</code> — Activity-level statistics</li>
+<li><code>GET /process-analysis/activity-duration</code> — Duration between two activities</li>
+<li><code>GET /process-analysis/outliers</code> — Outlier process instances</li>
+<li><code>GET /process-analysis/duration</code> — Duration distribution</li>
+<li><code>GET /process-analysis/thresholds</code> — Calculated outlier thresholds</li>
+<li><code>GET /process-analysis/version-duration</code> — Version comparison statistics</li>
 </ul>
-<p><a href="./process_analysis_bottleneck.md">View Details →</a></p>
+<p><a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck">View Details →</a></p>
 <hr>
 
 <h4 id="3-process-api">3. Process API</h4>
 <p><strong>Base Path:</strong> <code>/process</code></p>
-<p>Provides access to process definitions, versions, and BPMN diagrams.</p>
+<p>Process definitions, versions, allowed states, and BPMN diagrams.</p>
 <p><strong>Endpoints:</strong></p>
 <ul>
-<li><code>GET /process</code> - List all process definitions</li>
-<li><code>GET /process/{processKey}/version</code> - Get versions for a process</li>
-<li><code>GET /process/bpmn</code> - Get BPMN XML diagram</li>
+<li><code>GET /process</code> — List process definitions (optional <code>startDate</code>, <code>endDate</code>)</li>
+<li><code>GET /process/{processKey}/version</code> — Versions for a process (returns process metadata objects)</li>
+<li><code>GET /process/states</code> — Distinct process states for a key/version and optional range</li>
+<li><code>GET /process/bpmn</code> — BPMN XML (<code>processKey</code>, <code>version</code>)</li>
 </ul>
-<p><a href="./process.md">View Details →</a></p>
+<p><a href="/ins7ght/technical-guide/5-rest-api/process">View Details →</a></p>
 <hr>
 
 <h4 id="4-info-api">4. Info API</h4>
 <p><strong>Base Path:</strong> <code>/info</code></p>
-<p>Provides application metadata and configuration.</p>
+<p>Application metadata and configuration exposed to the frontend.</p>
 <p><strong>Endpoints:</strong></p>
 <ul>
-<li><code>GET /info</code> - Get application version</li>
-<li><code>GET /info/properties</code> - Get configuration properties</li>
+<li><code>GET /info</code> — Application version (plain text)</li>
+<li><code>GET /info/properties</code> — Configuration (JSON)</li>
 </ul>
-<p><a href="./info.md">View Details →</a></p>
+<p><a href="/ins7ght/technical-guide/5-rest-api/info">View Details →</a></p>
 <hr>
 
 <h4 id="5-polling-info-api">5. Polling Info API</h4>
-<p><strong>Base Path:</strong> <code>/pollinfo</code></p>
-<p>Provides polling status and data synchronization information.</p>
+<p><strong>Base Path:</strong> <code>/poll-info</code></p>
+<p>Polling status for synchronization with the engine (JSON array).</p>
 <p><strong>Endpoints:</strong></p>
 <ul>
-<li><code>GET /pollinfo</code> - Get polling status and timestamps</li>
+<li><code>GET /poll-info</code> — Polling status and timestamps</li>
 </ul>
-<p><a href="./pollinfo.md">View Details →</a></p>
+<p><a href="/ins7ght/technical-guide/5-rest-api/pollinfo">View Details →</a></p>
+<hr>
+
+<h4 id="6-incidents-api">6. Incidents API</h4>
+<p><strong>Base Path:</strong> <code>/incidents</code></p>
+<p>Incident heatmaps, graphs, tables, and totals.</p>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /incidents/heatmap</code></li>
+<li><code>GET /incidents/incident-version-graph</code></li>
+<li><code>GET /incidents/incidents-table</code></li>
+<li><code>GET /incidents/incidents-graph</code></li>
+<li><code>GET /incidents/total-counts</code></li>
+</ul>
+<p><a href="/ins7ght/technical-guide/5-rest-api/incidents">View Details →</a></p>
+<hr>
+
+<h4 id="7-authentication-and-license">7. Authentication and license</h4>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /auth</code> — Current user (when authentication is enabled)</li>
+<li><code>GET /system/license/status</code> — License information JSON</li>
+</ul>
+<p><a href="/ins7ght/technical-guide/5-rest-api/authentication_and_license">View Details →</a></p>
+<hr>
+
+<h4 id="7-authentication-and-license-1">7. Authentication and license</h4>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /auth</code> — Current user (when authentication is enabled)</li>
+<li><code>GET /system/license/status</code> — License information JSON</li>
+</ul>
+<p><a href="/ins7ght/technical-guide/5-rest-api/authentication_and_license">View Details →</a></p>
+<hr>
+
+<h4 id="7-authentication-and-license-2">7. Authentication and license</h4>
+<p><strong>Endpoints:</strong></p>
+<ul>
+<li><code>GET /auth</code> — Current user (when authentication is enabled)</li>
+<li><code>GET /system/license/status</code> — License information JSON</li>
+</ul>
+<p><a href="/ins7ght/technical-guide/5-rest-api/authentication_and_license">View Details →</a></p>
 <hr>
 
 <h3 id="quick-start">Quick Start</h3>
@@ -507,18 +576,57 @@
 <h4 id="get-all-processes">Get All Processes</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process&#34;</span>
 </span></span></code></pre></div>
-<h4 id="get-overview-statistics">Get Overview Statistics</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview?processKey=invoice-process&amp;version=1&#34;</span>
+<h4 id="get-overview-statistics-post--json-body">Get Overview Statistics (POST + JSON body)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST <span class="s2">&#34;http://localhost:8899/overview/started-instances&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -d <span class="s2">&#34;{\&#34;processKey\&#34;:[\&#34;invoice-process\&#34;],\&#34;version\&#34;:\&#34;1\&#34;}&#34;</span>
 </span></span></code></pre></div>
 <h4 id="get-activity-analysis">Get Activity Analysis</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process-analysis/activity?processKey=invoice-process&amp;version=1&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process-analysis/activity&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;states=COMPLETED&#34;</span>
 </span></span></code></pre></div>
 <h4 id="check-polling-status">Check Polling Status</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/pollinfo&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/poll-info&#34;</span>
 </span></span></code></pre></div><hr>
 
 <h3 id="common-parameters">Common Parameters</h3>
-<p>Most endpoints support the following query parameters for filtering:</p>
+
+<h4 id="overview-post-body-json">Overview (<code>POST</code> body, JSON)</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>string[]</td>
+          <td>Process keys (omit with <code>version</code> for global stats).</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>string</td>
+          <td>Version string when filtering by process.</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>string</td>
+          <td>ISO 8601 start</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>string</td>
+          <td>ISO 8601 end</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="process-analysis-get-query">Process analysis (<code>GET</code> query)</h4>
 <table>
   <thead>
       <tr>
@@ -531,22 +639,27 @@
       <tr>
           <td><code>processKey</code></td>
           <td>string</td>
-          <td>Process definition key (e.g., <code>invoice-process</code>)</td>
+          <td>Process definition key</td>
       </tr>
       <tr>
           <td><code>version</code></td>
           <td>string</td>
-          <td>Process version (e.g., <code>1</code>, <code>2</code>)</td>
+          <td>Process version</td>
+      </tr>
+      <tr>
+          <td><code>states</code></td>
+          <td>string[]</td>
+          <td>Repeat parameter; <strong>required</strong> on most analysis endpoints</td>
       </tr>
       <tr>
           <td><code>startDate</code></td>
           <td>string</td>
-          <td>Start date in ISO 8601 format (e.g., <code>2025-01-01T00:00:00Z</code>)</td>
+          <td>ISO 8601</td>
       </tr>
       <tr>
           <td><code>endDate</code></td>
           <td>string</td>
-          <td>End date in ISO 8601 format (e.g., <code>2025-01-31T23:59:59Z</code>)</td>
+          <td>ISO 8601</td>
       </tr>
   </tbody>
 </table>
@@ -564,7 +677,7 @@
 </span></span></code></pre></div>
 <h4 id="plain-text">Plain Text</h4>
 <p>The <code>/info</code> endpoint returns plain text.</p>
-<pre tabindex="0"><code>0.0.2-SNAPSHOT 2025-01-29-1200
+<pre tabindex="0"><code>0.0.2-SNAPSHOT 2026-01-29-1200
 </code></pre>
 <h4 id="binary-xml">Binary (XML)</h4>
 <p>The <code>/process/bpmn</code> endpoint returns BPMN XML as binary data.</p>
@@ -578,7 +691,7 @@
 
 <h4 id="timestamps">Timestamps</h4>
 <ul>
-<li><strong>Format:</strong> ISO 8601 with timezone (e.g., <code>2025-01-29T10:30:00Z</code>)</li>
+<li><strong>Format:</strong> ISO 8601 with timezone (e.g., <code>2026-01-29T10:30:00Z</code>)</li>
 <li><strong>Unix Epoch:</strong> Long integers representing milliseconds since 1970-01-01 (e.g., <code>1704067200000</code>)</li>
 </ul>
 
@@ -598,7 +711,7 @@
 
 <h3 id="error-handling">Error Handling</h3>
 
-<h4 id="successful-response">Successful Response</h4>
+<h4 id="example-response-http-200">Example response (HTTP 200)</h4>
 <pre tabindex="0"><code>HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -606,83 +719,92 @@ Content-Type: application/json
   &#34;data&#34;: &#34;...&#34;
 }
 </code></pre>
-<h4 id="error-response">Error Response</h4>
+<h4 id="example-response-http-500">Example response (HTTP 500)</h4>
 <pre tabindex="0"><code>HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
 
 {
-  &#34;timestamp&#34;: &#34;2025-01-29T10:30:00.000+00:00&#34;,
+  &#34;timestamp&#34;: &#34;2026-01-29T10:30:00.000+00:00&#34;,
   &#34;status&#34;: 500,
   &#34;error&#34;: &#34;Internal Server Error&#34;,
   &#34;message&#34;: &#34;No Process Key provided&#34;,
-  &#34;path&#34;: &#34;/process-analysis/activity&#34;
+  &#34;path&#34;: &#34;/overview/started-instances&#34;
 }
-</code></pre><p><strong>Common Error Scenarios:</strong></p>
+</code></pre><p><strong>Common scenarios:</strong></p>
 <ul>
-<li>Missing required parameters → 500 error with descriptive message</li>
-<li>Invalid process key/version → Empty array or <code>null</code> response</li>
-<li>Database connection issues → 500 error</li>
+<li>Missing or invalid parameters → 500 with descriptive message (varies by endpoint)</li>
+<li>Invalid process key/version → Empty array, <code>null</code>, or empty list depending on endpoint</li>
+<li>Database issues → 500</li>
+<li><strong>Invalid or missing license</strong> on enterprise routes → <strong>403</strong></li>
 </ul>
-<hr>
+
+<h4 id="license-denied-enterprise-routes">License denied (enterprise routes)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-05-06T12:00:00.000+00:00&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Forbidden&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;License is invalid. Enterprise features are not available.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;/process&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
 
 <h3 id="cors">CORS</h3>
-<p>CIB ins7ght does not configure CORS headers. If cross-origin access is required, configure CORS at the reverse proxy level.</p>
+<p>CIB ins7ght does not configure CORS headers by default. If cross-origin access is required, configure CORS at the reverse proxy level.</p>
 <hr>
 
 <h3 id="authentication">Authentication</h3>
-<p><strong>CIB ins7ght does not implement API authentication.</strong> All endpoints are publicly accessible.</p>
-<p>Access control must be implemented through:</p>
-<ul>
-<li>Network-level security (firewalls, VPNs)</li>
-<li>Reverse proxy authentication</li>
-<li>Infrastructure security controls</li>
-</ul>
-<p>See <a href="../../2%20Setup%20CIB%20ins7ght/security_instructions.md">Security Instructions</a> for details.</p>
+<p>There is <strong>no separate API-key layer</strong> in the application. Optional <strong>user authentication</strong> is configured with <code>ins7ght.authentication.enabled</code> and the CIB seven webclient stack. <strong>Enterprise analytics require a valid license file</strong>, independent of user login.</p>
+<p>Network-level controls and reverse-proxy authentication remain recommended for production. See <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/security_instructions">Security Instructions</a>.</p>
 <hr>
 
 <h3 id="rate-limiting">Rate Limiting</h3>
-<p>No rate limiting is implemented. Consider implementing rate limiting at the reverse proxy or infrastructure level if needed.</p>
+<p>No rate limiting is implemented in the application. Consider rate limiting at the reverse proxy or infrastructure level if needed.</p>
 <hr>
 
 <h3 id="api-versioning">API Versioning</h3>
-<p>The REST API is not versioned. Breaking changes will be documented in release notes.</p>
+<p>The REST API is not versioned in the URL. Breaking changes are communicated via release notes.</p>
 <hr>
 
 <h3 id="testing-the-api">Testing the API</h3>
 
 <h4 id="using-curl">Using cURL</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Simple GET request</span>
-</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># With query parameters</span>
-</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview?processKey=invoice-process&amp;version=1&amp;startDate=2025-01-01T00:00:00Z&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Overview (POST)</span>
+</span></span><span class="line"><span class="cl">curl -X POST <span class="s2">&#34;http://localhost:8899/overview/finalized-instances&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -d <span class="s2">&#34;{\&#34;processKey\&#34;:[\&#34;invoice-process\&#34;],\&#34;version\&#34;:\&#34;1\&#34;}&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Pretty print JSON response</span>
-</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/overview&#34;</span> <span class="p">|</span> jq .
+</span></span><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/poll-info&#34;</span> <span class="p">|</span> jq .
 </span></span></code></pre></div>
 <h4 id="using-browser">Using Browser</h4>
-<p>Most GET endpoints can be accessed directly in a browser:</p>
+<p>These GET endpoints can be opened directly:</p>
 <pre tabindex="0"><code>http://localhost:8899/process
-http://localhost:8899/pollinfo
+http://localhost:8899/poll-info
 http://localhost:8899/info/properties
 </code></pre><hr>
 
 <h3 id="api-documentation-by-category">API Documentation by Category</h3>
 <ol>
-<li><a href="./overview_statistics.md">Overview Statistics API</a> - Aggregated metrics and time-series data</li>
-<li><a href="./process_analysis_bottleneck.md">Process Analysis API</a> - Activity analysis and bottleneck detection</li>
-<li><a href="./process.md">Process API</a> - Process definitions and BPMN diagrams</li>
-<li><a href="./info.md">Info API</a> - Application metadata and configuration</li>
-<li><a href="./pollinfo.md">Polling Info API</a> - Polling status and synchronization</li>
+<li><a href="/ins7ght/technical-guide/5-rest-api/overview_statistics">Overview Statistics API</a> — Aggregated metrics and time-series (POST)</li>
+<li><a href="/ins7ght/technical-guide/5-rest-api/process_analysis_bottleneck">Process Analysis API</a> — Activity analysis and bottlenecks</li>
+</ol>
+<ul>
+<li>See <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration">Configuration Guide</a> for <code>application.yaml</code> / <code>cib-ins7ght.yaml</code>.</li>
+</ul>
+<ol start="5">
+<li><a href="/ins7ght/technical-guide/5-rest-api/pollinfo">Polling Info API</a> — Polling status (<code>/poll-info</code>)</li>
+<li><a href="/ins7ght/technical-guide/5-rest-api/incidents">Incidents API</a> — Incident analytics</li>
 </ol>
 <hr>
 
 <h3 id="need-help">Need Help?</h3>
 <ul>
-<li>Check individual API documentation pages for detailed endpoint information</li>
-<li>Review JSON examples for expected request/response formats</li>
-<li>Consult <a href="../../2%20Setup%20CIB%20ins7ght/configuration.md">Configuration Guide</a> for server configuration</li>
-<li>See <a href="../../3%20Ins7ght%20Explained/ins7ght_web_app.md#troubleshooting">Troubleshooting</a> for common issues</li>
+<li>Use the detail pages above for parameters and examples.</li>
+<li>See <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration">Configuration Guide</a> for <code>application.yaml</code> / <code>cib-ins7ght.yaml</code>.</li>
+<li>See <a href="/ins7ght/technical-guide/3-ins7ght-explained/ins7ght_web_app#troubleshooting">Troubleshooting</a> for common issues.</li>
 </ul>
 
     </div>
@@ -700,18 +822,27 @@ http://localhost:8899/info/properties
         <li><a href="#3-process-api">3. Process API</a></li>
         <li><a href="#4-info-api">4. Info API</a></li>
         <li><a href="#5-polling-info-api">5. Polling Info API</a></li>
+        <li><a href="#6-incidents-api">6. Incidents API</a></li>
+        <li><a href="#7-authentication-and-license">7. Authentication and license</a></li>
+        <li><a href="#7-authentication-and-license-1">7. Authentication and license</a></li>
+        <li><a href="#7-authentication-and-license-2">7. Authentication and license</a></li>
       </ul>
     </li>
     <li><a href="#quick-start">Quick Start</a>
       <ul>
         <li><a href="#get-application-version">Get Application Version</a></li>
         <li><a href="#get-all-processes">Get All Processes</a></li>
-        <li><a href="#get-overview-statistics">Get Overview Statistics</a></li>
+        <li><a href="#get-overview-statistics-post--json-body">Get Overview Statistics (POST + JSON body)</a></li>
         <li><a href="#get-activity-analysis">Get Activity Analysis</a></li>
         <li><a href="#check-polling-status">Check Polling Status</a></li>
       </ul>
     </li>
-    <li><a href="#common-parameters">Common Parameters</a></li>
+    <li><a href="#common-parameters">Common Parameters</a>
+      <ul>
+        <li><a href="#overview-post-body-json">Overview (<code>POST</code> body, JSON)</a></li>
+        <li><a href="#process-analysis-get-query">Process analysis (<code>GET</code> query)</a></li>
+      </ul>
+    </li>
     <li><a href="#response-formats">Response Formats</a>
       <ul>
         <li><a href="#json">JSON</a></li>
@@ -728,8 +859,9 @@ http://localhost:8899/info/properties
     </li>
     <li><a href="#error-handling">Error Handling</a>
       <ul>
-        <li><a href="#successful-response">Successful Response</a></li>
-        <li><a href="#error-response">Error Response</a></li>
+        <li><a href="#example-response-http-200">Example response (HTTP 200)</a></li>
+        <li><a href="#example-response-http-500">Example response (HTTP 500)</a></li>
+        <li><a href="#license-denied-enterprise-routes">License denied (enterprise routes)</a></li>
       </ul>
     </li>
     <li><a href="#cors">CORS</a></li>

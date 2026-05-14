@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Process API | docs.cibseven.org</title>
+  <title>Incidents API | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/ins7ght/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
-  <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/process/" />
+  <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/incidents/" />
 </head>
 <body class="">
 
@@ -440,138 +440,21 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Process API</h1>
+      <h1 class="page-title">Incidents API</h1>
     </div>
 
     <div class="col-xs-12 content-text">
       
-<h2 id="process-api">Process API</h2>
-<p>The Process API provides access to process definitions, versions, instance counts, state filters, and BPMN diagrams.</p>
-<p><strong>Base Path:</strong> <code>/process</code></p>
+<h2 id="incidents-api">Incidents API</h2>
+<p>The Incidents API exposes incident analytics: heatmaps, version comparisons, tables, time series, and totals for a given process definition.</p>
+<p><strong>Base Path:</strong> <code>/incidents</code></p>
 <p><strong>License:</strong> Requires a <strong>valid enterprise license</strong> (HTTP 403 otherwise).</p>
 <hr>
 
 <h3 id="endpoints">Endpoints</h3>
 
-<h4 id="get-process">GET /process</h4>
-<p>Returns process definitions visible to ins7ght in the optional date range.</p>
-<p><strong>Query parameters:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Required</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>startDate</code></td>
-          <td>No</td>
-          <td>ISO 8601 — lower bound for instance activity filtering</td>
-      </tr>
-      <tr>
-          <td><code>endDate</code></td>
-          <td>No</td>
-          <td>ISO 8601 — upper bound</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Example HTTP response:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span>
-</span></span><span class="line"><span class="cl">  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process:1:abc123&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Invoice Process&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;instanceCount&#34;</span><span class="p">:</span> <span class="s2">&#34;42&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;latestVersion&#34;</span><span class="p">:</span> <span class="mi">2</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">]</span>
-</span></span></code></pre></div><table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Type</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>id</code></td>
-          <td>string</td>
-          <td>Process definition id from the engine</td>
-      </tr>
-      <tr>
-          <td><code>name</code></td>
-          <td>string</td>
-          <td>Process name</td>
-      </tr>
-      <tr>
-          <td><code>key</code></td>
-          <td>string</td>
-          <td>Process definition key</td>
-      </tr>
-      <tr>
-          <td><code>instanceCount</code></td>
-          <td>string</td>
-          <td>Display / count information from the provider</td>
-      </tr>
-      <tr>
-          <td><code>version</code></td>
-          <td>integer</td>
-          <td>Definition version</td>
-      </tr>
-      <tr>
-          <td><code>latestVersion</code></td>
-          <td>integer</td>
-          <td>Latest version hint from the provider</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-
-<h4 id="get-processprocesskeyversion">GET /process/{processKey}/version</h4>
-<p>Returns <strong>all <code>Process</code> objects</strong> (metadata per deployment/version) for the given <code>processKey</code>, optionally filtered by the same date range as <code>GET /process</code>.</p>
-<p><strong>Path parameters:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Required</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>processKey</code></td>
-          <td>Yes</td>
-          <td>Process definition key (must not be blank)</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Query parameters:</strong> <code>startDate</code>, <code>endDate</code> (optional, same semantics as <code>GET /process</code>).</p>
-<p><strong>Example HTTP response:</strong> Same <code>Process</code> object shape as <code>GET /process</code> (one array entry per definition version for that key).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span>
-</span></span><span class="line"><span class="cl">  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process:1:abc123&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Invoice Process&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice-process&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;instanceCount&#34;</span><span class="p">:</span> <span class="s2">&#34;12&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;latestVersion&#34;</span><span class="p">:</span> <span class="mi">2</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">]</span>
-</span></span></code></pre></div><hr>
-
-<h4 id="get-processstates">GET /process/states</h4>
-<p>Returns distinct <strong>process instance states</strong> observed for a process definition version (e.g. for building filters in the UI).</p>
+<h4 id="get-incidentsheatmap">GET /incidents/heatmap</h4>
+<p>Incident heatmap data for activities over time for one process version.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
   <thead>
@@ -595,12 +478,12 @@
       <tr>
           <td><code>startDate</code></td>
           <td>No</td>
-          <td>ISO 8601</td>
+          <td>Range start (ISO 8601)</td>
       </tr>
       <tr>
           <td><code>endDate</code></td>
           <td>No</td>
-          <td>ISO 8601</td>
+          <td>Range end (ISO 8601)</td>
       </tr>
   </tbody>
 </table>
@@ -608,12 +491,60 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 </span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s2">&#34;ACTIVE&#34;</span><span class="p">,</span> <span class="s2">&#34;COMPLETED&#34;</span><span class="p">,</span> <span class="s2">&#34;INTERNALLY_TERMINATED&#34;</span><span class="p">]</span>
-</span></span></code></pre></div><p><strong>Example when no deployment matches:</strong> HTTP <code>200</code> with body <code>[]</code>.</p>
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;actId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_Review&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;activeIncidents&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;completedIncidents&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;canceledIncidents&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalIncidents&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;instanceCount&#34;</span><span class="p">:</span> <span class="mi">45</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Example when no matching deployment:</strong> <code>200 OK</code> with body <code>null</code> (no JSON array).</p>
 <hr>
 
-<h4 id="get-processbpmn">GET /process/bpmn</h4>
-<p>Returns the BPMN 2.0 XML for a specific process version (binary body).</p>
+<h4 id="get-incidentsincident-version-graph">GET /incidents/incident-version-graph</h4>
+<p>Incident statistics <strong>by version</strong> for a process key.</p>
+<p><strong>Query parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>Yes</td>
+          <td>Process definition key</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;processInstanceCount&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;incidentCount&#34;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;errorStartEventCount&#34;</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;processInstanceCount&#34;</span><span class="p">:</span> <span class="mi">320</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;incidentCount&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;errorStartEventCount&#34;</span><span class="p">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><hr>
+
+<h4 id="get-incidentsincidents-table">GET /incidents/incidents-table</h4>
+<p>Ranked / tabular incident information with upper and lower bounds on row counts.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
   <thead>
@@ -634,42 +565,151 @@
           <td>Yes</td>
           <td>Process version</td>
       </tr>
+      <tr>
+          <td><code>maxResults</code></td>
+          <td>Yes</td>
+          <td>Maximum rows</td>
+      </tr>
+      <tr>
+          <td><code>minResults</code></td>
+          <td>Yes</td>
+          <td>Minimum rows</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>No</td>
+          <td>Range start (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>No</td>
+          <td>Range end (ISO 8601)</td>
+      </tr>
   </tbody>
 </table>
-<p><strong>Response type:</strong> <code>application/octet-stream</code> (raw BPMN XML bytes; often the first bytes are <code>&lt;?xml</code>).</p>
-<p><strong>Example HTTP response (BPMN fragment):</strong></p>
+<p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/octet-stream</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">&#34;1.0&#34;</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="err">?</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">bpmn</span><span class="err">:</span><span class="n">definitions</span> <span class="n">xmlns</span><span class="err">:</span><span class="n">bpmn</span><span class="o">=</span><span class="s">&#34;http://www.omg.org/spec/BPMN/20100524/MODEL&#34;</span> <span class="p">...</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">...</span>
-</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">bpmn</span><span class="err">:</span><span class="n">definitions</span><span class="o">&gt;</span>
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_Approve&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;activity&#34;</span><span class="p">:</span> <span class="s2">&#34;Approve Invoice&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;failedActivity&#34;</span><span class="p">:</span> <span class="s2">&#34;Approve Invoice&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;failedActivityId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_Approve&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;createTime&#34;</span><span class="p">:</span> <span class="mi">1715612400000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;endTime&#34;</span><span class="p">:</span> <span class="mi">1715616000000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;procInstId&#34;</span><span class="p">:</span> <span class="s2">&#34;proc-inst-abc&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Example when no matching deployment:</strong> <code>200 OK</code> with body <code>null</code>.</p>
+<hr>
 
-<h3 id="usage-examples">Usage Examples</h3>
+<h4 id="get-incidentsincidents-graph">GET /incidents/incidents-graph</h4>
+<p>Time-series style graph of incident counts.</p>
+<p><strong>Query parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>Yes</td>
+          <td>Process definition key</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>Yes</td>
+          <td>Process version</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>No</td>
+          <td>Range start (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>No</td>
+          <td>Range end (ISO 8601)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;date&#34;</span><span class="p">:</span> <span class="mi">1704067200000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;totalInstances&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;incidentType&#34;</span><span class="p">:</span> <span class="s2">&#34;failedJob&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p><strong>Example when no matching deployment:</strong> <code>200 OK</code> with body <code>null</code>.</p>
+<hr>
 
-<h4 id="get-all-processes">Get All Processes</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process&#34;</span>
-</span></span></code></pre></div>
-<h4 id="get-versions-for-a-process">Get Versions for a Process</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process/invoice-process/version&#34;</span>
-</span></span></code></pre></div>
-<h4 id="list-states-for-a-version">List States for a Version</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process/states&#34;</span> <span class="se">\
+<h4 id="get-incidentstotal-counts">GET /incidents/total-counts</h4>
+<p>Aggregated incident totals for the process version and optional date range.</p>
+<p><strong>Query parameters:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>processKey</code></td>
+          <td>Yes</td>
+          <td>Process definition key</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>Yes</td>
+          <td>Process version</td>
+      </tr>
+      <tr>
+          <td><code>startDate</code></td>
+          <td>No</td>
+          <td>Range start (ISO 8601)</td>
+      </tr>
+      <tr>
+          <td><code>endDate</code></td>
+          <td>No</td>
+          <td>Range end (ISO 8601)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;totalIncidents&#34;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;totalExceptions&#34;</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Example when no matching deployment:</strong> <code>200 OK</code> with body <code>null</code>.</p>
+<hr>
+
+<h3 id="usage-example">Usage example</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -i -G <span class="s2">&#34;http://localhost:8899/incidents/total-counts&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span>
-</span></span></code></pre></div>
-<h4 id="download-bpmn-diagram">Download BPMN Diagram</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process/bpmn?processKey=invoice-process&amp;version=1&#34;</span> -o invoice-process.bpmn
-</span></span></code></pre></div><p>Calls that return data use <strong>HTTP 200</strong> with the bodies shown in the <strong>example HTTP response</strong> sections above (<code>application/json</code> except BPMN, which is <code>application/octet-stream</code> XML).</p>
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;startDate=2026-01-01T00:00:00Z&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;endDate=2026-01-31T23:59:59Z&#34;</span>
+</span></span></code></pre></div><p><strong>Sample first line of the response:</strong> <code>HTTP/1.1 200</code></p>
 <hr>
 
 <h3 id="notes">Notes</h3>
 <ul>
-<li>The list returned by <code>GET /process</code> can include <strong>multiple entries per key</strong> (one row per definition version).</li>
-<li>BPMN content is raw XML.</li>
-<li>An empty or blank <code>processKey</code> on the version or states routes produces an error.</li>
+<li>Missing <code>processKey</code> / <code>version</code> where required yields an error response (typically HTTP 500 with a message), not <code>null</code>.</li>
 </ul>
 
     </div>
@@ -682,20 +722,14 @@
   <ul>
     <li><a href="#endpoints">Endpoints</a>
       <ul>
-        <li><a href="#get-process">GET /process</a></li>
-        <li><a href="#get-processprocesskeyversion">GET /process/{processKey}/version</a></li>
-        <li><a href="#get-processstates">GET /process/states</a></li>
-        <li><a href="#get-processbpmn">GET /process/bpmn</a></li>
+        <li><a href="#get-incidentsheatmap">GET /incidents/heatmap</a></li>
+        <li><a href="#get-incidentsincident-version-graph">GET /incidents/incident-version-graph</a></li>
+        <li><a href="#get-incidentsincidents-table">GET /incidents/incidents-table</a></li>
+        <li><a href="#get-incidentsincidents-graph">GET /incidents/incidents-graph</a></li>
+        <li><a href="#get-incidentstotal-counts">GET /incidents/total-counts</a></li>
       </ul>
     </li>
-    <li><a href="#usage-examples">Usage Examples</a>
-      <ul>
-        <li><a href="#get-all-processes">Get All Processes</a></li>
-        <li><a href="#get-versions-for-a-process">Get Versions for a Process</a></li>
-        <li><a href="#list-states-for-a-version">List States for a Version</a></li>
-        <li><a href="#download-bpmn-diagram">Download BPMN Diagram</a></li>
-      </ul>
-    </li>
+    <li><a href="#usage-example">Usage example</a></li>
     <li><a href="#notes">Notes</a></li>
   </ul>
 </nav>

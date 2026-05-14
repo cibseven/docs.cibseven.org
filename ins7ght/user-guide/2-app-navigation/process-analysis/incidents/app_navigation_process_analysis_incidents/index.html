@@ -14,7 +14,7 @@
   <meta name="author" content="CIB software, CIB seven community" />
   
 
-  <title>Supported Environments | docs.cibseven.org</title>
+  <title>Process Analysis - Incidents | docs.cibseven.org</title>
 
   <meta name="generator" content="Hugo 0.136.4">
   <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
 
   <link rel="stylesheet" href="/ins7ght/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
-  <link rel="canonical" href="/ins7ght/technical-guide/1-supported-environments/supported_environments/" />
+  <link rel="canonical" href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" />
 </head>
 <body class="">
 
@@ -440,107 +440,136 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="col-xs-12 content-header">
-      <h1 class="page-title">Supported Environments</h1>
+      <h1 class="page-title">Process Analysis - Incidents</h1>
     </div>
 
     <div class="col-xs-12 content-text">
       
-<h2 id="supported-environments">Supported Environments</h2>
-<p>CIB ins7ght is designed to work seamlessly with specific database systems and runtime environments. This section outlines the supported configurations to ensure optimal performance and compatibility.</p>
+<h2 id="process-analysis--incidents">Process Analysis – Incidents</h2>
+<p>The <strong>Process Analysis – Incidents</strong> page in <strong>CIB ins7ght</strong> allows you to analyze incidents within a selected BPMN process.<br>
+It helps you identify when incidents occur, which activities are most affected, which failed activities triggered the incident, and how incident behavior changes across process versions.</p>
+<p>This page is especially useful for detecting recurring process errors, identifying unstable BPMN activities, and supporting root-cause analysis by linking directly to the related case in <strong>CIB seven</strong>.</p>
 <hr>
 
-<h3 id="supported-databases">Supported Databases</h3>
-<p>CIB ins7ght requires access to a CIB seven database. The following database systems are supported:</p>
+<h3 id="page-navigation">Page Navigation</h3>
+<p>You can analyze a specific process by selecting:</p>
 <ul>
-<li><strong>PostgreSQL:</strong> Version 12 or higher (recommended)</li>
-<li><strong>H2 Database:</strong> Version 2.0.202 or higher</li>
+<li><strong>Process Name:</strong> The process you wish to investigate.</li>
+<li><strong>Process Version:</strong> The version of the process to analyze.</li>
+<li><strong>Timeframe:</strong> The time interval over which data will be considered.</li>
+<li><strong>Calendar:</strong> Select a specific time interval to be analyzed.</li>
 </ul>
+<p>Once your selections are made, all visuals and metrics on the page will automatically adjust to reflect the chosen process, version and timeframe.</p>
 <hr>
 
-<h3 id="runtime-requirements">Runtime Requirements</h3>
-
-<h4 id="backend-requirements">Backend Requirements</h4>
+<h3 id="key-metrics">Key Metrics</h3>
+<p>The page highlights <strong>two main KPIs</strong>, which summarize overall process incidents and error start events:</p>
 <ul>
-<li><strong>Java:</strong> Version 17 or higher (OpenJDK or Oracle JDK)</li>
-<li><strong>Spring Boot:</strong> Version 3.5.1</li>
-<li><strong>Jakarta EE:</strong> Servlet API 6.0</li>
-<li><strong>Apache Tomcat:</strong> Version 10 or higher (for WAR deployment)</li>
-<li><strong>Minimum RAM:</strong> 1.5GB minimum, 3GB recommended (production)</li>
-<li><strong>Minimum CPU:</strong> 2 cores minimum, 4 cores recommended (production)</li>
+<li><strong>Total Incidents:</strong> Total number of incidents detected in the selected timeframe.</li>
+<li><strong>Total Error Start Events:</strong> Number of error start events in the selected timeframe. An Error Start Event in CIB seven functions like a scoped BPMN exception handler (e.g.: &ldquo;try catch&rdquo;). It listens for propagated BpmnError events and, when triggered, interrupts the current execution flow to execute a predefined error handling path.</li>
 </ul>
-
-<h4 id="frontend-requirements">Frontend Requirements</h4>
-<ul>
-<li><strong>Node.js:</strong> Version 22.14.0 or higher</li>
-<li><strong>npm:</strong> Version 10.9.2 or higher</li>
-<li><strong>Modern web browser:</strong>
-<ul>
-<li>Chrome (version 90+)</li>
-<li>Firefox (version 88+)</li>
-<li>Edge (version 90+)</li>
-<li>Safari (version 14+)</li>
-</ul>
-</li>
-</ul>
+<p>More global process KPIs can be found on the <strong>Global Overview</strong> page.</p>
 <hr>
 
-<h3 id="network-requirements">Network Requirements</h3>
+<h3 id="number-of-incidents">Number of Incidents</h3>
+<p>The <strong>Number of Incidents over time Graph</strong> shows how incidents evolve across time.</p>
+<p>This graph displays:</p>
 <ul>
-<li>REST API access to CIB seven instance (engine-rest endpoint)</li>
-<li>HTTPS/TLS support for secure communication</li>
-<li>Default port: 8899 (configurable)</li>
-<li>CIB seven engine-rest API accessibility</li>
+<li><strong>Incidents:</strong> The total number of incidents detected over time.</li>
+<li><strong>Error Start Events:</strong> The number of error start events detected over time.</li>
 </ul>
+<figure class="image">
+  <span><img
+      src="../img/nr_of_incidents.png"
+       /></span>
+</figure>
+
+<p>This visualization helps you:</p>
+<ul>
+<li>Identify incident peaks.</li>
+<li>Detect recurring error patterns.</li>
+<li>Understand whether incidents are increasing or decreasing over time.</li>
+<li>Compare general incidents against error start events.</li>
+</ul>
+<p>This chart is useful for spotting operational instability and identifying time periods that require deeper investigation.</p>
 <hr>
 
-<h3 id="operating-system-support">Operating System Support</h3>
+<h3 id="activities-with-incidents">Activities with Incidents</h3>
+<p>The <strong>Activities with Incidents</strong> table shows which BPMN activities are most frequently involved in incidents, having in mind the <strong>Number of Incidents graph</strong>.</p>
+<p>For each entry, the table displays:</p>
 <ul>
-<li><strong>Linux:</strong> Ubuntu 20.04+, CentOS 8+, RHEL 8+, Debian 11+ (recommended for production)</li>
-<li><strong>Windows:</strong> Windows Server 2019+, Windows 10/11 (development and production)</li>
-<li><strong>macOS:</strong> macOS 11+ (development only)</li>
-<li><strong>Containerized:</strong> Docker, Kubernetes (using harbor.cib.de images)</li>
+<li><strong>Activity:</strong> The BPMN activity where the process was located or returned to.</li>
+<li><strong>Failed Activity:</strong> The specific activity that failed and triggered the incident.</li>
+<li><strong>Incident Count:</strong> The number of incidents associated with the activity.</li>
+<li><strong>Process instance ID:</strong> A direct link to the corresponding process instance instance in <strong>CIB seven</strong> for further technical investigation.</li>
+<li><strong>Create Time:</strong> The creation time of the incident in question.</li>
+<li><strong>End Time:</strong> The end time of the incident in question.</li>
 </ul>
-<hr>
+<figure class="image">
+  <span><img
+      src="../img/activity_w_incidents.png"
+       /></span>
+</figure>
 
-<h3 id="cib-seven-compatibility">CIB seven Compatibility</h3>
+<p>The distinction between <strong>Activity</strong> and <strong>Failed Activity</strong> is important because, in some cases, the process may return to a fallback activity after a failure.<br>
+The <strong>Failed Activity</strong> captures where the problem actually occurred, while the <strong>Activity</strong> shows where the process is currently positioned or where it continued after the failure. There might be cases on which an activity fails and it falls back into the previous one.</p>
+<p>This section helps you:</p>
 <ul>
-<li><strong>CIB seven version:</strong> 7.22 or higher</li>
-<li><strong>Required CIB seven components:</strong>
-<ul>
-<li>Camunda workflow engine with REST API enabled</li>
-<li>History level set to FULL or AUDIT</li>
-</ul>
-</li>
-<li><strong>Database access level:</strong> Read-only access via engine-rest API</li>
-<li><strong>Camunda REST Client:</strong> Version 7.22.0</li>
-</ul>
-<hr>
-
-<h3 id="additional-notes">Additional Notes</h3>
-<ul>
-<li>Ensure adequate storage space for historical data retention (depends on process volume)</li>
-<li>Network latency between CIB ins7ght and CIB seven should be minimal for optimal polling performance (default polling interval: 10 seconds)</li>
-<li>Production environments should use PostgreSQL with dedicated database connections</li>
-<li>The application can be deployed as a WAR file on Tomcat 10+ or as a containerized application</li>
+<li>Identify the activities most responsible for incidents.</li>
+<li>Distinguish between fallback behavior and the real failure point.</li>
+<li>Navigate directly to CIB seven for deeper case-level analysis.</li>
+<li>Prioritize technical or BPMN model improvements.</li>
 </ul>
 <hr>
 
-<h3 id="build-requirements">Build Requirements</h3>
-<p>For building from source:</p>
+<h3 id="incidents-heatmap">Incidents Heatmap</h3>
+<p>The <strong>Incidents Heatmap</strong> provides a visual representation of incidents directly on the BPMN process model.</p>
+<p>Activities with incidents are highlighted on the BPMN diagram, allowing you to quickly understand where errors are concentrated in the process.</p>
+<figure class="image">
+  <span><img
+      src="../img/incident_heatmap.png"
+       /></span>
+</figure>
+
+<p>The heatmap helps you:</p>
 <ul>
-<li><strong>Maven:</strong> Version 3.6 or higher</li>
-<li><strong>Java JDK:</strong> Version 17</li>
-<li><strong>Node.js:</strong> Version 22.14.0 (for frontend build)</li>
-<li><strong>npm:</strong> Version 10.9.2 (for frontend build)</li>
+<li>See which BPMN activities are affected by incidents.</li>
+<li>Identify incident hotspots in the process flow.</li>
+<li>Understand whether incidents are isolated or spread across multiple areas.</li>
+<li>Support process improvement by focusing on the most problematic activities.</li>
 </ul>
+<p>A <strong>fullscreen</strong> button is also available to improve visualization for larger BPMN processes.</p>
+<p><strong>Error Start Events are excluded from the heatmap</strong> because they act as centralized BPMN error handlers. Highlighting them would always point to the same activity instead of showing where the incident actually originated.</p>
 <hr>
 
-<h3 id="container-deployment">Container Deployment</h3>
+<h3 id="incidents-per-version-graph">Incidents per Version Graph</h3>
+<p>The <strong>Incidents per Version Graph</strong> compares the number of incidents across different process versions.</p>
+<figure class="image">
+  <span><img
+      src="../img/incidents_per_version.png"
+       /></span>
+</figure>
+
+<p>This graph is especially useful to:</p>
 <ul>
-<li><strong>Base Image:</strong> Tomcat 10 (Bitnami)</li>
-<li><strong>Container Registry:</strong> harbor.cib.de</li>
-<li><strong>Image:</strong> <code>harbor.cib.de/dev/CIB ins7ght:${version}</code></li>
-<li><strong>Deployment:</strong> WAR deployed to <code>/opt/bitnami/tomcat/webapps/ins7ght</code></li>
+<li>Compare incident frequency between process versions.</li>
+<li>Identify whether newer versions introduced more or fewer incidents.</li>
+<li>Detect regressions caused by BPMN model changes.</li>
+<li>Support version-based process improvement decisions.</li>
+</ul>
+<p>By comparing incidents across versions, you can understand whether process changes improved stability or introduced new failure points.</p>
+<hr>
+
+<h3 id="key-takeaways">Key Takeaways</h3>
+<p>The <strong>Process Analysis – Incidents</strong> page is designed to help you:</p>
+<ul>
+<li>Monitor incidents and error start events over time.</li>
+<li>Identify the BPMN activities with the highest number of incidents.</li>
+<li>Understand the difference between the current activity and the failed activity.</li>
+<li>Open related cases directly in <strong>CIB seven</strong> for deeper investigation.</li>
+<li>Visualize incident hotspots on the BPMN process model.</li>
+<li>Compare incident behavior across process versions.</li>
+<li>Support root-cause analysis and continuous process improvement.</li>
 </ul>
 
     </div>
@@ -551,19 +580,13 @@
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-databases">Supported Databases</a></li>
-    <li><a href="#runtime-requirements">Runtime Requirements</a>
-      <ul>
-        <li><a href="#backend-requirements">Backend Requirements</a></li>
-        <li><a href="#frontend-requirements">Frontend Requirements</a></li>
-      </ul>
-    </li>
-    <li><a href="#network-requirements">Network Requirements</a></li>
-    <li><a href="#operating-system-support">Operating System Support</a></li>
-    <li><a href="#cib-seven-compatibility">CIB seven Compatibility</a></li>
-    <li><a href="#additional-notes">Additional Notes</a></li>
-    <li><a href="#build-requirements">Build Requirements</a></li>
-    <li><a href="#container-deployment">Container Deployment</a></li>
+    <li><a href="#page-navigation">Page Navigation</a></li>
+    <li><a href="#key-metrics">Key Metrics</a></li>
+    <li><a href="#number-of-incidents">Number of Incidents</a></li>
+    <li><a href="#activities-with-incidents">Activities with Incidents</a></li>
+    <li><a href="#incidents-heatmap">Incidents Heatmap</a></li>
+    <li><a href="#incidents-per-version-graph">Incidents per Version Graph</a></li>
+    <li><a href="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

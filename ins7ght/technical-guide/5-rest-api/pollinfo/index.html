@@ -153,6 +153,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/ins7ght/user-guide/2-app-navigation/process-analysis/incidents/app_navigation_process_analysis_incidents/" >Process Analysis - Incidents</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -395,7 +403,18 @@
   </li>
 
         
-      </ul>
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/ins7ght/technical-guide/5-rest-api/incidents/" >Incidents API</a>
     
   </li>
 
@@ -404,11 +423,8 @@
     
   </li>
 
-  
-    
-  <li>
-    
-      <a href="/ins7ght/technical-guide/5-rest-api/pollinfo/" >Polling Info API</a>
+        
+      </ul>
     
   </li>
 
@@ -440,13 +456,16 @@
 <p>Returns the current polling status and timestamps.</p>
 <p><strong>Purpose:</strong> Monitor the data synchronization status between CIB ins7ght and CIB seven.</p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Response Example:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+<p><strong>Example HTTP response:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
 </span></span><span class="line"><span class="cl">  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;550e8400-e29b-41d4-a716-446655440000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:00:00.000Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:00.000Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:15.000Z&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-01-29T10:00:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-01-29T10:30:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-01-29T10:30:15.000Z&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span></code></pre></div><p><strong>Response Fields:</strong></p>
@@ -504,21 +523,24 @@ Compare <code>isPollingSince</code> to the current time:</p>
 <h3 id="usage-examples">Usage Examples</h3>
 
 <h4 id="check-polling-status">Check Polling Status</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/pollinfo&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/poll-info&#34;</span>
 </span></span></code></pre></div><p><strong>Response:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span>
 </span></span><span class="line"><span class="cl">  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;550e8400-e29b-41d4-a716-446655440000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:00:00.000Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:00.000Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-01-29T10:30:15.000Z&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchFrom&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-01-29T10:00:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fetchedUntil&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-01-29T10:30:00.000Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isPollingSince&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-01-29T10:30:15.000Z&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span></code></pre></div>
 <h4 id="check-if-polling-is-working">Check if Polling is Working</h4>
 <p>Compare <code>isPollingSince</code> to current time:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get the isPollingSince timestamp</span>
-</span></span><span class="line"><span class="cl"><span class="nv">POLLING_SINCE</span><span class="o">=</span><span class="k">$(</span>curl -s http://localhost:8899/pollinfo <span class="p">|</span> jq -r <span class="s1">&#39;.[0].isPollingSince&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">POLLING_SINCE</span><span class="o">=</span><span class="k">$(</span>curl -s http://localhost:8899/poll-info <span class="p">|</span> jq -r <span class="s1">&#39;.[0].isPollingSince&#39;</span><span class="k">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Polling started at: </span><span class="nv">$POLLING_SINCE</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># If this timestamp is very old (more than a minute or two), polling might be stuck</span>
@@ -537,7 +559,7 @@ Compare <code>isPollingSince</code> to the current time:</p>
 <li>Check <code>isPollingSince</code> against current time to verify polling is working</li>
 <li>If polling is stuck, check application logs for errors</li>
 <li>This endpoint does not require authentication</li>
-<li>For detailed polling configuration, see <a href="../../2%20Setup%20CIB%20ins7ght/configuration.md">Configuration Guide</a></li>
+<li>For detailed polling configuration, see <a href="/ins7ght/technical-guide/2-setup-cib-ins7ght/configuration">Configuration Guide</a></li>
 </ul>
 
     </div>
