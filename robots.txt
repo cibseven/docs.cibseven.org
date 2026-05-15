@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /manual/1.0/
+Disallow: /manual/1.1/
+Disallow: /manual/2.0/
+Disallow: /manual/2.0-ee/
+Disallow: /manual/2.1/
+Disallow: /manual/2.1-ee/"
+
