@@ -1,0 +1,4078 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>CIB seven 2.2.0 CE - Release Notes | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.136.4">
+  <link rel="shortcut icon" href="/manual/2.2/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/manual/2.2/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.2/release-notes/release-notes-2.2.0-ce/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/manual/2.2/" id="logolink">
+      <img src="/manual/2.2/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  class="active"  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+<div class="version versioned">
+    
+      
+    
+       <span class="name">CIB seven</span> 
+    
+      
+    
+      
+    
+
+    <span class="number">2.2</span>
+</div>
+
+<br />
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/downloading-cibseven/" >Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/licenses/" >Licenses</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/implemented-standards/" >Implemented Standards</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/architecture/" >Architecture Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/supported-environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/extensions/" >Extensions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/third-party-libraries/" >Third-Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/introduction/public-api/" >Public API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/" >Process Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-engine-bootstrapping/" >Process Engine Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-engine-api/" >Process Engine API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-engine-concepts/" >Process Engine Concepts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/variables/" >Process Variables</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-instance-modification/" >Process Instance Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/scripting/" >Scripting</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/templating/" >Templating</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/securing-custom-code/" >Custom Code &amp; Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/external-tasks/" >External Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/connectors/" >Connectors</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-versioning/" >Process Versioning</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/database/" >Database</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/database/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/database/database-configuration/" >Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/database/mssql-configuration/" >Microsoft SQL Server and Azure SQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/database/mysql-configuration/" >MySQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/database/performance/" >Performance</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/history/" >History</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/" >History configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/history/user-operation-log/" >User operation log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/history/history-cleanup/" >History cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/history/custom-implementation/" >Custom implementation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/deployment-cache/" >Deployment Cache</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/password-hashing/" >Password Hashing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/password-policy/" >Password Policy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/transactions-in-processes/" >Transactions in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/the-job-executor/" >The Job Executor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/multi-tenancy/" >Multi-Tenancy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/id-generator/" >Id Generators</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/metrics/" >Metrics</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/incidents/" >Incidents</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-engine-plugins/" >Process Engine Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/identity-service/" >Identity Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/authorization-service/" >Authorization Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/deployments/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/process-diagram-api/" >Process Diagram Visualization</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/time-zones/" >Time zones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/decisions/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/decisions/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/decisions/repository/" >Repository</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/decisions/decision-service/" >Decision Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/decisions/bpmn-cmmn/" >Decisions in BPMN &amp; CMMN</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/decisions/history/" >History</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/batch/" >Batch</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/batch-operations/" >Batch operations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/error-handling/" >Error Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-engine/diagnostics-data/" >Diagnostics data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-applications/" >Process Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-applications/the-process-application-class/" >The Process Application class</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-applications/the-processes-xml-deployment-descriptor/" >The processes.xml Deployment Descriptor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-applications/process-application-event-listeners/" >Process Application Event Listeners</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-applications/process-application-resources/" >Process Application Resource Access</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/process-applications/maven-archetypes/" >Maven Project Templates (Archetypes)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/runtime-container-integration/" >Runtime Container Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/runtime-container-integration/bpm-platform-services/" >CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/" >JNDI Bindings for CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/runtime-container-integration/tomcat/" >Apache Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/runtime-container-integration/jboss/" >WildFly</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/runtime-container-integration/job-execution-with-managed-resources/" >Job Execution with Managed Resources</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cibseven-run/" >CIB seven Run</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-framework-integration/" >Spring Framework Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-framework-integration/configuration/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-framework-integration/transactions/" >Transactions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-framework-integration/deployment/" >Deployment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-framework-integration/expressions/" >Spring Bean Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-framework-integration/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/" >Spring Boot Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/webapps/" >Web Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/process-applications/" >Process Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/the-spring-event-bridge/" >Spring Eventing Bridge</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/develop-and-test/" >Developing and Testing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/spring-boot-integration/spring-security/" >Spring Security OAuth2 Integration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/quarkus-integration/" >Quarkus Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/quarkus-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/quarkus-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/quarkus-integration/cdi-integration/" >Engine CDI Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/quarkus-integration/deployments/" >Resource Deployments</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cdi-java-ee-integration/jta-transaction-integration/" >JTA Transaction Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cdi-java-ee-integration/expression-resolving/" >Expression Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cdi-java-ee-integration/contextual-programming-model/" >Contextual Programming Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cdi-java-ee-integration/built-in-beans/" >Built-In Beans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/" >CDI Event Bridge</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/testing/" >Testing</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/testing/assert-examples/" >Assert Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/" >Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/" >BPMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/fluent-builder-api/" >Fluent Builder API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/respository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/bpmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/" >CMMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/cmmn-model-api/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/dmn-model-api/" >DMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/dmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/dmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/dmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/model-api/dmn-model-api/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/data-formats/" >Data Formats (XML, JSON, Other)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/data-formats/configuring-spin-integration/" >Configuring Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/data-formats/data-formats-in-processes/" >Data Formats in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/data-formats/xml/" >XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/data-formats/json/" >JSON</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/task-forms/" >User Task Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/task-forms/jsf-task-forms/" >JSF Task Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/" >DMN Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/embed/" >Embed</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/evaluate-decisions/" >Evaluate Decisions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/expressions-and-scripts/" >Expressions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/feel/" >FEEL Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/feel/type-handling/" >Type Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/feel/custom-functions/" >Custom Functions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/feel/spin-integration/" >Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/feel/legacy-behavior/" >Legacy Behavior</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/dmn-engine/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/logging/" >Logging</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/security/" >Security Instructions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/ext-client/" >External Task Client</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/ext-client/spring-boot-starter/" >Spring Boot Starter</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/user-guide/ext-client/compatibility-matrix/" >Version Compatibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/" >REST API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/" >Overview</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/authentication/" >Configure Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/distro-use/" >Usage with a Pre-Built Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/embeddability/" >Embed the API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/hal/" >Hypertext Application Language (HAL)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/variables/" >Variables in the REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/overview/date-format/" >Date Format</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/openapi/" >OpenAPI</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/specification/" >Specification ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/javadoc/" >Javadoc ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/" >BPMN 2.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/service-task/" >Service Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/send-task/" >Send Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/user-task/" >User Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/business-rule-task/" >Business Rule Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/script-task/" >Script Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/receive-task/" >Receive Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/manual-task/" >Manual Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/tasks/task-markers/" >Task Markers</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/gateways/" >Gateways</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/gateways/exclusive-gateway/" >Data-based Exclusive Gateway (XOR)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/gateways/sequence-flow/" >Conditional and Default Sequence Flows</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/gateways/parallel-gateway/" >Parallel Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/gateways/inclusive-gateway/" >Inclusive Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/gateways/event-based-gateway/" >Event-based Gateway</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/" >Events</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/start-events/" >Start Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/none-events/" >None Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/message-events/" >Message Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/timer-events/" >Timer Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/error-events/" >Error Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/escalation-events/" >Escalation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/signal-events/" >Signal Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/cancel-and-compensation-events/" >Cancel and Compensation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/conditional-events/" >Conditional Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/link-events/" >Link Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/events/terminate-event/" >Terminate Events</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/subprocesses/" >Subprocess</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/subprocesses/embedded-subprocess/" >Embedded Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/subprocesses/call-activity/" >Call Activity</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/subprocesses/event-subprocess/" >Event Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/custom-extensions/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/bpmn20/custom-extensions/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/" >DMN 1.3</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/decision-table/" >Decision Table</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/decision-table/input/" >Input</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/decision-table/output/" >Output</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/decision-table/rule/" >Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/decision-table/hit-policy/" >Hit Policy</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/decision-literal-expression/" >Decision Literal Expression</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/feel/" >FEEL</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/feel/legacy/" >Legacy FEEL Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/feel/legacy/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/feel/legacy/language-elements/" >Language Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/dmn/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/" >CMMN 1.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/api/classic-vs-fluent/" >Classic vs Fluent API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/concepts/" >CMMN Concepts</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/concepts/plan-items/" >Plan Items and Item Definitions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/concepts/lifecycle/" >Plan Item Lifecycles</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/concepts/entry-exit-criteria/" >Entry and Exit Criteria</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/tasks/human-task/" >Human Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/tasks/process-task/" >Process Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/tasks/case-task/" >Case Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/tasks/decision-task/" >Decision Task</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/grouping-tasks/" >Grouping Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/grouping-tasks/stage/" >Stage</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/milestone/" >Milestones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/sentry/" >Sentries</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/markers/" >Markers</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/markers/manual-activation-rule/" >Manual Activation Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/markers/required-rule/" >Required Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/markers/auto-complete/" >Auto Complete</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/markers/repetition-rule/" >Repetition Rule</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/custom-extensions/camunda-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/migration/" >Migration between Specification Versions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/cmmn11/migration/10-to-11/" >1.0 to 1.1</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/" >Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/" >Embedded Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/" >Controls</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/inputs/" >Text Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/textarea/" >Textareas</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/date-inputs/" >Date Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/boolean-inputs/" >Boolean Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/select/" >Selects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/hidden/" >Hidden Input Fields</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/files/" >File Upload and Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/controls/bpmn-buttons/" >BPMN Event Buttons</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/" >Javascript</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/cam-script/" >The cam-script Directive</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/api/" >Available API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/lifecycle/" >Participating in the Form Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/debugging/" >Debugging Scripts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/generating-businesskey/" >Generating a Business Key</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/javascript/examples/" >Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/lifecycle/" >Lifecycle and Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/json-data/" >Working with Json Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/java-objects/" >Working with Java Objects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/integrate/" >Integrating the Forms SDK</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/integrate/getting-a-distribution/" >Getting a Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/integrate/bootstrapping/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/integrate/angular-js/" >AngularJS Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/embedded-forms/integrate/full-examples/" >Full Example</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/" >Spin Dataformats</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/" >XML</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/01-reading-xml/" >Reading XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/02-manipulating-xml/" >Manipulating XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/03-writing-xml/" >Writing XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/04-querying-xml/" >Querying XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/05-mapping-xml/" >Mapping XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/xml/06-configuring-xml/" >Configuring XML Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/json/" >JSON</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/json/01-reading-json/" >Reading JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/json/02-writing-json/" >Writing JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/json/03-querying-json/" >Querying JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/json/04-mapping-json/" >Mapping JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/json/05-configuring-json/" >Configuring JSON Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/spin/extending-spin/" >Extending Spin</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/" >Connectors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/http-connector/" >HTTP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/soap-connector/" >SOAP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/" >AI Agent Connector</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/getting-started/" >Getting Started</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/installation/" >Installation &amp; Enablement</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/configuring-the-agent/" >Configuring the Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/tools/" >Tools</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/rag/" >Retrieval-Augmented Generation (RAG)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/chat-memory/" >Chat Memory</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/audit-trail/" >Audit Trail &amp; AI Transparency</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/configuration-reference/" >Configuration Reference</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/examples/" >Examples &amp; Tutorials</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/troubleshooting/" >Troubleshooting &amp; Known Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/security-and-data-handling/" >Security &amp; Data Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/developer-guide/" >Developer Guide</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/ai-agent-connector/glossary/" >Glossary</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/connect/extending-connect/" >Extending Connect</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/" >Deployment Descriptors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/descriptors/bpm-platform-xml/" >bpm-platform.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/descriptors/processes-xml/" >processes.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/tags/" >Tags</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/tags/job-executor/" >&lt;job-executor /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/tags/process-archive/" >&lt;process-archive /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/reference/deployment-descriptors/tags/process-engine/" >&lt;process-engine /&gt;</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/cibseven-run/" >Remote Engine Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/" >Shared Engine Distribution</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/tomcat/" >Tomcat</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/tomcat/pre-packaged/" >Pre-Packaged Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/tomcat/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/tomcat/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/jboss/" >JBoss EAP/WildFly</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/jboss/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/full/jboss/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/docker/" >Docker</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/installation/spring-boot/" >Spring Boot</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/webapps/" >Web Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/" >Modeler</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/installation/prerequisites/" >Prerequisites</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/configuration/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/configuration/enable-disable/" >Enable / Disable</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/configuration/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/configuration/database/" >Database</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/dmn-modeling/" >DMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/form-modeling/" >Form Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/element-templates/" >Element Templates</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/modeler/reference/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/" >Tasklist</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/working-with-tasklist/" >Working with Tasklist</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/filters/" >Filters</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/user-assignment/" >User Assignment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/tasklist-plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/tasklist/accessibility/" >Accessibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/" >Cockpit</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/" >Processes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/dashboard/" >Process Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/process-definition-view/" >Process Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/process-instance-view/" >Process Instance View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/suspension/" >Suspension</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/drilldown/" >Collapsed Subprocesses</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/dmn/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/dmn/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/dmn/decision-definition-view/" >Decision Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/dmn/decision-instance-view/" >Decision Instance View</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/tasks-dashboard/" >Human Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/deployment-view/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/extend/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/cockpit/extend/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/" >Admin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/user-management/" >Users</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/group-management/" >Groups</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/tenant-management/" >Tenants</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/authorization-management/" >Authorizations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/system-management/" >System</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/admin/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/welcome/" >Welcome</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/welcome/welcome-plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/welcome/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/shared-options/" >Shared Configuration Options</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/shared-options/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/shared-options/cookie-security/" >Cookie Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/shared-options/csrf-prevention/" >CSRF Prevention</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/shared-options/header-security/" >HTTP Header Security</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/examples/" >Examples</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/update/" >Update &amp; Migration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/patch-level/" >Patch Level Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/21-to-22/" >2.1 to 2.2</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/21-to-22/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/21-to-22/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/rolling-update/" >Rolling Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2/update/camunda/" >Camunda Migration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2/release-notes/" >Release Notes</a>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">CIB seven 2.2.0 CE - Release Notes</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<h2 id="release-notes">Release Notes</h2>
+<p><em>Release Date: May 31, 2026</em></p>
+
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li><strong><a href="/manual/2.2/reference/connect/ai-agent-connector/">AI Agent Connector</a></strong> — new <code>cibseven-connect-ai-agent</code> module enabling BPMN service tasks to invoke LLM-backed agents via LangChain4j, with pgvector RAG, EU AI Act compliance, and MCP tool integration</li>
+<li><strong>OpenTelemetry &amp; JMX Metrics</strong> — built-in OpenTelemetry agent configuration and JMX metrics export in Docker images</li>
+<li><strong>SCIM 2.0 Identity Provider</strong> <em>(beta)</em> — new <code>identity-scim</code> plugin for SCIM 2.0-based user/group federation with caching and OIDC authentication support</li>
+<li><strong>Direct Provider</strong> <em>(beta)</em> — new <code>SevenDirectProvider</code> as an alternative <code>BpmProvider</code> implementation running without REST</li>
+<li><strong>Multi-Engine Support</strong> — connect multiple process engines from a single web client with token caching and OAuth2 support</li>
+<li><strong><a href="/manual/2.2/webapps/modeler/">Modeler</a></strong> — first stable <code>cibseven-modeler</code> <code>1.0.0</code> release with template icons in the diagram and in the cockpit viewer, collapsible panel, plugin extension points, and toast notifications</li>
+<li><strong>Accessibility</strong> — comprehensive WCAG improvements across navigation, dialogs, calendar, and form components</li>
+<li><strong>Java 21 Only</strong> — Java 17 Docker images removed; all images are now Java 21 exclusively</li>
+<li><strong>Security</strong> — multiple CVEs resolved across all patch releases since 2.1.0</li>
+</ul>
+
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li><strong>Java 17 Docker images removed.</strong> Only Java 21 images are now built and published. Deployments using the <code>java17-*</code> image tag must migrate to the Java 21 image.</li>
+<li><strong><code>KeycloakUserProvider</code> renamed to <code>OAuth2UserProvider</code></strong> in YAML configuration files. Update your <code>default.yml</code> / <code>application.yml</code> configuration accordingly (see Configuration Changes below).</li>
+</ul>
+
+<h3 id="configuration-changes">Configuration Changes</h3>
+<ul>
+<li><strong><code>KeycloakUserProvider</code> → <code>OAuth2UserProvider</code></strong>: The user provider class name has been renamed in all CIB seven distribution YAML configs (<code>run</code>, <code>run4</code>, Tomcat, Wildfly). Update the relevant <code>userProvider</code> entries in your configuration file.</li>
+<li><strong><code>jwtSecret</code> via system property</strong>: The JWT secret for engine-rest can now be set via the JVM system property <code>cibseven.engine-rest.jwt-secret</code> or the environment variable <code>CIBSEVEN_ENGINE_REST_JWT_SECRET</code>, without requiring a config file change.</li>
+<li><strong>AI Agent default model override</strong>: The default LLM model for the AI Agent connector can be overridden via the system property <code>cibseven.connect.ai.agent.default-model</code> or the environment variable <code>CIBSEVEN_CONNECT_AI_AGENT_DEFAULT_MODEL</code>.</li>
+<li><strong>Cron expression type</strong>: Configure <code>cronType</code> (<code>QUARTZ</code> or <code>SPRING53</code>) and <code>supportLegacyQuartzSyntax</code> in <code>run</code>, Tomcat, and Wildfly configuration files to control <a href="/manual/2.2/update/minor/20-to-21/#cron-expression">cron expression</a> handling. Default is <code>QUARTZ</code>.</li>
+<li><strong><code>authGroupFilterThreshold</code></strong>: New option in engine configuration to optimize authentication group filtering and reduce SQL query load.</li>
+<li><strong>Tomcat 11 support</strong>: Tomcat 11 is now officially supported as a deployment target.</li>
+<li><strong>Schema validation</strong>: Modeler schema validation is disabled by default in the <code>run</code> distribution.</li>
+<li><strong>Modeler datasource</strong>: A shared datasource resource link for the CIB seven Modeler is now included in <code>webapp.xml</code> for Tomcat distributions.</li>
+<li><strong>AI Agent toggle</strong>: <code>AI_AGENT_ENABLED</code> environment variable (default <code>true</code>) controls whether the AI agent connector is loaded at startup in Tomcat and WildFly Docker images; set to <code>false</code> to disable without removing any files. For the <code>run</code> distribution, the connector is active by default in dev/default mode and disabled in <code>--production</code> mode; re-enable with <code>--ai</code>, <code>--ai-agent</code>, or <code>--agent</code> flags.</li>
+</ul>
+
+<h3 id="new-features">New Features</h3>
+
+<h4 id="ai-agent-connectorhahahugoshortcode208s3hbhb"><a href="/manual/2.2/reference/connect/ai-agent-connector/">AI Agent Connector</a></h4>
+<ul>
+<li>New <code>cibseven-connect-ai-agent</code> module that lets BPMN service tasks invoke LLM-backed agents via the standard <code>camunda:connector</code> input/output parameter mapping — no custom Java code required</li>
+<li>Runtime supports OpenAI, Azure OpenAI, Ollama, and any OpenAI-compatible endpoint via LangChain4j</li>
+<li>Knowledge Ingestor with pgvector RAG and bundled <code>all-MiniLM-L6-v2</code> embedding model</li>
+<li>Built-in <code>ProcessStarterTool</code> — allows the LLM to start a CIB seven process by definition key, poll for completion, and return output variables</li>
+<li>Chat memory with persistence and configurable options</li>
+<li>MCP tool integration with provenance audit and mandatory name prefixing</li>
+<li>EU AI Act compliance: chat-log persistence scoped per activity, RAG retrieval audit, AI-output marker for Art. 50(2), model parameters surfaced for Art. 15, extended record-keeping for Art. 12/14/26</li>
+<li><code>instructionMode</code> to combine caller instruction with bundled default prompt</li>
+<li>Bundled element templates: <code>cibseven-ai-agent.json</code> and <code>cibseven-knowledge-ingestor.json</code></li>
+<li>Default LLM model overridable by operators via system property or environment variable</li>
+</ul>
+
+<h4 id="rest-engine">REST Engine</h4>
+<ul>
+<li>New endpoint to retrieve the current process engine configuration (history level, authorization, password policy)</li>
+<li><code>jwtSecret</code> configurable via system property</li>
+<li>Policy-validation endpoint no longer requires authentication</li>
+</ul>
+
+<h4 id="historic-process-statistics">Historic Process Statistics</h4>
+<ul>
+<li>New REST endpoint with instance-filter support for HistoricStatistics queries</li>
+<li>Added sorting support for ActivityStatistics queries</li>
+</ul>
+
+<h4 id="task-variables">Task Variables</h4>
+<ul>
+<li>New engine option to validate that a task ID exists before assigning task variables, preventing silent data loss for non-existing tasks</li>
+</ul>
+
+<h4 id="external-task-client">External Task Client</h4>
+<ul>
+<li>OAuth2 client credentials flow for external task clients</li>
+</ul>
+
+<h4 id="scim-20-identity-provider-_beta_">SCIM 2.0 Identity Provider <em>(beta)</em></h4>
+<ul>
+<li>New <code>identity-scim</code> engine plugin for SCIM 2.0-based identity federation — connect CIB seven to any SCIM-compliant user directory (e.g. Okta, Azure AD, Microsoft Entra)</li>
+<li>Read-only and writable identity provider implementations for full user and group lifecycle management</li>
+<li>Configurable response caching: <code>cacheEnabled</code>, <code>maxCacheSize</code>, <code>cacheExpirationTimeoutMin</code> options with TTL and max-size eviction; cache is automatically invalidated on write operations</li>
+<li>OIDC authentication support for securing SCIM endpoint access</li>
+<li>User authentication support via SCIM (disabled by default; enable with <code>userAuthenticationEnabled</code>)</li>
+<li>Distributed with all CIB seven distributions (Tomcat, WildFly, <code>run</code>)</li>
+<li><strong>Beta:</strong> works for limited use cases and is under active development</li>
+</ul>
+
+<h4 id="process-instance-navigation-_since-211_">Process Instance Navigation <em>(since 2.1.1)</em></h4>
+<ul>
+<li>Redirect URL for accessing a process instance using only its ID</li>
+<li>Support for jumping from the task view in Cockpit directly to the corresponding task in the Task List</li>
+<li><code>tenantId</code> support across all instance and <a href="/manual/2.2/webapps/cockpit/bpmn/failed-jobs/">incident</a> views</li>
+</ul>
+
+<h4 id="initial-setup-_since-212_">Initial Setup <em>(since 2.1.2)</em></h4>
+<ul>
+<li>Initial setup page appears when no users exist in the system</li>
+<li>Backend support for creating the first admin user with full admin rights</li>
+<li>Setup restricted to internal user provider only; automatic detection of missing authentication</li>
+</ul>
+
+<h4 id="cron-expression-migration-_since-212_">Cron Expression Migration <em>(since 2.1.2)</em></h4>
+<ul>
+<li>Support for <a href="/manual/2.2/update/minor/20-to-21/#cron-expression">migration of Quartz 2.5.0 cron expressions</a> to Spring 5.3 syntax</li>
+<li>Configurable <code>cronType</code> and <code>supportLegacyQuartzSyntax</code> parameters; default type is <code>QUARTZ</code></li>
+</ul>
+
+<h4 id="multi-engine-support-_since-213_">Multi-Engine Support <em>(since 2.1.3)</em></h4>
+<ul>
+<li>Connect to multiple engines from a single CIB seven web client</li>
+<li>Token caching mechanism for logged-in engines to improve performance</li>
+<li>Enhanced REST configuration with custom <code>jwtSecret</code> at URL and path level</li>
+<li>Fallback path to <code>/engine-rest</code> if no explicit engine path is set</li>
+<li>Base REST URL fallback for the &ldquo;default&rdquo; engine (omitting <code>/engine/default</code> suffix) for backward compatibility <em>(since 2.1.4)</em></li>
+<li>Pseudo-authentication filter for multi-engine environments</li>
+</ul>
+
+<h4 id="multi-engine-support-for-embedded-forms-_since-213_">Multi-Engine Support for Embedded Forms <em>(since 2.1.3)</em></h4>
+<ul>
+<li>Middleware routing for embedded forms instead of direct <code>engine-rest</code> calls from <code>bpm-sdk</code></li>
+<li>Embedded form URLs constructed based on engine configuration</li>
+<li>Middleware proxy for form content to resolve CORS issues</li>
+</ul>
+
+<h4 id="variables--file-type-_since-213_">Variables — File Type <em>(since 2.1.3)</em></h4>
+<ul>
+<li>Ability to add a new file variable for process instances</li>
+<li>Ability to change existing variables to file type</li>
+</ul>
+
+<h4 id="direct-provider-_beta_">Direct Provider <em>(beta)</em></h4>
+<ul>
+<li>New <code>SevenDirectProvider</code> — an alternative <code>BpmProvider</code> implementation that accesses the process engine directly without REST, suitable for embedded deployments</li>
+<li><strong>Beta:</strong> works for limited use cases and is under active development</li>
+</ul>
+
+<h4 id="user-profile--password-validation">User Profile — Password Validation</h4>
+<ul>
+<li>Password policy is now validated when a user changes their password in the user profile</li>
+<li>Only violated password rules are displayed; validation resets on input</li>
+</ul>
+
+<h4 id="modelerhahahugoshortcode208s6hbhb-enhancements"><a href="/manual/2.2/webapps/modeler/">Modeler</a> Enhancements</h4>
+<ul>
+<li>First stable release of <code>cibseven-modeler</code> <code>1.0.0</code></li>
+<li>Element template icons displayed in the BPMN diagram and in the template chooser modal</li>
+<li>Collapsible Properties/Chat side panel with toggle strip (chevron button on panel edge), similar to Camunda Desktop Modeler behavior</li>
+<li>Plugin extension point for integrating third-party plugins into the modeler</li>
+<li>Chat extension point for integrating AI/chat plugins</li>
+<li><code>group</code> property inside element-template scopes is now respected, splitting scope properties into labeled sub-groups</li>
+<li>Download button for diagram list items on the Start Page</li>
+<li>Default task type marker (user figure, gears, etc.) stays visible alongside the applied element-template icon</li>
+<li>Toast notification shown after successful deployment or process start, with a redirect option</li>
+<li>Diagram and form creation modal inputs are focused on open; press Enter to confirm creation</li>
+<li>Fixed unique IDs for internal/external template filter checkboxes</li>
+</ul>
+
+<h4 id="docker--opentelemetry--jmx">Docker — OpenTelemetry &amp; JMX</h4>
+<ul>
+<li>Built-in OpenTelemetry agent configuration in Docker images</li>
+<li>JMX metrics export support via OpenTelemetry</li>
+<li><code>run4</code> distribution Docker image with JPDA remote debug mode support</li>
+<li><code>AI_AGENT_ENABLED</code> environment variable (default <code>true</code>) to toggle the AI agent connector at startup without modifying or deleting files; supported in Tomcat and WildFly Docker images; for <code>run</code> distribution, AI agent is on in dev/default mode and off in <code>--production</code> mode</li>
+</ul>
+
+<h3 id="user-experience-improvements">User Experience Improvements</h3>
+
+<h4 id="process-instance-search-_since-216_">Process Instance Search <em>(since 2.1.6)</em></h4>
+<ul>
+<li>Process instance details shown in a sidebar: instance data, status icons, <a href="/manual/2.2/webapps/cockpit/bpmn/failed-jobs/">incident</a> count, links to process definition, deployment, and parent instances</li>
+<li>Added separate process instance search for runtime-only processes</li>
+<li>Added &ldquo;Runtime-only instances&rdquo; tab view for selected process definition</li>
+<li>Added incidents icon with the total incident count in <a href="/manual/2.2/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a> views</li>
+<li>Hid unreliable variables and incident criteria in historic search for non-full <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/">history levels</a></li>
+</ul>
+
+<h4 id="incidents-_since-216_">Incidents <em>(since 2.1.6)</em></h4>
+<ul>
+<li>Show <a href="/manual/2.2/webapps/cockpit/bpmn/failed-jobs/">incidents</a> from history and runtime tables based on the configured <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/">history level</a></li>
+<li>Improved stack trace visibility for incidents originating from the selected process and its subprocesses</li>
+<li>Fixed BPMN diagram incident badges not shown in process definition and process instance views</li>
+<li>Fixed subprocess incident badges not displayed in the main process instance view</li>
+<li>Fixed incident badges not shown on Call Activity elements in instance view with <code>audit</code> <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/">history level</a></li>
+<li>Enabled retrying subprocess incidents from the parent process <em>(since 2.1.5)</em></li>
+<li>Click on &ldquo;failed activity&rdquo; in the incidents table to select the activity in the BPMN diagram <em>(since 2.1.1)</em></li>
+</ul>
+
+<h4 id="variables">Variables</h4>
+<ul>
+<li>Variables table: show BPMN scope name, highlight element on click, and fix direct diagram selection</li>
+<li>Variables table: <code>activityIdBadge</code> component for improved variable filtering by activity</li>
+<li>Variables table: copy variable name with a single click via <code>CopyableActionButton</code></li>
+<li>Variables table: added <code>activity instance id</code> column and fixed <code>scope</code> column value <em>(since 2.1.5)</em></li>
+<li>Fixed fetching of variables for <code>audit</code> <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/">history level</a> in process instance view <em>(since 2.1.6)</em></li>
+</ul>
+
+<h4 id="tasks">Tasks</h4>
+<ul>
+<li>Configurable display of process variables on task cards</li>
+<li>Task frame can now be scrolled when a task is not yet assigned</li>
+<li>Generic form: add and modify task variables directly for empty user tasks (file uploads and existing variable editing supported)</li>
+</ul>
+
+<h4 id="user-management">User Management</h4>
+<ul>
+<li>Case-insensitive user search using the <code>likePatternIgnoreCase</code> parameter</li>
+</ul>
+
+<h4 id="bpmn-diagram">BPMN Diagram</h4>
+<ul>
+<li>Activity selection persists between definition, instance, and incidents views <em>(since 2.1.1)</em></li>
+<li>Activity badges support non-full <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/">history level</a> configurations including <code>audit</code> mode <em>(since 2.1.1)</em></li>
+<li>Fixed reset of activity instance and history state when navigating from main process to subprocess <em>(since 2.1.6)</em></li>
+<li>Short number format option for badge numbers in the BPMN Viewer (user preference; e.g. <code>1.2k</code> instead of <code>1200</code>)</li>
+<li>Element template icons rendered in the cockpit BPMN viewer</li>
+</ul>
+
+<h4 id="decision-management">Decision Management</h4>
+<ul>
+<li>Proper input/output value display for selected decision instances <em>(since 2.1.1)</em></li>
+<li>Improved tab navigation in the decisions section <em>(since 2.1.3)</em></li>
+</ul>
+
+<h4 id="start-view">Start View</h4>
+<ul>
+<li>Dynamic tile rendering with adaptive layout <em>(since 2.1.1)</em></li>
+</ul>
+
+<h4 id="navigation-_since-211_">Navigation <em>(since 2.1.1)</em></h4>
+<ul>
+<li>Enhanced navigation between process instances and process definitions, with and without <code>tenantId</code> <em>(since 2.1.5)</em></li>
+<li>Improved mobile navigation menu and header for better usability on small screens <em>(since 2.1.3)</em></li>
+<li>Redirect to start page with <code>no-permission</code> route when required permissions are missing <em>(since 2.1.1)</em></li>
+<li>Handle <code>HistoryLevel</code> <code>none</code> with proper process instance redirection <em>(since 2.1.1)</em></li>
+</ul>
+
+<h4 id="deployments">Deployments</h4>
+<ul>
+<li>Deployment date displayed in process definition view <em>(since 2.1.3)</em></li>
+<li>Helper text added to deployments search <em>(since 2.1.2)</em></li>
+<li>Deployments view is refreshed after deleting a deployment; selection is preserved when deletion fails</li>
+</ul>
+
+<h4 id="analytics">Analytics</h4>
+<ul>
+<li>Runtime batch count now reflected on the cockpit dashboard</li>
+<li>Historic Batches view shows an informational message when the configured <a href="/manual/2.2/user-guide/process-engine/history/history-configuration/">history level</a> does not support batch history</li>
+</ul>
+
+<h4 id="ttl-time-to-live">TTL (Time To Live)</h4>
+<ul>
+<li>Allow setting TTL to unlimited; enhanced UI and improved modal layout <em>(since 2.1.3)</em></li>
+</ul>
+
+<h4 id="batches-_since-211_">Batches <em>(since 2.1.1)</em></h4>
+<ul>
+<li>Improved cell selector; prevented resize on selection changes</li>
+<li>Added vertical scroll for better overflow handling</li>
+<li>Improved cell view on selection in Historic and Runtime Batches tables</li>
+</ul>
+
+<h4 id="forms-_since-211_">Forms <em>(since 2.1.1)</em></h4>
+<ul>
+<li>Press Enter to submit tenant creation form</li>
+</ul>
+
+<h4 id="accessibility">Accessibility</h4>
+<ul>
+<li>Comprehensive WCAG improvements: aria attributes, navigation landmarks, calendar start-day alignment, modal heading levels, and screen reader support for navbar and sidebar components</li>
+<li><code>eslint-plugin-vuejs-accessibility</code> integrated for ongoing accessibility linting</li>
+</ul>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fixed <code>EngineProvider</code> not handling 401 Unauthorized response for legacy configuration fallback</li>
+<li>Fixed WildFly deployment crash caused by <code>JakartaXmlBindAnnotationModule</code> conflict in jackson 2.21.x; standardized web client logging backend to logback</li>
+<li>Fixed <code>ElementTemplateLoader</code> race condition on fresh databases by deferring initialization to <code>ContextRefreshedEvent</code></li>
+<li>Fixed <code>jackson</code> <code>FAIL_ON_UNKNOWN_PROPERTIES</code> causing deserialization failures for unknown fields</li>
+<li>Fixed Hibernate naming strategy in Modeler (<code>PhysicalNamingStrategyStandardImpl</code>)</li>
+<li>Fixed date handling: engine no longer fails on dates filled in by other tasks</li>
+<li>Fixed <code>BpmnViewer</code> null checks and error handling for zoom functionality <em>(since 2.1.3)</em></li>
+<li>Fixed <code>IconButton</code> duplication <em>(since 2.1.3)</em></li>
+<li>Fixed JWT secret decoding in multi-engine configuration <em>(since 2.1.3)</em></li>
+<li>Fixed various embedded forms issues including URL construction and API URI handling <em>(since 2.1.3)</em></li>
+<li>Fixed sub-process variable scope display <em>(since 2.1.2)</em></li>
+<li>Fixed <code>ACCESS</code> permissions for application <em>(since 2.1.2)</em></li>
+<li>Fixed <code>checkCockpitRights</code> inconsistency in REST services <em>(since 2.1.2)</em></li>
+<li>Fixed multiple <code>@cib/bootstrap-components</code> embedding issue <em>(since 2.1.2)</em></li>
+<li>Fixed generated task forms handling <em>(since 2.1.1)</em></li>
+<li>Fixed object variable saving with <code>application/json</code> format <em>(since 2.1.1)</em></li>
+<li>Fixed inability to open process instance with URL containing <code>tenantId</code> <em>(since 2.1.1)</em></li>
+<li>Fixed <code>fileValueDataSource</code> download for history variables <em>(since 2.1.1)</em></li>
+<li>Fixed <code>BFormDatepicker</code> and <code>BCalendar</code> starting the month on the wrong day</li>
+<li>Fixed resizable column cursor and sorting arrows display</li>
+<li>Fixed focus restoration when closing a modal whose trigger element is hidden</li>
+<li>Fixed URL validation to use URL parser for <code>http</code>/<code>https</code> URLs, accepting localhost, IPs, and ports</li>
+<li>Fixed <code>BButton</code> click and submit events not always being handled correctly</li>
+</ul>
+
+<h3 id="technical-updates">Technical Updates</h3>
+
+<h4 id="dependency-updates">Dependency Updates</h4>
+<ul>
+<li>Update <code>Spring Boot</code> from <code>3.5.6</code> to <code>3.5.14</code></li>
+<li>Update <code>spring-boot-4</code> from <code>4.0.4</code> to <code>4.0.5</code></li>
+<li>Update <code>log4j</code> to <code>2.25.4</code></li>
+<li>Update <code>jackson</code> from <code>2.15.2</code> to <code>2.21.2</code></li>
+<li>Update <code>jackson core</code> from <code>2.15.2</code> to <code>2.21.2</code></li>
+<li>Update <code>tomcat</code> from <code>10.1.48</code> to <code>10.1.52</code> (Spring Boot 3.x embedded)</li>
+<li>Update <code>tomcat9</code> from <code>9.0.110</code> to <code>9.0.117</code></li>
+<li>Update <code>wildfly</code> from <code>37.0.0.Final</code> to <code>40.0.0.Final</code></li>
+<li>Update <code>wildfly.core</code> from <code>29.0.1.Final</code> to <code>31.0.3.Final</code></li>
+<li>Update <code>groovy</code> script engine from <code>4.0.27</code> to <code>5.0.4</code></li>
+<li>Update <code>nodejs</code> from <code>20.14.0</code> to <code>24.13.1</code></li>
+<li>Update <code>npm</code> from <code>10.7.0</code> to <code>11.8.0</code></li>
+<li>Update <code>openssl</code> (<code>libcrypto3</code>, <code>libssl3</code>) from <code>3.5.5-r0</code> to <code>3.5.6-r0</code> (Alpine base image)</li>
+<li>Update <code>musl</code> from <code>1.2.5-r21</code> to <code>1.2.5-r23</code> (Alpine base image)</li>
+<li>Update <code>zlib</code> to <code>1.3.1-r2</code> (Alpine base image)</li>
+<li>Update <code>libtasn1</code> to <code>4.21.0-r0</code> (Alpine base image)</li>
+<li>Update <code>c-ares</code> (Alpine base image update to <code>3.23</code>)</li>
+<li>Update <code>OpenTelemetry</code> Java agent from <code>2.23.0</code> to <code>2.26.1</code> to resolve <code>CVE-2026-33701</code> (Alpine base image)</li>
+<li>Update <code>@cib/bootstrap-components</code> from <code>1.0.1</code> to <code>1.0.3</code></li>
+<li>Update <code>@cib/common-frontend</code> from <code>1.0.1</code> to <code>1.0.3</code></li>
+<li>Update <code>@cib/bootstrap-theme</code> to <code>1.0.0</code> (new package extracted from webclient)</li>
+<li>Update <code>cibseven-modeler</code> to <code>1.0.0</code> (first stable release)</li>
+<li>Update <code>vue</code> from <code>3.5.13</code> to <code>3.5.33</code></li>
+<li>Update <code>vue-i18n</code> to <code>11.4.0</code></li>
+<li>Update <code>vue-router</code> from <code>4.5.1</code> to <code>5.0.6</code></li>
+<li>Update <code>axios</code> to <code>1.13.2</code></li>
+<li>Update <code>qs</code> from <code>6.14.0</code> to <code>6.14.1</code></li>
+<li>Update <code>rollup</code> to <code>4.60.2</code></li>
+<li>Update <code>vite</code> to <code>6.4.2</code></li>
+<li>Update <code>eslint</code> to <code>9.39.4</code></li>
+<li>Update <code>plexus-utils</code> to <code>3.6.1</code> (test environment)</li>
+</ul>
+
+<h4 id="resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</h4>
+
+<h5 id="critical-severity">Critical Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-15467">CVE-2025-15467</a></strong> - CVSS 9.8. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-12543">CVE-2025-12543</a></strong> - CVSS 9.6. Package: <code>io.undertow:undertow-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-66614">CVE-2025-66614</a></strong> - CVSS 9.1. Improper Input Validation in Apache Tomcat.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-31789">CVE-2026-31789</a></strong> - Heap buffer overflow when converting an excessively large OCTET STRING value to hexadecimal on 32-bit platforms in <code>openssl</code>, leading to potential attacker-controlled code execution.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29145">CVE-2026-29145</a></strong> - <code>CLIENT_CERT</code> authentication does not fail as expected when soft fail is disabled in Apache Tomcat and Apache Tomcat Native, allowing authentication bypass.</li>
+<li><strong><a href="https://github.com/advisories/GHSA-xw7x-h9fj-p2c7">CVE-2026-33701</a></strong> - CVSS 9.3. Unsafe deserialization in the OpenTelemetry Java agent&rsquo;s RMI instrumentation, with potential RCE. Affects all versions &lt; 2.26.1. Resolved by updating the OpenTelemetry Java agent to 2.26.1 in the Docker image (loaded via <code>CATALINA_OPTS</code> / <code>PREPEND_JAVA_OPTS</code> / <code>JAVA_OPTS</code>).</li>
+</ul>
+
+<h5 id="high-severity">High Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-66566">CVE-2025-66566</a></strong> - Fixed in <code>org.lz4</code> and <code>netty</code> modules for Wildfly.</li>
+<li><strong><a href="https://github.com/advisories/GHSA-6rw7-vpxm-498p">CVE-2025-15284</a></strong> - <code>qs</code> arrayLimit bypass allowing DoS via memory exhaustion. Package: <code>qs</code> (via <code>@cypress/request</code>, used only in testing).</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68161">CVE-2025-68161</a></strong> - Fixed in <code>log4j</code> by updating to <code>2.25.3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-13151">CVE-2025-13151</a></strong> - Stack-based buffer overflow in <code>libtasn1</code>. Fixed by updating to <code>4.21.0-r0</code> (Alpine base image).</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3884">CVE-2024-3884</a></strong> - CVSS 7.5. Package: <code>io.undertow:undertow-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-4027">CVE-2024-4027</a></strong> - CVSS 7.5. Package: <code>io.undertow:undertow-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-9784">CVE-2025-9784</a></strong> - CVSS 7.5. Package: <code>io.undertow:undertow-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-23368">CVE-2025-23368</a></strong> - CVSS 8.1. Package: <code>org.wildfly.core:wildfly-elytron-integration</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-69419">CVE-2025-69419</a></strong> - CVSS 7.4. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-69421">CVE-2025-69421</a></strong> - CVSS 6.5. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-21932">CVE-2026-21932</a></strong> - CVSS 7.4. Package: <code>openjdk21-jre-headless</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-21945">CVE-2026-21945</a></strong> - CVSS 7.5. Package: <code>openjdk21-jre-headless</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-24734">CVE-2026-24734</a></strong> - CVSS 7.5. Improper Input Validation in Apache Tomcat Native and Apache Tomcat.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29062">CVE-2026-29062</a></strong> - CVSS 8.7. Nesting depth constraint bypass in <code>com.fasterxml.jackson.core:jackson-core</code> can trigger <code>StackOverflowError</code> and Denial of Service.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-28387">CVE-2026-28387</a></strong> - Use-after-free and/or double-free in <code>openssl</code> during DANE TLSA-based server authentication, leading to potential code execution.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-28388">CVE-2026-28388</a></strong> - NULL pointer dereference in <code>openssl</code> during delta CRL processing when the CRL Number extension is missing, leading to Denial of Service.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-28389">CVE-2026-28389</a></strong> - NULL pointer dereference in <code>openssl</code> when processing a crafted CMS <code>EnvelopedData</code> message with <code>KeyAgreeRecipientInfo</code>, leading to Denial of Service.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-28390">CVE-2026-28390</a></strong> - NULL pointer dereference in <code>openssl</code> when processing a crafted CMS <code>EnvelopedData</code> message with <code>KeyTransportRecipientInfo</code>, leading to Denial of Service.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29129">CVE-2026-29129</a></strong> - Configured cipher preference order not preserved in Apache Tomcat.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34483">CVE-2026-34483</a></strong> - Improper encoding/escaping of output in the <code>JsonAccessLogValve</code> component of Apache Tomcat.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34487">CVE-2026-34487</a></strong> - Kubernetes bearer token exposed in log files via the cloud membership clustering component of Apache Tomcat.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40200">CVE-2026-40200</a></strong> - Stack-based memory corruption in <code>musl</code> libc during <code>qsort</code> of very large arrays.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182">CVE-2025-55182</a></strong> - CVSS 10.0. Critical React vulnerability. Note: <code>react</code> is used only for documentation page generation and is not present in the production CIB seven platform.</li>
+</ul>
+
+<h5 id="medium-severity">Medium Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-11226">CVE-2025-11226</a></strong> - CVSS 6.4. Package: <code>ch.qos.logback:logback-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-58251">CVE-2024-58251</a></strong> - Affects <code>busybox</code>, <code>busybox-binsh</code>, <code>ssl_client</code> (Alpine base image).</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-58057">CVE-2025-58057</a></strong> - CVSS 7.5. Package: <code>io.netty:netty-codec</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-67735">CVE-2025-67735</a></strong> - CVSS 6.5. Package: <code>io.netty:netty-codec-http</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1002">CVE-2026-1002</a></strong> - Package: <code>io.vertx:vertx-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-11187">CVE-2025-11187</a></strong> - CVSS 6.1. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-15468">CVE-2025-15468</a></strong> - CVSS 5.9. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-15469">CVE-2025-15469</a></strong> - CVSS 5.5. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-66199">CVE-2025-66199</a></strong> - CVSS 5.9. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68160">CVE-2025-68160</a></strong> - CVSS 4.7. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-69418">CVE-2025-69418</a></strong> - CVSS 4.0. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-69420">CVE-2025-69420</a></strong> - CVSS 5.9. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-22795">CVE-2026-22795</a></strong> - CVSS 5.5. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-22796">CVE-2026-22796</a></strong> - CVSS 5.9. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-21925">CVE-2026-21925</a></strong> - CVSS 4.8. Package: <code>openjdk21-jre-headless</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-21933">CVE-2026-21933</a></strong> - CVSS 6.1. Package: <code>openjdk21-jre-headless</code>.</li>
+<li><strong><a href="https://github.com/advisories/GHSA-72hv-8253-57qq">GHSA-72hv-8253-57qq</a></strong> - CVSS 6.9. Async parser number length constraint bypass in <code>com.fasterxml.jackson.core:jackson-core</code> can cause excessive memory allocation and CPU exhaustion, leading to Denial of Service.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-22184">CVE-2026-22184</a></strong> - CVSS-B 4.6. Global buffer overflow in <code>zlib</code>. Fixed by updating to <code>1.3.1-r2</code> (Alpine base image).</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-31790">CVE-2026-31790</a></strong> - Uninitialized memory buffer may be disclosed to a malicious peer when using RSASVE key encapsulation in <code>openssl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34480">CVE-2026-34480</a></strong> - <code>XmlLayout</code> in <code>log4j-core</code> fails to sanitize characters forbidden by the XML 1.0 specification, producing invalid XML output.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-25854">CVE-2026-25854</a></strong> - Open Redirect vulnerability in Apache Tomcat via the <code>LoadBalancerDrainingValve</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-32990">CVE-2026-32990</a></strong> - Improper Input Validation in Apache Tomcat (incomplete fix for CVE-2025-66614).</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34500">CVE-2026-34500</a></strong> - <code>CLIENT_CERT</code> authentication does not fail as expected when soft fail is disabled and FFM is used in Apache Tomcat.</li>
+</ul>
+
+<h5 id="low-severity">Low Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-61795">CVE-2025-61795</a></strong> - CVSS 5.3. Package: <code>org.apache.tomcat.embed:tomcat-embed-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46394">CVE-2025-46394</a></strong> - CVSS 3.3. Affects <code>busybox</code>, <code>busybox-binsh</code>, <code>ssl_client</code> (Alpine base image).</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1225">CVE-2026-1225</a></strong> - Package: <code>ch.qos.logback:logback-core</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-58056">CVE-2025-58056</a></strong> - CVSS 7.5. Package: <code>io.netty:netty-codec-http</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-24733">CVE-2026-24733</a></strong> - CVSS 3.7. Improper Input Validation in Apache Tomcat.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-2673">CVE-2026-2673</a></strong> - OpenSSL TLS 1.3 server may fail to negotiate the expected preferred key exchange group when the server configuration uses the <code>DEFAULT</code> keyword.</li>
+</ul>
+
+<h4 id="build--configuration">Build &amp; Configuration</h4>
+<ul>
+<li>Single branch now produces both Spring Boot 3.5 and Spring Boot 4.0 WARs; the parallel <code>spring-boot-4</code> branch has been retired</li>
+<li>Tomcat 11 added as a supported deployment target</li>
+<li>Java 17 Docker images removed; only Java 21 images are built</li>
+<li>MariaDB SQL scripts updated for migration from CIB seven 2.1.3 (Camunda 7.23) <em>(since 2.1.5)</em></li>
+<li><code>org.cibseven.connect:cibseven-connect-core</code> excluded from the shaded artifact <em>(since 2.1.5)</em></li>
+<li>H2 Modeler LOB column types aligned with Oracle (<code>CLOB</code>/<code>BLOB</code>)</li>
+<li><code>cib-bootstrap-theme</code> extracted as a standalone npm package — single source of truth for CIB brand SCSS</li>
+<li>Removed old Wildfly 26 distribution and related profiles <em>(since 2.1.3)</em></li>
+<li>Updated feature name from <code>camunda-platform-engine</code> to <code>cibseven-engine</code> <em>(since 2.1.3)</em></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#release-notes">Release Notes</a>
+      <ul>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#breaking-changes">Breaking Changes</a></li>
+        <li><a href="#configuration-changes">Configuration Changes</a></li>
+        <li><a href="#new-features">New Features</a>
+          <ul>
+            <li><a href="#ai-agent-connectorhahahugoshortcode208s3hbhb"><a href="HAHAHUGOSHORTCODE208s3HBHB">AI Agent Connector</a></a></li>
+            <li><a href="#rest-engine">REST Engine</a></li>
+            <li><a href="#historic-process-statistics">Historic Process Statistics</a></li>
+            <li><a href="#task-variables">Task Variables</a></li>
+            <li><a href="#external-task-client">External Task Client</a></li>
+            <li><a href="#scim-20-identity-provider-_beta_">SCIM 2.0 Identity Provider <em>(beta)</em></a></li>
+            <li><a href="#process-instance-navigation-_since-211_">Process Instance Navigation <em>(since 2.1.1)</em></a></li>
+            <li><a href="#initial-setup-_since-212_">Initial Setup <em>(since 2.1.2)</em></a></li>
+            <li><a href="#cron-expression-migration-_since-212_">Cron Expression Migration <em>(since 2.1.2)</em></a></li>
+            <li><a href="#multi-engine-support-_since-213_">Multi-Engine Support <em>(since 2.1.3)</em></a></li>
+            <li><a href="#multi-engine-support-for-embedded-forms-_since-213_">Multi-Engine Support for Embedded Forms <em>(since 2.1.3)</em></a></li>
+            <li><a href="#variables--file-type-_since-213_">Variables — File Type <em>(since 2.1.3)</em></a></li>
+            <li><a href="#direct-provider-_beta_">Direct Provider <em>(beta)</em></a></li>
+            <li><a href="#user-profile--password-validation">User Profile — Password Validation</a></li>
+            <li><a href="#modelerhahahugoshortcode208s6hbhb-enhancements"><a href="HAHAHUGOSHORTCODE208s6HBHB">Modeler</a> Enhancements</a></li>
+            <li><a href="#docker--opentelemetry--jmx">Docker — OpenTelemetry &amp; JMX</a></li>
+          </ul>
+        </li>
+        <li><a href="#user-experience-improvements">User Experience Improvements</a>
+          <ul>
+            <li><a href="#process-instance-search-_since-216_">Process Instance Search <em>(since 2.1.6)</em></a></li>
+            <li><a href="#incidents-_since-216_">Incidents <em>(since 2.1.6)</em></a></li>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#tasks">Tasks</a></li>
+            <li><a href="#user-management">User Management</a></li>
+            <li><a href="#bpmn-diagram">BPMN Diagram</a></li>
+            <li><a href="#decision-management">Decision Management</a></li>
+            <li><a href="#start-view">Start View</a></li>
+            <li><a href="#navigation-_since-211_">Navigation <em>(since 2.1.1)</em></a></li>
+            <li><a href="#deployments">Deployments</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#ttl-time-to-live">TTL (Time To Live)</a></li>
+            <li><a href="#batches-_since-211_">Batches <em>(since 2.1.1)</em></a></li>
+            <li><a href="#forms-_since-211_">Forms <em>(since 2.1.1)</em></a></li>
+            <li><a href="#accessibility">Accessibility</a></li>
+          </ul>
+        </li>
+        <li><a href="#bug-fixes">Bug Fixes</a></li>
+        <li><a href="#technical-updates">Technical Updates</a>
+          <ul>
+            <li><a href="#dependency-updates">Dependency Updates</a></li>
+            <li><a href="#resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</a></li>
+            <li><a href="#build--configuration">Build &amp; Configuration</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/manual/2.2/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+
