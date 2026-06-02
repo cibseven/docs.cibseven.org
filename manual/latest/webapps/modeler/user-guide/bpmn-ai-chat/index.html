@@ -3569,7 +3569,8 @@
 </ul>
 
 <h2 id="enabling-the-agent">Enabling the Agent</h2>
-<p><strong>The BPMN AI Agent is disabled by default.</strong> Enable it by setting <code>enabled: true</code> under <code>cibseven.webclient.modeler.ai</code> in <code>cibseven-webclient</code>&rsquo;s <code>application.yaml</code>:</p>
+<p><strong><code>cibseven.webclient.modeler.ai.enabled</code></strong> flag enables the BPMN AI Agent for designing BPMN diagrams in the modeler. Default value is <code>false</code>. In our distributions it is enabled for <code>tomcat</code> and <code>wildfly</code>; for the <code>run</code> distribution, the agent is enabled only in dev/default mode and disabled in <code>--production</code> mode.</p>
+<p>Enable it by setting <code>enabled: true</code> under <code>cibseven.webclient.modeler.ai</code> in <code>cibseven-webclient</code>&rsquo;s <code>application.yaml</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">modeler</span><span class="p">:</span><span class="w">

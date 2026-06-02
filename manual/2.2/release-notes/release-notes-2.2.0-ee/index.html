@@ -3585,13 +3585,13 @@
 <li><strong>Schema validation</strong>: Modeler schema validation is disabled by default in the <code>run</code> distribution.</li>
 <li><strong>Modeler datasource</strong>: A shared datasource resource link for the CIB seven Modeler is now included in <code>webapp.xml</code> for Tomcat distributions.</li>
 <li><strong>AI Agent toggle</strong>: <code>AI_AGENT_ENABLED</code> environment variable (default <code>true</code>) controls whether the AI agent connector is loaded at startup in Tomcat and WildFly Docker images; set to <code>false</code> to disable without removing any files. For the <code>run</code> distribution, the connector is active by default in dev/default mode and disabled in <code>--production</code> mode; re-enable with <code>--ai</code>, <code>--ai-agent</code>, or <code>--agent</code> flags.</li>
-<li><strong><code>cibseven.webclient.modeler.ai.enabled</code></strong> flag <em>(EE exclusive, beta)</em>: Turns on BPMN AI Agent for designing BPMN in modeler. Disabled by default</li>
+<li><strong><code>cibseven.webclient.modeler.ai.enabled</code></strong> flag <em>(EE exclusive, beta)</em>: Enables the BPMN AI Agent for designing BPMN diagrams in the modeler. Default value is <code>false</code>. In our distributions it is enabled for <code>tomcat</code> and <code>wildfly</code>; for the <code>run</code> distribution, the agent is enabled only in dev/default mode and disabled in <code>--production</code> mode. Note that even when enabled, you still need to provide <code>apiKey</code> and <a href="/manual/2.2/webapps/modeler/user-guide/bpmn-ai-chat/">other properties</a> in the configuration.</li>
 <li><strong><code>cibseven.webclient.modeler.chat.enabled</code></strong> flag <em>(EE exclusive, beta)</em>: Turns on collobarative chat to communicate with other CIB seven users. Disabled by default</li>
 </ul>
 
 <h3 id="new-features">New Features</h3>
 
-<h4 id="ai-agent-connectorhahahugoshortcode213s5hbhb"><a href="/manual/2.2/reference/connect/ai-agent-connector/">AI Agent Connector</a></h4>
+<h4 id="ai-agent-connectorhahahugoshortcode219s6hbhb"><a href="/manual/2.2/reference/connect/ai-agent-connector/">AI Agent Connector</a></h4>
 <ul>
 <li>New <code>cibseven-connect-ai-agent</code> module that lets BPMN service tasks invoke LLM-backed agents via the standard <code>camunda:connector</code> input/output parameter mapping — no custom Java code required</li>
 <li>Runtime supports OpenAI, Azure OpenAI, Ollama, and any OpenAI-compatible endpoint via LangChain4j</li>
@@ -3605,13 +3605,13 @@
 <li>Default LLM model overridable by operators via system property or environment variable</li>
 </ul>
 
-<h4 id="bpmn-ai-agenthahahugoshortcode213s6hbhb-_ee-exclusive-beta_"><a href="/manual/2.2/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a> <em>(EE exclusive, beta)</em></h4>
+<h4 id="bpmn-ai-agenthahahugoshortcode219s7hbhb-_ee-exclusive-beta_"><a href="/manual/2.2/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a> <em>(EE exclusive, beta)</em></h4>
 <ul>
 <li>Real-time, streaming AI chat panel docked in the modeler — describe a change in natural
 language and the agent designs, generates, edits, reviews, and explains BPMN directly on the canvas</li>
 <li>Connects to any OpenAI-compatible endpoint (OpenAI, OpenRouter, Ollama, vLLM etc); providers and
 models are configured under <code>cibseven.webclient.modeler.ai.*</code> and the agent is turned on with
-<code>cibseven.webclient.modeler.ai.enabled</code> (Disabled by default)</li>
+<code>cibseven.webclient.modeler.ai.enabled</code></li>
 <li>Model picker with selectable reasoning effort level, agent modes, and a per-session token-budget indicator</li>
 <li>Proposed changes are shown as a diff (added / changed / removed elements) to review and Apply or
 Discard, with an Auto-accept toggle to apply edits automatically</li>
@@ -3671,7 +3671,7 @@ Discard, with an Auto-accept toggle to apply edits automatically</li>
 <li>Only violated password rules are displayed; validation resets on input</li>
 </ul>
 
-<h4 id="modelerhahahugoshortcode213s7hbhb-enhancements"><a href="/manual/2.2/webapps/modeler/">Modeler</a> Enhancements</h4>
+<h4 id="modelerhahahugoshortcode219s8hbhb-enhancements"><a href="/manual/2.2/webapps/modeler/">Modeler</a> Enhancements</h4>
 <ul>
 <li>First stable release of <code>cibseven-modeler</code> <code>1.0.0</code> and <code>cibseven-modeler-ee</code> <code>1.0.0</code></li>
 <li>Element template icons displayed in the BPMN diagram and in the template chooser modal</li>
@@ -3943,8 +3943,8 @@ Discard, with an Auto-accept toggle to apply edits automatically</li>
         <li><a href="#configuration-changes">Configuration Changes</a></li>
         <li><a href="#new-features">New Features</a>
           <ul>
-            <li><a href="#ai-agent-connectorhahahugoshortcode213s5hbhb"><a href="HAHAHUGOSHORTCODE213s5HBHB">AI Agent Connector</a></a></li>
-            <li><a href="#bpmn-ai-agenthahahugoshortcode213s6hbhb-_ee-exclusive-beta_"><a href="HAHAHUGOSHORTCODE213s6HBHB">BPMN AI Agent</a> <em>(EE exclusive, beta)</em></a></li>
+            <li><a href="#ai-agent-connectorhahahugoshortcode219s6hbhb"><a href="HAHAHUGOSHORTCODE219s6HBHB">AI Agent Connector</a></a></li>
+            <li><a href="#bpmn-ai-agenthahahugoshortcode219s7hbhb-_ee-exclusive-beta_"><a href="HAHAHUGOSHORTCODE219s7HBHB">BPMN AI Agent</a> <em>(EE exclusive, beta)</em></a></li>
             <li><a href="#rest-engine">REST Engine</a></li>
             <li><a href="#historic-process-statistics">Historic Process Statistics</a></li>
             <li><a href="#task-variables">Task Variables</a></li>
@@ -3953,7 +3953,7 @@ Discard, with an Auto-accept toggle to apply edits automatically</li>
             <li><a href="#multi-engine-support-_since-214_">Multi-Engine Support <em>(since 2.1.4)</em></a></li>
             <li><a href="#direct-provider-_beta_">Direct Provider <em>(beta)</em></a></li>
             <li><a href="#user-profile--password-validation">User Profile — Password Validation</a></li>
-            <li><a href="#modelerhahahugoshortcode213s7hbhb-enhancements"><a href="HAHAHUGOSHORTCODE213s7HBHB">Modeler</a> Enhancements</a></li>
+            <li><a href="#modelerhahahugoshortcode219s8hbhb-enhancements"><a href="HAHAHUGOSHORTCODE219s8HBHB">Modeler</a> Enhancements</a></li>
             <li><a href="#modeler-ee-features-_ee-exclusive_">Modeler EE Features <em>(EE exclusive)</em></a></li>
             <li><a href="#docker--opentelemetry--jmx">Docker — OpenTelemetry &amp; JMX</a></li>
           </ul>
