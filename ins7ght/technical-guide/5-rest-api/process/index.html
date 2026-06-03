@@ -16,12 +16,12 @@
 
   <title>Process API | docs.cibseven.org</title>
 
-  <meta name="generator" content="Hugo 0.136.4">
+  <meta name="generator" content="Hugo 0.162.1">
   <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
 
   
 
-  <link rel="stylesheet" href="/ins7ght/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
+  <link rel="stylesheet" href="/ins7ght/css/docs.0ac9000d0b136618d757f7e65b9f2c6ec7a0207018614b8f3045bb04ec8e66b3.css" integrity="sha256-CskADQsTZhjXV/fmW58sbsegIHAYYUuPMEW7BOyOZrM=">
   <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/process/" />
 </head>
 <body class="">
@@ -457,25 +457,25 @@
 <p>Returns process definitions visible to ins7ght in the optional date range.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Required</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>startDate</code></td>
-          <td>No</td>
-          <td>ISO 8601 — lower bound for instance activity filtering</td>
-      </tr>
-      <tr>
-          <td><code>endDate</code></td>
-          <td>No</td>
-          <td>ISO 8601 — upper bound</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Required</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>startDate</code></td>
+					<td>No</td>
+					<td>ISO 8601 — lower bound for instance activity filtering</td>
+			</tr>
+			<tr>
+					<td><code>endDate</code></td>
+					<td>No</td>
+					<td>ISO 8601 — upper bound</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -492,45 +492,45 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span></code></pre></div><table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Type</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>id</code></td>
-          <td>string</td>
-          <td>Process definition id from the engine</td>
-      </tr>
-      <tr>
-          <td><code>name</code></td>
-          <td>string</td>
-          <td>Process name</td>
-      </tr>
-      <tr>
-          <td><code>key</code></td>
-          <td>string</td>
-          <td>Process definition key</td>
-      </tr>
-      <tr>
-          <td><code>instanceCount</code></td>
-          <td>string</td>
-          <td>Display / count information from the provider</td>
-      </tr>
-      <tr>
-          <td><code>version</code></td>
-          <td>integer</td>
-          <td>Definition version</td>
-      </tr>
-      <tr>
-          <td><code>latestVersion</code></td>
-          <td>integer</td>
-          <td>Latest version hint from the provider</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>id</code></td>
+					<td>string</td>
+					<td>Process definition id from the engine</td>
+			</tr>
+			<tr>
+					<td><code>name</code></td>
+					<td>string</td>
+					<td>Process name</td>
+			</tr>
+			<tr>
+					<td><code>key</code></td>
+					<td>string</td>
+					<td>Process definition key</td>
+			</tr>
+			<tr>
+					<td><code>instanceCount</code></td>
+					<td>string</td>
+					<td>Display / count information from the provider</td>
+			</tr>
+			<tr>
+					<td><code>version</code></td>
+					<td>integer</td>
+					<td>Definition version</td>
+			</tr>
+			<tr>
+					<td><code>latestVersion</code></td>
+					<td>integer</td>
+					<td>Latest version hint from the provider</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 
@@ -538,20 +538,20 @@
 <p>Returns <strong>all <code>Process</code> objects</strong> (metadata per deployment/version) for the given <code>processKey</code>, optionally filtered by the same date range as <code>GET /process</code>.</p>
 <p><strong>Path parameters:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Required</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>processKey</code></td>
-          <td>Yes</td>
-          <td>Process definition key (must not be blank)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Required</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>processKey</code></td>
+					<td>Yes</td>
+					<td>Process definition key (must not be blank)</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Query parameters:</strong> <code>startDate</code>, <code>endDate</code> (optional, same semantics as <code>GET /process</code>).</p>
 <p><strong>Example HTTP response:</strong> Same <code>Process</code> object shape as <code>GET /process</code> (one array entry per definition version for that key).</p>
@@ -574,35 +574,35 @@
 <p>Returns distinct <strong>process instance states</strong> observed for a process definition version (e.g. for building filters in the UI).</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Required</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>processKey</code></td>
-          <td>Yes</td>
-          <td>Process definition key</td>
-      </tr>
-      <tr>
-          <td><code>version</code></td>
-          <td>Yes</td>
-          <td>Process version</td>
-      </tr>
-      <tr>
-          <td><code>startDate</code></td>
-          <td>No</td>
-          <td>ISO 8601</td>
-      </tr>
-      <tr>
-          <td><code>endDate</code></td>
-          <td>No</td>
-          <td>ISO 8601</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Required</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>processKey</code></td>
+					<td>Yes</td>
+					<td>Process definition key</td>
+			</tr>
+			<tr>
+					<td><code>version</code></td>
+					<td>Yes</td>
+					<td>Process version</td>
+			</tr>
+			<tr>
+					<td><code>startDate</code></td>
+					<td>No</td>
+					<td>ISO 8601</td>
+			</tr>
+			<tr>
+					<td><code>endDate</code></td>
+					<td>No</td>
+					<td>ISO 8601</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -616,25 +616,25 @@
 <p>Returns the BPMN 2.0 XML for a specific process version (binary body).</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Required</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>processKey</code></td>
-          <td>Yes</td>
-          <td>Process definition key</td>
-      </tr>
-      <tr>
-          <td><code>version</code></td>
-          <td>Yes</td>
-          <td>Process version</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Required</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>processKey</code></td>
+					<td>Yes</td>
+					<td>Process definition key</td>
+			</tr>
+			<tr>
+					<td><code>version</code></td>
+					<td>Yes</td>
+					<td>Process version</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Response type:</strong> <code>application/octet-stream</code> (raw BPMN XML bytes; often the first bytes are <code>&lt;?xml</code>).</p>
 <p><strong>Example HTTP response (BPMN fragment):</strong></p>
@@ -657,8 +657,8 @@
 </span></span></code></pre></div>
 <h4 id="list-states-for-a-version">List States for a Version</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -G <span class="s2">&#34;http://localhost:8899/process/states&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --data-urlencode <span class="s2">&#34;version=1&#34;</span>
+</span></span></span><span class="line"><span class="cl">  --data-urlencode <span class="s2">&#34;processKey=invoice-process&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --data-urlencode <span class="s2">&#34;version=1&#34;</span>
 </span></span></code></pre></div>
 <h4 id="download-bpmn-diagram">Download BPMN Diagram</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/process/bpmn?processKey=invoice-process&amp;version=1&#34;</span> -o invoice-process.bpmn

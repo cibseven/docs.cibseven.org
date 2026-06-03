@@ -16,12 +16,12 @@
 
   <title>Installation | docs.cibseven.org</title>
 
-  <meta name="generator" content="Hugo 0.136.4">
+  <meta name="generator" content="Hugo 0.162.1">
   <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
 
   
 
-  <link rel="stylesheet" href="/ins7ght/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
+  <link rel="stylesheet" href="/ins7ght/css/docs.0ac9000d0b136618d757f7e65b9f2c6ec7a0207018614b8f3045bb04ec8e66b3.css" integrity="sha256-CskADQsTZhjXV/fmW58sbsegIHAYYUuPMEW7BOyOZrM=">
   <link rel="canonical" href="/ins7ght/technical-guide/2-setup-cib-ins7ght/installation/" />
 </head>
 <body class="">
@@ -475,15 +475,15 @@
 <h4 id="2-database-setup">2. Database Setup</h4>
 <p>Create a dedicated database for CIB ins7ght:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">cib_ins7ght</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">ins7ght_user</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;your_secure_password&#39;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">cib_ins7ght</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ins7ght_user</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">ins7ght_user</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;your_secure_password&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">cib_ins7ght</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ins7ght_user</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div>
 <h4 id="3-configure-application-properties">3. Configure Application Properties</h4>
 <p>Navigate to the configuration directory and edit the <code>application.yml</code> or <code>CIB ins7ght.yaml</code> file.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8899</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">banner</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:banner/CIB ins7ght-banner.txt</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w">
@@ -508,9 +508,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">order_inserts</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">order_updates</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">webclientCockpitUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/webapp/#/seven/auth/processes/dashboard</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">webclientCockpitUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/webapp/#/seven/auth/processes/dashboard</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">polling</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">polling</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">engineRestUrl</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080/engine-rest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">maxPageSizeDeployments</span><span class="p">:</span><span class="w"> </span><span class="m">500</span><span class="w">

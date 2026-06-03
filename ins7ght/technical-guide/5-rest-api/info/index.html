@@ -16,12 +16,12 @@
 
   <title>Info API | docs.cibseven.org</title>
 
-  <meta name="generator" content="Hugo 0.136.4">
+  <meta name="generator" content="Hugo 0.162.1">
   <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
 
   
 
-  <link rel="stylesheet" href="/ins7ght/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
+  <link rel="stylesheet" href="/ins7ght/css/docs.0ac9000d0b136618d757f7e65b9f2c6ec7a0207018614b8f3045bb04ec8e66b3.css" integrity="sha256-CskADQsTZhjXV/fmW58sbsegIHAYYUuPMEW7BOyOZrM=">
   <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/info/" />
 </head>
 <body class="">
@@ -460,8 +460,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 </span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">text/plain;charset=UTF-8</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">0.0.2-SNAPSHOT</span> <span class="err">2026-01-29-1200</span>
-</span></span></code></pre></div><p><strong>Response Type:</strong> <code>text/plain</code></p>
+</span></span><span class="line"><span class="cl"><span class="m">0</span>.0.2-SNAPSHOT<span class="w"> </span><span class="m">2026</span>-01-29-1200<span class="w">
+</span></span></span></code></pre></div><p><strong>Response Type:</strong> <code>text/plain</code></p>
 <p><strong>Response Format:</strong></p>
 <ul>
 <li>For release versions: Version number (e.g., <code>0.0.2</code>)</li>
@@ -482,20 +482,20 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p><strong>Response Fields:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Type</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>webclientCockpitUrl</code></td>
-          <td>string</td>
-          <td>URL to CIB seven webclient dashboard</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>webclientCockpitUrl</code></td>
+					<td>string</td>
+					<td>URL to CIB seven webclient dashboard</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 
@@ -507,8 +507,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 </span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">text/plain;charset=UTF-8</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">0.0.2-SNAPSHOT</span> <span class="err">2026-01-29-1200</span>
-</span></span></code></pre></div>
+</span></span><span class="line"><span class="cl"><span class="m">0</span>.0.2-SNAPSHOT<span class="w"> </span><span class="m">2026</span>-01-29-1200<span class="w">
+</span></span></span></code></pre></div>
 <h4 id="get-configuration-properties">Get Configuration Properties</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://localhost:8899/info/properties&#34;</span>
 </span></span></code></pre></div><p><strong>Response:</strong></p>

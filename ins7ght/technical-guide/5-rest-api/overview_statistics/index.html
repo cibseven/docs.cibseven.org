@@ -16,12 +16,12 @@
 
   <title>Overview Statistics API | docs.cibseven.org</title>
 
-  <meta name="generator" content="Hugo 0.136.4">
+  <meta name="generator" content="Hugo 0.162.1">
   <link rel="shortcut icon" href="/ins7ght/img/favicon.ico" type="image/x-icon" />
 
   
 
-  <link rel="stylesheet" href="/ins7ght/css/docs.a0477a0dd0fc479d343e1a56c04891f34a958a869a1b12d6bd14347ea39c6b64.css" integrity="sha256-oEd6DdD8R500PhpWwEiR80qVioaaGxLWvRQ0fqOca2Q=">
+  <link rel="stylesheet" href="/ins7ght/css/docs.0ac9000d0b136618d757f7e65b9f2c6ec7a0207018614b8f3045bb04ec8e66b3.css" integrity="sha256-CskADQsTZhjXV/fmW58sbsegIHAYYUuPMEW7BOyOZrM=">
   <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/overview_statistics/" />
 </head>
 <body class="">
@@ -454,35 +454,35 @@
 <h3 id="request-body-overviewrequest">Request body: <code>OverviewRequest</code></h3>
 <p>All <code>/overview</code> endpoints accept the same JSON body:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Type</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>processKey</code></td>
-          <td>string[]</td>
-          <td>Optional. Process definition keys (omit together with <code>version</code> for global aggregates).</td>
-      </tr>
-      <tr>
-          <td><code>version</code></td>
-          <td>string</td>
-          <td>Optional. Process version; used with non-empty <code>processKey</code>.</td>
-      </tr>
-      <tr>
-          <td><code>startDate</code></td>
-          <td>string</td>
-          <td>Optional. Start of range (ISO 8601).</td>
-      </tr>
-      <tr>
-          <td><code>endDate</code></td>
-          <td>string</td>
-          <td>Optional. End of range (ISO 8601).</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>processKey</code></td>
+					<td>string[]</td>
+					<td>Optional. Process definition keys (omit together with <code>version</code> for global aggregates).</td>
+			</tr>
+			<tr>
+					<td><code>version</code></td>
+					<td>string</td>
+					<td>Optional. Process version; used with non-empty <code>processKey</code>.</td>
+			</tr>
+			<tr>
+					<td><code>startDate</code></td>
+					<td>string</td>
+					<td>Optional. Start of range (ISO 8601).</td>
+			</tr>
+			<tr>
+					<td><code>endDate</code></td>
+					<td>string</td>
+					<td>Optional. End of range (ISO 8601).</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Rules:</strong></p>
 <ul>
@@ -502,70 +502,70 @@
 <h3 id="instance-count-and-kpi-endpoints">Instance count and KPI endpoints</h3>
 <p>These return single numbers (<code>Integer</code>, <code>Long</code>, or <code>Double</code>) or, for top user tasks, a JSON array.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Method</th>
-          <th>Path</th>
-          <th>Response type</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/started-instances</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/finalized-instances</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/successful-instances</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/avg-process-duration</code></td>
-          <td><code>Long</code> (ms)</td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/canceled-instances-internally-terminated</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/canceled-instances-externally-terminated</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/error-start-event-instances</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/incident-instances</code></td>
-          <td><code>Integer</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/completed-user-tasks-percentage</code></td>
-          <td><code>Double</code> (0–100)</td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/avg-user-task-duration</code></td>
-          <td><code>Long</code> (ms)</td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/top-user-tasks</code></td>
-          <td>Array of activity instance info (allows empty <code>processKey</code> to scan all processes)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Path</th>
+					<th>Response type</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/started-instances</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/finalized-instances</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/successful-instances</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/avg-process-duration</code></td>
+					<td><code>Long</code> (ms)</td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/canceled-instances-internally-terminated</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/canceled-instances-externally-terminated</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/error-start-event-instances</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/incident-instances</code></td>
+					<td><code>Integer</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/completed-user-tasks-percentage</code></td>
+					<td><code>Double</code> (0–100)</td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/avg-user-task-duration</code></td>
+					<td><code>Long</code> (ms)</td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/top-user-tasks</code></td>
+					<td>Array of activity instance info (allows empty <code>processKey</code> to scan all processes)</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Example (started instances):</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">POST /overview/started-instances
@@ -612,34 +612,34 @@
 <h3 id="time-series-graph-endpoints">Time-series graph endpoints</h3>
 <p>Each returns an array of time buckets with instance counts.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Method</th>
-          <th>Path</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/graph/started-instances</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/graph/finalized-instances</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/graph/successful-instances</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/graph/canceled-instances</code></td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td><code>/overview/graph/incident-instances</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Path</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/graph/started-instances</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/graph/finalized-instances</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/graph/successful-instances</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/graph/canceled-instances</code></td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td><code>/overview/graph/incident-instances</code></td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Example HTTP response (time-series graph):</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -656,25 +656,25 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span></code></pre></div><table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Type</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>date</code></td>
-          <td>long</td>
-          <td>Bucket time (Unix epoch ms)</td>
-      </tr>
-      <tr>
-          <td><code>totalInstances</code></td>
-          <td>int</td>
-          <td>Instances in that bucket</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Type</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>date</code></td>
+					<td>long</td>
+					<td>Bucket time (Unix epoch ms)</td>
+			</tr>
+			<tr>
+					<td><code>totalInstances</code></td>
+					<td>int</td>
+					<td>Instances in that bucket</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 
@@ -682,13 +682,13 @@
 
 <h4 id="global-aggregates-all-processes">Global aggregates (all processes)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST <span class="s2">&#34;http://localhost:8899/overview/started-instances&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -d <span class="s2">&#34;{\&#34;processKey\&#34;:null,\&#34;version\&#34;:null,\&#34;startDate\&#34;:\&#34;2026-01-01T00:00:00Z\&#34;,\&#34;endDate\&#34;:\&#34;2026-01-31T23:59:59Z\&#34;}&#34;</span>
+</span></span></span><span class="line"><span class="cl">  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -d <span class="s2">&#34;{\&#34;processKey\&#34;:null,\&#34;version\&#34;:null,\&#34;startDate\&#34;:\&#34;2026-01-01T00:00:00Z\&#34;,\&#34;endDate\&#34;:\&#34;2026-01-31T23:59:59Z\&#34;}&#34;</span>
 </span></span></code></pre></div>
 <h4 id="specific-process-and-version">Specific process and version</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST <span class="s2">&#34;http://localhost:8899/overview/graph/started-instances&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -d <span class="s2">&#34;{\&#34;processKey\&#34;:[\&#34;invoice-process\&#34;],\&#34;version\&#34;:\&#34;1\&#34;,\&#34;startDate\&#34;:\&#34;2026-01-01T00:00:00Z\&#34;,\&#34;endDate\&#34;:\&#34;2026-01-31T23:59:59Z\&#34;}&#34;</span>
+</span></span></span><span class="line"><span class="cl">  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -d <span class="s2">&#34;{\&#34;processKey\&#34;:[\&#34;invoice-process\&#34;],\&#34;version\&#34;:\&#34;1\&#34;,\&#34;startDate\&#34;:\&#34;2026-01-01T00:00:00Z\&#34;,\&#34;endDate\&#34;:\&#34;2026-01-31T23:59:59Z\&#34;}&#34;</span>
 </span></span></code></pre></div><p>Expect <strong>HTTP 200</strong> and a JSON body in the shapes described under <strong>Example HTTP responses</strong> above (scalar numbers for KPI routes, array for graph routes).</p>
 <hr>
 
