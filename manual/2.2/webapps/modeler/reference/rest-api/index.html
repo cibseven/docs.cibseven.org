@@ -4183,12 +4183,55 @@
 			</tr>
 	</tbody>
 </table>
-<p><strong>Response:</strong> <code>200 OK</code> — Array of message objects including <code>id</code>, <code>roomId</code>, <code>userId</code>, <code>displayName</code>, <code>content</code>, <code>createdAt</code>, <code>editedAt</code>, and optionally <code>elementId</code>.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — Array of message objects including <code>id</code>, <code>roomId</code>, <code>userId</code>, <code>displayName</code>, <code>content</code>, <code>createdAt</code>, <code>editedAt</code>, and optionally <code>elementId</code>. Soft-deleted messages are excluded.</p>
+<hr>
+
+<h3 id="send-message">Send Message</h3>
+<pre tabindex="0"><code>POST /chat/{roomId}
+</code></pre><p>Creates a new message in the room. This endpoint is the primary way to send messages in the long-polling transport. In WebSocket mode, messages can also be published over STOMP (see <a href="/manual/2.2/webapps/modeler/user-guide/chat/">Real-time Chat</a>).</p>
+<p><strong>Path Parameters:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>roomId</code></td>
+					<td>Composite room identifier</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Request Body:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Required</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>content</code></td>
+					<td>Yes</td>
+					<td>Message text (must not be blank)</td>
+			</tr>
+			<tr>
+					<td><code>elementId</code></td>
+					<td>No</td>
+					<td>BPMN element ID to attach the message to a specific element</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — The created message object.</p>
 <hr>
 
 <h3 id="get-room-presence">Get Room Presence</h3>
 <pre tabindex="0"><code>GET /chat/{roomId}/presence
-</code></pre><p>Returns the set of users currently subscribed to the room&rsquo;s WebSocket topic.</p>
+</code></pre><p>Returns the set of users currently active in the room. In the long-polling transport, presence is backed by the database and reflects users who have polled within the last ~60 seconds. In the WebSocket transport, it reflects users currently subscribed to the room&rsquo;s WebSocket topic.</p>
 <p><strong>Path Parameters:</strong></p>
 <table>
 	<thead>
@@ -4220,6 +4263,67 @@
 			<tr>
 					<td><code>displayName</code></td>
 					<td>User&rsquo;s display name</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+
+<h3 id="long-poll-for-events">Long-Poll for Events</h3>
+<pre tabindex="0"><code>GET /chat/{roomId}/poll?since={cursor}
+</code></pre><p>Long-polling endpoint used by the <code>longpolling</code> transport. The server holds the request for up to ~25 seconds and returns early when new events are available. The client immediately re-polls after each response.</p>
+<p>Calling this endpoint also records a presence heartbeat for the authenticated user.</p>
+<p><strong>Path Parameters:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>roomId</code></td>
+					<td>Composite room identifier</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Query Parameters:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Parameter</th>
+					<th>Required</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>since</code></td>
+					<td>No</td>
+					<td>Opaque cursor returned by the previous poll. Omit on the first poll to establish a baseline — the server returns an empty event list and the current cursor.</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code></p>
+<table>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>cursor</code></td>
+					<td>Opaque server-owned timestamp. Pass back as <code>since</code> on the next poll.</td>
+			</tr>
+			<tr>
+					<td><code>events</code></td>
+					<td>Array of change events since the cursor. Empty if nothing changed during the hold. Each event has an <code>op</code> field (<code>create</code>, <code>update</code>, or <code>delete</code>) and a <code>message</code> object.</td>
+			</tr>
+			<tr>
+					<td><code>presence</code></td>
+					<td>Current presence snapshot for the room — same format as <a href="#get-room-presence">Get Room Presence</a>.</td>
 			</tr>
 	</tbody>
 </table>
@@ -4276,7 +4380,9 @@
     <li><a href="#chat-enterprise-edition">Chat (Enterprise Edition)</a>
       <ul>
         <li><a href="#get-message-history">Get Message History</a></li>
+        <li><a href="#send-message">Send Message</a></li>
         <li><a href="#get-room-presence">Get Room Presence</a></li>
+        <li><a href="#long-poll-for-events">Long-Poll for Events</a></li>
       </ul>
     </li>
   </ul>

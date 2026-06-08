@@ -3881,8 +3881,8 @@
 <p>When <code>enabled: false</code>:</p>
 <ul>
 <li>All modeler REST endpoints are removed from the application context</li>
-<li>JPA entities, repositories, and Flyway migrations are not activated</li>
-<li><strong>No database connection is required</strong> — DataSource, Hibernate/JPA, and Flyway auto-configurations are excluded automatically</li>
+<li>JPA entities and repositories are not activated</li>
+<li><strong>No database connection is required</strong> — DataSource and Hibernate/JPA auto-configurations are excluded automatically</li>
 <li>The modeler card is <strong>hidden</strong> on the start page</li>
 <li>The modeler menu item is <strong>removed</strong> from the navigation</li>
 </ul>
@@ -3908,8 +3908,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">modeler</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">chat</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span></code></pre></div><p>Or via environment variable:</p>
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">transport</span><span class="p">:</span><span class="w"> </span><span class="l">longpolling </span><span class="w"> </span><span class="c"># longpolling (default) | websocket</span><span class="w">
+</span></span></span></code></pre></div><p>Or via environment variables:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CIBSEVEN_WEBCLIENT_MODELER_CHAT_ENABLED</span><span class="o">=</span><span class="nb">false</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CIBSEVEN_WEBCLIENT_MODELER_CHAT_TRANSPORT</span><span class="o">=</span>longpolling
 </span></span></code></pre></div>
 <div class="note ">
   <h3>Default is disabled</h3>
@@ -3923,21 +3925,52 @@
 </div>
 
 
+<h3 id="transport-available-from-221">Transport <em>(available from 2.2.1)</em></h3>
+<p>The <code>chat.transport</code> property selects the delivery mechanism used to push events to connected clients:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Default</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>longpolling</code></td>
+					<td><strong>Yes</strong></td>
+					<td>Events are sourced from the shared database. Works in single-instance and multi-pod deployments — no sticky routing or message broker required.</td>
+			</tr>
+			<tr>
+					<td><code>websocket</code></td>
+					<td>No</td>
+					<td>Events are pushed over STOMP WebSocket (<code>/ws/chat</code>). Suitable for single-instance deployments only.</td>
+			</tr>
+	</tbody>
+</table>
+
+<div class="note ">
+  <h3>Multi-pod deployments</h3>
+  <p>Use <code>transport: longpolling</code> (the default) in multi-pod environments. The <code>websocket</code> transport uses an in-memory broker that is per-pod: messages sent on one pod will not reach clients connected to a different pod.</p>
+</div>
+
+
 <h3 id="what-happens-when-chat-is-disabled">What Happens When Chat Is Disabled</h3>
 <p>When <code>chat.enabled: false</code>:</p>
 <ul>
-<li>The WebSocket endpoint (<code>/ws/chat</code>) is not registered</li>
-<li>Chat JPA entities and repositories are not activated — the <code>chat_messages</code> table is not required</li>
+<li>The WebSocket endpoint (<code>/ws/chat</code>) is not registered (regardless of <code>transport</code>)</li>
+<li>Chat JPA entities and repositories are not activated — the <code>chat_messages</code> and <code>chat_presence</code> tables are not required</li>
 <li>The Properties/Chat tab bar is <strong>hidden</strong> in the modeler UI — the properties panel shows in full single-panel mode</li>
 </ul>
 
 <h3 id="what-happens-when-chat-is-enabled">What Happens When Chat Is Enabled</h3>
 <p>When <code>chat.enabled: true</code>:</p>
 <ul>
-<li>The STOMP WebSocket endpoint and chat REST endpoints become active</li>
-<li>The <code>chat_messages</code> table must exist in the database (created by the SQL schema scripts)</li>
+<li>Chat REST endpoints become active</li>
+<li>The <code>chat_messages</code> and <code>chat_presence</code> tables must exist in the database (created by the SQL schema scripts)</li>
 <li>The modeler UI shows a <strong>Properties / Chat</strong> tab bar in the properties panel</li>
 <li>The Chat tab is <strong>disabled</strong> (greyed out with a tooltip) on unsaved diagrams — it becomes active once the diagram is saved</li>
+<li>If <code>transport: websocket</code>, the STOMP WebSocket endpoint (<code>/ws/chat</code>) is additionally registered</li>
 </ul>
 
 <h2 id="summary">Summary</h2>
@@ -3951,15 +3984,23 @@
 	<tbody>
 			<tr>
 					<td><code>cibseven.webclient.modeler.enabled: false</code></td>
-					<td>Disables backend (REST, JPA, Flyway) <strong>and</strong> hides the UI — no database required</td>
+					<td>Disables backend (REST, JPA) <strong>and</strong> hides the UI — no database required</td>
 			</tr>
 			<tr>
 					<td><code>cibseven.webclient.modeler.chat.enabled: false</code> (default)</td>
-					<td>Chat WebSocket and JPA inactive; modeler shows single-panel properties — no <code>chat_messages</code> table required</td>
+					<td>Chat JPA inactive; modeler shows single-panel properties — <code>chat_messages</code> / <code>chat_presence</code> tables not required</td>
 			</tr>
 			<tr>
 					<td><code>cibseven.webclient.modeler.chat.enabled: true</code></td>
 					<td>Chat fully active; Properties/Chat tab bar shown in modeler UI</td>
+			</tr>
+			<tr>
+					<td><code>cibseven.webclient.modeler.chat.transport: longpolling</code> (default)</td>
+					<td>DB-sourced events; no WebSocket broker; multi-pod safe</td>
+			</tr>
+			<tr>
+					<td><code>cibseven.webclient.modeler.chat.transport: websocket</code></td>
+					<td>STOMP WebSocket broker active (<code>/ws/chat</code>); single-instance only</td>
 			</tr>
 			<tr>
 					<td><code>permissions.modeler: {}</code> in <code>config.json</code></td>
@@ -3981,6 +4022,7 @@
     <li><a href="#frontend-permissions">Frontend Permissions</a></li>
     <li><a href="#chat-feature-enterprise-edition">Chat Feature (Enterprise Edition)</a>
       <ul>
+        <li><a href="#transport-available-from-221">Transport <em>(available from 2.2.1)</em></a></li>
         <li><a href="#what-happens-when-chat-is-disabled">What Happens When Chat Is Disabled</a></li>
         <li><a href="#what-happens-when-chat-is-enabled">What Happens When Chat Is Enabled</a></li>
       </ul>

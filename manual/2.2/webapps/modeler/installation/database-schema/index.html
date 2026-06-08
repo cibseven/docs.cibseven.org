@@ -3860,7 +3860,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The modeler requires a set of database tables to store diagrams, forms, and user sessions. The schema must exist before the webclient starts — the webclient connects to the database but never creates or modifies tables itself (<code>ddl-auto: none</code>).</p>
+      <p>When the modeler is enabled (<code>cibseven.webclient.modeler.enabled: true</code>), it requires a set of database tables to store diagrams, forms, and user sessions. The schema must exist before the webclient starts — the webclient connects to the database but never creates or modifies tables itself (<code>ddl-auto: none</code>).</p>
+<p>When the modeler is <strong>disabled</strong>, no database connection is required at all — the JPA configuration is skipped entirely and no datasource is needed.</p>
 <p>Schema creation is the responsibility of the <strong>parent application</strong> (e.g. <code>cibseven-bpm-run</code>). Refer to the parent application&rsquo;s documentation for the DDL scripts and migration tooling it provides.</p>
 
 <h2 id="database-tables">Database Tables</h2>
@@ -3898,14 +3899,18 @@
 			</tr>
 			<tr>
 					<td><code>chat_messages</code></td>
-					<td>Stores real-time chat messages per room (Enterprise Edition only)</td>
+					<td>Stores real-time chat messages per room. Deleted messages are soft-deleted (content cleared, row retained as a tombstone). Enterprise Edition only.</td>
+			</tr>
+			<tr>
+					<td><code>chat_presence</code></td>
+					<td>Tracks active users per chat room for the long-polling transport. Each row is a heartbeat record refreshed on every poll; stale entries are purged automatically. Enterprise Edition only.</td>
 			</tr>
 	</tbody>
 </table>
 
 <div class="note bg-info docs-info">
   <h3>Enterprise Feature</h3>
-  <p>The <code>chat_messages</code> table is only required when the enterprise edition is active and <code>cibseven.webclient.modeler.enabled: true</code>. It is not created in the community edition.</p>
+  <p>The <code>chat_messages</code> and <code>chat_presence</code> tables are only required when the enterprise edition is active, <code>cibseven.webclient.modeler.enabled: true</code>, and <code>cibseven.webclient.modeler.chat.enabled: true</code>. They are not created in the community edition.</p>
 </div>
 
 

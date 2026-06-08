@@ -3864,7 +3864,7 @@
 <ul>
 <li><a href="/manual/2.2/webapps/modeler/configuration/enable-disable/">Enable / Disable</a> — Toggle the modeler on or off without requiring a database</li>
 <li><a href="/manual/2.2/webapps/modeler/configuration/authentication/">Authentication</a> — Secure endpoints and integrate with CIB seven authentication</li>
-<li><a href="/manual/2.2/webapps/modeler/configuration/database/">Database</a> — Configure the datasource, JPA dialect, and Flyway migrations</li>
+<li><a href="/manual/2.2/webapps/modeler/configuration/database/">Database</a> — Configure the datasource and JPA dialect</li>
 </ul>
 
 <h2 id="configuration-reference">Configuration Reference</h2>
@@ -3886,7 +3886,12 @@
 			<tr>
 					<td><code>cibseven.webclient.modeler.chat.enabled</code></td>
 					<td><code>false</code></td>
-					<td>Enable or disable the real-time chat feature (WebSocket, JPA tables, modeler tab bar). Requires <code>modeler.enabled: true</code>. See <a href="/manual/2.2/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>. Enterprise Edition only.</td>
+					<td>Enable or disable the real-time chat feature (JPA tables, modeler tab bar). Requires <code>modeler.enabled: true</code>. See <a href="/manual/2.2/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>. Enterprise Edition only.</td>
+			</tr>
+			<tr>
+					<td><code>cibseven.webclient.modeler.chat.transport</code></td>
+					<td><code>longpolling</code></td>
+					<td>Chat delivery transport: <code>longpolling</code> (default, multi-pod safe) or <code>websocket</code> (STOMP over WebSocket). <strong>Available from 2.2.1.</strong> See <a href="/manual/2.2/webapps/modeler/user-guide/chat/">Real-time Chat</a>. Enterprise Edition only.</td>
 			</tr>
 			<tr>
 					<td><code>cibseven.webclient.modeler.session.expiresAfterMin</code></td>

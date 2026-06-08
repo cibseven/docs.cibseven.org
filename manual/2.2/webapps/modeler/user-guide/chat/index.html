@@ -3868,15 +3868,50 @@
 
 <p>The modeler includes a real-time chat panel for collaborating on diagrams. Users in the same room can send messages, see who is online, and attach comments to specific BPMN elements.</p>
 
-<h2 id="websocket-connection">WebSocket Connection</h2>
+<h2 id="transport">Transport</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Available from 2.2.1</h3>
+  <p>The configurable chat transport (<code>cibseven.webclient.modeler.chat.transport</code>) and long-polling mode are available from <strong>CIB seven 2.2.1</strong>. Earlier versions only support the <code>websocket</code> transport.</p>
+</div>
+
+<p>Chat supports two delivery transports, selected by the <code>cibseven.webclient.modeler.chat.transport</code> property:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Default</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>longpolling</code></td>
+					<td><strong>Yes</strong></td>
+					<td>Events are sourced from the shared database. Works correctly in single-instance and multi-pod deployments — no sticky routing or message broker required.</td>
+			</tr>
+			<tr>
+					<td><code>websocket</code></td>
+					<td>No</td>
+					<td>Events are pushed over a STOMP WebSocket (<code>/ws/chat</code>). Lower latency for single-instance deployments, but unreliable in multi-pod environments without sticky routing.</td>
+			</tr>
+	</tbody>
+</table>
+<p>See <a href="/manual/2.2/webapps/modeler/configuration/enable-disable/">Enable / Disable</a> for the full configuration reference.</p>
+
+<h3 id="long-polling-default">Long-Polling (default)</h3>
+<p>The client polls <code>GET {basePath}/chat/{roomId}/poll?since={cursor}</code>. The server holds the request for up to ~25 seconds and returns early as soon as there are new events; the client immediately re-polls. This gives near-real-time delivery without a persistent socket.</p>
+<p>A presence heartbeat is recorded with every poll. Users appear online as long as they are actively polling and drop off the presence list approximately 60 seconds after their last poll.</p>
+
+<h3 id="websocket">WebSocket</h3>
 <p>Chat uses <a href="https://stomp.github.io/">STOMP</a> over WebSocket. Clients connect to:</p>
 <pre tabindex="0"><code>ws://{host}/ws/chat
-</code></pre><p>Authentication is performed on the STOMP <code>CONNECT</code> frame. Pass the session token as an <code>Authorization</code> header:</p>
+</code></pre><p>Authentication is performed on the STOMP <code>CONNECT</code> frame:</p>
 <pre tabindex="0"><code>CONNECT
 Authorization: Bearer &lt;token&gt;
 </code></pre><p>The server validates the token and associates the authenticated user with the WebSocket session for its entire lifetime.</p>
 
-<h2 id="topics">Topics</h2>
+<h4 id="topics">Topics</h4>
 <table>
 	<thead>
 			<tr>
@@ -3911,12 +3946,14 @@ Authorization: Bearer &lt;token&gt;
 <p>The context prefix namespaces the room, ensuring diagrams from different parts of the application do not share a chat history.</p>
 
 <h2 id="sending-a-message">Sending a Message</h2>
-<p>Publish a JSON payload to <code>/app/chat/{roomId}</code>:</p>
+<p>In WebSocket mode, publish a JSON payload to <code>/app/chat/{roomId}</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;Hello, team!&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;elementId&#34;</span><span class="p">:</span> <span class="s2">&#34;Task_1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><table>
+</span></span></code></pre></div><p>In long-polling mode, <code>POST</code> the same payload to the REST endpoint:</p>
+<pre tabindex="0"><code>POST {basePath}/chat/{roomId}
+</code></pre><table>
 	<thead>
 			<tr>
 					<th>Field</th>
@@ -3939,22 +3976,28 @@ Authorization: Bearer &lt;token&gt;
 </table>
 
 <h2 id="presence">Presence</h2>
-<p>When a user subscribes to <code>/topic/chat/{roomId}</code>, the server adds them to the room&rsquo;s presence list and immediately broadcasts the updated list to <code>/topic/chat/{roomId}/presence</code>. The broadcast is repeated whenever someone subscribes, unsubscribes, or disconnects.</p>
-<p>The current presence snapshot can also be retrieved at any time via the REST API — see <a href="/manual/2.2/webapps/modeler/reference/rest-api/">REST API</a>.</p>
+<p>The set of users currently active in a room is tracked per transport:</p>
+<ul>
+<li><strong>Long-polling</strong> — presence is backed by the database (<code>chat_presence</code> table). Each poll refreshes the user&rsquo;s last-seen timestamp; users with no activity for more than ~60 seconds are considered offline.</li>
+<li><strong>WebSocket</strong> — presence is tracked in-memory. A user appears when they subscribe to <code>/topic/chat/{roomId}/presence</code> and is removed on unsubscribe or disconnect.</li>
+</ul>
+<p>The current presence snapshot can be retrieved via the REST API — see <a href="/manual/2.2/webapps/modeler/reference/rest-api/">REST API</a>.</p>
 
 <h2 id="message-history">Message History</h2>
-<p>Previous messages are not delivered over WebSocket on subscribe. Fetch history on initial load via the REST endpoint:</p>
+<p>Previous messages are not pushed on initial connect. Fetch history on load via the REST endpoint:</p>
 <pre tabindex="0"><code>GET {basePath}/chat/{roomId}/history
-</code></pre><p>See <a href="/manual/2.2/webapps/modeler/reference/rest-api/">REST API</a> for parameters.</p>
+</code></pre><p>The history endpoint returns only live messages — soft-deleted messages (removed by users) are excluded. See <a href="/manual/2.2/webapps/modeler/reference/rest-api/">REST API</a> for parameters.</p>
 
 <h2 id="chat-tab-behavior">Chat Tab Behavior</h2>
 <p>The Properties panel in the modeler shows a <strong>Properties / Chat</strong> tab bar when <code>chat.enabled: true</code>.</p>
 <p><strong>Unsaved diagrams</strong> — The Chat tab is visually disabled and shows the tooltip <em>&ldquo;Save the diagram to use the chat&rdquo;</em>. Clicking it has no effect. The Properties tab always remains accessible.</p>
 <p><strong>Switching diagrams</strong> — If the Chat tab is open and the user switches to a diagram that has not been saved yet, the panel automatically collapses back to the Properties tab. This prevents the user from being left with an open but non-functional chat panel on an unsaved diagram.</p>
-<p>Once a diagram is saved, the Chat tab becomes active and the WebSocket connection is established when it is selected.</p>
+<p>Once a diagram is saved, the Chat tab becomes active and the connection is established when it is selected.</p>
 
 <h2 id="database">Database</h2>
-<p>Messages are persisted in the <code>chat_messages</code> table. See <a href="/manual/2.2/webapps/modeler/installation/database-schema/">Database Schema</a>.</p>
+<p>Messages are persisted in the <code>chat_messages</code> table. Deleted messages are soft-deleted: the row is retained as a tombstone (content cleared) so the long-polling transport can detect the deletion and propagate it to all connected clients.</p>
+<p>Active presence (long-polling mode) is tracked in the <code>chat_presence</code> table.</p>
+<p>See <a href="/manual/2.2/webapps/modeler/installation/database-schema/">Database Schema</a>.</p>
 
     </div>
   </div>
@@ -3964,8 +4007,16 @@ Authorization: Bearer &lt;token&gt;
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#websocket-connection">WebSocket Connection</a></li>
-    <li><a href="#topics">Topics</a></li>
+    <li><a href="#transport">Transport</a>
+      <ul>
+        <li><a href="#long-polling-default">Long-Polling (default)</a></li>
+        <li><a href="#websocket">WebSocket</a>
+          <ul>
+            <li><a href="#topics">Topics</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="#room-id">Room ID</a></li>
     <li><a href="#sending-a-message">Sending a Message</a></li>
     <li><a href="#presence">Presence</a></li>
