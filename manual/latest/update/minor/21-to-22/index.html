@@ -4001,8 +4001,14 @@ This update allows to avoid a problem with applying a license key when the user 
 <p>When updating to CIB seven <code>2.2.0</code>, review your <code>default.yml</code> or <code>application.yml</code> files and replace existing <code>userProvider</code> entries that still use <code>KeycloakUserProvider</code> with <code>OAuth2UserProvider</code>.</p>
 
 <h2 id="direct-provider">Direct Provider</h2>
-<p>Direct Provider is a new beta feature in CIB seven <code>2.2.0</code>. It introduces <code>SevenDirectProvider</code> as an alternative <code>BpmProvider</code> implementation that accesses the process engine directly without REST.</p>
-<p>This can be useful for embedded deployments that want tighter integration without going through REST APIs. As this feature is currently beta, it should be evaluated carefully before productive use.</p>
+<p>Direct Provider is a new <strong>beta</strong> feature introduced in CIB seven <code>2.2.0</code>. It provides <code>SevenDirectProvider</code> as an alternative implementation of <code>BpmProvider</code> (<code>SevenDirectProviderEE</code> in the Enterprise Edition), enabling direct access to the process engine without using REST APIs.</p>
+<p>This option can be beneficial for embedded deployments that require tighter integration with the process engine and prefer to avoid the overhead of REST-based communication.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Beta feature</h3>
+  <p>This feature is currently in beta and should be carefully evaluated before being used in production environments.</p>
+</div>
+
 
 <h3 id="user-impact-5">User impact</h3>
 <p>No user impact is expected unless you want to adopt this new beta feature.</p>
