@@ -3860,8 +3860,8 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>When the modeler is enabled (<code>cibseven.webclient.modeler.enabled: true</code>), it requires a set of database tables to store diagrams, forms, and user sessions. The schema must exist before the webclient starts — the webclient connects to the database but never creates or modifies tables itself (<code>ddl-auto: none</code>).</p>
-<p>When the modeler is <strong>disabled</strong>, no database connection is required at all — the JPA configuration is skipped entirely and no datasource is needed.</p>
+      <p>When the modeler is <strong>enabled</strong> (<code>cibseven.webclient.modeler.enabled: true</code>), the webclient requires a database schema to store diagrams, forms, and user sessions. The required tables must be created before startup. The webclient can connect to and use the database, but it does not create, update, or validate the schema itself (<code>ddl-auto: none</code>).</p>
+<p>When the modeler is <strong>disabled</strong> (<code>cibseven.webclient.modeler.enabled: false</code>), all modeler-related persistence components are disabled. No datasource configuration or database connection is required at all, as JPA is not initialized.</p>
 <p>Schema creation is the responsibility of the <strong>parent application</strong> (e.g. <code>cibseven-bpm-run</code>). Refer to the parent application&rsquo;s documentation for the DDL scripts and migration tooling it provides.</p>
 
 <h2 id="database-tables">Database Tables</h2>

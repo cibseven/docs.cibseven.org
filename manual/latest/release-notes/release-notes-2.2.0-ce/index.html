@@ -3889,7 +3889,7 @@
 <li><strong>Cron expression type</strong>: Configure <code>cronType</code> (<code>QUARTZ</code> or <code>SPRING53</code>) and <code>supportLegacyQuartzSyntax</code> in <code>run</code>, Tomcat, and Wildfly configuration files to control <a href="/manual/latest/update/minor/20-to-21/#cron-expression">cron expression</a> handling. Default is <code>QUARTZ</code>.</li>
 <li><strong><code>authGroupFilterThreshold</code></strong>: New option in engine configuration to optimize authentication group filtering and reduce SQL query load.</li>
 <li><strong>Tomcat 11 support</strong>: Tomcat 11 is now officially supported as a deployment target.</li>
-<li><strong>Schema validation</strong>: Modeler schema validation is disabled by default in the <code>run</code> distribution.</li>
+<li><strong>Schema validation</strong>: Modeler <a href="/manual/latest/webapps/modeler/installation/database-schema/">schema validation</a> is disabled by default.</li>
 <li><strong>Modeler datasource</strong>: A shared datasource resource link for the CIB seven Modeler is now included in <code>webapp.xml</code> for Tomcat distributions.</li>
 <li><strong>AI Agent toggle</strong>: <code>AI_AGENT_ENABLED</code> environment variable (default <code>true</code>) controls whether the AI agent connector is loaded at startup in Tomcat and WildFly Docker images; set to <code>false</code> to disable without removing any files. For the <code>run</code> distribution, the connector is active by default in dev/default mode and disabled in <code>--production</code> mode; re-enable with <code>--ai</code>, <code>--ai-agent</code>, or <code>--agent</code> flags.</li>
 </ul>
