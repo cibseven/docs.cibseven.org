@@ -3871,6 +3871,7 @@
 <li>For administrators and developers: <a href="#update-to-tomcat-11">Update to Tomcat 11</a></li>
 <li>For administrators and developers: <a href="#update-to-wildfly-40">Update to WildFly 40</a></li>
 <li>For administrators and developers: <a href="#end-of-java-11-support">End of Java 11 support</a></li>
+<li>For administrators and developers: <a href="#graalvm-javascript-dependency">GraalVM JavaScript Dependency</a></li>
 <li>For administrators and developers: <a href="#ai-agent-connector">AI Agent Connector</a></li>
 <li>For administrators and developers: <a href="#cib-seven-modeler">CIB seven Modeler</a></li>
 <li>For administrators: <a href="#jwt-secret-configuration">JWT secret configuration</a></li>
@@ -3885,8 +3886,8 @@
 
 <h2 id="database-updates">Database updates</h2>
 <p>Every CIB seven installation requires a database schema update. Check our <a href="/manual/2.2/installation/database-schema/#update">database schema update guide</a>
-for further instructions.
-<strong>Note:</strong>
+for further instructions.</p>
+<p><strong>Note:</strong>
 For rolling update SQL scripts, the file name versioning has been switched from Camunda 7 versioning to CIB seven versioning. The transition to CIB seven versioning changed version part in the file names from <code>7.x</code>-based naming to <code>2.x</code>-based naming, such as <code>h2_engine_7.24_to_2.1.sql</code> followed by <code>h2_engine_2.1_to_2.2.sql</code>. The Liquibase changelog has been updated accordingly to use the new CIB seven version identifiers as well.</p>
 
 <h2 id="full-distribution">Full distribution</h2>
@@ -3964,6 +3965,39 @@ Additionally, the new <code>Run4</code> distribution has been added to the <a hr
 <h3 id="migration-steps-4">Migration steps</h3>
 <p>Update your Java environment to Java 17 or Java 21 before upgrading to CIB seven <code>2.2.0</code>.</p>
 
+<h2 id="graalvm-javascript-dependency">GraalVM JavaScript Dependency</h2>
+<p>Starting with CIB seven <code>2.2.0</code>, the GraalVM JavaScript classes have been un-shaded from the <code>cibseven-engine</code> jar. Previously they were embedded directly inside the engine artifact, making JavaScript scripting available without any additional dependency. Now the GraalVM JavaScript engine is an optional, explicitly declared dependency that you add only when needed.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Pre-packaged distributions unaffected</h3>
+  <p>This change does <strong>not</strong> affect users of the pre-packaged Tomcat or WildFly/JBoss EAP distributions. Those distributions continue to ship the GraalVM JavaScript libraries separately in the <code>lib/</code> or <code>modules/</code> folder.</p>
+</div>
+
+
+<h3 id="user-impact-3">User impact</h3>
+<p>This change affects <strong>Spring Boot starter users</strong> who use any of the following in their BPMN processes:</p>
+<ul>
+<li>Script tasks or execution listeners with the <code>javascript</code> or <code>ecmascript</code> script format</li>
+<li>Connector input/output mappings evaluated as JavaScript</li>
+<li>Condition expressions written in JavaScript</li>
+</ul>
+<p>After upgrading to <code>2.2.0</code>, these scenarios may fail at runtime with an error similar to:</p>
+<pre tabindex="0"><code>Can&#39;t find scripting engine for &#39;javascript&#39;: scriptEngine is null
+</code></pre>
+<h3 id="migration-steps-5">Migration steps</h3>
+<p>If you encounter the error above after upgrading to <code>2.2.0</code>, add the GraalVM JavaScript dependencies explicitly to your project:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.graalvm.js<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>js-scriptengine<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>24.1.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.graalvm.js<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>js<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>24.1.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>Consult the <a href="/manual/2.2/user-guide/process-engine/scripting/">scripting documentation</a> for details on the use of scripting engines in CIB seven.</p>
+
 <h2 id="ai-agent-connector">AI Agent Connector</h2>
 <p>The <a href="/manual/2.2/reference/connect/ai-agent-connector/">AI Agent Connector</a> is a major new feature in CIB seven <code>2.2.0</code>. It introduces the new <code>cibseven-connect-ai-agent</code> module, allowing BPMN service tasks to invoke AI agents through standard connector configuration without custom Java code.</p>
 <p>The connector supports tool calling, retrieval-augmented generation with pgvector, chat memory, and audit trail capabilities. It also ships with a Knowledge Ingestor connector for preparing content used by AI-powered process interactions.</p>
@@ -3988,16 +4022,16 @@ Additionally, the new <code>Run4</code> distribution has been added to the <a hr
 <p>Starting with CIB seven version 2.2.0, a license key is automatically saved in the database.
 This update allows to avoid a problem with applying a license key when the user home directory is placed on a read-only file system.</p>
 
-<h3 id="user-impact-3">User impact</h3>
+<h3 id="user-impact-4">User impact</h3>
 <p>No user impact is expected.</p>
 
 <h2 id="keycloak-user-provider-renaming">Keycloak User provider renaming</h2>
 <p>The <code>KeycloakUserProvider</code> configuration name has been renamed to <code>OAuth2UserProvider</code>.</p>
 
-<h3 id="user-impact-4">User impact</h3>
+<h3 id="user-impact-5">User impact</h3>
 <p>This change affects installations that explicitly configure <code>KeycloakUserProvider</code>.</p>
 
-<h3 id="migration-steps-5">Migration steps</h3>
+<h3 id="migration-steps-6">Migration steps</h3>
 <p>When updating to CIB seven <code>2.2.0</code>, review your <code>default.yml</code> or <code>application.yml</code> files and replace existing <code>userProvider</code> entries that still use <code>KeycloakUserProvider</code> with <code>OAuth2UserProvider</code>.</p>
 
 <h2 id="direct-provider">Direct Provider</h2>
@@ -4010,20 +4044,20 @@ This update allows to avoid a problem with applying a license key when the user 
 </div>
 
 
-<h3 id="user-impact-5">User impact</h3>
+<h3 id="user-impact-6">User impact</h3>
 <p>No user impact is expected unless you want to adopt this new beta feature.</p>
 
-<h3 id="migration-steps-6">Migration steps</h3>
+<h3 id="migration-steps-7">Migration steps</h3>
 <p>If you want to use this feature, configure your application to use <code>SevenDirectProvider</code>.</p>
 
 <h2 id="scim2-identity-provider">SCIM2 Identity Provider</h2>
 <p><a href="/manual/2.2/user-guide/process-engine/identity-service/#the-scim2-identity-service">SCIM2 Identity Provider Plugin</a> is a new beta feature in CIB seven <code>2.2.0</code>.
 It allows CIB seven to integrate with a SCIM-compliant service and provides configurable caching and optional OIDC-secured access. As this feature is currently beta, it is intended for selected use cases and should be validated carefully before wider adoption.</p>
 
-<h3 id="user-impact-6">User impact</h3>
+<h3 id="user-impact-7">User impact</h3>
 <p>No user impact is expected unless you want to enable SCIM 2.0 identity provider plugin.</p>
 
-<h3 id="migration-steps-7">Migration steps</h3>
+<h3 id="migration-steps-8">Migration steps</h3>
 <p>If you want to use this feature, <a href="/manual/2.2/user-guide/process-engine/identity-service/#activate-the-scim2-plugin">activate the plugin</a> in the engine configuration and <a href="/manual/2.2/user-guide/process-engine/identity-service/#scim2-plugin-configuration-properties">configure</a> the plugin accordingly.</p>
 
 <h2 id="new-configuration-options">New Configuration Options</h2>
@@ -4034,7 +4068,7 @@ It allows CIB seven to integrate with a SCIM-compliant service and provides conf
 <li><code>maxCallActivityRecursionDepth</code>: prevents infinite recursion in call activities by enforcing a configurable recursion limit.</li>
 </ul>
 
-<h3 id="user-impact-7">User impact</h3>
+<h3 id="user-impact-8">User impact</h3>
 <p>These options do not affect existing behavior by default. They preserve the original behavior unless explicitly enabled or configured.</p>
 
     </div>
@@ -4077,6 +4111,12 @@ It allows CIB seven to integrate with a SCIM-compliant service and provides conf
         <li><a href="#migration-steps-4">Migration steps</a></li>
       </ul>
     </li>
+    <li><a href="#graalvm-javascript-dependency">GraalVM JavaScript Dependency</a>
+      <ul>
+        <li><a href="#user-impact-3">User impact</a></li>
+        <li><a href="#migration-steps-5">Migration steps</a></li>
+      </ul>
+    </li>
     <li><a href="#ai-agent-connector">AI Agent Connector</a></li>
     <li><a href="#cib-seven-modeler">CIB seven Modeler</a>
       <ul>
@@ -4087,30 +4127,30 @@ It allows CIB seven to integrate with a SCIM-compliant service and provides conf
     <li><a href="#multi-engine-support">Multi-engine support</a></li>
     <li><a href="#license-key-location">License key location</a>
       <ul>
-        <li><a href="#user-impact-3">User impact</a></li>
+        <li><a href="#user-impact-4">User impact</a></li>
       </ul>
     </li>
     <li><a href="#keycloak-user-provider-renaming">Keycloak User provider renaming</a>
-      <ul>
-        <li><a href="#user-impact-4">User impact</a></li>
-        <li><a href="#migration-steps-5">Migration steps</a></li>
-      </ul>
-    </li>
-    <li><a href="#direct-provider">Direct Provider</a>
       <ul>
         <li><a href="#user-impact-5">User impact</a></li>
         <li><a href="#migration-steps-6">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#scim2-identity-provider">SCIM2 Identity Provider</a>
+    <li><a href="#direct-provider">Direct Provider</a>
       <ul>
         <li><a href="#user-impact-6">User impact</a></li>
         <li><a href="#migration-steps-7">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#new-configuration-options">New Configuration Options</a>
+    <li><a href="#scim2-identity-provider">SCIM2 Identity Provider</a>
       <ul>
         <li><a href="#user-impact-7">User impact</a></li>
+        <li><a href="#migration-steps-8">Migration steps</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-configuration-options">New Configuration Options</a>
+      <ul>
+        <li><a href="#user-impact-8">User impact</a></li>
       </ul>
     </li>
   </ul>

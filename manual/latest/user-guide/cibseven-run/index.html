@@ -4610,13 +4610,17 @@ Some of the properties are listed in the table below:</p>
       <td>Wildcard for user search (default "*")</td>
   </tr>
   <tr id="tr-cibseven-webclient-ldap">
-      <td rowspan="6">cibseven.webclient.ldap</td>
+      <td rowspan="7">cibseven.webclient.ldap</td>
       <td>.url</td>
       <td>LDAP server URL. <br />Example: ldap://ldap.cibseven.org </td>
   </tr>
   <tr>
       <td>.folder</td>
       <td>Base DN for LDAP searches. <br />Example: DC=cibseven,DC=org </td>
+  </tr>
+  <tr>
+      <td>.userClass</td>
+      <td>LDAP attribute when searching for users. <br />Example: person </td>
   </tr>
   <tr>
       <td>.userNameAttribute</td>

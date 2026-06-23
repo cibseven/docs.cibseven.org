@@ -3861,6 +3861,14 @@
 
     <div class="col-xs-12 content-text">
       <p>The <strong>BPMN AI Agent</strong> adds an LLM-powered chat assistant to CIB seven Modeler. From the <strong>BPMN Agent</strong> panel you describe what you need in natural language and the agent designs, generates, edits, reviews, and explains BPMN diagrams directly on the canvas. It connects to any <strong>OpenAI-compatible</strong> model endpoint you configure — hosted (OpenAI, OpenRouter) or self-hosted (Ollama, vLLM, and others).</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-overview.png"
+      
+          title="BPMN AI Agent — chat panel alongside the modeler canvas with applied changes and element template details"
+       /></span>
+</figure>
+
 
 <div class="note bg-info docs-info">
   <h3>Enterprise Feature</h3>
@@ -3905,10 +3913,39 @@
 
 <h2 id="defining-models">Defining Models</h2>
 <p>Models are listed under <code>ai.models</code>. Each model&rsquo;s <code>provider</code> must match the key of a configured provider, and <code>value</code> is the model id sent to that endpoint. The <code>label</code> is shown in the model dropdown. <code>defaultModel</code> must equal the <code>value</code> of one of the listed models.</p>
+<p>Two optional fields tune how a model is used. <code>capability</code> classifies the model and selects the generation path: <code>GENERAL</code> (the default) for capable frontier models, <code>FAST</code> for quick models, and <code>LIGHTWEIGHT</code> for small or open-weight models. <code>contextWindow</code> (in tokens) sizes the per-session token budget shown in the chat. Reasoning-capable models can also expose an effort control — see <a href="#reasoning-effort">Reasoning effort</a>.</p>
 
 <div class="note ">
   <h3>Choosing a model</h3>
-  <p>For day-to-day modeling, prefer a <strong>fast</strong> model (<code>capability: FAST</code>) — lower latency keeps the chat responsive and the experience smooth. Also configure a <strong>frontier</strong> model for complex or ambiguous requests where answer quality matters most, and switch to it from the model dropdown when needed. For a cost-efficient, self-hosted option, serve the latest <a href="https://deepmind.google/models/gemma/gemma-4/">Gemma 4</a> models through an Ollama server.</p>
+  <p>For day-to-day modeling, prefer a <strong>fast</strong> model (<code>capability: FAST</code>) — lower latency keeps the chat responsive and the experience smooth. Also configure a <strong>frontier</strong> model for complex or ambiguous requests where answer quality matters most, and switch to it from the model dropdown when needed. For a cost-efficient, self-hosted option, use a local model server — for example, the latest <a href="https://deepmind.google/models/gemma/gemma-4/">Gemma 4</a> models through Ollama.</p>
+</div>
+
+
+<h2 id="reasoning-effort">Reasoning effort</h2>
+<p>Reasoning (or &ldquo;thinking&rdquo;) models can spend a variable amount of effort working out an answer before they reply: more effort generally yields a more thorough result, while less effort returns a faster reply. You expose this control per model with <code>supportedEfforts</code> — the reasoning levels that model accepts, listed from least to most effort:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">modeler</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ai</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">models</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">google/gemini-3.5-flash:nitro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">openrouter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Gemini 3.5 Flash&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">contextWindow</span><span class="p">:</span><span class="w"> </span><span class="m">1000000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l">FAST</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">supportedEfforts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">low, medium, high]</span><span class="w">
+</span></span></span></code></pre></div><p>When a model lists effort levels, an <strong>effort</strong> selector (<strong>Low</strong>, <strong>Medium</strong>, <strong>High</strong>) appears next to it in the model dropdown of the compose box, and the agent forwards your choice to the model as its reasoning-effort setting. If you do not pick a level, the agent uses the <strong>highest</strong> one configured for that model — the most thorough, and the slowest. When a reply is taking too long, choose a lower level (for example <strong>Low</strong>) to speed it up.</p>
+<p>A model with <code>supportedEfforts: []</code> (the default) shows no effort selector and always runs at the model&rsquo;s own default reasoning — this can be a good choice to reduce waiting time for frontier models and improve user experience.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Frontier models run at full reasoning</h3>
+  <p>The strong frontier models — for example <strong>Opus</strong>, <strong>Sonnet</strong>, and <strong>GPT-5.x</strong> — ship with <code>supportedEfforts: []</code> by default: no effort picker is shown and they always run at their own native reasoning level. This keeps the interface lean and can reduce waiting time for users who do not need to tune reasoning depth.</p>
+</div>
+
+
+<div class="note bg-info docs-info">
+  <h3>OpenAI reasoning models</h3>
+  <p>OpenAI <code>gpt-5.x</code> reasoning models reject the reasoning-effort parameter on <code>/v1/chat/completions</code> when the request also carries tools. Configure their provider with <code>api: responses</code> so effort is sent on the <code>/v1/responses</code> endpoint.</p>
 </div>
 
 
@@ -3959,34 +3996,169 @@
 <li><strong>WildFly</strong> — <code>WEB-INF/classes/application-wildfly.yaml</code> in the deployed WAR.</li>
 </ul>
 
+<h2 id="customizing-the-agent">Customizing the Agent</h2>
+
+<h3 id="appending-to-the-system-prompt">Appending to the system prompt</h3>
+<p>You can append your own guidance to every agent&rsquo;s system prompt — house modeling conventions, naming rules, preferred patterns — without replacing the built-in prompt. Set it under <code>ai.systemPrompt</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">modeler</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ai</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">systemPrompt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">append</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Add a documentation field to every task and event describing its business purpose in one sentence.&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">appendFile</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:agent/modeling-standards.md</span><span class="w">
+</span></span></span></code></pre></div><p><code>append</code> adds inline text; <code>appendFile</code> reads a <code>classpath:</code> or <code>file:</code> resource. When both are set, <code>appendFile</code> is added first, then <code>append</code>.</p>
+
+<h3 id="adding-custom-skills">Adding custom skills</h3>
+<p>Skills are reusable instruction packs the agent can draw on. Point <code>ai.skills</code> at one or more directories, each laid out as <code>&lt;dir&gt;/&lt;skill&gt;/SKILL.md</code> — one subfolder per skill, with a <code>SKILL.md</code> inside:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">modeler</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ai</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">skills</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">/opt/cibseven/agent-skills</span><span class="w">
+</span></span></span></code></pre></div><p>A directory that does not exist is skipped with a warning, so a missing path never blocks startup.</p>
+<p>For example, the layout for a <code>data-quality</code> skill would be:</p>
+<pre tabindex="0"><code>/opt/cibseven/agent-skills/
+└── error-handling/
+    └── SKILL.md
+</code></pre><p><code>SKILL.md</code> contains the instruction text the agent receives when it activates the skill:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">name: error-handling
+</span></span><span class="line"><span class="cl">description: Checks that every service task has an error boundary event.
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Every service task must have at least one error boundary event leading to an error-handling path.
+</span></span><span class="line"><span class="cl">Flag any service task that is missing one and suggest where to add it.
+</span></span></code></pre></div>
 <h2 id="using-the-agent">Using the Agent</h2>
 <p>Open a BPMN diagram, then open the <strong>BPMN Agent</strong> panel from the modeler toolbar. The panel docks beside the canvas — you can float, resize, or collapse it, and its position is remembered between sessions. Type what you want in natural language and send it; the agent&rsquo;s reply streams in live, and you can <strong>Stop</strong> a running request at any time.</p>
 
 <h3 id="composing-a-request">Composing a request</h3>
 <p>The compose box at the bottom gives you several ways to shape a request:</p>
 <ul>
-<li><strong>Model</strong> — pick the model from the dropdown; for reasoning models a reasoning <strong>effort</strong> level is shown next to it.</li>
+<li><strong>Model</strong> — pick the model from the dropdown; for reasoning models a reasoning <strong>effort</strong> level is shown next to it. See <a href="#reasoning-effort">Reasoning effort</a> for how to use it to speed up replies.</li>
 <li><strong>Mode</strong> — choose how the agent should act on the request (for example, ask a question about the diagram instead of editing it).</li>
 <li><strong>Context</strong> — select elements on the canvas to attach them as context, and <strong>attach files</strong> for the agent to take into account.</li>
 <li><strong>Voice</strong> — dictate a request instead of typing it.</li>
-<li><strong>Token budget</strong> — an indicator shows how much of the per-session context budget the conversation has used.</li>
+<li><strong>Token budget</strong> — an indicator shows how much of the per-session context budget (the <code>maxTokens</code> setting) the conversation has used.</li>
+</ul>
+
+<h3 id="writing-effective-requests">Writing effective requests</h3>
+<p>The agent works best with clear, specific requests and the right context attached:</p>
+<ul>
+<li><strong>Be specific.</strong> State the goal, the participants, and the key steps — &ldquo;Model an order-to-cash process: receive order, check stock, ship, invoice, handle payment&rdquo; beats &ldquo;make an order process&rdquo;.</li>
+<li><strong>Pick the mode</strong> that matches your intent — <strong>ask</strong> to understand a diagram, <strong>plan</strong> to outline a larger change first, <strong>edit</strong> to change or generate the process directly without a planning step.</li>
+<li><strong>Attach context.</strong> Select the elements you mean before sending, and <strong>attach files</strong> (an existing BPMN/DMN, a specification, a screenshot) so the agent works from your material instead of guessing.</li>
+<li><strong>Iterate.</strong> If a result is close, ask the agent to <strong>revise</strong> it (&ldquo;rename the gateway and add a timeout path&rdquo;) rather than restating the whole request.</li>
+<li><strong>Review every change</strong> on the diff card before applying it — see <a href="#reviewing-and-applying-changes">Reviewing and applying changes</a>.</li>
+</ul>
+<p>Example prompts:</p>
+<ul>
+<li>&ldquo;Explain what this process does and flag anything that looks wrong.&rdquo; <em>(ask)</em></li>
+<li>&ldquo;Add a parallel branch after <em>Approve request</em> that notifies the applicant by email.&rdquo; <em>(edit — modifying an existing diagram)</em></li>
+<li>&ldquo;Generate a leave-request process: employee submits, manager approves or rejects, HR is notified of the outcome.&rdquo; <em>(edit — generating from scratch)</em></li>
 </ul>
 
 <h3 id="reviewing-and-applying-changes">Reviewing and applying changes</h3>
+<p>In <strong>plan</strong> mode the agent first proposes a <strong>plan</strong> before making changes, which you can review and adjust before any edit is applied.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-plan.png"
+      
+          title="Proposed plan in plan mode — numbered steps with the elements each will add or change, before any edit is applied"
+       /></span>
+</figure>
+
+<p>As the agent works through the plan one step at a time, the panel shows its reasoning summary, the files it generates, and the changes it applies for each step — <strong>continue</strong> to the next step, <strong>skip</strong> one, <strong>modify</strong> it, or <strong>reject</strong> the remaining steps. If you want faster results, choose <strong>quick draft</strong> to implement the whole plan in one pass instead.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-agent-panel.png"
+      
+          title="BPMN Agent panel after implementing a plan — reasoning summary, generated files, and applied changes"
+       /></span>
+</figure>
+
 <p>When the agent modifies the diagram, the change is shown as a <strong>diff card</strong> listing the added, changed, and removed elements. Review it and <strong>Apply</strong> or <strong>Discard</strong> it, or ask the agent to <strong>revise</strong> it. Enable the <strong>Auto-accept</strong> toggle to apply edits automatically without confirming each one; the layout is tidied up automatically when needed.</p>
-<p>For a larger request the agent first proposes a <strong>plan</strong>. You can approve the whole plan, generate a quick draft, or work through it one step at a time — <strong>continue</strong> to the next step, <strong>skip</strong> a step, <strong>modify</strong> it, or <strong>reject</strong> the remaining steps.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-diff.png"
+      
+          title="Diff card showing added, removed, and changed elements with a minimap preview of the resulting diagram"
+       /></span>
+</figure>
+
+<p>Not every request changes the diagram. In <strong>ask</strong> mode the agent only answers — it explains what the process does, walks through it step by step, and flags anything that looks wrong, without proposing any edits. Use it to understand an unfamiliar diagram or to review one before you start changing it.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-ask.png"
+      
+          title="Ask mode — the agent explains what the process does, step by step, without changing the diagram"
+       /></span>
+</figure>
+
 
 <h3 id="fixing-validation-issues">Fixing validation issues</h3>
 <p>When the diagram has BPMN validation problems, the panel lists them inline with the number of errors and warnings, each with a <strong>quick-fix</strong> the agent applies on click.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-validation.png"
+      
+          title="Agent reasoning through a validation error — identifying a missing outgoing sequence flow and applying a fix"
+       /></span>
+</figure>
+
 
 <h3 id="chat-sessions">Chat sessions</h3>
 <p>Each conversation is kept as a session. Start a <strong>new chat</strong>, switch between previous sessions from the history, and delete the ones you no longer need.</p>
 
-<div class="note ">
+<h2 id="limitations">Limitations</h2>
+<p>The agent is a generative assistant: it speeds up modeling, but it can be wrong. The chat itself reminds you that <strong>&ldquo;AI can make mistakes&rdquo;</strong>, and AI-generated content is marked as such.</p>
+<ul>
+<li><strong>Always review changes before applying them.</strong> Every edit is shown as a diff card you can <strong>Apply</strong> or <strong>Discard</strong> before it touches the canvas.</li>
+<li><strong>Results vary.</strong> The same request can produce different diagrams on different runs; lower <a href="#reasoning-effort">reasoning effort</a> trades some quality for speed.</li>
+<li><strong>Context is bounded.</strong> Large diagrams, many attached files, and long conversations consume the per-session token budget; when it runs low, start a <strong>new chat</strong> or attach less context. Per-request input sizes are also capped (see <a href="#configuration-reference">Configuration Reference</a>).</li>
+<li><strong>Cost scales with usage.</strong> With hosted providers you pay per token, so more context and higher effort cost more; a self-hosted model removes per-token cost.</li>
+<li><strong>Embedded and form-js forms are not yet supported.</strong> The agent can generate processes and standalone forms; tight integration with embedded and form-js forms will be available in upcoming versions.</li>
+</ul>
+
+<div class="note bg-info docs-info">
   <h3>Beta</h3>
   <p>The BPMN AI Agent is currently in beta. Review generated diagrams before deploying them.</p>
 </div>
 
+
+<h2 id="data-handling-and-privacy">Data Handling and Privacy</h2>
+<p>The agent sends <strong>only what you provide and what is on the diagram you are working on</strong> — nothing else from the engine or your other diagrams. When you send a request, it transmits to the <strong>model provider you configured</strong>: your message, any <strong>files you attach</strong>, the <strong>current canvas BPMN XML</strong>, and the <strong>element templates</strong>. Nothing is sent until you send a request.</p>
+<ul>
+<li><strong>Element templates are loaded when needed.</strong> The agent can include the modeler&rsquo;s element templates in the request when the context calls for it, so it can reuse the tasks and connectors you have configured. If you do not want the LLM to load templates, turn off <strong>Use built-in element templates</strong> in the chat settings.</li>
+<li><strong>Choose where your data goes.</strong> Hosted endpoints (OpenAI, OpenRouter) process this data on the vendor&rsquo;s servers under their terms. To keep everything on your own infrastructure, point a provider at a <strong>self-hosted</strong> OpenAI-compatible server such as Ollama or vLLM — only the <code>baseUrl</code> changes (see <a href="#other-openai-compatible-endpoints">Other OpenAI-Compatible Endpoints</a>).</li>
+<li><strong>Keep secrets out of config.</strong> Provide API keys through environment variables (<code>${OPENAI_API_KEY:}</code>) rather than inline, so they stay out of configuration files.</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Symptom</th>
+					<th>Likely cause and fix</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>The <strong>BPMN Agent</strong> panel or option is missing</td>
+					<td>The agent is disabled (<code>cibseven.webclient.modeler.ai.enabled: false</code>), the modeler is disabled, or no valid license is present — see <a href="#enabling-the-agent">Enabling the Agent</a>.</td>
+			</tr>
+			<tr>
+					<td>Authentication / endpoint errors</td>
+					<td>Wrong <code>apiKey</code> or <code>baseUrl</code>, or the key lacks access to the model.</td>
+			</tr>
+			<tr>
+					<td>Replies are too slow</td>
+					<td>Switch to a <strong>fast</strong> model, or lower the <a href="#reasoning-effort">reasoning effort</a> on models that expose it.</td>
+			</tr>
+	</tbody>
+</table>
 
 <h2 id="configuration-reference">Configuration Reference</h2>
 <p>All properties live under the <code>cibseven.webclient.modeler.ai</code> prefix.</p>
@@ -4135,7 +4307,7 @@
 			<tr>
 					<td><code>supportedEfforts</code></td>
 					<td><code>[]</code></td>
-					<td>Reasoning effort levels, e.g. <code>[low, medium, high]</code>.</td>
+					<td>Reasoning effort levels offered in the model dropdown, e.g. <code>[low, medium, high]</code>; empty hides the effort selector. See <a href="#reasoning-effort">Reasoning effort</a>.</td>
 			</tr>
 	</tbody>
 </table>
@@ -4152,17 +4324,28 @@
     <li><a href="#enabling-the-agent">Enabling the Agent</a></li>
     <li><a href="#configuring-an-openai-compatible-provider">Configuring an OpenAI-Compatible Provider</a></li>
     <li><a href="#defining-models">Defining Models</a></li>
+    <li><a href="#reasoning-effort">Reasoning effort</a></li>
     <li><a href="#complete-example-openai">Complete Example (OpenAI)</a></li>
     <li><a href="#other-openai-compatible-endpoints">Other OpenAI-Compatible Endpoints</a></li>
     <li><a href="#per-distribution-configuration">Per-Distribution Configuration</a></li>
+    <li><a href="#customizing-the-agent">Customizing the Agent</a>
+      <ul>
+        <li><a href="#appending-to-the-system-prompt">Appending to the system prompt</a></li>
+        <li><a href="#adding-custom-skills">Adding custom skills</a></li>
+      </ul>
+    </li>
     <li><a href="#using-the-agent">Using the Agent</a>
       <ul>
         <li><a href="#composing-a-request">Composing a request</a></li>
+        <li><a href="#writing-effective-requests">Writing effective requests</a></li>
         <li><a href="#reviewing-and-applying-changes">Reviewing and applying changes</a></li>
         <li><a href="#fixing-validation-issues">Fixing validation issues</a></li>
         <li><a href="#chat-sessions">Chat sessions</a></li>
       </ul>
     </li>
+    <li><a href="#limitations">Limitations</a></li>
+    <li><a href="#data-handling-and-privacy">Data Handling and Privacy</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
     <li><a href="#configuration-reference">Configuration Reference</a>
       <ul>
         <li><a href="#agent-options">Agent options</a></li>

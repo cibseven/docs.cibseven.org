@@ -3932,6 +3932,7 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userSearchBase&#34;</span> <span class="na">value=</span><span class="s">&#34;&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userSearchFilter&#34;</span> <span class="na">value=</span><span class="s">&#34;(objectclass=person)&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userIdAttribute&#34;</span> <span class="na">value=</span><span class="s">&#34;uid&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userClass&#34;</span> <span class="na">value=</span><span class="s">&#34;person&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userFirstnameAttribute&#34;</span> <span class="na">value=</span><span class="s">&#34;cn&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userLastnameAttribute&#34;</span> <span class="na">value=</span><span class="s">&#34;sn&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userEmailAttribute&#34;</span> <span class="na">value=</span><span class="s">&#34;mail&#34;</span> <span class="nt">/&gt;</span>
@@ -3969,6 +3970,7 @@
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userSearchFilter&#34;</span><span class="nt">&gt;</span>(objectclass=person)<span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userIdAttribute&#34;</span><span class="nt">&gt;</span>uid<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userClass&#34;</span><span class="nt">&gt;</span>person<span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userFirstnameAttribute&#34;</span><span class="nt">&gt;</span>cn<span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userLastnameAttribute&#34;</span><span class="nt">&gt;</span>sn<span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userEmailAttribute&#34;</span><span class="nt">&gt;</span>mail<span class="nt">&lt;/property&gt;</span>
@@ -4044,6 +4046,12 @@
     <td><code>userIdAttribute</code></td>
     <td>
       <p>Name of the user Id property. <em>Example:</em> <code>uid</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>userClass</code></td>
+    <td>
+      <p>LDAP attribute when searching for users. <em>Example:</em> <code>person</code></p>
     </td>
   </tr>
   <tr>
