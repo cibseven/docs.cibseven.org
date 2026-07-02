@@ -3892,6 +3892,11 @@ in the context of e.g. authentication.</p>
 <p>In some cases it is necessary to secure the REST API of the CIB seven workflow engine via Basic Authentication. For such
 situations a Basic Authentication implementation is provided by the client. Once configured with user credentials, the basic authentication header is added to each REST API request.</p>
 
+<h5 id="oauth-20">OAuth 2.0</h5>
+<p>In some scenarios, it is necessary to secure the CIB seven workflow engine REST API using OAuth 2.0.
+To support these scenarios, the client provides an OAuth 2.0 implementation.
+After the required properties have been configured, an OAuth 2.0 access token is automatically included with every REST API request.</p>
+
 <h5 id="custom-interceptor">Custom Interceptor</h5>
 <p>Custom interceptors can be added while bootstrapping the client. For more details regarding the implementation please check the documentation related to the client of interest.</p>
 

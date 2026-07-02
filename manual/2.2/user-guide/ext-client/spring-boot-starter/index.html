@@ -4120,6 +4120,105 @@ topic subscription can be opened or closed:</p>
   </tbody>
 </table>
 
+<h5 id="oauth-20">OAuth 2.0</h5>
+<p>The properties for OAuth 2.0 go under: <code>camunda.bpm.client.oauth2</code></p>
+<table class="table desc-table">
+  <thead>
+    <tr>
+      <th style="width: 20%;">Property name</th>
+      <th style="width: 60%;">Description</th>
+      <th style="width: 20%;">Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>tokenUri</code></td>
+      <td>
+        <strong>Mandatory:</strong> OAuth2 token endpoint URI
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>clientId</code></td>
+      <td>
+        <strong>Mandatory:</strong> OAuth2 client ID
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>clientSecret</code></td>
+      <td>
+        OAuth2 client secret for <code>client_secret_post</code> authentication.<br>
+        <strong>Note:</strong> Mutually exclusive with <code>clientAssertion</code> and <code>clientAssertionType</code>
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td>
+        OAuth2 scope(s) to request. <i>Optional</i><br>
+        For Azure Entra ID use <code>{resource}/.default</code>, e.g. <code>api://my-api/.default</code>.
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>audience</code></td>
+      <td>
+        OAuth2 audience parameter. <i>Optional</i><br>
+        Used by identity providers such as Auth0, some Keycloak configurations, and others.
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>resource</code></td>
+      <td>
+        OAuth2 resource parameter. <i>Optional</i><br>
+        Used by Azure AD v1 endpoints and some other IdPs.
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>additionalParameters</code></td>
+      <td>
+        Additional custom parameters to send with the token request. <i>Optional</i><br>
+        Use this for IdP-specific parameters not covered by dedicated properties.
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>expiryBufferSeconds</code></td>
+      <td>
+        How many seconds before token expiry a refresh should be triggered.
+      </td>
+      <td>
+        <code>30</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>assertion.type</code></td>
+      <td>
+        The type of assertion provider to use.<br>
+        Possible values:
+        <li><code>JJWT</code>: Requires <code>key-location</code> to point to a PEM-encoded private key.</li>
+        <li><code>AZURE_WORKLOAD_IDENTITY</code>: 
+        Uses the Azure Workload Identity federated token (reads the file referenced by
+        the <code>AZURE_FEDERATED_TOKEN_FILE</code> environment variable)</li>
+      </td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>assertion.keyLocation</code></td>
+      <td>
+        Location of the PEM-encoded PKCS#8 private key file.
+        Supports Spring resource prefixes: <code>classpath:</code>, <code>file:</code>.
+        <li>Required for <code>assertion.type=JJWT</code>.</li>
+        <li>Not used for <code>assertion.type=AZURE_WORKLOAD_IDENTITY</code>.</li>  
+      </td>
+      <td><code>null</code></td>
+    </tr>
+  </tbody>
+</table>
+
 <h5 id="topic-subscription-1">Topic Subscription</h5>
 <p>The properties for topic subscriptions go under: <code>camunda.bpm.client.subscriptions</code></p>
 <p>The configuration properties can be applied for each topic name as follows:</p>
@@ -4281,7 +4380,7 @@ topic subscription can be opened or closed:</p>
 
 <h4 id="request-interceptor">Request Interceptor</h4>
 <p>A request interceptor is called whenever the Client performs an HTTP request. You can use this
-extension point, for example, to implement a custom authentication strategy like OAuth 2.0.</p>
+extension point, for example, to implement a custom authentication strategy such as API key authentication.</p>
 <p>You can register one or more request interceptors by defining beans of type <code>ClientRequestInterceptor</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RequestInterceptorConfiguration</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ClientRequestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w">

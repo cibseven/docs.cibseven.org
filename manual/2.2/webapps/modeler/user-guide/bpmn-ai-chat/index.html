@@ -3860,7 +3860,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>The <strong>BPMN AI Agent</strong> adds an LLM-powered chat assistant to CIB seven Modeler. From the <strong>BPMN Agent</strong> panel you describe what you need in natural language and the agent designs, generates, edits, reviews, and explains BPMN diagrams directly on the canvas. It connects to any <strong>OpenAI-compatible</strong> model endpoint you configure — hosted (OpenAI, OpenRouter) or self-hosted (Ollama, vLLM, and others).</p>
+      <p>The <strong>BPMN AI Agent</strong> adds an LLM-powered chat assistant to CIB seven Modeler. From the <strong>BPMN Agent</strong> panel you describe what you need in natural language and the agent designs, generates, edits, reviews, and explains BPMN diagrams directly on the canvas. It connects to any <strong>OpenAI-compatible</strong> model endpoint you configure — hosted (<a href="https://openai.com/">OpenAI</a>, <a href="https://openrouter.ai/">OpenRouter</a>) or self-hosted (<a href="https://ollama.com/">Ollama</a>, <a href="https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html">vLLM</a>, and others).</p>
 <figure class="image">
   <span><img
       src="../img/bpmn-ai-chat-overview.png"
@@ -3880,7 +3880,7 @@
 <ul>
 <li>CIB seven <strong>Enterprise Edition</strong> with a valid license.</li>
 <li>The modeler enabled: <code>cibseven.webclient.modeler.enabled: true</code> (a database is required — see <a href="/manual/2.2/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>).</li>
-<li>At least one OpenAI-compatible <strong>provider</strong> and one <strong>model</strong> configured (below).</li>
+<li>At least one OpenAI-compatible <strong>provider</strong> and one <strong>model</strong> configured (<a href="#configuring-an-openai-compatible-provider">below</a>).</li>
 </ul>
 
 <h2 id="enabling-the-agent">Enabling the Agent</h2>
@@ -3968,7 +3968,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">openai</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;GPT-5.4&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">contextWindow</span><span class="p">:</span><span class="w"> </span><span class="m">400000</span><span class="w">
-</span></span></span></code></pre></div><p>Set the <code>OPENAI_API_KEY</code> environment variable to your key. The model then appears in the modeler&rsquo;s model dropdown and is selected by default.</p>
+</span></span></span></code></pre></div><p>Set the <code>OPENAI_API_KEY</code> environment variable to your key — or pass it as a JVM system property (<code>-DOPENAI_API_KEY=…</code>); <code>${OPENAI_API_KEY:}</code> resolves from either. The model then appears in the modeler&rsquo;s model dropdown and is selected by default.</p>
 
 <h2 id="other-openai-compatible-endpoints">Other OpenAI-Compatible Endpoints</h2>
 <p>Because the agent speaks the OpenAI API, any compatible server works the same way — only the <code>baseUrl</code> (and, if required, <code>apiKey</code>) change. A local Ollama server needs no API key — point <code>baseUrl</code> at its OpenAI-compatible endpoint and reference the model by the name Ollama serves it under:</p>
@@ -3989,11 +3989,17 @@
 </span></span></span></code></pre></div><p>The same <code>models</code> entries work against a hosted aggregator too — for example OpenRouter (<code>baseUrl: https://openrouter.ai/api/v1</code>, with an <code>apiKey</code>) exposes Gemma as <code>google/gemma-4-26b-a4b-it:nitro</code>.</p>
 
 <h2 id="per-distribution-configuration">Per-Distribution Configuration</h2>
-<p>The configuration from the <a href="#complete-example-openai">example above</a> works across all distributions. Place the <code>cibseven.webclient.modeler.ai</code> properties in the distribution-specific file listed below:</p>
+<p>The configuration from the <a href="#complete-example-openai">example above</a> works across all distributions. Apply the <code>cibseven.webclient.modeler.ai</code> properties using the distribution-specific mechanism below:</p>
 <ul>
 <li><strong>CIB seven Run</strong> — <code>configuration/default.yml</code> (or <code>configuration/production.yml</code> when started with <code>--production</code>), under the existing <code>cibseven.webclient.modeler</code> tree.</li>
 <li><strong>Tomcat</strong> — <code>conf/Catalina/localhost/webapp.xml</code>, as context <code>&lt;Parameter&gt;</code> entries.</li>
-<li><strong>WildFly</strong> — <code>WEB-INF/classes/application-wildfly.yaml</code> in the deployed WAR.</li>
+<li><strong>WildFly</strong> — the default configuration is bundled in the deployed WAR at <code>WEB-INF/classes/application-wildfly.yaml</code>. Because the webclient is a standard Spring Boot deployment, you can override these properties <strong>without unpacking the WAR</strong>, using any of:
+<ul>
+<li><strong>Environment variables</strong> set in the server&rsquo;s environment before startup.</li>
+<li><strong>JVM system properties</strong> added to <code>JAVA_OPTS</code> in the WildFly <code>bin/standalone.conf</code> (in this distribution, <code>server/wildfly-&lt;version&gt;/bin/standalone.conf</code>).</li>
+<li><strong><code>standalone.xml</code> system properties</strong> — a <code>&lt;system-properties&gt;</code> block in <code>standalone/configuration/standalone.xml</code> (in this distribution, <code>server/wildfly-&lt;version&gt;/standalone/configuration/standalone.xml</code>).</li>
+</ul>
+</li>
 </ul>
 
 <h2 id="customizing-the-agent">Customizing the Agent</h2>
@@ -4040,7 +4046,7 @@
 <li><strong>Model</strong> — pick the model from the dropdown; for reasoning models a reasoning <strong>effort</strong> level is shown next to it. See <a href="#reasoning-effort">Reasoning effort</a> for how to use it to speed up replies.</li>
 <li><strong>Mode</strong> — choose how the agent should act on the request (for example, ask a question about the diagram instead of editing it).</li>
 <li><strong>Context</strong> — select elements on the canvas to attach them as context, and <strong>attach files</strong> for the agent to take into account.</li>
-<li><strong>Voice</strong> — dictate a request instead of typing it.</li>
+<li><strong>Voice</strong> — dictate a request instead of typing it; set the recognition language in <a href="#settings">Settings</a>.</li>
 <li><strong>Token budget</strong> — an indicator shows how much of the per-session context budget (the <code>maxTokens</code> setting) the conversation has used.</li>
 </ul>
 
@@ -4070,21 +4076,21 @@
        /></span>
 </figure>
 
-<p>As the agent works through the plan one step at a time, the panel shows its reasoning summary, the files it generates, and the changes it applies for each step — <strong>continue</strong> to the next step, <strong>skip</strong> one, <strong>modify</strong> it, or <strong>reject</strong> the remaining steps. If you want faster results, choose <strong>quick draft</strong> to implement the whole plan in one pass instead.</p>
-<figure class="image">
-  <span><img
-      src="../img/bpmn-ai-chat-agent-panel.png"
-      
-          title="BPMN Agent panel after implementing a plan — reasoning summary, generated files, and applied changes"
-       /></span>
-</figure>
-
 <p>When the agent modifies the diagram, the change is shown as a <strong>diff card</strong> listing the added, changed, and removed elements. Review it and <strong>Apply</strong> or <strong>Discard</strong> it, or ask the agent to <strong>revise</strong> it. Enable the <strong>Auto-accept</strong> toggle to apply edits automatically without confirming each one; the layout is tidied up automatically when needed.</p>
 <figure class="image">
   <span><img
       src="../img/bpmn-ai-chat-diff.png"
       
           title="Diff card showing added, removed, and changed elements with a minimap preview of the resulting diagram"
+       /></span>
+</figure>
+
+<p>As the agent works through the plan one step at a time, the panel shows its reasoning summary, the files it generates, and the changes it applies for each step — <strong>continue</strong> to the next step, <strong>skip</strong> one, <strong>modify</strong> it, or <strong>reject</strong> the remaining steps. If you want faster results, choose <strong>quick draft</strong> to implement the whole plan in one pass instead.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-agent-panel.png"
+      
+          title="BPMN Agent panel after implementing a plan — reasoning summary, generated files, and applied changes"
        /></span>
 </figure>
 
@@ -4112,6 +4118,22 @@
 <h3 id="chat-sessions">Chat sessions</h3>
 <p>Each conversation is kept as a session. Start a <strong>new chat</strong>, switch between previous sessions from the history, and delete the ones you no longer need.</p>
 
+<h3 id="settings">Settings</h3>
+<p>Open the <strong>settings</strong> dialog from the gear icon in the panel header to adjust how the agent behaves. Settings are remembered per browser.</p>
+<figure class="image">
+  <span><img
+      src="../img/bpmn-ai-chat-settings.png"
+      
+          title="The settings dialog — voice-dictation language, generation strategy, and whether built-in element templates are sent as context"
+       /></span>
+</figure>
+
+<ul>
+<li><strong>Voice language</strong> — the language used for <a href="#composing-a-request">voice dictation</a>: Deutsch, English (US), English (UK), Español, Русский, or Українська.</li>
+<li><strong>Generation strategy</strong> — how the agent produces a diagram. <strong>Default</strong> lets the agent pick the best approach for the selected model. <strong>Pure reasoning</strong> makes it edit the BPMN XML directly and reason through the whole change, with no shortcuts — the most faithful path, but slower. <strong>Fast mode</strong> takes a quicker route that skips full-XML reasoning — best for simple changes.</li>
+<li><strong>Use built-in element templates</strong> — whether the modeler&rsquo;s element templates are sent to the model as context, so it can reuse the tasks and connectors you have configured. See <a href="#data-handling-and-privacy">Data Handling and Privacy</a>.</li>
+</ul>
+
 <h2 id="limitations">Limitations</h2>
 <p>The agent is a generative assistant: it speeds up modeling, but it can be wrong. The chat itself reminds you that <strong>&ldquo;AI can make mistakes&rdquo;</strong>, and AI-generated content is marked as such.</p>
 <ul>
@@ -4131,7 +4153,7 @@
 <h2 id="data-handling-and-privacy">Data Handling and Privacy</h2>
 <p>The agent sends <strong>only what you provide and what is on the diagram you are working on</strong> — nothing else from the engine or your other diagrams. When you send a request, it transmits to the <strong>model provider you configured</strong>: your message, any <strong>files you attach</strong>, the <strong>current canvas BPMN XML</strong>, and the <strong>element templates</strong>. Nothing is sent until you send a request.</p>
 <ul>
-<li><strong>Element templates are loaded when needed.</strong> The agent can include the modeler&rsquo;s element templates in the request when the context calls for it, so it can reuse the tasks and connectors you have configured. If you do not want the LLM to load templates, turn off <strong>Use built-in element templates</strong> in the chat settings.</li>
+<li><strong>Element templates are loaded when needed.</strong> The agent can include the modeler&rsquo;s element templates in the request when the context calls for it, so it can reuse the tasks and connectors you have configured. If you do not want the LLM to load templates, turn off <strong>Use built-in element templates</strong> in the <a href="#settings">chat settings</a>.</li>
 <li><strong>Choose where your data goes.</strong> Hosted endpoints (OpenAI, OpenRouter) process this data on the vendor&rsquo;s servers under their terms. To keep everything on your own infrastructure, point a provider at a <strong>self-hosted</strong> OpenAI-compatible server such as Ollama or vLLM — only the <code>baseUrl</code> changes (see <a href="#other-openai-compatible-endpoints">Other OpenAI-Compatible Endpoints</a>).</li>
 <li><strong>Keep secrets out of config.</strong> Provide API keys through environment variables (<code>${OPENAI_API_KEY:}</code>) rather than inline, so they stay out of configuration files.</li>
 </ul>
@@ -4341,6 +4363,7 @@
         <li><a href="#reviewing-and-applying-changes">Reviewing and applying changes</a></li>
         <li><a href="#fixing-validation-issues">Fixing validation issues</a></li>
         <li><a href="#chat-sessions">Chat sessions</a></li>
+        <li><a href="#settings">Settings</a></li>
       </ul>
     </li>
     <li><a href="#limitations">Limitations</a></li>
