@@ -3993,6 +3993,15 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;groupMemberAttribute&#34;</span> <span class="na">value=</span><span class="s">&#34;member&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;authorizationCheckEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Optional LDAP cache, disabled by default --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheUserQueriesTtlSeconds&#34;</span> <span class="na">value=</span><span class="s">&#34;30&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheUserQueriesMaxWeight&#34;</span> <span class="na">value=</span><span class="s">&#34;20000&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheGroupTtlSeconds&#34;</span> <span class="na">value=</span><span class="s">&#34;120&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheGroupMaxWeight&#34;</span> <span class="na">value=</span><span class="s">&#34;8000&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheStatsLogEnabled&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheStatsLogInterval&#34;</span> <span class="na">value=</span><span class="s">&#34;1000&#34;</span> <span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/bean&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/beans&gt;</span>
 </span></span></code></pre></div><p>The following is an example of how to configure the LDAP Identity Provider Plugin in bpm-platform.xml/processes.xml:</p>
@@ -4032,6 +4041,15 @@
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;groupMemberAttribute&#34;</span><span class="nt">&gt;</span>member<span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;authorizationCheckEnabled&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Optional LDAP cache, disabled by default --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheEnabled&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheUserQueriesTtlSeconds&#34;</span><span class="nt">&gt;</span>30<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheUserQueriesMaxWeight&#34;</span><span class="nt">&gt;</span>20000<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheGroupTtlSeconds&#34;</span><span class="nt">&gt;</span>120<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheGroupMaxWeight&#34;</span><span class="nt">&gt;</span>8000<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheStatsLogEnabled&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cacheStatsLogInterval&#34;</span><span class="nt">&gt;</span>1000<span class="nt">&lt;/property&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/plugin&gt;</span>
@@ -4254,6 +4272,48 @@
       <em>Default:</em> <code>true</code>
       </p>
    </td>
+  </tr>
+  <tr>
+    <td><code>cacheEnabled</code></td>
+    <td>
+      <p>Enables LDAP query result caching. <em>Default:</em> <code>false</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cacheUserQueriesTtlSeconds</code></td>
+    <td>
+      <p>Time to live in seconds for cached user-query results (for high-cardinality, rarely-repeated user searches). <em>Default:</em> <code>30</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cacheUserQueriesMaxWeight</code></td>
+    <td>
+      <p>Maximum total cache weight for user-query results. Each entry weight equals the size of its result list (minimum 1), so this limits cached users rather than distinct queries. <em>Default:</em> <code>20000</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cacheGroupTtlSeconds</code></td>
+    <td>
+      <p>Time to live in seconds for cached group lookup results (for low-cardinality, frequently-repeated group lookups). <em>Default:</em> <code>120</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cacheGroupMaxWeight</code></td>
+    <td>
+      <p>Maximum total cache weight for group lookup results. Each entry weight equals the size of its result list (minimum 1), so this limits cached groups rather than distinct queries. <em>Default:</em> <code>8000</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cacheStatsLogEnabled</code></td>
+    <td>
+      <p>Enables periodic INFO logging of cache hit/miss statistics for debugging purposes. <em>Default:</em> <code>false</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cacheStatsLogInterval</code></td>
+    <td>
+      <p>Defines how often (in cache lookups) the cache statistics summary is logged when <code>cacheStatsLogEnabled</code> is <code>true</code>. <em>Default:</em> <code>1000</code></p>
+    </td>
   </tr>
 </table>
 
