@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2</span>
+    <span class="number">2.2-ee</span>
 </div>
 
 <br />
@@ -3539,6 +3539,22 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/release-notes-2.2.1-ee/" >2.2.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.1-ce-plus/" >2.2.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/release-notes-2.2.0-ee/" >2.2.0 EE</a>
     
   </li>
@@ -3548,6 +3564,22 @@
   <li>
     
       <a href="/manual/latest/release-notes/release-notes-2.2.0-ce/" >2.2.0 CE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.7-ee/" >2.1.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.7-ce-plus/" >2.1.7 CE&#43;</a>
     
   </li>
 
@@ -3660,6 +3692,22 @@
   <li>
     
       <a href="/manual/latest/release-notes/release-notes-2.1.0-ce/" >2.1.0 CE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.11-ee/" >2.0.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.11-ce-plus/" >2.0.11 CE&#43;</a>
     
   </li>
 
@@ -3863,11 +3911,11 @@
       <p>To inspect the current state of configured process engines and deployed process applications, the class <code>org.cibseven.bpm.BpmPlatform</code> offers access to the <code>ProcessEngineService</code> and the <code>ProcessApplicationService</code>.</p>
 
 <h2 id="processengineservice">ProcessEngineService</h2>
-<p>The <a href="/javadoc/cibseven/2.2/org/cibseven/bpm/ProcessEngineService.html">ProcessEngineService</a>
+<p>The <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/ProcessEngineService.html">ProcessEngineService</a>
  can be accessed by calling <code>BpmPlatform.getProcessEngineService()</code>. It offers access to the default process engine, as well as any process engine by its name as specified in the process engine configuration. It returns <code>ProcessEngine</code> objects from which any services for a specific engine can be accessed.</p>
 
 <h2 id="processapplicationservice">ProcessApplicationService</h2>
-<p>The <a href="/javadoc/cibseven/2.2/org/cibseven/bpm/ProcessApplicationService.html">ProcessApplicationService</a>
+<p>The <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/ProcessApplicationService.html">ProcessApplicationService</a>
  is accessible via <code>BpmPlatform.getProcessApplicationService()</code>. It provides details on the process application deployments made on the application server it is running on. That means that it does not provide a global view across all nodes in a cluster.</p>
 <p>Given a process application name, a <code>ProcessApplicationInfo</code> object can be retrieved that contains details on the deployments made by this process application. These correspond to the process archives declared in <a href="/manual/latest/user-guide/process-applications/the-processes-xml-deployment-descriptor/">processes.xml</a>.</p>
 <p>Furthermore, application-specific properties can be retrieved such as the servlet context path in case of a servlet process application.</p>
