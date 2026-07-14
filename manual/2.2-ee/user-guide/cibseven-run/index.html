@@ -4687,7 +4687,7 @@ Some of the properties are listed in the table below:</p>
       <td>Whether to follow LDAP referrals. <br />Example: follow</td>
   </tr>
   <tr id="tr-cibseven-webclient-sso">
-      <td rowspan="12">cibseven.webclient.sso</td>
+      <td rowspan="14">cibseven.webclient.sso</td>
       <td>.endpoints.token</td>
       <td>OAuth2 token endpoint</td>
   </tr>
@@ -4736,6 +4736,26 @@ Some of the properties are listed in the table below:</p>
   <tr>
       <td>.scopes</td>
       <td> OAuth2 scopes to include in the authorization request</td>
+  </tr>
+  <tr id="tr-cibseven-webclient-assertion">
+      <td>.assertion.type</td>
+      <td>
+        The type of assertion provider to use.<br>
+        Possible values:
+        <li><code>JJWT</code>: Requires <code>key-location</code> to point to a PEM-encoded private key.</li>
+        <li><code>AZURE_WORKLOAD_IDENTITY</code>: 
+        Uses the Azure Workload Identity federated token (reads the file referenced by
+        the <code>AZURE_FEDERATED_TOKEN_FILE</code> environment variable)</li>
+      </td>
+  </tr>
+  <tr>
+      <td>.assertion.locationKey</td>
+      <td>
+        Location of the PEM-encoded PKCS#8 private key file.
+        Supports Spring resource prefixes: <code>classpath:</code>, <code>file:</code>.
+        <li>Required for <code>assertion.type=JJWT</code>.</li>
+        <li>Not used for <code>assertion.type=AZURE_WORKLOAD_IDENTITY</code>.</li>  
+      </td>
   </tr>
   <tr>
       <td rowspan="14">cibseven.webclient.rest</td>

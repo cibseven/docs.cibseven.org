@@ -4185,6 +4185,15 @@ Therefore, we need to <a href="#oauth2-identity-provider">disable it explicitly<
 <h2 id="oauth2-with-external-task-client">OAuth2 with External Task Client</h2>
 <p>To support these scenarios, the client provides an OAuth 2.0 request interceptor. After the <a href="/manual/2.2-ee/user-guide/ext-client/spring-boot-starter/#oauth-20">required properties</a> have been configured, an OAuth 2.0 access token is automatically included with every REST API request.</p>
 
+<h2 id="using-assertions-in-oauth2">Using assertions in OAuth2</h2>
+<p>A secretless client authentication approach can be configured so that no client secret is used or transmitted during the authentication process. The following authentication methods are supported:</p>
+<ul>
+<li><strong>JWT Bearer Client Assertion</strong>: The client authenticates using a signed JWT. A PEM-encoded private key must be configured as the <code>locationKey</code> to sign the client assertion.</li>
+<li><strong>Azure Workload Identity</strong>: The client authenticates using Azure Workload Identity without requiring a client secret or certificate.</li>
+</ul>
+<p>The CIB seven Webapp can be configured to use assertion-based authentication by setting its <a href="/manual/2.2-ee/user-guide/cibseven-run/#tr-cibseven-webclient-assertion">corresponding properties</a>. The same applies to the <a href="/manual/2.2-ee/user-guide/ext-client/spring-boot-starter/#tr-cibseven-external-client-assertion">External Task Client properties</a>.</p>
+<p>For more information about assertion-based authentication, refer to <a href="https://www.rfc-editor.org/info/rfc7521/">RFC 7521</a>.</p>
+
 <h2 id="security-recommendations">Security Recommendations</h2>
 <p>CIB seven&rsquo;s integration heavily relies on Spring Security&rsquo;s OAuth2 support.</p>
 <p>If you decide to use OAuth2 for login in CIB seven, we highly recommend to consult and implement the current industry recommended security standards.
@@ -4256,6 +4265,7 @@ Logging can be enabled for the package via the following property:</p>
     </li>
     <li><a href="#oidc-with-cib-seven-webapp">OIDC with CIB seven Webapp</a></li>
     <li><a href="#oauth2-with-external-task-client">OAuth2 with External Task Client</a></li>
+    <li><a href="#using-assertions-in-oauth2">Using assertions in OAuth2</a></li>
     <li><a href="#security-recommendations">Security Recommendations</a>
       <ul>
         <li><a href="#token-lifetime">Token Lifetime</a></li>
