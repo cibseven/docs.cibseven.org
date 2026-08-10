@@ -3982,13 +3982,77 @@
     <div class="col-xs-12 content-text">
       <p><em>Release Date: August 7, 2026</em></p>
 
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li><strong>LDAP</strong> Configurable authentication cache backported to this line, reducing redundant directory lookups and improving login performance for large directories</li>
+<li><strong>Security</strong> <code>postgresql</code> JDBC driver upgraded to <code>42.7.12</code>, fixing a channel-binding downgrade vulnerability (<code>CVE-2026-54291</code>); <code>jackson</code> upgraded to <code>2.21.5</code>; <code>axios</code> and <code>vite</code> upgraded to resolve reported npm vulnerabilities; <code>swagger-ui</code> pinned to resolve a reported dependency vulnerability</li>
+<li><strong>Variables</strong> <em>(EE exclusive)</em> Fixed historic variable history values being merged by variable name instead of by historic detail id</li>
+</ul>
+
+<h3 id="new-features">New Features</h3>
+
+<h4 id="ldap-configurable-cache">LDAP Configurable Cache</h4>
+<ul>
+<li>LDAP authentication now supports a configurable cache to reduce redundant directory lookups and improve performance under load</li>
+<li>Cache parameters are configurable in the distribution YAML configuration files</li>
+</ul>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+
+<h4 id="variables-ee-exclusive">Variables <em>(EE exclusive)</em></h4>
+<ul>
+<li>Fixed historic variable history values being merged by variable name instead of by historic detail id</li>
+</ul>
+
+<h3 id="technical-updates">Technical Updates</h3>
+
+<h4 id="dependency-updates">Dependency Updates</h4>
+<ul>
+<li>Update <code>jackson</code> from <code>2.21.4</code> to <code>2.21.5</code></li>
+<li>Update <code>postgresql</code> (JDBC driver) from <code>42.7.11</code> to <code>42.7.12</code>, fixing <code>CVE-2026-54291</code></li>
+<li>Update <code>swagger-ui</code> to a patched version, resolving a reported dependency vulnerability</li>
+<li>Update <code>axios</code> from <code>1.13.2</code> to <code>1.18.1</code>, resolving reported npm vulnerabilities <em>(EE exclusive)</em></li>
+<li>Update <code>vite</code> from <code>6.4.1</code> to <code>6.4.3</code>, resolving reported npm vulnerabilities <em>(EE exclusive)</em></li>
+</ul>
+
+<h4 id="resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</h4>
+
+<h5 id="high-severity">High Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54291">CVE-2026-54291</a></strong> - Channel-binding downgrade vulnerability in <code>pgjdbc</code>, allowing an on-path attacker to bypass SCRAM channel binding. Fixed by upgrading <code>postgresql</code> to <code>42.7.12</code>.</li>
+</ul>
+
     </div>
   </div>
 </div>
 
 <div class="page-toc">
   <h3>On this Page:</h3>
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#new-features">New Features</a>
+          <ul>
+            <li><a href="#ldap-configurable-cache">LDAP Configurable Cache</a></li>
+          </ul>
+        </li>
+        <li><a href="#bug-fixes">Bug Fixes</a>
+          <ul>
+            <li><a href="#variables-ee-exclusive">Variables <em>(EE exclusive)</em></a></li>
+          </ul>
+        </li>
+        <li><a href="#technical-updates">Technical Updates</a>
+          <ul>
+            <li><a href="#dependency-updates">Dependency Updates</a></li>
+            <li><a href="#resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   <div class="docs-banner" style="display:none">
  :(
 </div>
