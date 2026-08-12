@@ -3986,19 +3986,140 @@
 <ul>
 <li><strong>Security</strong> 42 CVEs resolved across the platform: Task Filter JUEL expressions can now be restricted to a safe whitelist to prevent arbitrary function/bean invocation via filter expressions (opt-in, disabled by default); <code>postgresql</code> upgraded to <code>42.7.12</code> (<code>CVE-2026-54291</code>); <code>jackson</code> upgraded to <code>2.21.5</code> and pinned in the <code>run4</code> distribution (<code>CVE-2026-59889</code>); <code>wildfly</code> upgraded to <code>41.0.0</code>; <code>netty</code>, <code>openjdk21</code>, <code>curl</code>/<code>libcurl</code>, <code>micrometer</code>, <code>cxf</code>, <code>mssql-jdbc</code>, <code>artemis</code>, and <code>lz4-java</code> (<code>CVE-2026-59949</code>) updated to patched versions; OpenTelemetry Java agent updated to <code>2.28.1</code> in Docker images (<code>CVE-2026-54704</code>, <code>CVE-2026-54712</code>)</li>
 <li><strong>Authorization</strong> Fixed a permission gap allowing deletion of a historic process instance by a read-only user, and a system exception when a user without deployment-read permission opened the process definition view</li>
+<li><strong>Start Process</strong> Default start form now supports a business key and process variables when a process definition has no configured start form</li>
+<li><strong>Process Views</strong> BPMN diagram pan/zoom position is now persisted across process definition and instance views</li>
+<li><strong>Dates</strong> Webclient date fields now serialize as ISO-8601 strings instead of epoch milliseconds</li>
+</ul>
+
+<h3 id="new-features">New Features</h3>
+
+<h4 id="default-start-form">Default Start Form</h4>
+<ul>
+<li>Processes without a configured start form now get a default start form supporting a business key and process variable input</li>
+</ul>
+
+<h4 id="process-diagram-panzoom-persistence">Process Diagram Pan/Zoom Persistence</h4>
+<ul>
+<li>The BPMN viewer&rsquo;s pan/zoom position is now persisted and restored across process definition and process instance views</li>
+</ul>
+
+<h4 id="modeler-enhancements">Modeler Enhancements</h4>
+<ul>
+<li>Replaced the Create-new dropdown on the start page with dedicated Create BPMN/DMN/Form actions</li>
+</ul>
+
+<h3 id="user-experience-improvements-in-web-client">User Experience Improvements in Web Client</h3>
+
+<h4 id="deployments">Deployments</h4>
+<ul>
+<li>Deployment queries now support the full set of query parameters (name, source, tenant, before/after deployment time), including correct handling of <code>null</code> parameters and <code>+</code> encoding in date parameters</li>
+</ul>
+
+<h4 id="authorization">Authorization</h4>
+<ul>
+<li>The &ldquo;change password&rdquo; menu item is now shown only to users with access rights to it</li>
+<li>An &ldquo;authorization disabled&rdquo; warning banner is now shown on the Authorizations page when authorization is disabled</li>
+</ul>
+
+<h4 id="process-instance-search">Process Instance Search</h4>
+<ul>
+<li>The BPMN viewer now searches only unfinished (active) process instances by default</li>
+</ul>
+
+<h4 id="tasklist">Tasklist</h4>
+<ul>
+<li>Fixed filter task count not updating immediately after a task is completed</li>
+<li>Fixed sorting descending with an active &ldquo;Due date&rdquo; filter returning no results</li>
+<li>Fixed the task results page index not resetting when the filter list is updated with a new max-results value</li>
+</ul>
+
+<h4 id="execution-metrics">Execution Metrics</h4>
+<ul>
+<li>Annual and monthly metrics retrieval now follows the selected <code>groupBy</code> parameter, and all years are shown</li>
+<li>Added monthly chart interaction and row click handling</li>
+<li>Fixed date formatting for yearly metrics to reflect the correct date range</li>
+<li>Made the historic activity statistics call backwards compatible</li>
+<li>Corrected number formatting (using i18n) in the cockpit, execution metrics, and human tasks views</li>
+</ul>
+
+<h4 id="multi-engine">Multi-Engine</h4>
+<ul>
+<li>Fixed direct and default engine lookup in <code>EngineProvider</code></li>
+<li>Fixed redirect to the previous page instead of the start page after login during an engine switch</li>
+</ul>
+
+<h4 id="modeler">Modeler</h4>
+<ul>
+<li>Extracted a reusable resize/splitter composable for the Properties panel</li>
+</ul>
+
+<h4 id="accessibility">Accessibility</h4>
+<ul>
+<li>Added accessible labels to admin, process view/modal/table, task filter/search, tenant/deployment, and settings form controls</li>
+<li>The <code>form-control-has-label</code> ESLint rule is now enforced as an error for CIB form wrappers</li>
 </ul>
 
 <h3 id="bug-fixes">Bug Fixes</h3>
+
+<h4 id="dates">Dates</h4>
+<ul>
+<li>Webclient date fields now serialize as ISO-8601 strings instead of epoch milliseconds when the Webclient overrides Spring defaults</li>
+</ul>
 
 <h4 id="security">Security</h4>
 <ul>
 <li>Task Filter JUEL expressions (e.g. <code>assigneeExpression</code>) could be evaluated with full JUEL power and no content validation, allowing arbitrary function/method/bean invocation for anyone authorized to create or execute filters. Expressions can now be restricted to a safe whitelist — <code>currentUser()</code>, <code>currentUserGroups()</code>, <code>now()</code>, a whitelisted <code>dateTime()</code> expression, and plain literal text — covering stored filters, adhoc task queries, and <code>or()</code>/<code>endOr()</code> query branches. Operators can extend the whitelist via <code>ProcessEngineConfigurationImpl#additionalAllowedFilterExpressions</code>. Disabled by default; enable via the <code>enableFilterExpressionWhitelist</code> toggle.</li>
 </ul>
 
-<h4 id="authorization">Authorization</h4>
+<h4 id="authorization-1">Authorization</h4>
 <ul>
 <li>Fixed the &ldquo;Delete instance&rdquo; button in the process definition instances table being shown, and deletion being possible, without the required <code>DELETE_HISTORY</code> permission</li>
 <li>Fixed the process definition view attempting to load deployment info for users without deployment-read permission, causing a system exception</li>
+</ul>
+
+<h4 id="history--history-level-none">History / &ldquo;History Level None&rdquo;</h4>
+<ul>
+<li>Fixed no data shown on the instance details view after a page reload when the history level is <code>none</code></li>
+<li>Fixed missing active-instance icon and incident indication on the instance details view when the history level is <code>none</code></li>
+<li>Fixed missing badges and activity filter in the BPMN viewer when the history level is <code>none</code></li>
+<li>History level configuration is now normalized to lowercase and handled consistently when no value is set</li>
+</ul>
+
+<h4 id="variables">Variables</h4>
+<ul>
+<li>Fixed identical values shown for local variables that share a name but have different underlying values</li>
+</ul>
+
+<h4 id="process-definitions">Process Definitions</h4>
+<ul>
+<li>Fixed the process definition details view showing the wrong first/last started instance, and made the details-sidebar information icon keyboard-interactive</li>
+<li>Fixed the process definition view requesting element templates even when the Modeler is disabled</li>
+<li>Fixed a missing <code>openIncidents</code> field on the BPMN viewer model</li>
+</ul>
+
+<h4 id="modeler-1">Modeler</h4>
+<ul>
+<li>Fixed the Modeler not destroying <code>bpmn-js</code>/<code>dmn-js</code> editor instances on tab close, causing a memory and listener leak</li>
+<li>Fixed leaked global event listeners on unmount (form modal and others)</li>
+<li>Fixed the element-templates store crashing on a non-array response when the Modeler backend is disabled</li>
+<li>Fixed the element-template picker to only offer templates already loaded in the Modeler</li>
+<li>Fixed save/edit-lock failures being silently dropped instead of surfaced to the user</li>
+<li>Fixed auto-entering a diagram when its id is present in the URL</li>
+<li>Fixed <code>diagram-js-minimap</code> being externalized instead of bundled, which broke for CJS consumers</li>
+<li>Updated <code>diagram-js-minimap</code> to <code>5.3.0</code> for <code>diagram-js</code> 15 compatibility</li>
+</ul>
+
+<h4 id="forms">Forms</h4>
+<ul>
+<li>Fixed missing support for <code>bpmnEscalation</code> so embedded forms can report escalations</li>
+<li>Fixed embedded-form SDK group/user/history calls to be served from typed middleware endpoints instead of failing against the wrong path</li>
+<li>Associated the business key label with its input on the default start form</li>
+<li>Fixed the &ldquo;Create Group&rdquo; error message to precisely reflect an invalid group id</li>
+</ul>
+
+<h4 id="direct-provider">Direct Provider</h4>
+<ul>
+<li>Fixed variable enrichment in <code>findTaskByFilter</code> and the response media type in <code>getDeployedForm</code></li>
 </ul>
 
 <h4 id="backend">Backend</h4>
@@ -4024,6 +4145,16 @@
 <li>Update <code>cxf</code> (<code>org.apache.cxf:cxf-core</code>) from <code>4.0.11</code> to <code>4.1.7</code>, fixing <code>CVE-2026-50645</code></li>
 <li>Update <code>mssql-jdbc</code> (<code>com.microsoft.sqlserver:mssql-jdbc</code>) to <code>12.8.2.jre11</code>, fixing <code>CVE-2025-59250</code></li>
 <li>Update <code>artemis</code> (<code>org.apache.artemis:artemis-stomp-protocol</code>) from <code>2.53.0</code> to <code>2.54.0</code>, fixing <code>CVE-2026-40914</code></li>
+<li>Update <code>axios</code> from <code>1.15.2</code> to <code>1.18.1</code>, resolving reported npm vulnerabilities</li>
+<li>Update <code>vite</code> from <code>6.4.2</code> to <code>6.4.3</code> and <code>vitest</code> from <code>3.2.4</code> to <code>3.2.7</code></li>
+<li>Update <code>bpm-sdk</code> from <code>2.1.2</code> to <code>2.1.3</code></li>
+<li>Update transitive dependencies <code>dompurify</code> (to <code>3.4.12</code>) and <code>fast-xml-parser</code> (to <code>5.10.1</code>) to resolve reported npm vulnerabilities</li>
+</ul>
+
+<h4 id="build--configuration">Build &amp; Configuration</h4>
+<ul>
+<li>JDBC drivers are no longer bundled on the webclient&rsquo;s runtime classpath</li>
+<li>Resolved SonarQube security hotspots in the warning banner component (HTML-escaping) and in the Modeler (HTTPS test fixtures, regex handling)</li>
 </ul>
 
 <h4 id="resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</h4>
@@ -4093,16 +4224,43 @@
     <li>
       <ul>
         <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#new-features">New Features</a>
+          <ul>
+            <li><a href="#default-start-form">Default Start Form</a></li>
+            <li><a href="#process-diagram-panzoom-persistence">Process Diagram Pan/Zoom Persistence</a></li>
+            <li><a href="#modeler-enhancements">Modeler Enhancements</a></li>
+          </ul>
+        </li>
+        <li><a href="#user-experience-improvements-in-web-client">User Experience Improvements in Web Client</a>
+          <ul>
+            <li><a href="#deployments">Deployments</a></li>
+            <li><a href="#authorization">Authorization</a></li>
+            <li><a href="#process-instance-search">Process Instance Search</a></li>
+            <li><a href="#tasklist">Tasklist</a></li>
+            <li><a href="#execution-metrics">Execution Metrics</a></li>
+            <li><a href="#multi-engine">Multi-Engine</a></li>
+            <li><a href="#modeler">Modeler</a></li>
+            <li><a href="#accessibility">Accessibility</a></li>
+          </ul>
+        </li>
         <li><a href="#bug-fixes">Bug Fixes</a>
           <ul>
+            <li><a href="#dates">Dates</a></li>
             <li><a href="#security">Security</a></li>
-            <li><a href="#authorization">Authorization</a></li>
+            <li><a href="#authorization-1">Authorization</a></li>
+            <li><a href="#history--history-level-none">History / &ldquo;History Level None&rdquo;</a></li>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#process-definitions">Process Definitions</a></li>
+            <li><a href="#modeler-1">Modeler</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#direct-provider">Direct Provider</a></li>
             <li><a href="#backend">Backend</a></li>
           </ul>
         </li>
         <li><a href="#technical-updates">Technical Updates</a>
           <ul>
             <li><a href="#dependency-updates">Dependency Updates</a></li>
+            <li><a href="#build--configuration">Build &amp; Configuration</a></li>
             <li><a href="#resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</a></li>
           </ul>
         </li>
