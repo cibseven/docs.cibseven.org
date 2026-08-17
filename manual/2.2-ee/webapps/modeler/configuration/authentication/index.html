@@ -3982,17 +3982,26 @@
     <div class="col-xs-12 content-text">
       <p>The modeler reuses the authentication infrastructure of <code>cibseven-webclient</code>. Every REST endpoint validates the session token provided in the request.</p>
 
-<h2 id="disabling-authentication">Disabling Authentication</h2>
-<p>Authentication is <strong>enabled by default</strong>. It can be disabled for local development or testing:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibsevenmodeler</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">authentication</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span></code></pre></div><p>Or via environment variable:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CIBSEVENMODELER_AUTHENTICATION_ENABLED</span><span class="o">=</span><span class="nb">false</span>
-</span></span></code></pre></div>
+<h2 id="authorization">Authorization</h2>
+<p>Authentication alone is not enough: a caller must also hold the application <code>ACCESS</code> permission for
+the <code>modeler</code> resource, the same permission that decides whether the modeler appears in the UI.
+Requests from an authenticated user without it are answered with <code>403 Forbidden</code>. This applies to the
+diagram, form and element template endpoints, to the diagram history, and to the chat (Enterprise
+Edition), whose rooms are diagrams. <strong>Changed in 2.3.0.</strong></p>
+<p>Grant it under <strong>Admin → Authorizations → Application</strong>, for resource id <code>modeler</code> or <code>*</code>, with
+permission <code>ACCESS</code> or <code>ALL</code>. A revoke authorization for either resource id takes the access away
+again. When authorization is disabled in the engine, nothing is enforced and every authenticated user
+may use the modeler.</p>
+<p>One exception: the plain <code>GET {basePath}/modeler/element-templates</code> listing requires authentication
+only, because the process diagram viewer loads element templates to render their icons for users who
+never open the modeler.</p>
+
 <div class="note bg-warning docs-warning">
-  <h3>Never disable authentication in production</h3>
-  <p>Disabling authentication exposes all modeler REST endpoints without any access control. Only use this setting in isolated development or CI environments.</p>
+  <h3>Authentication can no longer be disabled</h3>
+  <p>Up to 2.2, <code>cibsevenmodeler.authentication.enabled: false</code> (or
+<code>cibseven.webclient.modeler.authentication.enabled: false</code>) ran the modeler without authentication.
+Both properties are removed in 2.3.0 and are ignored: modeler endpoints always require an
+authenticated user.</p>
 </div>
 
 
@@ -4007,7 +4016,7 @@
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#disabling-authentication">Disabling Authentication</a></li>
+    <li><a href="#authorization">Authorization</a></li>
     <li><a href="#integration-with-cib-seven-engine">Integration with CIB seven Engine</a></li>
   </ul>
 </nav>

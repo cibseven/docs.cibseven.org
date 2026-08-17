@@ -3982,7 +3982,7 @@
     <div class="col-xs-12 content-text">
       <p>All modeler REST endpoints are mounted under the base path configured by <code>cibseven.webclient.services.basePath</code> (default: <code>/services/v1</code>), appended with <code>/modeler</code>.</p>
 <p><strong>Base URL:</strong> <code>{basePath}/modeler</code></p>
-<p>All endpoints require authentication unless <code>cibsevenmodeler.authentication.enabled=false</code>. See <a href="/manual/2.2-ee/webapps/modeler/configuration/authentication/">Authentication</a>.</p>
+<p>All endpoints require an authenticated user who holds the application <code>ACCESS</code> permission for the <code>modeler</code> resource — the same permission that decides whether the modeler is shown in the UI. See <a href="/manual/2.2-ee/webapps/modeler/configuration/authentication/">Authentication</a>. <strong>Changed in 2.3.0.</strong></p>
 <hr>
 
 <h2 id="diagrams-bpmn--dmn">Diagrams (BPMN / DMN)</h2>
