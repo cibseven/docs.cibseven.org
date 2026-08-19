@@ -330,6 +330,28 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-rest-4<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ============================================================
+</span></span></span><span class="line"><span class="cl"><span class="c">     CIB seven AI Agent Connector dependencies
+</span></span></span><span class="line"><span class="cl"><span class="c">     Add these to your pom.xml &lt;dependencies&gt; section.
+</span></span></span><span class="line"><span class="cl"><span class="c">     See the README for details.
+</span></span></span><span class="line"><span class="cl"><span class="c">     ============================================================ --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;groupId&gt;</span>org.cibseven.connect<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;artifactId&gt;</span>cibseven-connect-ai-agent<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;groupId&gt;</span>org.cibseven.connect<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;artifactId&gt;</span>cibseven-connect-connectors-all<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-plugin-connect<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;version&gt;</span>${cibseven.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-jdbc<span class="nt">&lt;/artifactId&gt;</span>
@@ -341,7 +363,7 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.apache.groovy<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>groovy-jsr223<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ============================================================
 </span></span></span><span class="line"><span class="cl"><span class="c">     GraalVM JavaScript engine for CIB seven Script Tasks
@@ -406,7 +428,7 @@ We also use <code>spring-boot-maven-plugin</code>, which does all the magic for 
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>3.11.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nt">&lt;/plugin&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/plugins&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/build&gt;</span>  
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/build&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
 </span></span></code></pre></div>
 <h3 id="add-main-class-to-our-spring-boot-application">Add Main Class to our Spring Boot Application</h3>
@@ -428,6 +450,13 @@ which implicitly adds several convenient features (autoconfiguration, component 
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
+<h3 id="add-jwt-secret-property-for-cib-seven-engine-rest">Add JWT secret property for CIB seven engine REST</h3>
+<p><code>cibseven.webclient.authentication.jwtSecret</code> is a required configuration property that you need to set. For security reasons, we cannot provide a default value for this property.</p>
+<p>Let&rsquo;s create a <code>cibseven-webclient.properties</code> file  in the <code>src/main/resources</code> folder with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># do not use this jwtSecret value in production</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">cibseven.webclient.authentication.jwtSecret=RtURHZ7SQYfLoX902wcjlvduW2qe9g0bjMUczmffjiTjzU9phbv3mK54zHMqeGK6cqgoEBTIUE6RqwvemSqbpD40qUPXVRElvDHGhn4OAEfjeEP2ANah8GJejSA08E820mForcQHBmediqg2DzIrxnDXyf2</span><span class="w">
+</span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication. However, it is not sufficient on its own: an authentication filter must also be applied, which will be configured in the next step.</p>
+
 <h3 id="build-and-run">Build and Run</h3>
 <p>Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a right-click and select <code>Run As / Maven Install</code>.</p>
 <p>Our first CIB seven Spring Boot application is ready now. As a result of the build, you will have a JAR-file in your <code>target</code> folder. This JAR is a Spring Boot application,
@@ -437,10 +466,9 @@ When started, it will use an in-memory H2 database for CIB seven engine needs.</
 Wait until you see a similar line in the console:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Started WebappExampleProcessApplication in 10.584 seconds
 </span></span></code></pre></div><p>Another way to run the app is to simply run the JAR-file with a <code>java -jar</code> command.</p>
-<p>When you navigate to <a href="http://localhost:8080/">http://localhost:8080/</a>, you will be redirected to the CIB seven web application, but it will display a blank page due to missing configuration.
-The necessary settings will be applied in the next step.
-In the meantime, the legacy Camunda web application remains accessible at <a href="http://localhost:8080/camunda">http://localhost:8080/camunda</a>,
-where you will be prompted to create an admin user.
+<p>When you navigate to <a href="http://localhost:8080/">http://localhost:8080/</a>, you will be prompted to create an admin user in the CIB seven web application. You&rsquo;ll be introduced to the CIB seven configuration in the next step.</p>
+<p>Additionally, the legacy Camunda web application remains accessible at <a href="http://localhost:8080/camunda">http://localhost:8080/camunda</a>,
+where you will also be prompted to create an admin user.</p>
 
 <div class="panel-group gs-download-step-panel" id="gitStep-1">
   <div class="panel panel-success">
@@ -470,7 +498,7 @@ where you will be prompted to create an admin user.
     </div>
   </div>
 </div>
-</p>
+
 
     </div>
   </div>
@@ -486,6 +514,7 @@ where you will be prompted to create an admin user.
         <li><a href="#create-a-new-maven-project">Create a new Maven Project</a></li>
         <li><a href="#add-cib-seven--spring-boot-dependencies">Add CIB seven &amp; Spring Boot Dependencies</a></li>
         <li><a href="#add-main-class-to-our-spring-boot-application">Add Main Class to our Spring Boot Application</a></li>
+        <li><a href="#add-jwt-secret-property-for-cib-seven-engine-rest">Add JWT secret property for CIB seven engine REST</a></li>
         <li><a href="#build-and-run">Build and Run</a></li>
       </ul>
     </li>

@@ -4019,7 +4019,7 @@
 			</tr>
 			<tr>
 					<td><code>chat_messages</code></td>
-					<td>Stores real-time chat messages per room. Deleted messages are soft-deleted (content cleared, row retained as a tombstone). Enterprise Edition only.</td>
+					<td>Stores real-time chat messages per room. Deleted messages are soft-deleted: the content is cleared and the row is retained as a tombstone, marked by <code>deleted_at</code>, so that polling clients learn about the deletion. Enterprise Edition only.</td>
 			</tr>
 			<tr>
 					<td><code>chat_presence</code></td>
@@ -4031,6 +4031,31 @@
 <div class="note bg-info docs-info">
   <h3>Enterprise Feature</h3>
   <p>The <code>chat_messages</code> and <code>chat_presence</code> tables are only required when the enterprise edition is active, <code>cibseven.webclient.modeler.enabled: true</code>, and <code>cibseven.webclient.modeler.chat.enabled: true</code>. They are not created in the community edition.</p>
+</div>
+
+
+<h2 id="schema-updates">Schema Updates</h2>
+<p>The modeler tables are part of the engine schema, so they are updated with it. Follow the
+<a href="/manual/2.2-ee/installation/database-schema/#update">database schema update guide</a> — either the Liquibase
+changelog or the <code>$DATABASENAME_engine_$X_to_$Y.sql</code> scripts — rather than applying modeler DDL by hand.</p>
+
+<h3 id="22-to-23">2.2 to 2.3</h3>
+<p>The long-polling chat transport added two schema changes, both applied by the <code>2.2-to-2.3</code> changelog entry
+and by the <code>$DATABASENAME_engine_2.2_to_2.3.sql</code> scripts:</p>
+<ul>
+<li>the <code>chat_presence</code> table</li>
+<li>the <code>deleted_at</code> column on <code>chat_messages</code></li>
+</ul>
+<p>A 2.2 installation that already used the chat over the <code>websocket</code> transport needs this update before
+switching to <code>longpolling</code>: without <code>chat_presence</code> and <code>deleted_at</code>, presence and deletion events cannot be
+served from the database.</p>
+
+<div class="note bg-warning docs-warning">
+  <h3>chat_messages has to exist</h3>
+  <p>The update alters <code>chat_messages</code>, so that table must already be present. Installations updated from 2.1
+have it, because the 2.1 to 2.2 update creates it. An installation that was set up fresh at 2.2 only has it
+if the modeler creation script was applied. Where it is missing, apply that script before the update —
+otherwise the update fails on the <code>chat_messages</code> change, whether or not the chat is enabled.</p>
 </div>
 
 
@@ -4046,6 +4071,11 @@
   <nav id="TableOfContents">
   <ul>
     <li><a href="#database-tables">Database Tables</a></li>
+    <li><a href="#schema-updates">Schema Updates</a>
+      <ul>
+        <li><a href="#22-to-23">2.2 to 2.3</a></li>
+      </ul>
+    </li>
     <li><a href="#supported-databases">Supported Databases</a></li>
   </ul>
 </nav>

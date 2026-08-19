@@ -302,14 +302,11 @@ The full list of supported configuration parameters can be found <a href="/manua
 <ol>
 <li>Admin user &ldquo;demo&rdquo; with the provided password and first name will be created.</li>
 <li>Default filter with the name &ldquo;All tasks&rdquo; will be created for Tasklist.</li>
-<li>Properties from the <code>cibseven-webclient.properties</code> configuration file will be imported.</li>
+<li>Properties from the <code>cibseven-webclient.properties</code> configuration file will be imported, allowing the CIB seven web application to use the JWT secret.</li>
 <li>The base path for services will be defined so that Spring Boot can correctly map the endpoints.</li>
 <li>The Engine REST URL will be set to <code>http://localhost:8080</code></li>
 </ol>
-<p>Additionaly, let&rsquo;s create a <code>cibseven-webclient.properties</code> file in the same directory as <code>application.yaml</code> with the following content:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># do not use this jwtSecret value in production</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="l">cibseven.webclient.authentication.jwtSecret=RtURHZ7SQYfLoX902wcjlvduW2qe9g0bjMUczmffjiTjzU9phbv3mK54zHMqeGK6cqgoEBTIUE6RqwvemSqbpD40qUPXVRElvDHGhn4OAEfjeEP2ANah8GJejSA08E820mForcQHBmediqg2DzIrxnDXyf2</span><span class="w">
-</span></span></span></code></pre></div><p>The <code>jwtSecret</code> property enables secure communication between the CIB seven web application and the engine using JWT-based authentication. However, it is not sufficient on its own: an authentication filter must also be applied.</p>
+<p>Currently, communication between the CIB seven web application and the engine REST API is not secured. In the following step, we will secure this communication using JWT-based authentication by enabling an authentication filter.</p>
 
 <h3 id="add-authentication-filter">Add Authentication filter</h3>
 <p>To enable JWT-based authentication, you need to register an authentication filter as a @Bean and configure it to use the Composite authentication provider. This filter will intercept requests to the specified endpoints.</p>
@@ -336,7 +333,7 @@ The full list of supported configuration parameters can be found <a href="/manua
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">String</span><span class="w"> </span><span class="n">restApiPathPattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">applicationPath</span><span class="p">.</span><span class="na">getPath</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">// Apply to all URLs under engine-rest except /engine-rest/identity/verify</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">urlPatterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">urlPatterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/process-definition/*&#34;</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/process-instance/*&#34;</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;/history/*&#34;</span><span class="p">,</span><span class="w">
@@ -391,11 +388,10 @@ Instead, we recommend using the following general URL pattern:</p>
 <p>Now you can rebuild and rerun the application.
 Make sure to run
 <code>mvn clean</code> before running <code>mvn install</code> again.</p>
-<p>When you open <a href="http://localhost:8080/">http://localhost:8080/</a> in your browser, it will redirect you to the CIB seven web application.</p>
-<p>Besides, when accessing the legacy Camunda web application at <a href="http://localhost:8080/camunda">http://localhost:8080/camunda</a>, you will no longer be prompted to create an admin user.
-Instead, you&rsquo;ll be asked to log in with a username and password.</p>
-<p>You can use &ldquo;demo/demo&rdquo; — the credentials configured earlier — to access the CIB seven web applications.
+<p>When you open <a href="http://localhost:8080/">http://localhost:8080/</a> in your browser, you will no longer be prompted to create an admin user. Instead, you&rsquo;ll be asked to log in to CIB seven with a username and password.</p>
+<p>You can use &ldquo;demo/demo&rdquo; — the credentials configured earlier — to access.
 After you logged in, you can go to Tasklist and see that a filter named &ldquo;All tasks&rdquo; was created, though it does not contain any tasks so far.</p>
+<p>The same applies to the legacy Camunda web application at <a href="http://localhost:8080/camunda">http://localhost:8080/camunda</a>.</p>
 
 <div class="panel-group gs-download-step-panel" id="gitStep-2">
   <div class="panel panel-success">
