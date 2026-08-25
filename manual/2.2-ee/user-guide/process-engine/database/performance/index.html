@@ -3989,6 +3989,12 @@
 <h3 id="disabling-cmmn-and-standalone-tasks">Disabling CMMN and Standalone Tasks</h3>
 <p>To perform transparent access checks, the task query joins the authorization table (<code>ACT_RU_AUTHORIZATION</code>). For any kind of process-related filters, it joins the process definition table (<code>ACT_RE_PROCDEF</code>). By default, the query uses a left join for these operations. If CMMN and standalone tasks (tasks that are neither related to a BPMN process, nor a CMMN case) are not used, the engine configuration flags <code>cmmnEnabled</code> and <code>standaloneTasksEnabled</code> can be set to <code>false</code>. Then, the left joins are replaced by inner joins which perform better on some databases. See the <a href="/manual/2.2-ee/reference/deployment-descriptors/tags/process-engine/#configuration-properties">configuration properties reference</a> for details on these settings.</p>
 
+<h2 id="identity-provider">Identity Provider</h2>
+<p>Every query that performs a transparent authorization check joins the authorization table (<code>ACT_RU_AUTHORIZATION</code>). The groups of the authenticated user are passed into that check as an <code>IN</code> list over <code>GROUP_ID_</code>, with one entry per group. The more groups a user belongs to, the larger that list becomes – on every authorization-checked query, for every user.</p>
+<p>It is therefore worth checking what your identity provider actually returns. If it exposes every group of the underlying user directory, users may carry hundreds of memberships that are irrelevant for CIB seven, and each one widens the <code>IN</code> list. Restricting the provider to the groups that are really used for authorization keeps the check small.</p>
+<p>With an external identity provider (LDAP, OAuth2, SCIM2), users and groups are not read from the process engine database at all, but fetched from the third-party server on every lookup. Response times then also depend on how fast that server answers – a slow directory shows up as slow requests even while the database itself is idle.</p>
+<p>For the LDAP plugin, both aspects – narrowing the user and group search, and the optional query cache – are described in <a href="/manual/2.2-ee/user-guide/process-engine/identity-service/#performance-of-the-ldap-plugin">Performance of the LDAP Plugin</a>.</p>
+
     </div>
   </div>
 </div>
@@ -4002,6 +4008,7 @@
         <li><a href="#disabling-cmmn-and-standalone-tasks">Disabling CMMN and Standalone Tasks</a></li>
       </ul>
     </li>
+    <li><a href="#identity-provider">Identity Provider</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

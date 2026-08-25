@@ -4389,6 +4389,54 @@
   </tr>
 </table>
 
+<h3 id="performance-of-the-ldap-plugin">Performance of the LDAP Plugin</h3>
+<p>Every user and group lookup of the LDAP identity service is a live search against the directory server – the plugin keeps no local copy of users and groups. Two things therefore dominate the response time of the web applications and of every authorization check: how much of the directory a single query has to touch, and whether results are cached.</p>
+
+<h4 id="keep-the-user-and-group-search-narrow">Keep the user and group search narrow</h4>
+<p>If <code>userSearchBase</code>/<code>groupSearchBase</code> point at the root of the directory and the search filters only restrict the object class, every query scans the whole directory. This happens on each login, on each page render that resolves user names, and for each authorization check.</p>
+<p>Restrict both the searched subtree and the filter to the entries CIB seven actually needs:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;groupSearchBase&#34;</span><span class="nt">&gt;</span>ou=cibseven,ou=roles<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;groupSearchFilter&#34;</span><span class="nt">&gt;</span>(<span class="ni">&amp;amp;</span>(objectclass=groupOfNames)(cn=cibseven-*))<span class="nt">&lt;/property&gt;</span>
+</span></span></code></pre></div><p>Note that <code>&amp;amp;</code> is the XML escape for the LDAP <code>AND</code> operator <code>&amp;</code> – written as a plain <code>&amp;</code>, the configuration file would not be valid XML.</p>
+<p><code>groupSearchFilter</code> is combined with an <code>AND</code> into <em>every</em> group query, including the &ldquo;which groups does this user belong to&rdquo; lookup that runs on login. A user who is a member of several hundred directory groups then only yields the CIB seven ones, instead of all of them being fetched, transformed and authorization-checked. The same applies to <code>userSearchBase</code> and <code>userSearchFilter</code>.</p>
+<p>Fewer groups per user also make the engine&rsquo;s own authorization checks cheaper, because every group of the authenticated user ends up in the database query performing the check. See <a href="/manual/2.2-ee/user-guide/process-engine/database/performance/#identity-provider">Identity Provider</a>.</p>
+<p>Two further properties matter here: <a href="#page-size"><code>pageSize</code></a> is mandatory if your LDAP server refuses to serve unbounded result sets, and <code>authorizationCheckEnabled</code> can be set to <code>false</code> to skip the per-result authorization check on large directories.</p>
+
+<h4 id="caching">Caching</h4>
+<p>Caching is disabled by default. With <code>cacheEnabled</code> set to <code>true</code>, the plugin keeps LDAP query results in memory, in two independently sized cache groups:</p>
+<table class="table table-striped">
+  <tr>
+    <th>Cache group</th>
+    <th>Caches</th>
+    <th>Properties (defaults)</th>
+  </tr>
+  <tr>
+    <td>User queries</td>
+    <td>Searches by id, name or email. Many distinct keys, each rarely repeated &ndash; sized large, expires quickly.</td>
+    <td><code>cacheUserQueriesTtlSeconds</code> (30)<br><code>cacheUserQueriesMaxWeight</code> (20000)</td>
+  </tr>
+  <tr>
+    <td>Group lookups</td>
+    <td>Group queries and the members of a group. Few distinct keys, hit repeatedly by page renders and authorization checks &ndash; sized small, kept longer.</td>
+    <td><code>cacheGroupTtlSeconds</code> (120)<br><code>cacheGroupMaxWeight</code> (8000)</td>
+  </tr>
+</table>
+<p>How it works:</p>
+<ul>
+<li>Each entry expires individually once its TTL has passed since it was written. There is no background refresh – the first query after expiry hits LDAP again.</li>
+<li>The caches are bounded by <em>weight</em>, not by entry count. An entry weighs as many units as its result list has elements (an empty result counts as 1). <code>maxWeight</code> therefore limits how many users or groups stay resident, so one broad query returning thousands of users cannot exhaust the heap.</li>
+<li>Passwords are never cached. <code>checkPassword</code> always authenticates against LDAP.</li>
+<li>The caches live in the memory of the process engine. In a cluster, every node has its own.</li>
+</ul>
+<p>Choosing the parameters:</p>
+<ul>
+<li>The TTL is your staleness window: a user or a membership changed in LDAP becomes visible after at most TTL seconds. Shorten it for directories that change often.</li>
+<li>Raise <code>cacheGroupTtlSeconds</code> first. Group membership drives the authorization checks, is queried constantly and usually changes rarely.</li>
+<li>Size <code>maxWeight</code> by the number of user and group objects you want to keep resident, not by the number of queries you expect.</li>
+<li>Paginated results are cached per page. If entries are added, removed or reordered in LDAP between two page fetches, the pages can skew. Keep the TTL short if exact consistency across pages matters.</li>
+<li>To validate a setting, switch on <code>cacheStatsLogEnabled</code>. Hit/miss statistics are then logged at <code>INFO</code> every <code>cacheStatsLogInterval</code> lookups. Increase TTL and weight as long as the hit ratio still improves.</li>
+</ul>
+
 <h2 id="the-oauth2-identity-service">The OAuth2 Identity Service</h2>
 <p>See the Spring Security OAuth2 Integration&rsquo;s <a href="/manual/2.2-ee/user-guide/spring-boot-integration/spring-security/#oauth2-identity-provider">OAuth2 Identity Provider</a> documentation.</p>
 
@@ -4545,6 +4593,12 @@ The behaviour with the default configuration will be:
       <ul>
         <li><a href="#activate-the-ldap-plugin">Activate the LDAP Plugin</a></li>
         <li><a href="#configuration-properties-of-the-ldap-plugin">Configuration Properties of the LDAP Plugin</a></li>
+        <li><a href="#performance-of-the-ldap-plugin">Performance of the LDAP Plugin</a>
+          <ul>
+            <li><a href="#keep-the-user-and-group-search-narrow">Keep the user and group search narrow</a></li>
+            <li><a href="#caching">Caching</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#the-oauth2-identity-service">The OAuth2 Identity Service</a></li>

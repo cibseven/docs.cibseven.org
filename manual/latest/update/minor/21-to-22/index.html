@@ -4130,7 +4130,7 @@ Additionally, the new <code>Run4</code> distribution has been added to the <a hr
 <p><a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a> is integrated into the CIB seven Modeler and accessible in the Enterprise Edition only.</p>
 
 <h2 id="jwt-secret-configuration">JWT secret configuration</h2>
-<p>Starting with CIB seven <code>2.2.0</code>, the JWT secret for <code>engine-rest</code> can also be configured using the JVM system property <code>cibseven.engine-rest.jwt-secret</code> or the environment variable <code>CIBSEVEN_ENGINE_REST_JWT_SECRET</code>.</p>
+<p>Starting with CIB seven <code>2.2.0</code>, the JWT secret for <code>engine-rest</code> can also be configured using the JVM system property <code>cibseven.engine-rest.jwt-secret</code> or the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code>.</p>
 <p>This is useful in environments where setting dotted property names as operating-system environment variables is problematic. No migration is required unless you want to switch from file-based configuration to the new system property or environment variable based setup.</p>
 
 <h2 id="multi-engine-support">Multi-engine support</h2>
