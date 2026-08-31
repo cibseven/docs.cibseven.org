@@ -21,7 +21,7 @@
 
   
 
-  <link rel="stylesheet" href="/ins7ght/css/docs.6882fc90ed56920e633e1dd1caf32d2739f4a799ee5518ec0cd1ca3178ef6b4b.css" integrity="sha256-aIL8kO1Wkg5jPh3RyvMtJzn0p5nuVRjsDNHKMXjva0s=">
+  <link rel="stylesheet" href="/ins7ght/css/docs.9daa76c8436215f7a2dc94c488a504222370704b350fab4e6ef78679d410abb1.css" integrity="sha256-nap2yENiFfei3JTEiKUEIiNwcEs1D6tObveGedQQq7E=">
   <link rel="canonical" href="/ins7ght/technical-guide/5-rest-api/incidents/" />
 </head>
 <body class="">
@@ -457,35 +457,35 @@
 <p>Incident heatmap data for activities over time for one process version.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Parameter</th>
-					<th>Required</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>processKey</code></td>
-					<td>Yes</td>
-					<td>Process definition key</td>
-			</tr>
-			<tr>
-					<td><code>version</code></td>
-					<td>Yes</td>
-					<td>Process version</td>
-			</tr>
-			<tr>
-					<td><code>startDate</code></td>
-					<td>No</td>
-					<td>Range start (ISO 8601)</td>
-			</tr>
-			<tr>
-					<td><code>endDate</code></td>
-					<td>No</td>
-					<td>Range end (ISO 8601)</td>
-			</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>processKey</code></td>
+      <td>Yes</td>
+      <td>Process definition key</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>Yes</td>
+      <td>Process version</td>
+    </tr>
+    <tr>
+      <td><code>startDate</code></td>
+      <td>No</td>
+      <td>Range start (ISO 8601)</td>
+    </tr>
+    <tr>
+      <td><code>endDate</code></td>
+      <td>No</td>
+      <td>Range end (ISO 8601)</td>
+    </tr>
+  </tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -508,20 +508,20 @@
 <p>Incident statistics <strong>by version</strong> for a process key.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Parameter</th>
-					<th>Required</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>processKey</code></td>
-					<td>Yes</td>
-					<td>Process definition key</td>
-			</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>processKey</code></td>
+      <td>Yes</td>
+      <td>Process definition key</td>
+    </tr>
+  </tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -547,45 +547,45 @@
 <p>Ranked / tabular incident information with upper and lower bounds on row counts.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Parameter</th>
-					<th>Required</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>processKey</code></td>
-					<td>Yes</td>
-					<td>Process definition key</td>
-			</tr>
-			<tr>
-					<td><code>version</code></td>
-					<td>Yes</td>
-					<td>Process version</td>
-			</tr>
-			<tr>
-					<td><code>maxResults</code></td>
-					<td>Yes</td>
-					<td>Maximum rows</td>
-			</tr>
-			<tr>
-					<td><code>minResults</code></td>
-					<td>Yes</td>
-					<td>Minimum rows</td>
-			</tr>
-			<tr>
-					<td><code>startDate</code></td>
-					<td>No</td>
-					<td>Range start (ISO 8601)</td>
-			</tr>
-			<tr>
-					<td><code>endDate</code></td>
-					<td>No</td>
-					<td>Range end (ISO 8601)</td>
-			</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>processKey</code></td>
+      <td>Yes</td>
+      <td>Process definition key</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>Yes</td>
+      <td>Process version</td>
+    </tr>
+    <tr>
+      <td><code>maxResults</code></td>
+      <td>Yes</td>
+      <td>Maximum rows</td>
+    </tr>
+    <tr>
+      <td><code>minResults</code></td>
+      <td>Yes</td>
+      <td>Minimum rows</td>
+    </tr>
+    <tr>
+      <td><code>startDate</code></td>
+      <td>No</td>
+      <td>Range start (ISO 8601)</td>
+    </tr>
+    <tr>
+      <td><code>endDate</code></td>
+      <td>No</td>
+      <td>Range end (ISO 8601)</td>
+    </tr>
+  </tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -609,35 +609,35 @@
 <p>Time-series style graph of incident counts.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Parameter</th>
-					<th>Required</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>processKey</code></td>
-					<td>Yes</td>
-					<td>Process definition key</td>
-			</tr>
-			<tr>
-					<td><code>version</code></td>
-					<td>Yes</td>
-					<td>Process version</td>
-			</tr>
-			<tr>
-					<td><code>startDate</code></td>
-					<td>No</td>
-					<td>Range start (ISO 8601)</td>
-			</tr>
-			<tr>
-					<td><code>endDate</code></td>
-					<td>No</td>
-					<td>Range end (ISO 8601)</td>
-			</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>processKey</code></td>
+      <td>Yes</td>
+      <td>Process definition key</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>Yes</td>
+      <td>Process version</td>
+    </tr>
+    <tr>
+      <td><code>startDate</code></td>
+      <td>No</td>
+      <td>Range start (ISO 8601)</td>
+    </tr>
+    <tr>
+      <td><code>endDate</code></td>
+      <td>No</td>
+      <td>Range end (ISO 8601)</td>
+    </tr>
+  </tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -657,35 +657,35 @@
 <p>Aggregated incident totals for the process version and optional date range.</p>
 <p><strong>Query parameters:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Parameter</th>
-					<th>Required</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>processKey</code></td>
-					<td>Yes</td>
-					<td>Process definition key</td>
-			</tr>
-			<tr>
-					<td><code>version</code></td>
-					<td>Yes</td>
-					<td>Process version</td>
-			</tr>
-			<tr>
-					<td><code>startDate</code></td>
-					<td>No</td>
-					<td>Range start (ISO 8601)</td>
-			</tr>
-			<tr>
-					<td><code>endDate</code></td>
-					<td>No</td>
-					<td>Range end (ISO 8601)</td>
-			</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>processKey</code></td>
+      <td>Yes</td>
+      <td>Process definition key</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>Yes</td>
+      <td>Process version</td>
+    </tr>
+    <tr>
+      <td><code>startDate</code></td>
+      <td>No</td>
+      <td>Range start (ISO 8601)</td>
+    </tr>
+    <tr>
+      <td><code>endDate</code></td>
+      <td>No</td>
+      <td>Range end (ISO 8601)</td>
+    </tr>
+  </tbody>
 </table>
 <p><strong>Example HTTP response:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>

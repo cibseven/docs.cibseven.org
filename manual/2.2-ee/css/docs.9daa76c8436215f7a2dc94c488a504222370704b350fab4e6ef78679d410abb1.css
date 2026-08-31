@@ -7338,45 +7338,73 @@ a:focus {
 }
 /* line 179, styles/_content.less */
 .page-content table {
-  font-size: 12px;
+  width: 100%;
+  margin: 16px 0;
+  font-size: 16px;
+  border-collapse: collapse;
 }
-/* line 182, styles/_content.less */
+/* line 188, styles/_content.less */
+.page-content table.table-2col {
+  table-layout: fixed;
+}
+/* line 190, styles/_content.less */
+.page-content table.table-2col th:first-child,
+.page-content table.table-2col td:first-child {
+  width: 30%;
+}
+/* line 194, styles/_content.less */
+.page-content table.table-2col th:last-child,
+.page-content table.table-2col td:last-child {
+  width: 70%;
+}
+/* line 200, styles/_content.less */
 .page-content th,
 .page-content td {
   white-space: normal;
+  overflow-wrap: anywhere;
+  padding: 10px 14px;
+  line-height: 1.6;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #eeeeee;
 }
-/* line 188, styles/_content.less */
+/* line 210, styles/_content.less */
+.page-content thead th {
+  border-bottom: 2px solid #777777;
+  font-weight: 600;
+}
+/* line 216, styles/_content.less */
 .page-content .dl-horizontal dt {
   white-space: normal;
   margin-top: -3px;
 }
-/* line 196, styles/_content.less */
+/* line 224, styles/_content.less */
 .content-header {
   position: relative;
 }
-/* line 200, styles/_content.less */
+/* line 228, styles/_content.less */
 h1.page-title {
   padding-bottom: 10px;
   border-bottom: 1px solid currentColor;
   margin-bottom: 15px;
   margin-top: 45px;
 }
-/* line 207, styles/_content.less */
+/* line 235, styles/_content.less */
 dt {
   font-size: 110%;
 }
-/* line 210, styles/_content.less */
+/* line 238, styles/_content.less */
 dd {
   margin: 0.5em 0 1em 2em;
 }
-/* line 216, styles/_content.less */
+/* line 244, styles/_content.less */
 .gs-download-step-panel,
 .note,
 pre.console,
 figure.image {
   margin: 15px 30px;
 }
-/* line 224, styles/_content.less */
+/* line 252, styles/_content.less */
 pre.console {
   background-color: #333333;
   color: #11d511;
@@ -7384,11 +7412,11 @@ pre.console {
   border: 1px solid black;
   border-radius: 3px;
 }
-/* line 232, styles/_content.less */
+/* line 260, styles/_content.less */
 [data-bpmn-diagram] .bjs-powered-by {
   display: none;
 }
-/* line 237, styles/_content.less */
+/* line 265, styles/_content.less */
 .note {
   font-weight: 400;
   padding: 6px 12px;
@@ -7399,7 +7427,7 @@ pre.console {
   font-size: 15px;
   line-height: 25px;
 }
-/* line 247, styles/_content.less */
+/* line 275, styles/_content.less */
 .note:before {
   content: '';
   display: block;
@@ -7411,78 +7439,78 @@ pre.console {
   height: 30px;
   transform: rotateZ(45deg);
 }
-/* line 260, styles/_content.less */
+/* line 288, styles/_content.less */
 .note > h3 {
   margin-top: 6px;
   font-size: 16px;
   font-weight: 400;
 }
-/* line 266, styles/_content.less */
+/* line 294, styles/_content.less */
 .note p:last-child {
   margin-bottom: 0;
 }
-/* line 270, styles/_content.less */
+/* line 298, styles/_content.less */
 .note.docs-primary,
 .note.enterprise-feature {
   border-color: #A7A9AC;
 }
-/* line 273, styles/_content.less */
+/* line 301, styles/_content.less */
 .note.docs-primary:before,
 .note.enterprise-feature:before {
   background-color: #A7A9AC;
 }
-/* line 277, styles/_content.less */
+/* line 305, styles/_content.less */
 .note.docs-success {
   border-color: #5cb85c;
 }
-/* line 279, styles/_content.less */
+/* line 307, styles/_content.less */
 .note.docs-success:before {
   background-color: #5cb85c;
 }
-/* line 283, styles/_content.less */
+/* line 311, styles/_content.less */
 .note.docs-info {
   border-color: #5bc0de;
 }
-/* line 285, styles/_content.less */
+/* line 313, styles/_content.less */
 .note.docs-info:before {
   background-color: #5bc0de;
 }
-/* line 289, styles/_content.less */
+/* line 317, styles/_content.less */
 .note.docs-warning {
   border-color: #f0ad4e;
 }
-/* line 291, styles/_content.less */
+/* line 319, styles/_content.less */
 .note.docs-warning:before {
   background-color: #f0ad4e;
 }
-/* line 295, styles/_content.less */
+/* line 323, styles/_content.less */
 .note.docs-danger {
   border-color: #d9534f;
 }
-/* line 297, styles/_content.less */
+/* line 325, styles/_content.less */
 .note.docs-danger:before {
   background-color: #d9534f;
 }
-/* line 304, styles/_content.less */
+/* line 332, styles/_content.less */
 .gs-download-step-panel {
   border-left: 5px solid #5cb85c;
 }
-/* line 308, styles/_content.less */
+/* line 336, styles/_content.less */
 .gs-download-step-panel .panel-heading h4 {
   margin-top: 0;
   margin-bottom: 20px;
 }
-/* line 312, styles/_content.less */
+/* line 340, styles/_content.less */
 .gs-download-step-panel .panel-heading p {
   margin-bottom: 0;
 }
-/* line 315, styles/_content.less */
+/* line 343, styles/_content.less */
 .gs-download-step-panel .panel-heading a:hover,
 .gs-download-step-panel .panel-heading a:focus {
   text-shadow: none;
   box-shadow: none;
 }
-/* line 322, styles/_content.less */
+/* line 350, styles/_content.less */
 .gs-download-step-panel .panel-body {
   padding-top: 0;
   padding-bottom: 0;
@@ -7490,17 +7518,17 @@ pre.console {
   overflow: hidden;
   transition: max-height 0.218s ease, padding 0.218s ease;
 }
-/* line 330, styles/_content.less */
+/* line 358, styles/_content.less */
 .gs-download-step-panel .toggle-instructions {
   cursor: pointer;
 }
-/* line 334, styles/_content.less */
+/* line 362, styles/_content.less */
 .gs-download-step-panel.open .panel-body {
   padding-top: 15px;
   padding-bottom: 15px;
   max-height: 600px;
 }
-/* line 342, styles/_content.less */
+/* line 370, styles/_content.less */
 .lightbox {
   position: fixed;
   overflow: hidden;
@@ -7513,7 +7541,7 @@ pre.console {
   z-index: 1039;
   cursor: pointer;
 }
-/* line 354, styles/_content.less */
+/* line 382, styles/_content.less */
 .lightbox .content {
   max-width: 100%;
   max-height: 100%;
@@ -7526,38 +7554,38 @@ pre.console {
   background-color: #fff;
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
 }
-/* line 367, styles/_content.less */
+/* line 395, styles/_content.less */
 .lightbox img {
   display: block;
   max-width: 100%;
   background-color: #fff;
 }
-/* line 373, styles/_content.less */
+/* line 401, styles/_content.less */
 .lightbox.open {
   bottom: 0;
 }
-/* line 378, styles/_content.less */
+/* line 406, styles/_content.less */
 code {
   padding: 0;
 }
-/* line 382, styles/_content.less */
+/* line 410, styles/_content.less */
 .docs-intro {
   padding: 0 15px;
   font-size: 120%;
 }
-/* line 388, styles/_content.less */
+/* line 416, styles/_content.less */
 .table-cmmn-events > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 391, styles/_content.less */
+/* line 419, styles/_content.less */
 .table-cmmn-events .glyphicon-ok {
   color: #f0ad4e;
 }
-/* line 396, styles/_content.less */
+/* line 424, styles/_content.less */
 .highlight {
   position: relative;
 }
-/* line 400, styles/_content.less */
+/* line 428, styles/_content.less */
 .highlight .copybtn {
   position: absolute;
   top: 0px;
@@ -7569,12 +7597,12 @@ code {
   filter: grayscale(100%);
   transition: transform .4s;
 }
-/* line 412, styles/_content.less */
+/* line 440, styles/_content.less */
 .copybtn:hover {
   color: black;
   transform: scale(1.2);
 }
-/* line 417, styles/_content.less */
+/* line 445, styles/_content.less */
 .collapsible-content-summary {
   cursor: pointer;
   padding: 4px 0;
@@ -7584,7 +7612,7 @@ code {
   margin-top: 6px;
   /*font-size: 160%;*/
 }
-/* line 426, styles/_content.less */
+/* line 454, styles/_content.less */
 .collapsible-content-body {
   padding: 8px 0 0 0;
 }
