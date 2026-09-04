@@ -4194,6 +4194,19 @@ copy</strong> with a SHA-256 hash + length. It does <strong>not</strong> change 
 provider (or, for remote embeddings, to OpenAI). Redaction protects the engine-side record, not the
 data-in-transit to the model. Choose the provider/endpoint accordingly.</p>
 
+<h2 id="eu-ai-act--traceability--documentation">EU AI Act — traceability &amp; documentation</h2>
+<p>The EU AI Act pushes organisations in banking, insurance, government, and other regulated sectors toward a common question: when AI is used inside a business process, can that use be <strong>traced, documented, and evidenced</strong> after the fact — which model ran, what parameters and prompts were used, and who reviewed or approved the result?</p>
+<p>The connector&rsquo;s audit machinery is built with that question in mind:</p>
+<ul>
+<li><strong>What ran</strong> — model, prompt, and parameters are captured in the per-activity chat-log variable. See <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/audit-trail/">Audit Trail</a>.</li>
+<li><strong>What it touched</strong> — tool calls (including <code>ProcessStarterTool</code> side-effects), MCP calls, and retrieved RAG chunks are recorded alongside the conversation. See
+<a href="/manual/2.2-ee/reference/connect/ai-agent-connector/tools/">Tools</a> and
+<a href="/manual/2.2-ee/reference/connect/ai-agent-connector/rag/">RAG</a>.</li>
+<li><strong>That it was AI</strong> — every answer is marked with the <code>aiMeta</code> provenance variable, so downstream steps and reviewers can distinguish AI-generated content from human input.</li>
+<li><strong>Who signed off</strong> — approval is a matter of process design: route the agent&rsquo;s output to a human task before it has consequential effect, and the engine&rsquo;s own history (task assignee, completion time, business key) provides the &ldquo;who reviewed it&rdquo; record alongside the chat-log.</li>
+</ul>
+<p>What the connector does <strong>not</strong> decide for you: your risk classification under the Act, retention periods, who is authorised to approve AI-assisted outcomes, and how case-level context (document origin, the process instance&rsquo;s business key, which staff handled which step) is tied together across a full process — those remain organisational and process-design decisions, not something a platform can supply out of the box.</p>
+
 <h2 id="security-checklist-per-deployment">Security checklist (per deployment)</h2>
 <ul>
 <li><input disabled="" type="checkbox"> LLM endpoint and any MCP servers are approved for the data classification you&rsquo;ll send them.</li>
@@ -4202,8 +4215,9 @@ data-in-transit to the model. Choose the provider/endpoint accordingly.</p>
 <li><input disabled="" type="checkbox"> Egress from the engine JVM to <code>baseUrl</code>/MCP URLs is allowed only where intended.</li>
 <li><input disabled="" type="checkbox"> Tool-enabled agents run under least-privilege identities; toolset minimised per task.</li>
 <li><input disabled="" type="checkbox"> Edit rights on process models / element templates are restricted (privileged config).</li>
-<li><input disabled="" type="checkbox"> Audit retention meets your risk tier (chat-log kept, or external sink configured); EU AI Act
-specifics in <code>COMPLIANCE.md</code>.</li>
+<li><input disabled="" type="checkbox"> Audit retention meets your risk tier (chat-log kept, or external sink configured); see
+<a href="#eu-ai-act--traceability--documentation">EU AI Act — traceability &amp; documentation</a> above for
+what&rsquo;s recorded automatically vs. what&rsquo;s a process-design decision.</li>
 </ul>
 
     </div>
@@ -4220,6 +4234,7 @@ specifics in <code>COMPLIANCE.md</code>.</li>
     <li><a href="#agentic-risk-prompt-injection--untrusted-input">Agentic risk: prompt injection &amp; untrusted input</a></li>
     <li><a href="#tool-blast-radius--least-privilege">Tool blast radius &amp; least privilege</a></li>
     <li><a href="#redaction--non-disclosure">Redaction ≠ non-disclosure</a></li>
+    <li><a href="#eu-ai-act--traceability--documentation">EU AI Act — traceability &amp; documentation</a></li>
     <li><a href="#security-checklist-per-deployment">Security checklist (per deployment)</a></li>
   </ul>
 </nav>

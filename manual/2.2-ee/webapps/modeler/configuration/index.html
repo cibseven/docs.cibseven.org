@@ -4076,17 +4076,17 @@
     <tr>
       <td><code>cibseven.webclient.modeler.history.maxResults</code></td>
       <td><code>30</code></td>
-      <td>Maximum number of diagram snapshots listed in the history of one diagram. <strong>Will be available from 2.3.0.</strong> See <a href="/manual/2.2-ee/webapps/modeler/user-guide/snapshots/">Snapshots &amp; Comparison</a>. Enterprise Edition only.</td>
+      <td>Maximum number of snapshots listed in the history of one diagram or form. <strong>Will be available from 2.3.0.</strong> See <a href="/manual/2.2-ee/webapps/modeler/user-guide/snapshots/">Snapshots &amp; Comparison</a>. Enterprise Edition only.</td>
     </tr>
     <tr>
-      <td><code>cibsevenmodeler.deleteProcesses.versionLimit</code></td>
+      <td><code>cibseven.webclient.modeler.history.versionLimit</code></td>
       <td><code>50</code></td>
-      <td>Number of diagram versions kept per diagram; the snapshots below that are deleted by the cleanup job. Enterprise Edition only.</td>
+      <td>Number of versions kept per diagram and per form; the snapshots below that are deleted by the cleanup job. <strong>Will be available from 2.3.0.</strong> Enterprise Edition only.</td>
     </tr>
     <tr>
-      <td><code>cibsevenmodeler.deleteProcesses.cron</code></td>
+      <td><code>cibseven.webclient.modeler.history.cron</code></td>
       <td><code>0 0 0 * * ?</code></td>
-      <td>Cron expression controlling when the diagram version cleanup job runs (default: midnight daily). Enterprise Edition only.</td>
+      <td>Cron expression controlling when the cleanup job runs (default: midnight daily). <strong>Will be available from 2.3.0.</strong> Enterprise Edition only.</td>
     </tr>
     <tr>
       <td><code>cibseven.webclient.modeler.templates.paths</code></td>
@@ -4095,6 +4095,16 @@
     </tr>
   </tbody>
 </table>
+
+<div class="note bg-info docs-info">
+  <h3>Renamed in 2.3.0</h3>
+  <p>The snapshot retention used to be configured as <code>cibsevenmodeler.deleteProcesses.versionLimit</code> and
+<code>cibsevenmodeler.deleteProcesses.cron</code>, the last modeler settings outside the
+<code>cibseven.webclient.modeler</code> prefix. Those names are still read, so an installation configured
+before 2.3.0 keeps its retention and logs a warning naming the replacement; setting both means the
+new name wins. They will stop being read in a future release.</p>
+</div>
+
 
     </div>
 

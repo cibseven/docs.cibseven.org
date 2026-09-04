@@ -4023,30 +4023,35 @@
       
 <div class="note bg-info docs-info">
   <h3>Enterprise Feature</h3>
-  <p>Diagram snapshots, restore and comparison are only available in the enterprise edition with <code>cibseven.webclient.modeler.enabled: true</code>. See <a href="/manual/2.2-ee/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>.</p>
+  <p>Snapshots, restore and comparison are only available in the enterprise edition with <code>cibseven.webclient.modeler.enabled: true</code>. See <a href="/manual/2.2-ee/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>.</p>
 </div>
 
-<p>Every time a diagram is saved, the modeler records a <strong>snapshot</strong> of its state. Snapshots let you review how a diagram evolved, restore an earlier state, and visually compare two saved states.</p>
+<p>Every time a diagram or a form is saved, the modeler records a <strong>snapshot</strong> of its state. Snapshots let you review how it evolved, restore an earlier state, and compare two saved states. Forms are kept this way <strong>from 2.3.0</strong>; before that, only diagrams were.</p>
 
 <h2 id="browsing-snapshots">Browsing Snapshots</h2>
-<p>Open a diagram and use the snapshot (history) button in the modeler toolbar. A selector lists the saved snapshots of the current diagram, newest first, including who saved them and when. Use the search field to narrow the list.</p>
-<p>The list holds the saves that changed the diagram itself. Saving only a rename or a new description is recorded as well, but is not offered as a state to go back to, since going back to it would change nothing. The number of entries the list shows is capped by <code>cibseven.webclient.modeler.history.maxResults</code> (default <code>30</code>, <strong>available from 2.3.0</strong>).</p>
+<p>Open a diagram or a form and use the snapshot (history) button in the modeler toolbar. A selector lists the saved snapshots of what is open, newest first, including who saved them and when. Use the search field to narrow the list.</p>
+<p>The list holds the saves that changed the content itself. Saving only a rename or a new description is recorded as well, but is not offered as a state to go back to, since going back to it would change nothing. The number of entries the list shows is capped by <code>cibseven.webclient.modeler.history.maxResults</code> (default <code>30</code>, <strong>available from 2.3.0</strong>).</p>
 
 <h2 id="restoring-a-snapshot">Restoring a Snapshot</h2>
-<p>Selecting a snapshot loads that saved state into the editor. The restored content becomes the working state of the diagram — save it to make it the newest snapshot. Nothing is deleted by restoring: the snapshots it was restored from remain in the history.</p>
+<p>Selecting a snapshot loads that saved state into the editor. The restored content becomes the working state — save it to make it the newest snapshot. Restoring is not a save in itself: saving stays disabled until you edit something. Nothing is deleted by restoring: the snapshots it was restored from remain in the history.</p>
 
 <h2 id="comparing-snapshots">Comparing Snapshots</h2>
-<p>The compare button opens the snapshot comparison view:</p>
+<p>The compare button appears as soon as there is a second snapshot to compare with, and opens the comparison view:</p>
 <ol>
 <li>Select two snapshots to compare (typically an older and a newer state).</li>
-<li>The diff viewer highlights the structural changes between them directly on the diagram: added, removed and changed elements.</li>
-<li>Layout-only movements are distinguished from semantic changes to the process model.</li>
+<li>Press <em>Compare</em>. The headings above the comparison name the two versions being shown, so changing a selection afterwards does not change what is on screen until you compare again.</li>
 </ol>
-<p>The comparison is a structural BPMN diff (powered by <code>bpmn-js-differ</code>), so renamed properties, changed task types, and added/removed flows are detected even when the visual layout barely changes.</p>
+
+<h3 id="bpmn">BPMN</h3>
+<p>A BPMN comparison is a structural diff (powered by <code>bpmn-js-differ</code>), so renamed properties, changed task types and added or removed flows are found even when the visual layout barely changes. It opens on the <em>Visual diff</em> tab, which marks the changes on the diagram itself and lists them beside it, layout-only movements apart from semantic changes. The <em>Code diff</em> tab shows the same two versions as XML.</p>
+
+<h3 id="dmn-and-forms">DMN and forms</h3>
+<p>There is no structural differ for decision tables or for forms, so their comparison is the <em>Code diff</em>: the two versions side by side, with additions and removals highlighted, DMN as XML and a form as its JSON schema. A form schema is indented before it is compared, so the way one save happened to be formatted is not reported as a change.</p>
+<p>Reading a form comparison, keep in mind that it compares the text: a field dragged to another position appears as removed where it was and added where it now is, rather than as a move.</p>
 
 <h2 id="retention">Retention</h2>
-<p>A scheduled job keeps the newest <code>cibsevenmodeler.deleteProcesses.versionLimit</code> versions of every diagram (default <code>50</code>) and deletes the snapshots below that, so the history of a long-lived diagram does not grow without end. <code>cibsevenmodeler.deleteProcesses.cron</code> controls when it runs (default: midnight daily). Snapshots are per diagram: deleting a diagram removes its own history only.</p>
-<p>Both properties are listed in the <a href="/manual/2.2-ee/webapps/modeler/configuration/">Configuration Reference</a>, and the snapshots live in <code>mod_processes_diagrams_aud</code> — see <a href="/manual/2.2-ee/webapps/modeler/installation/database-schema/">Database Schema</a>.</p>
+<p>A scheduled job keeps the newest <code>cibseven.webclient.modeler.history.versionLimit</code> versions of every diagram and every form (default <code>50</code>) and deletes the snapshots below them, so the history of something edited for years does not grow without end. <code>cibseven.webclient.modeler.history.cron</code> controls when it runs (default: midnight daily). Snapshots belong to one diagram or form: cleaning one never touches another.</p>
+<p>The properties are listed in the <a href="/manual/2.2-ee/webapps/modeler/configuration/">Configuration Reference</a>, and the snapshots live in <code>mod_processes_diagrams_aud</code> and <code>mod_forms_aud</code> — see <a href="/manual/2.2-ee/webapps/modeler/installation/database-schema/">Database Schema</a>.</p>
 
     </div>
   </div>
@@ -4058,7 +4063,12 @@
   <ul>
     <li><a href="#browsing-snapshots">Browsing Snapshots</a></li>
     <li><a href="#restoring-a-snapshot">Restoring a Snapshot</a></li>
-    <li><a href="#comparing-snapshots">Comparing Snapshots</a></li>
+    <li><a href="#comparing-snapshots">Comparing Snapshots</a>
+      <ul>
+        <li><a href="#bpmn">BPMN</a></li>
+        <li><a href="#dmn-and-forms">DMN and forms</a></li>
+      </ul>
+    </li>
     <li><a href="#retention">Retention</a></li>
   </ul>
 </nav>
