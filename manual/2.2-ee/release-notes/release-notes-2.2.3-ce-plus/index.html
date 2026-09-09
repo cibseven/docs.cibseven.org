@@ -4072,7 +4072,7 @@
 
 <h3 id="highlights">Highlights</h3>
 <ul>
-<li><strong>Security</strong> Two Medium-severity CVEs resolved in <code>httpcomponents</code> (<code>CVE-2026-54399</code>, <code>CVE-2026-64607</code>) via updates to <code>httpcore5</code> and <code>httpclient5</code>; <code>Tomcat</code> (<code>tomcat10</code>) and the Alpine base image <code>openssl</code> libraries (<code>libcrypto</code>, <code>libssl</code>) were also updated to resolve reported vulnerabilities without an assigned CVE ID; <code>log4j</code> updated to <code>2.25.5</code> and <code>wildfly</code> to <code>41.0.1</code></li>
+<li><strong>Security</strong> 46 CVEs resolved (3 Critical, 11 High, 16 Medium, 16 Low) across Apache <code>Tomcat</code>, <code>curl</code>/<code>libcurl</code>, <code>openssl</code> (<code>libcrypto3</code>, <code>libssl3</code>), Apache <code>HttpComponents</code> (<code>httpcore5</code>, <code>httpclient5</code>), <code>netty</code>, and <code>log4j</code>, from the Alpine base image and JVM dependency updates below; <code>wildfly</code> also updated to <code>41.0.1</code></li>
 <li><strong>Authorization</strong> Fixed a case-insensitive user id query bug that silently ignored additional query criteria and bypassed the <code>READ</code> permission check when looking up users by id</li>
 <li><strong>Engine</strong> Fixed a GraalJS polyglot <code>Context</code> leak in JavaScript script tasks that could exhaust memory under sustained load</li>
 <li><strong>Decision (DMN)</strong> DMN diagram viewport, panel size, and sidebar state are now persisted and restored across views</li>
@@ -4089,12 +4089,12 @@
 
 <h4 id="process-definitions">Process Definitions</h4>
 <ul>
-<li>Added an incidents icon to the state column of the &ldquo;Instances&rdquo; table when the <a href="/manual/2.2-ee/user-guide/process-engine/history/history-configuration/">history level</a> is <code>none</code></li>
+<li>Added an incidents icon to the state column of the <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-definition-view/#enterprise-features">&ldquo;Instances&rdquo; table</a> when the <a href="/manual/2.2-ee/user-guide/process-engine/history/history-configuration/">history level</a> is <code>none</code></li>
 </ul>
 
 <h4 id="execution-metrics">Execution Metrics</h4>
 <ul>
-<li>Added a copy button for each annual statistics item, and a total row for &ldquo;last 12 months&rdquo; statistics</li>
+<li>Added a copy button for each annual statistics item, and a total row for &ldquo;last 12 months&rdquo; statistics, in the <a href="/manual/2.2-ee/webapps/cockpit/dashboard/#process-engine-metrics">Process Engine Metrics</a> dashboard widget</li>
 </ul>
 
 <h3 id="bug-fixes">Bug Fixes</h3>
@@ -4117,7 +4117,7 @@
 
 <h4 id="execution-metrics-1">Execution Metrics</h4>
 <ul>
-<li>Fixed chart data losing its month alignment when switching language</li>
+<li>Fixed <a href="/manual/2.2-ee/webapps/cockpit/dashboard/#process-engine-metrics">Process Engine Metrics</a> chart data losing its month alignment when switching language</li>
 <li>Fixed chart data labels, y-axis, and tooltip values not using the active locale&rsquo;s number formatting</li>
 </ul>
 
@@ -4138,15 +4138,17 @@
 <ul>
 <li>Update <code>Spring Boot 4</code> from <code>4.0.7</code> to <code>4.0.8</code></li>
 <li>Update <code>Spring Boot</code> from <code>3.5.15</code> to <code>3.5.16</code></li>
-<li>Update <code>log4j</code> from <code>2.25.4</code> to <code>2.25.5</code></li>
+<li>Update <code>log4j</code> from <code>2.25.4</code> to <code>2.25.5</code>, fixing <code>CVE-2026-49844</code></li>
 <li>Update <code>wildfly</code> from <code>41.0.0</code> to <code>41.0.1</code></li>
-<li>Update <code>httpclient5</code> (<code>org.apache.httpcomponents.client5:httpclient5</code>) to <code>5.6.4</code>, fixing <code>CVE-2026-64607</code></li>
-<li>Update <code>httpcore5</code> (<code>org.apache.httpcomponents.core5:httpcore5</code>) to <code>5.4.3</code>, fixing <code>CVE-2026-54399</code></li>
-<li>Update <code>tomcat10</code> to <code>10.1.59</code></li>
+<li>Update <code>Tomcat</code> (<code>tomcat10</code>, <code>org.apache.tomcat.embed:tomcat-embed-core</code>, <code>org.apache.tomcat:tomcat-catalina</code>) from <code>10.1.55</code> to <code>10.1.59</code>, fixing <code>CVE-2026-65182</code>, <code>CVE-2026-65905</code>, and <code>CVE-2026-68525</code></li>
+<li>Update <code>httpcore5</code> (<code>org.apache.httpcomponents.core5:httpcore5</code>) from <code>5.3.4</code> to <code>5.4.3</code>, fixing <code>CVE-2026-54399</code> and <code>CVE-2026-54428</code></li>
+<li>Update <code>httpclient5</code> (<code>org.apache.httpcomponents.client5:httpclient5</code>) from <code>5.5</code> to <code>5.6.4</code>, fixing <code>CVE-2026-64607</code></li>
+<li>Update <code>curl</code> (<code>libcurl</code>) from <code>8.20.0-r0</code> to <code>8.22.0-r0</code> (Alpine base image), resolving multiple vulnerabilities (see Resolved CVE Vulnerabilities below)</li>
+<li>Update <code>netty</code> (<code>netty-codec-http</code>) to a patched version, fixing <code>CVE-2026-59903</code></li>
 <li>Update <code>postgresql</code> (JDBC driver) to <code>42.7.13</code></li>
 <li>Update <code>graal.js</code> to <code>21.3.19.1</code></li>
 <li>Update <code>resteasy</code> to <code>6.2.17.Final</code></li>
-<li>Update <code>openssl</code> (<code>libcrypto</code>, <code>libssl</code>) in the Docker base image (Alpine)</li>
+<li>Update <code>openssl</code> (<code>libcrypto3</code>, <code>libssl3</code>) from <code>3.5.7-r0</code> to <code>3.5.8-r0</code> (Alpine base image), resolving multiple vulnerabilities (see Resolved CVE Vulnerabilities below)</li>
 </ul>
 
 <h4 id="build--configuration">Build &amp; Configuration</h4>
@@ -4157,10 +4159,66 @@
 
 <h4 id="resolved-cve-vulnerabilities">Resolved CVE Vulnerabilities</h4>
 
+<h5 id="critical-severity">Critical Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-65182">CVE-2026-65182</a></strong> - Improper Access Control, Incorrect Authorization vulnerability in Apache Tomcat leads to security constraint bypass if a constraint for a longer path is specified before a more restrictive constraint for a shorter sub-path. Affects <code>org.apache.tomcat.embed:tomcat-embed-core</code>, <code>org.apache.tomcat:tomcat-catalina</code>. - CVSS 9.1.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-65905">CVE-2026-65905</a></strong> - Authentication Bypass by Capture-replay vulnerability in Apache Tomcat&rsquo;s DIGEST authenticator. Affects <code>org.apache.tomcat.embed:tomcat-embed-core</code>, <code>org.apache.tomcat:tomcat-catalina</code>. - CVSS 9.8.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-68525">CVE-2026-68525</a></strong> - Incorrect Authorization vulnerability in Apache Tomcat&rsquo;s FORM authentication process allows the bypassing of a security constraint that limits user has access to a resource POST but not GET. Affects <code>org.apache.tomcat.embed:tomcat-embed-core</code>, <code>org.apache.tomcat:tomcat-catalina</code>. - CVSS 9.1.</li>
+</ul>
+
+<h5 id="high-severity">High Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-11352">CVE-2026-11352</a></strong> - An issue in curl’s QUIC UDP receive function allows a malicious HTTP/3 server to trigger a remote denial of service against a curl or libcurl client. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-11586">CVE-2026-11586</a></strong> - By default, curl automatically responds to WebSocket PING frames. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-12064">CVE-2026-12064</a></strong> - When a user invokes curl using a schemeless URL combined with <code>--proto-default</code> sftp (or scp), a disconnect occurs between the tool layer and libcurl. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-14456">CVE-2026-14456</a></strong> - Impact summary: A remote peer that can make many Initial packets reach the server listener faster than the application accepts connections, can cause the memory allocated to store the per-channel state to grow without any limits, potentially making the QUIC listener unavailable and causing Denial of Service. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54399">CVE-2026-54399</a></strong> - Uncontrolled Resource Consumption vulnerability in the HTTP/1.1 message parser in Apache HttpComponents Core (5.4.2 and earlier, 5.5-beta1 and earlier) allows an remote attacker to cause a denial of service through memory exhaustion by sending messages with excessive number of headers / excessive header length. Affects <code>org.apache.httpcomponents.core5:httpcore5</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54428">CVE-2026-54428</a></strong> - Allocation of resources without limits or throttling in the HTTP/2 HPACK decoder in Apache HttpComponents Core (5.4.2 and earlier, 5.5-beta1 and earlier) allows an remote attacker to cause a denial of service through memory exhaustion by sending oversized compressed header blocks before the HTTP/2 SETTINGS&hellip; Affects <code>org.apache.httpcomponents.core5:httpcore5-h2</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8286">CVE-2026-8286</a></strong> - A vulnerability exists where a new transfer that uses STARTTLS to upgrade the connection might reuse an existing live connection even though the TLS configuration mismatches so it should not. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 8.1.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8458">CVE-2026-8458</a></strong> - libcurl might in some circumstances reuse the wrong connection when asked to do Negotiate-authenticated ones, even when they are set to use different &lsquo;services&rsquo;. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 6.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8925">CVE-2026-8925</a></strong> - The curl logic that works with SASL authentication could end up cleaning up the GSASL context <em>twice</em> without clearing the pointer in between, making it <code>free()</code> the same pointer twice. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.8.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8927">CVE-2026-8927</a></strong> - When reusing a libcurl handle for sequential transfers driven by environment-variable proxy configuration, libcurl fails to clear the proxy authentication state between requests. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.1.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-9547">CVE-2026-9547</a></strong> - When a libcurl-based application performs transfers via <code>SCP://</code> or <code>SFTP://</code> and utilizes the <code>CURLOPT_SSH_KEYFUNCTION</code> callback, it may silently accept an untrusted server. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.4.</li>
+</ul>
+
 <h5 id="medium-severity">Medium Severity</h5>
 <ul>
-<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54399">CVE-2026-54399</a></strong> - A reported vulnerability in <code>httpcomponents</code>, addressed by upgrading <code>httpcore5</code> to <code>5.4.3</code>.</li>
-<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-64607">CVE-2026-64607</a></strong> - A second reported vulnerability in <code>httpcomponents</code>, addressed by upgrading <code>httpclient5</code> to <code>5.6.4</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-10536">CVE-2026-10536</a></strong> - A use-after-free vulnerability exists in libcurl when an application configures an HTTP/2 stream-dependency tree via <code>CURLOPT_STREAM_DEPENDS</code> or <code>CURLOPT_STREAM_DEPENDS_E</code>, subsequently invokes <code>curl_easy_reset()</code>, and finally terminates the handle with <code>curl_easy_cleanup()</code>. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.8.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-11564">CVE-2026-11564</a></strong> - libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 6.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-11856">CVE-2026-11856</a></strong> - Successfully using libcurl to do a transfer to a specific HTTP origin (<code>hostA</code>) with <strong>Digest</strong> authentication and then changing the origin to a different one (<code>hostB</code>) for a second transfer, reusing the same handle, makes libcurl wrongly pass on the <code>Authorization:</code> header field meant for <code>hostA</code>, to <code>hostB</code>. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.8.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-18798">CVE-2026-18798</a></strong> - Impact summary: Double free leads to heap corruption, which typically results in termination of QUIC server process, leading to Denial of Service. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-49844">CVE-2026-49844</a></strong> - * The application logs a MapMessage that contains an attacker-controlled floating-point value. Affects <code>org.apache.logging.log4j:log4j-api</code>. - CVSS 5.9.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59903">CVE-2026-59903</a></strong> - Prior to 4.1.137.Final and 4.2.17.Final, io.netty.handler.codec.http.cors.CorsHandler setVaryHeader replaces application Vary headers such as Authorization or Cookie with Origin, allowing a caching proxy or CDN to reuse authenticated responses across users and disclose sensitive information. Affects <code>io.netty:netty-codec-http</code>. - CVSS 6.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63072">CVE-2026-63072</a></strong> - Impact summary: An attacker who supplies a crafted CMS message can trigger a deterministic 8-byte out-of-bounds heap write when the victim decrypts it with CMS_decrypt(), corrupting the heap and typically resulting in a Denial of Service. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63076">CVE-2026-63076</a></strong> - Impact summary: A remote, unauthenticated attacker can crash an application acting as a CMP server that accepts PBM-protected messages, or a CMP client talking to a malicious or intercepted CMP server, resulting in a Denial of Service. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-64607">CVE-2026-64607</a></strong> - HttpClient based on the classic i/o model fails to correctly release the underlying connection back to the connection manager if it encounters an invalid or unsupported <code>Content-Encoding</code> header value in the response message. Affects <code>org.apache.httpcomponents.client5:httpclient5</code>. - CVSS 5.3.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8924">CVE-2026-8924</a></strong> - A flaw in curl’s cookie parsing logic allows a malicious HTTP server to set &lsquo;super cookies&rsquo; that bypass the Public Suffix List check. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.1.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8926">CVE-2026-8926</a></strong> - When asking curl to use a <code>.netrc</code> file to find credentials and at the same time specifying a URL with a username(without a password), like <code>https://user@example.com/</code>, curl could wrongly get and use the password for <em>another</em> user set in the <code>.netrc</code> file for that host if such a one exists and there is no match for&hellip; Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.1.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8932">CVE-2026-8932</a></strong> - libcurl would reuse a previously created connection even when some mTLS config related option had been changed that should have prohibited reuse. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-9079">CVE-2026-9079</a></strong> - libcurl had a flaw that when instructed to clear proxy authentication credentials which made it not do so, leaving the old credentials around to get used for subsequent transfers that should not know nor use them. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 9.8.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-9080">CVE-2026-9080</a></strong> - Calling <code>curl_easy_pause()</code> within the event-based <code>CURLMOPT_SOCKETFUNCTION</code> callback triggers a use-after-free vulnerability, where libcurl attempts to store a flag using a dangling struct pointer immediately after that pointer&rsquo;s memory has been freed. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.3.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-9545">CVE-2026-9545</a></strong> - In this scenario, libcurl first uses a proper HTTP/3 server for the initial transfers, and when it makes a second transfer to the same site it has been replaced by the attacker&rsquo;s impostor machine - without a valid certificate. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-9546">CVE-2026-9546</a></strong> - A vulnerability in libcurl caused the HTTP <code>Referer:</code> header to persist even when explicitly cleared. Affects <code>curl</code>, <code>libcurl</code>. - CVSS 7.5.</li>
+</ul>
+
+<h5 id="low-severity">Low Severity</h5>
+<ul>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-13608">CVE-2026-13608</a></strong> - [Unknown description]. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-14457">CVE-2026-14457</a></strong> - Impact summary: The impact is limited to a possible Denial of Service as a result of an application abort, no data disclosure or remote command execution are possible. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-18924">CVE-2026-18924</a></strong> - Description Not Available. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-19931">CVE-2026-19931</a></strong> - A flaw in libcurl makes it wrongly reuse an HTTP connection setup for a given hostname using Negotiate authentication, when the initial request is done using empty credentials. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54874">CVE-2026-54874</a></strong> - Impact summary: A peer can use a small amount of network traffic to make an OpenSSL DTLS endpoint retain a disproportionately large amount of memory, which may lead to a Denial of Service. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63073">CVE-2026-63073</a></strong> - Percent characters survive the conversion, so a sender DN such as &ldquo;CN=%s%n&rdquo; reaches BIO_vsnprintf() as an attacker-controlled format string with no matching variadic arguments. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 5.9.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63074">CVE-2026-63074</a></strong> - This exposes servers with long lived ctx objects to Denial of Service attacks in which an attacker sends messages intending to be rejected with a large list of additional certificates repeatedly, forcing the server to store them indefinitely. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63075">CVE-2026-63075</a></strong> - Impact summary: A remote peer that can complete a QUIC handshake can cause connection-scoped memory growth which may lead to Denial of Service through memory exhaustion, especially with sustained traffic or many concurrent QUIC connections. Affects <code>libcrypto3</code>, <code>libssl3</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-75803">CVE-2026-75803</a></strong> - Issue summary: ChaCha20-Poly1305 and AES-OCB decryption with an empty ciphertext can report success without verifying the supplied authentication tag when the operation is finalized by calling the EVP_Cipher() function. Affects <code>libcrypto3</code>, <code>libssl3</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-80229">CVE-2026-80229</a></strong> - [Unknown description]. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-80230">CVE-2026-80230</a></strong> - Bypassing the pinning check under these disabled-verification conditions allows unauthenticated connections to succeed when they should be rejected. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-80231">CVE-2026-80231</a></strong> - Description Not Available. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-80255">CVE-2026-80255</a></strong> - [Unknown description]. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-80256">CVE-2026-80256</a></strong> - Vulnerability fixed by upgrading the affected package. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-82208">CVE-2026-82208</a></strong> - [Unknown description]. Affects <code>curl</code>, <code>libcurl</code>.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-82209">CVE-2026-82209</a></strong> - Consequently, the cookie is inappropriately included in subsequent outbound requests or HTTP redirects to arbitrary sibling subdomains under the same public suffix (e.g., <code>attacker.co.uk</code>). Affects <code>curl</code>, <code>libcurl</code>.</li>
 </ul>
 
     </div>
