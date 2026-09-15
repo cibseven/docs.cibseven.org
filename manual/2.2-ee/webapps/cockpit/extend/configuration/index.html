@@ -2851,14 +2851,6 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/webapps/welcome/welcome-plugins/" >Plugins</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
       <a href="/manual/2.2-ee/webapps/welcome/configuration/" >Configuration</a>
     
   </li>
@@ -2911,14 +2903,6 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/2.2-ee/webapps/tasklist/tasklist-plugins/" >Plugins</a>
     
   </li>
 
@@ -3143,13 +3127,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/webapps/cockpit/extend/" >Extending</a>
-      <ul>
-        
-          
-  <li>
-    
-      <a href="/manual/2.2-ee/webapps/cockpit/extend/configuration/" >Configuration</a>
+      <a href="/manual/2.2-ee/webapps/cockpit/deep-links/" >Deep Links</a>
     
   </li>
 
@@ -3157,7 +3135,13 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/webapps/cockpit/extend/plugins/" >Plugins</a>
+      <a href="/manual/2.2-ee/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/extend/configuration/" >Configuration</a>
     
   </li>
 
@@ -3230,14 +3214,6 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/admin/configuration/" >Configuration</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/2.2-ee/webapps/admin/plugins/" >Plugins</a>
     
   </li>
 
@@ -3364,6 +3340,14 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
     
   </li>
@@ -3426,6 +3410,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/plugins/" >Plugins</a>
     
   </li>
 
@@ -4180,7 +4172,7 @@ available, add it to the list of available locales in the configuration file.</p
 
 <h2 id="custom-scripts">Custom Scripts</h2>
 <p>Cockpit allows you to include arbitrary JavaScript files. This allows you to extend Cockpit with custom code. The script file might contain a
-custom frontend module as described in <a href="/manual/2.2-ee/webapps/cockpit/extend/plugins/#structure-of-a-frontend-module">Cockpit Plugins - Structure of a Frontend Module</a>.</p>
+custom frontend module, see <a href="#structure-of-a-frontend-module">Structure of a frontend module</a> below.</p>
 <p>Add your files to the <code>customScripts</code> property of the <code>app/cockpit/scripts/config.js</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// …
@@ -4190,25 +4182,54 @@ custom frontend module as described in <a href="/manual/2.2-ee/webapps/cockpit/e
 </span></span></code></pre></div><p>This includes a <code>custom-module/module.js</code> file. The path is relative to the <code>app/cockpit</code> folder in the CIB seven webapp .war file.</p>
 <p>You can find a complete example about how to use <code>customScripts</code> to develop a Cockpit Plugin in the <a href="https://github.com/cibseven/cibseven-bpm-examples/tree/master/cockpit/cockpit-cats">CIB seven examples repository</a>.</p>
 
-<h3 id="legacy-custom-scripts">Legacy Custom Scripts</h3>
-<p>Custom Scripts created for Camunda 7.13 or earlier can be included using the <code>requireJsConfig</code> property to the <code>app/cockpit/scripts/config.js</code>. You can include these custom scripts using the custom <a href="https://requirejs.org/docs/api.html#config">requireJS configuration</a>.</p>
+<h3 id="structure-of-a-frontend-module">Structure of a frontend module</h3>
+<p>A frontend module always follows the same structure. This is how a sample <code>plugin.js</code> could look like:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Javascript" data-lang="Javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// …
-</span></span></span><span class="line"><span class="cl">  <span class="nx">requireJsConfig</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// names of angular modules defined in your custom script files.
-</span></span></span><span class="line"><span class="cl">    <span class="c1">// will be added to the &#39;cam.cockpit.custom&#39; as dependencies
-</span></span></span><span class="line"><span class="cl">    <span class="nx">ngDeps</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;my.custom.module&#39;</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// RequireJS modules to load.
-</span></span></span><span class="line"><span class="cl">    <span class="nx">deps</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;custom-ng-module&#39;</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// RequreJS path definitions
-</span></span></span><span class="line"><span class="cl">    <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s1">&#39;custom-ng-module&#39;</span><span class="o">:</span> <span class="s1">&#39;../custom-ng-module/script&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span><span class="o">:</span> <span class="s2">&#34;customPlugin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pluginPoint</span><span class="o">:</span> <span class="s2">&#34;cockpit.dashboard&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">priority</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="o">:</span> <span class="nx">container</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&#34;Hello World!&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>For more details about legacy Plugins, check out the legacy <a href="https://docs.camunda.org/manual/7.13/webapps/cockpit/extend/plugins/">plugin documentation of Camunda</a>. Please note that this link will take you to the documentation of Camunda <strong>7.13</strong> .</p>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div>
+<div class="note bg-info docs-info">
+  <h3>Important notes about the structure</h3>
+  <p><ol>
+<li>The default export is either one module or an array of modules. Only the default export will be considered in Cockpit.</li>
+<li>The render function must not have a return value.</li>
+</ol>
+</p>
+</div>
+
+<ul>
+<li>
+<p><code>id</code>: A string which defines this module. Should be unique across the application.</p>
+</li>
+<li>
+<p><code>pluginPoint</code>: A string which describes where the module is rendered, for example <code>cockpit.dashboard</code>. This also defines which parameters are passed into the render function.</p>
+</li>
+<li>
+<p><code>priority</code>: Number, describes in which order modules at the same plugin point are mounted. For some plugin points a negative priority hides the entry in a dropdown.</p>
+</li>
+<li>
+<p><code>render</code>: Function, the heart of your module. Arguments are (<code>DOMNode</code>|<code>BPMNioViewerInstance</code>, additionalData (<code>Object</code>)). Using the DOM node, you render into the page. The second argument contains API endpoints and CSRF cookie information, as well as constants like a <code>processDefinitionId</code>. The <code>api</code> key is always present and contains</p>
+<ul>
+<li><code>engine</code>: the engine name</li>
+<li><code>CSRFToken</code>: the current CSRF token for your requests</li>
+<li><code>baseApi</code>, <code>adminApi</code>, <code>cockpitApi</code>, <code>engineApi</code>: the paths to the different API endpoints. The engineApi corresponds to the <a href="/manual/2.2-ee/reference/rest/">REST API</a></li>
+</ul>
+</li>
+<li>
+<p><code>result</code>: Function, only available in data modules. Argument is a (<code>Promise</code>).</p>
+</li>
+<li>
+<p><code>unmount</code>: Optional function which is called when the module is unmounted. Use this to clean up any listeners you or your framework might have registered.</p>
+</li>
+<li>
+<p><code>properties</code>: Optional object which contains all additional configuration for the plugin point, such as labels.</p>
+</li>
+</ul>
 
 <h2 id="bpmn-diagram-viewer-bpmnjs">BPMN Diagram Viewer (bpmn.js)</h2>
 <p>The diagram viewer (bpmn.js) can be either customized by moddle extensions or
@@ -4354,7 +4375,7 @@ not want this message to be shown, you can disable it by adjusting the <code>con
     <li><a href="#localization">Localization</a></li>
     <li><a href="#custom-scripts">Custom Scripts</a>
       <ul>
-        <li><a href="#legacy-custom-scripts">Legacy Custom Scripts</a></li>
+        <li><a href="#structure-of-a-frontend-module">Structure of a frontend module</a></li>
       </ul>
     </li>
     <li><a href="#bpmn-diagram-viewer-bpmnjs">BPMN Diagram Viewer (bpmn.js)</a>

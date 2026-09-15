@@ -2851,14 +2851,6 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/welcome/welcome-plugins/" >Plugins</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
       <a href="/manual/latest/webapps/welcome/configuration/" >Configuration</a>
     
   </li>
@@ -2911,14 +2903,6 @@
   <li>
     
       <a href="/manual/latest/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/tasklist/tasklist-plugins/" >Plugins</a>
     
   </li>
 
@@ -3143,13 +3127,7 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
-      <ul>
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
+      <a href="/manual/latest/webapps/cockpit/deep-links/" >Deep Links</a>
     
   </li>
 
@@ -3157,7 +3135,13 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/plugins/" >Plugins</a>
+      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
     
   </li>
 
@@ -3230,14 +3214,6 @@
   <li>
     
       <a href="/manual/latest/webapps/admin/configuration/" >Configuration</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/admin/plugins/" >Plugins</a>
     
   </li>
 
@@ -3364,6 +3340,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
     
   </li>
@@ -3426,6 +3410,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/plugins/" >Plugins</a>
     
   </li>
 
@@ -4158,7 +4150,13 @@
 <h3 id="websocket">WebSocket</h3>
 <p>Chat uses <a href="https://stomp.github.io/">STOMP</a> over WebSocket. Clients connect to:</p>
 <pre tabindex="0"><code>ws://{host}/ws/chat
-</code></pre><p>Authentication is performed on the STOMP <code>CONNECT</code> frame:</p>
+</code></pre>
+<div class="note bg-info docs-info">
+  <h3>Endpoint Path</h3>
+  <p>The socket is actually registered under the webclient&rsquo;s application path (<code>camunda.bpm.webapp.application-path</code>, <code>/webapp</code> by default) when that property is set, e.g. <code>ws://{host}/webapp/ws/chat</code> — the same prefix the REST endpoints use. In a <strong>CIB seven Run EE</strong> distribution, this property is only set by the <code>production.yml</code> profile, not by <code>default.yml</code>, so start the distribution with the <code>--production</code> flag (or set the property explicitly) to keep the client and the endpoint on the same path. A WAR deployment behind a servlet context path does not need this: the container supplies the prefix and the endpoint itself stays unprefixed.</p>
+</div>
+
+<p>Authentication is performed on the STOMP <code>CONNECT</code> frame:</p>
 <pre tabindex="0"><code>CONNECT
 Authorization: Bearer &lt;token&gt;
 </code></pre><p>The server validates the token and associates the authenticated user with the WebSocket session for its entire lifetime.</p>

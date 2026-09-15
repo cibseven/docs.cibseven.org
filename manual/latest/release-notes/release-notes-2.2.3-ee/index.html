@@ -2851,14 +2851,6 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/welcome/welcome-plugins/" >Plugins</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
       <a href="/manual/latest/webapps/welcome/configuration/" >Configuration</a>
     
   </li>
@@ -2911,14 +2903,6 @@
   <li>
     
       <a href="/manual/latest/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/tasklist/tasklist-plugins/" >Plugins</a>
     
   </li>
 
@@ -3143,13 +3127,7 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
-      <ul>
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
+      <a href="/manual/latest/webapps/cockpit/deep-links/" >Deep Links</a>
     
   </li>
 
@@ -3157,7 +3135,13 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/plugins/" >Plugins</a>
+      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
     
   </li>
 
@@ -3230,14 +3214,6 @@
   <li>
     
       <a href="/manual/latest/webapps/admin/configuration/" >Configuration</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/admin/plugins/" >Plugins</a>
     
   </li>
 
@@ -3364,6 +3340,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
     
   </li>
@@ -3426,6 +3410,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/plugins/" >Plugins</a>
     
   </li>
 
@@ -4121,7 +4113,7 @@
 <li><strong>Engine</strong> Fixed a GraalJS polyglot <code>Context</code> leak in JavaScript script tasks that could exhaust memory under sustained load</li>
 <li><strong><a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a></strong> <em>(EE exclusive)</em> Fixed the chat WebSocket endpoint resolving to the wrong path in the CIB seven Run distribution, which prevented the chat from connecting</li>
 <li><strong>Decision (DMN)</strong> DMN diagram viewport, panel size, and sidebar state are now persisted and restored across views</li>
-<li><strong>License</strong> <em>(EE exclusive)</em> Fixed authentication of licensed chunks so it uses a token cookie</li>
+<li><strong><a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">License</a></strong> <em>(EE exclusive)</em> Fixed &ldquo;License Required&rdquo; being shown with a valid license when a custom authentication setup never puts the auth token in browser storage; authentication of licensed frontend chunks can now be left to the server</li>
 <li><strong><a href="/manual/latest/webapps/cockpit/bpmn/process-instance-migration/">Migration</a></strong> <em>(EE exclusive)</em> Fixed event trigger rebinding for receive tasks, timers, and gateways, and a timer-expression comparison bug in <code>updateEventTrigger</code></li>
 </ul>
 
@@ -4186,9 +4178,9 @@
 <li>Fixed finished-scope variables depending on the <a href="/manual/latest/user-guide/process-engine/history/history-configuration/">history level</a> being available, which could leave the Variables tab empty even though runtime variables existed</li>
 </ul>
 
-<h4 id="bpmn-ai-agent-chat-ee-exclusive">BPMN AI Agent Chat <em>(EE exclusive)</em></h4>
+<h4 id="modeler-chat-ee-exclusive">Modeler Chat <em>(EE exclusive)</em></h4>
 <ul>
-<li>Fixed the chat WebSocket application path being read from a property that the CIB seven Run distribution never sets, which left the endpoint at the context root while the browser connected below <code>/webapp</code>, preventing the chat from connecting. The path is now resolved from the distribution&rsquo;s own properties first, falling back to the context root</li>
+<li>Fixed the <a href="/manual/latest/webapps/modeler/user-guide/chat/#websocket">chat</a> WebSocket endpoint failing to connect in CIB seven Run EE deployments started without the <code>--production</code> flag, which left the endpoint registered at the context root instead of under <code>/webapp</code> where the browser connected. The path is now resolved the same way as for the REST endpoints, falling back to the context root</li>
 </ul>
 
 <h4 id="decision-dmn-ee-exclusive">Decision (DMN) <em>(EE exclusive)</em></h4>
@@ -4204,12 +4196,13 @@
 
 <h4 id="license-ee-exclusive">License <em>(EE exclusive)</em></h4>
 <ul>
-<li>Fixed licensed chunk authentication to use a token cookie instead of its previous mechanism</li>
+<li>Fixed &ldquo;License Required&rdquo; being shown with a valid license on a licensed <a href="/manual/latest/webapps/enterprise-features/">enterprise feature</a> (e.g. <a href="/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a>, the audit log or <a href="/manual/latest/webapps/cockpit/tasks-dashboard/#search-tasks">human task search</a>), when a custom authentication setup (SAML, or a reverse-proxy/gateway session) never writes the auth token to browser storage, leaving the webclient with nothing to attach to the chunk request. Setting the new <a href="/manual/latest/user-guide/cibseven-run/#tr-cibseven-webclient-license-chunk"><code>cibseven.webclient.license.chunk.trustServerAuthentication</code></a> lets the request reach the server, where the deployment&rsquo;s own user provider authenticates it — see <a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>. Deployments that do not set it are unaffected</li>
+<li>Fixed a custom user provider throwing on a licensed chunk request — for instance because its security context is only populated for REST paths — surfacing as <code>500</code> instead of a clean <code>403</code></li>
 </ul>
 
 <h4 id="application-shell-ee-exclusive">Application Shell <em>(EE exclusive)</em></h4>
 <ul>
-<li>Fixed the service worker not claiming an uncontrolled page, which could break a hard reload</li>
+<li>Fixed the service worker not claiming an uncontrolled page, which left a hard-reloaded page uncontrolled for the rest of its lifetime so <a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">licensed frontend chunks</a> could no longer be authenticated</li>
 </ul>
 
 <h4 id="cleanup-ee-exclusive">Cleanup <em>(EE exclusive)</em></h4>
@@ -4337,7 +4330,7 @@
             <li><a href="#execution-metrics-1">Execution Metrics</a></li>
             <li><a href="#process-instances">Process Instances</a></li>
             <li><a href="#variables">Variables</a></li>
-            <li><a href="#bpmn-ai-agent-chat-ee-exclusive">BPMN AI Agent Chat <em>(EE exclusive)</em></a></li>
+            <li><a href="#modeler-chat-ee-exclusive">Modeler Chat <em>(EE exclusive)</em></a></li>
             <li><a href="#decision-dmn-ee-exclusive">Decision (DMN) <em>(EE exclusive)</em></a></li>
             <li><a href="#migration-ee-exclusive">Migration <em>(EE exclusive)</em></a></li>
             <li><a href="#license-ee-exclusive">License <em>(EE exclusive)</em></a></li>

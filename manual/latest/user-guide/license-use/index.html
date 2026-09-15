@@ -2851,14 +2851,6 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/welcome/welcome-plugins/" >Plugins</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
       <a href="/manual/latest/webapps/welcome/configuration/" >Configuration</a>
     
   </li>
@@ -2911,14 +2903,6 @@
   <li>
     
       <a href="/manual/latest/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/tasklist/tasklist-plugins/" >Plugins</a>
     
   </li>
 
@@ -3143,13 +3127,7 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
-      <ul>
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
+      <a href="/manual/latest/webapps/cockpit/deep-links/" >Deep Links</a>
     
   </li>
 
@@ -3157,7 +3135,13 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/plugins/" >Plugins</a>
+      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
     
   </li>
 
@@ -3230,14 +3214,6 @@
   <li>
     
       <a href="/manual/latest/webapps/admin/configuration/" >Configuration</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/admin/plugins/" >Plugins</a>
     
   </li>
 
@@ -3364,6 +3340,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
     
   </li>
@@ -3426,6 +3410,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/plugins/" >Plugins</a>
     
   </li>
 
@@ -4151,6 +4143,24 @@ application must use the EE version of the starter, with <code>-ee</code> suffix
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${project-version}-ee<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div>
+<h2 id="authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</h2>
+<p>Many <a href="/manual/latest/webapps/enterprise-features/">enterprise features</a> are loaded by the browser as separate, license-gated JavaScript chunks — among them <a href="/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a>, the audit log and user operations, <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/">process restart</a> and <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/">modification</a>, <a href="/manual/latest/webapps/cockpit/bpmn/batch/">batch operations</a>, <a href="/manual/latest/webapps/cockpit/tasks-dashboard/#search-tasks">human task search</a>, <a href="/manual/latest/webapps/cockpit/dmn/dashboard/#decision-instance-search">decision instance search</a>, <a href="/manual/latest/webapps/cockpit/reporting/">reports</a>, <a href="/manual/latest/webapps/cockpit/cleanup/">cleanup</a> and the engine metrics charts. Every request for one of these chunks is checked against the license on the server, and refused with <code>403</code> if no valid license can be resolved.</p>
+<p>To let that check identify the user, the webclient registers a service worker that attaches the current user&rsquo;s auth token to each chunk request as an <code>Authorization</code> header — a dynamic <code>import()</code> issued by the browser cannot carry a custom header on its own, which is why the service worker exists at all.</p>
+<p>This breaks down when the user is already authenticated before the webclient starts. A custom integration — SAML, or a session established by a reverse proxy or API gateway — never passes through the standard login form, the SSO callback, or the <code>?token=</code> bootstrap, so nothing ever writes the token to <code>sessionStorage</code>/<code>localStorage</code>. The service worker then has no token to attach, the webclient does not issue the chunk request at all, and the feature shows a <strong>&ldquo;License Required&rdquo;</strong> message even though the license itself is perfectly valid.</p>
+
+<h3 id="leaving-chunk-authentication-to-the-server">Leaving chunk authentication to the server</h3>
+<p>For these setups, set <a href="/manual/latest/user-guide/cibseven-run/#tr-cibseven-webclient-license-chunk"><code>cibseven.webclient.license.chunk.trustServerAuthentication</code></a> to <code>true</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">license</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">chunk</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># Set true when the deployment authenticates requests itself, without an</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># Authorization header (gateway, SAML, mTLS).</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">trustServerAuthentication</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>This tells the webclient that your deployment can authenticate a chunk request without help from the browser. The request is then sent rather than cancelled, and your <code>IUserProvider.authenticateUser(HttpServletRequest)</code> gets to authenticate it from the session, proxy header, or cookie it already relies on.</p>
+<p>Note what the property does <strong>not</strong> do. It does not disable the license check, and it does not weaken server-side authentication: a request your user provider cannot authenticate is still refused with <code>403</code>, and the feature still shows &ldquo;License Required&rdquo;. It only stops the browser from giving up before the server has been asked.</p>
+<p>Deployments that use the standard login flows need no configuration here — the token is in browser storage, the service worker attaches it, and the default (<code>false</code>) is correct.</p>
+
 <h2 id="license-content">License content</h2>
 <p>This section defines what is a valid license key that will be accepted by the CIB seven webclient. This description is
 valid for all <a href="#license-key-pickup-methods">License pickup methods</a>.</p>
@@ -4178,6 +4188,11 @@ license key in the correct format.</p>
         <li><a href="#through-the-home-directory">Through the Home Directory</a></li>
         <li><a href="#through-the-configuration-file">Through the configuration file</a></li>
         <li><a href="#with-the-cib-seven-spring-boot-starter--cib-seven-run">With the CIB seven Spring Boot Starter &amp; CIB seven Run</a></li>
+      </ul>
+    </li>
+    <li><a href="#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>
+      <ul>
+        <li><a href="#leaving-chunk-authentication-to-the-server">Leaving chunk authentication to the server</a></li>
       </ul>
     </li>
     <li><a href="#license-content">License content</a></li>

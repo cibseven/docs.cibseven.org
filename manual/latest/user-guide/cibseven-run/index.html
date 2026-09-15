@@ -2851,14 +2851,6 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/welcome/welcome-plugins/" >Plugins</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
       <a href="/manual/latest/webapps/welcome/configuration/" >Configuration</a>
     
   </li>
@@ -2911,14 +2903,6 @@
   <li>
     
       <a href="/manual/latest/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/tasklist/tasklist-plugins/" >Plugins</a>
     
   </li>
 
@@ -3143,13 +3127,7 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
-      <ul>
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
+      <a href="/manual/latest/webapps/cockpit/deep-links/" >Deep Links</a>
     
   </li>
 
@@ -3157,7 +3135,13 @@
           
   <li>
     
-      <a href="/manual/latest/webapps/cockpit/extend/plugins/" >Plugins</a>
+      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
     
   </li>
 
@@ -3230,14 +3214,6 @@
   <li>
     
       <a href="/manual/latest/webapps/admin/configuration/" >Configuration</a>
-    
-  </li>
-
-        
-          
-  <li>
-    
-      <a href="/manual/latest/webapps/admin/plugins/" >Plugins</a>
     
   </li>
 
@@ -3364,6 +3340,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
     
   </li>
@@ -3426,6 +3410,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/plugins/" >Plugins</a>
     
   </li>
 
@@ -4503,7 +4495,7 @@ of our documentation.</p>
 <p>CIB seven Run supports two types of plugins.</p>
 <ul>
 <li><a href="/manual/latest/user-guide/process-engine/process-engine-plugins/">Process engine plugins</a> can be used to extend the process engine configuration to add more functionality.</li>
-<li><a href="/manual/latest/webapps/cockpit/extend/plugins/">Webapp plugins</a> are used to extend one of the CIB seven webapps (i.e. Cockpit, Tasklist, Admin, Welcome).</li>
+<li><a href="/manual/latest/webapps/plugins/">Webclient plugins</a> add user interface of your own to the CIB seven webclient.</li>
 </ul>
 <p>Both types of plugins are supported in CIB seven Run but have to be registered differently.</p>
 
@@ -4600,10 +4592,10 @@ YAML property, like so:</p>
 process engine.</li>
 </ol>
 
-<h4 id="webapp-plugin-registration">Webapp plugin registration</h4>
-<p>CIB seven provides a mechanism to extend the CIB seven Webapps with your own functionality. You can add plugins at various plugin points. For example, the processes dashboard in Cockpit.</p>
-<p>A webapp plugin is a maven jar project that provides a server-side and a client-side extension to the webapp. You can find more information about how to structure your plugins <a href="/manual/latest/webapps/cockpit/extend/plugins/#the-nature-of-a-cockpit-plugin">here</a>.</p>
-<p>To register a webapp plugin, simply drop the jar file into the <code>configuration/userlib</code> folder. See <a href="#starting-with-camunda-platform-run">the Starting with CIB seven Run section</a> of this guide to find out how to navigate the directories of CIB seven Run.</p>
+<h4 id="webclient-plugin-registration">Webclient plugin registration</h4>
+<p>CIB seven provides a mechanism to extend the CIB seven webclient with user interface of your own, rendered next to the built-in views. See <a href="/manual/latest/webapps/plugins/">Plugins</a> for what a plugin can contribute and how one is built.</p>
+<p>A webclient plugin is a jar containing the plugin&rsquo;s files below <code>META-INF/cibseven-plugins/</code>. It needs no server-side code.</p>
+<p>To register a webclient plugin, drop the jar file into the <code>configuration/userlib</code> folder and set <a href="#tr-cibseven-webclient-plugins"><code>cibseven.webclient.plugins.enabled</code></a> to <code>true</code>. See <a href="#starting-with-camunda-platform-run">the Starting with CIB seven Run section</a> of this guide to find out how to navigate the directories of CIB seven Run.</p>
 
 <h3 id="example-application-launch">Example application launch</h3>
 <p>CIB seven Run comes with a <a href="#example-application">demo application</a> that deploys resources and starts process instances.
@@ -4795,9 +4787,14 @@ Some of the properties are listed in the table below:</p>
   <tr>
       <td>.authentication.tokenProlongMinutes</td>
       <td>Authentication token extension time in minutes</td>
-  </tr> 
+  </tr>
+  <tr id="tr-cibseven-webclient-license-chunk">
+      <td>cibseven.webclient.license.chunk</td>
+      <td>.trustServerAuthentication</td>
+      <td>Lets the browser request licensed EE frontend chunks even when the webclient holds no auth token to attach to them, leaving authentication of those requests to the server. Set this to <code>true</code> only if your deployment authenticates requests itself — a custom <code>IUserProvider</code> backed by a SAML session, a reverse proxy, or a gateway — so that a chunk request without an <code>Authorization</code> header can still be authenticated. The server-side license check is unaffected: a request the user provider cannot authenticate is still rejected. See <a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>. <br />Default value: false</td>
+  </tr>
   <tr>
-      <td rowspan="16">cibseven.webclient</td>
+      <td rowspan="17">cibseven.webclient</td>
       <td>.bpm.provider</td>
       <td>BPM provider implementation class. <br />Example: org.cibseven.webapp.providers.SevenProvider</td>
   </tr>
@@ -4836,6 +4833,10 @@ Some of the properties are listed in the table below:</p>
   <tr>
       <td>.fetchIncidents</td>
       <td>Whether to fetch incidents. <br />Possible values: true/false</td>
+  </tr>
+  <tr id="tr-cibseven-webclient-plugins">
+      <td>.plugins.enabled</td>
+      <td>Load frontend plugins from the classpath. See <a href="/manual/latest/webapps/plugins/">Plugins</a>. <br />Possible values: true/false <br />Default value: false</td>
   </tr>
   <tr>
       <td>.services.basePath</td>
@@ -5131,7 +5132,7 @@ Some of the properties are listed in the table below:</p>
         <li><a href="#plugin-registration">Plugin registration</a>
           <ul>
             <li><a href="#process-engine-plugin-registration">Process engine plugin registration</a></li>
-            <li><a href="#webapp-plugin-registration">Webapp plugin registration</a></li>
+            <li><a href="#webclient-plugin-registration">Webclient plugin registration</a></li>
           </ul>
         </li>
         <li><a href="#example-application-launch">Example application launch</a></li>
