@@ -3300,6 +3300,14 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
     
   </li>
@@ -3418,6 +3426,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/database/" >Database</a>
     
   </li>
 
@@ -4110,6 +4126,7 @@
 <hr>
 
 <h2 id="diagrams-bpmn--dmn">Diagrams (BPMN / DMN)</h2>
+<p>A write refuses a value longer than its column with <code>400 Bad Request</code> rather than letting the database fail: <code>name</code> holds 255 characters, <code>processkey</code> 100 and <code>description</code> 150.</p>
 
 <h3 id="list-diagrams">List Diagrams</h3>
 <pre tabindex="0"><code>GET /modeler/processes
@@ -4182,8 +4199,14 @@
       <td>No</td>
       <td><code>diagram</code> or <code>form</code></td>
     </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>No</td>
+      <td>Only the models in this folder; every folder when absent. <strong>Available from 2.3.0</strong></td>
+    </tr>
   </tbody>
 </table>
+<p>Each entry carries the <code>folderId</code> of the folder it is filed in, <strong>from 2.3.0</strong>.</p>
 <hr>
 
 <h3 id="get-diagram-by-id">Get Diagram by ID</h3>
@@ -4219,6 +4242,11 @@
       <td>Yes</td>
       <td><code>true</code> to overwrite an existing diagram with the same name</td>
     </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to file the diagram in. <strong>Required from 2.3.0</strong></td>
+    </tr>
   </tbody>
 </table>
 <hr>
@@ -4226,13 +4254,14 @@
 <h3 id="save-diagram-form-data">Save Diagram (form data)</h3>
 <pre tabindex="0"><code>POST /modeler/process/save
 </code></pre><p>Creates or updates a diagram from form-encoded data.</p>
-<p><strong>Form Parameters:</strong> <code>name</code>, <code>processkey</code>, <code>description</code>, <code>active</code>, <code>type</code>, <code>diagram</code> (multipart file)</p>
+<p><strong>Form Parameters:</strong> <code>name</code>, <code>processkey</code>, <code>description</code>, <code>active</code>, <code>type</code>, <code>diagram</code> (multipart file), <code>folderId</code></p>
+<p><code>folderId</code> names the folder the diagram is filed in and is required from 2.3.0: a diagram lives in exactly one folder, and none is chosen for the caller.</p>
 <hr>
 
 <h3 id="save-diagram-json-body">Save Diagram (JSON body)</h3>
 <pre tabindex="0"><code>POST /modeler/process/save/object
 </code></pre><p>Creates or updates a diagram from a JSON body. If the entity&rsquo;s <code>id</code> matches an existing record it is updated; otherwise a new record is created.</p>
-<p><strong>Request Body:</strong> <code>ProcessDiagramEntity</code> JSON object</p>
+<p><strong>Request Body:</strong> <code>ProcessDiagramEntity</code> JSON object. A new diagram needs its <code>folderId</code> from 2.3.0; an update leaves the diagram where it is when the field is absent.</p>
 <hr>
 
 <h3 id="update-diagram">Update Diagram</h3>
@@ -4256,6 +4285,64 @@
 <h3 id="delete-diagram">Delete Diagram</h3>
 <pre tabindex="0"><code>DELETE /modeler/process/delete/{id}
 </code></pre><p>Permanently deletes the diagram with the given ID.</p>
+<hr>
+
+<h3 id="move-diagram-to-a-folder">Move Diagram to a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/process/{id}/move
+</code></pre><p><strong>Available from 2.3.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to file the diagram in</td>
+    </tr>
+  </tbody>
+</table>
+<p>The diagram keeps its id and its process key, so deployments made from it and links to it still resolve.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>ProcessDiagramEntity</code>. <code>400 Bad Request</code> when no folder is named, <code>404 Not Found</code> when the diagram or the folder does not exist.</p>
+<hr>
+
+<h3 id="copy-diagram-into-a-folder">Copy Diagram into a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/process/{id}/copy
+</code></pre><p><strong>Available from 2.3.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to put the copy in</td>
+    </tr>
+    <tr>
+      <td><code>processkey</code></td>
+      <td>Yes</td>
+      <td>The process key of the copy</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>No</td>
+      <td>Name of the copy; the name of the original when absent</td>
+    </tr>
+  </tbody>
+</table>
+<p>A copy needs a process key of its own: the engine resolves a process by its key, so two diagrams cannot share one.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when no key is given or when the key is already taken.</p>
 <hr>
 
 <h2 id="deployment">Deployment</h2>
@@ -4339,6 +4426,7 @@
 <hr>
 
 <h2 id="forms">Forms</h2>
+<p>A write refuses a value longer than its column with <code>400 Bad Request</code>: <code>formId</code> holds 100 characters and <code>description</code> 150.</p>
 
 <h3 id="list-forms">List Forms</h3>
 <pre tabindex="0"><code>GET /modeler/forms
@@ -4354,7 +4442,8 @@
 <h3 id="save-form">Save Form</h3>
 <pre tabindex="0"><code>POST /modeler/form/save
 </code></pre><p>Creates a new form with the given ID and schema.</p>
-<p><strong>Form Parameters:</strong> <code>formid</code>, <code>form_schema</code> (multipart JSON file)</p>
+<p><strong>Form Parameters:</strong> <code>formid</code>, <code>form_schema</code> (multipart JSON file), <code>folderId</code></p>
+<p><code>folderId</code> names the folder the form is filed in and is required from 2.3.0.</p>
 <hr>
 
 <h3 id="update-form">Update Form</h3>
@@ -4366,6 +4455,137 @@
 <h3 id="delete-form">Delete Form</h3>
 <pre tabindex="0"><code>DELETE /modeler/form/delete/{id}
 </code></pre><p>Permanently deletes the form and its session records.</p>
+<hr>
+
+<h3 id="move-form-to-a-folder">Move Form to a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/form/{id}/move
+</code></pre><p><strong>Available from 2.3.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to file the form in</td>
+    </tr>
+  </tbody>
+</table>
+<p>The form keeps its id and its form id.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>FormEntity</code>.</p>
+<hr>
+
+<h3 id="copy-form-into-a-folder">Copy Form into a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/form/{id}/copy
+</code></pre><p><strong>Available from 2.3.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to put the copy in</td>
+    </tr>
+    <tr>
+      <td><code>formId</code></td>
+      <td>Yes</td>
+      <td>The form id of the copy</td>
+    </tr>
+  </tbody>
+</table>
+<p>A copy needs a form id of its own: a form is referenced by its form id, so two forms cannot share one.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when no form id is given or when it is already taken.</p>
+<hr>
+
+<h2 id="folders">Folders</h2>
+<p><strong>Available from 2.3.0.</strong> Folders organize stored diagrams and forms; every model is filed in exactly one. A folder without a parent is at the top level, which holds folders only — a model is never stored there.</p>
+
+<h3 id="list-folders">List Folders</h3>
+<pre tabindex="0"><code>GET /modeler/folders
+</code></pre><p>Returns every folder, each carrying the <code>parentId</code> of the folder holding it, so one call is enough to build the whole tree. The list is empty when every folder has been deleted; nothing is created to fill it.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — array of <code>FolderEntity</code> objects.</p>
+<hr>
+
+<h3 id="get-folder">Get Folder</h3>
+<pre tabindex="0"><code>GET /modeler/folders/{id}
+</code></pre><p><strong>Response:</strong> <code>200 OK</code> — the <code>FolderEntity</code>. <code>404 Not Found</code> when there is none with that id.</p>
+<hr>
+
+<h3 id="get-folder-contents">Get Folder Contents</h3>
+<pre tabindex="0"><code>GET /modeler/folders/{id}/contents
+</code></pre><p>Counts what the folder holds through its whole subtree, for a confirmation before deleting it.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;folders&quot;: 2, &quot;diagrams&quot;: 7, &quot;forms&quot;: 1 }</code></p>
+<hr>
+
+<h3 id="create-folder">Create Folder</h3>
+<pre tabindex="0"><code>POST /modeler/folders
+</code></pre><p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>name</code></td>
+      <td>Yes</td>
+      <td>Name of the folder, unique among the folders beside it</td>
+    </tr>
+    <tr>
+      <td><code>parentId</code></td>
+      <td>No</td>
+      <td>The folder to create it in; created at the top level when absent</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — the created folder. <code>400 Bad Request</code> when the name is empty, longer than 255 characters, or already taken in that place.</p>
+<hr>
+
+<h3 id="rename-or-move-folder">Rename or Move Folder</h3>
+<pre tabindex="0"><code>PUT /modeler/folders/{id}
+</code></pre><p><strong>Body:</strong> send <code>name</code>, <code>parentId</code>, or both.</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>name</code></td>
+      <td>The new name</td>
+    </tr>
+    <tr>
+      <td><code>parentId</code></td>
+      <td>The folder to move it into; <code>null</code> moves it to the top level</td>
+    </tr>
+  </tbody>
+</table>
+<p>The folder keeps its id, so everything below it stays reachable. A folder cannot be moved into itself or into one of its own subfolders. Sending both fields applies them together: if the move is refused, the folder is not renamed either.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the updated folder. <code>400 Bad Request</code> when the name is taken or the move would put the folder inside itself.</p>
+<hr>
+
+<h3 id="delete-folder">Delete Folder</h3>
+<pre tabindex="0"><code>DELETE /modeler/folders/{id}
+</code></pre><p>Deletes the folder with <strong>everything below it</strong>: subfolders, diagrams and forms. This cannot be undone — call the contents endpoint first and confirm with the user. Deployed processes are unaffected.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — what was removed, in the shape the contents endpoint returns.</p>
 <hr>
 
 <h2 id="chat-enterprise-edition">Chat (Enterprise Edition)</h2>
@@ -4593,6 +4813,8 @@
         <li><a href="#find-diagram-by-name">Find Diagram by Name</a></li>
         <li><a href="#find-diagram-by-process-key">Find Diagram by Process Key</a></li>
         <li><a href="#delete-diagram">Delete Diagram</a></li>
+        <li><a href="#move-diagram-to-a-folder">Move Diagram to a Folder</a></li>
+        <li><a href="#copy-diagram-into-a-folder">Copy Diagram into a Folder</a></li>
       </ul>
     </li>
     <li><a href="#deployment">Deployment</a>
@@ -4619,6 +4841,18 @@
         <li><a href="#save-form">Save Form</a></li>
         <li><a href="#update-form">Update Form</a></li>
         <li><a href="#delete-form">Delete Form</a></li>
+        <li><a href="#move-form-to-a-folder">Move Form to a Folder</a></li>
+        <li><a href="#copy-form-into-a-folder">Copy Form into a Folder</a></li>
+      </ul>
+    </li>
+    <li><a href="#folders">Folders</a>
+      <ul>
+        <li><a href="#list-folders">List Folders</a></li>
+        <li><a href="#get-folder">Get Folder</a></li>
+        <li><a href="#get-folder-contents">Get Folder Contents</a></li>
+        <li><a href="#create-folder">Create Folder</a></li>
+        <li><a href="#rename-or-move-folder">Rename or Move Folder</a></li>
+        <li><a href="#delete-folder">Delete Folder</a></li>
       </ul>
     </li>
     <li><a href="#chat-enterprise-edition">Chat (Enterprise Edition)</a>

@@ -3300,6 +3300,14 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
     
   </li>
@@ -3418,6 +3426,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/database/" >Database</a>
     
   </li>
 
@@ -4162,7 +4178,7 @@
 
 <div class="note ">
   <h3>Database is optional when modeler is disabled</h3>
-  <p>If the modeler is disabled via <code>cibseven.webclient.modeler.enabled: false</code> and no <code>spring.datasource.url</code> is configured, the DataSource auto-configuration is suppressed and no database connection is required. See <a href="/manual/2.2-ee/webapps/modeler/configuration/enable-disable/">Enable / Disable</a> for details.</p>
+  <p>If the modeler is disabled via <code>cibseven.webclient.modeler.enabled: false</code> and no <code>spring.datasource.url</code> is configured, the DataSource auto-configuration is suppressed and no database connection is required. A deployment that switches the modeler off but keeps another feature that stores data, such as the enterprise chat, still has to configure <code>spring.datasource.url</code>. See <a href="/manual/2.2-ee/webapps/modeler/configuration/enable-disable/">Enable / Disable</a> and <a href="/manual/2.2-ee/webapps/database/">Database</a> for details.</p>
 </div>
 
 

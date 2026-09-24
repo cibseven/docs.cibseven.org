@@ -3300,6 +3300,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
     
   </li>
@@ -3418,6 +3426,14 @@
   <li>
     
       <a href="/manual/latest/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/database/" >Database</a>
     
   </li>
 
@@ -4105,7 +4121,7 @@
 
     <div class="col-xs-12 content-text">
       <p>When the modeler is <strong>enabled</strong> (<code>cibseven.webclient.modeler.enabled: true</code>), the webclient requires a database schema to store diagrams, forms, and user sessions. The required tables must be created before startup. The webclient can connect to and use the database, but it does not create, update, or validate the schema itself (<code>ddl-auto: none</code>).</p>
-<p>When the modeler is <strong>disabled</strong> (<code>cibseven.webclient.modeler.enabled: false</code>), all modeler-related persistence components are disabled. No datasource configuration or database connection is required at all, as JPA is not initialized.</p>
+<p>When the modeler is <strong>disabled</strong> (<code>cibseven.webclient.modeler.enabled: false</code>), its persistence components are disabled with it. If no other feature of the webclient stores data — the enterprise chat does — then no datasource configuration or database connection is required at all, as JPA is not initialized.</p>
 <p>Schema creation is the responsibility of the <strong>parent application</strong> (e.g. <code>cibseven-bpm-run</code>). Refer to the parent application&rsquo;s documentation for the DDL scripts and migration tooling it provides.</p>
 
 <h2 id="database-tables">Database Tables</h2>
@@ -4140,6 +4156,10 @@
     <tr>
       <td><code>mod_element_templates</code></td>
       <td>Stores reusable element template definitions</td>
+    </tr>
+    <tr>
+      <td><code>mod_folders</code></td>
+      <td>The folders diagrams and forms are organized in. Each row names its parent, so the table holds the whole tree; a row without a parent is a folder at the top level. Required from 2.3.0</td>
     </tr>
     <tr>
       <td><code>mod_processes_diagrams_aud</code></td>
@@ -4191,6 +4211,21 @@ otherwise the update fails on the <code>chat_messages</code> change, whether or 
 </div>
 
 
+<h4 id="folders">Folders</h4>
+<p>The modeler organizes diagrams and forms in folders from 2.3.0, which the same update applies:</p>
+<ul>
+<li>the <code>mod_folders</code> table</li>
+<li>a <code>folder_id</code> column on <code>mod_processes_diagrams</code> and on <code>mod_forms</code>, each with a foreign key to <code>mod_folders</code></li>
+<li>a folder named <strong>General</strong>, and every existing diagram and form filed into it</li>
+</ul>
+<p>The models of an installation that is updated therefore keep working and appear together in one folder, rather than in a list that has nowhere to belong. The id of that folder is written out in the update script rather than generated, so the same statement can both create it and file the models into it on every database.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Only where the modeler is enabled</h3>
+  <p><code>mod_folders</code> belongs to the modeler component of the engine schema. An engine with the modeler disabled creates none of the <code>mod_</code> tables and needs none of this. See <a href="/manual/latest/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>.</p>
+</div>
+
+
 <h4 id="diagram-snapshots">Diagram snapshots</h4>
 <p>From 2.3.0 the enterprise edition writes the diagram snapshots itself, where earlier versions had Hibernate
 Envers write them. <strong>This needs no schema change and no migration:</strong> <code>mod_processes_diagrams_aud</code> and
@@ -4216,6 +4251,7 @@ webclient deployment. Leaving it in place is harmless: nothing reads it any more
       <ul>
         <li><a href="#22-to-23">2.2 to 2.3</a>
           <ul>
+            <li><a href="#folders">Folders</a></li>
             <li><a href="#diagram-snapshots">Diagram snapshots</a></li>
           </ul>
         </li>

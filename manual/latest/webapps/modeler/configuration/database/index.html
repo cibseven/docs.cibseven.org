@@ -3300,6 +3300,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
     
   </li>
@@ -3418,6 +3426,14 @@
   <li>
     
       <a href="/manual/latest/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/database/" >Database</a>
     
   </li>
 
@@ -4105,6 +4121,9 @@
 
     <div class="col-xs-12 content-text">
       <p>CIB seven Modeler persists BPMN and DMN diagrams in a relational database. The database schema is managed by the parent application (e.g. <code>cibseven-bpm-run</code>) — the webclient only connects to it.</p>
+<p>The modeler shares one persistence unit with every other part of the webclient that stores data, so
+the settings below decide where that data goes as a whole. To put those tables in a database of
+their own, see <a href="/manual/latest/webapps/database/">Database</a>.</p>
 
 <h2 id="datasource">Datasource</h2>
 <p>Configure the JDBC connection in <code>application.yaml</code> or your override file (e.g. <code>cibseven-webclient.yaml</code>):</p>

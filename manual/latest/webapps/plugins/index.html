@@ -3300,6 +3300,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
     
   </li>
@@ -3418,6 +3426,14 @@
   <li>
     
       <a href="/manual/latest/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/database/" >Database</a>
     
   </li>
 
@@ -4257,18 +4273,76 @@ receives the props of that slot:</p>
       <td><code>instance</code>, <code>process</code>, <code>tenantId</code></td>
     </tr>
     <tr>
+      <td><code>process-definition-tab</code></td>
+      <td>One tab of a process definition</td>
+      <td><code>process</code>, <code>tenantId</code></td>
+    </tr>
+    <tr>
       <td><code>decision-definition-tab</code></td>
       <td>One tab of a decision definition version</td>
       <td><code>decision</code>, <code>tenantId</code></td>
     </tr>
+    <tr>
+      <td><code>decision-instance-tab</code></td>
+      <td>One tab of a decision instance</td>
+      <td><code>instance</code>, <code>decision</code>, <code>tenantId</code></td>
+    </tr>
+    <tr>
+      <td><code>dmn-viewer</code></td>
+      <td>No UI of its own; the contribution works on the rendered DMN viewer</td>
+      <td><code>viewer</code>, <code>container</code>, <code>activeView</code></td>
+    </tr>
   </tbody>
 </table>
+<p>The registered <code>id</code> of a tab becomes <code>?tab=&lt;id&gt;</code> in the address bar, so a contributed tab can
+be linked to. On a decision instance, <code>decision</code> is the definition version the instance was
+evaluated against.</p>
 <p>Any number of plugins can contribute to one slot, and one plugin may register several times.
 Contributed tabs are appended after the built-in ones, in an order that is not defined.
 Registered ids have to be unique across all plugins and may not shadow a built-in tab id;
 a contribution taking an id that is already in use is dropped with a console warning. The
 Enterprise Edition has more built-in tabs than the Community Edition, so prefixing the id
 with the plugin name is the simplest way to keep one build working in both.</p>
+
+<h4 id="working-on-the-dmn-viewer">Working on the DMN viewer</h4>
+<p><code>dmn-viewer</code> is not a tab. A contribution to it renders nothing of its own and needs no <code>text</code>:
+it is mounted with the DMN viewer the webclient created and works on it, which is how a plugin
+extends a decision table — adding a column of its own data, for example.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">registerPlugin</span><span class="p">(</span><span class="s1">&#39;dmn-viewer&#39;</span><span class="p">,</span> <span class="nx">DmnExtraColumns</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;my-plugin-dmn-columns&#39;</span> <span class="p">})</span>
+</span></span></code></pre></div><table class="table-2col">
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>What it is</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>viewer</code></td>
+      <td>The <a href="https://github.com/bpmn-io/dmn-js">dmn-js</a> instance, with <code>getActiveViewer()</code> and the services it holds</td>
+    </tr>
+    <tr>
+      <td><code>container</code></td>
+      <td>The element the viewer renders into</td>
+    </tr>
+    <tr>
+      <td><code>activeView</code></td>
+      <td>The view that is open, changing as the user moves between the DRD and a decision</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note bg-warning docs-warning">
+  <h3>The rendered table is dmn-js&#39;s, not the webclient&#39;s</h3>
+  <p><p>dmn-js offers no API for changing a table it renders read-only, so a contribution that adds to
+one works on the DOM dmn-js produced. That markup belongs to dmn-js and can change when it is
+upgraded, so such a plugin should be retested against a new webclient line even though the slot
+itself has not changed.</p>
+<p>dmn-js also rebuilds the table whenever the view changes or a decision is opened. <code>activeView</code>
+is the signal to apply the work again; a <code>MutationObserver</code> on <code>container</code> covers the rest.</p>
+</p>
+</div>
+
 
 <h3 id="what-the-webclient-provides">What the webclient provides</h3>
 <p>The plugin&rsquo;s components import what they need from <code>@cibseven/plugin-runtime</code>, which hands
@@ -4424,7 +4498,11 @@ rendered next to ours.</p>
     <li><a href="#the-manifest">The manifest</a></li>
     <li><a href="#writing-a-plugin">Writing a plugin</a>
       <ul>
-        <li><a href="#slots">Slots</a></li>
+        <li><a href="#slots">Slots</a>
+          <ul>
+            <li><a href="#working-on-the-dmn-viewer">Working on the DMN viewer</a></li>
+          </ul>
+        </li>
         <li><a href="#what-the-webclient-provides">What the webclient provides</a></li>
         <li><a href="#building-and-packaging">Building and packaging</a></li>
         <li><a href="#translations-and-styles">Translations and styles</a></li>
