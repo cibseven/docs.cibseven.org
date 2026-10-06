@@ -4854,6 +4854,10 @@ Some of the properties are listed in the table below:</p>
       <td>.plugins.enabled</td>
       <td>Load frontend plugins from the classpath. See <a href="/manual/2.2-ee/webapps/plugins/">Plugins</a>. <br />Possible values: true/false <br />Default value: false</td>
   </tr>
+  <tr id="tr-cibseven-webclient-plugins-disabled">
+      <td>.plugins.disabled</td>
+      <td>Ids of plugins to skip, for instance one that breaks the page; the other plugins still load. Takes a restart. See <a href="/manual/2.2-ee/webapps/plugins/#switching-off-one-plugin">Switching off one plugin</a>. <br />Default value: empty</td>
+  </tr>
   <tr>
       <td>.services.basePath</td>
       <td>Relative path, location of the backend services starting from applicationPath. <br />Default value: services/v1</td>

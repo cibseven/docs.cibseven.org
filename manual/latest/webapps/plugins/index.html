@@ -4152,6 +4152,23 @@ Run, <code>configuration/default.yml</code> — and restart the webclient:</p>
 </span></span></span></code></pre></div><p>With plugins disabled there is no discovery, no plugin endpoint, and nothing to reach — see
 <a href="/manual/latest/user-guide/cibseven-run/#tr-cibseven-webclient-plugins"><code>cibseven.webclient.plugins.enabled</code></a>.</p>
 
+<h3 id="switching-off-one-plugin">Switching off one plugin</h3>
+<p>A plugin that breaks the page can be switched off on its own, while the others keep working
+and its jar stays where it is. List its id in
+<a href="/manual/latest/user-guide/cibseven-run/#tr-cibseven-webclient-plugins-disabled"><code>cibseven.webclient.plugins.disabled</code></a>
+and restart the webclient:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">plugins</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">disabled</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">demo-report</span><span class="w">
+</span></span></span></code></pre></div><p>A disabled plugin is not offered to the browser and its files are not served. The log
+confirms each one at startup:</p>
+<pre tabindex="0"><code>INFO o.cibseven.webapp.plugin.PluginRegistry : Plugin &#34;demo-report&#34; is disabled by cibseven.webclient.plugins.disabled
+</code></pre><p>An id that matches no plugin is logged as a warning, which catches a typo. To switch the
+plugin on again, remove its id and restart.</p>
+
 <h2 id="installing-a-plugin">Installing a plugin</h2>
 <p>A plugin ships as a jar containing one folder per plugin below <code>META-INF/cibseven-plugins/</code>:</p>
 <pre><code>my-plugin.jar
@@ -4493,7 +4510,11 @@ rendered next to ours.</p>
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#enabling-plugins">Enabling plugins</a></li>
+    <li><a href="#enabling-plugins">Enabling plugins</a>
+      <ul>
+        <li><a href="#switching-off-one-plugin">Switching off one plugin</a></li>
+      </ul>
+    </li>
     <li><a href="#installing-a-plugin">Installing a plugin</a></li>
     <li><a href="#the-manifest">The manifest</a></li>
     <li><a href="#writing-a-plugin">Writing a plugin</a>

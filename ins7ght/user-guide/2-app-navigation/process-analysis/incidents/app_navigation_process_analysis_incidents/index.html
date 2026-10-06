@@ -445,7 +445,7 @@
 
     <div class="col-xs-12 content-text">
       
-<h2 id="process-analysis--incidents">Process Analysis – Incidents</h2>
+<h2 id="process-analysis--incidents-test">Process Analysis – Incidents test</h2>
 <p>The <strong>Process Analysis – Incidents</strong> page in <strong>CIB ins7ght</strong> allows you to analyze incidents within a selected BPMN process.<br>
 It helps you identify when incidents occur, which activities are most affected, which failed activities triggered the incident, and how incident behavior changes across process versions.</p>
 <p>This page is especially useful for detecting recurring process errors, identifying unstable BPMN activities, and supporting root-cause analysis by linking directly to the related case in <strong>CIB seven</strong>.</p>
@@ -466,7 +466,7 @@ It helps you identify when incidents occur, which activities are most affected, 
 <p>The page highlights <strong>two main KPIs</strong>, which summarize overall process incidents and error start events:</p>
 <ul>
 <li><strong>Total Incidents:</strong> Total number of incidents detected in the selected timeframe.</li>
-<li><strong>Total Error Start Events:</strong> Number of error start events in the selected timeframe. An Error Start Event in CIB seven functions like a scoped BPMN exception handler (e.g.: &ldquo;try catch&rdquo;). It listens for propagated BpmnError events and, when triggered, interrupts the current execution flow to execute a predefined error handling path.</li>
+<li><strong>Total Error Start Events:</strong> Number of error start events in the selected timeframe.</li>
 </ul>
 <p>More global process KPIs can be found on the <strong>Global Overview</strong> page.</p>
 <hr>
@@ -480,7 +480,7 @@ It helps you identify when incidents occur, which activities are most affected, 
 </ul>
 <figure class="image">
   <span><img
-      src="../img/nr_of_incidents.png"
+      src="img/nr_of_incidents.png"
        /></span>
 </figure>
 
@@ -507,7 +507,7 @@ It helps you identify when incidents occur, which activities are most affected, 
 </ul>
 <figure class="image">
   <span><img
-      src="../img/activity_w_incidents.png"
+      src="img/activity_w_incidents.png"
        /></span>
 </figure>
 
@@ -527,7 +527,7 @@ The <strong>Failed Activity</strong> captures where the problem actually occurre
 <p>Activities with incidents are highlighted on the BPMN diagram, allowing you to quickly understand where errors are concentrated in the process.</p>
 <figure class="image">
   <span><img
-      src="../img/incident_heatmap.png"
+      src="img/incident_heatmap.png"
        /></span>
 </figure>
 
@@ -539,14 +539,13 @@ The <strong>Failed Activity</strong> captures where the problem actually occurre
 <li>Support process improvement by focusing on the most problematic activities.</li>
 </ul>
 <p>A <strong>fullscreen</strong> button is also available to improve visualization for larger BPMN processes.</p>
-<p><strong>Error Start Events are excluded from the heatmap</strong> because they act as centralized BPMN error handlers. Highlighting them would always point to the same activity instead of showing where the incident actually originated.</p>
 <hr>
 
 <h3 id="incidents-per-version-graph">Incidents per Version Graph</h3>
 <p>The <strong>Incidents per Version Graph</strong> compares the number of incidents across different process versions.</p>
 <figure class="image">
   <span><img
-      src="../img/incidents_per_version.png"
+      src="img/incidents_per_version.png"
        /></span>
 </figure>
 
