@@ -930,6 +930,33 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/mcp-restapi/" >REST API MCP Plugin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/passthrough/" >Passthrough Mode</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/minted-jwt/" >Minted JWT Mode</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
       <ul>
         
@@ -3489,6 +3516,14 @@
     
   <li>
     
+      <a href="/manual/latest/ai/" >Agentic Tools</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
       <a href="/manual/latest/examples/" >Examples</a>
     
   </li>
@@ -4179,10 +4214,23 @@ excluding the auto configuration classes:</p>
 </span></span></span></code></pre></div><p>For more information, please refer to Spring&rsquo;s <a href="https://docs.spring.io/spring-boot/reference/using/auto-configuration.html#using.auto-configuration.disabling-specific">Disabling Specific Auto-configuration Classes</a> documentation.</p>
 
 <h3 id="oauth2-resource-server">OAuth2 Resource Server</h3>
-<p>For the resource server configuration, please refer to the official Spring Security
+<p>The OAuth2 resource server configuration is activated when one of the following properties is set:</p>
+<ul>
+<li><code>spring.security.oauth2.resourceserver.jwt.jwk-set-uri</code></li>
+<li><code>spring.security.oauth2.resourceserver.jwt.issuer-uri</code></li>
+<li><code>spring.security.oauth2.resourceserver.opaque-token.introspection-uri</code></li>
+</ul>
+<p>Please refer to the official Spring Security
 <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html#oauth2-resource-server">OAuth2 Resource Server Configuration</a> documentation to configure your preferred settings.</p>
 <p>Once the OAuth2 resource server is configured and the CIB seven Spring Security OAuth2
 integration is enabled, the CIB seven Engine REST will use the configured OAuth2 settings for authentication.</p>
+
+<div class="note bg-warning docs-warning">
+  <h3>Servlet Filter Authentication</h3>
+  <p><strong>Do not</strong> configure a servlet-filter authentication provider (such as <code>pseudo</code>, <code>basic</code> or <code>composite</code>) for the engine REST API together with OAuth2, as it interferes with the Spring Security authentication.
+In a CIB seven Run distribution, the authentication filter is active by default: set <code>camunda.bpm.run.auth.enabled: false</code>.</p>
+</div>
+
 
 <h3 id="user-name-mapping">User Name Mapping</h3>
 <p>CIB seven&rsquo;s integration uses the <strong>name</strong> field from Spring Security&rsquo;s principal object as the User ID
@@ -4202,7 +4250,7 @@ CIB seven defaulted it to be <code>preferred_username</code>.</p>
 </div>
 
 
-<h4 id="configuring-initial-authorizations">Configuring Initial Authorizations</h4>
+<h3 id="configuring-initial-authorizations">Configuring Initial Authorizations</h3>
 <p>For creating initial authorizations in your application, you have the following options available:</p>
 <ol>
 <li>The <code>camunda.bpm.admin-user</code> property to create an administrator user with authorizations:
@@ -4420,6 +4468,26 @@ refresh tokens.
 Refresh tokens can be revoked, and issuing new access tokens require interaction with the provider,
 which means the user session can be revalidated more frequently.</p>
 
+<h3 id="audience">Audience</h3>
+<p>Validate the audience (<code>aud</code>), not only the issuer and the signature. Without audience validation, the engine REST API accepts <em>any</em> validly signed token of the issuer, including tokens issued for unrelated applications. The engine must therefore accept the audience of the tokens that its clients, such as the CIB seven webapp, send to it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">security</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">resourceserver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">jwt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">issuer-uri</span><span class="p">:</span><span class="w"> </span><span class="l">https://&lt;keycloak-host&gt;/realms/&lt;realm&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">audiences</span><span class="p">:</span><span class="w"> </span><span class="l">cibseven-engine-rest</span><span class="w"> </span><span class="c"># client id that the identity provider puts into the aud claim</span><span class="w">
+</span></span></span></code></pre></div>
+<div class="note bg-info docs-info">
+  <h3>Keycloak and Microsoft Entra ID</h3>
+  <p><ul>
+<li><strong>Keycloak:</strong> add an <strong>Audience</strong> mapper to the client (or to a client scope) so that the access token includes the audience the engine REST API accepts.</li>
+<li><strong>Microsoft Entra ID:</strong> the <code>aud</code> claim depends on the token version (Application ID URI in v1, client id in v2), so configure <code>audiences</code> accordingly.</li>
+</ul>
+</p>
+</div>
+
+
 <h2 id="logging">Logging</h2>
 <p>You can switch the level of the following logger to track bean registrations, user authentication or logout, and token authorizations.
 Logging can be enabled for the package via the following property:</p>
@@ -4454,11 +4522,8 @@ Logging can be enabled for the package via the following property:</p>
           </ul>
         </li>
         <li><a href="#oauth2-resource-server">OAuth2 Resource Server</a></li>
-        <li><a href="#user-name-mapping">User Name Mapping</a>
-          <ul>
-            <li><a href="#configuring-initial-authorizations">Configuring Initial Authorizations</a></li>
-          </ul>
-        </li>
+        <li><a href="#user-name-mapping">User Name Mapping</a></li>
+        <li><a href="#configuring-initial-authorizations">Configuring Initial Authorizations</a></li>
       </ul>
     </li>
     <li><a href="#oauth2-identity-providers">OAuth2 Identity Providers</a>
@@ -4481,6 +4546,7 @@ Logging can be enabled for the package via the following property:</p>
     <li><a href="#security-recommendations">Security Recommendations</a>
       <ul>
         <li><a href="#token-lifetime">Token Lifetime</a></li>
+        <li><a href="#audience">Audience</a></li>
       </ul>
     </li>
     <li><a href="#logging">Logging</a></li>

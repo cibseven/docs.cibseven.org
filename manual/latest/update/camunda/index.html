@@ -930,6 +930,33 @@
           
   <li>
     
+      <a href="/manual/latest/user-guide/mcp-restapi/" >REST API MCP Plugin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/passthrough/" >Passthrough Mode</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/minted-jwt/" >Minted JWT Mode</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
       <ul>
         
@@ -3489,6 +3516,14 @@
     
   <li>
     
+      <a href="/manual/latest/ai/" >Agentic Tools</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
       <a href="/manual/latest/examples/" >Examples</a>
     
   </li>
@@ -4122,6 +4157,50 @@
     <div class="col-xs-12 content-text">
       <p>This page describes the process of migrating a custom project, which uses Camunda BPM, to using CIB seven.</p>
 
+<h3 id="migration-script">Migration script</h3>
+<p>To automate the renamings required when moving from Camunda to CIB seven, use the <a href="https://github.com/cibseven/cibseven-migration/">Migration Script</a>, based on the <a href="https://docs.openrewrite.org/">OpenRewrite</a> Maven plugin. It updates the versions and artifact names in your <code>pom.xml</code> files and the <code>org.camunda</code> imports in your Java code (see the version sections below for details).</p>
+
+<div class="note bg-info docs-info">
+  <h3></h3>
+  <p>Commit or back up your project before running the script, so you can review the changes it makes.</p>
+</div>
+
+
+<h4 id="run-from-the-command-line">Run from the command line</h4>
+<p>Execute in the root directory of your project:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.configLocation<span class="o">=</span>https://cibseven.github.io/cibseven-migration/replace-camunda-with-cibseven.yml -Drewrite.activeRecipes<span class="o">=</span>org.cibseven.ReplaceCamundaWithCIBSeven
+</span></span></code></pre></div>
+<h4 id="run-via-the-pomxml">Run via the pom.xml</h4>
+<p>Alternatively, add the plugin configuration to your <code>pom.xml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;build&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;pluginManagement&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.openrewrite.maven<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>rewrite-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>5.44.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;configLocation&gt;</span>
+</span></span><span class="line"><span class="cl">            https://cibseven.github.io/cibseven-migration/replace-camunda-with-cibseven.yml
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/configLocation&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;activeRecipes&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;recipe&gt;</span>org.cibseven.ReplaceCamundaWithCIBSeven<span class="nt">&lt;/recipe&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/activeRecipes&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/plugins&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/pluginManagement&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/build&gt;</span>
+</span></span></code></pre></div><p>and run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mvn rewrite:run
+</span></span></code></pre></div>
+<h4 id="customize-the-migration">Customize the migration</h4>
+<p>Download <a href="https://github.com/cibseven/cibseven-migration/blob/main/replace-camunda-with-cibseven.yml">replace-camunda-with-cibseven.yml</a> into the root directory of your project, adjust the recipe to your needs, and point the plugin to the local file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;configLocation&gt;</span>${project.basedir}/replace-camunda-with-cibseven.yml<span class="nt">&lt;/configLocation&gt;</span>
+</span></span></code></pre></div>
+<h4 id="clean-up">Clean up</h4>
+<p>After the migration, you can delete the YAML file and remove the <code>rewrite-maven-plugin</code> section from your <code>pom.xml</code>.</p>
+
 <h3 id="migration-to-cib-seven-21">Migration to CIB seven 2.1</h3>
 <p>The backend of CIB seven 2.1.0 is based on Camunda 7.24.0, so before the migration, please check your Camunda version: it should be Camunda 7.24.0. If the version of Camunda is less than 7.24.0 then update it to 7.24.0, first.</p>
 
@@ -4239,6 +4318,14 @@ Enabling these properties ensures smooth access to objects and prevents class lo
   <ul>
     <li>
       <ul>
+        <li><a href="#migration-script">Migration script</a>
+          <ul>
+            <li><a href="#run-from-the-command-line">Run from the command line</a></li>
+            <li><a href="#run-via-the-pomxml">Run via the pom.xml</a></li>
+            <li><a href="#customize-the-migration">Customize the migration</a></li>
+            <li><a href="#clean-up">Clean up</a></li>
+          </ul>
+        </li>
         <li><a href="#migration-to-cib-seven-21">Migration to CIB seven 2.1</a></li>
         <li><a href="#migration-to-cib-seven-20">Migration to CIB seven 2.0</a>
           <ul>
