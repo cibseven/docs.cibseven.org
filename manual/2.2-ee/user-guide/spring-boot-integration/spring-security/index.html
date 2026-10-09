@@ -4303,7 +4303,7 @@ You can override the default delimiter with the <code>group-name-delimiter</code
 
 <h5 id="custom-granted-authorities-mapper">Custom Granted Authorities Mapper</h5>
 <p>Alternatively, you can also define your own <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/login/advanced.html#oauth2login-advanced-map-authorities">GrantedAuthoritiesMapper</a>
-or <a href="JwtAuthenticationConverter">JwtAuthenticationConverter</a>, if you need more customization.</p>
+or <a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html#oauth2resourceserver-jwt-authorization-extraction">JwtAuthenticationConverter</a>, if you need more customization.</p>
 <p>In Spring Boot this can be done by registering your own <code>GrantedAuthoritiesMapper</code> bean or <code>JwtAuthenticationConverter</code> bean.</p>
 <p>In CIB seven Run a JAR file needs to be built and copied into the <code>userlib</code> folder.
 This needs to contain a <a href="https://docs.spring.io/spring-boot/reference/features/developing-auto-configuration.html#features.developing-auto-configuration.locating-auto-configuration-candidates">Spring auto configuration</a> with the custom granted authorities mapper bean.</p>
