@@ -260,7 +260,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>In this section you learn how to create your first <a href="/manual/latest/reference/dmn11/decision-table/">DMN Decision Table</a> with the Camunda Modeler. The table will contain the decision logic about the desired dish for a given season and guest count.</p>
+      <p>In this section you learn how to create your first <a href="/manual/latest/reference/dmn/decision-table/">DMN Decision Table</a> with the Camunda Modeler. The table will contain the decision logic about the desired dish for a given season and guest count.</p>
 <p>Now start up the Camunda Modeler.</p>
 
 <h2 id="create-a-new-decision-diagram">Create a new Decision Diagram</h2>
@@ -273,14 +273,14 @@
 
 
 <h2 id="start-with-the-table-header">Start with the Table Header</h2>
-<p>Start by setting the name and the id of the decision. Select the decision, open the Properties Panel on the right side and change the text to &ldquo;dish&rdquo; as the technical <a href="/manual/latest/reference/dmn11/decision-table/#decision-id">id of the decision</a> which is used to reference the decision inside the process application.</p>
+<p>Start by setting the name and the id of the decision. Select the decision, open the Properties Panel on the right side and change the text to &ldquo;dish&rdquo; as the technical <a href="/manual/latest/reference/dmn/decision-table/#decision-id">id of the decision</a> which is used to reference the decision inside the process application.</p>
 <figure class="image">
   <span><img
       src="../img/modeler-step1.png"
        /></span>
 </figure>
 
-<p>Next, click on the field below and set the <a href="/manual/latest/reference/dmn11/decision-table/#decision-name">name of the decision</a> to &ldquo;Dish&rdquo;.</p>
+<p>Next, click on the field below and set the <a href="/manual/latest/reference/dmn/decision-table/#decision-name">name of the decision</a> to &ldquo;Dish&rdquo;.</p>
 <p>Now drill down into the decision table of the newly created decision by clicking the table icon on top of the decision.</p>
 <figure class="image">
   <span><img
@@ -288,7 +288,7 @@
        /></span>
 </figure>
 
-<p>To set the <a href="/manual/latest/reference/dmn11/decision-table/input/#input-label">label of the input</a> double-click on the field under &ldquo;When&rdquo; and type &ldquo;Season&rdquo; in the uppermost field. Same for the <a href="/manual/latest/reference/dmn11/decision-table/output/#output-label">output label</a>, double-click on the field under &ldquo;Then&rdquo; and type &ldquo;Dish&rdquo; in the uppermost field.</p>
+<p>To set the <a href="/manual/latest/reference/dmn/decision-table/input/#input-label">label of the input</a> double-click on the field under &ldquo;When&rdquo; and type &ldquo;Season&rdquo; in the uppermost field. Same for the <a href="/manual/latest/reference/dmn/decision-table/output/#output-label">output label</a>, double-click on the field under &ldquo;Then&rdquo; and type &ldquo;Dish&rdquo; in the uppermost field.</p>
 <figure class="image">
   <span><img
       src="../img/modeler-step2b.png"
@@ -297,7 +297,7 @@
 
 
 <h2 id="configure-the-input-expression-and-the-output-name">Configure the Input Expression and the Output Name</h2>
-<p>Assuming that the input value for &ldquo;Season&rdquo; is provided by a variable with name &ldquo;season&rdquo;, the <a href="/manual/latest/reference/dmn11/decision-table/input/#input-expression">input expression</a> should be &ldquo;season&rdquo;.</p>
+<p>Assuming that the input value for &ldquo;Season&rdquo; is provided by a variable with name &ldquo;season&rdquo;, the <a href="/manual/latest/reference/dmn/decision-table/input/#input-expression">input expression</a> should be &ldquo;season&rdquo;.</p>
 <p>Double-click on the &ldquo;Season&rdquo; field. In the modal menu that pops up, set &ldquo;season&rdquo; as expression and close it.</p>
 <figure class="image">
   <span><img
@@ -305,10 +305,10 @@
        /></span>
 </figure>
 
-<p>Next, double-click on the &ldquo;Dish&rdquo; field and set &ldquo;desiredDish&rdquo; as <a href="/manual/latest/reference/dmn11/decision-table/output/#output-name">output name</a>.</p>
+<p>Next, double-click on the &ldquo;Dish&rdquo; field and set &ldquo;desiredDish&rdquo; as <a href="/manual/latest/reference/dmn/decision-table/output/#output-name">output name</a>.</p>
 
 <h2 id="configure-the-type-of-the-input-and-output">Configure the Type of the Input and Output</h2>
-<p>Assuming that the input value for &ldquo;Season&rdquo; is provided as String, the <a href="/manual/latest/reference/dmn11/decision-table/input/#input-type-definition">type of the input value</a> should be &ldquo;string&rdquo;.</p>
+<p>Assuming that the input value for &ldquo;Season&rdquo; is provided as String, the <a href="/manual/latest/reference/dmn/decision-table/input/#input-type-definition">type of the input value</a> should be &ldquo;string&rdquo;.</p>
 <p>Double-click on the &ldquo;Season&rdquo; column header. Open the &ldquo;Type&rdquo; dropdown-menu in the modal menu and select &ldquo;string&rdquo;.</p>
 <figure class="image">
   <span><img
@@ -316,10 +316,10 @@
        /></span>
 </figure>
 
-<p>Same for the <a href="/manual/latest/reference/dmn11/decision-table/output/#output-type-definition">output type</a>, double-click on the &ldquo;Dish&rdquo; column header and choose &ldquo;string&rdquo; as type.</p>
+<p>Same for the <a href="/manual/latest/reference/dmn/decision-table/output/#output-type-definition">output type</a>, double-click on the &ldquo;Dish&rdquo; column header and choose &ldquo;string&rdquo; as type.</p>
 
 <h2 id="add-rules">Add Rules</h2>
-<p>Now, add the first <a href="/manual/latest/reference/dmn11/decision-table/rule/">rule</a> that specifies that the desired dish for season &ldquo;Fall&rdquo; is &ldquo;Spareribs&rdquo;.</p>
+<p>Now, add the first <a href="/manual/latest/reference/dmn/decision-table/rule/">rule</a> that specifies that the desired dish for season &ldquo;Fall&rdquo; is &ldquo;Spareribs&rdquo;.</p>
 <p>Click on the &ldquo;+&rdquo; button at the bottom of the table or just click anywhere on the last row. In the row that was added, type &ldquo;Fall&rdquo; in the input column and &ldquo;Spareribs&rdquo; in the output column.</p>
 <figure class="image">
   <span><img
@@ -327,8 +327,8 @@
        /></span>
 </figure>
 
-<p>&ldquo;Fall&rdquo; is the condition (i.e., <a href="/manual/latest/reference/dmn11/decision-table/rule/#input-entry-condition">input entry</a>) of the rule. It is an expression in <a href="/manual/latest/reference/dmn11/feel/">FEEL</a> which is applied and then checks if the input value (i.e., the variable &ldquo;season&rdquo;) is equal to &ldquo;Fall&rdquo;.</p>
-<p>&ldquo;Spareribs&rdquo; is the conclusion (i.e., <a href="/manual/latest/reference/dmn11/decision-table/rule/#output-entry-conclusion">output entry</a>) of the rule. It is a simple expression in JUEL and returns the String &ldquo;Spareribs&rdquo;.</p>
+<p>&ldquo;Fall&rdquo; is the condition (i.e., <a href="/manual/latest/reference/dmn/decision-table/rule/#input-entry-condition">input entry</a>) of the rule. It is an expression in <a href="/manual/latest/reference/dmn/feel/">FEEL</a> which is applied and then checks if the input value (i.e., the variable &ldquo;season&rdquo;) is equal to &ldquo;Fall&rdquo;.</p>
+<p>&ldquo;Spareribs&rdquo; is the conclusion (i.e., <a href="/manual/latest/reference/dmn/decision-table/rule/#output-entry-conclusion">output entry</a>) of the rule. It is a simple expression in JUEL and returns the String &ldquo;Spareribs&rdquo;.</p>
 <p>Next, add a second input &ldquo;How many guests&rdquo; with the input expression &ldquo;guestCount&rdquo; and type &ldquo;integer&rdquo;. Fill the table with additional rules for the remaining seasons.</p>
 <figure class="image">
   <span><img
@@ -338,7 +338,7 @@
 
 
 <h2 id="configure-the-hit-policy">Configure the Hit Policy</h2>
-<p>Set the <a href="/manual/latest/reference/dmn11/decision-table/hit-policy/">hit policy</a> to &ldquo;UNIQUE&rdquo;, which specifies that only one rule can match. Verify that the decision table contains only one rule that can match the inputs.</p>
+<p>Set the <a href="/manual/latest/reference/dmn/decision-table/hit-policy/">hit policy</a> to &ldquo;UNIQUE&rdquo;, which specifies that only one rule can match. Verify that the decision table contains only one rule that can match the inputs.</p>
 <p>Click on the &ldquo;Hit Policy&rdquo; dropdown and choose the hit policy &ldquo;UNIQUE&rdquo;.</p>
 <figure class="image">
   <span><img
