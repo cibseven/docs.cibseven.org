@@ -4263,7 +4263,7 @@
 
 <h4 id="security">Security</h4>
 <ul>
-<li>Task Filter JUEL expressions (e.g. <code>assigneeExpression</code>) could be evaluated with full JUEL power and no content validation, allowing arbitrary function/method/bean invocation for anyone authorized to create or execute filters. Expressions can now be restricted to a safe whitelist — <code>currentUser()</code>, <code>currentUserGroups()</code>, <code>now()</code>, a whitelisted <code>dateTime()</code> expression, and plain literal text — covering stored filters, adhoc task queries, and <code>or()</code>/<code>endOr()</code> query branches. Operators can extend the whitelist via <code>ProcessEngineConfigurationImpl#additionalAllowedFilterExpressions</code>. Disabled by default; enable via the <code>enableFilterExpressionWhitelist</code> toggle.</li>
+<li>Task Filter JUEL expressions (e.g. <code>assigneeExpression</code>) could be evaluated with full JUEL power and no content validation, allowing arbitrary function/method/bean invocation for anyone authorized to create or execute filters. Expressions can now be restricted to a safe whitelist — <code>currentUser()</code>, <code>currentUserGroups()</code>, <code>now()</code>, a whitelisted <code>dateTime()</code> expression, and plain literal text — covering stored filters, adhoc task queries, and <code>or()</code>/<code>endOr()</code> query branches. Operators can replace the default whitelist via the <code>allowedFilterExpressions</code> setting (semicolon-separated expressions). Disabled by default; enable via the <code>enableFilterExpressionWhitelist</code> toggle.</li>
 </ul>
 
 <h4 id="authorization-1">Authorization</h4>
