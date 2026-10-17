@@ -3652,6 +3652,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
     
   </li>
@@ -3723,6 +3739,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3894,6 +3926,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.0.x/" >Release Notes 2.0.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4169,6 +4217,35 @@
 <h2 id="special-considerations">Special Considerations</h2>
 <p>This section describes noteworthy potentially breaking changes when you update to the respective patch levels.</p>
 
+<h3 id="2014--2110--224">2.0.14 / 2.1.10 / 2.2.4</h3>
+
+<details class="collapsible-content">
+  <summary class="collapsible-content-summary">
+    
+  </summary>
+
+  <div class="collapsible-content-body">
+    
+<h4 id="security-task-filter-expression-whitelist-enabled-by-default">Security: Task Filter Expression Whitelist Enabled by Default</h4>
+<p>JUEL expressions in task filter criteria and ad-hoc task queries (e.g. <code>assigneeExpression</code>) are now restricted to a whitelist by default.
+This closes the expression injection issue from Camunda Security Notice 157 for stored filters, ad-hoc task queries and <code>or()</code> branches.</p>
+<p>Allowed by default (<code>n</code> = any non-negative number):</p>
+<ul>
+<li><code>${currentUser()}</code>, <code>${currentUserGroups()}</code>, <code>${now()}</code></li>
+<li><code>${dateTime()}</code>, <code>${dateTime().withMillis(n)}</code>, <code>${dateTime().withTimeAtStartOfDay()}</code></li>
+<li><code>${dateTime().withTimeAtStartOfDay().plusDays(n).minusSeconds(n)}</code></li>
+<li><code>${dateTime().plusDays(n)}</code>, <code>${dateTime().plusDays(n).withTimeAtStartOfDay()}</code>, <code>${dateTime().plusWeeks(n)}</code></li>
+<li>plain literal values</li>
+</ul>
+
+<h5 id="expected-impact">Expected Impact</h5>
+<p>All other expressions, e.g. <code>${dateTime().minusMonths(2)}</code>, are rejected with HTTP 400. In the Tasklist, such a filter shows an error instead of the task list.</p>
+<p>For more information, see <a href="/manual/2.2-ee/user-guide/process-engine/securing-custom-code/#queries">Custom Code &amp; Security</a>.</p>
+
+  </div>
+</details>
+
+
 <h3 id="220-to-221">2.2.0 to 2.2.1</h3>
 
 <details class="collapsible-content">
@@ -4327,6 +4404,7 @@ Alternatively, update your configuration to the recommended <a href="/get-starte
     <li><a href="#database-patches">Database Patches</a></li>
     <li><a href="#special-considerations">Special Considerations</a>
       <ul>
+        <li><a href="#2014--2110--224">2.0.14 / 2.1.10 / 2.2.4</a></li>
         <li><a href="#220-to-221">2.2.0 to 2.2.1</a></li>
         <li><a href="#213-to-214">2.1.3 to 2.1.4</a></li>
         <li><a href="#212-to-213">2.1.2 to 2.1.3</a></li>

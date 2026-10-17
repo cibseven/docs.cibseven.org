@@ -3652,6 +3652,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
     
   </li>
@@ -3723,6 +3739,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3894,6 +3926,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.0.x/" >Release Notes 2.0.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4550,8 +4598,8 @@
 
 <h3 id="list-folders">List Folders</h3>
 <pre tabindex="0"><code>GET /modeler/folders
-</code></pre><p>Returns every folder, each carrying the <code>parentId</code> of the folder holding it, so one call is enough to build the whole tree. The list is empty when every folder has been deleted; nothing is created to fill it.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — array of <code>FolderEntity</code> objects.</p>
+</code></pre><p>Returns every folder, each carrying the <code>parentId</code> of the folder holding it, so one call is enough to build the whole tree. The list is empty when every folder has been deleted; listing creates nothing, not even the caller&rsquo;s own folder (see <a href="#get-own-folder">Get Own Folder</a>).</p>
+<p><strong>Response:</strong> <code>200 OK</code> — array of <code>FolderEntity</code> objects. Each carries <code>userFolder</code>, which is <code>true</code> for the folder of a user: a folder at the top level named after the user who created it.</p>
 <hr>
 
 <h3 id="get-folder">Get Folder</h3>
@@ -4563,6 +4611,31 @@
 <pre tabindex="0"><code>GET /modeler/folders/{id}/contents
 </code></pre><p>Counts what the folder holds through its whole subtree, for a confirmation before deleting it.</p>
 <p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;folders&quot;: 2, &quot;diagrams&quot;: 7, &quot;forms&quot;: 1 }</code></p>
+<hr>
+
+<h3 id="get-own-folder">Get Own Folder</h3>
+<pre tabindex="0"><code>POST /modeler/folders/user-folder
+</code></pre><p>Returns the caller&rsquo;s own folder, the folder at the top level named after the caller&rsquo;s user ID, and creates it on the first call. The modeler calls it when its start page opens, so a user gets a folder on the first visit rather than at login. A folder at the top level that already carries the user ID is returned as it is.</p>
+<p>A user&rsquo;s folder cannot be renamed, moved or deleted except by an administrator, a user granted the <em>All</em> permission on the <em>System</em> resource.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;folder&quot;: { ... }, &quot;manageUserFolders&quot;: false }</code></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folder</code></td>
+      <td>The caller&rsquo;s folder, a <code>FolderEntity</code></td>
+    </tr>
+    <tr>
+      <td><code>manageUserFolders</code></td>
+      <td>Whether the caller may rename, move and delete the folders of users</td>
+    </tr>
+  </tbody>
+</table>
 <hr>
 
 <h3 id="create-folder">Create Folder</h3>
@@ -4614,13 +4687,13 @@
   </tbody>
 </table>
 <p>The folder keeps its id, so everything below it stays reachable. A folder cannot be moved into itself or into one of its own subfolders. Sending both fields applies them together: if the move is refused, the folder is not renamed either.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — the updated folder. <code>400 Bad Request</code> when the name is taken or the move would put the folder inside itself.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the updated folder. <code>400 Bad Request</code> when the name is taken or the move would put the folder inside itself. <code>403 Forbidden</code> when the folder is the folder of a user and the caller is not an administrator.</p>
 <hr>
 
 <h3 id="delete-folder">Delete Folder</h3>
 <pre tabindex="0"><code>DELETE /modeler/folders/{id}
 </code></pre><p>Deletes the folder with <strong>everything below it</strong>: subfolders, diagrams and forms. This cannot be undone — call the contents endpoint first and confirm with the user. Deployed processes are unaffected.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — what was removed, in the shape the contents endpoint returns.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — what was removed, in the shape the contents endpoint returns. <code>403 Forbidden</code> when the folder is the folder of a user and the caller is not an administrator.</p>
 <hr>
 
 <h2 id="chat-enterprise-edition">Chat (Enterprise Edition)</h2>
@@ -4885,6 +4958,7 @@
         <li><a href="#list-folders">List Folders</a></li>
         <li><a href="#get-folder">Get Folder</a></li>
         <li><a href="#get-folder-contents">Get Folder Contents</a></li>
+        <li><a href="#get-own-folder">Get Own Folder</a></li>
         <li><a href="#create-folder">Create Folder</a></li>
         <li><a href="#rename-or-move-folder">Rename or Move Folder</a></li>
         <li><a href="#delete-folder">Delete Folder</a></li>

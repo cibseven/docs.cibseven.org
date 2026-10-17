@@ -3652,6 +3652,22 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
     
   </li>
@@ -3723,6 +3739,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3894,6 +3926,22 @@
     
       <a href="/manual/latest/release-notes/2.0.x/" >Release Notes 2.0.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4156,21 +4204,38 @@
 
     <div class="col-xs-12 content-text">
       <p>The modeler start page organizes stored diagrams and forms in folders, <strong>from 2.3.0</strong>. Earlier versions showed one flat list of everything.</p>
-<p>Every model lives in exactly one folder. The top level of the start page — <em>Home</em> — therefore holds folders only, and models appear once you open one.</p>
+<p>Every model lives in exactly one folder. The top level of the start page — <em>Projects</em> — therefore holds folders only, and models appear once you open one.</p>
 
 <div class="note bg-info docs-info">
   <h3>Existing models</h3>
   <p><p>Updating an installation to 2.3.0 creates a folder named <strong>General</strong> and puts every diagram and form into it, so nothing has to be sorted by hand. See <a href="/manual/latest/webapps/modeler/installation/database-schema/">Database Schema</a>.</p>
-<p><em>General</em> is an ordinary folder from then on: rename it, move it or delete it as you see fit. Nothing recreates it, so an installation whose folders have all been deleted shows an empty <em>Home</em>, and a model can be created again once there is a folder to put it in.</p>
+<p><em>General</em> is an ordinary folder from then on: rename it, move it or delete it as you see fit. Nothing recreates it.</p>
 </p>
+</div>
+
+
+<h2 id="your-own-folder">Your Own Folder</h2>
+<p>The first time you open the modeler, a folder named after your <strong>user ID</strong> is created for you at the top level, so there is always a place to store a model. It is created when you open the modeler, not when you log in, so users who never use the modeler get no folder.</p>
+<p>Unless you choose another <a href="#default-folder">default folder</a>, the start page opens in this folder every time you open the modeler, so you can create or import a model straight away. <em>Projects</em> in the breadcrumb leads to the top level and the other folders. Refreshing the page keeps you where you are: the folder you have open is part of the address.</p>
+<p>Apart from that it is an ordinary folder: it is listed by name among the other folders of the top level, and you create, rename, move and delete the folders and models inside it as anywhere else. It is not private either: every modeler user sees it and can work in it.</p>
+<p>Only the folder itself is protected: it cannot be renamed, moved or deleted, and its row offers none of those actions. Administrators, users granted the <em>All</em> permission on the <em>System</em> resource, can do all three, for example to clean up after somebody has left. A user folder that was deleted is created again the next time its user opens the modeler.</p>
+
+<div class="note bg-info docs-info">
+  <h3>A folder that already carries your user ID</h3>
+  <p>If a folder at the top level already has your user ID as its name when you first open the modeler, it is used as your folder instead of creating a second one. It stays unprotected when somebody else created it.</p>
 </div>
 
 
 <h2 id="browsing">Browsing</h2>
 <p>The list shows the folders of the level you are on first, then its models. Selecting a folder opens it, and the breadcrumb above the list walks back out again. The folder you are in is the last entry of the breadcrumb and is not a link; the ones before it are.</p>
 
+<h2 id="default-folder">Default Folder</h2>
+<p>The star next to the breadcrumb makes the place you are in the one the start page opens when you open the modeler: a project, any folder in it, your own folder, or <em>Projects</em>, the top level. The star is filled while you are in your default folder, and the list marks the default folder with a star as well. Selecting the filled star unsets it, and the start page opens your own folder again.</p>
+<p>The default is kept in your browser and for your user only: another browser, or another user of the same browser, has a default of its own. If the default folder is deleted, or you can no longer see it, the start page opens your own folder instead and the default is forgotten.</p>
+<p>Refreshing the page keeps the folder you have open; the default only decides where a new visit starts.</p>
+
 <h2 id="working-with-folders">Working with Folders</h2>
-<p><em>New folder</em> creates a folder in the level you are on: inside the folder that is open, or at the top level when you are on <em>Home</em>. A name has to be unique among the folders beside it — two folders with one name in one place would be indistinguishable.</p>
+<p><em>New folder</em> creates a folder in the level you are on: inside the folder that is open, or at the top level when you are on <em>Projects</em>. A name has to be unique among the folders beside it — two folders with one name in one place would be indistinguishable.</p>
 <p>Each folder row offers, when it is hovered or focused:</p>
 <table class="table-2col">
   <thead>
@@ -4194,6 +4259,7 @@
     </tr>
   </tbody>
 </table>
+<p>The folder of a user (see <a href="#your-own-folder">Your Own Folder</a>) offers none of these actions unless you are an administrator.</p>
 <p>A folder cannot be moved into itself or into one of its own subfolders, and the destination list leaves those out.</p>
 
 <div class="note bg-warning docs-warning">
@@ -4208,7 +4274,7 @@
 <p>Moving a model keeps its identity: its id and its key stay as they are, so links to it and deployments made from it continue to work. Only where it is filed changes.</p>
 
 <h2 id="creating-and-importing">Creating and Importing</h2>
-<p>New models and imported files are stored in the folder you have open, which is why <em>Import local file</em>, <em>Create BPMN</em>, <em>Create DMN</em> and <em>Create Form</em> are offered only inside a folder and not on <em>Home</em>. Dropping a file on the page follows the same rule and is refused at the top level.</p>
+<p>New models and imported files are stored in the folder you have open, which is why <em>Import local file</em>, <em>Create BPMN</em>, <em>Create DMN</em> and <em>Create Form</em> are offered only inside a folder and not on <em>Projects</em>. A file dropped on the page goes into the folder you have open. Dropped on <em>Projects</em>, it goes into your <a href="#default-folder">default folder</a>; when you have none, or <em>Projects</em> is your default, the modeler asks which folder it goes into.</p>
 <p>When an imported file matches a model that already exists, the modeler asks what to do with it. Choosing <strong>Replace</strong> overwrites the content of the existing model <strong>in the folder it already lives in</strong> — it does not move it to the folder you are importing into, and the dialog names that folder so it is clear before choosing. Choosing <strong>Rename</strong> stores a new model, which lands in the folder you have open.</p>
 
 <h2 id="searching">Searching</h2>
@@ -4223,7 +4289,9 @@
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#your-own-folder">Your Own Folder</a></li>
     <li><a href="#browsing">Browsing</a></li>
+    <li><a href="#default-folder">Default Folder</a></li>
     <li><a href="#working-with-folders">Working with Folders</a></li>
     <li><a href="#working-with-models">Working with Models</a></li>
     <li><a href="#creating-and-importing">Creating and Importing</a></li>

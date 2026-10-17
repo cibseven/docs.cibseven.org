@@ -3652,6 +3652,22 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
     
   </li>
@@ -3723,6 +3739,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3894,6 +3926,22 @@
     
       <a href="/manual/latest/release-notes/2.0.x/" >Release Notes 2.0.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4178,6 +4226,56 @@
 <li><code>enableExpressionsInAdhocQueries</code>=<code>false</code>, <code>enableExpressionsInStoredQueries</code>=<code>false</code>: Expressions are disabled for all queries. Use this setting if none of the above settings can be applied.</li>
 </ul>
 
+<h3 id="task-filter-expression-whitelist">Task Filter Expression Whitelist</h3>
+<p>As of 2.0.14, 2.1.10 and 2.2.4, JUEL expressions in task filter criteria and ad-hoc task queries (e.g. <code>assigneeExpression</code>) are restricted to a whitelist by default.
+This closes the expression injection issue from Camunda Security Notice 157 for stored filters, ad-hoc task queries and <code>or()</code> branches.</p>
+<p>Allowed by default (<code>n</code> = any non-negative number):</p>
+<ul>
+<li><code>${currentUser()}</code>, <code>${currentUserGroups()}</code>, <code>${now()}</code></li>
+<li><code>${dateTime()}</code>, <code>${dateTime().withMillis(n)}</code>, <code>${dateTime().withTimeAtStartOfDay()}</code></li>
+<li><code>${dateTime().withTimeAtStartOfDay().plusDays(n).minusSeconds(n)}</code></li>
+<li><code>${dateTime().plusDays(n)}</code>, <code>${dateTime().plusDays(n).withTimeAtStartOfDay()}</code>, <code>${dateTime().plusWeeks(n)}</code></li>
+<li>plain literal values</li>
+</ul>
+<p>All other expressions, e.g. <code>${dateTime().minusMonths(2)}</code>, are rejected with HTTP 400. In the Tasklist, such a filter shows an error instead of the task list.</p>
+
+<h4 id="finding-affected-filters">Finding Affected Filters</h4>
+<p>Before updating, find stored filters that use expressions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">ID_</span><span class="p">,</span><span class="w"> </span><span class="n">NAME_</span><span class="p">,</span><span class="w"> </span><span class="n">OWNER_</span><span class="p">,</span><span class="w"> </span><span class="n">QUERY_</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ACT_RU_FILTER</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">QUERY_</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%${%&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">QUERY_</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%#{%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>Also check custom <code>TaskQuery</code> code for <code>*Expression</code> values.</p>
+
+<h4 id="allowing-more-expressions">Allowing More Expressions</h4>
+<p>Set <code>allowedFilterExpressions</code> to a semicolon-separated list. It replaces the defaults, so include the defaults you still need.
+Numbers in brackets act as wildcards: <code>${dateTime().minusMonths()}</code> also allows <code>minusMonths(2)</code>.</p>
+<ul>
+<li>CIB seven Run / Spring Boot: <code>camunda.bpm.generic-properties.properties.allowedFilterExpressions</code></li>
+<li>Tomcat (<code>bpm-platform.xml</code>) resolves <code>${…}</code> as a placeholder; WildFly (<code>standalone.xml</code>) needs <code>$${…}</code>.</li>
+</ul>
+
+<h4 id="switches">Switches</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Property</th>
+    <th>Default</th>
+    <th>Effect</th>
+  </tr>
+  <tr>
+    <td><code>enableFilterExpressionWhitelist</code></td>
+    <td><code>true</code> (since 2.0.14 / 2.1.10 / 2.2.4)</td>
+    <td>Whitelist on. <code>false</code> restores the old behavior (not recommended).</td>
+  </tr>
+  <tr>
+    <td><code>enableExpressionsInStoredQueries</code></td>
+    <td><code>true</code></td>
+    <td><code>false</code> disables expressions in stored filters completely.</td>
+  </tr>
+  <tr>
+    <td><code>enableExpressionsInAdhocQueries</code></td>
+    <td><code>false</code></td>
+    <td>Expressions in ad-hoc task queries stay off; if enabled, the whitelist applies.</td>
+  </tr>
+</table>
+
     </div>
   </div>
 </div>
@@ -4188,7 +4286,17 @@
   <ul>
     <li><a href="#cib-seven-in-a-trusted-environment">CIB seven in a Trusted Environment</a></li>
     <li><a href="#deployments">Deployments</a></li>
-    <li><a href="#queries">Queries</a></li>
+    <li><a href="#queries">Queries</a>
+      <ul>
+        <li><a href="#task-filter-expression-whitelist">Task Filter Expression Whitelist</a>
+          <ul>
+            <li><a href="#finding-affected-filters">Finding Affected Filters</a></li>
+            <li><a href="#allowing-more-expressions">Allowing More Expressions</a></li>
+            <li><a href="#switches">Switches</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">
