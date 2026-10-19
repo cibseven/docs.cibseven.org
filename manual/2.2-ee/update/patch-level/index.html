@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4325,7 +4355,7 @@ annotating the individual field with <code>@JsonFormat</code>, over switching th
   <div class="collapsible-content-body">
     
 <h4 id="multi-engine-improvement">Multi-engine improvement</h4>
-<p>In CIB seven 2.1.4, <a href="/manual/2.2-ee/webapps/configuration-options/#multi-engine-support">multi-engine support</a> feature, introduced in 2.1.3 version, was improved.
+<p>In CIB seven 2.1.4, <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#multi-engine-support">multi-engine support</a> feature, introduced in 2.1.3 version, was improved.
 Now, the extended endpoints are used only for alternative engines, ensuring full backward compatibility for existing webclient configurations.
 For example, when using the default engine, the web client connects to the standard endpoint to retrieve information about a process definition (as in versions prior to 2.1.3):</p>
 <p><code>/process-definition/key</code></p>
@@ -4353,7 +4383,7 @@ For a complete list of updated dependencies, see <a href="/manual/2.2-ee/release
   <div class="collapsible-content-body">
     
 <h4 id="multi-engine-support">Multi-engine support</h4>
-<p>In CIB seven 2.1.3, <a href="/manual/2.2-ee/webapps/configuration-options/#multi-engine-support">multi-engine support</a> was introduced, and CIB seven webclient was updated to use the extended REST API endpoints that include engine names.
+<p>In CIB seven 2.1.3, <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#multi-engine-support">multi-engine support</a> was introduced, and CIB seven webclient was updated to use the extended REST API endpoints that include engine names.
 For example, before 2.1.3, the webclient connected to:</p>
 <p><code>/process-definition/key</code></p>
 <p>Now, it connects to:</p>

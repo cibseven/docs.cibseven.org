@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4302,7 +4332,7 @@
 <h4 id="run-distribution">Run distribution</h4>
 
 <h5 id="before-220-version">Before 2.2.0 version</h5>
-<p>To proper set a required history level you have to adjust one property in two locations: engine and <a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">webclient</a>:</p>
+<p>To proper set a required history level you have to adjust one property in two locations: engine and <a href="/manual/latest/webapps/configuration-options/core-configuration/#all-core-configuration-options">webclient</a>:</p>
 <p>Location: <code>./cibseven-bpm-run-2.1.3-ee/configuration/production.yml</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">camunda:
 </span></span><span class="line"><span class="cl">  bpm:
@@ -4334,7 +4364,7 @@
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-engine&gt;</span>
 </span></span></code></pre></div>
 <h5 id="2-webclient-required-only-before-220-version">2. Webclient (required only before 2.2.0 version)</h5>
-<p>CIB seven web application <a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">configuration</a>:</p>
+<p>CIB seven web application <a href="/manual/latest/webapps/configuration-options/core-configuration/#all-core-configuration-options">configuration</a>:</p>
 <p>Location: <code>./cibseven-bpm-tomcat-2.1.3-ee/server/apache-tomcat-10.1.49/webapps/webapp/WEB-INF/classes/application.yaml</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">

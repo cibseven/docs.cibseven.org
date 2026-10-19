@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4248,7 +4278,7 @@ application must use the EE version of the starter, with <code>-ee</code> suffix
 <p>This breaks down when the user is already authenticated before the webclient starts. A custom integration — SAML, or a session established by a reverse proxy or API gateway — never passes through the standard login form, the SSO callback, or the <code>?token=</code> bootstrap, so nothing ever writes the token to <code>sessionStorage</code>/<code>localStorage</code>. The service worker then has no token to attach, the webclient does not issue the chunk request at all, and the feature shows a <strong>&ldquo;License Required&rdquo;</strong> message even though the license itself is perfectly valid.</p>
 
 <h3 id="leaving-chunk-authentication-to-the-server">Leaving chunk authentication to the server</h3>
-<p>For these setups, set <a href="/manual/latest/user-guide/cibseven-run/#tr-cibseven-webclient-license-chunk"><code>cibseven.webclient.license.chunk.trustServerAuthentication</code></a> to <code>true</code>:</p>
+<p>For these setups, set <a href="/manual/latest/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-license-chunk"><code>cibseven.webclient.license.chunk.trustServerAuthentication</code></a> to <code>true</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">license</span><span class="p">:</span><span class="w">

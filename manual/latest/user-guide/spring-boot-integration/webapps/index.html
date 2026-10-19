@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4240,7 +4270,7 @@ for more details on how to add a License key to your CIB seven installation.</p>
 </span></span></code></pre></div><p>By default, the starter registers a controller to redirect <code>/</code> to CIB seven&rsquo;s bundled <code>index.html</code>.
 To disable this, you have to add to your application properties:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">camunda.bpm.webapp.index-redirect-enabled</span><span class="o">=</span><span class="s">false</span>
-</span></span></code></pre></div><p>For more information about the configuration options for CIB seven webclient, please see here: <a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webclient properties</a></p>
+</span></span></code></pre></div><p>For more information about the configuration options for CIB seven webclient, please see here: <a href="/manual/latest/webapps/configuration-options/core-configuration/#all-core-configuration-options">CIB seven webclient properties</a></p>
 
 <h3 id="error-pages">Error Pages</h3>
 <p>The default error handling coming with the Spring Boot (&lsquo;whitelabel&rsquo; error page) is enabled in the starter. To switch to the Camunda error pages (<code>webjar/META-INF/resources/webjars/camunda/error-XYZ-page.html</code>), please put them to the application folder structure under <code>/src/main/resources/public/error/XYZ.html</code>.</p>

@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4694,7 +4724,7 @@ process engine.</li>
 <h4 id="webclient-plugin-registration">Webclient plugin registration</h4>
 <p>CIB seven provides a mechanism to extend the CIB seven webclient with user interface of your own, rendered next to the built-in views. See <a href="/manual/latest/webapps/plugins/">Plugins</a> for what a plugin can contribute and how one is built.</p>
 <p>A webclient plugin is a jar containing the plugin&rsquo;s files below <code>META-INF/cibseven-plugins/</code>. It needs no server-side code.</p>
-<p>To register a webclient plugin, drop the jar file into the <code>configuration/userlib</code> folder and set <a href="#tr-cibseven-webclient-plugins"><code>cibseven.webclient.plugins.enabled</code></a> to <code>true</code>. See <a href="#starting-with-camunda-platform-run">the Starting with CIB seven Run section</a> of this guide to find out how to navigate the directories of CIB seven Run.</p>
+<p>To register a webclient plugin, drop the jar file into the <code>configuration/userlib</code> folder and set <a href="/manual/latest/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-plugins"><code>cibseven.webclient.plugins.enabled</code></a> to <code>true</code>. See <a href="#starting-with-camunda-platform-run">the Starting with CIB seven Run section</a> of this guide to find out how to navigate the directories of CIB seven Run.</p>
 
 <h3 id="example-application-launch">Example application launch</h3>
 <p>CIB seven Run comes with a <a href="#example-application">demo application</a> that deploys resources and starts process instances.
@@ -4823,7 +4853,8 @@ Some of the properties are listed in the table below:</p>
 </table>
 
 <h3 id="cib-seven-webclient-properties">CIB seven webclient properties</h3>
-<p>Below is a brief description of the properties for CIB seven webclient, which can by used with the <a href="#choose-between-default-and-production-configuration">configuration files</a></p>
+<p>A complete description of the properties for CIB seven webclient can be found in <a href="/manual/latest/webapps/configuration-options/core-configuration/#all-core-configuration-options">Webclient Core Configuration</a>. You can set them with the <a href="#choose-between-default-and-production-configuration">configuration files</a>.</p>
+<p>The following properties set the paths under which the webclient is deployed and configure the actuators.</p>
 <table class="table desc-table">
   <tr>
       <th>Prefix</th>
@@ -4851,285 +4882,6 @@ Some of the properties are listed in the table below:</p>
   <tr>
       <td>.legacyWebjarClassPath</td>
       <td>The classpath of Camunda web applications. <br />Default value: /META-INF/resources/webjars/camunda</td>
-  </tr>
-    <tr>
-      <td>cibseven.webclient</td>
-      <td>.enabled</td>
-      <td>Specifies whether CIB seven web application (CIB seven webclient) REST API is enabled. <br />Default value: true</td>
-  </tr>
-  <tr>
-      <td rowspan="4">cibseven.webclient</td>
-      <td>.api.common.title</td>
-      <td>API title for Swagger. <br />Example: CIB seven webclient API</td>
-  </tr>
-  <tr>
-      <td>.api.common.description</td>
-      <td>API description for Swagger</td>
-  </tr>
-  <tr>
-      <td>.api.common.license</td>
-      <td>License name</td>
-  </tr>
-  <tr>
-      <td>.api.common.contact</td>
-      <td>Contains a few sub-properties with the contact name, url and email</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-authentication">
-      <td rowspan="3">cibseven.webclient</td>
-      <td>.authentication.jwtSecret</td>
-      <td>Secret used to sign JWT tokens</td>
-  </tr>
-  <tr>
-      <td>.authentication.tokenValidMinutes</td>
-      <td>Authentication token expiration in minutes</td>
-  </tr>
-  <tr>
-      <td>.authentication.tokenProlongMinutes</td>
-      <td>Authentication token extension time in minutes</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-license-chunk">
-      <td>cibseven.webclient.license.chunk</td>
-      <td>.trustServerAuthentication</td>
-      <td>Lets the browser request licensed EE frontend chunks even when the webclient holds no auth token to attach to them, leaving authentication of those requests to the server. Set this to <code>true</code> only if your deployment authenticates requests itself — a custom <code>IUserProvider</code> backed by a SAML session, a reverse proxy, or a gateway — so that a chunk request without an <code>Authorization</code> header can still be authenticated. The server-side license check is unaffected: a request the user provider cannot authenticate is still rejected. See <a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>. <br />Default value: false</td>
-  </tr>
-  <tr>
-      <td rowspan="17">cibseven.webclient</td>
-      <td>.bpm.provider</td>
-      <td>BPM provider implementation class. <br />Example: org.cibseven.webapp.providers.SevenProvider</td>
-  </tr>
-  <tr>
-      <td>.engineRest.url</td>
-      <td>CIB seven engine REST API URL. <br />Example: http://localhost:8080</td>
-  </tr>
-    <tr>
-      <td>.engineRest.path</td>
-      <td>CIB seven engine REST path allows to customize the engine REST API path to support different Jersey application configurations. <br />Default value: /engine-rest</td>
-  </tr>
-    <tr>
-      <td>.engineRest.displayName</td>
-      <td>CIB seven engine REST name, displayed in CIB seven webclient</td>
-  </tr>
-    <tr>
-      <td>.engineRest.additionalEngineRest</td>
-      <td>Specifies optional CIB seven engines that can be accessible from the CIB seven webclient. </td>
-  </tr>    
-  <tr>
-      <td>.historyLevel</td>
-      <td>CIB seven history tracking level. <br />Possible values: audit/full/activity/none</td>
-  </tr>
-  <tr>
-      <td>.cockpit.url</td>
-      <td>Old cockpit access path. <br />Example: /camunda/app/cockpit/default</td>
-  </tr>
-  <tr>
-      <td>.datasource.fileValue.enabled</td>
-      <td>Enable/disable file value handling. <br />Possible values: true/false</td>
-  </tr>
-  <tr>
-      <td>.fetchInstances</td>
-      <td>Whether to fetch process instances. <br />Possible values: true/false</td>
-  </tr>
-  <tr>
-      <td>.fetchIncidents</td>
-      <td>Whether to fetch incidents. <br />Possible values: true/false</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-plugins">
-      <td>.plugins.enabled</td>
-      <td>Load frontend plugins from the classpath. See <a href="/manual/latest/webapps/plugins/">Plugins</a>. <br />Possible values: true/false <br />Default value: false</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-plugins-disabled">
-      <td>.plugins.disabled</td>
-      <td>Ids of plugins to skip, for instance one that breaks the page; the other plugins still load. Takes a restart. See <a href="/manual/latest/webapps/plugins/#switching-off-one-plugin">Switching off one plugin</a>. <br />Default value: empty</td>
-  </tr>
-  <tr>
-      <td>.services.basePath</td>
-      <td>Relative path, location of the backend services starting from applicationPath. <br />Default value: services/v1</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-theme">
-      <td>.theme</td>
-      <td>UI theme based on Bootstrap, currently only cib theme is supported. <br />Example: cib</td>
-  </tr>
-  <tr>
-      <td>.token.secret</td>
-      <td>Secret for external token validation</td>
-  </tr>
-  <tr>
-      <td>.token.deny.external.ip</td>
-      <td>Deny external IP token user creation. <br />Possible values: true/false</td>
-  </tr>
-  <tr>
-      <td>.user.provider</td>
-      <td>User provider implementation class. <br />Example: org.cibseven.webapp.auth.SevenUserProvider</td>
-  </tr>
-  <tr>
-      <td>.users.search.wildcard</td>
-      <td>Wildcard for user search (default "*")</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-ldap">
-      <td rowspan="7">cibseven.webclient.ldap</td>
-      <td>.url</td>
-      <td>LDAP server URL. <br />Example: ldap://ldap.cibseven.org </td>
-  </tr>
-  <tr>
-      <td>.folder</td>
-      <td>Base DN for LDAP searches. <br />Example: DC=cibseven,DC=org </td>
-  </tr>
-  <tr>
-      <td>.userClass</td>
-      <td>LDAP attribute when searching for users. <br />Example: person </td>
-  </tr>
-  <tr>
-      <td>.userNameAttribute</td>
-      <td>LDAP attribute for username. <br />Example: samAccountName</td>
-  </tr>
-  <tr>
-      <td>.userDisplayNameAttribute</td>
-      <td>LDAP attribute for display name. <br />Example: name</td>
-  </tr>
-  <tr>
-      <td>.modifiedDateFormat</td>
-      <td>Date format for modified timestamp. <br />Example: yyyyMMddHHmmss</td>
-  </tr>
-  <tr>
-      <td>.followReferrals</td>
-      <td>Whether to follow LDAP referrals. <br />Example: follow</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-sso">
-      <td rowspan="14">cibseven.webclient.sso</td>
-      <td>.endpoints.token</td>
-      <td>OAuth2 token endpoint</td>
-  </tr>
-  <tr>
-      <td>.endpoints.jwks</td>
-      <td>OAuth2 jwks endpoint</td>
-  </tr>
-  <tr>
-      <td>.endpoints.authorization</td>
-      <td>authorization token endpoint</td>
-  </tr>
-  <tr>
-      <td>.endpoints.user</td>
-      <td>OAuth2 user endpoint</td>
-  </tr>
-  <tr>
-      <td>.endpoints.introspection</td>
-      <td>OAuth2 introspection endpoint</td>
-  </tr>
-  <tr>
-      <td>.clientId</td>
-      <td>OAuth2 Client id of the application</td>
-  </tr>
-  <tr>
-      <td>.clientSecret</td>
-      <td>OAuth2 Client secret of the application</td>
-  </tr>
-  <tr>
-      <td>.userIdProperty</td>
-      <td>Property in the Id-Token where the userid is taken from</td>
-  </tr>
-  <tr>
-      <td>.userNameProperty</td>
-      <td>Property in the Id-Token where the username is taken from</td>
-  </tr>
-  <tr>
-      <td>.active</td>
-      <td>Activates the redirect in the frontend to login with the sso provider
-      <br />Default value: false</td>
-  </tr>
-  <tr>
-      <td>.accessTokenToEngineRest</td>
-      <td>Activates the forwarding of the access token to the engine REST. Required when starter-security is used to secure engine REST with Spring Security
-      <br />Default value: false</td>
-  </tr>
-  <tr>
-      <td>.scopes</td>
-      <td> OAuth2 scopes to include in the authorization request</td>
-  </tr>
-  <tr id="tr-cibseven-webclient-assertion">
-      <td>.assertion.type</td>
-      <td>
-        The type of assertion provider to use.<br>
-        Possible values:
-        <li><code>JJWT</code>: Requires <code>key-location</code> to point to a PEM-encoded private key.</li>
-        <li><code>AZURE_WORKLOAD_IDENTITY</code>: 
-        Uses the Azure Workload Identity federated token (reads the file referenced by
-        the <code>AZURE_FEDERATED_TOKEN_FILE</code> environment variable)</li>
-      </td>
-  </tr>
-  <tr>
-      <td>.assertion.locationKey</td>
-      <td>
-        Location of the PEM-encoded PKCS#8 private key file.
-        Supports Spring resource prefixes: <code>classpath:</code>, <code>file:</code>.
-        <li>Required for <code>assertion.type=JJWT</code>.</li>
-        <li>Not used for <code>assertion.type=AZURE_WORKLOAD_IDENTITY</code>.</li>  
-      </td>
-  </tr>
-  <tr>
-      <td rowspan="14">cibseven.webclient.rest</td>
-      <td>.enabled</td>
-      <td>Whether the custom RestTemplate is enabled. If false, a default RestTemplate will be used.  <br />Default value: true</td>
-  </tr>
-  <tr>
-      <td>.keepAlive</td>
-      <td>Whether the socket connection should be kept alive between requests. <br />Default value: true</td>
-  </tr>
-  <tr>
-      <td>.socketTimeout</td>
-      <td>Socket read timeout in seconds (0 = infinite). Maximum time to wait for data from an established connection. <br />Default value: 3600</td>
-  </tr>
-  <tr>
-      <td>.connectTimeout</td>
-      <td>Time in seconds to establish connection (0 = infinite). Maximum time to wait while establishing a connection. <br />Default value: 30</td>
-  </tr>
-  <tr>
-      <td>.connectionRequestTimeout</td>
-      <td>Time to wait in seconds for a connection from the connection pool. <br />Default value: 180</td>
-  </tr>
-  <tr>
-      <td>.connectionResponseTimeout</td>
-      <td>Max response wait time in seconds (0 = infinite). If not set, the socketTimeout value will be used.</td>
-  </tr>
-  <tr>
-      <td>.maxConnPerRoute</td>
-      <td>Max HTTP connections per route. Limits the number of connections to a specific host. <br />Default value: 20</td>
-  </tr>
-  <tr>
-      <td>.maxConnTotal</td>
-      <td>Total max HTTP connections across all routes. Defaults to 2 * maxConnPerRoute if not specified.</td>
-  </tr>
-  <tr>
-      <td>.connectionTimeToLive</td>
-      <td>Connection time to live in milliseconds. Maximum time a connection can be reused. <br />Default value: 50000</td>
-  </tr>
-  <tr>
-      <td>.connectionPoolingEnabled</td>
-      <td>Whether to enable connection pooling. Improves performance by reusing connections. <br />Default value: true</td>
-  </tr>
-  <tr>
-      <td>.connectionReuseEnabled</td>
-      <td>Whether to enable connection reuse. Allows reusing connections for multiple requests. <br />Default value: true</td>
-  </tr>
-  <tr>
-      <td>.metricsEnabled</td>
-      <td>Whether to enable Micrometer metrics for monitoring connection pool usage. <br />Default value: false</td>
-  </tr>
-  <tr>
-      <td>.requestLoggingEnabled</td>
-      <td>Whether to enable request/response logging for debugging purposes. <br />Default value: false</td>
-  </tr>
-  <tr>
-      <td>.followRedirects</td>
-      <td>Whether to automatically follow HTTP redirects (status codes 3xx). <br />Default value: true</td>
-  </tr>
-  <tr>
-      <td rowspan="2">cibseven.webclient.custom.spring.jackson</td>
-      <td>.parser.max-size</td>
-      <td>Maximum length in characters of a single JSON string the webclient will parse. <br />Default value: 20000000</td>
-  </tr>
-  <tr>
-      <td>.serialization.write-dates-as-timestamps</td>
-      <td>Switches webclient REST responses to the Unix epoch date format. Provided as a temporary migration aid starting from 2.2.2 for consumers that relied on the format used in 2.2.1. <br />Default value: false</td>
   </tr>
   <tr>
       <td rowspan="9">management</td>
@@ -5168,33 +4920,15 @@ Some of the properties are listed in the table below:</p>
       <td>.info.java.enabled</td>
       <td>Include Java info in actuator info. <br />Possible values: true/false</td>
   </tr>
-  <tr>
-      <td>spring</td>
-      <td>.config.import</td>
-      <td>List of optional config files to import if available. <br />Example:<br />- optional:classpath:cibseven-webclient.properties<br />- optional:classpath:cibseven-webclient.yaml</td>
-  </tr>
-  <tr>
-      <td rowspan="5">springdoc</td>
-      <td>.swagger-ui.path</td>
-      <td>Swagger UI path. <br />Example: /webapp/swagger-ui</td>
-  </tr>
-  <tr>
-      <td>.swagger-ui.operationsSorter</td>
-      <td>Sort operations alphabetically. <br />Possible values: alpha/none <br />Example: alpha</td>
-  </tr>
-  <tr>
-      <td>.swagger-ui.tagsSorter</td>
-      <td>Sort tags alphabetically. <br />Possible values: alpha/none <br />Example: alpha</td>
-  </tr>
-  <tr>
-      <td>.swagger-ui.doc-expansion</td>
-      <td>Swagger doc expansion setting. <br />Possible values: full/list/none <br />Example: full</td>
-  </tr>
-  <tr>
-      <td>.cibsevenWebclient.serverUrl</td>
-      <td>Server URL override for Swagger UI</td>
-  </tr>
 </table>
+
+<div class="note bg-info docs-info">
+  <h3>CIB seven Actuators</h3>
+  <p>Actuators are available for the CIB seven Run distribution and Spring Boot applications using the CIB seven starters.
+If you use a Spring Boot application, <code>spring-boot-starter-actuator</code> must be added to your project&rsquo;s <code>pom.xml</code>.</p>
+</div>
+
+
     </div>
   </div>
 </div>

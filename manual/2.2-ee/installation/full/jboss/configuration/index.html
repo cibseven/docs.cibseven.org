@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4328,7 +4358,7 @@ Additionally, as explained in the referred section, a <code>cibseven-webclient.p
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;/subsystem&gt;</span>
 </span></span></code></pre></div>
 <h3 id="cib-seven-webapp-fine-tuning">CIB seven Webapp fine-tuning</h3>
-<p><a href="/manual/2.2-ee/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webapp properties</a> can be configured by editing the <code>application.yaml</code> file.
+<p><a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#all-core-configuration-options">CIB seven webapp properties</a> can be configured by editing the <code>application.yaml</code> file.
 In a packaged WAR deployment, this file is located under <code>WEB-INF/classes</code>.</p>
 <p>However, WildFly allows overriding properties defined in the <code>application.yaml</code> file by using system properties.
 These are JVM system properties passed to the WildFly server via startup arguments or configured in the server configuration.</p>
@@ -4339,6 +4369,12 @@ as shown in the example below.</p>
 </span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/system-properties&gt;</span>
 </span></span></code></pre></div>
+<div class="note bg-info docs-info">
+  <h3>Enabling SSO in WildFly</h3>
+  <p>For the complete Single Sign-On configuration of the CIB seven Webapp, see <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/">Single Sign-On (OAuth2/OIDC)</a>.</p>
+</div>
+
+
 <h3 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h3>
 <p>The deployment descriptor of the Web applications needs to be adjusted to configure the <strong>Session Cookie</strong>.</p>
 <p>You can find it under <code>WEB-INF/web.xml</code>. Please watch out for the following section:</p>

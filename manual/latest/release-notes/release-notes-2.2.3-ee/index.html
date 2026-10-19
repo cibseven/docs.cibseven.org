@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4295,7 +4325,7 @@
 
 <h4 id="license-ee-exclusive">License <em>(EE exclusive)</em></h4>
 <ul>
-<li>Fixed &ldquo;License Required&rdquo; being shown with a valid license on a licensed <a href="/manual/latest/webapps/enterprise-features/">enterprise feature</a> (e.g. <a href="/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a>, the audit log or <a href="/manual/latest/webapps/cockpit/tasks-dashboard/#search-tasks">human task search</a>), when a custom authentication setup (SAML, or a reverse-proxy/gateway session) never writes the auth token to browser storage, leaving the webclient with nothing to attach to the chunk request. Setting the new <a href="/manual/latest/user-guide/cibseven-run/#tr-cibseven-webclient-license-chunk"><code>cibseven.webclient.license.chunk.trustServerAuthentication</code></a> lets the request reach the server, where the deployment&rsquo;s own user provider authenticates it — see <a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>. Deployments that do not set it are unaffected</li>
+<li>Fixed &ldquo;License Required&rdquo; being shown with a valid license on a licensed <a href="/manual/latest/webapps/enterprise-features/">enterprise feature</a> (e.g. <a href="/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a>, the audit log or <a href="/manual/latest/webapps/cockpit/tasks-dashboard/#search-tasks">human task search</a>), when a custom authentication setup (SAML, or a reverse-proxy/gateway session) never writes the auth token to browser storage, leaving the webclient with nothing to attach to the chunk request. Setting the new <a href="/manual/latest/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-license-chunk"><code>cibseven.webclient.license.chunk.trustServerAuthentication</code></a> lets the request reach the server, where the deployment&rsquo;s own user provider authenticates it — see <a href="/manual/latest/user-guide/license-use/#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>. Deployments that do not set it are unaffected</li>
 <li>Fixed a custom user provider throwing on a licensed chunk request — for instance because its security context is only populated for REST paths — surfacing as <code>500</code> instead of a clean <code>403</code></li>
 </ul>
 

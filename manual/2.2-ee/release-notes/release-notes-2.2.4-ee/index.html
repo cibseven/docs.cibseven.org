@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4211,7 +4241,7 @@
 <li><strong>Security</strong> The initial setup that creates the first administrator is now only offered on an unconfigured engine</li>
 <li><strong>Security</strong> <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/">AI Agent Connector</a> chat memory is now persisted as a process variable, so a conversation can no longer be read from another process instance and survives engine restarts and replicas</li>
 <li><strong>Security</strong> Process descriptions and warning messages are now rendered as text instead of HTML, closing a stored cross-site scripting (XSS) issue</li>
-<li><strong>Security</strong> 14 CVEs resolved (1 Critical, 6 High, 6 Medium, 1 Low) in <code>jackson</code> (<code>jackson-core</code>, <code>jackson-databind</code>), <code>lz4-java</code>, <code>freemarker</code>, and <code>zlib</code>, through the dependency and Alpine base image updates below</li>
+<li><strong>Security</strong> 15 CVEs (1 Critical, 7 High, 6 Medium, 1 Low) and Camunda Security Notice 157 resolved: <code>CVE-2026-77226</code> and Notice 157 by the setup and task filter fixes below, the others by the <code>jackson</code> (<code>jackson-core</code>, <code>jackson-databind</code>), <code>lz4-java</code>, <code>freemarker</code>, and <code>zlib</code> updates</li>
 <li><strong>Variables</strong> Users with read-only permissions can now view variable values without entering edit mode, and <code>Bytes</code> variables can be downloaded and uploaded as files</li>
 <li><strong>Direct Provider</strong> Fixed paging, runtime instance counts, the user operation log, and process instance termination when the webclient accesses the engine directly</li>
 <li><strong>Logging</strong> The engine now uses <code>SLF4J</code> 2</li>
@@ -4288,8 +4318,8 @@
 
 <h4 id="security">Security</h4>
 <ul>
-<li>Task filter JUEL expressions could still invoke arbitrary functions, methods or beans unless the whitelist introduced in 2.2.2 was enabled explicitly. It is now enabled by default and also accepts the expressions suggested by the Tasklist filter dialog</li>
-<li>The first-run setup could create a new administrator without any login on an engine that was already administered (administrators configured via <code>adminUsers</code> / <code>adminGroups</code> or granted through authorizations) but had an empty or missing <code>camunda-admin</code> group. The Admin app&rsquo;s setup and the engine REST setup endpoint used by the webclient now share a single check that only allows the setup on an unconfigured engine. Engines using the LDAP plugin remain excluded</li>
+<li>Task filter JUEL expressions could still invoke arbitrary functions, methods or beans unless the whitelist introduced in 2.2.2 was enabled explicitly. It is now enabled by default and also accepts the expressions suggested by the Tasklist filter dialog (fixes Camunda Security Notice 157)</li>
+<li>The first-run setup could create a new administrator without any login on an engine that was already administered (administrators configured via <code>adminUsers</code> / <code>adminGroups</code> or granted through authorizations) but had an empty or missing <code>camunda-admin</code> group. The Admin app&rsquo;s setup and the engine REST setup endpoint used by the webclient now share a single check that only allows the setup on an unconfigured engine. Engines using the LDAP plugin remain excluded (fixes <code>CVE-2026-77226</code>, Camunda Security Notice 171)</li>
 <li>Process descriptions and warning messages are now rendered as text instead of HTML, so crafted content in a deployed BPMN model can no longer execute script in the browser of users who open it</li>
 <li>The webclient no longer logs the full authentication response, including the token, to the browser console after login</li>
 </ul>
@@ -4377,6 +4407,7 @@
 <ul>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-106451">CVE-2026-106451</a></strong> - Vulnerability in <code>lz4-java</code> fixed in version <code>1.11.4</code>. Affects <code>at.yawk.lz4:lz4-java</code>. - CVSS 7.0.</li>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-68497">CVE-2026-68497</a></strong> - An unauthenticated attacker can send a request of a few megabytes with an oversized <code>Duration</code> value (e.g. <code>P</code> followed by several million digits and <code>Y</code>) to force tens of seconds to several minutes of single-threaded CPU work per request, so a handful of concurrent requests can saturate the server. Affects <code>com.fasterxml.jackson.core:jackson-databind</code>. - CVSS 7.5.</li>
+<li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-77226">CVE-2026-77226</a></strong> - Incorrect authorization in the first-run setup (<a href="https://docs.camunda.org/security/notices/#notice-171">Camunda Security Notice 171</a>): on an engine that was already administered but had an empty or missing <code>camunda-admin</code> group, an unauthenticated attacker could create a new administrator account, leading to account takeover. Affects the Admin web application and the engine REST setup endpoint. - CVSS 8.1.</li>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-89407">CVE-2026-89407</a></strong> - Attacker-supplied JSON deserialized into a numeric type (<code>BigDecimal</code>, <code>BigInteger</code>, <code>Double</code>, <code>Float</code>) reaches a vulnerable number-parsing method through jackson-databind&rsquo;s default String-to-number coercion. Affects <code>com.fasterxml.jackson.core:jackson-core</code>. - CVSS 7.5.</li>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-89425">CVE-2026-89425</a></strong> - <code>UTF8DataInputJsonParser._reportInvalidToken()</code> builds the offending-token text for its error message in a loop with no upper bound. Affects <code>com.fasterxml.jackson.core:jackson-core</code>. - CVSS 7.5.</li>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-91776">CVE-2026-91776</a></strong> - <code>TypeDeserializerBase._findDeserializer()</code> caches resolved deserializers under the raw, attacker-supplied type ID. Affects <code>com.fasterxml.jackson.core:jackson-databind</code>. - CVSS 7.5.</li>
@@ -4391,6 +4422,7 @@
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-19032">CVE-2026-19032</a></strong> - The deserializer for <code>java.nio.file.Path</code> resolves an attacker-supplied URI without restricting the URI scheme. Affects <code>com.fasterxml.jackson.core:jackson-databind</code>. - CVSS 5.3.</li>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-83557">CVE-2026-83557</a></strong> - Attacker-controlled input can instantiate objects, e.g. a <code>java.io.File</code> for an arbitrary path, which becomes path-traversal-adjacent if the application then calls path-sensitive methods on the value. Affects <code>com.fasterxml.jackson.core:jackson-databind</code>. - CVSS 5.6.</li>
 <li><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-85091">CVE-2026-85091</a></strong> - Heap buffer overflow in <code>gz_vacate()</code> when processing non-blocking <code>gzwrite()</code> operations with stale external buffer pointers (zlib <code>1.3.1.2</code> through <code>1.3.2</code>). Affects <code>zlib</code>.</li>
+<li><strong><a href="https://docs.camunda.org/security/notices/#notice-157">Camunda Security Notice 157</a></strong> - Authenticated users could inject JUEL expressions into task queries (stored filters or ad-hoc queries) that the engine evaluated, allowing remote code execution and privilege escalation. Task filter expressions are now restricted to a <a href="/manual/2.2-ee/user-guide/process-engine/securing-custom-code/#task-filter-expression-whitelist">whitelist</a>, introduced as opt-in in 2.2.2 and now enabled by default. Affects the process engine.</li>
 </ul>
 
 <h5 id="low-severity">Low Severity</h5>

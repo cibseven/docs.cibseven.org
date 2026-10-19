@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4226,19 +4256,19 @@ webclient, and a webclient plugin needs no server-side code.</p>
 
 <h2 id="enabling-plugins">Enabling plugins</h2>
 <p>Plugins are disabled by default. Set the following property in the <code>application.yaml</code>
-<a href="/manual/2.2-ee/webapps/configuration-options/">configuration file</a> — in CIB seven
+<a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/">configuration file</a> — in CIB seven
 Run, <code>configuration/default.yml</code> — and restart the webclient:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">plugins</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span></code></pre></div><p>With plugins disabled there is no discovery, no plugin endpoint, and nothing to reach — see
-<a href="/manual/2.2-ee/user-guide/cibseven-run/#tr-cibseven-webclient-plugins"><code>cibseven.webclient.plugins.enabled</code></a>.</p>
+<a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-plugins"><code>cibseven.webclient.plugins.enabled</code></a>.</p>
 
 <h3 id="switching-off-one-plugin">Switching off one plugin</h3>
 <p>A plugin that breaks the page can be switched off on its own, while the others keep working
 and its jar stays where it is. List its id in
-<a href="/manual/2.2-ee/user-guide/cibseven-run/#tr-cibseven-webclient-plugins-disabled"><code>cibseven.webclient.plugins.disabled</code></a>
+<a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-plugins-disabled"><code>cibseven.webclient.plugins.disabled</code></a>
 and restart the webclient:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">

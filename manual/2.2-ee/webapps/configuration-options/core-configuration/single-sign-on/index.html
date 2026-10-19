@@ -1,0 +1,4534 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Single Sign-On (OAuth2/OIDC) | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.162.1">
+  <link rel="shortcut icon" href="/manual/2.2-ee/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/manual/2.2-ee/css/docs.d2e9774e30cae31dfcbd7bb79d908c10a2b3729b2542d23e1acba54b2b86c785.css" integrity="sha256-0ul3TjDK4x38vXu3nZCMEKKzcpslQtI&#43;GsulSyuGx4U=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/manual/2.2-ee/" id="logolink">
+      <img src="/manual/2.2-ee/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  class="active"  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+<div class="version versioned">
+    
+      
+    
+       <span class="name">CIB seven</span> 
+    
+      
+    
+      
+    
+
+    <span class="number">2.2-ee</span>
+</div>
+
+<br />
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/downloading-cibseven/" >Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/licenses/" >Licenses</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/implemented-standards/" >Implemented Standards</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/architecture/" >Architecture Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/supported-environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/extensions/" >Extensions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/third-party-libraries/" >Third-Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/introduction/public-api/" >Public API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/" >Process Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-engine-bootstrapping/" >Process Engine Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-engine-api/" >Process Engine API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-engine-concepts/" >Process Engine Concepts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/variables/" >Process Variables</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-instance-modification/" >Process Instance Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/scripting/" >Scripting</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/templating/" >Templating</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/securing-custom-code/" >Custom Code &amp; Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/external-tasks/" >External Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/connectors/" >Connectors</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-versioning/" >Process Versioning</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/database/" >Database</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/database/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/database/database-configuration/" >Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/database/mssql-configuration/" >Microsoft SQL Server and Azure SQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/database/mysql-configuration/" >MySQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/database/performance/" >Performance</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/history/" >History</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/history/history-configuration/" >History configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/history/user-operation-log/" >User operation log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/history/history-cleanup/" >History cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/history/custom-implementation/" >Custom implementation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/deployment-cache/" >Deployment Cache</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/password-hashing/" >Password Hashing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/password-policy/" >Password Policy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/transactions-in-processes/" >Transactions in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/the-job-executor/" >The Job Executor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/multi-tenancy/" >Multi-Tenancy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/id-generator/" >Id Generators</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/metrics/" >Metrics</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/incidents/" >Incidents</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-engine-plugins/" >Process Engine Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/identity-service/" >Identity Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/authorization-service/" >Authorization Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/deployments/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/process-diagram-api/" >Process Diagram Visualization</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/time-zones/" >Time zones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/decisions/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/decisions/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/decisions/repository/" >Repository</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/decisions/decision-service/" >Decision Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/decisions/bpmn-cmmn/" >Decisions in BPMN &amp; CMMN</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/decisions/history/" >History</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/batch/" >Batch</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/batch-operations/" >Batch operations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/error-handling/" >Error Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-engine/diagnostics-data/" >Diagnostics data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-applications/" >Process Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-applications/the-process-application-class/" >The Process Application class</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-applications/the-processes-xml-deployment-descriptor/" >The processes.xml Deployment Descriptor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-applications/process-application-event-listeners/" >Process Application Event Listeners</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-applications/process-application-resources/" >Process Application Resource Access</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/process-applications/maven-archetypes/" >Maven Project Templates (Archetypes)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/runtime-container-integration/" >Runtime Container Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/runtime-container-integration/bpm-platform-services/" >CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/" >JNDI Bindings for CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/runtime-container-integration/tomcat/" >Apache Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/runtime-container-integration/jboss/" >WildFly</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/runtime-container-integration/job-execution-with-managed-resources/" >Job Execution with Managed Resources</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cibseven-run/" >CIB seven Run</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-framework-integration/" >Spring Framework Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-framework-integration/configuration/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-framework-integration/transactions/" >Transactions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-framework-integration/deployment/" >Deployment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-framework-integration/expressions/" >Spring Bean Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-framework-integration/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/" >Spring Boot Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/webapps/" >Web Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/process-applications/" >Process Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/the-spring-event-bridge/" >Spring Eventing Bridge</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/develop-and-test/" >Developing and Testing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/spring-boot-integration/spring-security/" >Spring Security OAuth2 Integration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/quarkus-integration/" >Quarkus Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/quarkus-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/quarkus-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/quarkus-integration/cdi-integration/" >Engine CDI Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/quarkus-integration/deployments/" >Resource Deployments</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/mcp-restapi/" >REST API MCP Plugin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/mcp-restapi/passthrough/" >Passthrough Mode</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/mcp-restapi/minted-jwt/" >Minted JWT Mode</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cdi-java-ee-integration/jta-transaction-integration/" >JTA Transaction Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cdi-java-ee-integration/expression-resolving/" >Expression Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cdi-java-ee-integration/contextual-programming-model/" >Contextual Programming Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cdi-java-ee-integration/built-in-beans/" >Built-In Beans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/" >CDI Event Bridge</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/testing/" >Testing</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/testing/assert-examples/" >Assert Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/" >Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/" >BPMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/fluent-builder-api/" >Fluent Builder API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/respository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/bpmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/" >CMMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/cmmn-model-api/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/dmn-model-api/" >DMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/dmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/dmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/dmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/model-api/dmn-model-api/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/data-formats/" >Data Formats (XML, JSON, Other)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/data-formats/configuring-spin-integration/" >Configuring Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/data-formats/data-formats-in-processes/" >Data Formats in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/data-formats/xml/" >XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/data-formats/json/" >JSON</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/task-forms/" >User Task Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/task-forms/jsf-task-forms/" >JSF Task Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/" >DMN Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/embed/" >Embed</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/evaluate-decisions/" >Evaluate Decisions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/expressions-and-scripts/" >Expressions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/feel/" >FEEL Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/feel/type-handling/" >Type Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/feel/custom-functions/" >Custom Functions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/feel/spin-integration/" >Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/feel/legacy-behavior/" >Legacy Behavior</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/dmn-engine/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/logging/" >Logging</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/security/" >Security Instructions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/ext-client/" >External Task Client</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/ext-client/spring-boot-starter/" >Spring Boot Starter</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/user-guide/ext-client/compatibility-matrix/" >Version Compatibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/" >REST API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/" >Overview</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/authentication/" >Configure Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/distro-use/" >Usage with a Pre-Built Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/embeddability/" >Embed the API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/hal/" >Hypertext Application Language (HAL)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/variables/" >Variables in the REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/overview/date-format/" >Date Format</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/openapi/" >OpenAPI</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/specification/" >Specification ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/javadoc/" >Javadoc ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/" >BPMN 2.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/service-task/" >Service Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/send-task/" >Send Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/user-task/" >User Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/business-rule-task/" >Business Rule Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/script-task/" >Script Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/receive-task/" >Receive Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/manual-task/" >Manual Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/tasks/task-markers/" >Task Markers</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/gateways/" >Gateways</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/gateways/exclusive-gateway/" >Data-based Exclusive Gateway (XOR)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/gateways/sequence-flow/" >Conditional and Default Sequence Flows</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/gateways/parallel-gateway/" >Parallel Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/gateways/inclusive-gateway/" >Inclusive Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/gateways/event-based-gateway/" >Event-based Gateway</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/" >Events</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/start-events/" >Start Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/none-events/" >None Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/message-events/" >Message Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/timer-events/" >Timer Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/error-events/" >Error Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/escalation-events/" >Escalation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/signal-events/" >Signal Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/cancel-and-compensation-events/" >Cancel and Compensation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/conditional-events/" >Conditional Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/link-events/" >Link Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/events/terminate-event/" >Terminate Events</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/subprocesses/" >Subprocess</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/subprocesses/embedded-subprocess/" >Embedded Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/subprocesses/call-activity/" >Call Activity</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/subprocesses/event-subprocess/" >Event Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/custom-extensions/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/bpmn20/custom-extensions/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/" >DMN 1.3</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/decision-table/" >Decision Table</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/decision-table/input/" >Input</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/decision-table/output/" >Output</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/decision-table/rule/" >Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/decision-table/hit-policy/" >Hit Policy</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/decision-literal-expression/" >Decision Literal Expression</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/feel/" >FEEL</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/feel/legacy/" >Legacy FEEL Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/feel/legacy/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/feel/legacy/language-elements/" >Language Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/dmn/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/" >CMMN 1.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/api/classic-vs-fluent/" >Classic vs Fluent API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/concepts/" >CMMN Concepts</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/concepts/plan-items/" >Plan Items and Item Definitions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/concepts/lifecycle/" >Plan Item Lifecycles</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/concepts/entry-exit-criteria/" >Entry and Exit Criteria</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/tasks/human-task/" >Human Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/tasks/process-task/" >Process Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/tasks/case-task/" >Case Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/tasks/decision-task/" >Decision Task</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/grouping-tasks/" >Grouping Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/grouping-tasks/stage/" >Stage</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/milestone/" >Milestones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/sentry/" >Sentries</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/markers/" >Markers</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/markers/manual-activation-rule/" >Manual Activation Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/markers/required-rule/" >Required Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/markers/auto-complete/" >Auto Complete</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/markers/repetition-rule/" >Repetition Rule</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/custom-extensions/camunda-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/migration/" >Migration between Specification Versions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/cmmn11/migration/10-to-11/" >1.0 to 1.1</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/" >Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/" >Embedded Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/" >Controls</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/inputs/" >Text Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/textarea/" >Textareas</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/date-inputs/" >Date Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/boolean-inputs/" >Boolean Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/select/" >Selects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/hidden/" >Hidden Input Fields</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/files/" >File Upload and Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/controls/bpmn-buttons/" >BPMN Event Buttons</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/" >Javascript</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/cam-script/" >The cam-script Directive</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/api/" >Available API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/lifecycle/" >Participating in the Form Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/debugging/" >Debugging Scripts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/generating-businesskey/" >Generating a Business Key</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/javascript/examples/" >Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/lifecycle/" >Lifecycle and Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/json-data/" >Working with Json Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/java-objects/" >Working with Java Objects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/integrate/" >Integrating the Forms SDK</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/integrate/getting-a-distribution/" >Getting a Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/integrate/bootstrapping/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/integrate/angular-js/" >AngularJS Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/embedded-forms/integrate/full-examples/" >Full Example</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/" >Spin Dataformats</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/" >XML</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/01-reading-xml/" >Reading XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/02-manipulating-xml/" >Manipulating XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/03-writing-xml/" >Writing XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/04-querying-xml/" >Querying XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/05-mapping-xml/" >Mapping XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/xml/06-configuring-xml/" >Configuring XML Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/json/" >JSON</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/json/01-reading-json/" >Reading JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/json/02-writing-json/" >Writing JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/json/03-querying-json/" >Querying JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/json/04-mapping-json/" >Mapping JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/json/05-configuring-json/" >Configuring JSON Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/spin/extending-spin/" >Extending Spin</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/" >Connectors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/http-connector/" >HTTP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/soap-connector/" >SOAP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/" >AI Agent Connector</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/getting-started/" >Getting Started</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/installation/" >Installation &amp; Enablement</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/configuring-the-agent/" >Configuring the Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/tools/" >Tools</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/rag/" >Retrieval-Augmented Generation (RAG)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/chat-memory/" >Chat Memory</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/audit-trail/" >Audit Trail &amp; AI Transparency</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/configuration-reference/" >Configuration Reference</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/examples/" >Examples &amp; Tutorials</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/troubleshooting/" >Troubleshooting &amp; Known Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/security-and-data-handling/" >Security &amp; Data Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/developer-guide/" >Developer Guide</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/glossary/" >Glossary</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/connect/extending-connect/" >Extending Connect</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/" >Deployment Descriptors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/descriptors/bpm-platform-xml/" >bpm-platform.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/descriptors/processes-xml/" >processes.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/tags/" >Tags</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/tags/job-executor/" >&lt;job-executor /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/tags/process-archive/" >&lt;process-archive /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/reference/deployment-descriptors/tags/process-engine/" >&lt;process-engine /&gt;</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/cibseven-run/" >Remote Engine Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/" >Shared Engine Distribution</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/tomcat/" >Tomcat</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/tomcat/pre-packaged/" >Pre-Packaged Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/tomcat/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/tomcat/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/jboss/" >JBoss EAP/WildFly</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/jboss/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/full/jboss/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/docker/" >Docker</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/spring-boot/" >Spring Boot</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/" >Web Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/welcome/" >Welcome</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/welcome/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/" >Tasklist</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/working-with-tasklist/" >Working with Tasklist</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/filters/" >Filters</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/user-assignment/" >User Assignment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/tasklist/accessibility/" >Accessibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/" >Cockpit</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/" >Processes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/dashboard/" >Process Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-definition-view/" >Process Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-instance-view/" >Process Instance View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-instance-chat/" >Agent Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/suspension/" >Suspension</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/drilldown/" >Collapsed Subprocesses</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/dmn/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/dmn/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/dmn/decision-definition-view/" >Decision Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/dmn/decision-requirements-definition-view/" >Decision Requirements Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/dmn/decision-instance-view/" >Decision Instance View</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/tasks-dashboard/" >Human Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/deployment-view/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/cleanup/" >Cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/operation-log/" >Operation Log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/deep-links/" >Deep Links</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/extend/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/cockpit/reporting/" >Reports</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/" >Admin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/user-management/" >Users</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/group-management/" >Groups</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/tenant-management/" >Tenants</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/authorization-management/" >Authorizations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/system-management/" >System</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/" >Modeler</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/installation/prerequisites/" >Prerequisites</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/configuration/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/configuration/enable-disable/" >Enable / Disable</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/configuration/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/configuration/database/" >Database</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/dmn-modeling/" >DMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/form-modeling/" >Form Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/element-templates/" >Element Templates</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/snapshots/" >Snapshots &amp; Comparison</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/token-simulation/" >Token Simulation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/reference/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/enterprise-features/" >Enterprise features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/database/" >Database</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/shared-options/" >Shared Configuration Options</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/shared-options/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/shared-options/cookie-security/" >Cookie Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/shared-options/csrf-prevention/" >CSRF Prevention</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/shared-options/header-security/" >HTTP Header Security</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/ai/" >Agentic Tools</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/examples/" >Examples</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/update/" >Update &amp; Migration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/patch-level/" >Patch Level Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/21-to-22/" >2.1 to 2.2</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/21-to-22/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/21-to-22/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/rolling-update/" >Rolling Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/camunda/" >Camunda Migration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/" >Release Notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/2.2.x/" >Release Notes 2.2.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.3-ce-plus/" >2.2.3 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.2-ee/" >2.2.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.2-ce-plus/" >2.2.2 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.1-ee/" >2.2.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.1-ce-plus/" >2.2.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.0-ee/" >2.2.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.0-ce/" >2.2.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/2.1.x/" >Release Notes 2.1.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.9-ee/" >2.1.9 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.9-ce-plus/" >2.1.9 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.8-ee/" >2.1.8 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.8-ce-plus/" >2.1.8 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.7-ee/" >2.1.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.7-ce-plus/" >2.1.7 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.6-ee/" >2.1.6 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.6-ce-plus/" >2.1.6 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.5-ee/" >2.1.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.5-ce-plus/" >2.1.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.4-ee/" >2.1.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.4-ce-plus/" >2.1.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.3-ee/" >2.1.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.3-ce-plus/" >2.1.3 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.2-ee/" >2.1.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.2-ce-plus/" >2.1.2 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.1-ee/" >2.1.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.1-ce-plus/" >2.1.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.0-ee/" >2.1.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.0-ce/" >2.1.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/2.0.x/" >Release Notes 2.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.13-ee/" >2.0.13 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.13-ce-plus/" >2.0.13 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.12-ee/" >2.0.12 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.12-ce-plus/" >2.0.12 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.11-ee/" >2.0.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.11-ce-plus/" >2.0.11 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.10-ee/" >2.0.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.10-ce-plus/" >2.0.10 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.9-ee/" >2.0.9 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.9-ce-plus/" >2.0.9 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.8-ee/" >2.0.8 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.8-ce-plus/" >2.0.8 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.7-ee/" >2.0.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.7-ce-plus/" >2.0.7 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.6-ee/" >2.0.6 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.6-ce-plus/" >2.0.6 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.5-ee/" >2.0.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.5-ce-plus/" >2.0.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 Hotfix 2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 Hotfix 1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-ee/" >2.0.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-ce-plus/" >2.0.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.3-ee/" >2.0.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.2-ee/" >2.0.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.1-ee/" >2.0.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.0-ce/" >2.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/1.x/" >Release Notes 1.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-1.1.0-ce/" >1.1.0 CE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-1.0.0-ce/" >1.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Single Sign-On (OAuth2/OIDC)</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>The CIB seven webclient supports Single Sign-On with any identity provider that implements OpenID Connect (OIDC), for example Microsoft Entra ID (Azure AD) or Keycloak.
+When SSO is active, the login page redirects the user to the identity provider, and after a successful login the user is redirected back to the webclient.</p>
+<p>Webclient SSO is a feature of the webclient itself and <strong>does not require Spring Security</strong>. It works the same way on all distributions: CIB seven Run, Tomcat and WildFly. Also, it can be enabled for Spring Boot applications without Spring Security.</p>
+
+<h3 id="activation">Activation</h3>
+<p>To activate SSO, select the <code>OAuth2UserProvider</code> as user provider and set <code>cibseven.webclient.sso.active</code> to <code>true</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.webapp.auth.OAuth2UserProvider</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sso</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">endpoints</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;authorizationUri&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;tokenUri&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">jwks</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwksUri&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;userInfoUri&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;clientId&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;clientSecret&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="l">openid email profile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userIdProperty</span><span class="p">:</span><span class="w"> </span><span class="l">preferred_username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userNameProperty</span><span class="p">:</span><span class="w"> </span><span class="l">name</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li><code>scopes</code> is the list of scopes (separated by spaces) that the webclient requests from the identity provider. You can configure it freely, for example to add <code>offline_access</code> or a custom API scope.</li>
+<li><code>userIdProperty</code> and <code>userNameProperty</code> are the claims of the ID token that are used as CIB seven user ID and display name.</li>
+<li><code>authentication.jwtSecret</code> is always required: the webclient uses it to sign the session token exchanged between the browser and the webclient.
+<ul>
+<li>With <code>sso.accessTokenToEngineRest: false</code> (default), the webclient also sends this token to the engine REST API, which validates it with <a href="/manual/2.2-ee/reference/rest/overview/authentication/#composite-authentication">JWT authentication</a>. In that case, the engine must be configured with the same secret.</li>
+<li>With <code>sso.accessTokenToEngineRest: true</code>, the webclient sends the access token from the identity provider to the engine instead. The secret is then only used for the webclient session.
+<a href="#when-spring-security-is-required">This requires an engine REST API secured with OAuth2</a>.</li>
+</ul>
+</li>
+</ul>
+<p>All available properties are listed in the <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-sso"><code>cibseven.webclient.sso</code></a> property reference.</p>
+
+<h3 id="redirect-uri">Redirect URI</h3>
+<p>Register the following redirect URI for the client at your identity provider:</p>
+<pre tabindex="0"><code>&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;/&lt;webclient path&gt;/sso-login.html
+</code></pre><p>For example, <code>https://cibseven.example.com/webapp/sso-login.html</code>. The path <code>/webapp</code> is the default value of <a href="/manual/2.2-ee/user-guide/cibseven-run/#cib-seven-webclient-properties"><code>camunda.bpm.webapp.applicationPath</code></a>, so adjust it if you deploy the webclient under another path.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Redirect URI must match the browser URL</h3>
+  <p>The webclient builds the redirect URI from the URL in the browser, so the registered URI must match exactly the URL users open (scheme, host name, port and path), including when the webclient runs behind a reverse proxy.</p>
+</div>
+
+<p>In Microsoft Entra ID, register the redirect URI under the platform type <strong>Web</strong>, because the webclient exchanges the login code on the server with the client secret or client assertion.</p>
+
+<h3 id="where-to-configure-the-properties">Where to Configure the Properties</h3>
+<p>The <code>cibseven.webclient.*</code> properties can be set in the following places, depending on the distribution:</p>
+<table class="table table-striped">
+  <tr>
+    <th>Distribution</th>
+    <th>Where to configure</th>
+  </tr>
+  <tr>
+    <td>CIB seven Run</td>
+    <td>The <a href="/manual/2.2-ee/user-guide/cibseven-run/#choose-between-default-and-production-configuration">configuration file</a> <code>configuration/default.yml</code> or <code>configuration/production.yml</code>.</td>
+  </tr>
+  <tr>
+    <td>Spring Boot</td>
+    <td>The <code>application.yaml</code> (or <code>application.properties</code>) of your application.</td>
+  </tr>
+  <tr>
+    <td>Tomcat</td>
+    <td>
+      You can place a <code>cibseven-webclient.yaml</code> file in the <code>$CATALINA_HOME/lib</code> folder. Alternatively, properties can be added to <code>cibseven-webclient.properties</code>, which is automatically generated the first time by <code>start-cibseven.bat</code>/<code>start-cibseven.sh</code>. <br/>
+      You can also pass the properties as <code>-D</code> options, for example in <code>CATALINA_OPTS</code> in <code>bin/setenv.sh</code> / <code>bin/setenv.bat</code>, or as environment variables (for example <code>CIBSEVEN_WEBCLIENT_SSO_ACTIVE=true</code>).
+    </td>
+  </tr>
+  <tr>
+    <td>WildFly</td>
+    <td>
+      You can define <a href="/manual/2.2-ee/installation/full/jboss/configuration/#cib-seven-webapp-fine-tuning">system properties</a> in the <code>standalone.xml</code>.<br/>
+      Alternatively, properties can be added to <code>cibseven-webclient.properties</code>, which is automatically generated the first time by <code>start-cibseven.bat</code>/<code>start-cibseven.sh</code> for <a href="/manual/2.2-ee/installation/full/jboss/configuration/#composite-authentication-for-rest-api-and-cib-seven-webapp">JWT mechanism purposes</a> and placed in <code>$JBOSS_HOME/modules/org/cibseven/config/main/</code>.     
+    </td>
+  </tr>
+</table>
+
+<div class="note bg-info docs-info">
+  <h3>No need to change the WAR file</h3>
+  <p>The webclient imports the optional files <code>cibseven-webclient.properties</code> and <code>cibseven-webclient.yaml</code> from the classpath, so you do not need to modify the <code>application.yaml</code> inside the WAR file.</p>
+</div>
+
+<p>Example for <code>cibseven-webclient.properties</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">cibseven.webclient.user.provider</span><span class="o">=</span><span class="s">org.cibseven.webapp.auth.OAuth2UserProvider</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.active</span><span class="o">=</span><span class="s">true</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.endpoints.authorization</span><span class="o">=</span><span class="s">&lt;authorizationUri&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.endpoints.token</span><span class="o">=</span><span class="s">&lt;tokenUri&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.endpoints.jwks</span><span class="o">=</span><span class="s">&lt;jwksUri&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.endpoints.user</span><span class="o">=</span><span class="s">&lt;userInfoUri&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.clientId</span><span class="o">=</span><span class="s">&lt;clientId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.clientSecret</span><span class="o">=</span><span class="s">&lt;clientSecret&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.scopes</span><span class="o">=</span><span class="s">openid email profile</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.userIdProperty</span><span class="o">=</span><span class="s">preferred_username</span>
+</span></span><span class="line"><span class="cl"><span class="na">cibseven.webclient.sso.userNameProperty</span><span class="o">=</span><span class="s">name</span>
+</span></span></code></pre></div>
+<h3 id="users-groups-and-authorizations">Users, Groups and Authorizations</h3>
+<p>After the login, the value of the <code>userIdProperty</code> claim becomes the CIB seven user ID. The webclient uses this ID to call the engine, and the engine applies groups, tenants and <a href="/manual/2.2-ee/user-guide/process-engine/authorization-service/">authorizations</a> for this user ID.</p>
+<p>By default, the engine resolves the groups and tenants of the user from its configured <a href="/manual/2.2-ee/user-guide/process-engine/identity-service/">identity service</a>: the CIB seven database or <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#ldap">LDAP</a>. Therefore, a user with the same user ID must exist there, with the required group memberships and authorizations.</p>
+<p>Choose a <code>userIdProperty</code> whose value matches the user IDs in your identity service, for example <code>preferred_username</code> or a custom claim. If <code>userIdProperty</code> is empty or wrong, the login will fail.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Granting Initial Administrator Permissions</h3>
+  <p>To grant initial administrator permissions to an SSO user or group, use the <a href="/manual/2.2-ee/user-guide/process-engine/authorization-service/#the-administrator-authorization-plugin">Administrator Authorization Plugin</a>. If you run a Spring Boot application or the CIB seven Run distro, you can also use the <a href="/manual/2.2-ee/user-guide/spring-boot-integration/configuration/#cib-seven-engine-properties"><code>camunda.bpm.admin-user</code> property</a>. The ID you use must match the value of the <code>userIdProperty</code> claim, otherwise the permissions do not apply to the SSO user.</p>
+</div>
+
+
+<h3 id="when-spring-security-is-required">When Spring Security Is Required</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Use case</th>
+    <th>Spring Security required</th>
+  </tr>
+  <tr>
+    <td>SSO login to the webclient (<code>OAuth2UserProvider</code>, <code>cibseven.webclient.sso.*</code>)</td>
+    <td>No. Works on all distributions.</td>
+  </tr>
+  <tr>
+    <td>Secure the engine REST API with OAuth2 (resource server), together with <code>cibseven.webclient.sso.accessTokenToEngineRest=true</code></td>
+    <td>Yes, <code>cibseven-bpm-spring-boot-starter-security</code></td>
+  </tr>
+  <tr>
+    <td>Read the groups of the user from the token instead of the CIB seven database or LDAP (<code>OAuth2IdentityProvider</code>)</td>
+    <td>Yes, <code>cibseven-bpm-spring-boot-starter-security</code></td>
+  </tr>
+</table>
+<p>The <code>cibseven-bpm-spring-boot-starter-security</code> is available for Spring Boot and CIB seven Run. See <a href="/manual/2.2-ee/user-guide/spring-boot-integration/spring-security/">Spring Security OAuth2 Integration</a> for these scenarios.</p>
+
+<h3 id="assertion-based-authentication">Assertion-based Authentication</h3>
+<p>A secretless client authentication approach can be configured so that no client secret is used or transmitted during the authentication process. The following authentication methods are supported:</p>
+<ul>
+<li><strong>JWT Bearer Client Assertion</strong>: The client authenticates using a signed JWT. A PEM-encoded private key must be configured as the <code>keyLocation</code> to sign the client assertion.</li>
+<li><strong>Azure Workload Identity</strong>: The client authenticates using Azure Workload Identity without requiring a client secret or certificate.</li>
+</ul>
+<p>The CIB seven webclient can be configured to use assertion-based authentication by setting its <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#tr-cibseven-webclient-assertion"><code>cibseven.webclient.sso.assertion</code> properties</a>.</p>
+<p>For more information about assertion-based authentication, refer to <a href="https://www.rfc-editor.org/info/rfc7521/">RFC 7521</a>.</p>
+
+<h3 id="microsoft-entra-id">Microsoft Entra ID</h3>
+<p>Microsoft Entra ID provides the endpoints of a tenant at <code>https://login.microsoftonline.com/&lt;tenantId&gt;/v2.0/.well-known/openid-configuration</code>. Use the v2.0 endpoints.</p>
+
+<h4 id="app-registration-checklist">App registration checklist</h4>
+<ol>
+<li><strong>Redirect URI</strong>: register the <a href="#redirect-uri">redirect URI</a> with the platform type <strong>Web</strong>, not <strong>Single-page application</strong>. The webclient redeems the login code on the server with a client secret or client assertion, which Entra ID does not allow for a Single-page application redirect URI.</li>
+<li><strong>Expose an API and define a scope</strong>: set the Application ID URI to <code>api://&lt;clientId&gt;</code> and define a custom scope, for example <code>cibseven</code>.</li>
+<li><strong>API permissions</strong>: in the <strong>API permissions</strong> section, select <strong>Add a permission</strong>, find your app registration among the <strong>APIs my organization uses</strong>, select it and choose <strong>Delegated permissions</strong> to add the custom scope.
+<ul>
+<li>If you defined the scope with <strong>Admins only</strong> consent, grant admin consent.</li>
+</ul>
+</li>
+<li><strong>Client secret</strong>: create a client secret. Alternatively, you can use a <a href="#assertion-based-authentication">client assertion</a>.</li>
+</ol>
+
+<h4 id="configuration-for-entra-id">Configuration for Entra ID</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cibseven</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.webapp.auth.OAuth2UserProvider</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sso</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">endpoints</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l">https://login.microsoftonline.com/&lt;tenantId&gt;/oauth2/v2.0/authorize</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">https://login.microsoftonline.com/&lt;tenantId&gt;/oauth2/v2.0/token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">jwks</span><span class="p">:</span><span class="w"> </span><span class="l">https://login.microsoftonline.com/&lt;tenantId&gt;/discovery/v2.0/keys</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">https://graph.microsoft.com/oidc/userinfo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;Application (client) ID&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;secret&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="l">openid profile email offline_access api://&lt;clientId&gt;/cibseven</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userIdProperty</span><span class="p">:</span><span class="w"> </span><span class="l">preferred_username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">userNameProperty</span><span class="p">:</span><span class="w"> </span><span class="l">name</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li><strong>The custom scope <code>api://&lt;clientId&gt;/&lt;customScope&gt;</code> is mandatory.</strong> Without it, Entra ID issues a Microsoft Graph access token. The webclient validates the signature of the access token, and third parties cannot validate Graph tokens. The user then sees a certificate or signature validation error after the login.
+<ul>
+<li>If you defined a custom Application ID URI (different than the recommended one), notice that the custom scope must match it, like <code>&lt;applicationIdUri&gt;/&lt;customScope&gt;</code>.</li>
+</ul>
+</li>
+<li><strong><code>userIdProperty</code> and <code>userNameProperty</code></strong> are read from the ID token on the browser login. With the scope <code>profile</code>, a v2.0 ID token contains <code>preferred_username</code> (usually the user principal name, UPN) and <code>name</code>.</li>
+<li><strong>The user ID must match the user IDs in your identity service.</strong> If your LDAP user IDs are, for example, <code>sAMAccountName</code>, then <code>preferred_username</code> (<code>user@domain</code>) does not match. You can provide a matching claim in Entra ID (token configuration or claims mapping), or create the users with their UPN. Alternatives are <code>email</code> (can be empty) and <code>oid</code> (a stable GUID, but not human-readable).</li>
+<li><strong><code>endpoints.user</code> is mandatory.</strong> It has no default value, and the application does not start without it.</li>
+<li><strong><code>offline_access</code> scope is mandatory (for OAuth2).</strong> Without it, Entra ID issues no refresh token.</li>
+</ul>
+
+<div class="note bg-info docs-info">
+  <h3>Refresh Tokens</h3>
+  <p>The <code>OAuth2UserProvider</code> does not support rolling refresh tokens (refresh tokens that are invalidated once they have been used). Take this into account when you configure the token policies of your identity provider.</p>
+</div>
+
+
+<h4 id="entra-id-troubleshooting">Entra ID Troubleshooting</h4>
+<p>If you checked the <a href="#troubleshooting">generic troubleshooting</a> and did not find the cause of your login failure, the following problems are specific to Microsoft Entra ID. To investigate further, open the developer tools (F12) before you log in: the login page <code>sso-login.html</code> stops at a breakpoint, and you can inspect the URL and the response of the login request. Entra ID reports its errors in the URL.</p>
+
+<h5 id="signatureexception">SignatureException</h5>
+<p>A pop-up shows a <code>SignatureException</code>. The login request returns HTTP 500, and the backend log contains:</p>
+<pre tabindex="0"><code>io.jsonwebtoken.security.SignatureException: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+</code></pre><p><strong>Cause:</strong> the custom scope is missing in <code>sso.scopes</code>. Entra ID then issues a Microsoft Graph access token, which the webclient cannot validate. Add the custom scope <code>api://&lt;clientId&gt;/&lt;customScope&gt;</code>, see the <a href="#configuration-for-entra-id">example configuration</a>.</p>
+
+<h5 id="authenticationexception">AuthenticationException</h5>
+<p>A pop-up shows an <code>AuthenticationException</code>. The login request returns HTTP 401.</p>
+<p><strong>Cause: resource not found.</strong> The login stops at the breakpoint, and the URL contains an error from Entra ID:</p>
+<pre tabindex="0"><code>&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;/webapp/sso-login.html#error=invalid_resource&amp;error_description=AADSTS500011: The resource principal named api://&lt;clientId&gt; was not found in the tenant named &lt;tenantId&gt;. ...
+</code></pre><p>The login request then returns HTTP 401 with <code>AADSTS900144: The request body must contain the following parameter: 'code'</code>. This second error is a consequence of the first: the browser came back without a code. Nothing is written to the backend log. Check the Application ID URI under Expose an API, check that it matches the custom scope in <code>sso.scopes</code>, and check the tenant ID in <code>sso.endpoints</code>.</p>
+
+<h5 id="frontend-loop-after-the-login">Frontend loop after the login</h5>
+<p>After the login, the browser keeps redirecting between the webclient and the login page. Possible causes:</p>
+<ul>
+<li><strong><code>offline_access</code> is missing in <code>sso.scopes</code>.</strong></li>
+</ul>
+
+<h5 id="other-errors">Other errors</h5>
+<p>If your error is not among these, check the response of the login request in the developer tools. Entra ID often gives more information in the URL.</p>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>If the login fails, the user sees one of three symptoms: a pop-up with a <code>SignatureException</code>, a pop-up with an <code>AuthenticationException</code>, or a loop in the frontend after the login. To read the server response, open the browser developer tools (F12) before you log in.</p>
+
+<h4 id="authenticationexception-1">AuthenticationException</h4>
+<p>A pop-up shows an <code>AuthenticationException</code>. The login request returns HTTP 401.</p>
+<p><strong>Cause: wrong client secret.</strong> The response is <code>{&quot;type&quot;:&quot;AuthenticationException&quot;,&quot;params&quot;:[&quot;&quot;]}</code>, and the backend log has no entry. Check <code>sso.clientSecret</code>.</p>
+
+<h4 id="frontend-loop-after-the-login-1">Frontend loop after the login</h4>
+<p>After the login, the browser keeps redirecting between the webclient and the login page. Possible causes:</p>
+<ul>
+<li><strong><code>userIdProperty</code> is empty or does not match a claim of the token.</strong> The backend log contains <code>java.lang.NullPointerException: Cannot invoke &quot;String.equals(Object)&quot; because the return value of &quot;org.cibseven.webapp.auth.User.getId()&quot; is null</code>.</li>
+<li><strong>A component rejects the token that the webclient sends to the engine REST API (HTTP 401).</strong>
+<ul>
+<li>With the webclient SSO only: if <code>sso.accessTokenToEngineRest</code> is <code>true</code>, the webclient sends the access token of the identity provider. A servlet filter such as the composite authentication rejects it, because it only accepts tokens that are HMAC-signed with <code>authentication.jwtSecret</code>.</li>
+<li>With OAuth2 on the engine REST API: if <code>sso.accessTokenToEngineRest</code> is <code>false</code>, the webclient sends its own HMAC-signed token, and Spring Security rejects it. Set the property to <code>true</code>.</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#activation">Activation</a></li>
+        <li><a href="#redirect-uri">Redirect URI</a></li>
+        <li><a href="#where-to-configure-the-properties">Where to Configure the Properties</a></li>
+        <li><a href="#users-groups-and-authorizations">Users, Groups and Authorizations</a></li>
+        <li><a href="#when-spring-security-is-required">When Spring Security Is Required</a></li>
+        <li><a href="#assertion-based-authentication">Assertion-based Authentication</a></li>
+        <li><a href="#microsoft-entra-id">Microsoft Entra ID</a>
+          <ul>
+            <li><a href="#app-registration-checklist">App registration checklist</a></li>
+            <li><a href="#configuration-for-entra-id">Configuration for Entra ID</a></li>
+            <li><a href="#entra-id-troubleshooting">Entra ID Troubleshooting</a></li>
+          </ul>
+        </li>
+        <li><a href="#troubleshooting">Troubleshooting</a>
+          <ul>
+            <li><a href="#authenticationexception-1">AuthenticationException</a></li>
+            <li><a href="#frontend-loop-after-the-login-1">Frontend loop after the login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/manual/2.2-ee/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

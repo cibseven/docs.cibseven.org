@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4310,6 +4340,37 @@ configuration to the <code>web.xml</code> file of Camunda webapplication
 <h3 id="composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</h3>
 <p>The REST API ships with an implementation of Composite Authentication, allowing authentication providers to be combined seamlessly. It is configured as a combination of JWT-based authentication and HTTP Basic authentication, where JWT is the primary mechanism and HTTP Basic acts as a fallback.</p>
 <p>By default it is switched off, but you can activate it by adding a servlet filter under <code>WEB-INF/web.xml</code> as described in the <a href="/manual/2.2-ee/reference/rest/overview/authentication/#composite-authentication">Authentication</a> section.</p>
+<p>Additionally, as explained in the referred section, a JWT secret must be defined. By default, it is defined in a <code>cibseven-webclient.properties</code> file placed on the classpath, which in Tomcat means the <code>$CATALINA_HOME/lib</code> folder. The <code>start-cibseven.sh</code> / <code>start-cibseven.bat</code> script of the CIB seven Tomcat distribution generates this file on the first start, with a random secret. On a vanilla Tomcat, you have to create it yourself, or use one of the alternatives described in the referred section.</p>
+
+<h3 id="cib-seven-webapp-fine-tuning">CIB seven Webapp fine-tuning</h3>
+<p><a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#all-core-configuration-options">CIB seven webapp properties</a> can be configured by editing the <code>application.yaml</code> file.
+In a packaged WAR deployment, this file is located under <code>WEB-INF/classes</code>.</p>
+<p>However, you do not need to modify the WAR file. The webapp also reads the files <code>cibseven-webclient.properties</code> and <code>cibseven-webclient.yaml</code> from the Tomcat classpath,
+and properties passed as JVM system properties or environment variables override the ones defined in the <code>application.yaml</code> file.
+This means that you can set the properties in any of the following ways:</p>
+<ul>
+<li>
+<p>Place a <code>cibseven-webclient.yaml</code> file in the <code>$CATALINA_HOME/lib</code> folder.</p>
+</li>
+<li>
+<p>Add the properties to the <code>cibseven-webclient.properties</code> file in the <code>$CATALINA_HOME/lib</code> folder. This file also holds the JWT secret by default, as described in the <a href="#composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication</a> section.</p>
+</li>
+<li>
+<p>Pass the properties as <code>-D</code> options in <code>CATALINA_OPTS</code>, for example in <code>bin/setenv.sh</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">CATALINA_OPTS</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$CATALINA_OPTS</span><span class="s2"> -Dcibseven.webclient.sso.active=true&#34;</span>
+</span></span></code></pre></div><p>or in <code>bin/setenv.bat</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">set</span> <span class="s2">&#34;CATALINA_OPTS=</span><span class="nv">%CATALINA_OPTS%</span><span class="s2"> -Dcibseven.webclient.sso.active=true&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Set environment variables, for example <code>CIBSEVEN_WEBCLIENT_SSO_ACTIVE=true</code>.</p>
+</li>
+</ul>
+
+<div class="note bg-info docs-info">
+  <h3>Enabling SSO in Tomcat</h3>
+  <p>For the complete Single Sign-On configuration of the CIB seven Webapp, see <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/">Single Sign-On (OAuth2/OIDC)</a>.</p>
+</div>
+
 
 <h3 id="session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</h3>
 <p>To configure the <strong>Session Cookie</strong>, you can adjust the deployment descriptor of the Web applications.
@@ -4467,6 +4528,7 @@ to be adjusted. You can find it under <code>WEB-INF/web.xml</code>.</p>
         </li>
         <li><a href="#hal-resource-caching">HAL Resource Caching</a></li>
         <li><a href="#composite-authentication-for-rest-api-and-cib-seven-webapp">Composite authentication for REST API and CIB seven Webapp</a></li>
+        <li><a href="#cib-seven-webapp-fine-tuning">CIB seven Webapp fine-tuning</a></li>
         <li><a href="#session-cookie-in-legacy-camunda-webapp">Session Cookie in legacy Camunda Webapp</a></li>
         <li><a href="#security-related-http-headers-in-legacy-camunda-webapp">Security-related HTTP headers in legacy Camunda Webapp</a></li>
       </ul>

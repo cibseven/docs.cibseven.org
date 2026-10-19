@@ -3445,6 +3445,36 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -4401,10 +4431,21 @@ be also configured with the matching User ID in CIB seven database.</p>
 <p>If the user is not available or doesn&rsquo;t have sufficient authorizations, they won&rsquo;t be able to access
 the Webapps.</p>
 
-<h4 id="examples">Examples</h4>
+<h3 id="keycloak-identity-provider-plugin">Keycloak Identity Provider Plugin</h3>
+<p>The <a href="https://github.com/cibseven-community-hub/cibseven-keycloak/blob/main/README.md">Community&rsquo;s Keycloak Identity Provider Plugin</a> provides a fully integrated solution for using Keycloak as an Identity Provider in CIB seven.</p>
+<p>The plugin also contains a <a href="https://github.com/cibseven-community-hub/cibseven-keycloak/blob/main/examples/sso-kubernetes/README.md">showcase example</a> for using Keycloak as an OIDC provider plus securing the engine REST with Spring Security OAuth2.</p>
 
-<h5 id="securing-engine-rest">Securing Engine REST</h5>
-<p>In this section we provide an example configuration using Keycloak as OIDC provider.
+<div class="note bg-info docs-info">
+  <h3>Heads Up!</h3>
+  <p>Notice that when using <code>cibseven-bpm-spring-boot-starter-security</code> as dependency, and registering
+a client or a <a href="#oauth2-resource-server">resource server</a>,
+the <code>OAuth2IdentityProvider</code> is activated by default.
+Therefore, we need to <a href="#oauth2-identity-provider">disable it explicitly</a>.</p>
+</div>
+
+
+<h2 id="example-configuration-for-oauth2">Example Configuration for OAuth2</h2>
+<p>In this example, we <strong>secure the engine REST with OAuth2</strong> and use Keycloak as the OIDC provider.
 Additionally, we highlight and explain a few lines for clarity:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
@@ -4438,9 +4479,9 @@ Additionally, we highlight and explain a few lines for clarity:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication.jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w"> </span><span class="c"># 9</span><span class="w">
 </span></span></span></code></pre></div><ol>
 <li>Using <code>OAuth2UserProvider</code>.</li>
-<li>SSO login enabled for CIB seven webclient.</li>
+<li><a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/">SSO login enabled for CIB seven webclient</a>.</li>
 <li>CIB seven webclient enabled for OAuth2 communication with the engine REST.</li>
-<li>Identity provider groups are loaded from custom <code>keycloak-groups</code> claim.
+<li>The <a href="#oauth2-identity-provider">OAuth2 Identity Provider is enabled by default</a>. Identity provider groups are loaded from the custom <code>keycloak-groups</code> claim.
 <ul>
 <li>This must also be configured on the provider page so that the id token includes the claim.</li>
 </ul>
@@ -4458,49 +4499,34 @@ to not interfere with the Spring Security OAuth2 authentication.</li>
 CIB seven custom JWT mechanism is not used for webclient-to-engine REST communication,
 CIB seven webclient still relies on a secret for its own frontend-webclient JWT mechanism.</li>
 </ol>
-<p>For additional information, check
-<a href="/manual/2.2-ee/user-guide/cibseven-run/#tr-cibseven-webclient-sso">CIB seven webclient properties</a>.</p>
 
 <div class="note bg-info docs-info">
-  <h3>Azure Entra ID</h3>
-  <p><p>Configuration with v2-types requires specific configuration:</p>
-<ul>
-<li><code>offline_access</code> as scope to be able to use refresh tokens</li>
-<li>custom scope defined in <code>Expose an API</code> (e.g. <code>api://&lt;clientId&gt;/cibseven</code>)</li>
-<li>add the permission for the custom scope in API permissions &gt; APIs my organization uses &gt; Your app registration &gt; Delegated permissions (Admin consent required)</li>
-</ul></p>
-</div>
-
-
-<h3 id="keycloak-identity-provider-plugin">Keycloak Identity Provider Plugin</h3>
-<p>The <a href="https://github.com/cibseven-community-hub/cibseven-keycloak/blob/main/README.md">Community&rsquo;s Keycloak Identity Provider Plugin</a> provides fully integrated solution for using Keycloak as an Identity Provider in CIB seven.</p>
-<p>The plugin also contains a <a href="https://github.com/cibseven-community-hub/cibseven-keycloak/blob/main/examples/sso-kubernetes/README.md">showcase example</a> for using Keycloak as an OIDC provider plus securing the engine REST with Spring Security OAuth2.</p>
-
-<div class="note bg-info docs-info">
-  <h3>Heads Up!</h3>
-  <p>Notice that when using <code>cibseven-bpm-spring-boot-starter-security</code> as dependency, and registering
-a <a href="#oauth2-client-registration">client</a> or a <a href="#oauth2-resource-server">resource server</a>,
-the <code>OAuth2IdentityProvider</code> is activated by default.
-Therefore, we need to <a href="#oauth2-identity-provider">disable it explicitly</a>.</p>
+  <h3>CIB seven Webclient and Azure Entra ID</h3>
+  <p>For the configuration with Microsoft Entra ID (v2.0 endpoints, <code>offline_access</code> and custom API scopes), see the corresponding section in <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/#microsoft-entra-id">CIB seven webclient&rsquo;s Single Sign-On</a>.</p>
 </div>
 
 
 <h2 id="oidc-with-cib-seven-webapp">OIDC with CIB seven Webapp</h2>
 <p>The CIB seven Webapp can be configured to manage OIDC login using its <code>OAuth2UserProvider</code> along with a few additional properties, making authentication seamless.</p>
-<p>However, note that the <code>OAuth2UserProvider</code> does not support rolling refresh tokens, which should be taken into consideration when configuring authentication.</p>
-<p>See <a href="#securing-engine-rest">the example to secure engine REST</a>  for more information, and refer to the <a href="/manual/2.2-ee/user-guide/cibseven-run/#tr-cibseven-webclient-sso">CIB seven webclient properties</a> for further configuration details.</p>
+<p>If the engine REST is secured with OAuth2, the <code>sso.accessTokenToEngineRest</code> property <strong>must</strong> be enabled, so that the webclient sends the access token of the identity provider to the engine REST.</p>
+<p>See <a href="#example-configuration-for-oauth2">the example to secure engine REST</a> for a sample configuration.</p>
+<p>For more information, read the <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/">CIB seven webclient&rsquo;s Single Sign-On (OAuth2/OIDC) documentation</a>.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Rolling Refresh Tokens</h3>
+  <p>The <code>OAuth2UserProvider</code> does not support rolling refresh tokens (refresh tokens that are invalidated once they have been used), which should be taken into consideration when configuring authentication.</p>
+</div>
+
 
 <h2 id="oauth2-with-external-task-client">OAuth2 with External Task Client</h2>
 <p>To support these scenarios, the client provides an OAuth 2.0 request interceptor. After the <a href="/manual/2.2-ee/user-guide/ext-client/spring-boot-starter/#oauth-20">required properties</a> have been configured, an OAuth 2.0 access token is automatically included with every REST API request.</p>
 
 <h2 id="using-assertions-in-oauth2">Using assertions in OAuth2</h2>
-<p>A secretless client authentication approach can be configured so that no client secret is used or transmitted during the authentication process. The following authentication methods are supported:</p>
+<p>A secretless client authentication approach can be configured so that no client secret is used or transmitted during the authentication process. Learn more about assertion-based authentication for:</p>
 <ul>
-<li><strong>JWT Bearer Client Assertion</strong>: The client authenticates using a signed JWT. A PEM-encoded private key must be configured as the <code>locationKey</code> to sign the client assertion.</li>
-<li><strong>Azure Workload Identity</strong>: The client authenticates using Azure Workload Identity without requiring a client secret or certificate.</li>
+<li><a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/single-sign-on/#assertion-based-authentication"><strong>CIB seven webclient</strong></a>.</li>
+<li><a href="/manual/2.2-ee/user-guide/ext-client/spring-boot-starter/#tr-cibseven-external-client-assertion"><strong>External Task Client</strong></a>.</li>
 </ul>
-<p>The CIB seven Webapp can be configured to use assertion-based authentication by setting its <a href="/manual/2.2-ee/user-guide/cibseven-run/#tr-cibseven-webclient-assertion">corresponding properties</a>. The same applies to the <a href="/manual/2.2-ee/user-guide/ext-client/spring-boot-starter/#tr-cibseven-external-client-assertion">External Task Client properties</a>.</p>
-<p>For more information about assertion-based authentication, refer to <a href="https://www.rfc-editor.org/info/rfc7521/">RFC 7521</a>.</p>
 
 <h2 id="security-recommendations">Security Recommendations</h2>
 <p>CIB seven&rsquo;s integration heavily relies on Spring Security&rsquo;s OAuth2 support.</p>
@@ -4582,12 +4608,12 @@ Logging can be enabled for the package via the following property:</p>
             <li><a href="#configuration">Configuration</a></li>
             <li><a href="#limitations">Limitations</a></li>
             <li><a href="#disabling-identity-provider">Disabling Identity Provider</a></li>
-            <li><a href="#examples">Examples</a></li>
           </ul>
         </li>
         <li><a href="#keycloak-identity-provider-plugin">Keycloak Identity Provider Plugin</a></li>
       </ul>
     </li>
+    <li><a href="#example-configuration-for-oauth2">Example Configuration for OAuth2</a></li>
     <li><a href="#oidc-with-cib-seven-webapp">OIDC with CIB seven Webapp</a></li>
     <li><a href="#oauth2-with-external-task-client">OAuth2 with External Task Client</a></li>
     <li><a href="#using-assertions-in-oauth2">Using assertions in OAuth2</a></li>
