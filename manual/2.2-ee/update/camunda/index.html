@@ -4279,69 +4279,30 @@
 <h4 id="clean-up">Clean up</h4>
 <p>After the migration, you can delete the YAML file and remove the <code>rewrite-maven-plugin</code> section from your <code>pom.xml</code>.</p>
 
-<h3 id="migration-to-cib-seven-21">Migration to CIB seven 2.1</h3>
-<p>The backend of CIB seven 2.1.0 is based on Camunda 7.24.0, so before the migration, please check your Camunda version: it should be Camunda 7.24.0. If the version of Camunda is less than 7.24.0 then update it to 7.24.0, first.</p>
+<h3 id="migration-to-cib-seven-22">Migration to CIB seven 2.2</h3>
+<p>Before the migration, please check your Camunda version: it should be Camunda 7.24.0 If the version of Camunda is less than 7.24.0 then update it to 7.24.0, first.</p>
 
 <div class="note bg-info docs-info">
   <h3>My Camunda version is less than 7.24.0!</h3>
   <p>For Camunda versions before 7.24.0, please do minor updates, before migrating to CIB seven, as described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a>.</p>
 </div>
 
-<p>In the rest, the migration process from Camunda 7.24.0 to CIB seven 2.1.0 follows the same steps as described in the section: Migration to CIB seven 2.0.</p>
-<p>Please note that the considerations outlined in the <a href="#authorization-configuration">Authorization Configuration</a> section are also actual to 2.1.0 and 2.1.1 versions.</p>
-
-<h4 id="liquibase-changelog-migration">Liquibase changelog migration</h4>
-<p>When migrating from Camunda 7.24.0 to CIB seven 2.1.0, the Liquibase changelog location changes from:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml
-</span></span></code></pre></div><p>to:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml
-</span></span></code></pre></div><p>Liquibase identifies changesets by their author, ID, and changelog file path. Because the path changes, Liquibase treats the CIB seven changelog as a new changelog, even though its contents are identical to Camunda 7.24.0. Without additional steps, Liquibase may attempt to execute the historical changesets again.</p>
-<p>Before migrating, ensure that the database schema has already been upgraded to Camunda 7.24.0.</p>
-
-<h5 id="option-a-update-databasechangelog-entries">Option A: Update <code>DATABASECHANGELOG</code> entries</h5>
-<p>First, configure Liquibase to use the CIB seven changelog at <code>org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml</code>. Depending on your installation, configure this through the Liquibase CLI, a <code>liquibase.properties</code> file, Spring Boot, or application-specific settings.</p>
-<p>Then update the stored changelog path in the Liquibase history table:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">DATABASECHANGELOG</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="k">SET</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml&#39;</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><p>After this one-time adjustment, Liquibase recognizes the existing migration history and continues with the CIB seven-specific migrations.</p>
-
-<h5 id="option-b-use-changelog-sync-to-tag">Option B: Use <code>changelog-sync-to-tag</code></h5>
-<p>If you use the Liquibase CLI, configure Liquibase to use the CIB seven changelog and synchronize its history to the last Camunda tag:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase --changelog-file<span class="o">=</span>org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml changelog-sync-to-tag 7.24.0
-</span></span></code></pre></div><p>This command marks all changesets up to tag 7.24.0 as executed in <code>DATABASECHANGELOG</code> without running them. Then run the normal upgrade:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase update
-</span></span></code></pre></div><p>Liquibase will continue with the first CIB seven-specific changeset (7.24-to-2.1) and subsequent CIB seven schema updates.</p>
-<p>Use this option only when the database schema is already at Camunda 7.24.0. This is normally satisfied by the prerequisite to upgrade to Camunda 7.24.0 before migrating to CIB seven 2.1.0.</p>
-
-<h3 id="migration-to-cib-seven-20">Migration to CIB seven 2.0</h3>
-<p>The backend of CIB seven 2.0.0 is based on Camunda 7.23.0, so before the migration, please check your Camunda version: it should be Camunda 7.23.0. If the version of Camunda is less than 7.23.0 then update it to 7.23.0, first.</p>
-
-<div class="note bg-info docs-info">
-  <h3>My Camunda version is less than 7.23.0!</h3>
-  <p>For Camunda versions before 7.23.0, please do minor updates, before migrating to CIB seven, as described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a>.</p>
-</div>
-
-<p>For migration from Camunda 7.23.0 to CIB seven 2.0 you can use the following <a href="https://github.com/cibseven/cibseven-migration/">Migration Script</a>, based on OpenRewrite maven plugin.
+<p>For migration from Camunda 7.24.0 to CIB seven 2.2.0 you can use the following <a href="https://github.com/cibseven/cibseven-migration/">Migration Script</a>, based on OpenRewrite maven plugin.
 This script performs the following actions:</p>
 <ul>
-<li>Changes version in <code>pom.xml</code> files: <code>7.23.0</code> -&gt; <code>2.0.0</code>.</li>
+<li>Changes version in <code>pom.xml</code> files: <code>7.24.0</code> -&gt; <code>2.2.0</code>.</li>
 <li>Changes artifacts names from <code>camunda-*</code> to <code>cibseven-*</code>.</li>
 <li>Changes namespaces inside imports, used in your custom Java code from <code>org.camunda</code> to <code>org.cibseven</code>.</li>
 </ul>
 
 <h4 id="migration-to-cib-seven-webclient">Migration to CIB seven webclient</h4>
-<p>Among other things, CIB seven 2.0.0 includes a new web client: CIB seven webclient (however, the option of using the old Camunda web application remains available).
+<p>Among other things, CIB seven includes it own client: CIB seven webclient (however, the option of using the old Camunda web application remains available).
 The CIB seven webclient uses JWT-based authentication and requires a special JWT secret, which must be stored securely and be accessible to both, the engine REST and the webclient middleware.
 So, for migration to CIB seven webclient, you need to create file <code>cibseven-webclient.properties</code> on the classpath, ideally for both, the engine-REST and the webclient.
 This configuration file should contain a jwtSecret property with the same value:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl">   <span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
 </span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
 <p>Alternatively, the JWT secret can be specified via the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
-
-<h4 id="authorization-configuration">Authorization configuration</h4>
-<p>Important note: when upgrading to CIB seven version 2.0.4 or 2.0.5, verify the authorization settings in the engine configuration.
-If the authorization is enabled for the engine REST, ensure that the camunda.bpmn.authorization.enabled property is also added to the <a href="/manual/2.2-ee/user-guide/cibseven-run/#cib-seven-webclient-properties">webclient configuration</a> and is set to true.</p>
 
 <h4 id="migration-to-cib-seven-namespace">Migration to CIB seven namespace</h4>
 <p>In some cases, processes created for Camunda may reference classes from the org.camunda namespace.
@@ -4371,13 +4332,50 @@ For example:</p>
 <p>These properties are already included inside the configuration files for Tomcat (<code>bpm_platform.xml</code>), Wildfly (<code>standalone.xml</code>) and Run (<code>production.yml</code>) distributions of CIB seven 2.0 and higher, but the properties are disabled by default.
 Enabling these properties ensures smooth access to objects and prevents class loading errors after migration.</p>
 
-<h4 id="liquibase-changelog-migration-1">Liquibase changelog migration</h4>
-<p>When migrating from Camunda 7.23.0 to CIB seven 2.0.0, the Liquibase changelog location changes from:</p>
+<h4 id="liquibase-changelog-migration">Liquibase changelog migration</h4>
+<p>When migrating from Camunda 7.24.0 to CIB seven 2.2.0, the Liquibase changelog location changes from:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml
 </span></span></code></pre></div><p>to:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml
-</span></span></code></pre></div><p>Liquibase identifies changesets by their author, ID, and changelog file path. Because the path changes, Liquibase treats the CIB seven changelog as a new changelog, even though its contents are identical to Camunda 7.23.0. Without additional steps, Liquibase may attempt to execute the historical changesets again.</p>
-<p>Before migrating, ensure that the database schema has already been upgraded to Camunda 7.23.0.</p>
+</span></span></code></pre></div><p>Liquibase identifies changesets by their author, ID, and changelog file path. Because the path changes, Liquibase treats the CIB seven changelog as a new changelog, even though the Camunda changesets it contains are identical to those of Camunda 7.24.0. Without additional steps, Liquibase may attempt to execute the historical changesets again.</p>
+<p>To prevent this, we can suggest two possible workarounds: either rewrite the stored changelog path in the <code>DATABASECHANGELOG</code> table (Option A), or mark the existing history as already applied with <code>changelog-sync-to-tag</code> (Option B). Both tell Liquibase that the Camunda changesets have run, so only the CIB seven ones are executed.</p>
+<p>Before migrating, ensure that the database schema has already been upgraded to Camunda 7.24.0.</p>
+
+<h5 id="option-a-update-databasechangelog-entries">Option A: Update <code>DATABASECHANGELOG</code> entries</h5>
+<p>First, configure Liquibase to use the CIB seven changelog at <code>org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml</code>. Depending on your installation, configure this through the Liquibase CLI, a <code>liquibase.properties</code> file, Spring Boot, or application-specific settings.</p>
+<p>Then update the stored changelog path in the Liquibase history table:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">DATABASECHANGELOG</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SET</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>After this one-time adjustment, Liquibase recognizes the existing migration history and continues with the CIB seven-specific migrations.</p>
+
+<h5 id="option-b-use-changelog-sync-to-tag">Option B: Use <code>changelog-sync-to-tag</code></h5>
+<p>If you use the Liquibase CLI, set <code>changelogFile</code> and <code>searchPath</code> in your <code>liquibase.properties</code> to the CIB seven values. On Liquibase versions older than 4.9, use <code>classpath</code> instead of <code>searchPath</code>.</p>
+<p>Then synchronize the history to the last Camunda tag:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase changelog-sync-to-tag --tag<span class="o">=</span>7.24.0
+</span></span></code></pre></div><p>This command marks all changesets up to tag 7.24.0 as executed in <code>DATABASECHANGELOG</code> without running them. Then run the normal upgrade:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase update
+</span></span></code></pre></div><p>Use this option only when the database schema is already at Camunda 7.24.0. This is normally satisfied by the recommendation to upgrade to Camunda 7.24.0 before migrating to CIB seven 2.2.0.</p>
+
+<h3 id="migration-to-cib-seven-21">Migration to CIB seven 2.1</h3>
+<p>The backend of CIB seven 2.1.0 is based on Camunda 7.24.0, so before the migration, please check your Camunda version: it should be Camunda 7.24.0. If the version of Camunda is less than 7.24.0 then update it to 7.24.0, first.</p>
+
+<div class="note bg-info docs-info">
+  <h3>My Camunda version is less than 7.24.0!</h3>
+  <p>For Camunda versions before 7.24.0, please do minor updates, before migrating to CIB seven, as described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a>.</p>
+</div>
+
+<p>In the rest, the migration process from Camunda 7.24.0 to CIB seven 2.1.0 follows the same steps as described in the section: Migration to CIB seven 2.0.</p>
+<p>Please note that the considerations outlined in the <a href="#authorization-configuration">Authorization Configuration</a> section are also actual to 2.1.0 and 2.1.1 versions.</p>
+
+<h4 id="liquibase-changelog-migration-1">Liquibase changelog migration</h4>
+<p>When migrating from Camunda 7.24.0 to CIB seven 2.1.0, the Liquibase changelog location changes from:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml
+</span></span></code></pre></div><p>to:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml
+</span></span></code></pre></div><p>Liquibase identifies changesets by their author, ID, and changelog file path. Because the path changes, Liquibase treats the CIB seven changelog as a new changelog, even though its contents are identical to Camunda 7.24.0. Without additional steps, Liquibase may attempt to execute the historical changesets again.</p>
+<p>To prevent this, we can suggest two possible workarounds: either rewrite the stored changelog path in the <code>DATABASECHANGELOG</code> table (Option A), or mark the existing history as already applied with <code>changelog-sync-to-tag</code> (Option B). Both tell Liquibase that the Camunda changesets have run, so only the CIB seven ones are executed.</p>
+<p>Before migrating, ensure that the database schema has already been upgraded to Camunda 7.24.0.</p>
 
 <h5 id="option-a-update-databasechangelog-entries-1">Option A: Update <code>DATABASECHANGELOG</code> entries</h5>
 <p>First, configure Liquibase to use the CIB seven changelog at <code>org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml</code>. Depending on your installation, configure this through the Liquibase CLI, a <code>liquibase.properties</code> file, Spring Boot, or application-specific settings.</p>
@@ -4388,12 +4386,94 @@ Enabling these properties ensures smooth access to objects and prevents class lo
 </span></span></span></code></pre></div><p>After this one-time adjustment, Liquibase recognizes the existing migration history and continues with the CIB seven-specific migrations.</p>
 
 <h5 id="option-b-use-changelog-sync-to-tag-1">Option B: Use <code>changelog-sync-to-tag</code></h5>
-<p>If you use the Liquibase CLI, configure Liquibase to use the CIB seven changelog and synchronize its history to the last Camunda tag:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase --changelog-file<span class="o">=</span>org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml changelog-sync-to-tag 7.23.0
+<p>If you use the Liquibase CLI, set <code>changelogFile</code> and <code>searchPath</code> in your <code>liquibase.properties</code> to the CIB seven values. On Liquibase versions older than 4.9, use <code>classpath</code> instead of <code>searchPath</code>.</p>
+<p>Then synchronize the history to the last Camunda tag:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase changelog-sync-to-tag --tag<span class="o">=</span>7.24.0
+</span></span></code></pre></div><p>This command marks all changesets up to tag 7.24.0 as executed in <code>DATABASECHANGELOG</code> without running them. Then run the normal upgrade:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase update
+</span></span></code></pre></div><p>Use this option only when the database schema is already at Camunda 7.24.0. This is normally satisfied by the prerequisite to upgrade to Camunda 7.24.0 before migrating to CIB seven 2.1.0.</p>
+
+<h3 id="migration-to-cib-seven-20">Migration to CIB seven 2.0</h3>
+<p>The backend of CIB seven 2.0.0 is based on Camunda 7.23.0, so before the migration, please check your Camunda version: it should be Camunda 7.23.0. If the version of Camunda is less than 7.23.0 then update it to 7.23.0, first.</p>
+
+<div class="note bg-info docs-info">
+  <h3>My Camunda version is less than 7.23.0!</h3>
+  <p>For Camunda versions before 7.23.0, please do minor updates, before migrating to CIB seven, as described in <a href="https://docs.camunda.org/manual/latest/update/minor/">Camunda version upgrade docs</a>.</p>
+</div>
+
+<p>For migration from Camunda 7.23.0 to CIB seven 2.0 you can use the following <a href="https://github.com/cibseven/cibseven-migration/">Migration Script</a>, based on OpenRewrite maven plugin.
+This script performs the following actions:</p>
+<ul>
+<li>Changes version in <code>pom.xml</code> files: <code>7.23.0</code> -&gt; <code>2.0.0</code>.</li>
+<li>Changes artifacts names from <code>camunda-*</code> to <code>cibseven-*</code>.</li>
+<li>Changes namespaces inside imports, used in your custom Java code from <code>org.camunda</code> to <code>org.cibseven</code>.</li>
+</ul>
+
+<h4 id="migration-to-cib-seven-webclient-1">Migration to CIB seven webclient</h4>
+<p>Among other things, CIB seven 2.0.0 includes a new web client: CIB seven webclient (however, the option of using the old Camunda web application remains available).
+The CIB seven webclient uses JWT-based authentication and requires a special JWT secret, which must be stored securely and be accessible to both, the engine REST and the webclient middleware.
+So, for migration to CIB seven webclient, you need to create file <code>cibseven-webclient.properties</code> on the classpath, ideally for both, the engine-REST and the webclient.
+This configuration file should contain a jwtSecret property with the same value:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl">   <span class="na">cibseven.webclient.authentication.jwtSecret</span><span class="o">=</span><span class="s">...</span>
+</span></span></code></pre></div><p>Place there your own 155-character alphanumeric secret.</p>
+<p>Alternatively, the JWT secret can be specified via the environment variable CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET. In this case, the value specified in the environment variable takes precedence over the value from the cibseven-webclient.properties file.</p>
+
+<h4 id="authorization-configuration">Authorization configuration</h4>
+<p>Important note: when upgrading to CIB seven version 2.0.4 or 2.0.5, verify the authorization settings in the engine configuration.
+If the authorization is enabled for the engine REST, ensure that the camunda.bpmn.authorization.enabled property is also added to the <a href="/manual/2.2-ee/user-guide/cibseven-run/#cib-seven-webclient-properties">webclient configuration</a> and is set to true.</p>
+
+<h4 id="migration-to-cib-seven-namespace-1">Migration to CIB seven namespace</h4>
+<p>In some cases, processes created for Camunda may reference classes from the org.camunda namespace.
+For example:</p>
+<ul>
+<li>A process definition might include a script task that uses classes from the org.camunda namespace.</li>
+<li>A task can have an user variable of the camunda namespace.</li>
+</ul>
+<p>All such objects are stored in the database and are not automatically renamed to the cibseven namespace during migration.</p>
+
+<div class="note bg-warning docs-warning">
+  <h3>Impact post-migration:</h3>
+  <p>If your processes utilize these objects, post-migration, attempting to access them may result in ClassNotFoundException.</p>
+</div>
+
+
+<div class="note bg-info docs-info">
+  <h3></h3>
+  <p>You can search for the string pattern <code>org.camunda.*</code> inside the BPMN files to find the processes with the camunda namespace.</p>
+</div>
+
+<p>To ensure smooth operation post-migration, additional properties are available to facilitate the renaming of these objects from org.camunda namespace to org.cibseven upon the first access:</p>
+<ul>
+<li><code>useCibSevenNamespaceInScripting</code> allows to handle org.camunda classes, used in a script, when the script is launched by a process</li>
+<li><code>useCibSevenNamespaceInReflection</code> allows to convert serialized objects, stored in the database, from the camunda namespace to the cibseven namespace.</li>
+</ul>
+<p>These properties are already included inside the configuration files for Tomcat (<code>bpm_platform.xml</code>), Wildfly (<code>standalone.xml</code>) and Run (<code>production.yml</code>) distributions of CIB seven 2.0 and higher, but the properties are disabled by default.
+Enabling these properties ensures smooth access to objects and prevents class loading errors after migration.</p>
+
+<h4 id="liquibase-changelog-migration-2">Liquibase changelog migration</h4>
+<p>When migrating from Camunda 7.23.0 to CIB seven 2.0.0, the Liquibase changelog location changes from:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml
+</span></span></code></pre></div><p>to:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml
+</span></span></code></pre></div><p>Liquibase identifies changesets by their author, ID, and changelog file path. Because the path changes, Liquibase treats the CIB seven changelog as a new changelog, even though its contents are identical to Camunda 7.23.0. Without additional steps, Liquibase may attempt to execute the historical changesets again.</p>
+<p>To prevent this, we can suggest two possible workarounds: either rewrite the stored changelog path in the <code>DATABASECHANGELOG</code> table (Option A), or mark the existing history as already applied with <code>changelog-sync-to-tag</code> (Option B). Both tell Liquibase that the Camunda changesets have run, so only the CIB seven ones are executed.</p>
+<p>Before migrating, ensure that the database schema has already been upgraded to Camunda 7.23.0.</p>
+
+<h5 id="option-a-update-databasechangelog-entries-2">Option A: Update <code>DATABASECHANGELOG</code> entries</h5>
+<p>First, configure Liquibase to use the CIB seven changelog at <code>org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml</code>. Depending on your installation, configure this through the Liquibase CLI, a <code>liquibase.properties</code> file, Spring Boot, or application-specific settings.</p>
+<p>Then update the stored changelog path in the Liquibase history table:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">DATABASECHANGELOG</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SET</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org/cibseven/bpm/engine/db/liquibase/camunda-changelog.xml&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;org/camunda/bpm/engine/db/liquibase/camunda-changelog.xml&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>After this one-time adjustment, Liquibase recognizes the existing migration history and continues with the CIB seven-specific migrations.</p>
+
+<h5 id="option-b-use-changelog-sync-to-tag-2">Option B: Use <code>changelog-sync-to-tag</code></h5>
+<p>If you use the Liquibase CLI, set <code>changelogFile</code> and <code>searchPath</code> in your <code>liquibase.properties</code> to the CIB seven values. On Liquibase versions older than 4.9, use <code>classpath</code> instead of <code>searchPath</code>.</p>
+<p>Then synchronize the history to the last Camunda tag:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase changelog-sync-to-tag --tag<span class="o">=</span>7.23.0
 </span></span></code></pre></div><p>This command marks all changesets up to tag 7.23.0 as executed in <code>DATABASECHANGELOG</code> without running them. Then run the normal upgrade:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase update
-</span></span></code></pre></div><p>Liquibase will continue with the first CIB seven-specific changeset (7.23-to-2.0) and subsequent CIB seven schema updates.</p>
-<p>Use this option only when the database schema is already at Camunda 7.23.0. This is normally satisfied by the prerequisite to upgrade to Camunda 7.23.0 before migrating to CIB seven 2.0.0.</p>
+</span></span></code></pre></div><p>Use this option only when the database schema is already at Camunda 7.23.0. This is normally satisfied by the prerequisite to upgrade to Camunda 7.23.0 before migrating to CIB seven 2.0.0.</p>
 
 <h3 id="migration-to-cib-seven-11">Migration to CIB seven 1.1</h3>
 
@@ -4452,17 +4532,24 @@ Enabling these properties ensures smooth access to objects and prevents class lo
             <li><a href="#clean-up">Clean up</a></li>
           </ul>
         </li>
+        <li><a href="#migration-to-cib-seven-22">Migration to CIB seven 2.2</a>
+          <ul>
+            <li><a href="#migration-to-cib-seven-webclient">Migration to CIB seven webclient</a></li>
+            <li><a href="#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></li>
+            <li><a href="#liquibase-changelog-migration">Liquibase changelog migration</a></li>
+          </ul>
+        </li>
         <li><a href="#migration-to-cib-seven-21">Migration to CIB seven 2.1</a>
           <ul>
-            <li><a href="#liquibase-changelog-migration">Liquibase changelog migration</a></li>
+            <li><a href="#liquibase-changelog-migration-1">Liquibase changelog migration</a></li>
           </ul>
         </li>
         <li><a href="#migration-to-cib-seven-20">Migration to CIB seven 2.0</a>
           <ul>
-            <li><a href="#migration-to-cib-seven-webclient">Migration to CIB seven webclient</a></li>
+            <li><a href="#migration-to-cib-seven-webclient-1">Migration to CIB seven webclient</a></li>
             <li><a href="#authorization-configuration">Authorization configuration</a></li>
-            <li><a href="#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></li>
-            <li><a href="#liquibase-changelog-migration-1">Liquibase changelog migration</a></li>
+            <li><a href="#migration-to-cib-seven-namespace-1">Migration to CIB seven namespace</a></li>
+            <li><a href="#liquibase-changelog-migration-2">Liquibase changelog migration</a></li>
           </ul>
         </li>
         <li><a href="#migration-to-cib-seven-11">Migration to CIB seven 1.1</a></li>
