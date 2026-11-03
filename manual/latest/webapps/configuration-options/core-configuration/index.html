@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4285,6 +4301,8 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">tooltip</span><span class="p">:</span><span class="w"> </span><span class="l">QA environment</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;SECRET_OF_THE_ADDITINAL_ENGINE&gt;</span><span class="w">
 </span></span></span></code></pre></div><p>After configuring, an icon with additional engines should appear at the top menu of the CIB seven webclient.</p>
+<p>For a complete, runnable setup, see the <a href="https://github.com/cibseven/cibseven-multi-engine-example">CIB seven multi-engine example</a> on GitHub: one webclient and two engines in separate containers, each engine with its own JWT secret, started with Docker Compose.</p>
+<p>In the Enterprise Edition, the license key is stored in the database of an additional engine only if this engine uses the same secret as <code>cibseven.webclient.authentication.jwtSecret</code>. If the engine has its own <code>jwtSecret</code>, keep the license file with the webclient, see <a href="/manual/latest/user-guide/license-use/#storing-the-license-key-in-the-database">Storing the License Key in the Database</a>.</p>
 
 <h3 id="all-core-configuration-options">All Core Configuration Options</h3>
 <p>The table below lists the core webclient options with short descriptions. The properties that set the paths under which the webclient is deployed in CIB seven Run or a Spring Boot application are described in <a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webclient properties</a>.</p>
@@ -4318,7 +4336,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
   <tr id="tr-cibseven-webclient-authentication">
       <td rowspan="3">cibseven.webclient.authentication</td>
       <td>.jwtSecret</td>
-      <td>Secret used to sign JWT tokens</td>
+      <td>Secret used to sign JWT tokens. In the Enterprise Edition, the engine must use the same secret, otherwise the license key cannot be stored in the engine database, see <a href="/manual/latest/user-guide/license-use/#storing-the-license-key-in-the-database">Storing the License Key in the Database</a>.</td>
   </tr>
   <tr>
       <td>.tokenValidMinutes</td>
@@ -4349,6 +4367,11 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
     <tr>
       <td>.additionalEngineRest</td>
       <td>Specifies optional CIB seven engines that can be accessible from the CIB seven webclient. </td>
+  </tr>
+  <tr id="tr-cibseven-webclient-notifications">
+      <td>cibseven.webclient.notifications</td>
+      <td>.enabled</td>
+      <td>Switch on the <a href="/manual/latest/webapps/admin/notifications/">notifications</a> administrators publish to logged-in users (Enterprise Edition). Needs the webclient's datasource. <br />Possible values: true/false <br />Default value: false</td>
   </tr>
   <tr id="tr-cibseven-webclient-plugins">
       <td rowspan="2">cibseven.webclient.plugins</td>

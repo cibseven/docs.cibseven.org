@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4272,7 +4288,7 @@
     </tr>
     <tr>
       <td><code>mod_folders</code></td>
-      <td>The folders diagrams and forms are organized in. Each row names its parent, so the table holds the whole tree; a row without a parent is a folder at the top level. Required from 2.3.0</td>
+      <td>The folders diagrams and forms are organized in. Each row names its parent, so the table holds the whole tree; a row without a parent is a folder at the top level. From 3.0.0 each row also names its project in <code>project_id</code>: the folder at the top level it lies under, which for that folder is itself. Required from 2.3.0</td>
     </tr>
     <tr>
       <td><code>mod_processes_diagrams_aud</code></td>
@@ -4281,6 +4297,10 @@
     <tr>
       <td><code>mod_revinfo</code></td>
       <td>Numbers those snapshots and records when each was written. Enterprise Edition only</td>
+    </tr>
+    <tr>
+      <td><code>mod_project_members</code></td>
+      <td>The members of the projects, the folders at the top level: one row per user or group, with its role. A project without rows is open to every modeler user. Rows go when their project is deleted. Written only by the enterprise edition, from 3.0.0; the community edition leaves it empty</td>
     </tr>
     <tr>
       <td><code>chat_messages</code></td>
@@ -4330,14 +4350,20 @@ otherwise the update fails on the <code>chat_messages</code> change, whether or 
 <li>the <code>mod_folders</code> table</li>
 <li>a <code>folder_id</code> column on <code>mod_processes_diagrams</code> and on <code>mod_forms</code>, each with a foreign key to <code>mod_folders</code></li>
 <li>a folder named <strong>General</strong>, and every existing diagram and form filed into it</li>
+<li>from 3.0.0, a <code>project_id</code> column on <code>mod_folders</code>, with an index, set on <em>General</em> to its own id</li>
 </ul>
 <p>The models of an installation that is updated therefore keep working and appear together in one folder, rather than in a list that has nowhere to belong. The id of that folder is written out in the update script rather than generated, so the same statement can both create it and file the models into it on every database.</p>
+<p>The modeler keeps <code>project_id</code> current as folders are created and moved, and on start fills it in for any folder that has none or a wrong one. The enterprise edition uses it to leave the models of the projects a user may not see out of its lists inside the query.</p>
 
 <div class="note bg-info docs-info">
   <h3>Only where the modeler is enabled</h3>
   <p><code>mod_folders</code> belongs to the modeler component of the engine schema. An engine with the modeler disabled creates none of the <code>mod_</code> tables and needs none of this. See <a href="/manual/latest/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>.</p>
 </div>
 
+
+<h4 id="project-members">Project members</h4>
+<p>From 3.0.0 the enterprise edition can restrict a project to its members, see <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>. The update to 3.0 adds the table for them, <code>mod_project_members</code>, applied by the <code>2.2-to-3.0-webapp</code> changelog entry and the <code>$DATABASENAME_webapp_2.2_to_3.0.sql</code> scripts. The enterprise modeler reads that table on every request, so it cannot open any folder until the update has been applied.</p>
+<p>The update writes no rows: every project, <em>General</em> included, stays open to everyone after it. From then on the enterprise edition makes the creator of a project its Project Admin, and the owner of a user folder the first time they open the modeler.</p>
 
 <h4 id="diagram-snapshots">Diagram snapshots</h4>
 <p>From 2.3.0 the enterprise edition writes the diagram snapshots itself, where earlier versions had Hibernate
@@ -4365,6 +4391,7 @@ webclient deployment. Leaving it in place is harmless: nothing reads it any more
         <li><a href="#22-to-23">2.2 to 2.3</a>
           <ul>
             <li><a href="#folders">Folders</a></li>
+            <li><a href="#project-members">Project members</a></li>
             <li><a href="#diagram-snapshots">Diagram snapshots</a></li>
           </ul>
         </li>

@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4247,7 +4263,7 @@
 <h2 id="your-own-folder">Your Own Folder</h2>
 <p>The first time you open the modeler, a folder named after your <strong>user ID</strong> is created for you at the top level, so there is always a place to store a model. It is created when you open the modeler, not when you log in, so users who never use the modeler get no folder.</p>
 <p>Unless you choose another <a href="#default-folder">default folder</a>, the start page opens in this folder every time you open the modeler, so you can create or import a model straight away. <em>Projects</em> in the breadcrumb leads to the top level and the other folders. Refreshing the page keeps you where you are: the folder you have open is part of the address.</p>
-<p>Apart from that it is an ordinary folder: it is listed by name among the other folders of the top level, and you create, rename, move and delete the folders and models inside it as anywhere else. It is not private either: every modeler user sees it and can work in it.</p>
+<p>Apart from that it is an ordinary folder: it is listed by name among the other folders of the top level, and you create, rename, move and delete the folders and models inside it as anywhere else. In the community edition it is not private either: every modeler user sees it and can work in it. In the enterprise edition, from 3.0.0, it is yours: you are its only member until you add others, see <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>.</p>
 <p>Only the folder itself is protected: it cannot be renamed, moved or deleted, and its row offers none of those actions. Administrators, users granted the <em>All</em> permission on the <em>System</em> resource, can do all three, for example to clean up after somebody has left. A user folder that was deleted is created again the next time its user opens the modeler.</p>
 
 <div class="note bg-info docs-info">
@@ -4291,6 +4307,12 @@
 </table>
 <p>The folder of a user (see <a href="#your-own-folder">Your Own Folder</a>) offers none of these actions unless you are an administrator.</p>
 <p>A folder cannot be moved into itself or into one of its own subfolders, and the destination list leaves those out.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Projects with members</h3>
+  <p>In the enterprise edition, from 3.0.0, a project can have members, and each member a role. What a row offers then depends on your role in its project, and folders and models move only inside their project or, for a folder, to the top level. See <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>.</p>
+</div>
+
 
 <div class="note bg-warning docs-warning">
   <h3>Deleting cannot be undone</h3>

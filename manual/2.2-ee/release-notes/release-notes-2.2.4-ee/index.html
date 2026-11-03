@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4256,6 +4272,7 @@
 <li>The initial setup that creates the first administrator is now only offered while the identity service is writable, holds no users, groups or authorizations, and no administrators are configured besides <code>camunda-admin</code>. An installation that has users, groups or authorizations but no administrator no longer gets the setup and must configure its administrator via <code>admin-user</code> or <code>adminUsers</code>. A fresh database still gets the setup</li>
 <li>An <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/chat-memory/">AI Agent Connector</a> <code>memoryId</code> is now scoped to one process instance: it no longer continues a conversation in another process instance, including one started by a call activity. A <code>memoryId</code> may be at most 222 characters long</li>
 <li>The engine now manages <code>SLF4J</code> 2 (<code>slf4j-api</code> <code>2.0.18</code>, <code>logback</code> <code>1.5.38</code>) instead of <code>SLF4J</code> 1.7. Applications that embed the engine with an <code>SLF4J</code> 1.x binding must switch to an <code>SLF4J</code> 2 provider, e.g. <code>log4j-slf4j2-impl</code> instead of <code>log4j-slf4j-impl</code>. The CIB seven Run distributions already used <code>SLF4J</code> 2</li>
+<li><strong>HTTPS is required for licensed EE features</strong> <em>(since 2.2.0, not mentioned in earlier release notes)</em>. Licensed EE features need the browser to run a service worker, which browsers do only over HTTPS or on <code>localhost</code>; over plain HTTP they show &ldquo;License Required&rdquo; although the license is valid. Deployments that authenticate users themselves, for example through a gateway or proxy, can avoid this. The license key is stored in the engine database only if the engine uses the same JWT secret as the webclient. See <a href="/manual/2.2-ee/user-guide/license-use/#https-and-service-workers">HTTPS and Service Workers</a> and <a href="/manual/2.2-ee/user-guide/license-use/#storing-the-license-key-in-the-database">Storing the License Key in the Database</a>.</li>
 </ul>
 
 <h3 id="configuration-changes">Configuration Changes</h3>

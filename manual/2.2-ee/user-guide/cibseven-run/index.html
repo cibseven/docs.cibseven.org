@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4885,20 +4901,20 @@ Some of the properties are listed in the table below:</p>
   </tr>
   <tr>
       <td rowspan="9">management</td>
-      <td>.endpoints.enabled-by-default</td>
-      <td>Disable all actuator endpoints by default. <br />Possible values: true/false</td>
+      <td>.endpoints.access.default</td>
+      <td>Default access level for all actuator endpoints. Use <code>none</code> to disable all endpoints by default. <br />Possible values: none/read-only/unrestricted</td>
   </tr>
   <tr>
-      <td>.endpoints.web.exposure.include:</td>
+      <td>.endpoints.web.exposure.include</td>
       <td>Expose only health and info endpoints. <br />Example: health,info</td>
   </tr>
   <tr>
-      <td>.endpoint.info.enabled</td>
-      <td>Enable actuator info. <br />Possible values: true/false</td>
+      <td>.endpoint.info.access</td>
+      <td>Access level of the actuator info endpoint. <br />Possible values: none/read-only/unrestricted</td>
   </tr>
   <tr>
-      <td>.endpoint.health.enabled</td>
-      <td>Enable actuator health. <br />Possible values: true/false</td>
+      <td>.endpoint.health.access</td>
+      <td>Access level of the actuator health endpoint. <br />Possible values: none/read-only/unrestricted</td>
   </tr>
   <tr>
       <td>.endpoint.health.probes.enabled</td>
@@ -4913,8 +4929,8 @@ Some of the properties are listed in the table below:</p>
       <td>Include git info in actuator info. <br />Possible values: true/false</td>
   </tr>
   <tr>
-      <td>.info.git.mode:</td>
-      <td>Show full git information. <br />Possible values: full/none</td>
+      <td>.info.git.mode</td>
+      <td>Amount of git information shown. <br />Possible values: simple/full</td>
   </tr>
   <tr>
       <td>.info.java.enabled</td>

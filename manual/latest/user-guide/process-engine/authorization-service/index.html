@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4383,12 +4399,12 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
     <td>User Id</td>
   </tr>
   <tr>
-    <td>Report</td>
+    <td>Report (deprecated)</td>
     <td>15</td>
     <td>Report Id</td>
   </tr>
   <tr>
-    <td>Dashboard</td>
+    <td>Dashboard (deprecated)</td>
     <td>16</td>
     <td>Dashboard Id</td>
   </tr>
@@ -4404,6 +4420,7 @@ Additionally, the <strong>All</strong> permission will vanish from a user if a s
   </tr>
 </table>
 <p><strong>Note:</strong> The Resource Id should be &lsquo;*&rsquo; when you create new authorization with CREATE permissions only.</p>
+<p><strong>Note:</strong> The Report (15) and Dashboard (16) resources are deprecated since CIB seven 3.0 and will be removed in a future major version. They were only used by the reports and dashboards of the former Cockpit webapp, and nothing in CIB seven checks them, so authorizations on them have no effect. Existing authorizations on these resources can still be read and deleted, but you should not create new ones.</p>
 
 <h3 id="authorization-type">Authorization Type</h3>
 <p>There are three types of authorizations:</p>

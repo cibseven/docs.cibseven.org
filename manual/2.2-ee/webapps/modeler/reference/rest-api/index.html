@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4668,6 +4684,36 @@
 </table>
 <hr>
 
+<h3 id="get-access-per-project">Get Access per Project</h3>
+<pre tabindex="0"><code>GET /modeler/folders/access
+</code></pre><p><strong>Available from 3.0.0.</strong> What the caller may do in each project they can see, so a client offers only that. In the community edition <code>projects</code> is empty, which means everything is allowed. The enterprise edition lists every project the caller can see, the open ones with <code>restricted: false</code>.</p>
+<p><strong>Response:</strong> <code>200 OK</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;projects&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;8d7f3c1e-...&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;VIEWER&#34;</span><span class="p">,</span> <span class="nt">&#34;restricted&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nt">&#34;edit&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nt">&#34;manageMembers&#34;</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;movesBetweenProjects&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>projects</code></td>
+      <td>Per project id: the caller&rsquo;s <code>role</code> there (<code>PROJECT_ADMIN</code>, <code>EDITOR</code>, <code>VIEWER</code>, or <code>null</code>), whether the project is <code>restricted</code> to its members, whether the caller may <code>edit</code> in it, and whether they may manage its members</td>
+    </tr>
+    <tr>
+      <td><code>movesBetweenProjects</code></td>
+      <td>Whether a folder or a model may be moved from one project into another. <code>false</code> in the enterprise edition</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
 <h3 id="create-folder">Create Folder</h3>
 <pre tabindex="0"><code>POST /modeler/folders
 </code></pre><p><strong>Body:</strong></p>
@@ -4724,6 +4770,69 @@
 <pre tabindex="0"><code>DELETE /modeler/folders/{id}
 </code></pre><p>Deletes the folder with <strong>everything below it</strong>: subfolders, diagrams and forms. This cannot be undone — call the contents endpoint first and confirm with the user. Deployed processes are unaffected.</p>
 <p><strong>Response:</strong> <code>200 OK</code> — what was removed, in the shape the contents endpoint returns. <code>403 Forbidden</code> when the folder is the folder of a user and the caller is not an administrator.</p>
+<hr>
+
+<div class="note bg-info docs-info">
+  <h3>Projects with members</h3>
+  <p>From 3.0.0 the enterprise edition answers every folder, diagram and form endpoint according to the caller&rsquo;s role in the project concerned, see <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/">Project Members</a>. Lists leave out the projects the caller may not see. Reading needs only to see the project, changing and deploying needs Editor, and renaming or deleting a project needs Project Admin. A request beyond the role is answered with <code>403 Forbidden</code>. Moving a folder or a model into another project, or a project into a folder, is answered with <code>400 Bad Request</code>.</p>
+</div>
+
+
+<h2 id="project-members-enterprise-edition">Project Members (Enterprise Edition)</h2>
+<p><strong>Available from 3.0.0.</strong> The members of a project, a folder at the top level. <code>{projectId}</code> is the id of that folder; any other folder is answered with <code>400 Bad Request</code>. Reading the members needs only to see the project, so in an open project everyone may; everything else needs Project Admin, or the <em>All</em> permission on the <em>System</em> resource. Giving a project without members its first member needs that permission.</p>
+
+<h3 id="list-members">List Members</h3>
+<pre tabindex="0"><code>GET /modeler/projects/{projectId}/members
+</code></pre><p><strong>Response:</strong> <code>200 OK</code> — array of members:</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td>Id of the membership, used to change or remove it</td>
+    </tr>
+    <tr>
+      <td><code>memberType</code></td>
+      <td><code>USER</code> or <code>GROUP</code></td>
+    </tr>
+    <tr>
+      <td><code>memberId</code></td>
+      <td>The user ID or the group ID</td>
+    </tr>
+    <tr>
+      <td><code>role</code></td>
+      <td><code>PROJECT_ADMIN</code>, <code>EDITOR</code> or <code>VIEWER</code></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="add-member">Add Member</h3>
+<pre tabindex="0"><code>POST /modeler/projects/{projectId}/members
+</code></pre><p><strong>Body:</strong> <code>{ &quot;memberType&quot;: &quot;USER&quot;, &quot;memberId&quot;: &quot;john&quot;, &quot;role&quot;: &quot;EDITOR&quot; }</code></p>
+<p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;member&quot;: { ... }, &quot;known&quot;: true }</code>. <code>known</code> is <code>false</code> when the caller could not look the user or group up in the engine, so nothing confirms it exists; the member is added all the same. <code>400 Bad Request</code> when a field is missing or the user or group is a member already.</p>
+<hr>
+
+<h3 id="change-role">Change Role</h3>
+<pre tabindex="0"><code>PUT /modeler/projects/{projectId}/members/{memberId}
+</code></pre><p><strong>Body:</strong> <code>{ &quot;role&quot;: &quot;VIEWER&quot; }</code></p>
+<p><strong>Response:</strong> <code>200 OK</code> — the member. <code>400 Bad Request</code> when it would leave the project without a Project Admin.</p>
+<hr>
+
+<h3 id="remove-member">Remove Member</h3>
+<pre tabindex="0"><code>DELETE /modeler/projects/{projectId}/members/{memberId}
+</code></pre><p><strong>Response:</strong> <code>200 OK</code>. <code>400 Bad Request</code> when it would leave the project without a Project Admin.</p>
+<hr>
+
+<h3 id="search-users-and-groups">Search Users and Groups</h3>
+<pre tabindex="0"><code>GET /modeler/projects/{projectId}/member-candidates?search=jo&amp;type=USER
+</code></pre><p>Users or groups to add as members. <code>type</code> is required and names what is searched, <code>USER</code> or <code>GROUP</code>; a search without it is answered with <code>400 Bad Request</code>. A user is found when the term is their exact user ID or part of their first or last name; a group when it is the exact group ID or part of the group&rsquo;s name. At least two characters are needed. The engine is asked with the caller&rsquo;s rights, so the answer holds only the users and groups the caller may read, and is empty for a caller who may read none.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — array of <code>{ &quot;memberType&quot;: &quot;USER&quot;, &quot;id&quot;: &quot;john&quot;, &quot;name&quot;: &quot;John Doe&quot; }</code>, at most ten.</p>
 <hr>
 
 <h2 id="chat-enterprise-edition">Chat (Enterprise Edition)</h2>
@@ -4989,9 +5098,19 @@
         <li><a href="#get-folder">Get Folder</a></li>
         <li><a href="#get-folder-contents">Get Folder Contents</a></li>
         <li><a href="#get-own-folder">Get Own Folder</a></li>
+        <li><a href="#get-access-per-project">Get Access per Project</a></li>
         <li><a href="#create-folder">Create Folder</a></li>
         <li><a href="#rename-or-move-folder">Rename or Move Folder</a></li>
         <li><a href="#delete-folder">Delete Folder</a></li>
+      </ul>
+    </li>
+    <li><a href="#project-members-enterprise-edition">Project Members (Enterprise Edition)</a>
+      <ul>
+        <li><a href="#list-members">List Members</a></li>
+        <li><a href="#add-member">Add Member</a></li>
+        <li><a href="#change-role">Change Role</a></li>
+        <li><a href="#remove-member">Remove Member</a></li>
+        <li><a href="#search-users-and-groups">Search Users and Groups</a></li>
       </ul>
     </li>
     <li><a href="#chat-enterprise-edition">Chat (Enterprise Edition)</a>

@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4422,17 +4438,88 @@ receives the props of that slot:</p>
       <td>No UI of its own; the contribution works on the rendered DMN viewer</td>
       <td><code>viewer</code>, <code>container</code>, <code>activeView</code></td>
     </tr>
+    <tr>
+      <td><code>app-banner</code></td>
+      <td>A strip below the header on every page, shown only while a user is logged in</td>
+      <td><code>user</code></td>
+    </tr>
+    <tr>
+      <td><code>admin-entry</code></td>
+      <td>No component; an entry in the Admin menu, on the Admin page and among the start page&rsquo;s admin options</td>
+      <td>None, see <a href="#adding-an-admin-entry">Adding an Admin entry</a></td>
+    </tr>
   </tbody>
 </table>
 <p>The registered <code>id</code> of a tab becomes <code>?tab=&lt;id&gt;</code> in the address bar, so a contributed tab can
 be linked to. On a decision instance, <code>decision</code> is the definition version the instance was
 evaluated against.</p>
 <p>Any number of plugins can contribute to one slot, and one plugin may register several times.
-Contributed tabs are appended after the built-in ones, in an order that is not defined.
+Contributed tabs are appended after the built-in ones, in an order that is not defined; the
+same goes for several banners in <code>app-banner</code>, which are shown one below the other, and for
+the entries in <code>admin-entry</code>, which follow the built-in Admin sections.
 Registered ids have to be unique across all plugins and may not shadow a built-in tab id;
 a contribution taking an id that is already in use is dropped with a console warning. The
 Enterprise Edition has more built-in tabs than the Community Edition, so prefixing the id
 with the plugin name is the simplest way to keep one build working in both.</p>
+
+<h4 id="adding-an-admin-entry">Adding an Admin entry</h4>
+<p>An <code>admin-entry</code> contribution has no component of its own: it registers <code>null</code> and describes the
+entry in its metadata. The entry opens a route the application already has: a plugin cannot add
+routes of its own, so the route comes from the application, for instance from the Enterprise Edition.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">register</span><span class="p">({</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">registerPlugin</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">registerPlugin</span><span class="p">(</span><span class="s1">&#39;admin-entry&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;demo-reports&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">text</span><span class="o">:</span> <span class="sb">`plugins.</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">.reports`</span><span class="p">,</span>        <span class="c1">// translation key of the label
+</span></span></span><span class="line"><span class="cl">    <span class="nx">to</span><span class="o">:</span> <span class="s1">&#39;/seven/auth/admin/demo-reports&#39;</span><span class="p">,</span>  <span class="c1">// has to exist in the application&#39;s router
+</span></span></span><span class="line"><span class="cl">    <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;mdi-chart-box-outline&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">permissions</span><span class="o">:</span> <span class="p">{</span> <span class="nx">system</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;READ&#39;</span><span class="p">]</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;system&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td>Unique id of the entry</td>
+    </tr>
+    <tr>
+      <td><code>text</code></td>
+      <td>Translation key of the label</td>
+    </tr>
+    <tr>
+      <td><code>to</code></td>
+      <td>Route path the entry opens. It has to exist in the application&rsquo;s router</td>
+    </tr>
+    <tr>
+      <td><code>icon</code></td>
+      <td>Icon of the entry among the start page&rsquo;s admin options, as an <code>mdi-*</code> class. The Admin menu shows the label only</td>
+    </tr>
+    <tr>
+      <td><code>image</code></td>
+      <td>Optional. Image of the entry&rsquo;s card on the Admin page</td>
+    </tr>
+    <tr>
+      <td><code>tooltip</code></td>
+      <td>Optional. Translation key of a tooltip</td>
+    </tr>
+    <tr>
+      <td><code>active</code></td>
+      <td>Optional. Route paths for which the entry is highlighted in the menu; by default its own <code>to</code></td>
+    </tr>
+    <tr>
+      <td><code>permissions</code>, <code>resource</code></td>
+      <td>The permissions a user needs on that resource to see the entry, in the form the webclient checks its own sections with. Without them the entry is hidden whenever authorization is enabled</td>
+    </tr>
+  </tbody>
+</table>
+<p>The permissions only decide whether the entry is shown. The route it opens has to check access
+itself. An entry without <code>to</code> or <code>text</code> is left out.</p>
 
 <h4 id="working-on-the-dmn-viewer">Working on the DMN viewer</h4>
 <p><code>dmn-viewer</code> is not a tab. A contribution to it renders nothing of its own and needs no <code>text</code>:
@@ -4634,6 +4721,7 @@ rendered next to ours.</p>
       <ul>
         <li><a href="#slots">Slots</a>
           <ul>
+            <li><a href="#adding-an-admin-entry">Adding an Admin entry</a></li>
             <li><a href="#working-on-the-dmn-viewer">Working on the DMN viewer</a></li>
           </ul>
         </li>

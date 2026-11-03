@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4243,6 +4259,21 @@ the CIB seven support team. The following section explains the various methods b
 <p><strong>Note</strong>
 In the versions before CIB seven 2.2.0, a license key was stored on the file system, and therefore it should be applied to each node of the cluster.</p>
 
+<h3 id="storing-the-license-key-in-the-database">Storing the License Key in the Database</h3>
+<p>The license key is stored in the database and read from it only under two conditions:</p>
+<ul>
+<li>the engine is version <code>2.2.0</code> or later;</li>
+<li>the engine uses the same JWT secret as the webclient (<code>cibseven.webclient.authentication.jwtSecret</code>). In CIB seven Run, this is the case by default. If the webclient and the engine run separately, set this secret for the engine through the JVM system property <code>cibseven.webclient.authentication.jwtSecret</code>, the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code> or the file <code>cibseven-webclient.properties</code> on its classpath. For an additional engine (<a href="/manual/latest/webapps/configuration-options/core-configuration/#multi-engine-support">multi-engine</a>), the condition is the same: this engine&rsquo;s own <code>jwtSecret</code> does not help if it differs from <code>cibseven.webclient.authentication.jwtSecret</code>.</li>
+</ul>
+<p>If the condition is not met:</p>
+<ul>
+<li>the webclient uses only the license file; if there is no file, licensed features show <strong>&ldquo;License Required&rdquo;</strong>;</li>
+<li>a key entered on the license page in the Admin webapp is not stored, although no error is shown;</li>
+<li>a key already stored in the database is not read.</li>
+</ul>
+<p>Change the secret on the webclient and the engine at the same time: the stored key stays valid.</p>
+<p>With the <a href="/manual/latest/update/minor/21-to-22/#direct-provider">Direct Provider</a>, the key is stored and read without a JWT secret.</p>
+
 <h2 id="license-key-pickup-methods">License Key Pickup Methods</h2>
 
 <h3 id="through-the-admin-webapp-ui">Through the Admin Webapp UI</h3>
@@ -4290,6 +4321,16 @@ application must use the EE version of the starter, with <code>-ee</code> suffix
 <p>Note what the property does <strong>not</strong> do. It does not disable the license check, and it does not weaken server-side authentication: a request your user provider cannot authenticate is still refused with <code>403</code>, and the feature still shows &ldquo;License Required&rdquo;. It only stops the browser from giving up before the server has been asked.</p>
 <p>Deployments that use the standard login flows need no configuration here — the token is in browser storage, the service worker attaches it, and the default (<code>false</code>) is correct.</p>
 
+<h3 id="https-and-service-workers">HTTPS and Service Workers</h3>
+<p>Browsers run a service worker only in a secure context: over HTTPS or on <code>localhost</code>. If the webclient is opened over plain HTTP or the browser has service workers turned off, licensed features show <strong>&ldquo;License Required&rdquo;</strong> although the license is valid. This also applies to the Direct Provider. Open the webclient over HTTPS.</p>
+<p>Without HTTPS, these features work only in these cases:</p>
+<ul>
+<li>On <code>localhost</code>, for example through an SSH tunnel, or in a browser started with a flag that treats the webclient&rsquo;s HTTP address as secure (in Chrome, <code>--unsafely-treat-insecure-origin-as-secure</code>). Both are meant for tests.</li>
+<li>In deployments where a gateway or proxy authenticates the users: starting with <code>2.2.3</code>, the user provider can authenticate the chunk requests without the token of the service worker, for example from a session cookie (a SAML or reverse proxy session) or from an identity header that the gateway or proxy adds, see <a href="#leaving-chunk-authentication-to-the-server">Leaving chunk authentication to the server</a>.</li>
+</ul>
+<p>With the standard login, <code>trustServerAuthentication</code> does not help: without a service worker the token is not sent, and the request is refused with <code>403</code>.</p>
+<p>Over plain HTTP, session cookies and tokens travel unencrypted. A user provider that trusts an identity header is safe only if the webclient can be reached through the gateway or proxy alone; otherwise anyone can forge the header.</p>
+
 <h2 id="license-content">License content</h2>
 <p>This section defines what is a valid license key that will be accepted by the CIB seven webclient. This description is
 valid for all <a href="#license-key-pickup-methods">License pickup methods</a>.</p>
@@ -4310,7 +4351,11 @@ license key in the correct format.</p>
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#deployment-scenarios-and-the-license-key">Deployment Scenarios and the License Key</a></li>
+    <li><a href="#deployment-scenarios-and-the-license-key">Deployment Scenarios and the License Key</a>
+      <ul>
+        <li><a href="#storing-the-license-key-in-the-database">Storing the License Key in the Database</a></li>
+      </ul>
+    </li>
     <li><a href="#license-key-pickup-methods">License Key Pickup Methods</a>
       <ul>
         <li><a href="#through-the-admin-webapp-ui">Through the Admin Webapp UI</a></li>
@@ -4322,6 +4367,7 @@ license key in the correct format.</p>
     <li><a href="#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>
       <ul>
         <li><a href="#leaving-chunk-authentication-to-the-server">Leaving chunk authentication to the server</a></li>
+        <li><a href="#https-and-service-workers">HTTPS and Service Workers</a></li>
       </ul>
     </li>
     <li><a href="#license-content">License content</a></li>

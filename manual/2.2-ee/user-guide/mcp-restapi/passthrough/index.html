@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4235,6 +4251,14 @@
     <div class="col-xs-12 content-text">
       <p>This page describes the <code>passthrough</code> mode (the default) for the <a href="/manual/2.2-ee/user-guide/mcp-restapi/#engine-rest-authentication">engine REST authentication</a> of the <a href="/manual/2.2-ee/user-guide/mcp-restapi/">REST API MCP Plugin</a>.</p>
 <p>In <code>passthrough</code> mode, the validated inbound bearer token is forwarded unchanged to the engine REST API. Use this mode when the engine REST API is itself an <a href="/manual/2.2-ee/user-guide/spring-boot-integration/spring-security/">OAuth2 resource server</a> for the same issuer, so that both hops are protected by the same OAuth2 token.</p>
+<figure class="image">
+  <span><img
+      src="../img/mcp-passthrough-flow.png"
+      
+          title="MCP passthrough flow"
+       /></span>
+</figure>
+
 <p>To set up this mode:</p>
 <ul>
 <li>

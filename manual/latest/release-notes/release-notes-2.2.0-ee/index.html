@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4253,12 +4269,13 @@
 <ul>
 <li><strong>Java 17 Docker images removed.</strong> Only Java 21 images are now built and published. Deployments using the <code>java17-*</code> image tag must migrate to the Java 21 image.</li>
 <li><strong><code>KeycloakUserProvider</code> renamed to <code>OAuth2UserProvider</code></strong> in YAML configuration files. Update your <code>default.yml</code> / <code>application.yml</code> configuration accordingly (see Configuration Changes below).</li>
+<li><strong>HTTPS is required for licensed EE features</strong> <em>(EE exclusive)</em>. Starting with 2.2.0, licensed <a href="/manual/latest/webapps/enterprise-features/">EE features</a> (for example, process instance search or the audit log) are loaded only through an authenticated request. A service worker adds the user&rsquo;s token to these requests, and browsers run a service worker only over HTTPS or on <code>localhost</code>. If the webclient is opened over plain HTTP, these features show &ldquo;License Required&rdquo; even though the license is valid. Open the webclient over HTTPS; starting with 2.2.3, deployments that authenticate users themselves, for example through a gateway or proxy, can avoid this, see <a href="/manual/latest/user-guide/license-use/#https-and-service-workers">HTTPS and Service Workers</a> and the <a href="/manual/latest/update/minor/21-to-22/#https-for-licensed-ee-features">update guide</a>.</li>
 </ul>
 
 <h2 id="configuration-changes">Configuration Changes</h2>
 <ul>
 <li><strong><code>KeycloakUserProvider</code> → <code>OAuth2UserProvider</code></strong>: The user provider class name has been renamed in all CIB seven distribution YAML configs (<code>run</code>, <code>run4</code>, Tomcat, Wildfly). Update the relevant <code>userProvider</code> entries in your configuration file.</li>
-<li><strong><code>jwtSecret</code> via system property</strong>: The JWT secret for engine-rest can now be set via the JVM system property <code>cibseven.engine-rest.jwt-secret</code> or the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code>, without requiring a config file change. <em>(since 2.1.6)</em></li>
+<li><strong><code>jwtSecret</code> via system property</strong>: The JWT secret for engine-rest can now be set via the JVM system property <code>cibseven.webclient.authentication.jwtSecret</code> or the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code>, without requiring a config file change. <em>(since 2.1.6)</em></li>
 <li><strong>AI Agent default model override</strong>: The default LLM model for the AI Agent connector can be overridden via the system property <code>cibseven.connect.ai.agent.default-model</code> or the environment variable <code>CIBSEVEN_CONNECT_AI_AGENT_DEFAULT_MODEL</code>.</li>
 <li><strong>Cron expression type</strong>: Configure <code>cronType</code> (<code>QUARTZ</code> or <code>SPRING53</code>) and <code>supportLegacyQuartzSyntax</code> in <code>run</code>, Tomcat, and Wildfly configuration files to control <a href="/manual/latest/update/minor/20-to-21/#cron-expression">cron expression</a> handling.</li>
 <li><strong>Tomcat 11 support</strong>: Tomcat 11 is now officially supported as a deployment target.</li>
@@ -4374,6 +4391,14 @@ Discard, with an Auto-accept toggle to apply edits automatically</li>
 <li><strong>Download as SVG</strong> — export any diagram as a scalable vector graphics file</li>
 <li><strong>Concurrent Access Detection</strong> — detect and notify when multiple users are editing the same diagram simultaneously</li>
 <li><strong>Element Highlighting</strong> — visually highlight BPMN elements in the diagram for presentation or review</li>
+</ul>
+
+<h3 id="license-key-in-the-database-ee-exclusive">License Key in the Database <em>(EE exclusive)</em></h3>
+<ul>
+<li>The license key is stored in the engine database, not in the file system: it is applied once per database and is valid for all engines that use it. This solves the problem with the home directory on a read-only file system, for example in Kubernetes (<a href="/manual/latest/user-guide/license-use/">CIB seven License Keys</a>)</li>
+<li>The engine and the webclient must use the same JWT secret (<code>cibseven.webclient.authentication.jwtSecret</code>), otherwise the license key cannot be stored in the database or read from it (<a href="/manual/latest/user-guide/license-use/#storing-the-license-key-in-the-database">CIB seven License Keys</a>)</li>
+<li>A valid key from the license file (<code>${user.home}/.cibseven/cibseven-license.txt</code> or <code>cibseven.webclient.license.file.path</code>) is saved to the database when a user who is allowed to set the license (for example, an administrator) opens the webclient, if the database has no key yet</li>
+<li>Licensed EE features are loaded only through an authenticated request; the user&rsquo;s token is added to them by a service worker, so HTTPS is required (see Breaking Changes)</li>
 </ul>
 
 <h3 id="docker--opentelemetry--jmx">Docker — OpenTelemetry &amp; JMX</h3>
@@ -4633,6 +4658,7 @@ Discard, with an Auto-accept toggle to apply edits automatically</li>
         <li><a href="#user-profile--password-validation">User Profile — Password Validation</a></li>
         <li><a href="#modeler-enhancements">Modeler Enhancements</a></li>
         <li><a href="#modeler-ee-features-ee-exclusive">Modeler EE Features <em>(EE exclusive)</em></a></li>
+        <li><a href="#license-key-in-the-database-ee-exclusive">License Key in the Database <em>(EE exclusive)</em></a></li>
         <li><a href="#docker--opentelemetry--jmx">Docker — OpenTelemetry &amp; JMX</a></li>
       </ul>
     </li>

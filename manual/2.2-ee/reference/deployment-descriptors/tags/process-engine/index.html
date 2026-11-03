@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4531,6 +4547,33 @@
          <li>DMN resources are not deployed as decision definitions or
            decision requirements definitions to the engine.</li>
        </ul>
+        Default value is <code>true</code>.
+      <p>
+        <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>modelerEnabled</code></td>
+    <td>Boolean</td>
+    <td>
+        When set to <code>false</code>, the automated schema maintenance (creating and dropping tables,
+        see property <code>databaseSchemaUpdate</code>) does not cover the tables of the webclient's
+        <a href="/manual/2.2-ee/webapps/modeler/installation/database-schema/">modeler</a>
+        (the <code>MOD_*</code> tables and the modeler chat's <code>CHAT_*</code> tables).
+        Default value is <code>true</code>.
+      <p>
+        <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>notificationsEnabled</code></td>
+    <td>Boolean</td>
+    <td>
+        When set to <code>false</code>, the automated schema maintenance (creating and dropping tables,
+        see property <code>databaseSchemaUpdate</code>) does not cover the tables of the webclient's
+        <a href="/manual/2.2-ee/webapps/admin/notifications/">notifications</a>.
         Default value is <code>true</code>.
       <p>
         <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).

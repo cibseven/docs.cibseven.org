@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/2.2-ee/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4250,6 +4266,7 @@
 <li>For administrators: <a href="#jwt-secret-configuration">JWT secret configuration</a></li>
 <li>For administrators: <a href="#multi-engine-support">Multi-engine support</a></li>
 <li>For administrators: <a href="#license-key-location">License key location</a></li>
+<li>For administrators: <a href="#https-for-licensed-ee-features">HTTPS for licensed EE features</a></li>
 <li>For administrators: <a href="#keycloak-user-provider-renaming">Keycloak User provider renaming</a></li>
 <li>For administrators: <a href="#direct-provider">Direct Provider</a></li>
 <li>For administrators: <a href="#scim2-identity-provider">SCIM2 Identity Provider</a></li>
@@ -4383,8 +4400,9 @@ Additionally, the new <code>Run4</code> distribution has been added to the <a hr
 <p><a href="/manual/2.2-ee/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a> is integrated into the CIB seven Modeler and accessible in the Enterprise Edition only.</p>
 
 <h2 id="jwt-secret-configuration">JWT secret configuration</h2>
-<p>Starting with CIB seven <code>2.2.0</code>, the JWT secret for <code>engine-rest</code> can also be configured using the JVM system property <code>cibseven.engine-rest.jwt-secret</code> or the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code>.</p>
+<p>Starting with CIB seven <code>2.2.0</code>, the JWT secret for <code>engine-rest</code> can also be configured using the JVM system property <code>cibseven.webclient.authentication.jwtSecret</code> or the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code>.</p>
 <p>This is useful in environments where setting dotted property names as operating-system environment variables is problematic. No migration is required unless you want to switch from file-based configuration to the new system property or environment variable based setup.</p>
+<p>In the Enterprise Edition, the engine must use the same secret as the webclient, otherwise the license key cannot be stored in the database, see <a href="#license-key-location">License key location</a>.</p>
 
 <h2 id="multi-engine-support">Multi-engine support</h2>
 <p>CIB seven webclient supports connections to multiple engine REST endpoints, allowing a single webclient instance to manage multiple CIB seven engines.</p>
@@ -4392,19 +4410,41 @@ Additionally, the new <code>Run4</code> distribution has been added to the <a hr
 <p>For configuration details, see <a href="/manual/2.2-ee/webapps/configuration-options/core-configuration/#multi-engine-support">Multi-engine support</a>.</p>
 
 <h2 id="license-key-location">License key location</h2>
-<p>Starting with CIB seven version 2.2.0, a license key is automatically saved in the database.
-This update allows to avoid a problem with applying a license key when the user home directory is placed on a read-only file system.</p>
+<p>Starting with CIB seven <code>2.2.0</code>, the license key is stored in the engine database (Enterprise Edition only). This avoids the problem with applying a key when the user home directory is on a read-only file system, for example in Kubernetes. The key is applied once per database and is valid for all engines that use it.</p>
 
 <h3 id="user-impact-4">User impact</h3>
-<p>No user impact is expected.</p>
+<ul>
+<li>Licensed EE features require HTTPS, see <a href="#https-for-licensed-ee-features">HTTPS for licensed EE features</a>.</li>
+<li>The license key is stored in the database and read from it only if the engine uses the same JWT secret as the webclient. In CIB seven Run, this is the case by default. If the webclient and the engine run separately and the secrets differ, the webclient uses only the license file, and a key entered in the Admin webapp is not stored, although no error is shown.</li>
+<li>For an additional engine (multi-engine) with its own <code>jwtSecret</code> that differs from the webclient secret, the key is not stored in the database of this engine.</li>
+<li>With an engine older than <code>2.2.0</code>, the key is not stored in the database.</li>
+</ul>
+
+<h3 id="migration-steps-6">Migration steps</h3>
+<ol>
+<li>If the webclient and the engine run separately, set the same secret for the engine as <code>cibseven.webclient.authentication.jwtSecret</code> of the webclient: through the JVM system property <code>cibseven.webclient.authentication.jwtSecret</code>, the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code> or the file <code>cibseven-webclient.properties</code> on the engine&rsquo;s classpath.</li>
+<li>Change the secret on the webclient and the engine at the same time: the stored key stays valid. If the secret is changed on one side only, the stored key can no longer be read: the webclient falls back to the license file, and without a valid license file licensed EE features show <strong>&ldquo;License Required&rdquo;</strong> until the secrets match again.</li>
+<li>The existing license file keeps working. A valid key from it is saved to the database the first time a user who is allowed to set the license opens the webclient (for example, an administrator; with authorization enabled, a user with the <code>SET</code> or <code>ALL</code> permission on the <code>System</code> resource); until then, the webclient reads the key from the file. Keep the license file in place for additional engines with their own <code>jwtSecret</code> and for engines older than <code>2.2.0</code>. For details, see <a href="/manual/2.2-ee/user-guide/license-use/#storing-the-license-key-in-the-database">CIB seven License Keys</a>.</li>
+</ol>
+
+<h2 id="https-for-licensed-ee-features">HTTPS for licensed EE features</h2>
+<p>Starting with CIB seven <code>2.2.0</code>, the webclient reads the license from the engine on behalf of the user. Therefore, licensed <a href="/manual/2.2-ee/webapps/enterprise-features/">EE features</a> (for example, process instance search or the audit log) are loaded only through an authenticated request. The browser adds the user&rsquo;s token to these requests through a service worker, and browsers run a service worker only in a secure context: over HTTPS or on <code>localhost</code>. This applies to Enterprise Edition only.</p>
+
+<h3 id="user-impact-5">User impact</h3>
+<p>If the webclient is opened over plain HTTP or the browser has service workers turned off, licensed EE features show <strong>&ldquo;License Required&rdquo;</strong> although the license is valid. The rest of the webclient works as before. This also applies to the <a href="#direct-provider">Direct Provider</a>. This restriction did not exist in 2.1.</p>
+<p>With the standard login, <code>cibseven.webclient.license.chunk.trustServerAuthentication</code> does not help: without a service worker the token is not sent, and the request is refused with <code>403</code>. Starting with <code>2.2.3</code>, deployments where a gateway or proxy authenticates the users can let the server authenticate these requests instead, for example from a session cookie or from an identity header that the gateway or proxy adds, see <a href="/manual/2.2-ee/user-guide/license-use/#https-and-service-workers">HTTPS and Service Workers</a>.</p>
+
+<h3 id="migration-steps-7">Migration steps</h3>
+<p>Open the webclient over HTTPS, for example with TLS on the ingress or on a reverse proxy in front of the webclient. For tests, access through <code>localhost</code> (for example through an SSH tunnel) also works, or a browser started with a flag that treats the webclient&rsquo;s HTTP address as secure. See also <a href="/manual/2.2-ee/user-guide/license-use/#https-and-service-workers">HTTPS and Service Workers</a>.</p>
+<p>If users are authenticated before the webclient starts (SAML, reverse proxy or API gateway), see also <a href="/manual/2.2-ee/user-guide/license-use/#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a> (starting with <code>2.2.3</code>).</p>
 
 <h2 id="keycloak-user-provider-renaming">Keycloak User provider renaming</h2>
 <p>The <code>KeycloakUserProvider</code> configuration name has been renamed to <code>OAuth2UserProvider</code>.</p>
 
-<h3 id="user-impact-5">User impact</h3>
+<h3 id="user-impact-6">User impact</h3>
 <p>This change affects installations that explicitly configure <code>KeycloakUserProvider</code>.</p>
 
-<h3 id="migration-steps-6">Migration steps</h3>
+<h3 id="migration-steps-8">Migration steps</h3>
 <p>When updating to CIB seven <code>2.2.0</code>, review your <code>default.yml</code> or <code>application.yml</code> files and replace existing <code>userProvider</code> entries that still use <code>KeycloakUserProvider</code> with <code>OAuth2UserProvider</code>.</p>
 
 <h2 id="direct-provider">Direct Provider</h2>
@@ -4417,20 +4457,20 @@ This update allows to avoid a problem with applying a license key when the user 
 </div>
 
 
-<h3 id="user-impact-6">User impact</h3>
+<h3 id="user-impact-7">User impact</h3>
 <p>No user impact is expected unless you want to adopt this new beta feature.</p>
 
-<h3 id="migration-steps-7">Migration steps</h3>
+<h3 id="migration-steps-9">Migration steps</h3>
 <p>If you want to use this feature, configure your application to use <code>SevenDirectProvider</code>.</p>
 
 <h2 id="scim2-identity-provider">SCIM2 Identity Provider</h2>
 <p><a href="/manual/2.2-ee/user-guide/process-engine/identity-service/#the-scim2-identity-service">SCIM2 Identity Provider Plugin</a> is a new beta feature in CIB seven <code>2.2.0</code>.
 It allows CIB seven to integrate with a SCIM-compliant service and provides configurable caching and optional OIDC-secured access. As this feature is currently beta, it is intended for selected use cases and should be validated carefully before wider adoption.</p>
 
-<h3 id="user-impact-7">User impact</h3>
+<h3 id="user-impact-8">User impact</h3>
 <p>No user impact is expected unless you want to enable SCIM 2.0 identity provider plugin.</p>
 
-<h3 id="migration-steps-8">Migration steps</h3>
+<h3 id="migration-steps-10">Migration steps</h3>
 <p>If you want to use this feature, <a href="/manual/2.2-ee/user-guide/process-engine/identity-service/#activate-the-scim2-plugin">activate the plugin</a> in the engine configuration and <a href="/manual/2.2-ee/user-guide/process-engine/identity-service/#scim2-plugin-configuration-properties">configure</a> the plugin accordingly.</p>
 
 <h2 id="new-configuration-options">New Configuration Options</h2>
@@ -4441,7 +4481,7 @@ It allows CIB seven to integrate with a SCIM-compliant service and provides conf
 <li><code>maxCallActivityRecursionDepth</code>: prevents infinite recursion in call activities by enforcing a configurable recursion limit.</li>
 </ul>
 
-<h3 id="user-impact-8">User impact</h3>
+<h3 id="user-impact-9">User impact</h3>
 <p>These options do not affect existing behavior by default. They preserve the original behavior unless explicitly enabled or configured.</p>
 
     </div>
@@ -4501,29 +4541,36 @@ It allows CIB seven to integrate with a SCIM-compliant service and provides conf
     <li><a href="#license-key-location">License key location</a>
       <ul>
         <li><a href="#user-impact-4">User impact</a></li>
+        <li><a href="#migration-steps-6">Migration steps</a></li>
+      </ul>
+    </li>
+    <li><a href="#https-for-licensed-ee-features">HTTPS for licensed EE features</a>
+      <ul>
+        <li><a href="#user-impact-5">User impact</a></li>
+        <li><a href="#migration-steps-7">Migration steps</a></li>
       </ul>
     </li>
     <li><a href="#keycloak-user-provider-renaming">Keycloak User provider renaming</a>
       <ul>
-        <li><a href="#user-impact-5">User impact</a></li>
-        <li><a href="#migration-steps-6">Migration steps</a></li>
+        <li><a href="#user-impact-6">User impact</a></li>
+        <li><a href="#migration-steps-8">Migration steps</a></li>
       </ul>
     </li>
     <li><a href="#direct-provider">Direct Provider</a>
       <ul>
-        <li><a href="#user-impact-6">User impact</a></li>
-        <li><a href="#migration-steps-7">Migration steps</a></li>
+        <li><a href="#user-impact-7">User impact</a></li>
+        <li><a href="#migration-steps-9">Migration steps</a></li>
       </ul>
     </li>
     <li><a href="#scim2-identity-provider">SCIM2 Identity Provider</a>
       <ul>
-        <li><a href="#user-impact-7">User impact</a></li>
-        <li><a href="#migration-steps-8">Migration steps</a></li>
+        <li><a href="#user-impact-8">User impact</a></li>
+        <li><a href="#migration-steps-10">Migration steps</a></li>
       </ul>
     </li>
     <li><a href="#new-configuration-options">New Configuration Options</a>
       <ul>
-        <li><a href="#user-impact-8">User impact</a></li>
+        <li><a href="#user-impact-9">User impact</a></li>
       </ul>
     </li>
   </ul>

@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4234,7 +4250,8 @@
 
     <div class="col-xs-12 content-text">
       <p>Some parts of the CIB seven webclient keep data of their own: the modeler stores the diagrams and
-forms you create, and the enterprise chat stores the messages written next to them. Everything the
+forms you create, the enterprise chat stores the messages written next to them, and the enterprise
+<a href="/manual/latest/webapps/admin/notifications/">notifications</a> store what administrators publish. Everything the
 webclient stores lives in <strong>one persistence unit</strong>, named <code>cibseven</code>, whatever feature the tables
 belong to.</p>
 <p>That unit is the webclient&rsquo;s, not the application&rsquo;s around it. The webclient is embedded into
@@ -4319,7 +4336,7 @@ registers it once.</li>
 explicitly, rather than the application&rsquo;s.</li>
 </ol>
 <p>Table names are yours to choose, but a prefix of your own keeps them apart from the webclient&rsquo;s
-<code>MOD_</code> and <code>CHAT_</code> tables and from the engine&rsquo;s.</p>
+<code>MOD_</code>, <code>CHAT_</code> and <code>NOTIF_</code> tables and from the engine&rsquo;s.</p>
 
     </div>
   </div>

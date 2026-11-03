@@ -3245,6 +3245,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -3328,6 +3336,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
     
   </li>
 
@@ -4392,6 +4408,8 @@ When SSO is active, the login page redirects the user to the identity provider, 
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webclient</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">org.cibseven.webapp.auth.OAuth2UserProvider</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">jwtSecret</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;jwtSecret&gt;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sso</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">endpoints</span><span class="p">:</span><span class="w">
@@ -4412,7 +4430,11 @@ When SSO is active, the login page redirects the user to the identity provider, 
 </li>
 <li><strong><code>userIdProperty</code> and <code>userNameProperty</code></strong> are read from the ID token on the browser login. With the scope <code>profile</code>, a v2.0 ID token contains <code>preferred_username</code> (usually the user principal name, UPN) and <code>name</code>.</li>
 <li><strong>The user ID must match the user IDs in your identity service.</strong> If your LDAP user IDs are, for example, <code>sAMAccountName</code>, then <code>preferred_username</code> (<code>user@domain</code>) does not match. You can provide a matching claim in Entra ID (token configuration or claims mapping), or create the users with their UPN. Alternatives are <code>email</code> (can be empty) and <code>oid</code> (a stable GUID, but not human-readable).</li>
-<li><strong><code>endpoints.user</code> is mandatory.</strong> It has no default value, and the application does not start without it.</li>
+<li><strong><code>endpoints.user</code> is mandatory.</strong> It has no default value, and the application does not start without it.
+<ul>
+<li><code>endpoints.user</code> is only called when an externally issued access token is passed to the webclient, not during browser login. The Graph userinfo endpoint is therefore fine here.</li>
+</ul>
+</li>
 <li><strong><code>offline_access</code> scope is mandatory (for OAuth2).</strong> Without it, Entra ID issues no refresh token.</li>
 </ul>
 
