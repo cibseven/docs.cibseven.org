@@ -3698,6 +3698,22 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ee-hotfix/" >2.2.4 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ce-plus-hotfix/" >2.2.4 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
     
   </li>
@@ -3785,6 +3801,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ee-hotfix/" >2.1.10 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ce-plus-hotfix/" >2.1.10 CE&#43; hotfix</a>
+    
+  </li>
+
         
           
   <li>
@@ -3976,6 +4008,22 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ee-hotfix/" >2.0.14 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ce-plus-hotfix/" >2.0.14 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
     
   </li>
@@ -4136,7 +4184,7 @@
           
   <li>
     
-      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 Hotfix 2 EE</a>
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 hotfix 2 EE</a>
     
   </li>
 
@@ -4144,7 +4192,7 @@
           
   <li>
     
-      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 Hotfix 1 EE</a>
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 hotfix 1 EE</a>
     
   </li>
 
@@ -4257,6 +4305,11 @@
 <li><strong>Authorization</strong> Fixed a case-insensitive user id query bug that silently ignored additional query criteria and bypassed the <code>READ</code> permission check when looking up users by id</li>
 <li><strong>Engine</strong> Fixed a GraalJS polyglot <code>Context</code> leak in JavaScript script tasks that could exhaust memory under sustained load</li>
 <li><strong>Decision (DMN)</strong> DMN diagram viewport, panel size, and sidebar state are now persisted and restored across views</li>
+</ul>
+
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li><strong>Prometheus metrics in the Docker images</strong> <em>(since 2.2.2, not mentioned in earlier release notes)</em>. 2.2.3 keeps the OpenTelemetry Java agent <code>2.28.1</code> from 2.2.2. With the Prometheus exporter enabled, it still listens only on <code>localhost</code> inside the container, and the CPU utilization metrics <code>os_cpu_recent_utilization</code> and <code>os_system_cpu_utilization</code> have no <code>_ratio</code> suffix. Set <code>OTEL_EXPORTER_PROMETHEUS_HOST=0.0.0.0</code> to scrape port <code>9464</code> from another container or through a published port. See <a href="/manual/latest/update/minor/21-to-22/#opentelemetry-and-jmx-metrics">OpenTelemetry and JMX metrics</a> for where the agent is loaded, all variables and the changes per release</li>
 </ul>
 
 <h3 id="new-features">New Features</h3>
@@ -4413,6 +4466,7 @@
     <li>
       <ul>
         <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#breaking-changes">Breaking Changes</a></li>
         <li><a href="#new-features">New Features</a>
           <ul>
             <li><a href="#decision-dmn-diagrams">Decision (DMN) Diagrams</a></li>

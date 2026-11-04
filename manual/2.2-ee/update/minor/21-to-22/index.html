@@ -3698,6 +3698,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee-hotfix/" >2.2.4 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ce-plus-hotfix/" >2.2.4 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
     
   </li>
@@ -3785,6 +3801,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ee-hotfix/" >2.1.10 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ce-plus-hotfix/" >2.1.10 CE&#43; hotfix</a>
+    
+  </li>
+
         
           
   <li>
@@ -3976,6 +4008,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee-hotfix/" >2.0.14 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ce-plus-hotfix/" >2.0.14 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
     
   </li>
@@ -4136,7 +4184,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 Hotfix 2 EE</a>
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 hotfix 2 EE</a>
     
   </li>
 
@@ -4144,7 +4192,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 Hotfix 1 EE</a>
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 hotfix 1 EE</a>
     
   </li>
 
@@ -4321,6 +4369,142 @@ with a <strong>shared process engine</strong>.</p>
 
 <h3 id="migration-steps-2">Migration steps</h3>
 <p>If you use custom monitoring or scraping configuration, review it and adapt it to the OpenTelemetry based metrics setup.</p>
+
+<h3 id="where-the-agent-is-loaded">Where the agent is loaded</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Distribution</th>
+      <th>How the agent is attached</th>
+      <th>Enabled by default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tomcat</td>
+      <td><code>-javaagent</code> in <code>CATALINA_OPTS</code> when <code>OTEL_AGENT_ENABLED=true</code></td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>WildFly</td>
+      <td><code>-javaagent</code> in <code>PREPEND_JAVA_OPTS</code> when <code>OTEL_AGENT_ENABLED=true</code></td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>run</code>, <code>run4</code></td>
+      <td><code>-javaagent</code> in <code>JAVA_OPTS</code>, always</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+<p>The agent is attached to the server process only, so CLI tools such as <code>jboss-cli.sh</code> are not affected. Even when the agent is loaded, all exporters are off (<code>none</code>) until you configure them.</p>
+
+<h3 id="environment-variables">Environment variables</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Default in the image</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTEL_AGENT_ENABLED</code></td>
+      <td><code>false</code></td>
+      <td>Tomcat and WildFly only: set to <code>true</code> to attach the agent</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_METRICS_EXPORTER</code></td>
+      <td><code>none</code></td>
+      <td><code>prometheus</code> opens the metrics endpoint on port <code>9464</code>, <code>otlp</code> pushes metrics to a collector</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_EXPORTER</code></td>
+      <td><code>none</code></td>
+      <td>e.g. <code>otlp</code></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_LOGS_EXPORTER</code></td>
+      <td><code>none</code></td>
+      <td>e.g. <code>otlp</code>. CIB seven logs through its logging framework, so this is rarely needed</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_PROMETHEUS_HOST</code></td>
+      <td><code>0.0.0.0</code> since the <code>2.2.4</code> hotfix images, not set before</td>
+      <td>Address the Prometheus exporter listens on. Not set means the agent default, see the table below. <code>localhost</code> allows only in-container scraping</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_PROMETHEUS_PORT</code></td>
+      <td><code>9464</code></td>
+      <td>Port of the Prometheus metrics endpoint (<code>/metrics</code>)</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_SERVICE_NAME</code></td>
+      <td><code>cibseven</code></td>
+      <td>Service name reported with the metrics and traces</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_JMX_CONFIG</code></td>
+      <td><code>/camunda/javaagent/jmx_config.yaml,/camunda/javaagent/jmx_custom_config.yaml</code></td>
+      <td>JMX metrics definitions collected by the agent</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_JAVAAGENT_LOGGING</code></td>
+      <td><code>application</code></td>
+      <td>Logging mode of the agent</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_LOG_LEVEL</code></td>
+      <td><code>error</code></td>
+      <td>Log level of the agent</td>
+    </tr>
+  </tbody>
+</table>
+<p>Example: expose Prometheus metrics of the Tomcat image.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 -p 9464:9464 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -e <span class="nv">OTEL_AGENT_ENABLED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -e <span class="nv">OTEL_METRICS_EXPORTER</span><span class="o">=</span>prometheus <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -e <span class="nv">OTEL_EXPORTER_PROMETHEUS_HOST</span><span class="o">=</span>0.0.0.0 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  cibseven/cibseven:tomcat-2.2.0
+</span></span></code></pre></div><p><code>OTEL_EXPORTER_PROMETHEUS_HOST=0.0.0.0</code> is required for the <code>2.2.2</code>, <code>2.2.3</code> and <code>2.2.4</code> images, and harmless for all others. Restrict access to port <code>9464</code> to trusted scrapers.</p>
+
+<h3 id="changes-by-release">Changes by release</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Docker images</th>
+      <th>OpenTelemetry Java agent</th>
+      <th>Prometheus exporter listens on</th>
+      <th>CPU utilization metrics</th>
+      <th>What to do</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>2.2.0</code>, <code>2.2.1</code></td>
+      <td><code>2.26.1</code></td>
+      <td>all interfaces (agent default)</td>
+      <td><code>os_cpu_recent_utilization_ratio</code>, <code>os_system_cpu_utilization_ratio</code></td>
+      <td>Nothing</td>
+    </tr>
+    <tr>
+      <td><code>2.2.2</code>, <code>2.2.3</code>, <code>2.2.4</code></td>
+      <td><code>2.28.1</code></td>
+      <td><code>localhost</code> only (agent default)</td>
+      <td><code>os_cpu_recent_utilization</code>, <code>os_system_cpu_utilization</code></td>
+      <td>Set <code>OTEL_EXPORTER_PROMETHEUS_HOST=0.0.0.0</code> to scrape from another container or through a published port. Update dashboards and alerts to the metric names without <code>_ratio</code></td>
+    </tr>
+    <tr>
+      <td><code>2.2.4</code> hotfix (<code>-hotfix</code> tags) and later</td>
+      <td><code>2.28.1</code></td>
+      <td>all interfaces (<code>OTEL_EXPORTER_PROMETHEUS_HOST=0.0.0.0</code> set in the image)</td>
+      <td><code>os_cpu_recent_utilization</code>, <code>os_system_cpu_utilization</code></td>
+      <td>Update dashboards and alerts to the metric names without <code>_ratio</code> if you come from <code>2.2.1</code> or earlier</td>
+    </tr>
+  </tbody>
+</table>
+<p>These changes only matter when the Prometheus exporter is enabled (<code>OTEL_METRICS_EXPORTER=prometheus</code>). With the image defaults no metrics are exported. See the release notes of <a href="/manual/2.2-ee/release-notes/release-notes-2.2.2-ee/">2.2.2</a>, <a href="/manual/2.2-ee/release-notes/release-notes-2.2.3-ee/">2.2.3</a>, <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/">2.2.4</a> and the <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee-hotfix/">2.2.4 hotfix</a>.</p>
 
 <h2 id="spring-boot-4-support">Spring Boot 4 Support</h2>
 <p>CIB seven <code>2.2.0</code> starts supporting Spring Boot 4. This includes a new Spring Boot 4 starter suite and a new <code>Run4</code> distribution based on Spring Boot 4.
@@ -4508,6 +4692,9 @@ It allows CIB seven to integrate with a SCIM-compliant service and provides conf
       <ul>
         <li><a href="#user-impact">User impact</a></li>
         <li><a href="#migration-steps-2">Migration steps</a></li>
+        <li><a href="#where-the-agent-is-loaded">Where the agent is loaded</a></li>
+        <li><a href="#environment-variables">Environment variables</a></li>
+        <li><a href="#changes-by-release">Changes by release</a></li>
       </ul>
     </li>
     <li><a href="#spring-boot-4-support">Spring Boot 4 Support</a>

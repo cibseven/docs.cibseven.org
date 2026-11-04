@@ -3698,6 +3698,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee-hotfix/" >2.2.4 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ce-plus-hotfix/" >2.2.4 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
     
   </li>
@@ -3785,6 +3801,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ee-hotfix/" >2.1.10 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ce-plus-hotfix/" >2.1.10 CE&#43; hotfix</a>
+    
+  </li>
+
         
           
   <li>
@@ -3976,6 +4008,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee-hotfix/" >2.0.14 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ce-plus-hotfix/" >2.0.14 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
     
   </li>
@@ -4136,7 +4184,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 Hotfix 2 EE</a>
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 hotfix 2 EE</a>
     
   </li>
 
@@ -4144,7 +4192,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 Hotfix 1 EE</a>
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 hotfix 1 EE</a>
     
   </li>
 
@@ -4262,6 +4310,11 @@
 <li><strong>Dates</strong> Webclient date fields now serialize as ISO-8601 strings instead of epoch milliseconds</li>
 <li><strong>Batch Operations</strong> <em>(EE exclusive)</em> New &ldquo;Delete Deployments&rdquo; batch operation wired into the Batch Operations wizard</li>
 <li><strong><a href="/manual/2.2-ee/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a></strong> <em>(EE exclusive)</em> Per-model vision flag lets a text-only model gracefully skip image/PDF attachments instead of the request being rejected</li>
+</ul>
+
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li><strong>Prometheus metrics in the Docker images</strong> <em>(not mentioned in the original release notes)</em>. The OpenTelemetry Java agent update to <code>2.28.1</code> changes two defaults that matter when the Prometheus exporter is enabled (<code>OTEL_METRICS_EXPORTER=prometheus</code>). The exporter now listens only on <code>localhost</code> inside the container, so Prometheus can no longer scrape port <code>9464</code> from another container or through a published port; set <code>OTEL_EXPORTER_PROMETHEUS_HOST=0.0.0.0</code> to restore access. The CPU utilization metrics are now exported as <code>os_cpu_recent_utilization</code> and <code>os_system_cpu_utilization</code>, without the <code>_ratio</code> suffix; update dashboards and alerts that use the old names. See <a href="/manual/2.2-ee/update/minor/21-to-22/#opentelemetry-and-jmx-metrics">OpenTelemetry and JMX metrics</a> for where the agent is loaded, all variables and the changes per release</li>
 </ul>
 
 <h3 id="new-features">New Features</h3>
@@ -4440,7 +4493,7 @@
 <li>Update <code>jackson</code> from <code>2.21.4</code> to <code>2.21.5</code>; pinned in the <code>run4</code> distribution to fix <code>CVE-2026-59889</code>, and in the Tomcat AI-agent overlay to <code>2.21.4</code> to fix <code>CVE-2026-54512</code>/<code>CVE-2026-54513</code>; WildFly 28 Jackson modules updated to <code>2.22.0</code>; also fixes <code>CVE-2026-54515</code> and <code>GHSA-mhm7-754m-9p8w</code></li>
 <li>Update <code>wildfly</code> from <code>40.0.1.Final</code> to <code>41.0.0</code></li>
 <li>Update <code>postgresql</code> (JDBC driver) from <code>42.7.11</code> to <code>42.7.12</code>, fixing <code>CVE-2026-54291</code></li>
-<li>Update OpenTelemetry Java agent (Docker images) to <code>2.28.1</code>, fixing <code>CVE-2026-54704</code> and <code>CVE-2026-54712</code></li>
+<li>Update OpenTelemetry Java agent (Docker images) to <code>2.28.1</code>, fixing <code>CVE-2026-54704</code> and <code>CVE-2026-54712</code>. This changes the defaults of the Prometheus exporter, see <a href="#breaking-changes">Breaking Changes</a></li>
 <li>Update <code>cibseven-modeler</code> to <code>1.2.0</code></li>
 <li>Update <code>cibseven-modeler-ee</code> to <code>1.2.0</code> <em>(EE exclusive)</em></li>
 <li>Update <code>openjdk21</code> (<code>openjdk21-jre-headless</code>) from <code>21.0.11_p10-r0</code> to <code>21.0.12_p8-r0</code> (Alpine base image)</li>
@@ -4533,6 +4586,7 @@
     <li>
       <ul>
         <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#breaking-changes">Breaking Changes</a></li>
         <li><a href="#new-features">New Features</a>
           <ul>
             <li><a href="#default-start-form">Default Start Form</a></li>

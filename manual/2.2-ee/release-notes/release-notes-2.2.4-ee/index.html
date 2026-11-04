@@ -3698,6 +3698,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee-hotfix/" >2.2.4 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ce-plus-hotfix/" >2.2.4 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
     
   </li>
@@ -3785,6 +3801,22 @@
     
       <a href="/manual/2.2-ee/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ee-hotfix/" >2.1.10 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.1.10-ce-plus-hotfix/" >2.1.10 CE&#43; hotfix</a>
+    
+  </li>
+
         
           
   <li>
@@ -3976,6 +4008,22 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee-hotfix/" >2.0.14 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ce-plus-hotfix/" >2.0.14 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
     
   </li>
@@ -4136,7 +4184,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 Hotfix 2 EE</a>
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 hotfix 2 EE</a>
     
   </li>
 
@@ -4144,7 +4192,7 @@
           
   <li>
     
-      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 Hotfix 1 EE</a>
+      <a href="/manual/2.2-ee/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 hotfix 1 EE</a>
     
   </li>
 
@@ -4273,6 +4321,7 @@
 <li>An <a href="/manual/2.2-ee/reference/connect/ai-agent-connector/chat-memory/">AI Agent Connector</a> <code>memoryId</code> is now scoped to one process instance: it no longer continues a conversation in another process instance, including one started by a call activity. A <code>memoryId</code> may be at most 222 characters long</li>
 <li>The engine now manages <code>SLF4J</code> 2 (<code>slf4j-api</code> <code>2.0.18</code>, <code>logback</code> <code>1.5.38</code>) instead of <code>SLF4J</code> 1.7. Applications that embed the engine with an <code>SLF4J</code> 1.x binding must switch to an <code>SLF4J</code> 2 provider, e.g. <code>log4j-slf4j2-impl</code> instead of <code>log4j-slf4j-impl</code>. The CIB seven Run distributions already used <code>SLF4J</code> 2</li>
 <li><strong>HTTPS is required for licensed EE features</strong> <em>(since 2.2.0, not mentioned in earlier release notes)</em>. Licensed EE features need the browser to run a service worker, which browsers do only over HTTPS or on <code>localhost</code>; over plain HTTP they show &ldquo;License Required&rdquo; although the license is valid. Deployments that authenticate users themselves, for example through a gateway or proxy, can avoid this. The license key is stored in the engine database only if the engine uses the same JWT secret as the webclient. See <a href="/manual/2.2-ee/user-guide/license-use/#https-and-service-workers">HTTPS and Service Workers</a> and <a href="/manual/2.2-ee/user-guide/license-use/#storing-the-license-key-in-the-database">Storing the License Key in the Database</a>.</li>
+<li><strong>Prometheus metrics in the Docker images</strong> <em>(since 2.2.2, not mentioned in earlier release notes)</em>. The <code>2.2.4</code> images still use the OpenTelemetry Java agent <code>2.28.1</code>. With the Prometheus exporter enabled, it listens only on <code>localhost</code> inside the container, and the CPU utilization metrics <code>os_cpu_recent_utilization</code> and <code>os_system_cpu_utilization</code> have no <code>_ratio</code> suffix. Set <code>OTEL_EXPORTER_PROMETHEUS_HOST=0.0.0.0</code>, or use the <a href="/manual/2.2-ee/release-notes/release-notes-2.2.4-ee-hotfix/">2.2.4 EE hotfix</a> images, which set it by default. See <a href="/manual/2.2-ee/update/minor/21-to-22/#opentelemetry-and-jmx-metrics">OpenTelemetry and JMX metrics</a> for where the agent is loaded, all variables and the changes per release.</li>
 </ul>
 
 <h3 id="configuration-changes">Configuration Changes</h3>
