@@ -2853,6 +2853,41 @@
           
   <li>
     
+      <a href="/manual/latest/installation/kubernetes/" >Kubernetes (Helm)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/wildfly/" >WildFly Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/operations/" >Upgrade and Troubleshooting</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/installation/spring-boot/" >Spring Boot</a>
     
   </li>
@@ -4312,11 +4347,11 @@
   <tbody>
     <tr>
       <td><code>mod_processes_diagrams</code></td>
-      <td>Stores BPMN and DMN diagram metadata and the raw XML</td>
+      <td>Stores BPMN and DMN diagram metadata and the raw XML. From 3.0.0 a process key is unique within its folder, no longer across all folders</td>
     </tr>
     <tr>
       <td><code>mod_forms</code></td>
-      <td>Stores form schemas as JSON</td>
+      <td>Stores form schemas as JSON. From 3.0.0 a form id is unique within its folder, no longer across all folders</td>
     </tr>
     <tr>
       <td><code>mod_user_sessions</code></td>
@@ -4410,8 +4445,17 @@ otherwise the update fails on the <code>chat_messages</code> change, whether or 
 
 
 <h4 id="project-members">Project members</h4>
-<p>From 3.0.0 the enterprise edition can restrict a project to its members, see <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>. The update to 3.0 adds the table for them, <code>mod_project_members</code>, applied by the <code>2.2-to-3.0-webapp</code> changelog entry and the <code>$DATABASENAME_webapp_2.2_to_3.0.sql</code> scripts. The enterprise modeler reads that table on every request, so it cannot open any folder until the update has been applied.</p>
+<p>From 3.0.0 the enterprise edition can restrict a project to its members, see <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>. The update to 3.0 adds the table for them, <code>mod_project_members</code>, applied by the <code>2.2-to-3.0-extensions</code> changelog entry and the <code>$DATABASENAME_extensions_2.2_to_3.0.sql</code> scripts. The enterprise modeler reads that table on every request, so it cannot open any folder until the update has been applied.</p>
 <p>The update writes no rows: every project, <em>General</em> included, stays open to everyone after it. From then on the enterprise edition makes the creator of a project its Project Admin, and the owner of a user folder the first time they open the modeler.</p>
+
+<h4 id="process-keys-and-form-ids-per-folder">Process keys and form ids per folder</h4>
+<p>Up to 2.2, a process key and a form id were unique across the whole modeler. From 3.0.0 they are unique within their folder only, so the same key can exist in several folders. The update to 3.0 makes this change, applied by the <code>2.2-to-3.0-extensions</code> changelog entry and the <code>$DATABASENAME_extensions_2.2_to_3.0.sql</code> scripts:</p>
+<ul>
+<li>it drops the unique constraint on <code>processkey</code> in <code>mod_processes_diagrams</code> and on <code>formid</code> in <code>mod_forms</code></li>
+<li>it adds <code>mod_uk_diagrams_key_folder</code> on <code>processkey</code> and <code>folder_id</code>, and <code>mod_uk_forms_formid_folder</code> on <code>formid</code> and <code>folder_id</code>. On DB2 these two are unique indexes, because DB2 allows no NULL in a unique constraint and <code>folder_id</code> may be NULL</li>
+</ul>
+<p>2.2 created the old constraints without a name, so each database chose one, and the scripts find it per database. On DB2 the update copies <code>processkey</code> and <code>formid</code> into new columns that replace the old ones, and reorganizes both tables with <code>REORG TABLE</code> through <code>SYSPROC.ADMIN_CMD</code>, so the user running it needs the authority to call that procedure.</p>
+<p>The data needs no change: keys that were unique across the modeler are unique within every folder too.</p>
 
 <h4 id="diagram-snapshots">Diagram snapshots</h4>
 <p>From 2.3.0 the enterprise edition writes the diagram snapshots itself, where earlier versions had Hibernate
@@ -4440,6 +4484,7 @@ webclient deployment. Leaving it in place is harmless: nothing reads it any more
           <ul>
             <li><a href="#folders">Folders</a></li>
             <li><a href="#project-members">Project members</a></li>
+            <li><a href="#process-keys-and-form-ids-per-folder">Process keys and form ids per folder</a></li>
             <li><a href="#diagram-snapshots">Diagram snapshots</a></li>
           </ul>
         </li>

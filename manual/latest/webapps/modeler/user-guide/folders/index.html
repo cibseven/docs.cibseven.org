@@ -2853,6 +2853,41 @@
           
   <li>
     
+      <a href="/manual/latest/installation/kubernetes/" >Kubernetes (Helm)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/wildfly/" >WildFly Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/operations/" >Upgrade and Troubleshooting</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/installation/spring-boot/" >Spring Boot</a>
     
   </li>
@@ -4370,12 +4405,17 @@
 
 <h2 id="working-with-models">Working with Models</h2>
 <p>Each diagram and form row offers <em>Move</em>, which files it in another folder, and <em>Copy</em>, which puts a copy in the folder you choose.</p>
-<p>A copy is a new model, so what identifies it has to be its own: a diagram copy needs a <strong>process key</strong> of its own, because the engine resolves a process by its key, and a form copy needs its own <strong>form id</strong>, because a form is referenced by it. The dialog asks for whichever applies and offers the original with <code>-copy</code> appended as a starting point.</p>
-<p>Moving a model keeps its identity: its id and its key stay as they are, so links to it and deployments made from it continue to work. Only where it is filed changes.</p>
+<p>A <strong>process key</strong> and a <strong>form id</strong> are unique within a folder, not across the modeler: the same process may sit in several folders, as two files of it would on disk. A copy into another folder therefore keeps its key, and only a copy into the folder of the original needs a key of its own. The dialog asks for the process key or the form id and offers the original; once you pick the folder the original is in, it offers the key with <code>-copy</code> appended instead. A key you type yourself stays as it is.</p>
+<p>Moving a model keeps its identity: its id and its key stay as they are, so links to it and deployments made from it continue to work. Only where it is filed changes. A folder that already holds a model with the same key refuses it: change the key first, or move the other model.</p>
 
 <h2 id="creating-and-importing">Creating and Importing</h2>
 <p>New models and imported files are stored in the folder you have open, which is why <em>Import local file</em>, <em>Create BPMN</em>, <em>Create DMN</em> and <em>Create Form</em> are offered only inside a folder and not on <em>Projects</em>. A file dropped on the page goes into the folder you have open. Dropped on <em>Projects</em>, it goes into your <a href="#default-folder">default folder</a>; when you have none, or <em>Projects</em> is your default, the modeler asks which folder it goes into.</p>
-<p>When an imported file matches a model that already exists, the modeler asks what to do with it. Choosing <strong>Replace</strong> overwrites the content of the existing model <strong>in the folder it already lives in</strong> — it does not move it to the folder you are importing into, and the dialog names that folder so it is clear before choosing. Choosing <strong>Rename</strong> stores a new model, which lands in the folder you have open.</p>
+<p>When an imported file has the key of a model in the folder it is imported into, the modeler asks what to do with it. Choosing <strong>Replace</strong> overwrites the content of that model. Choosing <strong>Rename</strong> stores a new model under another key. A model with the same key in another folder is no conflict: the file is stored as a new model in the folder you are importing into.</p>
+
+<h2 id="keys-and-deployment">Keys and Deployment</h2>
+<p>Several models may share a key, each in its own folder, but the engine keeps one process definition per process key and resolves a form reference by its form id. Deploying any of them adds a new version to what the others deployed. The deploy dialog therefore warns when another model in the modeler uses the key. The warning does not block the deployment, and it names neither the other model nor its folder, as that may be in a project you cannot see.</p>
+<p>A diagram that references a form (<code>camunda:formRef</code>) gets that form added to the deployment. When several forms you can see have the form id, the dialog takes the one in the same folder as the diagram, then one in the same project, then the one changed last, and says that several forms matched, so you can check the choice before deploying.</p>
+<p>Opening a deployed process in the modeler from the cockpit opens the model with its key that was changed last, among those you can see.</p>
 
 <h2 id="searching">Searching</h2>
 <p>The search field looks through <strong>every folder</strong>, not just the one you are in, so a model can be found without knowing where it was filed. A search starts at three characters, and while one is active the folder rows are hidden and a line under the breadcrumb says the results come from everywhere. Clearing the field returns to browsing.</p>
@@ -4395,6 +4435,7 @@
     <li><a href="#working-with-folders">Working with Folders</a></li>
     <li><a href="#working-with-models">Working with Models</a></li>
     <li><a href="#creating-and-importing">Creating and Importing</a></li>
+    <li><a href="#keys-and-deployment">Keys and Deployment</a></li>
     <li><a href="#searching">Searching</a></li>
   </ul>
 </nav>

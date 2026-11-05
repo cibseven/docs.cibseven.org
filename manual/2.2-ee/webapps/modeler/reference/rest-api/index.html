@@ -2853,6 +2853,41 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/installation/kubernetes/" >Kubernetes (Helm)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/kubernetes/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/kubernetes/wildfly/" >WildFly Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/kubernetes/operations/" >Upgrade and Troubleshooting</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/installation/spring-boot/" >Spring Boot</a>
     
   </li>
@@ -4417,7 +4452,7 @@
     <tr>
       <td><code>overwrite</code></td>
       <td>Yes</td>
-      <td><code>true</code> to overwrite an existing diagram with the same name</td>
+      <td><code>true</code> to overwrite an existing diagram: from 3.0.0 the one with the file&rsquo;s process key in the folder named, before that one with the same name</td>
     </tr>
     <tr>
       <td><code>folderId</code></td>
@@ -4449,14 +4484,67 @@
 
 <h3 id="find-diagram-by-name">Find Diagram by Name</h3>
 <pre tabindex="0"><code>POST /modeler/process/find-by-name/data
-</code></pre><p>Returns the raw diagram bytes for the diagram with the given name.</p>
+</code></pre><p>Returns the raw diagram bytes for the diagram with the given name. Names are not unique; when several diagrams have it, the one changed last among those the caller may see is returned.</p>
 <p><strong>Query Parameters:</strong> <code>name</code></p>
 <hr>
 
 <h3 id="find-diagram-by-process-key">Find Diagram by Process Key</h3>
 <pre tabindex="0"><code>POST /modeler/process/find-by-key/data
 </code></pre><p>Returns the raw diagram bytes for the diagram with the given process key.</p>
-<p><strong>Query Parameters:</strong> <code>key</code></p>
+<pre tabindex="0"><code>GET /modeler/process/find-by-key
+</code></pre><p>Returns the <code>ProcessDiagramEntity</code> for the diagram with the given process key.</p>
+<p><strong>Query Parameters</strong> (both):</p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>key</code></td>
+      <td>Yes</td>
+      <td>The process key</td>
+    </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>No</td>
+      <td>The folder to look in. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>A process key is unique within a folder, not across folders (from 3.0.0). With <code>folderId</code>, the diagram in that folder is returned. Without it, the one changed last among the diagrams the caller may see; a diagram in a project hidden from the caller is never returned.</p>
+<p><strong>Response:</strong> <code>200 OK</code>, or <code>404 Not Found</code> when there is none.</p>
+<hr>
+
+<h3 id="check-whether-another-diagram-has-the-key">Check Whether Another Diagram Has the Key</h3>
+<pre tabindex="0"><code>GET /modeler/process/key-in-use
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>key</code></td>
+      <td>Yes</td>
+      <td>The process key</td>
+    </tr>
+    <tr>
+      <td><code>id</code></td>
+      <td>No</td>
+      <td>The diagram to leave out, when it is saved</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>true</code> when a diagram other than the one given has the key, in any folder and any project, including those hidden from the caller, else <code>false</code>. The answer names none of them. The engine keeps one process definition per key, so deploying either adds a new version to what the other deployed; the modeler warns about it at deploy time.</p>
 <hr>
 
 <h3 id="delete-diagram">Delete Diagram</h3>
@@ -4485,7 +4573,7 @@
   </tbody>
 </table>
 <p>The diagram keeps its id and its process key, so deployments made from it and links to it still resolve.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>ProcessDiagramEntity</code>. <code>400 Bad Request</code> when no folder is named, <code>404 Not Found</code> when the diagram or the folder does not exist.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>ProcessDiagramEntity</code>. <code>400 Bad Request</code> when no folder is named, or when the folder already holds a diagram with the same process key (from 3.0.0). <code>404 Not Found</code> when the diagram or the folder does not exist.</p>
 <hr>
 
 <h3 id="copy-diagram-into-a-folder">Copy Diagram into a Folder</h3>
@@ -4508,8 +4596,8 @@
     </tr>
     <tr>
       <td><code>processkey</code></td>
-      <td>Yes</td>
-      <td>The process key of the copy</td>
+      <td>No</td>
+      <td>The process key of the copy; the key of the original when absent. Required before 3.0.0</td>
     </tr>
     <tr>
       <td><code>name</code></td>
@@ -4518,8 +4606,8 @@
     </tr>
   </tbody>
 </table>
-<p>A copy needs a process key of its own: the engine resolves a process by its key, so two diagrams cannot share one.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when no key is given or when the key is already taken.</p>
+<p>From 3.0.0 a process key is unique within a folder, so a copy into another folder may keep the key of the original. Before 3.0.0 a copy needed a key of its own.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when the folder already holds a diagram with the key.</p>
 <hr>
 
 <h2 id="deployment">Deployment</h2>
@@ -4539,7 +4627,8 @@
 <h3 id="deploy-diagram-by-key-reduce">Deploy Diagram by Key (Reduce)</h3>
 <pre tabindex="0"><code>POST /modeler/deployment/create/reduce
 </code></pre><p>Retrieves a stored diagram by process key and deploys it.</p>
-<p><strong>Form Parameters:</strong> <code>deploymentName</code> (process key), <code>file</code></p>
+<p><strong>Form Parameters:</strong> <code>deploymentName</code> (process key), <code>file</code>, <code>folderId</code> (optional, <strong>available from 3.0.0</strong>: the folder of the diagram)</p>
+<p>Without <code>folderId</code>, the diagram changed last among those the caller may edit is taken (from 3.0.0), as a process key may repeat across folders.</p>
 <hr>
 
 <h3 id="check-deployment-connectivity">Check Deployment Connectivity</h3>
@@ -4634,6 +4723,70 @@
 </code></pre><p>Permanently deletes the form and its session records.</p>
 <hr>
 
+<h3 id="find-form-by-form-id">Find Form by Form Id</h3>
+<pre tabindex="0"><code>GET /modeler/form/find-by-formid
+</code></pre><p>Returns the <code>FormEntity</code> with the given form id.</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>formId</code></td>
+      <td>Yes</td>
+      <td>The form id</td>
+    </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>No</td>
+      <td>The folder to look in. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>A form id is unique within a folder, not across folders (from 3.0.0). With <code>folderId</code>, the form in that folder is returned. Without it, the one changed last among the forms the caller may see.</p>
+<p><strong>Response:</strong> <code>200 OK</code>, or <code>404 Not Found</code> when there is none.</p>
+<hr>
+
+<h3 id="find-all-forms-by-form-id">Find All Forms by Form Id</h3>
+<pre tabindex="0"><code>GET /modeler/form/find-all-by-formid
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Query Parameters:</strong> <code>formId</code></p>
+<p><strong>Response:</strong> <code>200 OK</code> — the forms with this form id the caller may see, the one changed last first. A form reference in a diagram may match several of them.</p>
+<hr>
+
+<h3 id="check-whether-another-form-has-the-form-id">Check Whether Another Form Has the Form Id</h3>
+<pre tabindex="0"><code>GET /modeler/form/key-in-use
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>formId</code></td>
+      <td>Yes</td>
+      <td>The form id</td>
+    </tr>
+    <tr>
+      <td><code>id</code></td>
+      <td>No</td>
+      <td>The form to leave out, when it is saved</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>true</code> when a form other than the one given has the form id, in any folder and any project, including those hidden from the caller, else <code>false</code>. The answer names none of them.</p>
+<hr>
+
 <h3 id="move-form-to-a-folder">Move Form to a Folder</h3>
 <pre tabindex="0"><code>POST /modeler/form/{id}/move
 </code></pre><p><strong>Available from 2.3.0.</strong></p>
@@ -4655,7 +4808,7 @@
   </tbody>
 </table>
 <p>The form keeps its id and its form id.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>FormEntity</code>.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>FormEntity</code>. <code>400 Bad Request</code> when the folder already holds a form with the same form id (from 3.0.0).</p>
 <hr>
 
 <h3 id="copy-form-into-a-folder">Copy Form into a Folder</h3>
@@ -4678,13 +4831,13 @@
     </tr>
     <tr>
       <td><code>formId</code></td>
-      <td>Yes</td>
-      <td>The form id of the copy</td>
+      <td>No</td>
+      <td>The form id of the copy; the form id of the original when absent. Required before 3.0.0</td>
     </tr>
   </tbody>
 </table>
-<p>A copy needs a form id of its own: a form is referenced by its form id, so two forms cannot share one.</p>
-<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when no form id is given or when it is already taken.</p>
+<p>From 3.0.0 a form id is unique within a folder, so a copy into another folder may keep the form id of the original. Before 3.0.0 a copy needed a form id of its own.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when the folder already holds a form with the form id.</p>
 <hr>
 
 <h2 id="folders">Folders</h2>
@@ -5107,6 +5260,7 @@
         <li><a href="#update-diagram">Update Diagram</a></li>
         <li><a href="#find-diagram-by-name">Find Diagram by Name</a></li>
         <li><a href="#find-diagram-by-process-key">Find Diagram by Process Key</a></li>
+        <li><a href="#check-whether-another-diagram-has-the-key">Check Whether Another Diagram Has the Key</a></li>
         <li><a href="#delete-diagram">Delete Diagram</a></li>
         <li><a href="#move-diagram-to-a-folder">Move Diagram to a Folder</a></li>
         <li><a href="#copy-diagram-into-a-folder">Copy Diagram into a Folder</a></li>
@@ -5136,6 +5290,9 @@
         <li><a href="#save-form">Save Form</a></li>
         <li><a href="#update-form">Update Form</a></li>
         <li><a href="#delete-form">Delete Form</a></li>
+        <li><a href="#find-form-by-form-id">Find Form by Form Id</a></li>
+        <li><a href="#find-all-forms-by-form-id">Find All Forms by Form Id</a></li>
+        <li><a href="#check-whether-another-form-has-the-form-id">Check Whether Another Form Has the Form Id</a></li>
         <li><a href="#move-form-to-a-folder">Move Form to a Folder</a></li>
         <li><a href="#copy-form-into-a-folder">Copy Form into a Folder</a></li>
       </ul>

@@ -2853,6 +2853,41 @@
           
   <li>
     
+      <a href="/manual/2.2-ee/installation/kubernetes/" >Kubernetes (Helm)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/kubernetes/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/kubernetes/wildfly/" >WildFly Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/installation/kubernetes/operations/" >Upgrade and Troubleshooting</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/2.2-ee/installation/spring-boot/" >Spring Boot</a>
     
   </li>
@@ -4389,6 +4424,7 @@ For example, tags like <code>2.2.0</code> or <code>latest</code> without explici
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:wildfly-2.2.0-ee
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:wildfly-2.2.0-ee
 </span></span></code></pre></div><p>If you want to build an enterprise image yourself, follow the steps described on <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-images">GitHub</a>.</p>
+<p>To run the Enterprise Edition images on Kubernetes or OpenShift, use the Helm chart <code>cibseven-ee</code>, see <a href="/manual/2.2-ee/installation/kubernetes/">Install CIB seven EE on Kubernetes using Helm</a>.</p>
 
     </div>
   </div>
