@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4371,7 +4379,7 @@
     </tr>
     <tr>
       <td><code>mod_folders</code></td>
-      <td>The folders diagrams and forms are organized in. Each row names its parent, so the table holds the whole tree; a row without a parent is a folder at the top level. From 3.0.0 each row also names its project in <code>project_id</code>: the folder at the top level it lies under, which for that folder is itself. Required from 2.3.0</td>
+      <td>The folders diagrams and forms are organized in. Each row names its parent, so the table holds the whole tree; a row without a parent is a folder at the top level. From 3.0.0 each row also names its project in <code>project_id</code>: the folder at the top level it lies under, which for that folder is itself. Required from 3.0.0</td>
     </tr>
     <tr>
       <td><code>mod_processes_diagrams_aud</code></td>
@@ -4407,9 +4415,12 @@
 <a href="/manual/2.2-ee/installation/database-schema/#update">database schema update guide</a> — either the Liquibase
 changelog or the <code>$DATABASENAME_engine_$X_to_$Y.sql</code> scripts — rather than applying modeler DDL by hand.</p>
 
-<h3 id="22-to-23">2.2 to 2.3</h3>
-<p>The long-polling chat transport added two schema changes, both applied by the <code>2.2-to-2.3</code> changelog entry
-and by the <code>$DATABASENAME_engine_2.2_to_2.3.sql</code> scripts:</p>
+<h3 id="22-to-30">2.2 to 3.0</h3>
+<p>The update to 3.0 changes the modeler, chat and notification tables in the <code>2.2-to-3.0-extensions</code> changelog
+entry and the <code>$DATABASENAME_extensions_2.2_to_3.0.sql</code> scripts, separate from the engine&rsquo;s own <code>2.2-to-3.0</code>
+entry and <code>$DATABASENAME_engine_2.2_to_3.0.sql</code> scripts. The Liquibase entry runs only where these tables
+already exist (it checks for <code>mod_element_templates</code>), so an installation without them is left as it is.</p>
+<p>The long-polling chat transport added two schema changes:</p>
 <ul>
 <li>the <code>chat_presence</code> table</li>
 <li>the <code>deleted_at</code> column on <code>chat_messages</code></li>
@@ -4428,7 +4439,7 @@ otherwise the update fails on the <code>chat_messages</code> change, whether or 
 
 
 <h4 id="folders">Folders</h4>
-<p>The modeler organizes diagrams and forms in folders from 2.3.0, which the same update applies:</p>
+<p>The modeler organizes diagrams and forms in folders from 3.0.0, which the same update applies:</p>
 <ul>
 <li>the <code>mod_folders</code> table</li>
 <li>a <code>folder_id</code> column on <code>mod_processes_diagrams</code> and on <code>mod_forms</code>, each with a foreign key to <code>mod_folders</code></li>
@@ -4458,9 +4469,9 @@ otherwise the update fails on the <code>chat_messages</code> change, whether or 
 <p>The data needs no change: keys that were unique across the modeler are unique within every folder too.</p>
 
 <h4 id="diagram-snapshots">Diagram snapshots</h4>
-<p>From 2.3.0 the enterprise edition writes the diagram snapshots itself, where earlier versions had Hibernate
+<p>From 3.0.0 the enterprise edition writes the diagram snapshots itself, where earlier versions had Hibernate
 Envers write them. <strong>This needs no schema change and no migration:</strong> <code>mod_processes_diagrams_aud</code> and
-<code>mod_revinfo</code> keep the shape they had, snapshots written by 2.2 stay readable, and snapshots written by 2.3
+<code>mod_revinfo</code> keep the shape they had, snapshots written by 2.2 stay readable, and snapshots written by 3.0
 have the same columns filled.</p>
 <p>What does change is that <code>spring.jpa.properties.hibernate.integration.envers.enabled</code> no longer has any
 effect and can be dropped from the configuration — including from the Helm values, where it was set for the
@@ -4480,7 +4491,7 @@ webclient deployment. Leaving it in place is harmless: nothing reads it any more
     <li><a href="#database-tables">Database Tables</a></li>
     <li><a href="#schema-updates">Schema Updates</a>
       <ul>
-        <li><a href="#22-to-23">2.2 to 2.3</a>
+        <li><a href="#22-to-30">2.2 to 3.0</a>
           <ul>
             <li><a href="#folders">Folders</a></li>
             <li><a href="#project-members">Project members</a></li>

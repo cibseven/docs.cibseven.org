@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4339,7 +4347,7 @@
 the <code>modeler</code> resource, the same permission that decides whether the modeler appears in the UI.
 Requests from an authenticated user without it are answered with <code>403 Forbidden</code>. This applies to the
 diagram, form and element template endpoints, to the diagram history, and to the chat (Enterprise
-Edition), whose rooms are diagrams. <strong>Changed in 2.3.0.</strong></p>
+Edition), whose rooms are diagrams. <strong>Changed in 3.0.0.</strong></p>
 <p>Grant it under <strong>Admin → Authorizations → Application</strong>, for resource id <code>modeler</code> or <code>*</code>, with
 permission <code>ACCESS</code> or <code>ALL</code>. A revoke authorization for either resource id takes the access away
 again. When authorization is disabled in the engine, nothing is enforced and every authenticated user
@@ -4352,7 +4360,7 @@ never open the modeler.</p>
   <h3>Authentication can no longer be disabled</h3>
   <p>Up to 2.2, <code>cibsevenmodeler.authentication.enabled: false</code> (or
 <code>cibseven.webclient.modeler.authentication.enabled: false</code>) ran the modeler without authentication.
-Both properties are removed in 2.3.0 and are ignored: modeler endpoints always require an
+Both properties are removed in 3.0.0 and are ignored: modeler endpoints always require an
 authenticated user.</p>
 </div>
 

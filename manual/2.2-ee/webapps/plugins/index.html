@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4332,7 +4340,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Starting with CIB seven 2.3, the CIB seven webclient can be extended with <strong>frontend plugins</strong>:
+      <p>Starting with CIB seven 3.0, the CIB seven webclient can be extended with <strong>frontend plugins</strong>:
 self-contained pieces of user interface that an operator installs alongside the webclient
 and that render inside it, next to the built-in views. A plugin can show data from your own
 systems, add a report, or bring a view of your own into the process instance a user is
@@ -4432,7 +4440,7 @@ only requires the reload: plugin files are served without caching.</p>
 <p>Every plugin folder contains a <code>plugin.json</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;entry&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;2.3&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;3.0&#34;</span><span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;slots&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;process-instance-tab&#34;</span><span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;styles&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;styles.css&#34;</span><span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;translations&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;en&#34;</span><span class="p">:</span> <span class="s2">&#34;translations_en.json&#34;</span><span class="p">,</span> <span class="nt">&#34;de&#34;</span><span class="p">:</span> <span class="s2">&#34;translations_de.json&#34;</span> <span class="p">}</span>
@@ -4753,7 +4761,7 @@ line, as <code>major.minor</code>. A patch release changes nothing a plugin bind
 invalidates a published plugin.</p>
 <p>A plugin lists the lines it was built and tested against, so one published build can serve
 several webclient versions:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;apiVersion&#34;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&#34;2.2&#34;</span><span class="p">,</span> <span class="s2">&#34;2.3&#34;</span><span class="p">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;apiVersion&#34;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&#34;3.0&#34;</span><span class="p">,</span> <span class="s2">&#34;3.1&#34;</span><span class="p">]</span>
 </span></span></code></pre></div><p>What this page describes — the runtime exports, the slots and their props, and the manifest
 fields — does not change incompatibly within a line. A plugin should be retested when the
 minor version rises, and can then be published for both lines at once.</p>

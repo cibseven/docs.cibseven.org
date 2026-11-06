@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4334,7 +4342,7 @@
     <div class="col-xs-12 content-text">
       <p>All modeler REST endpoints are mounted under the base path configured by <code>cibseven.webclient.services.basePath</code> (default: <code>/services/v1</code>), appended with <code>/modeler</code>.</p>
 <p><strong>Base URL:</strong> <code>{basePath}/modeler</code></p>
-<p>All endpoints require an authenticated user who holds the application <code>ACCESS</code> permission for the <code>modeler</code> resource — the same permission that decides whether the modeler is shown in the UI. See <a href="/manual/2.2-ee/webapps/modeler/configuration/authentication/">Authentication</a>. <strong>Changed in 2.3.0.</strong></p>
+<p>All endpoints require an authenticated user who holds the application <code>ACCESS</code> permission for the <code>modeler</code> resource — the same permission that decides whether the modeler is shown in the UI. See <a href="/manual/2.2-ee/webapps/modeler/configuration/authentication/">Authentication</a>. <strong>Changed in 3.0.0.</strong></p>
 <hr>
 
 <h2 id="diagrams-bpmn--dmn">Diagrams (BPMN / DMN)</h2>
@@ -4414,11 +4422,11 @@
     <tr>
       <td><code>folderId</code></td>
       <td>No</td>
-      <td>Only the models in this folder; every folder when absent. <strong>Available from 2.3.0</strong></td>
+      <td>Only the models in this folder; every folder when absent. <strong>Available from 3.0.0</strong></td>
     </tr>
   </tbody>
 </table>
-<p>Each entry carries the <code>folderId</code> of the folder it is filed in, <strong>from 2.3.0</strong>.</p>
+<p>Each entry carries the <code>folderId</code> of the folder it is filed in, <strong>from 3.0.0</strong>.</p>
 <hr>
 
 <h3 id="get-diagram-by-id">Get Diagram by ID</h3>
@@ -4457,7 +4465,7 @@
     <tr>
       <td><code>folderId</code></td>
       <td>Yes</td>
-      <td>The folder to file the diagram in. <strong>Required from 2.3.0</strong></td>
+      <td>The folder to file the diagram in. <strong>Required from 3.0.0</strong></td>
     </tr>
   </tbody>
 </table>
@@ -4467,13 +4475,13 @@
 <pre tabindex="0"><code>POST /modeler/process/save
 </code></pre><p>Creates or updates a diagram from form-encoded data.</p>
 <p><strong>Form Parameters:</strong> <code>name</code>, <code>processkey</code>, <code>description</code>, <code>active</code>, <code>type</code>, <code>diagram</code> (multipart file), <code>folderId</code></p>
-<p><code>folderId</code> names the folder the diagram is filed in and is required from 2.3.0: a diagram lives in exactly one folder, and none is chosen for the caller.</p>
+<p><code>folderId</code> names the folder the diagram is filed in and is required from 3.0.0: a diagram lives in exactly one folder, and none is chosen for the caller.</p>
 <hr>
 
 <h3 id="save-diagram-json-body">Save Diagram (JSON body)</h3>
 <pre tabindex="0"><code>POST /modeler/process/save/object
 </code></pre><p>Creates or updates a diagram from a JSON body. If the entity&rsquo;s <code>id</code> matches an existing record it is updated; otherwise a new record is created.</p>
-<p><strong>Request Body:</strong> <code>ProcessDiagramEntity</code> JSON object. A new diagram needs its <code>folderId</code> from 2.3.0; an update leaves the diagram where it is when the field is absent.</p>
+<p><strong>Request Body:</strong> <code>ProcessDiagramEntity</code> JSON object. A new diagram needs its <code>folderId</code> from 3.0.0; an update leaves the diagram where it is when the field is absent.</p>
 <hr>
 
 <h3 id="update-diagram">Update Diagram</h3>
@@ -4554,7 +4562,7 @@
 
 <h3 id="move-diagram-to-a-folder">Move Diagram to a Folder</h3>
 <pre tabindex="0"><code>POST /modeler/process/{id}/move
-</code></pre><p><strong>Available from 2.3.0.</strong></p>
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
 <p><strong>Body:</strong></p>
 <table>
   <thead>
@@ -4578,7 +4586,7 @@
 
 <h3 id="copy-diagram-into-a-folder">Copy Diagram into a Folder</h3>
 <pre tabindex="0"><code>POST /modeler/process/{id}/copy
-</code></pre><p><strong>Available from 2.3.0.</strong></p>
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
 <p><strong>Body:</strong></p>
 <table>
   <thead>
@@ -4709,7 +4717,7 @@
 <pre tabindex="0"><code>POST /modeler/form/save
 </code></pre><p>Creates a new form with the given ID and schema.</p>
 <p><strong>Form Parameters:</strong> <code>formid</code>, <code>form_schema</code> (multipart JSON file), <code>folderId</code></p>
-<p><code>folderId</code> names the folder the form is filed in and is required from 2.3.0.</p>
+<p><code>folderId</code> names the folder the form is filed in and is required from 3.0.0.</p>
 <hr>
 
 <h3 id="update-form">Update Form</h3>
@@ -4789,7 +4797,7 @@
 
 <h3 id="move-form-to-a-folder">Move Form to a Folder</h3>
 <pre tabindex="0"><code>POST /modeler/form/{id}/move
-</code></pre><p><strong>Available from 2.3.0.</strong></p>
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
 <p><strong>Body:</strong></p>
 <table>
   <thead>
@@ -4813,7 +4821,7 @@
 
 <h3 id="copy-form-into-a-folder">Copy Form into a Folder</h3>
 <pre tabindex="0"><code>POST /modeler/form/{id}/copy
-</code></pre><p><strong>Available from 2.3.0.</strong></p>
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
 <p><strong>Body:</strong></p>
 <table>
   <thead>
@@ -4841,7 +4849,7 @@
 <hr>
 
 <h2 id="folders">Folders</h2>
-<p><strong>Available from 2.3.0.</strong> Folders organize stored diagrams and forms; every model is filed in exactly one. A folder without a parent is at the top level, which holds folders only — a model is never stored there.</p>
+<p><strong>Available from 3.0.0.</strong> Folders organize stored diagrams and forms; every model is filed in exactly one. A folder without a parent is at the top level, which holds folders only — a model is never stored there.</p>
 
 <h3 id="list-folders">List Folders</h3>
 <pre tabindex="0"><code>GET /modeler/folders

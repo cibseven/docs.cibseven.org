@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4456,6 +4464,9 @@ Enabling these properties ensures smooth access to objects and prevents class lo
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">liquibase update
 </span></span></code></pre></div><p>Use this option only when the database schema is already at Camunda 7.24.0. This is normally satisfied by the recommendation to upgrade to Camunda 7.24.0 before migrating to CIB seven 2.2.0.</p>
 
+<h4 id="migration-in-a-cluster-environment">Migration in a Cluster Environment</h4>
+<p>If your Camunda 7.24.0 nodes share a database, you can migrate to CIB seven 2.2 one node at a time without downtime. See <a href="/manual/latest/update/camunda-cluster/">Camunda Cluster Migration</a> for prerequisites and the procedure.</p>
+
 <h3 id="migration-to-cib-seven-21">Migration to CIB seven 2.1</h3>
 <p>The backend of CIB seven 2.1.0 is based on Camunda 7.24.0, so before the migration, please check your Camunda version: it should be Camunda 7.24.0. If the version of Camunda is less than 7.24.0 then update it to 7.24.0, first.</p>
 
@@ -4636,6 +4647,7 @@ Enabling these properties ensures smooth access to objects and prevents class lo
             <li><a href="#migration-to-cib-seven-webclient">Migration to CIB seven webclient</a></li>
             <li><a href="#migration-to-cib-seven-namespace">Migration to CIB seven namespace</a></li>
             <li><a href="#liquibase-changelog-migration">Liquibase changelog migration</a></li>
+            <li><a href="#migration-in-a-cluster-environment">Migration in a Cluster Environment</a></li>
           </ul>
         </li>
         <li><a href="#migration-to-cib-seven-21">Migration to CIB seven 2.1</a>

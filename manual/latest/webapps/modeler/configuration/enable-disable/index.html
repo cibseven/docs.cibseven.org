@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/latest/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4397,7 +4405,7 @@
 </div>
 
 
-<h3 id="transport-available-from-230">Transport <em>(available from 2.3.0)</em></h3>
+<h3 id="transport-available-from-300">Transport <em>(available from 3.0.0)</em></h3>
 <p>The <code>chat.transport</code> property selects the delivery mechanism used to push events to connected clients:</p>
 <table>
   <thead>
@@ -4445,58 +4453,6 @@
 <li>If <code>transport: websocket</code>, the STOMP WebSocket endpoint (<code>/ws/chat</code>) is additionally registered</li>
 </ul>
 
-<h2 id="engine-switch-available-from-300">Engine Switch <em>(available from 3.0.0)</em></h2>
-<p>The modeler, the chat and the notifications keep their data in the webclient tables, which are an optional part of the engine schema. The engine creates them only when its <code>webclientExtensionsEnabled</code> property is <code>true</code>; it defaults to <code>false</code>.</p>
-<p>The engine reports whether the webclient tables are there, and the webclient takes that as given:</p>
-<table class="table-2col">
-  <thead>
-    <tr>
-      <th>Engine reports</th>
-      <th>Modeler, chat and notifications</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>The webclient tables are not there</td>
-      <td><strong>Off</strong>, whatever <code>cibseven.webclient.modeler.enabled</code>, <code>cibseven.webclient.modeler.chat.enabled</code> and <code>cibseven.webclient.notifications.enabled</code> say</td>
-    </tr>
-    <tr>
-      <td>The webclient tables are there</td>
-      <td>Up to these webclient properties, as described above</td>
-    </tr>
-    <tr>
-      <td>Nothing (engines before 3.0.0)</td>
-      <td>Up to these webclient properties, as described above</td>
-    </tr>
-  </tbody>
-</table>
-<p>The webclient properties can still switch a single feature off, but they cannot switch on what the engine does not have.</p>
-<p>Without the webclient tables:</p>
-<ul>
-<li>The modeler, the chat, the notifications and the AI chat are hidden in the UI</li>
-<li>Their REST endpoints answer with <code>404</code> and the error type <code>FeatureDisabledException</code>, without touching the database</li>
-<li>The webclient does not wait for the webclient tables at startup and logs no error about them; it loads no element templates and runs no cleanup jobs on these tables</li>
-</ul>
-
-<h3 id="where-the-webclient-reads-it">Where the Webclient Reads It</h3>
-<ul>
-<li>From the default engine of the main engine REST API (<code>cibseven.webclient.engineRest</code>), as the webclient tables share its database, also with several engines. Engines of additional engine REST APIs are not asked.</li>
-<li>With the REST engine provider, from the engine&rsquo;s configuration endpoint, which reports the version of the webclient tables in <code>webclientExtensionsVersion</code> (<code>null</code> when they are not there).</li>
-<li>With the direct engine provider, from the same version in the engine configuration.</li>
-<li>What the engine reports is what is in its database, not what it was configured to create: tables created earlier, or by the SQL scripts, count as there.</li>
-<li>The answer is kept for a minute. While the engine cannot be reached, the last answer stays; before the first one, the webclient properties decide.</li>
-<li>A webclient whose tables have a database of their own (a <code>DataSource</code> bean named <code>cibsevenDataSource</code>) does not ask the engine: the webclient properties decide.</li>
-</ul>
-
-<h3 id="switching-it-on">Switching It On</h3>
-<p>The CIB seven distributions (Run, Tomcat, WildFly) switch it on. An engine set up in any other way, such as an embedded engine or a container image with its own configuration, has to switch it on to use the modeler, the chat or the notifications. In the <code>bpm-platform.xml</code> or <code>standalone.xml</code> of the engine:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;webclientExtensionsEnabled&#34;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></div><p>In CIB seven Run and Spring Boot:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">bpm</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">generic-properties.properties</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">webclientExtensionsEnabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span></code></pre></div>
 <h2 id="summary">Summary</h2>
 <table class="table-2col">
   <thead>
@@ -4506,10 +4462,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Engine without the webclient tables (<code>webclientExtensionsEnabled: false</code>)</td>
-      <td>Modeler, chat and notifications off, whatever the webclient properties say</td>
-    </tr>
     <tr>
       <td><code>cibseven.webclient.modeler.enabled: false</code></td>
       <td>Disables backend (REST, JPA) <strong>and</strong> hides the UI — no database required</td>
@@ -4550,15 +4502,9 @@
     <li><a href="#frontend-permissions">Frontend Permissions</a></li>
     <li><a href="#chat-feature-enterprise-edition">Chat Feature (Enterprise Edition)</a>
       <ul>
-        <li><a href="#transport-available-from-230">Transport <em>(available from 2.3.0)</em></a></li>
+        <li><a href="#transport-available-from-300">Transport <em>(available from 3.0.0)</em></a></li>
         <li><a href="#what-happens-when-chat-is-disabled">What Happens When Chat Is Disabled</a></li>
         <li><a href="#what-happens-when-chat-is-enabled">What Happens When Chat Is Enabled</a></li>
-      </ul>
-    </li>
-    <li><a href="#engine-switch-available-from-300">Engine Switch <em>(available from 3.0.0)</em></a>
-      <ul>
-        <li><a href="#where-the-webclient-reads-it">Where the Webclient Reads It</a></li>
-        <li><a href="#switching-it-on">Switching It On</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>

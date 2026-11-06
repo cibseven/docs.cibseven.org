@@ -3713,6 +3713,14 @@
   </li>
 
         
+          
+  <li>
+    
+      <a href="/manual/2.2-ee/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
       </ul>
     
   </li>
@@ -4338,11 +4346,11 @@
   <p>Snapshots, restore and comparison are only available in the enterprise edition with <code>cibseven.webclient.modeler.enabled: true</code>. See <a href="/manual/2.2-ee/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>.</p>
 </div>
 
-<p>Every time a diagram or a form is saved, the modeler records a <strong>snapshot</strong> of its state. Snapshots let you review how it evolved, restore an earlier state, and compare two saved states. Forms are kept this way <strong>from 2.3.0</strong>; before that, only diagrams were.</p>
+<p>Every time a diagram or a form is saved, the modeler records a <strong>snapshot</strong> of its state. Snapshots let you review how it evolved, restore an earlier state, and compare two saved states. Forms are kept this way <strong>from 3.0.0</strong>; before that, only diagrams were.</p>
 
 <h2 id="browsing-snapshots">Browsing Snapshots</h2>
 <p>Open a diagram or a form and use the snapshot (history) button in the modeler toolbar. A selector lists the saved snapshots of what is open, newest first, including who saved them and when. Use the search field to narrow the list.</p>
-<p>The list holds the saves that changed the content itself. Saving only a rename or a new description is recorded as well, but is not offered as a state to go back to, since going back to it would change nothing. The number of entries the list shows is capped by <code>cibseven.webclient.modeler.history.maxResults</code> (default <code>30</code>, <strong>available from 2.3.0</strong>).</p>
+<p>The list holds the saves that changed the content itself. Saving only a rename or a new description is recorded as well, but is not offered as a state to go back to, since going back to it would change nothing. The number of entries the list shows is capped by <code>cibseven.webclient.modeler.history.maxResults</code> (default <code>30</code>, <strong>available from 3.0.0</strong>).</p>
 
 <h2 id="restoring-a-snapshot">Restoring a Snapshot</h2>
 <p>Selecting a snapshot loads that saved state into the editor. The restored content becomes the working state — save it to make it the newest snapshot. Restoring is not a save in itself: saving stays disabled until you edit something. Nothing is deleted by restoring: the snapshots it was restored from remain in the history.</p>
