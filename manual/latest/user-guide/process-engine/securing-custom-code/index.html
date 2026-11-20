@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4354,6 +4499,12 @@
 <li><strong>Queries</strong>: Queries offer the ability to include expressions for certain parameters (currently task queries only). This enables users to define reusable queries that can be repeatedly executed and dynamically adapted to changing circumstances. For example, a task query <code>taskService.createTaskQuery().dueBeforeExpression(${now()}).list();</code> uses an expression to always return the tasks currently due. Camunda <a href="/manual/latest/webapps/tasklist/">Tasklist</a> makes use of this feature in the form of <a href="/manual/latest/webapps/tasklist/filters/">task filters</a>.</li>
 </ul>
 <p>Only trusted users should be authorized to interact with these endpoints. How access can be restricted is outlined in the next sections.</p>
+<p>In addition, the process engine limits what custom code in process definitions can do:</p>
+<ul>
+<li>The <a href="#deny-list-for-expressions-and-scripts">deny list for expressions and scripts</a> blocks reflection and access to engine internals in expressions and JUEL scripts.</li>
+<li>The optional <a href="#allow-list-for-task-types-and-script-languages">allow list for task types and script languages</a> restricts the built-in task types and the script languages that process definitions may use.</li>
+<li>A <a href="#customized-expression-managers-in-juel-scripts">customized expression manager</a> also applies to JUEL scripts.</li>
+</ul>
 
 <h2 id="cib-seven-in-a-trusted-environment">CIB seven in a Trusted Environment</h2>
 <p>When CIB seven is deployed in an environment where only trusted parties can access the system (for example due to firewall policies), no untrusted party can access the APIs for submitting custom code and the following suggestions need not be adhered to.</p>
@@ -4421,6 +4572,169 @@ Numbers in brackets act as wildcards: <code>${dateTime().minusMonths()}</code> a
   </tr>
 </table>
 
+<h2 id="deny-list-for-expressions-and-scripts">Deny List for Expressions and Scripts</h2>
+<p>Expressions and JUEL scripts are checked against a deny list, which is active by default. It applies to:</p>
+<ul>
+<li>expressions in BPMN and CMMN models, for example <code>camunda:expression</code>, conditions and input/output mappings,</li>
+<li>JUEL scripts (<code>scriptFormat=&quot;juel&quot;</code>),</li>
+<li>JUEL expressions in DMN decisions and the legacy JUEL-based FEEL engine (<a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#dmnFeelEnableLegacyBehavior">dmnFeelEnableLegacyBehavior</a>),</li>
+<li>EL functions used in these expressions.</li>
+</ul>
+<p>Other script languages such as Groovy or JavaScript and the default FEEL engine are not restricted by the deny list. To restrict them, use the <a href="#allow-list-for-task-types-and-script-languages">allow list for task types and script languages</a>.</p>
+
+<h3 id="default-entries">Default Entries</h3>
+<p>By default, the deny list blocks reflection and access to engine internals:</p>
+<ul>
+<li><code>class</code> and <code>getClass</code></li>
+<li><code>java.lang.Class</code>, <code>java.lang.ClassLoader</code>, <code>java.lang.reflect.AccessibleObject</code>, <code>java.lang.invoke.MethodHandle</code> and <code>java.lang.invoke.MethodHandles</code></li>
+<li>the EL function <code>lang:import</code></li>
+<li><code>org.cibseven.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl</code></li>
+<li><code>java.lang.Runtime</code> and <code>java.lang.ProcessBuilder</code></li>
+</ul>
+<p>In addition, the packages <code>jakarta.el</code>, <code>javax.el</code> and <code>org.cibseven.bpm.impl.juel</code> are always denied while the deny list is active. They cannot be removed.</p>
+<p>An expression that uses a denied entry fails with an exception whose message names the matching deny list entry, for example <code>getClass</code>.</p>
+
+<h3 id="configure-the-deny-list">Configure the Deny List</h3>
+<p>The process engine configuration property <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#deniedExpressionAccess">deniedExpressionAccess</a> adds entries to the defaults. Entries are separated by commas:</p>
+<table class="table table-striped">
+  <tr>
+    <th>Entry</th>
+    <th>Example</th>
+    <th>Denies</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><code>getClass</code></td>
+    <td>A property or method with this name. A property <code>foo</code> is also matched by <code>getFoo</code> and <code>isFoo</code>. Map keys are not checked by name.</td>
+  </tr>
+  <tr>
+    <td>Type or package</td>
+    <td><code>java.lang.Runtime</code></td>
+    <td>Access to objects of this type, including subtypes, nested types and, for a package, its subpackages. Results of method calls and EL functions are checked as well. A <code>Class</code> object counts as the type it represents.</td>
+  </tr>
+  <tr>
+    <td>EL function</td>
+    <td><code>lang:import</code>, <code>:name</code></td>
+    <td>The EL function with this prefix and name; <code>:name</code> is a function without prefix.</td>
+  </tr>
+  <tr>
+    <td>Member</td>
+    <td><code>com.example.Admin#delete</code></td>
+    <td>The property or method <code>delete</code> of the type <code>com.example.Admin</code> and its subtypes.</td>
+  </tr>
+  <tr>
+    <td>Removal</td>
+    <td><code>-lang:import</code></td>
+    <td>Removes a default entry. Only default entries can be removed.</td>
+  </tr>
+</table>
+<p>Entries are matched in full. <code>*</code> is a wildcard, for example <code>com.example.internal.*</code> or <code>delete*</code>; an entry of wildcards only is rejected.
+An invalid entry fails the process engine configuration.</p>
+<p>To allow a single default again, remove it. For example, <code>getClass()</code> needs <code>-class,-getClass,-java.lang.Class</code>.</p>
+<p>The configuration is fixed when the process engine is built. EL functions are checked when an expression is parsed: a newly denied EL function also affects deployed process definitions once the deployment cache is rebuilt. Use the <a href="#hardening-mode">report mode</a> to find these uses before you enforce the deny list.</p>
+
+<h3 id="custom-expression-managers">Custom Expression Managers</h3>
+<p>The deny list is applied by the <code>JuelExpressionManager</code> and its subclasses, including the Spring and CDI expression managers. The process engine logs a warning if the configuration cannot be applied:</p>
+<ul>
+<li><code>ENGINE-25011</code>: the configured expression manager is not a <code>JuelExpressionManager</code>. The deny list does not apply to its expressions.</li>
+<li><code>ENGINE-25012</code>: a custom expression manager has its own expression access policy. <code>deniedExpressionAccess</code> and <code>expressionHardeningMode</code> are ignored.</li>
+<li><code>ENGINE-25013</code>: the expression manager was used before the process engine was built and keeps its previous policy. Build the process engine before you use the expression manager.</li>
+</ul>
+
+<div class="note bg-info docs-info">
+  <h3>CIB seven 2.2.5 and 2.1.11</h3>
+  <p>In CIB seven 2.2.5 and 2.1.11, the deny list is only active once <code>deniedExpressionAccess</code> has at least one entry. Any entry switches it on with the defaults plus the entries; to activate only the defaults, set an entry that changes nothing, for example <code>java.lang.Runtime</code>.
+In these versions, standalone DMN decisions, the legacy FEEL engine and JUEL scripts evaluated outside of a process engine command are not restricted.
+From CIB seven 3.0.0 on, the deny list is active by default.</p>
+</div>
+
+
+<h2 id="allow-list-for-task-types-and-script-languages">Allow List for Task Types and Script Languages</h2>
+<p>The process engine configuration property <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#executionAllowList">executionAllowList</a> restricts the built-in task types and the script languages that process definitions may use. Without configuration, nothing is restricted.</p>
+<p>Set it to a comma-separated list of names, for example <code>external, groovy</code>. Once the list has entries, only the listed names are allowed:</p>
+<ul>
+<li>the task types <code>shell</code>, <code>mail</code> and <code>external</code> (<code>camunda:type</code>) on service tasks, send tasks, business rule tasks, intermediate message throw events and message end events,</li>
+<li>the script languages of scripts in BPMN and CMMN models, in process applications and in DMN decisions, for example <code>groovy</code>, <code>javascript</code> or <code>juel</code>.</li>
+</ul>
+<p>Names are matched in full and ignore case. Script language aliases must be listed individually, for example <code>js</code>, <code>ecmascript</code> and <code>graal.js</code> in addition to <code>javascript</code>.
+Entries with a leading <code>-</code> or a <code>*</code> are rejected as a configuration error: to deny a task type or language, leave it out of the list.
+JUEL and FEEL expressions in DMN decisions are always allowed.</p>
+<p>A use that is not allowed is handled as follows:</p>
+<ul>
+<li>A new deployment that uses an unlisted task type is rejected.</li>
+<li>A process definition that is already deployed fails when it reaches an activity with an unlisted task type.</li>
+<li>A script in an unlisted language fails when it is executed.</li>
+</ul>
+<p>The error has the code <code>ENGINE-25003</code> and names the task type or script language and the activity, but not the configured list.
+External tasks that were created before the list was restricted can still be fetched and completed.</p>
+<p>The <a href="#hardening-mode">hardening mode</a> decides whether a violation is blocked or only logged.</p>
+
+<h2 id="hardening-mode">Hardening Mode</h2>
+<p>The process engine configuration property <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#expressionHardeningMode">expressionHardeningMode</a> controls how a violation of the deny list and of the allow list is handled:</p>
+<table class="table table-striped">
+  <tr>
+    <th>Value</th>
+    <th>Effect</th>
+  </tr>
+  <tr>
+    <td><code>enforce</code> (default)</td>
+    <td>A violation is blocked.</td>
+  </tr>
+  <tr>
+    <td><code>report</code></td>
+    <td>A violation is allowed and logged as a warning: <code>ENGINE-25010</code> for the deny list, <code>ENGINE-25004</code> for the allow list.</td>
+  </tr>
+  <tr>
+    <td><code>off</code></td>
+    <td>Both checks are disabled.</td>
+  </tr>
+</table>
+<p>The mode is fixed when the process engine is built.</p>
+
+<h3 id="rollout-report-first-then-enforce">Rollout: Report First, Then Enforce</h3>
+<p>To introduce a stricter deny list or an allow list without breaking running processes:</p>
+<ol>
+<li>Set <code>expressionHardeningMode</code> to <code>report</code> together with your <code>deniedExpressionAccess</code> and <code>executionAllowList</code>.</li>
+<li>Run your processes, decisions and cases, and check the log for <code>ENGINE-25010</code> and <code>ENGINE-25004</code>.</li>
+<li>Adjust your models or the lists until no more warnings are logged.</li>
+<li>Set <code>expressionHardeningMode</code> to <code>enforce</code>, or remove the property.</li>
+</ol>
+
+<h3 id="configuration-examples">Configuration Examples</h3>
+<p>CIB seven Run and Spring Boot (<code>application.yaml</code>, or <code>default.yml</code> / <code>production.yml</code> of CIB seven Run):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">camunda.bpm.generic-properties.properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deniedExpressionAccess</span><span class="p">:</span><span class="w"> </span><span class="l">java.lang.System,com.example.Admin#delete</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">executionAllowList</span><span class="p">:</span><span class="w"> </span><span class="l">external, mail, groovy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">expressionHardeningMode</span><span class="p">:</span><span class="w"> </span><span class="l">report</span><span class="w">
+</span></span></span></code></pre></div><p><code>bpm-platform.xml</code> or <code>processes.xml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;process-engine</span> <span class="na">name=</span><span class="s">&#34;default&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;deniedExpressionAccess&#34;</span><span class="nt">&gt;</span>java.lang.System,com.example.Admin#delete<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;executionAllowList&#34;</span><span class="nt">&gt;</span>external, mail, groovy<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;expressionHardeningMode&#34;</span><span class="nt">&gt;</span>report<span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-engine&gt;</span>
+</span></span></code></pre></div><p>Java:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ProcessEngineConfigurationImpl</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setDeniedExpressionAccess</span><span class="p">(</span><span class="s">&#34;java.lang.System,com.example.Admin#delete&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setExecutionAllowList</span><span class="p">(</span><span class="s">&#34;external, mail, groovy&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">setExpressionHardeningMode</span><span class="p">(</span><span class="s">&#34;report&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div>
+<h2 id="customized-expression-managers-in-juel-scripts">Customized Expression Managers in JUEL Scripts</h2>
+<p>JUEL scripts (<code>scriptFormat=&quot;juel&quot;</code> in script tasks, listeners, script conditions and input/output mappings) resolve names, properties and methods through the configured expression manager, like expressions in attributes do. Restrictions of a customized expression manager therefore apply to JUEL scripts as well.</p>
+<p>This applies to a subclass of <code>JuelExpressionManager</code> and to a <code>SpringExpressionManager</code> with the <a href="/manual/latest/user-guide/spring-framework-integration/expressions/#limit-the-exposed-spring-beans"><code>beans</code></a> property set. With the default expression managers, JUEL scripts are resolved by the script engine as before.</p>
+<p>In JUEL scripts that use such an expression manager:</p>
+<ul>
+<li>the restrictions of the expression manager apply, including to top-level names,</li>
+<li>names that only the script resolver factories provide (configuration beans, Spring beans, mocks, a custom <code>ResolverFactory</code>) are not available,</li>
+<li><code>context</code> and <code>lang:import</code> are not available,</li>
+<li>a process variable takes precedence over a bean with the same name,</li>
+<li>unknown names fail with &ldquo;Cannot resolve identifier&rdquo;.</li>
+</ul>
+<p>To resolve JUEL scripts through the script engine instead, override <code>isAppliedToJuelScripts()</code> in your expression manager to return <code>false</code>.</p>
+
     </div>
   </div>
 </div>
@@ -4442,6 +4756,21 @@ Numbers in brackets act as wildcards: <code>${dateTime().minusMonths()}</code> a
         </li>
       </ul>
     </li>
+    <li><a href="#deny-list-for-expressions-and-scripts">Deny List for Expressions and Scripts</a>
+      <ul>
+        <li><a href="#default-entries">Default Entries</a></li>
+        <li><a href="#configure-the-deny-list">Configure the Deny List</a></li>
+        <li><a href="#custom-expression-managers">Custom Expression Managers</a></li>
+      </ul>
+    </li>
+    <li><a href="#allow-list-for-task-types-and-script-languages">Allow List for Task Types and Script Languages</a></li>
+    <li><a href="#hardening-mode">Hardening Mode</a>
+      <ul>
+        <li><a href="#rollout-report-first-then-enforce">Rollout: Report First, Then Enforce</a></li>
+        <li><a href="#configuration-examples">Configuration Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#customized-expression-managers-in-juel-scripts">Customized Expression Managers in JUEL Scripts</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

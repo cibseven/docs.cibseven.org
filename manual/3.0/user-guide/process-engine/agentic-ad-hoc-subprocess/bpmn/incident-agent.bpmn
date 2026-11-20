@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+                  id="incidentAgentDefinitions"
+                  targetNamespace="http://cibseven.org/examples/agentic-ad-hoc">
+    <bpmn:process id="incidentAgent" name="Incident with an agent"
+      isExecutable="true" camunda:historyTimeToLive="P30D">
+    <bpmn:startEvent id="start" name="Incident reported">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="incidentId" type="string"
+              label="Incident id" />
+          <camunda:formField id="description" type="string"
+              label="What the customer reports" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>toAgent</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="toAgent"
+        sourceRef="start" targetRef="handleIncident" />
+    <bpmn:adHocSubProcess id="handleIncident"
+        name="Handle incident"
+        camunda:modelerTemplate="org.cibseven.connect.ai.agent.AdHocSubProcess"
+        camunda:modelerTemplateVersion="1">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:connectorId>cibseven-ai-agent</camunda:connectorId>
+          <camunda:inputOutput>
+            <!-- the agent's name in the chat log and Agent Chat -->
+            <camunda:inputParameter name="agentName">Incident agent</camunda:inputParameter>
+            <!-- the task; ${...} reads the start form's values -->
+            <camunda:inputParameter name="message">Resolve incident ${incidentId}: ${description}</camunda:inputParameter>
+            <!-- your rules, after the built-in ones (append) -->
+            <camunda:inputParameter name="instruction">Check the logs first. Order a spare part only if the logs show a hardware fault. Tell the customer what was done.</camunda:inputParameter>
+            <camunda:inputParameter name="instructionMode">append</camunda:inputParameter>
+            <!-- the answer, and how the last turn ended -->
+            <camunda:outputParameter name="agentOutput">${output}</camunda:outputParameter>
+            <camunda:outputParameter name="agentOutput_outcome">${outcome}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>toAgent</bpmn:incoming>
+      <bpmn:outgoing>toEnd</bpmn:outgoing>
+      <!-- finishes at once; its result goes back to the agent -->
+      <bpmn:serviceTask id="checkLogs" name="Check logs"
+          camunda:expression="${'Node 3: disk read errors since 02:10'}"
+          camunda:resultVariable="logFindings">
+        <bpmn:documentation>Reads the service logs for this incident and returns what they show.</bpmn:documentation>
+      </bpmn:serviceTask>
+
+      <!-- takes a value from the agent, see Tools below -->
+      <bpmn:serviceTask id="orderSparePart" name="Order spare part"
+          camunda:expression="${'Ordered: '.concat(part)}"
+          camunda:resultVariable="sparePartOrder">
+        <bpmn:documentation>Orders a replacement part and returns the order.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="part">${toolParameter(toolCall.part, 'The part to order, for example disk for node 3', 'string')}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+
+      <!-- waits for a person; the form field is the result -->
+      <bpmn:userTask id="callCustomer" name="Call customer">
+        <bpmn:documentation>A person calls the customer, explains what was done and records what was agreed.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="agreement" type="string"
+                label="What was agreed with the customer" />
+          </camunda:formData>
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+    </bpmn:adHocSubProcess>
+    <bpmn:sequenceFlow id="toEnd"
+        sourceRef="handleIncident" targetRef="end" />
+    <bpmn:endEvent id="end" name="Incident handled">
+      <bpmn:incoming>toEnd</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="incidentAgentDiagram">
+    <bpmndi:BPMNPlane id="incidentAgentPlane" bpmnElement="incidentAgent">
+      <bpmndi:BPMNShape id="start_di" bpmnElement="start">
+        <dc:Bounds x="162" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="138" y="225" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="handleIncident_di" bpmnElement="handleIncident" isExpanded="true">
+        <dc:Bounds x="250" y="80" width="520" height="240" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="checkLogs_di" bpmnElement="checkLogs">
+        <dc:Bounds x="290" y="160" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="orderSparePart_di" bpmnElement="orderSparePart">
+        <dc:Bounds x="450" y="160" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="callCustomer_di" bpmnElement="callCustomer">
+        <dc:Bounds x="610" y="160" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_di" bpmnElement="end">
+        <dc:Bounds x="832" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="809" y="225" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="toAgent_di" bpmnElement="toAgent">
+        <di:waypoint x="198" y="200" />
+        <di:waypoint x="250" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="toEnd_di" bpmnElement="toEnd">
+        <di:waypoint x="770" y="200" />
+        <di:waypoint x="832" y="200" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

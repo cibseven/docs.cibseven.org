@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4476,10 +4621,10 @@ into <code>${TOMCAT_HOME}/conf/server.xml</code>:</p>
 <p>The following steps are required to deploy the applications:</p>
 <ol>
 <li>
-<p>Download the CIB seven web application that contains both applications from our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-tomcat/2.2.0/">Artifact Repository</a>.
-Choose the correct version named <code>cibseven-engine-rest-2.2.0-tomcat.war</code>.</p>
+<p>Download the CIB seven web application that contains both applications from our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-tomcat/3.0.0/">Artifact Repository</a>.
+Choose the correct version named <code>cibseven-engine-rest-3.0.0-tomcat.war</code>.</p>
 <ul>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest-jakarta/2.2.0/">Tomcat 10</a>, the name of the artifact is <code>cibseven-engine-rest-jakarta-2.2.0-tomcat.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest-jakarta/3.0.0/">Tomcat 10</a>, the name of the artifact is <code>cibseven-engine-rest-jakarta-3.0.0-tomcat.war</code>.</li>
 </ul>
 </li>
 <li>
@@ -4497,7 +4642,7 @@ Optionally you may name it differently or extract it to a folder to deploy it to
 <h3 id="rest-api">REST API</h3>
 <p>The following steps are required to deploy the REST API:</p>
 <ol>
-<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/2.2.0/">Artifact Repository</a>.
+<li>Download the REST API web application archive from our <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/3.0.0/">Artifact Repository</a>.
 Or switch to the private repository for the enterprise version (User and password from license required).</li>
 <li>Copy the war file to <code>$TOMCAT_HOME/webapps</code>.
 Optionally you may rename it or extract it to a folder to deploy it to a specific context like <code>/engine-rest</code>.</li>
@@ -4577,13 +4722,22 @@ For example, http://localhost:8080/engine-rest/engine should return the names of
 <h3 id="graalvm-javascript-integration">GraalVM JavaScript Integration</h3>
 <p>Add the following artifacts (if not existing) from the folder <code>$TOMCAT_DISTRIBUTION/lib/</code> to the folder <code>$TOMCAT_HOME/lib/</code>:</p>
 <ul>
-<li><code>graal-sdk-21.1.0.jar</code></li>
-<li><code>icu4j-68.2.jar</code></li>
-<li><code>js-21.1.0.jar</code></li>
-<li><code>js-scriptengine-21.1.0.jar</code></li>
-<li><code>regex-21.1.0.jar</code></li>
-<li><code>truffle-api-21.1.0.jar</code></li>
+<li><code>collections-$GRAAL_VERSION.jar</code></li>
+<li><code>icu4j-$GRAAL_VERSION.jar</code> (<code>org.graalvm.shadowed:icu4j</code>, the ICU copy of GraalJS)</li>
+<li><code>icu4j-$ICU4J_VERSION.jar</code> (<code>com.ibm.icu:icu4j</code>, for code and scripts that use <code>com.ibm.icu</code> classes)</li>
+<li><code>jniutils-$GRAAL_VERSION.jar</code></li>
+<li><code>js-language-$GRAAL_VERSION.jar</code></li>
+<li><code>js-scriptengine-$GRAAL_VERSION.jar</code></li>
+<li><code>nativeimage-$GRAAL_VERSION.jar</code></li>
+<li><code>polyglot-$GRAAL_VERSION.jar</code></li>
+<li><code>regex-$GRAAL_VERSION.jar</code></li>
+<li><code>truffle-api-$GRAAL_VERSION.jar</code></li>
+<li><code>truffle-compiler-$GRAAL_VERSION.jar</code></li>
+<li><code>truffle-runtime-$GRAAL_VERSION.jar</code></li>
+<li><code>word-$GRAAL_VERSION.jar</code></li>
+<li><code>xz-$GRAAL_VERSION.jar</code></li>
 </ul>
+<p>In CIB seven 3.0, <code>$GRAAL_VERSION</code> is <code>25.0.1</code> and <code>$ICU4J_VERSION</code> is <code>71.1</code>.</p>
 
     </div>
   </div>

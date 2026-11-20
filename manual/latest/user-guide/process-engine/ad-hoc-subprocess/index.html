@@ -1,0 +1,4895 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>Ad Hoc Sub-Process | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.162.1">
+  <link rel="shortcut icon" href="/manual/latest/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/manual/latest/css/docs.d2e9774e30cae31dfcbd7bb79d908c10a2b3729b2542d23e1acba54b2b86c785.css" integrity="sha256-0ul3TjDK4x38vXu3nZCMEKKzcpslQtI&#43;GsulSyuGx4U=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/manual/latest/" id="logolink">
+      <img src="/manual/latest/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  class="active"  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+<div class="version versioned">
+    
+      
+    
+       <span class="name">CIB seven</span> 
+    
+      
+    
+      
+    
+
+    <span class="number">3.0</span>
+</div>
+
+<br />
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/manual/latest/introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/downloading-cibseven/" >Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/licenses/" >Licenses</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/implemented-standards/" >Implemented Standards</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/architecture/" >Architecture Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/supported-environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/extensions/" >Extensions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/" >Third-Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/public-api/" >Public API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/" >Process Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-engine-bootstrapping/" >Process Engine Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-engine-api/" >Process Engine API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-engine-concepts/" >Process Engine Concepts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/variables/" >Process Variables</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-instance-modification/" >Process Instance Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/scripting/" >Scripting</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/templating/" >Templating</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/securing-custom-code/" >Custom Code &amp; Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/external-tasks/" >External Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/connectors/" >Connectors</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-versioning/" >Process Versioning</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/database/" >Database</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/database/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/database/database-configuration/" >Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/database/mssql-configuration/" >Microsoft SQL Server and Azure SQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/database/mysql-configuration/" >MySQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/database/performance/" >Performance</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/history/" >History</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/history/history-configuration/" >History configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/history/user-operation-log/" >User operation log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/history/history-cleanup/" >History cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/history/custom-implementation/" >Custom implementation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/deployment-cache/" >Deployment Cache</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/password-hashing/" >Password Hashing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/password-policy/" >Password Policy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/transactions-in-processes/" >Transactions in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/the-job-executor/" >The Job Executor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/multi-tenancy/" >Multi-Tenancy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/id-generator/" >Id Generators</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/metrics/" >Metrics</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/incidents/" >Incidents</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-engine-plugins/" >Process Engine Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/identity-service/" >Identity Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/authorization-service/" >Authorization Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/deployments/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/process-diagram-api/" >Process Diagram Visualization</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/time-zones/" >Time zones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/decisions/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/decisions/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/decisions/repository/" >Repository</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/decisions/decision-service/" >Decision Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/decisions/bpmn-cmmn/" >Decisions in BPMN &amp; CMMN</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/decisions/history/" >History</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/batch/" >Batch</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/batch-operations/" >Batch operations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/error-handling/" >Error Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/diagnostics-data/" >Diagnostics data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-applications/" >Process Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-applications/the-process-application-class/" >The Process Application class</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-applications/the-processes-xml-deployment-descriptor/" >The processes.xml Deployment Descriptor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-applications/process-application-event-listeners/" >Process Application Event Listeners</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-applications/process-application-resources/" >Process Application Resource Access</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-applications/maven-archetypes/" >Maven Project Templates (Archetypes)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/runtime-container-integration/" >Runtime Container Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/runtime-container-integration/bpm-platform-services/" >CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/" >JNDI Bindings for CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/runtime-container-integration/tomcat/" >Apache Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/runtime-container-integration/jboss/" >WildFly</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/runtime-container-integration/job-execution-with-managed-resources/" >Job Execution with Managed Resources</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cibseven-run/" >CIB seven Run</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-framework-integration/" >Spring Framework Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-framework-integration/configuration/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-framework-integration/transactions/" >Transactions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-framework-integration/deployment/" >Deployment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-framework-integration/expressions/" >Spring Bean Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-framework-integration/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/" >Spring Boot Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/webapps/" >Web Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/process-applications/" >Process Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/the-spring-event-bridge/" >Spring Eventing Bridge</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/develop-and-test/" >Developing and Testing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/spring-boot-integration/spring-security/" >Spring Security OAuth2 Integration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/quarkus-integration/" >Quarkus Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/quarkus-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/quarkus-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/quarkus-integration/cdi-integration/" >Engine CDI Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/quarkus-integration/deployments/" >Resource Deployments</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/" >REST API MCP Plugin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/passthrough/" >Passthrough Mode</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/mcp-restapi/minted-jwt/" >Minted JWT Mode</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cdi-java-ee-integration/jta-transaction-integration/" >JTA Transaction Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cdi-java-ee-integration/expression-resolving/" >Expression Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cdi-java-ee-integration/contextual-programming-model/" >Contextual Programming Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cdi-java-ee-integration/built-in-beans/" >Built-In Beans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/" >CDI Event Bridge</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/testing/" >Testing</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/testing/assert-examples/" >Assert Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/" >Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/" >BPMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/fluent-builder-api/" >Fluent Builder API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/respository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/bpmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/" >CMMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/cmmn-model-api/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/dmn-model-api/" >DMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/dmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/dmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/dmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/model-api/dmn-model-api/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/data-formats/" >Data Formats (XML, JSON, Other)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/data-formats/configuring-spin-integration/" >Configuring Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/data-formats/data-formats-in-processes/" >Data Formats in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/data-formats/xml/" >XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/data-formats/json/" >JSON</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/task-forms/" >User Task Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/task-forms/jsf-task-forms/" >JSF Task Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/" >DMN Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/embed/" >Embed</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/evaluate-decisions/" >Evaluate Decisions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/expressions-and-scripts/" >Expressions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/feel/" >FEEL Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/feel/type-handling/" >Type Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/feel/custom-functions/" >Custom Functions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/feel/spin-integration/" >Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/feel/legacy-behavior/" >Legacy Behavior</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/dmn-engine/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/logging/" >Logging</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/security/" >Security Instructions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/ext-client/" >External Task Client</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/ext-client/spring-boot-starter/" >Spring Boot Starter</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/ext-client/compatibility-matrix/" >Version Compatibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/" >REST API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/" >Overview</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/authentication/" >Configure Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/distro-use/" >Usage with a Pre-Built Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/embeddability/" >Embed the API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/hal/" >Hypertext Application Language (HAL)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/variables/" >Variables in the REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/overview/date-format/" >Date Format</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/openapi/" >OpenAPI</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/specification/" >Specification ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/javadoc/" >Javadoc ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/" >BPMN 2.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/service-task/" >Service Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/send-task/" >Send Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/user-task/" >User Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/business-rule-task/" >Business Rule Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/script-task/" >Script Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/receive-task/" >Receive Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/manual-task/" >Manual Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/tasks/task-markers/" >Task Markers</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/gateways/" >Gateways</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/gateways/exclusive-gateway/" >Data-based Exclusive Gateway (XOR)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/gateways/sequence-flow/" >Conditional and Default Sequence Flows</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/gateways/parallel-gateway/" >Parallel Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/gateways/inclusive-gateway/" >Inclusive Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/gateways/event-based-gateway/" >Event-based Gateway</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/" >Events</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/start-events/" >Start Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/none-events/" >None Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/message-events/" >Message Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/timer-events/" >Timer Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/error-events/" >Error Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/escalation-events/" >Escalation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/signal-events/" >Signal Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/cancel-and-compensation-events/" >Cancel and Compensation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/conditional-events/" >Conditional Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/link-events/" >Link Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/events/terminate-event/" >Terminate Events</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/" >Subprocess</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/embedded-subprocess/" >Embedded Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/call-activity/" >Call Activity</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/event-subprocess/" >Event Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/" >DMN 1.3</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/decision-table/" >Decision Table</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/decision-table/input/" >Input</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/decision-table/output/" >Output</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/decision-table/rule/" >Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/decision-table/hit-policy/" >Hit Policy</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/decision-literal-expression/" >Decision Literal Expression</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/feel/" >FEEL</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/feel/legacy/" >Legacy FEEL Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/feel/legacy/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/feel/legacy/language-elements/" >Language Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/dmn/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/" >CMMN 1.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/api/classic-vs-fluent/" >Classic vs Fluent API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/concepts/" >CMMN Concepts</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/concepts/plan-items/" >Plan Items and Item Definitions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/concepts/lifecycle/" >Plan Item Lifecycles</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/concepts/entry-exit-criteria/" >Entry and Exit Criteria</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/tasks/human-task/" >Human Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/tasks/process-task/" >Process Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/tasks/case-task/" >Case Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/tasks/decision-task/" >Decision Task</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/grouping-tasks/" >Grouping Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/grouping-tasks/stage/" >Stage</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/milestone/" >Milestones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/sentry/" >Sentries</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/markers/" >Markers</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/markers/manual-activation-rule/" >Manual Activation Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/markers/required-rule/" >Required Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/markers/auto-complete/" >Auto Complete</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/markers/repetition-rule/" >Repetition Rule</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/custom-extensions/camunda-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/migration/" >Migration between Specification Versions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/cmmn11/migration/10-to-11/" >1.0 to 1.1</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/" >Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/" >Embedded Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/" >Controls</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/inputs/" >Text Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/textarea/" >Textareas</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/date-inputs/" >Date Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/boolean-inputs/" >Boolean Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/select/" >Selects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/hidden/" >Hidden Input Fields</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/files/" >File Upload and Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/controls/bpmn-buttons/" >BPMN Event Buttons</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/" >Javascript</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/cam-script/" >The cam-script Directive</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/api/" >Available API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/lifecycle/" >Participating in the Form Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/debugging/" >Debugging Scripts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/generating-businesskey/" >Generating a Business Key</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/javascript/examples/" >Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/lifecycle/" >Lifecycle and Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/json-data/" >Working with Json Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/java-objects/" >Working with Java Objects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/integrate/" >Integrating the Forms SDK</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/integrate/getting-a-distribution/" >Getting a Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/integrate/bootstrapping/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/integrate/angular-js/" >AngularJS Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/embedded-forms/integrate/full-examples/" >Full Example</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/" >Spin Dataformats</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/" >XML</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/01-reading-xml/" >Reading XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/02-manipulating-xml/" >Manipulating XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/03-writing-xml/" >Writing XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/04-querying-xml/" >Querying XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/05-mapping-xml/" >Mapping XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/xml/06-configuring-xml/" >Configuring XML Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/json/" >JSON</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/json/01-reading-json/" >Reading JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/json/02-writing-json/" >Writing JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/json/03-querying-json/" >Querying JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/json/04-mapping-json/" >Mapping JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/json/05-configuring-json/" >Configuring JSON Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/spin/extending-spin/" >Extending Spin</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/" >Connectors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/http-connector/" >HTTP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/soap-connector/" >SOAP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/" >AI Agent Connector</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/getting-started/" >Getting Started</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/installation/" >Installation &amp; Enablement</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/" >Configuring the Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/tools/" >Tools</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/rag/" >Retrieval-Augmented Generation (RAG)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/chat-memory/" >Chat Memory</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/audit-trail/" >Audit Trail &amp; AI Transparency</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/configuration-reference/" >Configuration Reference</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/examples/" >Examples &amp; Tutorials</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/troubleshooting/" >Troubleshooting &amp; Known Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/security-and-data-handling/" >Security &amp; Data Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/developer-guide/" >Developer Guide</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/ai-agent-connector/glossary/" >Glossary</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/connect/extending-connect/" >Extending Connect</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/" >Deployment Descriptors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/descriptors/bpm-platform-xml/" >bpm-platform.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/descriptors/processes-xml/" >processes.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/tags/" >Tags</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/tags/job-executor/" >&lt;job-executor /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/tags/process-archive/" >&lt;process-archive /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/" >&lt;process-engine /&gt;</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/cibseven-run/" >Remote Engine Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/" >Shared Engine Distribution</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/tomcat/" >Tomcat</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/tomcat/pre-packaged/" >Pre-Packaged Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/tomcat/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/tomcat/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/jboss/" >JBoss EAP/WildFly</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/jboss/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/full/jboss/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/docker/" >Docker</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/" >Kubernetes (Helm)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/wildfly/" >WildFly Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/kubernetes/operations/" >Upgrade and Troubleshooting</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/installation/spring-boot/" >Spring Boot</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/webapps/" >Web Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/welcome/" >Welcome</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/welcome/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/" >Tasklist</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/working-with-tasklist/" >Working with Tasklist</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/filters/" >Filters</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/user-assignment/" >User Assignment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/tasklist/accessibility/" >Accessibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/" >Cockpit</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/" >Processes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/dashboard/" >Process Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-definition-view/" >Process Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-view/" >Process Instance View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-chat/" >Agent Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/suspension/" >Suspension</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/drilldown/" >Collapsed Subprocesses</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/dmn/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/dmn/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/dmn/decision-definition-view/" >Decision Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/dmn/decision-requirements-definition-view/" >Decision Requirements Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/dmn/decision-instance-view/" >Decision Instance View</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/tasks-dashboard/" >Human Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/deployment-view/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/cleanup/" >Cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/operation-log/" >Operation Log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/deep-links/" >Deep Links</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/extend/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/cockpit/reporting/" >Reports</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/" >Admin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/user-management/" >Users</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/group-management/" >Groups</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/tenant-management/" >Tenants</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/authorization-management/" >Authorizations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/system-management/" >System</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/" >Modeler</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/installation/prerequisites/" >Prerequisites</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/configuration/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/configuration/enable-disable/" >Enable / Disable</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/configuration/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/configuration/database/" >Database</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/project-members/" >Project Members</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/dmn-modeling/" >DMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/form-modeling/" >Form Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/element-templates/" >Element Templates</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/snapshots/" >Snapshots &amp; Comparison</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/token-simulation/" >Token Simulation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/reference/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/enterprise-features/" >Enterprise features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/database/" >Database</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/shared-options/" >Shared Configuration Options</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/shared-options/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/shared-options/cookie-security/" >Cookie Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/shared-options/csrf-prevention/" >CSRF Prevention</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/shared-options/header-security/" >HTTP Header Security</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/ai/" >Agentic Tools</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/examples/" >Examples</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/update/" >Update &amp; Migration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/patch-level/" >Patch Level Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/21-to-22/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/21-to-22/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/rolling-update/" >Rolling Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/camunda/" >Camunda Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/latest/release-notes/" >Release Notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ee-hotfix/" >2.2.4 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ce-plus-hotfix/" >2.2.4 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.3-ce-plus/" >2.2.3 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.2-ee/" >2.2.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.2-ce-plus/" >2.2.2 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.1-ee/" >2.2.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.1-ce-plus/" >2.2.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.0-ee/" >2.2.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.0-ce/" >2.2.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ee-hotfix/" >2.1.10 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ce-plus-hotfix/" >2.1.10 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.9-ee/" >2.1.9 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.9-ce-plus/" >2.1.9 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.8-ee/" >2.1.8 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.8-ce-plus/" >2.1.8 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.7-ee/" >2.1.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.7-ce-plus/" >2.1.7 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.6-ee/" >2.1.6 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.6-ce-plus/" >2.1.6 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.5-ee/" >2.1.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.5-ce-plus/" >2.1.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.4-ee/" >2.1.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.4-ce-plus/" >2.1.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.3-ee/" >2.1.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.3-ce-plus/" >2.1.3 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.2-ee/" >2.1.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.2-ce-plus/" >2.1.2 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.1-ee/" >2.1.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.1-ce-plus/" >2.1.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.0-ee/" >2.1.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.0-ce/" >2.1.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/2.0.x/" >Release Notes 2.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ee-hotfix/" >2.0.14 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ce-plus-hotfix/" >2.0.14 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.13-ee/" >2.0.13 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.13-ce-plus/" >2.0.13 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.12-ee/" >2.0.12 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.12-ce-plus/" >2.0.12 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.11-ee/" >2.0.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.11-ce-plus/" >2.0.11 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.10-ee/" >2.0.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.10-ce-plus/" >2.0.10 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.9-ee/" >2.0.9 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.9-ce-plus/" >2.0.9 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.8-ee/" >2.0.8 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.8-ce-plus/" >2.0.8 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.7-ee/" >2.0.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.7-ce-plus/" >2.0.7 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.6-ee/" >2.0.6 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.6-ce-plus/" >2.0.6 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.5-ee/" >2.0.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.5-ce-plus/" >2.0.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix3-ee/" >2.0.4 hotfix 3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 hotfix 2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 hotfix 1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-ee/" >2.0.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.4-ce-plus/" >2.0.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.3-ee/" >2.0.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.2-ee/" >2.0.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.1-ee/" >2.0.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.0.0-ce/" >2.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/1.x/" >Release Notes 1.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-1.1.0-ce/" >1.1.0 CE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-1.0.0-ce/" >1.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">Ad Hoc Sub-Process</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      
+<div class="note bg-info docs-info">
+  <h3>Available from 3.0.0</h3>
+  <p>The ad hoc sub-process is available from <strong>CIB seven 3.0.0</strong>.</p>
+</div>
+
+<p>A process model normally prescribes the order in which activities are executed. An <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/">ad hoc sub-process</a> deliberately does not.</p>
+<p>Its activities carry no sequence flows between them, beyond any pair the model chooses to order, and nothing in the model says which of them runs, when, or how many times. <strong>Something outside the process decides that while the instance is running</strong> — which is what the BPMN specification means when it places the performers of an ad hoc sub-process outside the model.</p>
+<p>Use cases for this shape are those in which the sequence of work is not known when the process is modeled:</p>
+<ul>
+<li>Case handling, where a caseworker picks the next step from a set of permitted ones</li>
+<li>Investigation and incident handling, where the steps taken depend on what the previous step found</li>
+<li>Any driver that decides its next move from the outcome of the previous one, and may repeat a step or skip it entirely</li>
+</ul>
+<p>The driver can also be an AI agent inside the process, see <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/">Agentic Ad Hoc Sub-Process</a>.</p>
+<p>The example used throughout this page is an incident desk: three things a handler may do, in any order and as often as needed, until the incident is resolved.</p>
+<div data-bpmn-diagram="../bpmn/ad-hoc-subprocess"></div>
+<p>The absence of sequence flows between the three tasks is the whole point, and the tilde at the bottom of the shape is how the notation says so.</p>
+<p>In the CIB seven Modeler, draw an expanded sub-process and choose <strong>Change element</strong> → <strong>Ad-hoc sub-process</strong>. The <strong>Completion</strong> group of the properties panel holds the <a href="#completion-condition">completion condition</a> and <strong>Cancel remaining instances</strong>:</p>
+<figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-modeler.png"
+      
+          title="The incident desk in the CIB seven Modeler"
+       /></span>
+</figure>
+
+<p>Three things decide most of how the desk behaves:</p>
+<ul>
+<li><strong>The completion condition.</strong> Leave it empty only if the scope should end as soon as nothing runs in it: without a condition, the scope is left once at least one activity has been performed and none is still active, so the incident desk would close after its first task.</li>
+<li><strong>Cancel remaining instances</strong>, checked by default. When the condition becomes true, the tasks still open are cancelled and the scope is left at once. Unchecked, the scope waits for them to finish, but starts nothing new.</li>
+<li><strong>Boundary events on the tasks inside.</strong> A timer or a message attached to one of them must be interrupting; the non-interrupting kind is <a href="#limitations">rejected at deployment</a>.</li>
+</ul>
+<p>To operate such a scope, the process engine offers two verbs on <code>RuntimeService</code> — start something, and finish the scope:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">activateAdHocSubProcessActivities</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">executionId</span><span class="p">,</span><span class="w"> </span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activityIds</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kt">void</span><span class="w"> </span><span class="nf">completeAdHocSubProcess</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">executionId</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Both take variables as a further argument, and activation also has a builder for the case where one activity is started twice with different values. They are shown under <a href="#provide-variables">Provide Variables</a> and <a href="#explicit-completion">Explicit Completion</a>.</p>
+<p>Both are also available over REST:</p>
+<pre tabindex="0"><code>POST /execution/{id}/ad-hoc-activities/activate
+POST /execution/{id}/ad-hoc-activities/complete
+</code></pre><p>The REST paths on this page are relative to the root of the REST API, which is <code>/engine-rest</code> in CIB seven Run.</p>
+<p>Neither Cockpit nor Tasklist has a control that starts an activity of an ad hoc sub-process. The caller is one of these:</p>
+<ul>
+<li>your own application, a custom task form or a script, calling the REST API;</li>
+<li>the model itself, which can name activities to start when the scope is entered (<a href="#entry-activation">Entry Activation</a>);</li>
+<li>a listener or a delegate in the process, calling the Java API — for example a task in the scope that asks a person in Tasklist what to do next (<a href="#let-a-person-choose-in-tasklist">Let a Person Choose in Tasklist</a>).</li>
+</ul>
+
+<h2 id="ad-hoc-sub-process-by-example">Ad Hoc Sub-Process by Example</h2>
+<p>Every call is addressed to the <em>execution of the ad hoc sub-process itself</em>, not to the process instance. Find it by querying for the execution that sits on the scope&rsquo;s activity:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Execution</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">createExecutionQuery</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">processInstanceId</span><span class="p">(</span><span class="n">processInstanceId</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">activityId</span><span class="p">(</span><span class="s">&#34;handleIncident&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">singleResult</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>Over REST, the same query is <code>GET /execution?processInstanceId=…&amp;activityId=handleIncident</code>.</p>
+<p>Entering the scope starts nothing, so immediately after the instance is started there are no tasks. The instance waits on the scope with nothing running, and it waits like that between activations too: that is the normal state of an ad hoc sub-process, not a stuck one. Starting two of the activities is a single call:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">instanceIds</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">activateAdHocSubProcessActivities</span><span class="p">(</span><span class="n">scope</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&#34;callCustomer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;checkLogs&#34;</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div><p>The same over REST:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">POST</span> <span class="err">/execution/anExecutionId/ad-hoc-activities/activate</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;activities&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;callCustomer&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;checkLogs&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The response is <code>200</code> with the id of each created activity instance, in request order:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span><span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;callCustomer&#34;</span><span class="p">,</span> <span class="nt">&#34;activityInstanceId&#34;</span><span class="p">:</span> <span class="s2">&#34;callCustomer:1f9c…&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span><span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;checkLogs&#34;</span><span class="p">,</span>    <span class="nt">&#34;activityInstanceId&#34;</span><span class="p">:</span> <span class="s2">&#34;checkLogs:1f9d…&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p>In Cockpit, the instance now has one running instance on each of the two tasks and none on the third, and its variables show the activation flag <code>adHocActivated</code> (see <a href="#limitations">Limitations</a>):</p>
+<figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-cockpit.png"
+      
+          title="Two of the three tasks started, in Cockpit"
+       /></span>
+</figure>
+
+<p>The two tasks appear in Tasklist like any other task. To complete one over REST, find it the usual way, for example with <code>GET /task?processInstanceId=…&amp;taskDefinitionKey=checkLogs</code>.</p>
+<p>A list is returned rather than a map because the same activity may legitimately be started more than once in one call: naming <code>checkLogs</code> twice starts two independent instances and returns two different ids. An entry is <code>null</code> when no activity instance exists yet — because the activity is asynchronous and waiting for its job, or because an earlier entry in the same call satisfied the completion condition.</p>
+<p>Only activities can be started. An activity is directly startable if it has no incoming sequence flow from within the scope; naming anything else answers <code>400</code> and lists what may be started instead. Embedded subprocesses and nested ad hoc sub-processes are activities and can be started like any other.</p>
+<p>The call is all or nothing. Everything is validated before anything is created, so a request naming one activity that is not directly startable starts none of them at all and answers <code>400</code>.</p>
+<p>The incident desk ends through its completion condition, <code>${execution.hasVariable('resolved') and resolved}</code>. Completing a task with <code>resolved</code> set to <code>true</code> — from a form field in Tasklist, or with the completion over REST — satisfies it, and the scope is left:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">POST</span> <span class="err">/task/aTaskId/complete</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;resolved&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Boolean&#34;</span><span class="p">}}}</span>
+</span></span></code></pre></div><p>Whatever its condition says, a scope can also be left explicitly:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">POST</span> <span class="err">/execution/anExecutionId/ad-hoc-activities/complete</span>
+</span></span><span class="line"><span class="cl"><span class="p">{}</span>
+</span></span></code></pre></div><p>which answers <code>204</code>.</p>
+
+<h2 id="operational-semantics">Operational Semantics</h2>
+
+<h3 id="provide-variables">Provide Variables</h3>
+<p>Variables can be passed to the activities being activated. The Java API takes them as a map keyed by activity id:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">activityVariables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">activityVariables</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;callCustomer&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonMap</span><span class="p">(</span><span class="s">&#34;phone&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;+49 89 143866-0&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="p">.</span><span class="na">activateAdHocSubProcessActivities</span><span class="p">(</span><span class="n">scope</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&#34;callCustomer&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">activityVariables</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Over REST they are carried by each entry instead:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;activities&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;callCustomer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;phone&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;+49 89 143866-0&#34;</span><span class="p">,</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;String&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The variables are <strong>local to the activated activity</strong>: each started child gets its own copy, and they do not become process instance variables.</p>
+<p>The Java signature above keys them per activity definition, so naming the same activity twice in one call gives both performances the same entry. To perform one activity twice with different values, use the builder instead:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="p">.</span><span class="na">createAdHocSubProcessActivation</span><span class="p">(</span><span class="n">scope</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">startActivity</span><span class="p">(</span><span class="s">&#34;checkLogs&#34;</span><span class="p">).</span><span class="na">setVariable</span><span class="p">(</span><span class="s">&#34;system&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mail&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">startActivity</span><span class="p">(</span><span class="s">&#34;checkLogs&#34;</span><span class="p">).</span><span class="na">setVariable</span><span class="p">(</span><span class="s">&#34;system&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;billing&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>Variables belong to the activity named before them, so setting one before the first <code>startActivity</code> is rejected. Nothing is started until <code>execute</code>, which returns the activity instance ids in the order named, exactly as the other method does.</p>
+<p>Over REST there is nothing to choose: the request body is already a list of entries, and each entry keeps its own variables.</p>
+
+<h3 id="activities-with-loop-characteristics">Activities with Loop Characteristics</h3>
+<p>A child that carries multi-instance loop characteristics is started through its generated body. One call therefore starts the whole multi-instance activity, with all of its instances, rather than one of them, and the id returned is that of the body&rsquo;s activity instance:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span><span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;reviewDocument&#34;</span><span class="p">,</span> <span class="nt">&#34;activityInstanceId&#34;</span><span class="p">:</span> <span class="s2">&#34;2c7a8e15-…&#34;</span><span class="p">}]</span>
+</span></span></code></pre></div><p>An activity instance id consists of the activity id, a colon and a unique part, as in <code>callCustomer:1f9c…</code> above, only while that fits in 64 characters. Otherwise the engine returns the unique part alone. A body&rsquo;s id is long, because <code>reviewDocument#multiInstanceBody:</code> alone has 33 characters, so it usually comes back in the short form, as here. Both forms are valid ids. To tell which activity an entry belongs to, read its <code>activityId</code> rather than the id.</p>
+
+<h3 id="gather-results">Gather Results</h3>
+<p>An activity of an ad hoc sub-process may be performed many times, and each performance writes its output to the same variable, so by default only the last result survives. Two <code>camunda:property</code> entries on the sub-process keep them all; in the Modeler they are entered in the <strong>Extension properties</strong> group of the sub-process. Here every activity that leaves a <code>finding</code> behind — from a form field, or from an output parameter of the task — adds it to a list:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;outputCollection&#34;</span> <span class="na">value=</span><span class="s">&#34;findings&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;outputElement&#34;</span> <span class="na">value=</span><span class="s">&#34;${execution.hasVariable(&#39;finding&#39;) ? finding : null}&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-gather-modeler.png"
+      
+          title="outputCollection and outputElement in the Extension properties group of the sub-process"
+       /></span>
+</figure>
+
+<p><code>outputCollection</code> names the variable to gather into, <code>outputElement</code> is evaluated each time an activity completes and its value is appended; <strong>a null value appends nothing</strong>. Guard the expression the way the <a href="#limitations">completion condition</a> is guarded: a bare <code>${finding}</code> fails when an activity completes before anything has set <code>finding</code>, and that activity then cannot be completed at all.</p>
+<p>Reading the result is an ordinary variable read; the variable holds a <code>java.util.ArrayList</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">findings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">getVariable</span><span class="p">(</span><span class="n">processInstanceId</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;findings&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>The variable outlives the sub-process, so it is still there after the scope has been left, and it is visible in Cockpit and over REST like any other. After <strong>Check logs</strong> has been performed twice, Cockpit shows both findings in one list:</p>
+<figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-gather-cockpit.png"
+      
+          title="The gathered findings of two performances of Check logs, in Cockpit"
+       /></span>
+</figure>
+
+<p>Choose a name that nothing else writes to: if the variable already holds something other than a collection, appending to it fails, and so does the completion of the activity.</p>
+<p>One expression serves every activity of the sub-process. It is evaluated <strong>against the activity that completed</strong>, so <code>execution</code> refers to that activity, and together with the null rule that lets a single expression gather selectively:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;outputElement&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="na">value=</span><span class="s">&#34;${execution.currentActivityId == &#39;checkLogs&#39; ? finding : null}&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>Here only <strong>Check logs</strong> contributes, and it must always set <code>finding</code>. Without such a condition every completing activity contributes, including one that produced nothing: once <code>finding</code> exists, the expression reads what an earlier performance left and appends it a second time.</p>
+<p>The same handle also records which activity produced an entry — <code>${execution.currentActivityId}</code> gathers the names rather than the values.</p>
+<p>Setting one property without the other is rejected at deployment.</p>
+<p>Three behaviours are worth knowing before relying on this:</p>
+<ul>
+<li>An activity with loop characteristics contributes <strong>one</strong> entry for the whole loop, not one per iteration. For that entry, <code>execution.currentActivityId</code> names the generated body, such as <code>reviewDocument#multiInstanceBody</code>, rather than the activity itself.</li>
+<li>Activities connected by a sequence flow inside the scope contribute one entry, at the end of the chain. If the completion condition is met on a flow inside the chain and <code>cancelRemainingInstances</code> is <code>true</code>, the entry is taken there instead, and the rest of the chain is not performed.</li>
+<li>A cancelled activity contributes nothing, whether it was cancelled by an interrupting boundary event or because the completion condition was satisfied. Neither does an event subprocess: it is a handler, not a performance.</li>
+</ul>
+
+<h3 id="entry-activation">Entry Activation</h3>
+<p>Instead of leaving every activation to the API, the model can name the activities that are started when the scope is entered, using a <code>camunda:property</code> named <code>activitiesToActivate</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;activitiesToActivate&#34;</span> <span class="na">value=</span><span class="s">&#34;callCustomer,checkLogs&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>In the Modeler, it is entered in the <strong>Extension properties</strong> group of the sub-process:</p>
+<figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-entry-modeler.png"
+      
+          title="activitiesToActivate in the Extension properties group of the sub-process"
+       /></span>
+</figure>
+
+<p>The value is a literal list of activity ids, comma-separated or as a JSON array, or an expression evaluating to such a list, to a collection or an array of ids, or to a JSON array — which is what a <code>Json</code> variable holds, so a list sent over REST can be used as it is:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;activitiesToActivate&#34;</span> <span class="na">value=</span><span class="s">&#34;${initialSteps}&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>A <strong>literal</strong> list is checked at deployment: naming an activity that is not directly startable makes the deployment fail. An <strong>expression</strong> can only be checked when it runs, which is when the scope is entered. There the same mistake fails, and so does reading a variable that does not exist, and the step that entered the scope is rolled back. If a task comes before the scope, completing that task fails. Guard an expression whose variable is optional:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;activitiesToActivate&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="na">value=</span><span class="s">&#34;${execution.hasVariable(&#39;initialSteps&#39;) ? initialSteps : &#39;&#39;}&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p>The property is read when the process is parsed and never becomes a process variable, so an activity inside the scope cannot rewrite which activities its own scope starts.</p>
+<p>If the <a href="#completion-condition">completion condition</a> already holds when the scope is entered, entry activation starts nothing, and the scope waits.</p>
+<p>A scope without a completion condition is left as soon as the activities started on entry are done. If more work is to follow, give the scope a condition. With multi-instance markers on the sub-process, entry activation runs in every instance.</p>
+
+<h3 id="let-a-person-choose-in-tasklist">Let a Person Choose in Tasklist</h3>
+<p>When the people who handle the incident work in Tasklist, a task inside the scope can ask them what to do next. Entry activation starts it, its form offers the activities, and a listener on its completion starts the chosen one, together with a new copy of itself for the next decision:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;adHocSubProcess</span> <span class="na">id=</span><span class="s">&#34;handleIncident&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensionElements&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;camunda:properties&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:property</span> <span class="na">name=</span><span class="s">&#34;activitiesToActivate&#34;</span> <span class="na">value=</span><span class="s">&#34;decide&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/camunda:properties&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;userTask</span> <span class="na">id=</span><span class="s">&#34;decide&#34;</span> <span class="na">name=</span><span class="s">&#34;Decide next step&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;extensionElements&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:formData&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;camunda:formField</span> <span class="na">id=</span><span class="s">&#34;next&#34;</span> <span class="na">label=</span><span class="s">&#34;Next step&#34;</span> <span class="na">type=</span><span class="s">&#34;enum&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;camunda:value</span> <span class="na">id=</span><span class="s">&#34;callCustomer&#34;</span> <span class="na">name=</span><span class="s">&#34;Call customer&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;camunda:value</span> <span class="na">id=</span><span class="s">&#34;checkLogs&#34;</span> <span class="na">name=</span><span class="s">&#34;Check logs&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;camunda:value</span> <span class="na">id=</span><span class="s">&#34;orderSparePart&#34;</span> <span class="na">name=</span><span class="s">&#34;Order spare part&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/camunda:formField&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/camunda:formData&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:taskListener</span> <span class="na">event=</span><span class="s">&#34;complete&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;camunda:script</span> <span class="na">scriptFormat=</span><span class="s">&#34;groovy&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">          def runtimeService = task.processEngineServices.runtimeService
+</span></span><span class="line"><span class="cl">          def scope = runtimeService.createExecutionQuery()
+</span></span><span class="line"><span class="cl">              .processInstanceId(task.processInstanceId)
+</span></span><span class="line"><span class="cl">              .activityId(&#39;handleIncident&#39;)
+</span></span><span class="line"><span class="cl">              .singleResult()
+</span></span><span class="line"><span class="cl">          runtimeService.activateAdHocSubProcessActivities(scope.id, [task.getVariable(&#39;next&#39;), &#39;decide&#39;])
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/camunda:script&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/camunda:taskListener&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/extensionElements&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/userTask&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... callCustomer, checkLogs, orderSparePart ... --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;completionCondition</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${execution.hasVariable(&#39;resolved&#39;) and resolved}<span class="nt">&lt;/completionCondition&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/adHocSubProcess&gt;</span>
+</span></span></code></pre></div><p>In the Modeler, the listener is entered in the <strong>Task listeners</strong> group of <strong>Decide next step</strong>: event type <em>complete</em>, listener type <em>Script</em>, format <code>groovy</code>, type <em>Inline script</em>. The form field is in its <strong>Form fields</strong> group.</p>
+<figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-decide-listener.png"
+      
+          title="The task listener of Decide next step in the CIB seven Modeler"
+       /></span>
+</figure>
+
+<p>Tasklist renders the form as a list to choose from:</p>
+<figure class="image">
+  <span><img
+      src="../img/ad-hoc-subprocess-decide-tasklist.png"
+      
+          title="Decide next step in Tasklist, with Check logs chosen"
+       /></span>
+</figure>
+
+<p>Completing <strong>Decide next step</strong> with <em>Check logs</em> leaves two tasks open: <strong>Check logs</strong> and a new <strong>Decide next step</strong>. When a task is completed with <code>resolved</code> set to <code>true</code>, the condition holds, the open decision is cancelled with the other remaining tasks, and the scope is left.</p>
+<p>The listener is a Groovy script, which CIB seven Run can execute out of the box; a Java task listener can make the same two calls.</p>
+
+<h3 id="completion-condition">Completion Condition</h3>
+<p>The completion condition is evaluated whenever a child activity ends, including when it ends by taking a sequence flow to another activity inside the scope, and not at any other time. Three consequences follow, and all three are easier to know than to discover:</p>
+<p>A condition that is <strong>already true when the scope is entered</strong> does not complete it. The scope waits. Complete it explicitly if that is the shape you need.</p>
+<p>A condition <strong>satisfied from outside</strong> — by setting a variable through the API, by a message, by a timer — goes unnoticed until the next child activity of the scope ends.</p>
+<p>Once the condition has held, the scope starts no further activities, and an activation request is refused with <code>400</code>. This holds in both cases above: the condition is also evaluated at the moment activation is requested, so it is caught even if nothing has ended since it became true. That evaluation only ever refuses; it never completes the scope, which is why an already-true condition still leaves the scope waiting.</p>
+<p>Put together: if the condition becomes true from outside while nothing runs in the scope, nothing will end there, and nothing can be started. Setting <code>resolved</code> to <code>true</code> in Cockpit on an incident that waits for its next step is such a case. Only <a href="#explicit-completion">explicit completion</a> leaves that scope.</p>
+<p>The decision is <strong>latched</strong>: once the condition has held, it stays held even if it becomes false again.</p>
+<p>That is not hypothetical. With <code>cancelRemainingInstances=&quot;false&quot;</code> the scope stays open for the activities still running, and the condition can go false between two of them ending.</p>
+<p>A scope with <strong>no</strong> completion condition is left as soon as at least one activity has been performed and none is still active.</p>
+<p>There is one moment when the condition is not consulted at all: an <strong>interrupting event subprocess</strong> inside the scope. It cancels whatever the scope is running, and when its handler finishes the scope is left whether or not the condition would allow it. An interruption is not a question about discretionary work — there is none left to ask about. A model that wants to react to an event <em>without</em> ending the scope should use a non-interrupting boundary event on the sub-process itself, which runs alongside and leaves the scope open.</p>
+
+<h3 id="explicit-completion">Explicit Completion</h3>
+<p><code>completeAdHocSubProcess</code> ends the scope because the caller says so, rather than because a condition became true. Without it, the only other way out of a scope whose condition never becomes true is an interrupting event subprocess, or deleting the process instance.</p>
+<p>This is what makes the turn-by-turn shape work: give the scope a condition that is never true, activate one activity per turn, read the outcome, decide again, and complete the scope when the work is done.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;completionCondition</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${false}<span class="nt">&lt;/completionCondition&gt;</span>
+</span></span></code></pre></div><p>Explicit completion cancels whatever is still running regardless of <code>cancelRemainingInstances</code>. That attribute describes what happens when the completion <em>condition</em> is satisfied; an explicit request to finish, finishes.</p>
+<p>Variables passed with the completion are set before the scope ends, the way <code>setVariables</code> sets them: on the nearest scope that already holds the name, otherwise on the process instance.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="p">.</span><span class="na">completeAdHocSubProcess</span><span class="p">(</span><span class="n">scope</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonMap</span><span class="p">(</span><span class="s">&#34;summary&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Fan replaced&#34;</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div><p>Over REST they are carried by the request body:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">POST</span> <span class="err">/execution/anExecutionId/ad-hoc-activities/complete</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;summary&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;Fan replaced&#34;</span><span class="p">,</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;String&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+<h3 id="one-scope-per-item">One Scope per Item</h3>
+<p>Multi-instance loop characteristics on the sub-process give one discretionary workspace per item — one per claim, per customer, per case. How to model it, and what is decided per instance rather than per sub-process, is on the <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/#one-sub-process-per-item">reference page</a>.</p>
+<p>What matters to a caller is addressing one of them. Every activation names an execution, so with several instances alive you have to say which one you mean, and <strong>the loop&rsquo;s element variable is the handle</strong>: it is set on the execution of each instance, so an ordinary execution query returns exactly one, and that execution is what both ad hoc methods accept.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Execution</span><span class="w"> </span><span class="n">workspace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtimeService</span><span class="p">.</span><span class="na">createExecutionQuery</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">processInstanceId</span><span class="p">(</span><span class="n">processInstanceId</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">variableValueEquals</span><span class="p">(</span><span class="s">&#34;claim&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;C-17&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">singleResult</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">runtimeService</span><span class="p">.</span><span class="na">activateAdHocSubProcessActivities</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">workspace</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&#34;callCustomer&#34;</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Over REST:</p>
+<pre tabindex="0"><code>GET  /execution?processInstanceId=…&amp;variables=claim_eq_C-17
+POST /execution/{id}/ad-hoc-activities/activate
+</code></pre><p>The same execution is what <code>completeAdHocSubProcess</code> takes, so one workspace can be closed while the others go on. The process leaves the sub-process when every instance has been left.</p>
+<p><strong>A completion condition is decided per workspace — the variable it reads is not.</strong> Satisfying the condition in one workspace completes that one and leaves the others running; <code>cancelRemainingInstances</code> does not reach across instances. But a variable written by an ordinary task completion walks up to the process instance, above every workspace, where every workspace&rsquo;s condition reads it. The others are not cancelled — they keep the work they have, and any further activation in them is refused with <em>has already satisfied its completion condition</em>.</p>
+<p>An input mapping on the scope keeps them independent: each instance gets its own copy, and a task completion in that instance writes to the copy instead of the process instance:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;adHocSubProcess</span> <span class="na">id=</span><span class="s">&#34;claim&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;extensionElements&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;camunda:inputOutput&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;camunda:inputParameter</span> <span class="na">name=</span><span class="s">&#34;settled&#34;</span><span class="nt">&gt;</span>${false}<span class="nt">&lt;/camunda:inputParameter&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/camunda:inputOutput&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/extensionElements&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;multiInstanceLoopCharacteristics</span> <span class="na">camunda:collection=</span><span class="s">&#34;claims&#34;</span> <span class="na">camunda:elementVariable=</span><span class="s">&#34;claim&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- ... activities ... --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;completionCondition</span> <span class="na">xsi:type=</span><span class="s">&#34;tFormalExpression&#34;</span><span class="nt">&gt;</span>${settled == true}<span class="nt">&lt;/completionCondition&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/adHocSubProcess&gt;</span>
+</span></span></code></pre></div><p><strong>With <code>isSequential=&quot;true&quot;</code> only one workspace exists at a time.</strong> A query by the element variable returns nothing for an item whose turn has not come, so look it up again each turn rather than caching an execution id.</p>
+<p>Two requests are refused rather than silently doing nothing: naming the multi-instance body, which holds every instance and so identifies none, and naming a workspace that has already completed, whose execution the engine keeps to count it against the loop. Both messages say what to pass instead.</p>
+
+<h3 id="authorization">Authorization</h3>
+<p>Both methods and both REST endpoints require <strong><code>UPDATE</code> permission on the process instance</strong> or <strong><code>UPDATE_INSTANCE</code> permission on the process definition</strong>. Either is sufficient; the definition-level permission is usually the one to grant, because it is configured once per definition rather than per instance.</p>
+<p>This is the same permission that process instance modification requires, and deliberately so: a holder of that permission can already start the same activity through <code>startBeforeActivity</code>, so a narrower permission would guard a door next to an open one.</p>
+<p>Activation and explicit completion appear in the <a href="/manual/latest/user-guide/process-engine/history/user-operation-log/">user operation log</a> with the operation type <code>ModifyProcessInstance</code>, because <code>Activate</code> already means unsuspending an instance.</p>
+
+<h3 id="migration">Migration</h3>
+<p>An instance that is currently inside an ad hoc sub-process cannot be migrated. The scope keeps state about what it has started, the <a href="#limitations">activation flag</a> among it, and that state has no defined migration, so the attempt is refused per instance with a message naming the scope:</p>
+<blockquote>
+<p>Ad hoc sub process &lsquo;x&rsquo; cannot be migrated while it is active, because the state it keeps about what it has started has no defined migration. Complete or cancel the scope before migrating the instance.</p>
+</blockquote>
+<p>Complete or cancel the scope first, or leave the instance where it is. A scope that holds its work for a long time, such as an incident desk that stays open until the incident is resolved, therefore keeps those instances on the version they started on; plan a change to such a scope for the instances that start after it. An instance that has not yet reached the scope is unaffected and migrates normally, even under a plan that maps the scope. A plan generated with <code>mapEqualActivities</code> leaves the ad hoc sub-process and its activities out; map them explicitly if the plan needs them.</p>
+<p>Separately, a migration plan cannot map an ad hoc sub-process that has a completion condition onto one that has none, or the other way around. The two follow different completion rules, and such a plan is rejected when it is built with <em>Cannot migrate an ad hoc sub process to one with a different completion rule</em>. Map it onto a scope with the same kind of rule.</p>
+
+<h2 id="limitations">Limitations</h2>
+<p><strong>The activation flag is visible.</strong> A scope that has activated anything carries a variable named <code>adHocActivated</code> with the value <code>true</code>, which shows up in variable queries and in Cockpit. It is engine bookkeeping, like <code>nrOfInstances</code> for multi-instance activities, and an activity inside the scope cannot corrupt it. It is written once, by the first activation; activating again changes nothing about it and, with full history, adds no history entry. With multi-instance markers each workspace keeps its own; the element variable, such as <code>claim = C-17</code>, is what tells them apart.</p>
+<p>It is not read-only, though. Editing it from Cockpit or over REST changes when the scope completes: set to <code>false</code>, a scope without a completion condition no longer leaves when its last activity ends. The same goes for <code>adHocCompletionConditionSatisfied</code>, which appears beside it when the condition has been met while the scope waits for its remaining activities (<code>cancelRemainingInstances=&quot;false&quot;</code>), and which keeps further activation refused even if the condition turns false again. Both are removed when the scope is left.</p>
+<p><strong>It does not count anything.</strong> On a multi-instance ad hoc sub-process it sits in the variables table next to the loop&rsquo;s own variables, which do count — but something else:</p>
+<table>
+  <thead>
+    <tr>
+      <th>variable</th>
+      <th>set by</th>
+      <th>says</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>nrOfInstances</code>, <code>nrOfActiveInstances</code>, <code>nrOfCompletedInstances</code></td>
+      <td>the multi-instance loop, on the loop body</td>
+      <td>how many <strong>copies of the scope</strong> exist, are running, have finished</td>
+    </tr>
+    <tr>
+      <td><code>adHocActivated</code></td>
+      <td>the ad hoc sub-process, on an execution of its own</td>
+      <td>whether <strong>anything has been started inside one scope</strong> — <code>true</code> or absent, never a number</td>
+    </tr>
+  </tbody>
+</table>
+<p>So <code>nrOfActiveInstances = 3</code> beside one <code>adHocActivated = true</code> means three workspaces are open and one of them has started something. How many activities are running is not recorded in any variable; the activity instance tree and a task query show it. The loop&rsquo;s variables and the flag also live on different executions, so a query that finds one does not find the other.</p>
+<p><strong>Non-interrupting handlers inside the scope are rejected at deployment</strong> — an event sub-process, or a boundary event on one of the scope&rsquo;s activities. Make the handler interrupting, attach the boundary event to the sub-process itself, or handle the event outside the scope. The reason the engine refuses rather than tolerates is on the <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/#limitations">ad hoc sub-process</a> reference page.</p>
+<p><strong>Cancelled activities still run their output mappings.</strong> When the completion condition is satisfied and <code>cancelRemainingInstances</code> is <code>true</code>, or when the scope is completed explicitly, the activities still running are cancelled — and an output mapping on a cancelled activity is still executed. A counter maintained by an output parameter therefore counts the cancelled activities too. This is the engine&rsquo;s general rule for <a href="/manual/latest/user-guide/process-engine/variables/#io-mapping-on-canceled-activities">IO mapping on canceled activities</a>, and the engine setting <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#skipOutputMappingOnCanceledActivities">skipOutputMappingOnCanceledActivities</a> turns it off.</p>
+<p><strong>An unguarded completion condition fails late.</strong> A condition that reads a variable without checking that it exists cannot be evaluated until something sets that variable. The evaluation throws, and the throw rolls back the completion of the child activity, so that task cannot be completed at all. The model deploys without complaint and fails when someone completes the first task. Write the condition defensively:</p>
+<pre tabindex="0"><code>${execution.hasVariable(&#39;resolved&#39;) and resolved}
+</code></pre><p>rather than</p>
+<pre tabindex="0"><code>${resolved}
+</code></pre><p>Passing the variable in the same call as the completion also works, but only for that one path: a completion from Tasklist without such a form field, or a REST call without variables, fails again. Guard the condition instead.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ad-hoc-sub-process-by-example">Ad Hoc Sub-Process by Example</a></li>
+    <li><a href="#operational-semantics">Operational Semantics</a>
+      <ul>
+        <li><a href="#provide-variables">Provide Variables</a></li>
+        <li><a href="#activities-with-loop-characteristics">Activities with Loop Characteristics</a></li>
+        <li><a href="#gather-results">Gather Results</a></li>
+        <li><a href="#entry-activation">Entry Activation</a></li>
+        <li><a href="#let-a-person-choose-in-tasklist">Let a Person Choose in Tasklist</a></li>
+        <li><a href="#completion-condition">Completion Condition</a></li>
+        <li><a href="#explicit-completion">Explicit Completion</a></li>
+        <li><a href="#one-scope-per-item">One Scope per Item</a></li>
+        <li><a href="#authorization">Authorization</a></li>
+        <li><a href="#migration">Migration</a></li>
+      </ul>
+    </li>
+    <li><a href="#limitations">Limitations</a></li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/manual/latest/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

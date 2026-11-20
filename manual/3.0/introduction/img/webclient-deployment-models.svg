@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#fff"/>
+
+  <!-- 1. Shared engine -->
+  <text x="20" y="32" font-size="22" font-weight="bold" fill="#222">Shared engine</text>
+  <text x="20" y="56" font-size="15" fill="#666">CIB seven Tomcat / WildFly distribution</text>
+  <rect x="20" y="74" width="280" height="268" rx="6" fill="#f7f7f7" stroke="#8a8a8a" stroke-dasharray="6 4"/>
+  <text x="32" y="96" font-size="15" fill="#666">Tomcat / WildFly</text>
+  <rect x="40" y="108" width="240" height="50" rx="6" fill="#d52b1e"/>
+  <text x="160" y="140" font-size="19" fill="#fff" text-anchor="middle">Webclient</text>
+  <rect x="110" y="208" width="170" height="46" rx="6" fill="#f58a3c"/>
+  <text x="195" y="237" font-size="17" fill="#fff" text-anchor="middle">Engine REST API</text>
+  <rect x="40" y="276" width="240" height="56" rx="6" fill="#e2621b"/>
+  <text x="160" y="299" font-size="18" fill="#fff" text-anchor="middle">Process engine</text>
+  <text x="160" y="321" font-size="14" fill="#fff" text-anchor="middle">shared, container service</text>
+  <line x1="195" y1="158" x2="195" y2="206" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="203" y="188" font-size="16" fill="#333">HTTP</text>
+  <line x1="195" y1="254" x2="195" y2="274" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="70" y1="158" x2="70" y2="274" stroke="#333" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text transform="translate(93,216) rotate(-90)" font-size="15" fill="#333" text-anchor="middle">direct</text>
+
+  <!-- 2. Embedded engine -->
+  <text x="340" y="32" font-size="22" font-weight="bold" fill="#222">Embedded engine</text>
+  <text x="340" y="56" font-size="15" fill="#666">Webclient next to your application</text>
+  <rect x="340" y="74" width="280" height="268" rx="6" fill="#f7f7f7" stroke="#8a8a8a" stroke-dasharray="6 4"/>
+  <text x="352" y="96" font-size="15" fill="#666">Tomcat / WildFly / JBoss EAP</text>
+  <rect x="360" y="108" width="240" height="50" rx="6" fill="#d52b1e"/>
+  <text x="480" y="140" font-size="19" fill="#fff" text-anchor="middle">Webclient</text>
+  <rect x="352" y="180" width="256" height="152" rx="6" fill="#fff" stroke="#5a5a5a"/>
+  <text x="364" y="201" font-size="15" font-weight="bold" fill="#444">Your application</text>
+  <rect x="430" y="212" width="166" height="44" rx="6" fill="#f58a3c"/>
+  <text x="513" y="240" font-size="17" fill="#fff" text-anchor="middle">Engine REST API</text>
+  <rect x="364" y="272" width="232" height="52" rx="6" fill="#e2621b"/>
+  <text x="480" y="294" font-size="18" fill="#fff" text-anchor="middle">Process engine</text>
+  <text x="480" y="315" font-size="14" fill="#fff" text-anchor="middle">embedded</text>
+  <line x1="513" y1="158" x2="513" y2="210" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="521" y="175" font-size="16" fill="#333">HTTP</text>
+  <line x1="513" y1="256" x2="513" y2="270" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 3. Standalone (remote) engine -->
+  <text x="660" y="32" font-size="22" font-weight="bold" fill="#222">Standalone engine</text>
+  <text x="660" y="56" font-size="15" fill="#666">Webclient on another server</text>
+  <rect x="660" y="74" width="280" height="96" rx="6" fill="#f7f7f7" stroke="#8a8a8a" stroke-dasharray="6 4"/>
+  <text x="672" y="96" font-size="15" fill="#666">Server A</text>
+  <rect x="680" y="108" width="240" height="50" rx="6" fill="#d52b1e"/>
+  <text x="800" y="140" font-size="19" fill="#fff" text-anchor="middle">Webclient</text>
+  <rect x="660" y="196" width="280" height="146" rx="6" fill="#f7f7f7" stroke="#8a8a8a" stroke-dasharray="6 4"/>
+  <text x="672" y="218" font-size="15" fill="#666">Server B</text>
+  <rect x="717" y="228" width="166" height="44" rx="6" fill="#f58a3c"/>
+  <text x="800" y="256" font-size="17" fill="#fff" text-anchor="middle">Engine REST API</text>
+  <rect x="680" y="284" width="240" height="48" rx="6" fill="#e2621b"/>
+  <text x="800" y="314" font-size="18" fill="#fff" text-anchor="middle">Process engine</text>
+  <line x1="800" y1="158" x2="800" y2="226" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="808" y="188" font-size="16" fill="#333">HTTP (network)</text>
+  <line x1="800" y1="272" x2="800" y2="282" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <line x1="20" y1="374" x2="60" y2="374" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="70" y="379" font-size="16" fill="#333">REST API over HTTP (default provider)</text>
+  <line x1="20" y1="402" x2="60" y2="402" stroke="#333" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="70" y="407" font-size="16" fill="#333">Direct provider: Java API of the engine in the same JVM</text>
+</svg>

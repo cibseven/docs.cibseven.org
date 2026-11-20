@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4348,7 +4493,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>CIB seven Modeler persists BPMN and DMN diagrams in a relational database. The database schema is managed by the parent application (e.g. <code>cibseven-bpm-run</code>) — the webclient only connects to it.</p>
+      <p>CIB seven Modeler persists BPMN and DMN diagrams in a relational database. The database schema is managed by the engine, as an optional part of its own — the webclient only connects to it.</p>
 <p>The modeler shares one persistence unit with every other part of the webclient that stores data, so
 the settings below decide where that data goes as a whole. To put those tables in a database of
 their own, see <a href="/manual/latest/webapps/database/">Database</a>.</p>
@@ -4382,7 +4527,7 @@ their own, see <a href="/manual/latest/webapps/database/">Database</a>.</p>
     </tr>
   </tbody>
 </table>
-<p>Supported databases include PostgreSQL, MySQL/MariaDB, Oracle, Microsoft SQL Server, IBM DB2, and H2 (for development). The JDBC driver for each is bundled in <code>cibseven-webclient-core</code>.</p>
+<p>Supported databases include PostgreSQL, MySQL/MariaDB, Oracle, Microsoft SQL Server, IBM DB2, and H2 (for development). From 2.2.2 <code>cibseven-webclient-core</code> bundles only the H2 driver: the CIB seven distributions bring the driver of their database, and a webclient deployed on its own needs the driver of its database on its classpath.</p>
 
 <h2 id="jpa--hibernate">JPA / Hibernate</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
@@ -4405,8 +4550,8 @@ their own, see <a href="/manual/latest/webapps/database/">Database</a>.</p>
 </table>
 
 <div class="note ">
-  <h3>Schema creation is the parent&#39;s responsibility</h3>
-  <p>The webclient sets <code>ddl-auto: none</code> by default. The database schema must exist before the webclient starts. Use the SQL scripts provided by the parent application (e.g. <code>cibseven-bpm-run</code>) to create the schema on first deployment.</p>
+  <h3>The engine creates the schema</h3>
+  <p>The webclient sets <code>ddl-auto: none</code> by default. The database schema must exist before the webclient starts. The engine creates it as an optional part of its schema, see <a href="/manual/latest/webapps/modeler/installation/database-schema/">Database Schema</a>.</p>
 </div>
 
 

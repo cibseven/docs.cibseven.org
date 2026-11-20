@@ -1,0 +1,5742 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  <meta charset="utf-8" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="documentation of CIB seven" />
+  <meta name="keywords" content="camunda, cib seven, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community, documentation" />
+  <meta name="author" content="CIB software, CIB seven community" />
+  
+
+  <title>REST API Reference | docs.cibseven.org</title>
+
+  <meta name="generator" content="Hugo 0.162.1">
+  <link rel="shortcut icon" href="/manual/3.0/img/favicon.ico" type="image/x-icon" />
+
+  
+
+  <link rel="stylesheet" href="/manual/3.0/css/docs.d2e9774e30cae31dfcbd7bb79d908c10a2b3729b2542d23e1acba54b2b86c785.css" integrity="sha256-0ul3TjDK4x38vXu3nZCMEKKzcpslQtI&#43;GsulSyuGx4U=">
+  <link rel="canonical" href="https://docs.cibseven.org/manual/3.0/webapps/modeler/reference/rest-api/" />
+</head>
+<body class="">
+
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <a href="/manual/3.0/" id="logolink">
+      <img src="/manual/3.0/img/logo.png" style="padding:0 5px 7px 0;max-width:75%">
+        <span class="site-name">Docs</span>
+      </a>
+    </div>
+
+    <ul class="header-menu">
+      
+      <li  ><a href="/get-started">Get Started</a></li>
+      
+      <li  class="active"  ><a href="/manual">CIB seven</a></li>
+      
+      <li  ><a href="/ins7ght">CIB ins7ght</a></li>
+      
+      <li  ><a href="/security">Security</a></li>
+      
+    </ul>
+
+    <button class="site-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="search-field">
+      <input type="search" class="search-input" placeholder="Search…" />
+    </div>
+
+    <ul class="external-menu">
+      <li class="external"><a href="https://cibseven.org">cibseven.org</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-results">
+  <ul class="results-list">
+  </ul>
+  <footer>
+    <button class="btn btn-default page previous">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+
+    <button class="search-close btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+
+    <button class="btn btn-default page next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+  </footer>
+</div>
+
+<div class="search-underlay"></div>
+
+<nav class="site-menu">
+  
+
+
+
+
+<div class="version versioned">
+    
+      
+    
+       <span class="name">CIB seven</span> 
+    
+      
+    
+      
+    
+
+    <span class="number">3.0</span>
+</div>
+
+<br />
+<ul class="site-menu-items">
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/introduction/" >Introduction</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/downloading-cibseven/" >Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/licenses/" >Licenses</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/implemented-standards/" >Implemented Standards</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/architecture/" >Architecture Overview</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/supported-environments/" >Supported Environments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/extensions/" >Extensions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/third-party-libraries/" >Third-Party Libraries</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/introduction/public-api/" >Public API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/" >Process Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-engine-bootstrapping/" >Process Engine Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-engine-api/" >Process Engine API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-engine-concepts/" >Process Engine Concepts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/variables/" >Process Variables</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-instance-modification/" >Process Instance Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/expression-language/" >Expression Language</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/expression-language/friendly-enough-expression-language/" >Friendly Enough Expression Language</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/expression-language/unified-expression-language/" >Unified Expression Language</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/scripting/" >Scripting</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/templating/" >Templating</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/securing-custom-code/" >Custom Code &amp; Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/external-tasks/" >External Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/connectors/" >Connectors</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-versioning/" >Process Versioning</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/database/" >Database</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/database/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/database/database-configuration/" >Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/database/mssql-configuration/" >Microsoft SQL Server and Azure SQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/database/mysql-configuration/" >MySQL Database Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/database/performance/" >Performance</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/history/" >History</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/history/history-configuration/" >History configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/history/user-operation-log/" >User operation log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/history/history-cleanup/" >History cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/history/custom-implementation/" >Custom implementation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/deployment-cache/" >Deployment Cache</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/password-hashing/" >Password Hashing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/password-policy/" >Password Policy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/transactions-in-processes/" >Transactions in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/the-job-executor/" >The Job Executor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/multi-tenancy/" >Multi-Tenancy</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/id-generator/" >Id Generators</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/metrics/" >Metrics</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/incidents/" >Incidents</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-engine-plugins/" >Process Engine Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/identity-service/" >Identity Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/authorization-service/" >Authorization Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/deployments/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/process-diagram-api/" >Process Diagram Visualization</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/time-zones/" >Time zones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/decisions/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/decisions/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/decisions/repository/" >Repository</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/decisions/decision-service/" >Decision Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/decisions/bpmn-cmmn/" >Decisions in BPMN &amp; CMMN</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/decisions/history/" >History</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/batch/" >Batch</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/batch-operations/" >Batch operations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/error-handling/" >Error Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-engine/diagnostics-data/" >Diagnostics data</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-applications/" >Process Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-applications/the-process-application-class/" >The Process Application class</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-applications/the-processes-xml-deployment-descriptor/" >The processes.xml Deployment Descriptor</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-applications/process-application-event-listeners/" >Process Application Event Listeners</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-applications/process-application-resources/" >Process Application Resource Access</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/process-applications/maven-archetypes/" >Maven Project Templates (Archetypes)</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/runtime-container-integration/" >Runtime Container Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/runtime-container-integration/bpm-platform-services/" >CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services/" >JNDI Bindings for CIB seven Services</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/runtime-container-integration/tomcat/" >Apache Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/runtime-container-integration/jboss/" >WildFly</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/runtime-container-integration/job-execution-with-managed-resources/" >Job Execution with Managed Resources</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cibseven-run/" >CIB seven Run</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-framework-integration/" >Spring Framework Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-framework-integration/configuration/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-framework-integration/transactions/" >Transactions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-framework-integration/deployment/" >Deployment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-framework-integration/expressions/" >Spring Bean Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-framework-integration/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/" >Spring Boot Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/webapps/" >Web Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/process-applications/" >Process Applications</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/the-spring-event-bridge/" >Spring Eventing Bridge</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/develop-and-test/" >Developing and Testing</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/spring-boot-integration/spring-security/" >Spring Security OAuth2 Integration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/quarkus-integration/" >Quarkus Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/quarkus-integration/version-compatibility/" >Version Compatibility</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/quarkus-integration/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/quarkus-integration/cdi-integration/" >Engine CDI Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/quarkus-integration/deployments/" >Resource Deployments</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/mcp-restapi/" >REST API MCP Plugin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/mcp-restapi/passthrough/" >Passthrough Mode</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/mcp-restapi/minted-jwt/" >Minted JWT Mode</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cdi-java-ee-integration/" >CDI and Java EE Integration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cdi-java-ee-integration/jta-transaction-integration/" >JTA Transaction Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cdi-java-ee-integration/expression-resolving/" >Expression Resolving</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cdi-java-ee-integration/contextual-programming-model/" >Contextual Programming Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cdi-java-ee-integration/built-in-beans/" >Built-In Beans</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/cdi-java-ee-integration/the-cdi-event-bridge/" >CDI Event Bridge</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/testing/" >Testing</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/testing/assert-examples/" >Assert Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/" >Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/" >BPMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/fluent-builder-api/" >Fluent Builder API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/respository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/bpmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/" >CMMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/delegation-code/" >Delegation Code</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/cmmn-model-api/limitations/" >Limitations</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/dmn-model-api/" >DMN Model API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/dmn-model-api/read-a-model/" >Read a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/dmn-model-api/create-a-model/" >Create a Model</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/dmn-model-api/repository-service/" >Repository Service</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/model-api/dmn-model-api/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/data-formats/" >Data Formats (XML, JSON, Other)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/data-formats/configuring-spin-integration/" >Configuring Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/data-formats/data-formats-in-processes/" >Data Formats in Processes</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/data-formats/xml/" >XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/data-formats/json/" >JSON</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/task-forms/" >User Task Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/task-forms/jsf-task-forms/" >JSF Task Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/" >DMN Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/embed/" >Embed</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/evaluate-decisions/" >Evaluate Decisions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/expressions-and-scripts/" >Expressions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/feel/" >FEEL Engine</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/feel/type-handling/" >Type Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/feel/custom-functions/" >Custom Functions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/feel/spin-integration/" >Spin Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/feel/legacy-behavior/" >Legacy Behavior</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/dmn-engine/testing/" >Testing</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/logging/" >Logging</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/security/" >Security Instructions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/license-use/" >CIB seven License Keys</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/ext-client/" >External Task Client</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/ext-client/spring-boot-starter/" >Spring Boot Starter</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/user-guide/ext-client/compatibility-matrix/" >Version Compatibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/" >REST API</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/" >Overview</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/authentication/" >Configure Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/distro-use/" >Usage with a Pre-Built Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/embeddability/" >Embed the API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/hal/" >Hypertext Application Language (HAL)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/variables/" >Variables in the REST API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/overview/date-format/" >Date Format</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/openapi/" >OpenAPI</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/specification/" >Specification ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/rest/swagger/" >Swagger ↗</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/javadoc/" >Javadoc ↗</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/" >BPMN 2.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/service-task/" >Service Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/send-task/" >Send Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/user-task/" >User Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/business-rule-task/" >Business Rule Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/script-task/" >Script Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/receive-task/" >Receive Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/manual-task/" >Manual Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/tasks/task-markers/" >Task Markers</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/gateways/" >Gateways</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/gateways/exclusive-gateway/" >Data-based Exclusive Gateway (XOR)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/gateways/sequence-flow/" >Conditional and Default Sequence Flows</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/gateways/parallel-gateway/" >Parallel Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/gateways/inclusive-gateway/" >Inclusive Gateway</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/gateways/event-based-gateway/" >Event-based Gateway</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/" >Events</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/start-events/" >Start Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/none-events/" >None Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/message-events/" >Message Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/timer-events/" >Timer Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/error-events/" >Error Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/escalation-events/" >Escalation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/signal-events/" >Signal Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/cancel-and-compensation-events/" >Cancel and Compensation Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/conditional-events/" >Conditional Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/link-events/" >Link Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/events/terminate-event/" >Terminate Events</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/subprocesses/" >Subprocess</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/subprocesses/embedded-subprocess/" >Embedded Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/subprocesses/call-activity/" >Call Activity</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/subprocesses/event-subprocess/" >Event Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/custom-extensions/extension-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/bpmn20/custom-extensions/extension-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/" >DMN 1.3</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/decision-table/" >Decision Table</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/decision-table/input/" >Input</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/decision-table/output/" >Output</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/decision-table/rule/" >Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/decision-table/hit-policy/" >Hit Policy</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/decision-literal-expression/" >Decision Literal Expression</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/drg/" >Decision Requirements Graph</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/feel/" >FEEL</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/feel/legacy/" >Legacy FEEL Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/feel/legacy/data-types/" >Data Types</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/feel/legacy/language-elements/" >Language Elements</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/dmn/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/" >CMMN 1.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/api/classic-vs-fluent/" >Classic vs Fluent API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/concepts/" >CMMN Concepts</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/concepts/plan-items/" >Plan Items and Item Definitions</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/concepts/lifecycle/" >Plan Item Lifecycles</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/concepts/entry-exit-criteria/" >Entry and Exit Criteria</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/tasks/" >Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/tasks/human-task/" >Human Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/tasks/process-task/" >Process Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/tasks/case-task/" >Case Task</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/tasks/decision-task/" >Decision Task</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/grouping-tasks/" >Grouping Tasks</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/grouping-tasks/stage/" >Stage</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/milestone/" >Milestones</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/sentry/" >Sentries</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/markers/" >Markers</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/markers/manual-activation-rule/" >Manual Activation Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/markers/required-rule/" >Required Rule</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/markers/auto-complete/" >Auto Complete</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/markers/repetition-rule/" >Repetition Rule</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/custom-extensions/" >Extension Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/custom-extensions/camunda-elements/" >Extension Elements</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/custom-extensions/camunda-attributes/" >Extension Attributes</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/migration/" >Migration between Specification Versions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/cmmn11/migration/10-to-11/" >1.0 to 1.1</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/" >Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/" >Embedded Forms</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/" >Controls</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/inputs/" >Text Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/textarea/" >Textareas</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/date-inputs/" >Date Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/boolean-inputs/" >Boolean Inputs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/select/" >Selects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/hidden/" >Hidden Input Fields</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/files/" >File Upload and Download</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/controls/bpmn-buttons/" >BPMN Event Buttons</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/" >Javascript</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/cam-script/" >The cam-script Directive</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/api/" >Available API</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/lifecycle/" >Participating in the Form Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/debugging/" >Debugging Scripts</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/generating-businesskey/" >Generating a Business Key</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/javascript/examples/" >Examples</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/lifecycle/" >Lifecycle and Events</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/json-data/" >Working with Json Data</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/java-objects/" >Working with Java Objects</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/integrate/" >Integrating the Forms SDK</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/integrate/getting-a-distribution/" >Getting a Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/integrate/bootstrapping/" >Bootstrapping</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/integrate/angular-js/" >AngularJS Integration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/embedded-forms/integrate/full-examples/" >Full Example</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/forms/camunda-forms/" >Camunda Forms</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/" >Spin Dataformats</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/" >XML</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/01-reading-xml/" >Reading XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/02-manipulating-xml/" >Manipulating XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/03-writing-xml/" >Writing XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/04-querying-xml/" >Querying XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/05-mapping-xml/" >Mapping XML</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/xml/06-configuring-xml/" >Configuring XML Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/json/" >JSON</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/json/01-reading-json/" >Reading JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/json/02-writing-json/" >Writing JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/json/03-querying-json/" >Querying JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/json/04-mapping-json/" >Mapping JSON</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/json/05-configuring-json/" >Configuring JSON Handling</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/spin/extending-spin/" >Extending Spin</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/" >Connectors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/http-connector/" >HTTP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/soap-connector/" >SOAP Connector</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/" >AI Agent Connector</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/getting-started/" >Getting Started</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/installation/" >Installation &amp; Enablement</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/configuring-the-agent/" >Configuring the Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/tools/" >Tools</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/rag/" >Retrieval-Augmented Generation (RAG)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/chat-memory/" >Chat Memory</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/audit-trail/" >Audit Trail &amp; AI Transparency</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/configuration-reference/" >Configuration Reference</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/examples/" >Examples &amp; Tutorials</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/troubleshooting/" >Troubleshooting &amp; Known Limitations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/security-and-data-handling/" >Security &amp; Data Handling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/developer-guide/" >Developer Guide</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/ai-agent-connector/glossary/" >Glossary</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/connect/extending-connect/" >Extending Connect</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/" >Deployment Descriptors</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/descriptors/bpm-platform-xml/" >bpm-platform.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/descriptors/processes-xml/" >processes.xml</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/tags/" >Tags</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/tags/job-executor/" >&lt;job-executor /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/tags/process-archive/" >&lt;process-archive /&gt;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/reference/deployment-descriptors/tags/process-engine/" >&lt;process-engine /&gt;</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/cibseven-run/" >Remote Engine Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/" >Shared Engine Distribution</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/tomcat/" >Tomcat</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/tomcat/pre-packaged/" >Pre-Packaged Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/tomcat/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/tomcat/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/jboss/" >JBoss EAP/WildFly</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/jboss/manual/" >Manual Installation</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/full/jboss/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/docker/" >Docker</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/kubernetes/" >Kubernetes (Helm)</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/kubernetes/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/kubernetes/wildfly/" >WildFly Distribution</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/kubernetes/operations/" >Upgrade and Troubleshooting</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/installation/spring-boot/" >Spring Boot</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/webapps/" >Web Applications</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/welcome/" >Welcome</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/welcome/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/" >Tasklist</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/working-with-tasklist/" >Working with Tasklist</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/filters/" >Filters</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/user-assignment/" >User Assignment</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/task-lifecycle/" >Task Lifecycle</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/tasklist/accessibility/" >Accessibility</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/" >Cockpit</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/" >Processes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/dashboard/" >Process Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-definition-view/" >Process Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-instance-view/" >Process Instance View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-instance-chat/" >Agent Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-instance-history-view/" >Process History View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-modification/" >Process Modification</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-instance-migration/" >Process Instance Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/process-instance-restart/" >Process Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/failed-jobs/" >Failed Jobs</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/suspension/" >Suspension</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/drilldown/" >Collapsed Subprocesses</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/dmn/" >Decisions</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/dmn/dashboard/" >Dashboard</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/dmn/decision-definition-view/" >Decision Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/dmn/decision-requirements-definition-view/" >Decision Requirements Definition View</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/dmn/decision-instance-view/" >Decision Instance View</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/bpmn/batch/" >Batch Operations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/tasks-dashboard/" >Human Tasks</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/deployment-view/" >Deployments</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/cleanup/" >Cleanup</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/operation-log/" >Operation Log</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/deep-links/" >Deep Links</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/extend/" >Extending</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/extend/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/cockpit/reporting/" >Reports</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/" >Admin</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/user-management/" >Users</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/group-management/" >Groups</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/tenant-management/" >Tenants</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/authorization-management/" >Authorizations</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/system-management/" >System</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/configuration/" >Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/admin/notifications/" >Notifications</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/" >Modeler</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/installation/" >Installation</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/installation/prerequisites/" >Prerequisites</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/installation/database-schema/" >Database Schema</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/configuration/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/configuration/enable-disable/" >Enable / Disable</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/configuration/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/configuration/database/" >Database</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/" >User Guide</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/folders/" >Folders</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/project-members/" >Project Members</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/bpmn-modeling/" >BPMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/dmn-modeling/" >DMN Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/form-modeling/" >Form Modeling</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/element-templates/" >Element Templates</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/form-ai-chat/" >Form AI Agent</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/autosave/" >Autosave</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/snapshots/" >Snapshots &amp; Comparison</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/user-guide/token-simulation/" >Token Simulation</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/reference/" >Reference</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/modeler/reference/rest-api/" >REST API</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/enterprise-features/" >Enterprise features</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/configuration-options/" >Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/configuration-options/ui-configuration/" >Webclient UI Configuration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/configuration-options/core-configuration/" >Webclient Core Configuration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/plugins/" >Plugins</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/database/" >Database</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/shared-options/" >Shared Configuration Options</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/shared-options/authentication/" >Authentication</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/shared-options/cookie-security/" >Cookie Security</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/shared-options/csrf-prevention/" >CSRF Prevention</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/webapps/shared-options/header-security/" >HTTP Header Security</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/ai/" >Agentic Tools</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/examples/" >Examples</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/notices/" >Notices</a>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/update/" >Update &amp; Migration</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/patch-level/" >Patch Level Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/" >Minor Version Update</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/21-to-22/" >2.1 to 2.2</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/21-to-22/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/21-to-22/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/20-to-21/" >2.0 to 2.1</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/20-to-21/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/minor/20-to-21/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/rolling-update/" >Rolling Update</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/camunda/" >Camunda Migration</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/update/camunda-cluster/" >Camunda Cluster Migration</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+    
+  <li>
+    
+      <a href="/manual/3.0/release-notes/" >Release Notes</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/2.2.x/" >Release Notes 2.2.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.4-ee-hotfix/" >2.2.4 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.4-ce-plus-hotfix/" >2.2.4 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.4-ee/" >2.2.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.4-ce-plus/" >2.2.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.3-ee/" >2.2.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.3-ce-plus/" >2.2.3 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.2-ee/" >2.2.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.2-ce-plus/" >2.2.2 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.1-ee/" >2.2.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.1-ce-plus/" >2.2.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.0-ee/" >2.2.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.2.0-ce/" >2.2.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/2.1.x/" >Release Notes 2.1.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.10-ee-hotfix/" >2.1.10 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.10-ce-plus-hotfix/" >2.1.10 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.10-ee/" >2.1.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.10-ce-plus/" >2.1.10 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.9-ee/" >2.1.9 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.9-ce-plus/" >2.1.9 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.8-ee/" >2.1.8 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.8-ce-plus/" >2.1.8 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.7-ee/" >2.1.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.7-ce-plus/" >2.1.7 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.6-ee/" >2.1.6 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.6-ce-plus/" >2.1.6 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.5-ee/" >2.1.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.5-ce-plus/" >2.1.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.4-ee/" >2.1.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.4-ce-plus/" >2.1.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.3-ee/" >2.1.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.3-ce-plus/" >2.1.3 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.2-ee/" >2.1.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.2-ce-plus/" >2.1.2 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.1-ee/" >2.1.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.1-ce-plus/" >2.1.1 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.0-ee/" >2.1.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.1.0-ce/" >2.1.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/2.0.x/" >Release Notes 2.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.14-ee-hotfix/" >2.0.14 EE hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.14-ce-plus-hotfix/" >2.0.14 CE&#43; hotfix</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.14-ee/" >2.0.14 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.14-ce-plus/" >2.0.14 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.13-ee/" >2.0.13 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.13-ce-plus/" >2.0.13 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.12-ee/" >2.0.12 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.12-ce-plus/" >2.0.12 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.11-ee/" >2.0.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.11-ce-plus/" >2.0.11 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.10-ee/" >2.0.10 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.10-ce-plus/" >2.0.10 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.9-ee/" >2.0.9 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.9-ce-plus/" >2.0.9 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.8-ee/" >2.0.8 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.8-ce-plus/" >2.0.8 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.7-ee/" >2.0.7 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.7-ce-plus/" >2.0.7 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.6-ee/" >2.0.6 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.6-ce-plus/" >2.0.6 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.5-ee/" >2.0.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.5-ce-plus/" >2.0.5 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.4-hotfix3-ee/" >2.0.4 hotfix 3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.4-hotfix2-ee/" >2.0.4 hotfix 2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.4-hotfix1-ee/" >2.0.4 hotfix 1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.4-ee/" >2.0.4 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.4-ce-plus/" >2.0.4 CE&#43;</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.3-ee/" >2.0.3 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.2-ee/" >2.0.2 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.1-ee/" >2.0.1 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-2.0.0-ce/" >2.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/1.x/" >Release Notes 1.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-1.1.0-ce/" >1.1.0 CE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/3.0/release-notes/release-notes-1.0.0-ce/" >1.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+  
+</ul>
+
+
+</nav>
+
+<div class="page-wrapper">
+
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="col-xs-12 content-header">
+      <h1 class="page-title">REST API Reference</h1>
+    </div>
+
+    <div class="col-xs-12 content-text">
+      <p>All modeler REST endpoints are mounted under the base path configured by <code>cibseven.webclient.services.basePath</code> (default: <code>/services/v1</code>), appended with <code>/modeler</code>.</p>
+<p><strong>Base URL:</strong> <code>{basePath}/modeler</code></p>
+<p>All endpoints require an authenticated user who holds the application <code>ACCESS</code> permission for the <code>modeler</code> resource — the same permission that decides whether the modeler is shown in the UI. See <a href="/manual/3.0/webapps/modeler/configuration/authentication/">Authentication</a>. <strong>Changed in 3.0.0.</strong></p>
+<hr>
+
+<h2 id="diagrams-bpmn--dmn">Diagrams (BPMN / DMN)</h2>
+<p>A write refuses a value longer than its column with <code>400 Bad Request</code> rather than letting the database fail: <code>name</code> holds 255 characters, <code>processkey</code> 100 and <code>description</code> 150.</p>
+
+<h3 id="list-diagrams">List Diagrams</h3>
+<pre tabindex="0"><code>GET /modeler/processes
+</code></pre><p>Returns a paginated, reduced list of diagram metadata (excludes raw XML bytes).</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>firstResult</code></td>
+      <td>Yes</td>
+      <td>Zero-based offset for pagination</td>
+    </tr>
+    <tr>
+      <td><code>maxResults</code></td>
+      <td>Yes</td>
+      <td>Maximum number of results to return</td>
+    </tr>
+    <tr>
+      <td><code>diagramType</code></td>
+      <td>No</td>
+      <td>Filter by type: <code>bpmn-c7</code>, <code>dmn</code>, etc.</td>
+    </tr>
+    <tr>
+      <td><code>keyword</code></td>
+      <td>No</td>
+      <td>Filter by name (case-insensitive substring)</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — Array of <code>ProcessDiagramReduce</code> objects.</p>
+<hr>
+
+<h3 id="list-unified-diagrams">List Unified Diagrams</h3>
+<pre tabindex="0"><code>GET /modeler/unified-diagrams
+</code></pre><p>Returns a combined list of BPMN diagrams and forms in a unified format.</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>firstResult</code></td>
+      <td>Yes</td>
+      <td>Pagination offset</td>
+    </tr>
+    <tr>
+      <td><code>maxResults</code></td>
+      <td>Yes</td>
+      <td>Maximum results</td>
+    </tr>
+    <tr>
+      <td><code>keyword</code></td>
+      <td>No</td>
+      <td>Name filter</td>
+    </tr>
+    <tr>
+      <td><code>type</code></td>
+      <td>No</td>
+      <td><code>diagram</code> or <code>form</code></td>
+    </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>No</td>
+      <td>Only the models in this folder; every folder when absent. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>Each entry carries the <code>folderId</code> of the folder it is filed in, <strong>from 3.0.0</strong>.</p>
+<hr>
+
+<h3 id="get-unified-diagram-by-id">Get Unified Diagram by ID</h3>
+<pre tabindex="0"><code>GET /modeler/unified-diagrams/{id}
+</code></pre><p>Returns one diagram or form in the unified format: <code>id</code>, <code>name</code>, <code>type</code> (<code>bpmn-c7</code>, <code>dmn</code> or <code>form</code>), <code>processkey</code> (the process key, or the form id of a form), <code>formId</code>, <code>description</code>, <code>created</code>, <code>updated</code>, <code>updatedBy</code>, <code>version</code> and <code>folderId</code>. <code>404 Not Found</code> when there is none with this ID. In the enterprise edition, from 3.0.0, a model in a project the caller may not see is refused, see <a href="/manual/3.0/webapps/modeler/user-guide/project-members/">Project Members</a>.</p>
+<hr>
+
+<h3 id="get-diagram-by-id">Get Diagram by ID</h3>
+<pre tabindex="0"><code>GET /modeler/process/{id}
+</code></pre><p>Returns the full <code>ProcessDiagramEntity</code> including metadata.</p>
+<hr>
+
+<h3 id="get-diagram-xml-by-id">Get Diagram XML by ID</h3>
+<pre tabindex="0"><code>GET /modeler/process/{id}/data
+</code></pre><p>Returns the raw diagram bytes (BPMN or DMN XML) as <code>application/octet-stream</code>.</p>
+<hr>
+
+<h3 id="create-diagram-from-file-upload">Create Diagram from File Upload</h3>
+<pre tabindex="0"><code>POST /modeler/process/create
+</code></pre><p>Uploads a <code>.bpmn</code> or <code>.dmn</code> file and saves it as a new diagram.</p>
+<p><strong>Form Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>file</code></td>
+      <td>Yes</td>
+      <td>Multipart file upload (<code>.bpmn</code> or <code>.dmn</code>)</td>
+    </tr>
+    <tr>
+      <td><code>overwrite</code></td>
+      <td>Yes</td>
+      <td><code>true</code> to overwrite an existing diagram: from 3.0.0 the one with the file&rsquo;s process key in the folder named, before that one with the same name</td>
+    </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to file the diagram in. <strong>Required from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="save-diagram-form-data">Save Diagram (form data)</h3>
+<pre tabindex="0"><code>POST /modeler/process/save
+</code></pre><p>Creates or updates a diagram from form-encoded data.</p>
+<p><strong>Form Parameters:</strong> <code>name</code>, <code>processkey</code>, <code>description</code>, <code>active</code>, <code>type</code>, <code>diagram</code> (multipart file), <code>folderId</code></p>
+<p><code>folderId</code> names the folder the diagram is filed in and is required from 3.0.0: a diagram lives in exactly one folder, and none is chosen for the caller.</p>
+<hr>
+
+<h3 id="save-diagram-json-body">Save Diagram (JSON body)</h3>
+<pre tabindex="0"><code>POST /modeler/process/save/object
+</code></pre><p>Creates or updates a diagram from a JSON body. If the entity&rsquo;s <code>id</code> matches an existing record it is updated; otherwise a new record is created.</p>
+<p><strong>Request Body:</strong> <code>ProcessDiagramEntity</code> JSON object. A new diagram needs its <code>folderId</code> from 3.0.0; an update leaves the diagram where it is when the field is absent.</p>
+<hr>
+
+<h3 id="update-diagram">Update Diagram</h3>
+<pre tabindex="0"><code>POST /modeler/process/update
+</code></pre><p>Updates an existing diagram by ID with new metadata and XML.</p>
+<p><strong>Form Parameters:</strong> <code>id</code>, <code>name</code>, <code>processkey</code>, <code>description</code>, <code>active</code>, <code>type</code>, <code>diagram</code> (multipart file)</p>
+<hr>
+
+<h3 id="find-diagram-by-name">Find Diagram by Name</h3>
+<pre tabindex="0"><code>POST /modeler/process/find-by-name/data
+</code></pre><p>Returns the raw diagram bytes for the diagram with the given name. Names are not unique; when several diagrams have it, the one changed last among those the caller may see is returned.</p>
+<p><strong>Query Parameters:</strong> <code>name</code></p>
+<hr>
+
+<h3 id="find-diagram-by-process-key">Find Diagram by Process Key</h3>
+<pre tabindex="0"><code>POST /modeler/process/find-by-key/data
+</code></pre><p>Returns the raw diagram bytes for the diagram with the given process key.</p>
+<pre tabindex="0"><code>GET /modeler/process/find-by-key
+</code></pre><p>Returns the <code>ProcessDiagramEntity</code> for the diagram with the given process key.</p>
+<p><strong>Query Parameters</strong> (both):</p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>key</code></td>
+      <td>Yes</td>
+      <td>The process key</td>
+    </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>No</td>
+      <td>The folder to look in. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>A process key is unique within a folder, not across folders (from 3.0.0). With <code>folderId</code>, the diagram in that folder is returned. Without it, the one changed last among the diagrams the caller may see; a diagram in a project hidden from the caller is never returned.</p>
+<p><strong>Response:</strong> <code>200 OK</code>, or <code>404 Not Found</code> when there is none.</p>
+<hr>
+
+<h3 id="check-whether-another-diagram-has-the-key">Check Whether Another Diagram Has the Key</h3>
+<pre tabindex="0"><code>GET /modeler/process/key-in-use
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>key</code></td>
+      <td>Yes</td>
+      <td>The process key</td>
+    </tr>
+    <tr>
+      <td><code>id</code></td>
+      <td>No</td>
+      <td>The diagram to leave out, when it is saved</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>true</code> when a diagram other than the one given has the key, in any folder and any project, including those hidden from the caller, else <code>false</code>. The answer names none of them. The engine keeps one process definition per key, so deploying either adds a new version to what the other deployed; the modeler warns about it at deploy time.</p>
+<hr>
+
+<h3 id="delete-diagram">Delete Diagram</h3>
+<pre tabindex="0"><code>DELETE /modeler/process/delete/{id}
+</code></pre><p>Permanently deletes the diagram with the given ID.</p>
+<hr>
+
+<h3 id="move-diagram-to-a-folder">Move Diagram to a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/process/{id}/move
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to file the diagram in</td>
+    </tr>
+  </tbody>
+</table>
+<p>The diagram keeps its id and its process key, so deployments made from it and links to it still resolve.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>ProcessDiagramEntity</code>. <code>400 Bad Request</code> when no folder is named, or when the folder already holds a diagram with the same process key (from 3.0.0). <code>404 Not Found</code> when the diagram or the folder does not exist.</p>
+<hr>
+
+<h3 id="copy-diagram-into-a-folder">Copy Diagram into a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/process/{id}/copy
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to put the copy in</td>
+    </tr>
+    <tr>
+      <td><code>processkey</code></td>
+      <td>No</td>
+      <td>The process key of the copy; the key of the original when absent. Required before 3.0.0</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>No</td>
+      <td>Name of the copy; the name of the original when absent</td>
+    </tr>
+  </tbody>
+</table>
+<p>From 3.0.0 a process key is unique within a folder, so a copy into another folder may keep the key of the original. Before 3.0.0 a copy needed a key of its own.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when the folder already holds a diagram with the key.</p>
+<hr>
+
+<h2 id="deployment">Deployment</h2>
+
+<h3 id="deploy-diagram-by-file">Deploy Diagram by File</h3>
+<pre tabindex="0"><code>POST /modeler/deployment/create
+</code></pre><p>Deploys an uploaded diagram file directly to the CIB seven engine.</p>
+<p><strong>Form Parameters:</strong> <code>deployment-name</code>, <code>deployment-source</code>, <code>deploy-changed-only</code>, <code>file</code> (multipart)</p>
+<hr>
+
+<h3 id="deploy-diagram-by-id">Deploy Diagram by ID</h3>
+<pre tabindex="0"><code>POST /modeler/deployment/create/{id}
+</code></pre><p>Retrieves a stored diagram by its database ID and deploys it to the engine.</p>
+<p><strong>Path Parameters:</strong> <code>id</code> (diagram database ID)</p>
+<hr>
+
+<h3 id="deploy-diagram-by-key-reduce">Deploy Diagram by Key (Reduce)</h3>
+<pre tabindex="0"><code>POST /modeler/deployment/create/reduce
+</code></pre><p>Retrieves a stored diagram by process key and deploys it.</p>
+<p><strong>Form Parameters:</strong> <code>deploymentName</code> (process key), <code>file</code>, <code>folderId</code> (optional, <strong>available from 3.0.0</strong>: the folder of the diagram)</p>
+<p>Without <code>folderId</code>, the diagram changed last among those the caller may edit is taken (from 3.0.0), as a process key may repeat across folders.</p>
+<hr>
+
+<h3 id="check-deployment-connectivity">Check Deployment Connectivity</h3>
+<pre tabindex="0"><code>GET /modeler/deployment
+</code></pre><p>Checks that the authenticated user has access to the deployment endpoint. Returns <code>200 OK</code> if authorized.</p>
+<hr>
+
+<h3 id="start-process">Start Process</h3>
+<pre tabindex="0"><code>POST /modeler/deployment/start/{key}
+</code></pre><p>Starts a new instance of the deployed process definition identified by <code>key</code>.</p>
+<p><strong>Path Parameters:</strong> <code>key</code> (process definition key)</p>
+<p><strong>Request Body:</strong> JSON map of process variables</p>
+<hr>
+
+<h2 id="sessions">Sessions</h2>
+
+<h3 id="open-session">Open Session</h3>
+<pre tabindex="0"><code>POST /modeler/session/save
+</code></pre><p>Records that the current user has opened a diagram or form for editing.</p>
+<p><strong>Form Parameters:</strong> <code>type</code> (<code>diagram</code> or <code>form</code>), <code>id</code> (diagram or form ID), <code>diagram</code> (current XML snapshot)</p>
+<hr>
+
+<h3 id="close-session">Close Session</h3>
+<pre tabindex="0"><code>POST /modeler/session/close
+</code></pre><p>Closes one or more editing sessions for the current user.</p>
+<p><strong>Form Parameters:</strong> <code>sessionId</code> (comma-separated list), <code>type</code> (<code>diagram</code> or <code>form</code>)</p>
+<hr>
+
+<h3 id="check-diagram-session">Check Diagram Session</h3>
+<pre tabindex="0"><code>GET /modeler/process/session/check/{id}
+</code></pre><p>Checks whether another user currently has the diagram open.</p>
+<p><strong>Path Parameters:</strong> <code>id</code> (diagram ID)</p>
+<p><strong>Response:</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th><code>message</code> value</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>NO_SESSION</code></td>
+      <td>No one else has this diagram open</td>
+    </tr>
+    <tr>
+      <td><code>SAME_USER</code></td>
+      <td>The current user already has it open</td>
+    </tr>
+    <tr>
+      <td><code>SESSION_FOUND</code></td>
+      <td>Another user has it open — response includes <code>userId</code> and <code>openedAt</code></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="check-form-session">Check Form Session</h3>
+<pre tabindex="0"><code>GET /modeler/form/session/check/{id}
+</code></pre><p>Same as above but for forms.</p>
+<hr>
+
+<h2 id="forms">Forms</h2>
+<p>A write refuses a value longer than its column with <code>400 Bad Request</code>: <code>formId</code> holds 100 characters and <code>description</code> 150.</p>
+
+<h3 id="list-forms">List Forms</h3>
+<pre tabindex="0"><code>GET /modeler/forms
+</code></pre><p>Returns a paginated list of saved forms.</p>
+<p><strong>Query Parameters:</strong> <code>firstResult</code>, <code>maxResults</code>, <code>keyword</code></p>
+<hr>
+
+<h3 id="get-form-schema-by-id">Get Form Schema by ID</h3>
+<pre tabindex="0"><code>GET /modeler/form/{id}/data
+</code></pre><p>Returns the form JSON schema as <code>application/json</code>.</p>
+<hr>
+
+<h3 id="save-form">Save Form</h3>
+<pre tabindex="0"><code>POST /modeler/form/save
+</code></pre><p>Creates a new form with the given ID and schema.</p>
+<p><strong>Form Parameters:</strong> <code>formid</code>, <code>form_schema</code> (multipart JSON file), <code>folderId</code></p>
+<p><code>folderId</code> names the folder the form is filed in and is required from 3.0.0.</p>
+<hr>
+
+<h3 id="update-form">Update Form</h3>
+<pre tabindex="0"><code>POST /modeler/form/update
+</code></pre><p>Updates an existing form.</p>
+<p><strong>Form Parameters:</strong> <code>id</code>, <code>formid</code>, <code>form_schema</code> (multipart JSON file)</p>
+<hr>
+
+<h3 id="delete-form">Delete Form</h3>
+<pre tabindex="0"><code>DELETE /modeler/form/delete/{id}
+</code></pre><p>Permanently deletes the form and its session records.</p>
+<hr>
+
+<h3 id="find-form-by-form-id">Find Form by Form Id</h3>
+<pre tabindex="0"><code>GET /modeler/form/find-by-formid
+</code></pre><p>Returns the <code>FormEntity</code> with the given form id.</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>formId</code></td>
+      <td>Yes</td>
+      <td>The form id</td>
+    </tr>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>No</td>
+      <td>The folder to look in. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>A form id is unique within a folder, not across folders (from 3.0.0). With <code>folderId</code>, the form in that folder is returned. Without it, the one changed last among the forms the caller may see.</p>
+<p><strong>Response:</strong> <code>200 OK</code>, or <code>404 Not Found</code> when there is none.</p>
+<hr>
+
+<h3 id="find-all-forms-by-form-id">Find All Forms by Form Id</h3>
+<pre tabindex="0"><code>GET /modeler/form/find-all-by-formid
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Query Parameters:</strong> <code>formId</code></p>
+<p><strong>Response:</strong> <code>200 OK</code> — the forms with this form id the caller may see, the one changed last first. A form reference in a diagram may match several of them.</p>
+<hr>
+
+<h3 id="check-whether-another-form-has-the-form-id">Check Whether Another Form Has the Form Id</h3>
+<pre tabindex="0"><code>GET /modeler/form/key-in-use
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>formId</code></td>
+      <td>Yes</td>
+      <td>The form id</td>
+    </tr>
+    <tr>
+      <td><code>id</code></td>
+      <td>No</td>
+      <td>The form to leave out, when it is saved</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>true</code> when a form other than the one given has the form id, in any folder and any project, including those hidden from the caller, else <code>false</code>. The answer names none of them.</p>
+<hr>
+
+<h3 id="move-form-to-a-folder">Move Form to a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/form/{id}/move
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to file the form in</td>
+    </tr>
+  </tbody>
+</table>
+<p>The form keeps its id and its form id.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the moved <code>FormEntity</code>. <code>400 Bad Request</code> when the folder already holds a form with the same form id (from 3.0.0).</p>
+<hr>
+
+<h3 id="copy-form-into-a-folder">Copy Form into a Folder</h3>
+<pre tabindex="0"><code>POST /modeler/form/{id}/copy
+</code></pre><p><strong>Available from 3.0.0.</strong></p>
+<p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folderId</code></td>
+      <td>Yes</td>
+      <td>The folder to put the copy in</td>
+    </tr>
+    <tr>
+      <td><code>formId</code></td>
+      <td>No</td>
+      <td>The form id of the copy; the form id of the original when absent. Required before 3.0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>From 3.0.0 a form id is unique within a folder, so a copy into another folder may keep the form id of the original. Before 3.0.0 a copy needed a form id of its own.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the created copy. <code>400 Bad Request</code> when the folder already holds a form with the form id.</p>
+<hr>
+
+<h2 id="folders">Folders</h2>
+<p><strong>Available from 3.0.0.</strong> Folders organize stored diagrams and forms; every model is filed in exactly one. A folder without a parent is at the top level, which holds folders only — a model is never stored there.</p>
+
+<h3 id="list-folders">List Folders</h3>
+<pre tabindex="0"><code>GET /modeler/folders
+</code></pre><p>Returns every folder, each carrying the <code>parentId</code> of the folder holding it, so one call is enough to build the whole tree. The list is empty when every folder has been deleted; listing creates nothing, not even the caller&rsquo;s own folder (see <a href="#get-own-folder">Get Own Folder</a>).</p>
+<p><strong>Response:</strong> <code>200 OK</code> — array of <code>FolderEntity</code> objects. Each carries <code>userFolder</code>, which is <code>true</code> for the folder of a user: a folder at the top level named after the user who created it.</p>
+<hr>
+
+<h3 id="get-folder">Get Folder</h3>
+<pre tabindex="0"><code>GET /modeler/folders/{id}
+</code></pre><p><strong>Response:</strong> <code>200 OK</code> — the <code>FolderEntity</code>. <code>404 Not Found</code> when there is none with that id.</p>
+<hr>
+
+<h3 id="get-folder-contents">Get Folder Contents</h3>
+<pre tabindex="0"><code>GET /modeler/folders/{id}/contents
+</code></pre><p>Counts what the folder holds through its whole subtree, for a confirmation before deleting it.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;folders&quot;: 2, &quot;diagrams&quot;: 7, &quot;forms&quot;: 1 }</code></p>
+<hr>
+
+<h3 id="get-own-folder">Get Own Folder</h3>
+<pre tabindex="0"><code>POST /modeler/folders/user-folder
+</code></pre><p>Returns the caller&rsquo;s own folder, the folder at the top level named after the caller&rsquo;s user ID, and creates it on the first call. The modeler calls it when its start page opens, so a user gets a folder on the first visit rather than at login. A folder at the top level that already carries the user ID is returned as it is.</p>
+<p>A user&rsquo;s folder cannot be renamed, moved or deleted except by an administrator, a user granted the <em>All</em> permission on the <em>System</em> resource.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;folder&quot;: { ... }, &quot;manageUserFolders&quot;: false }</code></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>folder</code></td>
+      <td>The caller&rsquo;s folder, a <code>FolderEntity</code></td>
+    </tr>
+    <tr>
+      <td><code>manageUserFolders</code></td>
+      <td>Whether the caller may rename, move and delete the folders of users</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="get-access-per-project">Get Access per Project</h3>
+<pre tabindex="0"><code>GET /modeler/folders/access
+</code></pre><p><strong>Available from 3.0.0.</strong> What the caller may do in each project they can see, so a client offers only that. In the community edition <code>projects</code> is empty, which means everything is allowed. The enterprise edition lists every project the caller can see, the open ones with <code>restricted: false</code>.</p>
+<p><strong>Response:</strong> <code>200 OK</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;projects&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;8d7f3c1e-...&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;VIEWER&#34;</span><span class="p">,</span> <span class="nt">&#34;restricted&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nt">&#34;edit&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nt">&#34;manageMembers&#34;</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;movesBetweenProjects&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>projects</code></td>
+      <td>Per project id: the caller&rsquo;s <code>role</code> there (<code>PROJECT_ADMIN</code>, <code>EDITOR</code>, <code>VIEWER</code>, or <code>null</code>), whether the project is <code>restricted</code> to its members, whether the caller may <code>edit</code> in it, and whether they may manage its members</td>
+    </tr>
+    <tr>
+      <td><code>movesBetweenProjects</code></td>
+      <td>Whether a folder or a model may be moved from one project into another. <code>false</code> in the enterprise edition</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="create-folder">Create Folder</h3>
+<pre tabindex="0"><code>POST /modeler/folders
+</code></pre><p><strong>Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>name</code></td>
+      <td>Yes</td>
+      <td>Name of the folder, unique among the folders beside it</td>
+    </tr>
+    <tr>
+      <td><code>parentId</code></td>
+      <td>No</td>
+      <td>The folder to create it in; created at the top level when absent</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — the created folder. <code>400 Bad Request</code> when the name is empty, longer than 255 characters, or already taken in that place.</p>
+<hr>
+
+<h3 id="rename-or-move-folder">Rename or Move Folder</h3>
+<pre tabindex="0"><code>PUT /modeler/folders/{id}
+</code></pre><p><strong>Body:</strong> send <code>name</code>, <code>parentId</code>, or both.</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>name</code></td>
+      <td>The new name</td>
+    </tr>
+    <tr>
+      <td><code>parentId</code></td>
+      <td>The folder to move it into; <code>null</code> moves it to the top level</td>
+    </tr>
+  </tbody>
+</table>
+<p>The folder keeps its id, so everything below it stays reachable. A folder cannot be moved into itself or into one of its own subfolders. Sending both fields applies them together: if the move is refused, the folder is not renamed either.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — the updated folder. <code>400 Bad Request</code> when the name is taken or the move would put the folder inside itself. <code>403 Forbidden</code> when the folder is the folder of a user and the caller is not an administrator.</p>
+<hr>
+
+<h3 id="delete-folder">Delete Folder</h3>
+<pre tabindex="0"><code>DELETE /modeler/folders/{id}
+</code></pre><p>Deletes the folder with <strong>everything below it</strong>: subfolders, diagrams and forms. This cannot be undone — call the contents endpoint first and confirm with the user. Deployed processes are unaffected.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — what was removed, in the shape the contents endpoint returns. <code>403 Forbidden</code> when the folder is the folder of a user and the caller is not an administrator.</p>
+<hr>
+
+<div class="note bg-info docs-info">
+  <h3>Projects with members</h3>
+  <p>From 3.0.0 the enterprise edition answers every folder, diagram and form endpoint according to the caller&rsquo;s role in the project concerned, see <a href="/manual/3.0/webapps/modeler/user-guide/project-members/">Project Members</a>. Lists leave out the projects the caller may not see. Reading needs only to see the project, changing and deploying needs Editor, and renaming or deleting a project needs Project Admin. A request beyond the role is answered with <code>403 Forbidden</code>. Moving a folder or a model into another project, or a project into a folder, is answered with <code>400 Bad Request</code>.</p>
+</div>
+
+
+<h2 id="project-members-enterprise-edition">Project Members (Enterprise Edition)</h2>
+<p><strong>Available from 3.0.0.</strong> The members of a project, a folder at the top level. <code>{projectId}</code> is the id of that folder; any other folder is answered with <code>400 Bad Request</code>. Reading the members needs only to see the project, so in an open project everyone may; everything else needs Project Admin, or the <em>All</em> permission on the <em>System</em> resource. Giving a project without members its first member needs that permission.</p>
+
+<h3 id="list-members">List Members</h3>
+<pre tabindex="0"><code>GET /modeler/projects/{projectId}/members
+</code></pre><p><strong>Response:</strong> <code>200 OK</code> — array of members:</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td>Id of the membership, used to change or remove it</td>
+    </tr>
+    <tr>
+      <td><code>memberType</code></td>
+      <td><code>USER</code> or <code>GROUP</code></td>
+    </tr>
+    <tr>
+      <td><code>memberId</code></td>
+      <td>The user ID or the group ID</td>
+    </tr>
+    <tr>
+      <td><code>role</code></td>
+      <td><code>PROJECT_ADMIN</code>, <code>EDITOR</code> or <code>VIEWER</code></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="add-member">Add Member</h3>
+<pre tabindex="0"><code>POST /modeler/projects/{projectId}/members
+</code></pre><p><strong>Body:</strong> <code>{ &quot;memberType&quot;: &quot;USER&quot;, &quot;memberId&quot;: &quot;john&quot;, &quot;role&quot;: &quot;EDITOR&quot; }</code></p>
+<p><strong>Response:</strong> <code>200 OK</code> — <code>{ &quot;member&quot;: { ... }, &quot;known&quot;: true }</code>. <code>known</code> is <code>false</code> when the caller could not look the user or group up in the engine, so nothing confirms it exists; the member is added all the same. <code>400 Bad Request</code> when a field is missing or the user or group is a member already.</p>
+<hr>
+
+<h3 id="change-role">Change Role</h3>
+<pre tabindex="0"><code>PUT /modeler/projects/{projectId}/members/{memberId}
+</code></pre><p><strong>Body:</strong> <code>{ &quot;role&quot;: &quot;VIEWER&quot; }</code></p>
+<p><strong>Response:</strong> <code>200 OK</code> — the member. <code>400 Bad Request</code> when it would leave the project without a Project Admin.</p>
+<hr>
+
+<h3 id="remove-member">Remove Member</h3>
+<pre tabindex="0"><code>DELETE /modeler/projects/{projectId}/members/{memberId}
+</code></pre><p><strong>Response:</strong> <code>200 OK</code>. <code>400 Bad Request</code> when it would leave the project without a Project Admin.</p>
+<hr>
+
+<h3 id="search-users-and-groups">Search Users and Groups</h3>
+<pre tabindex="0"><code>GET /modeler/projects/{projectId}/member-candidates?search=jo&amp;type=USER
+</code></pre><p>Users or groups to add as members. <code>type</code> is required and names what is searched, <code>USER</code> or <code>GROUP</code>; a search without it is answered with <code>400 Bad Request</code>. A user is found when the term is their exact user ID or part of their first or last name; a group when it is the exact group ID or part of the group&rsquo;s name. At least two characters are needed. The engine is asked with the caller&rsquo;s rights, so the answer holds only the users and groups the caller may read, and is empty for a caller who may read none.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — array of <code>{ &quot;memberType&quot;: &quot;USER&quot;, &quot;id&quot;: &quot;john&quot;, &quot;name&quot;: &quot;John Doe&quot; }</code>, at most ten.</p>
+<hr>
+
+<h2 id="element-templates">Element Templates</h2>
+<p>The element templates the modeler offers, see <a href="/manual/3.0/webapps/modeler/user-guide/element-templates/">Element Templates</a>. <code>{id}</code> is the id of the stored template, not the <code>id</code> inside its JSON, which the request body calls <code>templateId</code>.</p>
+<p>The plain listing needs an authenticated user only, because the cockpit&rsquo;s diagram viewer loads it to draw template icons. Every other endpoint needs the modeler <code>ACCESS</code> permission like the rest of this page.</p>
+<p><strong>Request body of a template:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Send Email&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;templateId&#34;</span><span class="p">:</span> <span class="s2">&#34;com.example.send-email&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Sends an email through the mail connector&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;{ \&#34;id\&#34;: \&#34;com.example.send-email\&#34;, \&#34;name\&#34;: \&#34;Send Email\&#34;, ... }&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;active&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><code>content</code> is the template JSON as a string.</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /modeler/element-templates</code></td>
+      <td>All templates, active and inactive</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/{id}</code></td>
+      <td>One template. <code>404 Not Found</code> when there is none</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates</code></td>
+      <td>Creates a template from the request body</td>
+    </tr>
+    <tr>
+      <td><code>PUT /modeler/element-templates/{id}</code></td>
+      <td>Replaces a template with the request body</td>
+    </tr>
+    <tr>
+      <td><code>PATCH /modeler/element-templates/{id}</code></td>
+      <td>Changes the fields named in the body, a JSON map. <code>204 No Content</code> when nothing changed</td>
+    </tr>
+    <tr>
+      <td><code>DELETE /modeler/element-templates/{id}</code></td>
+      <td>Deletes a template</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/{id}/duplicate</code></td>
+      <td>Stores a copy of a template</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/bulk-delete</code></td>
+      <td>Deletes the templates whose ids the body lists. Answers <code>{ &quot;deleted&quot;: [...], &quot;failed&quot;: [...], &quot;totalRequested&quot;: 3, &quot;totalDeleted&quot;: 2 }</code></td>
+    </tr>
+    <tr>
+      <td><code>PATCH /modeler/element-templates/bulk-update-visibility</code></td>
+      <td>Activates or deactivates several templates: <code>{ &quot;templateIds&quot;: [...], &quot;active&quot;: false }</code>. <code>400 Bad Request</code> without both fields</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/search</code></td>
+      <td>Templates matching all parameters given: <code>name</code>, <code>creator</code>, <code>templateId</code> and <code>description</code> match in part, <code>active</code> exactly</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/filter</code></td>
+      <td>Templates filtered by <code>activeOnly</code> (default <code>true</code>) and <code>createdBy</code> (exact, ignoring case)</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/validate</code></td>
+      <td>Checks a request body without storing it. Answers <code>{ &quot;valid&quot;: false, &quot;errors&quot;: [&quot;Template ID already exists&quot;] }</code></td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/import</code></td>
+      <td>Stores the templates of an array of request bodies. Answers <code>{ &quot;imported&quot;: [...], &quot;failed&quot;: [...], &quot;totalRequested&quot;: 2, &quot;totalImported&quot;: 2 }</code>, where <code>failed</code> names the <code>templateId</code> of each one that was not stored</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/export</code></td>
+      <td>The templates whose ids <code>templateIds</code> lists, or all; only active ones with <code>activeOnly=true</code></td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/statistics</code></td>
+      <td><code>{ &quot;total&quot;: 12, &quot;active&quot;: 10, &quot;inactive&quot;: 2, &quot;byCreator&quot;: { &quot;john&quot;: 4, &quot;System&quot;: 8 } }</code></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h2 id="snapshots-enterprise-edition">Snapshots (Enterprise Edition)</h2>
+<p>The saved states of a diagram or form, see <a href="/manual/3.0/webapps/modeler/user-guide/snapshots/">Snapshots &amp; Comparison</a>.</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /modeler/process/history/{id}</code></td>
+      <td>The snapshots of a diagram, as <code>ProcessDiagramEntity</code> objects</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/form/history/{id}</code></td>
+      <td>The snapshots of a form, as <code>FormEntity</code> objects. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>Both list at most <code>cibseven.webclient.modeler.history.maxResults</code> snapshots. They need permission to see the model&rsquo;s project, and answer with an empty array when the model does not exist, so the history of a deleted model is not shown.</p>
+<hr>
+
+<h2 id="chat-enterprise-edition">Chat (Enterprise Edition)</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Enterprise Feature</h3>
+  <p>Chat endpoints are only available in the enterprise edition when both <code>cibseven.webclient.modeler.enabled: true</code> and <code>cibseven.webclient.modeler.chat.enabled: true</code>.</p>
+</div>
+
+<p>Chat endpoints are mounted under a separate base path: <code>{basePath}/chat</code>.</p>
+<p><strong>Base URL:</strong> <code>{basePath}/chat</code></p>
+
+<h3 id="get-message-history">Get Message History</h3>
+<pre tabindex="0"><code>GET /chat/{roomId}/history
+</code></pre><p>Returns chat messages for a room in reverse chronological order (newest first).</p>
+<p><strong>Path Parameters:</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>roomId</code></td>
+      <td>Composite room identifier — see <a href="/manual/3.0/webapps/modeler/user-guide/chat/">Real-time Chat</a></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>limit</code></td>
+      <td>No</td>
+      <td><code>100</code></td>
+      <td>Maximum number of messages to return</td>
+    </tr>
+    <tr>
+      <td><code>before</code></td>
+      <td>No</td>
+      <td>—</td>
+      <td>ISO-8601 datetime — return only messages created before this timestamp (for pagination)</td>
+    </tr>
+    <tr>
+      <td><code>elementId</code></td>
+      <td>No</td>
+      <td>—</td>
+      <td>Filter messages by the BPMN element ID they are attached to</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — Array of message objects including <code>id</code>, <code>roomId</code>, <code>userId</code>, <code>displayName</code>, <code>content</code>, <code>createdAt</code>, <code>editedAt</code>, and optionally <code>elementId</code>. Soft-deleted messages are excluded.</p>
+<hr>
+
+<h3 id="send-message">Send Message</h3>
+<pre tabindex="0"><code>POST /chat/{roomId}
+</code></pre><p>Creates a new message in the room. This endpoint is the primary way to send messages in the long-polling transport. In WebSocket mode, messages can also be published over STOMP (see <a href="/manual/3.0/webapps/modeler/user-guide/chat/">Real-time Chat</a>).</p>
+<p><strong>Path Parameters:</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>roomId</code></td>
+      <td>Composite room identifier</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Request Body:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>content</code></td>
+      <td>Yes</td>
+      <td>Message text (must not be blank)</td>
+    </tr>
+    <tr>
+      <td><code>elementId</code></td>
+      <td>No</td>
+      <td>BPMN element ID to attach the message to a specific element</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — The created message object.</p>
+<hr>
+
+<h3 id="get-room-presence">Get Room Presence</h3>
+<pre tabindex="0"><code>GET /chat/{roomId}/presence
+</code></pre><p>Returns the set of users currently active in the room. In the long-polling transport, presence is backed by the database and reflects users who have polled within the last ~60 seconds. In the WebSocket transport, it reflects users currently subscribed to the room&rsquo;s WebSocket topic.</p>
+<p><strong>Path Parameters:</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>roomId</code></td>
+      <td>Composite room identifier</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code> — Array of presence objects:</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>userId</code></td>
+      <td>Authenticated user ID</td>
+    </tr>
+    <tr>
+      <td><code>displayName</code></td>
+      <td>User&rsquo;s display name</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="long-poll-for-events">Long-Poll for Events</h3>
+<pre tabindex="0"><code>GET /chat/{roomId}/poll?since={cursor}
+</code></pre><p>Long-polling endpoint used by the <code>longpolling</code> transport. The server holds the request for up to ~25 seconds and returns early when new events are available. The client immediately re-polls after each response.</p>
+<p>Calling this endpoint also records a presence heartbeat for the authenticated user.</p>
+<p><strong>Path Parameters:</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>roomId</code></td>
+      <td>Composite room identifier</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Query Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>since</code></td>
+      <td>No</td>
+      <td>Opaque cursor returned by the previous poll. Omit on the first poll to establish a baseline — the server returns an empty event list and the current cursor.</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cursor</code></td>
+      <td>Opaque server-owned timestamp. Pass back as <code>since</code> on the next poll.</td>
+    </tr>
+    <tr>
+      <td><code>events</code></td>
+      <td>Array of change events since the cursor. Empty if nothing changed during the hold. Each event has an <code>op</code> field (<code>create</code>, <code>update</code>, or <code>delete</code>) and a <code>message</code> object.</td>
+    </tr>
+    <tr>
+      <td><code>presence</code></td>
+      <td>Current presence snapshot for the room — same format as <a href="#get-room-presence">Get Room Presence</a>.</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h3 id="edit-message">Edit Message</h3>
+<pre tabindex="0"><code>PUT /chat/{roomId}/{messageId}
+</code></pre><p>Replaces the text of a message. Only its author may edit it. The request body is the one of <a href="#send-message">Send Message</a>; only <code>content</code> is used, and it must not be blank.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — The edited message object, with <code>editedAt</code> set. The other users of the room receive an <code>update</code> event.</p>
+<hr>
+
+<h3 id="delete-message">Delete Message</h3>
+<pre tabindex="0"><code>DELETE /chat/{roomId}/{messageId}
+</code></pre><p>Deletes a message. Only its author may delete it. The message is kept in the database marked as deleted, and no longer returned by <a href="#get-message-history">Get Message History</a>. The other users of the room receive a <code>delete</code> event.</p>
+<hr>
+
+<h3 id="leave-room">Leave Room</h3>
+<pre tabindex="0"><code>DELETE /chat/{roomId}/presence
+</code></pre><p>Removes the caller from the presence of the room at once, instead of when the last poll ages out. Used by the <code>longpolling</code> transport, which has no disconnect to notice; with the <code>websocket</code> transport it does nothing. <strong>Available from 3.0.0.</strong></p>
+<hr>
+
+<h2 id="bpmn-ai-agent-enterprise-edition">BPMN AI Agent (Enterprise Edition)</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Enterprise Feature</h3>
+  <p>The agent endpoints exist only in the enterprise edition with <code>cibseven.webclient.modeler.ai.enabled: true</code>. See <a href="/manual/3.0/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a>.</p>
+</div>
+
+<p>The agent endpoints are mounted under <code>{basePath}/agent</code>. They are the interface between the agent panels of the modeler and the server; they need an authenticated user and a valid license.</p>
+<p><strong>Base URL:</strong> <code>{basePath}/agent</code></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /agent/config</code></td>
+      <td>The <code>defaultModel</code> and the <code>models</code> configured under <code>cibseven.webclient.modeler.ai</code>, for the model selector. Provider settings and API keys are not part of the answer</td>
+    </tr>
+    <tr>
+      <td><code>POST /agent/chat/stream</code></td>
+      <td>Runs one request of the agent and streams its progress as server-sent events, see below</td>
+    </tr>
+    <tr>
+      <td><code>POST /agent/chat/cancel/{sessionId}</code></td>
+      <td>Stops the running request of a chat session. The model call under way still completes, the remaining steps are skipped, and the stream ends with a <code>cancelled</code> event. <code>204 No Content</code>, also when nothing runs</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="stream-a-chat-request">Stream a Chat Request</h3>
+<pre tabindex="0"><code>POST /agent/chat/stream?folderId={folderId}
+</code></pre><p>The caller must be allowed to change the models of the folder, see <a href="/manual/3.0/webapps/modeler/user-guide/project-members/">Project Members</a>, and the engine must have its webclient tables, see <a href="/manual/3.0/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>. The <code>folderId</code> parameter is <strong>available from 3.0.0</strong>.</p>
+<p><strong>Request Body (main fields):</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>message</code></td>
+      <td>What the user asked</td>
+    </tr>
+    <tr>
+      <td><code>sessionId</code></td>
+      <td>Chat session chosen by the client; also the ID to cancel the request with</td>
+    </tr>
+    <tr>
+      <td><code>model</code></td>
+      <td>The <code>value</code> of one of the configured models; the default model when absent</td>
+    </tr>
+    <tr>
+      <td><code>mode</code></td>
+      <td><code>ask</code>, <code>plan</code> or <code>edit</code></td>
+    </tr>
+    <tr>
+      <td><code>artifact</code></td>
+      <td><code>bpmn</code> (default) or <code>form</code>. <code>form</code> is <strong>available from 3.0.0</strong>, for the <a href="/manual/3.0/webapps/modeler/user-guide/form-ai-chat/">Form AI Agent</a></td>
+    </tr>
+    <tr>
+      <td><code>currentBpmnXml</code> / <code>currentFormSchema</code></td>
+      <td>The diagram or the form schema as it is in the editor</td>
+    </tr>
+    <tr>
+      <td><code>files</code></td>
+      <td>Attachments, each with <code>name</code>, <code>mimeType</code> and the content as Base64 in <code>data</code></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code>, <code>text/event-stream</code>. The events are <code>phase</code>, <code>delta</code>, <code>reasoning_delta</code>, <code>tool_call</code>, <code>usage</code>, and one closing event: <code>done</code> with the result (for example the changed XML), <code>error</code>, or <code>cancelled</code>. A model that is not configured is reported as an <code>error</code> event with the code <code>ModelNotAllowedException</code>, not as an HTTP error.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="page-toc">
+  <h3>On this Page:</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#diagrams-bpmn--dmn">Diagrams (BPMN / DMN)</a>
+      <ul>
+        <li><a href="#list-diagrams">List Diagrams</a></li>
+        <li><a href="#list-unified-diagrams">List Unified Diagrams</a></li>
+        <li><a href="#get-unified-diagram-by-id">Get Unified Diagram by ID</a></li>
+        <li><a href="#get-diagram-by-id">Get Diagram by ID</a></li>
+        <li><a href="#get-diagram-xml-by-id">Get Diagram XML by ID</a></li>
+        <li><a href="#create-diagram-from-file-upload">Create Diagram from File Upload</a></li>
+        <li><a href="#save-diagram-form-data">Save Diagram (form data)</a></li>
+        <li><a href="#save-diagram-json-body">Save Diagram (JSON body)</a></li>
+        <li><a href="#update-diagram">Update Diagram</a></li>
+        <li><a href="#find-diagram-by-name">Find Diagram by Name</a></li>
+        <li><a href="#find-diagram-by-process-key">Find Diagram by Process Key</a></li>
+        <li><a href="#check-whether-another-diagram-has-the-key">Check Whether Another Diagram Has the Key</a></li>
+        <li><a href="#delete-diagram">Delete Diagram</a></li>
+        <li><a href="#move-diagram-to-a-folder">Move Diagram to a Folder</a></li>
+        <li><a href="#copy-diagram-into-a-folder">Copy Diagram into a Folder</a></li>
+      </ul>
+    </li>
+    <li><a href="#deployment">Deployment</a>
+      <ul>
+        <li><a href="#deploy-diagram-by-file">Deploy Diagram by File</a></li>
+        <li><a href="#deploy-diagram-by-id">Deploy Diagram by ID</a></li>
+        <li><a href="#deploy-diagram-by-key-reduce">Deploy Diagram by Key (Reduce)</a></li>
+        <li><a href="#check-deployment-connectivity">Check Deployment Connectivity</a></li>
+        <li><a href="#start-process">Start Process</a></li>
+      </ul>
+    </li>
+    <li><a href="#sessions">Sessions</a>
+      <ul>
+        <li><a href="#open-session">Open Session</a></li>
+        <li><a href="#close-session">Close Session</a></li>
+        <li><a href="#check-diagram-session">Check Diagram Session</a></li>
+        <li><a href="#check-form-session">Check Form Session</a></li>
+      </ul>
+    </li>
+    <li><a href="#forms">Forms</a>
+      <ul>
+        <li><a href="#list-forms">List Forms</a></li>
+        <li><a href="#get-form-schema-by-id">Get Form Schema by ID</a></li>
+        <li><a href="#save-form">Save Form</a></li>
+        <li><a href="#update-form">Update Form</a></li>
+        <li><a href="#delete-form">Delete Form</a></li>
+        <li><a href="#find-form-by-form-id">Find Form by Form Id</a></li>
+        <li><a href="#find-all-forms-by-form-id">Find All Forms by Form Id</a></li>
+        <li><a href="#check-whether-another-form-has-the-form-id">Check Whether Another Form Has the Form Id</a></li>
+        <li><a href="#move-form-to-a-folder">Move Form to a Folder</a></li>
+        <li><a href="#copy-form-into-a-folder">Copy Form into a Folder</a></li>
+      </ul>
+    </li>
+    <li><a href="#folders">Folders</a>
+      <ul>
+        <li><a href="#list-folders">List Folders</a></li>
+        <li><a href="#get-folder">Get Folder</a></li>
+        <li><a href="#get-folder-contents">Get Folder Contents</a></li>
+        <li><a href="#get-own-folder">Get Own Folder</a></li>
+        <li><a href="#get-access-per-project">Get Access per Project</a></li>
+        <li><a href="#create-folder">Create Folder</a></li>
+        <li><a href="#rename-or-move-folder">Rename or Move Folder</a></li>
+        <li><a href="#delete-folder">Delete Folder</a></li>
+      </ul>
+    </li>
+    <li><a href="#project-members-enterprise-edition">Project Members (Enterprise Edition)</a>
+      <ul>
+        <li><a href="#list-members">List Members</a></li>
+        <li><a href="#add-member">Add Member</a></li>
+        <li><a href="#change-role">Change Role</a></li>
+        <li><a href="#remove-member">Remove Member</a></li>
+        <li><a href="#search-users-and-groups">Search Users and Groups</a></li>
+      </ul>
+    </li>
+    <li><a href="#element-templates">Element Templates</a></li>
+    <li><a href="#snapshots-enterprise-edition">Snapshots (Enterprise Edition)</a></li>
+    <li><a href="#chat-enterprise-edition">Chat (Enterprise Edition)</a>
+      <ul>
+        <li><a href="#get-message-history">Get Message History</a></li>
+        <li><a href="#send-message">Send Message</a></li>
+        <li><a href="#get-room-presence">Get Room Presence</a></li>
+        <li><a href="#long-poll-for-events">Long-Poll for Events</a></li>
+        <li><a href="#edit-message">Edit Message</a></li>
+        <li><a href="#delete-message">Delete Message</a></li>
+        <li><a href="#leave-room">Leave Room</a></li>
+      </ul>
+    </li>
+    <li><a href="#bpmn-ai-agent-enterprise-edition">BPMN AI Agent (Enterprise Edition)</a>
+      <ul>
+        <li><a href="#stream-a-chat-request">Stream a Chat Request</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  <div class="docs-banner" style="display:none">
+ :(
+</div>
+
+</div>
+
+
+    
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <p class="pull-right">
+            <a href="#" target="_self">Back to top</a>
+          </p>
+
+          <p>
+            <a href="http://cibseven.org">cibseven.org</a> and <a href="http://docs.cibseven.org">docs.cibseven.org</a> are part of CIB seven project — <a href="https://www.cib.de/en/privacy-policy/">Privacy Statement</a> – <a href="https://www.cib.de/en/legal-advice/">CIB software GmbH</a>
+            <br/>The CIB seven documentation is based on <a href="https://docs.camunda.org/">Camunda 7 Docs</a> from Camunda. Some redesign & naming adoptation was made.
+          </p>
+          <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  
+
+  <script type="text/javascript" src="/manual/3.0/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+</body>
+</html>
+

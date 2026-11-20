@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4933,6 +5078,37 @@ Keep in mind that user who is allowed to perform variable updates could trigger 
 <p>GRANT and REVOKE authorizations with <strong>Retry Job</strong>, <strong>Suspend</strong>, and <strong>Update Variable</strong> permissions precede over <strong>Update</strong>.
 Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.</p>
 
+<h3 id="attachment-and-comment-permissions">Attachment and Comment Permissions</h3>
+<p>Attachments and comments have no resource of their own. Access to the attachments and comments of a task or a process instance is checked against the permissions on that task or process instance, including the tenant check.</p>
+<p><strong>Attachments</strong></p>
+<ul>
+<li>Reading an attachment of a task, its content or the attachment list of a task: <strong>Read</strong> on the task or <strong>Read Task</strong> on the process definition.</li>
+<li>Reading an attachment of a process instance or the attachment list of a process instance: <strong>Read</strong> on the process instance or <strong>Read Instance</strong> on the process definition. Attachments of tasks the user may not read are left out of the list.</li>
+<li>Creating, updating or deleting an attachment of a task: <strong>Task Work</strong> or <strong>Update</strong> on the task, or <strong>Task Work</strong> or <strong>Update Task</strong> on the process definition.</li>
+<li>Creating, updating or deleting an attachment of a process instance: <strong>Update</strong> on the process instance or <strong>Update Instance</strong> on the process definition.</li>
+</ul>
+<p><strong>Comments</strong></p>
+<ul>
+<li>Reading the comments or events of a task: <strong>Read</strong> on the task or <strong>Read Task</strong> on the process definition.</li>
+<li>Reading the comments of a process instance: <strong>Read</strong> on the process instance or <strong>Read Instance</strong> on the process definition. Comments of tasks the user may not read are left out.</li>
+<li>Adding a comment to a task: <strong>Task Work</strong> or <strong>Update</strong> on the task, or <strong>Update Task</strong> on the process definition.</li>
+<li>Adding a comment to a process instance: <strong>Update</strong> on the process instance or <strong>Update Instance</strong> on the process definition.</li>
+</ul>
+<p><strong>Completed tasks and process instances</strong></p>
+<p>Attachments and comments of completed tasks and process instances are checked against the history permissions:</p>
+<ul>
+<li>Reading needs <strong>Read History</strong> on the process definition, or <strong>Read</strong> on the historic task or historic process instance if <a href="#historic-instance-permissions">Historic Instance Permissions</a> are enabled.</li>
+<li>Creating, updating or deleting an attachment, and adding a comment, needs <strong>Delete History</strong> on the process definition or <strong>All</strong> on the historic task or historic process instance.</li>
+</ul>
+<p>As for the task itself, the former assignee of a completed process task needs <strong>Read History</strong> on the process definition to keep reading its attachments and comments. Enable Historic Instance Permissions if assignees should keep this access.
+Attachments whose task or process instance no longer exists, not even in the history, can only be read or changed by an administrator.
+An attachment or comment for both a task and a process instance is rejected if the task does not belong to that process instance.</p>
+<p>A user without the required permission gets an <code>AuthorizationException</code>; the REST API answers with HTTP status 403.
+Without authorization checks and tenant checks, attachments and comments are not restricted.</p>
+<p>The checks are enabled by default. The process engine configuration properties <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#enforceAttachmentPermissions">enforceAttachmentPermissions</a> and <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#enforceCommentPermissions">enforceCommentPermissions</a> switch them off when set to <code>false</code>.
+We do not recommend this: the attachments and comments of every task and process instance are then open to every authenticated user.
+Updating and deleting comments are checked even if <code>enforceCommentPermissions</code> is <code>false</code>.</p>
+
 <h3 id="additional-decision-definition-permissions">Additional Decision Definition Permissions</h3>
 <p>In addition to <strong>Update</strong>, <strong>Read</strong>, and <strong>Delete</strong>, the following permissions are available on the Decision Definition Resource:</p>
 <ul>
@@ -5271,6 +5447,18 @@ Typically, those people do not need full access to the system like an administra
 </ul>
 <p>Also see the <a href="#performance-considerations">Performance Considerations</a> section on this page.</p>
 
+<h3 id="skip-the-group-membership-query">Skip the Group Membership Query</h3>
+<p>The configuration option <code>authGroupFilterThreshold</code> specifies a threshold for skipping the auxiliary
+SQL query to the <code>ACT_RU_AUTHORIZATION</code> table that reads the group memberships of the current user.
+If the user belongs to fewer groups than the threshold, the query is skipped, which can improve
+performance for very large <code>ACT_RU_AUTHORIZATION</code> tables. The default value is <code>0</code>, which always
+runs the query.</p>
+<p>See the
+<a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#authGroupFilterThreshold"><code>&lt;process-engine&gt;</code> reference</a>
+for <code>bpm-platform.xml</code>, <code>standalone.xml</code> and <code>processes.xml</code>, and
+<a href="/manual/latest/user-guide/cibseven-run/#generic-properties">Generic properties</a> for CIB seven Run
+and Spring Boot.</p>
+
 <h2 id="java-api-example">Java API example</h2>
 <p>An authorization is created between a user/group and a resource. It describes the user/group&rsquo;s permissions to access that resource. An authorization may express different permissions, such as the permission to <strong>Read</strong>, <strong>Update</strong>, and <strong>Delete</strong> the resource. (See Authorization for details).</p>
 <p>To grant the permission to access a certain resource, an authorization object is created. For example, to give access to a certain filter:</p>
@@ -5372,6 +5560,7 @@ Typically, those people do not need full access to the system like an administra
         </li>
         <li><a href="#additional-process-definition-permissions">Additional Process Definition Permissions</a></li>
         <li><a href="#additional-process-instance-permissions">Additional Process Instance Permissions</a></li>
+        <li><a href="#attachment-and-comment-permissions">Attachment and Comment Permissions</a></li>
         <li><a href="#additional-decision-definition-permissions">Additional Decision Definition Permissions</a></li>
         <li><a href="#additional-batch-permissions">Additional Batch Permissions</a></li>
         <li><a href="#default-read-variable-permissions">Default Read Variable Permissions</a></li>
@@ -5397,6 +5586,7 @@ Typically, those people do not need full access to the system like an administra
         <li><a href="#enable-authorization-checks">Enable Authorization Checks</a></li>
         <li><a href="#enable-authorization-checks-for-user-code">Enable Authorization Checks for User Code</a></li>
         <li><a href="#check-revoke-authorizations">Check Revoke Authorizations</a></li>
+        <li><a href="#skip-the-group-membership-query">Skip the Group Membership Query</a></li>
       </ul>
     </li>
     <li><a href="#java-api-example">Java API example</a></li>

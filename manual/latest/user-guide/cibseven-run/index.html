@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4372,6 +4517,8 @@
 <p>To start with CIB seven Run, download the <a href="https://cibseven.org/downloads/">distribution</a> and unpacking it. You will find the following structure:</p>
 <pre tabindex="0"><code>cibseven-run
 ├── configuration/
+│   ├── element-templates/
+│   │   └── put your own Modeler element templates (JSON) here
 │   ├── keystore/
 │   │   └── put your SSL key store here if you want to use HTTPS
 │   ├── resources/
@@ -4380,6 +4527,8 @@
 │   │   └── necessary SQL scripts to prepare your database system
 │   ├── userlib/
 │   │   └── put your database driver and other required JARs here
+│   ├── userlib-ai/
+│   │   └── AI Agent connector and REST API MCP plugin libraries
 │   ├── default.yml
 │   └── production.yml
 ├── internal/
@@ -4445,6 +4594,19 @@ unless the <code>--detached</code> argument is explicitly passed to the <code>st
       <td><code>disabled</code></td>
   </tr>
   <tr>
+      <td><code>--ai</code></td>
+      <td>
+        Adds the libraries in <code>configuration/userlib-ai</code> to the classpath: the
+        <a href="/manual/latest/reference/connect/ai-agent-connector/">AI Agent connector</a>, agentic ad hoc sub processes
+        and the <a href="/manual/latest/user-guide/mcp-restapi/">REST API MCP plugin</a>.
+        <code>--ai-agent</code> and <code>--agent</code> are aliases.
+        <br>
+        Use it to enable these libraries together with <code>--production</code>. The MCP endpoint itself needs <code>MCP_ENABLED=true</code> as well.
+        See <a href="#ai-agent-connector-and-rest-api-mcp">AI Agent connector and REST API MCP</a>.
+      </td>
+      <td><code>enabled</code> (<code>disabled</code> with <code>--production</code>)</td>
+  </tr>
+  <tr>
       <td><code>--help</code></td>
       <td>Prints a message showing the available start script arguments.</td>
       <td><code>-</code></td>
@@ -4483,6 +4645,80 @@ When using CIB seven Run in a production environment, make sure to base your cus
 <p>By default, Run launches with the <code>default.yml</code> configuration. To enable the <code>production.yml</code> configuration, execute the start script with the <code>--production</code> property.
 Using <code>--production</code> disables the example application. It can be enabled by explicitly passing <code>--example</code> to the start script.
 However, we do not recommended to use the example application in production.</p>
+
+<h3 id="ai-agent-connector-and-rest-api-mcp">AI Agent connector and REST API MCP</h3>
+<p>CIB seven Run ships the libraries of the following AI features in the <code>configuration/userlib-ai</code> folder:</p>
+<ul>
+<li>The <a href="/manual/latest/reference/connect/ai-agent-connector/">AI Agent connector</a>, which adds an <em>AI Agent</em> service task to your BPMN models.</li>
+<li>Agentic ad hoc sub processes. Their engine plugin is part of the AI Agent connector library.</li>
+<li>The <a href="/manual/latest/user-guide/mcp-restapi/">REST API MCP plugin</a>, which exposes the REST API of CIB seven Run as tools to MCP clients under <code>http://localhost:8080/mcp</code>.</li>
+</ul>
+<p>The <code>configuration/userlib-ai</code> folder is kept apart from <code>configuration/userlib</code>. The start script adds it to the classpath only when the AI libraries are enabled.</p>
+
+<h4 id="enable-the-ai-libraries">Enable the AI libraries</h4>
+<p>The start script decides whether to load <code>configuration/userlib-ai</code> as follows:</p>
+<table class="table desc-table">
+  <tr>
+      <th>Start script call</th>
+      <th>AI libraries</th>
+  </tr>
+  <tr>
+      <td>Default configuration (without <code>--production</code>)</td>
+      <td><code>enabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--production</code></td>
+      <td><code>disabled</code></td>
+  </tr>
+  <tr>
+      <td><code>--production --ai</code></td>
+      <td><code>enabled</code></td>
+  </tr>
+  <tr>
+      <td>Environment variable <code>AI_AGENT_ENABLED</code> or <code>MCP_ENABLED</code> is set</td>
+      <td>
+        <code>enabled</code> if at least one of them is <code>true</code>, <code>disabled</code> otherwise.
+        The environment variables take precedence over <code>--ai</code> and <code>--production</code>.
+      </td>
+  </tr>
+</table>
+<p>For example, <code>AI_AGENT_ENABLED=false</code> disables the AI libraries in the default configuration, and <code>MCP_ENABLED=true</code> enables them under <code>--production</code>.
+Always set these variables to the lowercase values <code>true</code> or <code>false</code>. Any other value, such as <code>TRUE</code> or <code>1</code>, is not recognized as <code>true</code> and disables the AI libraries.</p>
+<p>On startup, the script prints either <code>AI Agent connector and MCP libraries enabled</code> or <code>AI Agent connector and MCP libraries disabled</code>, so you can check which case applies.</p>
+
+<h4 id="enable-the-rest-api-mcp-endpoint">Enable the REST API MCP endpoint</h4>
+<p>Loading the AI libraries does not switch on the MCP endpoint. Both <code>default.yml</code> and <code>production.yml</code> bind it to the <code>MCP_ENABLED</code> environment variable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring.ai.mcp.server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l">${MCP_ENABLED:false}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">STATELESS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">SYNC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">streamable-http.mcp-endpoint</span><span class="p">:</span><span class="w"> </span><span class="l">/mcp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">annotation-scanner.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">cibseven.mcp.restapi-mcp</span><span class="p">:</span><span class="w"> </span><span class="l">${MCP_ENABLED:false}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">cibseven.openapi.url</span><span class="p">:</span><span class="w"> </span><span class="l">openapi.json</span><span class="w">
+</span></span></span></code></pre></div><p>To start CIB seven Run with the MCP endpoint, set <code>MCP_ENABLED=true</code>. This also puts <code>configuration/userlib-ai</code> on the classpath, so no <code>--ai</code> argument is needed:</p>
+<ul>
+<li>Linux/Mac: <code>MCP_ENABLED=true ./start.sh</code></li>
+<li>Windows: <code>set MCP_ENABLED=true</code> followed by <code>start.bat</code></li>
+</ul>
+<p>The MCP endpoint is then available under <code>http://localhost:8080/mcp</code>. Each tool call goes to the REST API at <code>cibseven.webclient.engineRest.url</code> (default <code>http://localhost:8080</code>) plus <code>cibseven.webclient.engineRest.path</code> (default <code>/engine-rest</code>).
+Update these properties if you change the port, the context path or enable <a href="#https">HTTPS</a>.</p>
+<p><code>cibseven.openapi.url</code> points to the <code>openapi.json</code> of this CIB seven version, which ships with the AI libraries. Set it to another file path or URL to expose a different set of tools, for example a smaller document for LLMs that accept only a limited number of tools.
+All other properties are described in the <a href="/manual/latest/user-guide/mcp-restapi/#configuration">REST API MCP plugin configuration</a>.</p>
+
+<div class="note bg-warning docs-warning">
+  <h3>Security</h3>
+  <p><p>Without the <code>--oauth2</code> argument, the MCP endpoint itself is not protected: it relays the <code>Authorization</code> header of each request to the REST API, which authenticates it as configured in <a href="#authentication">Authentication</a>.
+The <code>default.yml</code> configuration uses <code>pseudo</code> authentication, which is not suitable for an MCP endpoint reachable by others. With <code>--production</code>, the REST API uses <code>composite</code> authentication.</p>
+<p>With the <code>--oauth2</code> argument, the MCP endpoint is an OAuth2 resource server and needs <code>spring.security.oauth2.resourceserver.jwt.issuer-uri</code>.
+See <a href="/manual/latest/user-guide/mcp-restapi/#security">REST API MCP plugin security</a> for all setups.</p>
+</p>
+</div>
+
+
+<h4 id="configure-the-ai-agent-connector">Configure the AI Agent connector</h4>
+<p>The AI Agent connector is ready to use once the AI libraries are enabled. Its element template is bundled in the connector library and shows up in the Modeler automatically. The Modeler also loads your own element templates from <code>configuration/element-templates</code>.</p>
+<p>See <a href="/manual/latest/reference/connect/ai-agent-connector/installation/">Installation</a>, <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/">Configuring the Agent</a> and the <a href="/manual/latest/reference/connect/ai-agent-connector/configuration-reference/">Configuration Reference</a> of the AI Agent connector for details.</p>
 
 <h3 id="connect-to-a-database">Connect to a Database</h3>
 <p>CIB seven Run is pre-configured to use a file-based H2 database for testing. The database schema and all required tables are automatically created when the engine starts up for the first time. If you want to use a custom standalone database, follow these steps:</p>
@@ -4954,7 +5190,7 @@ Some of the properties are listed in the table below:</p>
       <th>Description</th>
   </tr>
 <tr>
-      <td rowspan="3"><code>camunda.bpm.generic-properties.properties</code></td>
+      <td rowspan="4"><code>camunda.bpm.generic-properties.properties</code></td>
       <td><code>.useCibSevenNamespaceInScripting</code></td>
       <td>Allows to handle org.camunda classes, used in a script, when the script is launched by a process, see <a href="#migration-from-camunda">migration from Camunda</a> <br />Default value: false </td>
   </tr>
@@ -4965,6 +5201,10 @@ Some of the properties are listed in the table below:</p>
   <tr>
       <td><code>.authGroupFilterThreshold</code></td>
       <td>Allows to skip auxiliary SQL request to ACT_RU_AUTHORIZATION table when a user belongs to a number of groups which is less than specified by the property. It can improve performance for very large ACT_RU_AUTHORIZATION tables. <br />Default value: 0</td>
+  </tr>
+  <tr>
+      <td><code>.checkVariableTaskId</code></td>
+      <td>Checks a variable that belongs to a task against that task before storing it, see <a href="/manual/latest/user-guide/process-engine/variables/#task-variables-and-completed-tasks">task variables</a> <br />Default value: false </td>
   </tr>
 </table>
 
@@ -5065,6 +5305,13 @@ If you use a Spring Boot application, <code>spring-boot-starter-actuator</code> 
           </ul>
         </li>
         <li><a href="#choose-between-default-and-production-configuration">Choose between default and production configuration</a></li>
+        <li><a href="#ai-agent-connector-and-rest-api-mcp">AI Agent connector and REST API MCP</a>
+          <ul>
+            <li><a href="#enable-the-ai-libraries">Enable the AI libraries</a></li>
+            <li><a href="#enable-the-rest-api-mcp-endpoint">Enable the REST API MCP endpoint</a></li>
+            <li><a href="#configure-the-ai-agent-connector">Configure the AI Agent connector</a></li>
+          </ul>
+        </li>
         <li><a href="#connect-to-a-database">Connect to a Database</a></li>
         <li><a href="#deploy-bpmn-models">Deploy BPMN Models</a></li>
       </ul>

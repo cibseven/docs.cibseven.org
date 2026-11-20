@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             targetNamespace="http://cibseven.org/bpmn20/reference"
+             id="adHocSubProcessCollapsed">
+  <process id="adHocCollapsed" isExecutable="false">
+    <startEvent id="start" />
+    <sequenceFlow id="toScope" sourceRef="start" targetRef="handleIncident" />
+    <adHocSubProcess id="handleIncident" name="Handle incident">
+      <userTask id="callCustomer" name="Call customer" />
+      <userTask id="checkLogs" name="Check logs" />
+      <userTask id="orderSparePart" name="Order spare part" />
+    </adHocSubProcess>
+    <sequenceFlow id="fromScope" sourceRef="handleIncident" targetRef="closeIncident" />
+    <userTask id="closeIncident" name="Close incident" />
+    <sequenceFlow id="toEnd" sourceRef="closeIncident" targetRef="end" />
+    <endEvent id="end" />
+  </process>
+  <bpmndi:BPMNDiagram id="diagram">
+    <bpmndi:BPMNPlane id="plane" bpmnElement="adHocCollapsed">
+      <bpmndi:BPMNShape id="shape_start" bpmnElement="start">
+        <omgdc:Bounds x="100" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_handleIncident" bpmnElement="handleIncident" isExpanded="false">
+        <omgdc:Bounds x="186" y="80" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_closeIncident" bpmnElement="closeIncident">
+        <omgdc:Bounds x="356" y="80" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_end" bpmnElement="end">
+        <omgdc:Bounds x="526" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_toScope" bpmnElement="toScope">
+        <omgdi:waypoint x="136" y="120" />
+        <omgdi:waypoint x="186" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_fromScope" bpmnElement="fromScope">
+        <omgdi:waypoint x="306" y="120" />
+        <omgdi:waypoint x="356" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_toEnd" bpmnElement="toEnd">
+        <omgdi:waypoint x="476" y="120" />
+        <omgdi:waypoint x="526" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4362,6 +4507,136 @@
 <h2 id="special-considerations">Special Considerations</h2>
 <p>This section describes noteworthy potentially breaking changes when you update to the respective patch levels.</p>
 
+<h3 id="224-to-225">2.2.4 to 2.2.5</h3>
+
+<details class="collapsible-content">
+  <summary class="collapsible-content-summary">
+    
+  </summary>
+
+  <div class="collapsible-content-body">
+    
+<h4 id="security-optional-endpoint-allow-list-for-connectors">Security: Optional Endpoint Allow-List for Connectors</h4>
+<p>Connector targets such as the HTTP request URL, the AI agent’s base URL or its MCP servers often come from process variables.
+Operators can now restrict the endpoints that the HTTP, SOAP, AI agent and knowledge ingestor connectors may contact. Without configuration, nothing changes.</p>
+<p>Set the allow-list as a JVM system property or an environment variable (it is not read from <code>application.yaml</code>):</p>
+<ul>
+<li><code>cibseven.connect.allowed-endpoints</code> / <code>CIBSEVEN_CONNECT_ALLOWED_ENDPOINTS</code> for all connectors,</li>
+<li><code>cibseven.connect.&lt;connectorId&gt;.allowed-endpoints</code> / <code>CIBSEVEN_CONNECT_&lt;CONNECTOR_ID&gt;_ALLOWED_ENDPOINTS</code> for one connector, e.g. <code>cibseven.connect.cibseven-ai-agent.allowed-endpoints</code>. A connector’s own list replaces the global one; <code>*</code> exempts the connector.</li>
+</ul>
+<p>Entries are separated by commas or whitespace and have the form <code>scheme://host[:port]</code> or <code>scheme://*.domain[:port]</code>, without a path, e.g. <code>https://api.openai.com</code>, <code>https://*.example.com</code> or <code>postgresql://db.example.com:5432</code>.
+Host names are compared without DNS resolution; wildcards need at least two labels and never match IP addresses. Invalid entries are ignored with a warning.</p>
+<p>Checked are the HTTP and SOAP request URL and every redirect, the AI agent’s base URL, every MCP server, the pgvector host and the OpenAI embedding endpoint, and the knowledge ingestor’s pgvector host and embedding endpoint.
+A refused endpoint fails the connector call with a <code>ConnectorEndpointNotAllowedException</code> before anything is sent.</p>
+
+<h5 id="expected-impact">Expected Impact</h5>
+<p>None without configuration. With an allow-list, list every endpoint your processes use, including the pgvector host (<code>postgresql://host:port</code>) and <code>https://api.openai.com</code> for remote embeddings.
+Redirects are only checked for the HTTP client the connector creates itself, not for a client replaced through a connector configurator.</p>
+
+<h4 id="security-permissions-for-task-and-process-instance-comments">Security: Permissions for Task and Process Instance Comments</h4>
+<p>Creating and reading task and process instance comments, and reading task events, now require a permission on the task or process instance, including the tenant check:</p>
+<ul>
+<li>Reading the comments or events of a task: <code>READ</code> on the task or <code>READ_TASK</code> on the process definition.</li>
+<li>Reading the comments of a process instance: <code>READ</code> on the process instance or <code>READ_INSTANCE</code> on the process definition. Task comments the caller may not read are left out.</li>
+<li>Adding a comment to a task: <code>TASK_WORK</code> or <code>UPDATE</code> on the task, or <code>UPDATE_TASK</code> on the process definition; to a process instance: <code>UPDATE</code> on the process instance or <code>UPDATE_INSTANCE</code> on the process definition.</li>
+</ul>
+<p>Comments of completed tasks and process instances are checked against the history permissions: reading needs <code>READ_HISTORY</code> on the process definition, or <code>READ</code> on the historic task or historic process instance with <code>enableHistoricInstancePermissions</code>; adding a comment needs <code>DELETE_HISTORY</code> on the process definition or <code>ALL</code> on the historic task or historic process instance.
+A comment for a task and a process instance is rejected if the task does not belong to that process instance.</p>
+
+<h5 id="expected-impact-1">Expected Impact</h5>
+<p>With authorization enabled, users without these permissions now get an <code>AuthorizationException</code>, and the REST endpoint for creating a task comment answers with HTTP 403 instead of 400.
+As for the task itself, the former assignee of a completed process task needs <code>READ_HISTORY</code> on the process definition to keep reading its comments; enable <code>enableHistoricInstancePermissions</code> if assignees should keep access.</p>
+<p>The new engine property <code>enforceCommentPermissions</code> (default <code>true</code>) can be set to <code>false</code> to restore the previous behavior. Updating and deleting comments stay checked either way.</p>
+
+<h4 id="security-permissions-for-task-and-process-instance-attachments">Security: Permissions for Task and Process Instance Attachments</h4>
+<p>Reading, creating, updating and deleting task and process instance attachments now require a permission on the task or process instance, including the tenant check:</p>
+<ul>
+<li>Reading an attachment of a task, its content or the attachment list of a task: <code>READ</code> on the task or <code>READ_TASK</code> on the process definition.</li>
+<li>Reading an attachment of a process instance or the attachment list of a process instance: <code>READ</code> on the process instance or <code>READ_INSTANCE</code> on the process definition. Attachments of tasks the caller may not read are left out of the list.</li>
+<li>Creating, updating or deleting an attachment of a task: <code>TASK_WORK</code> or <code>UPDATE</code> on the task, or <code>TASK_WORK</code> or <code>UPDATE_TASK</code> on the process definition; of a process instance: <code>UPDATE</code> on the process instance or <code>UPDATE_INSTANCE</code> on the process definition.</li>
+</ul>
+<p>Attachments of completed tasks and process instances are checked against the history permissions: reading needs <code>READ_HISTORY</code> on the process definition, or <code>READ</code> on the historic task or historic process instance with <code>enableHistoricInstancePermissions</code>; writing needs <code>DELETE_HISTORY</code> on the process definition or <code>ALL</code> on the historic task or historic process instance.
+Attachments whose task or process instance no longer exists, not even in the history, can only be read or changed by an administrator.
+With authorization enabled, an attachment for a task and a process instance is rejected if the task does not belong to that process instance.</p>
+
+<h5 id="expected-impact-2">Expected Impact</h5>
+<p>With authorization enabled, users without these permissions now get an <code>AuthorizationException</code>, and the REST endpoints for task attachments answer with HTTP 403.
+The former assignee of a completed process task needs <code>READ_HISTORY</code> on the process definition to keep reading its attachments; enable <code>enableHistoricInstancePermissions</code> if assignees should keep access.
+Engines without authorization and tenant check are not affected.</p>
+<p>The new engine property <code>enforceAttachmentPermissions</code> (default <code>true</code>) can be set to <code>false</code> to restore the previous behavior.</p>
+
+<h4 id="security-ai-agent-connector-sends-the-global-api-key-only-to-the-configured-endpoint">Security: AI Agent Connector Sends the Global API Key Only to the Configured Endpoint</h4>
+<p>The AI agent connector now sends the API key from the <code>OPENAI_API_KEY</code> environment variable only to the endpoint configured by the operator.
+This prevents a base URL supplied by a process (for example through a process variable) from receiving the global API key.</p>
+<p>The global key is sent when the model does not set a base URL, or when the base URL has the same scheme, host and port as <code>OPENAI_BASE_URL</code>
+(or as <code>https://api.openai.com/v1</code> if <code>OPENAI_BASE_URL</code> is not set). An API key defined in the model is used as before, for any endpoint.</p>
+
+<h5 id="expected-impact-3">Expected Impact</h5>
+<p>Models that set their own base URL and rely on <code>OPENAI_API_KEY</code> from the environment (e.g. OpenRouter) no longer receive that key.
+The request is sent without an API key and the provider typically rejects it with HTTP 401. The connector logs a warning naming the endpoint (scheme, host and port only).</p>
+<p>To keep such models working, do one of the following:</p>
+<ul>
+<li>Set <code>OPENAI_BASE_URL</code> to the endpoint the models use, or</li>
+<li>define the API key in the model.</li>
+</ul>
+<p>Endpoints that do not need an API key, such as a local Ollama, are not affected.</p>
+<p>Remote embedding models (<code>embeddingModelName</code> set, in the AI agent task and the knowledge ingestor) always call <code>https://api.openai.com/v1</code>.
+They now receive <code>OPENAI_API_KEY</code> only if <code>OPENAI_BASE_URL</code> is not set or points to OpenAI as well, so another provider’s key is no longer sent to OpenAI.
+In the AI agent task, the API key defined in the model belongs to its base URL: it is only sent to remote embeddings if that base URL is OpenAI as well.
+With another provider configured, define the API key in the model or leave <code>embeddingModelName</code> empty to use the local embedding model.</p>
+<p>For more information, see <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/">Configuring the Agent</a>.</p>
+
+<h4 id="security-juel-scripts-use-the-expression-managers-resolver-chain">Security: JUEL Scripts Use the Expression Manager’s Resolver Chain</h4>
+<p>JUEL scripts (<code>scriptFormat=&quot;juel&quot;</code> in script tasks, listeners, script conditions and input/output mappings) now resolve names, properties and methods through the configured expression manager, like attribute expressions do.
+Restrictions of a customized expression manager therefore apply to JUEL scripts as well.</p>
+<p>This only applies with a customized expression manager (a subclass of <code>JuelExpressionManager</code>) or a <code>SpringExpressionManager</code> with <code>beans</code> set. With the default expression managers, JUEL scripts behave as before.</p>
+
+<h5 id="expected-impact-4">Expected Impact</h5>
+<p>In JUEL scripts, with a customized expression manager or a <code>SpringExpressionManager</code> with <code>beans</code> set:</p>
+<ul>
+<li>restrictions of the expression manager now apply, including to top-level names,</li>
+<li>names that only the script resolver factories provided (configuration beans, Spring beans, mocks, a custom <code>ResolverFactory</code>) are no longer available,</li>
+<li><code>context</code> and <code>lang:import</code> are no longer available,</li>
+<li>a process variable takes precedence over a bean with the same name,</li>
+<li>unknown names fail with “Cannot resolve identifier”.</li>
+</ul>
+<p>To keep the previous behavior, override <code>isAppliedToJuelScripts()</code> in your expression manager to return <code>false</code>.</p>
+
+<h4 id="security-optional-allow-list-for-task-types-and-script-languages">Security: Optional Allow-List for Task Types and Script Languages</h4>
+<p>Operators can now restrict the built-in task types and the script languages that process definitions may use. Without configuration, nothing changes.</p>
+<p>Set the process engine property <code>executionAllowList</code> to a comma-separated list of names, e.g. <code>external, groovy</code>. Once it has entries, only the listed task types (<code>shell</code>, <code>mail</code>, <code>external</code>) and script languages are allowed.
+Names are matched in full and ignore case; entries with a leading <code>-</code> or a <code>*</code> are rejected as a configuration error. Script language aliases (for example <code>js</code>, <code>ecmascript</code> and <code>graal.js</code>) must be listed individually.</p>
+<ul>
+<li>New deployments that use an unlisted <code>camunda:type</code> on a service task, send task, business rule task, intermediate message throw event or message end event are rejected.</li>
+<li>Process definitions that are already deployed are blocked when they reach such an activity, and an unlisted script language is blocked when the script is executed, including scripts in process applications and in DMN decisions. JUEL and FEEL in DMN are always allowed.</li>
+<li>A blocked use fails with <code>ENGINE-25003</code>. The message names the task type or language and the activity, but not the configured list.</li>
+</ul>
+<p>The property <code>expressionHardeningMode</code> controls how a violation is handled: <code>enforce</code> (default) blocks it, <code>report</code> only logs a warning <code>ENGINE-25004</code> and allows it, <code>off</code> disables the check.</p>
+
+<h5 id="expected-impact-5">Expected Impact</h5>
+<p>None without configuration. With an allow-list, list every task type and script language your processes use. External tasks that were created before the list was restricted can still be fetched and completed.</p>
+
+<h4 id="security-optional-deny-list-for-expressions-and-scripts">Security: Optional Deny-List for Expressions and Scripts</h4>
+<p>Operators can now check expressions and JUEL scripts against a deny list. It applies to BPMN and CMMN expressions, JUEL scripts, JUEL expressions in DMN and the legacy JUEL-based FEEL, including EL functions.
+In 2.2.5 the deny list is only active if the process engine property <code>deniedExpressionAccess</code> is set. Without it, nothing changes.</p>
+<p>Once <code>deniedExpressionAccess</code> is set, the deny list blocks reflection and access to engine internals by default:
+<code>class</code>, <code>getClass</code>, <code>java.lang.Class</code>, <code>java.lang.ClassLoader</code>, <code>java.lang.reflect.AccessibleObject</code>, <code>java.lang.invoke.MethodHandle</code>, <code>java.lang.invoke.MethodHandles</code>, <code>lang:import</code>, <code>org.cibseven.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl</code>, <code>java.lang.Runtime</code> and <code>java.lang.ProcessBuilder</code>,
+plus the EL implementation itself (<code>jakarta.el</code>, <code>javax.el</code> and <code>org.cibseven.bpm.impl.juel</code>).</p>
+<ul>
+<li><code>deniedExpressionAccess</code>: comma-separated entries that are added to the defaults; <code>-entry</code> removes a default. Entries can be names (<code>getClass</code>), types or packages (<code>java.lang.Runtime</code>), EL functions (<code>lang:import</code>, <code>:name</code>) and members (<code>com.example.Admin#delete</code>); <code>*</code> is a wildcard. To activate only the defaults, set an entry that changes nothing, e.g. <code>java.lang.Runtime</code>.</li>
+<li><code>expressionHardeningMode</code>: <code>enforce</code> (default) blocks a denied access, <code>report</code> logs a warning <code>ENGINE-25010</code> and allows it, <code>off</code> disables the check.</li>
+</ul>
+<p>The configuration is fixed when the process engine is built.</p>
+
+<h5 id="expected-impact-6">Expected Impact</h5>
+<p>None without configuration. Once the deny list is active, expressions and JUEL scripts that use reflection or <code>Class</code> objects, JUEL scripts with <code>lang:import</code> and expressions that read the process engine configuration fail.
+We recommend to start with <code>expressionHardeningMode=report</code>, check the log for <code>ENGINE-25010</code> and then switch to <code>enforce</code>.</p>
+<p>From CIB seven 3.0.0 on, the deny list is active by default.</p>
+
+  </div>
+</details>
+
+
 <h3 id="2014--2110--224">2.0.14 / 2.1.10 / 2.2.4</h3>
 
 <details class="collapsible-content">
@@ -4549,6 +4824,7 @@ Alternatively, update your configuration to the recommended <a href="/get-starte
     <li><a href="#database-patches">Database Patches</a></li>
     <li><a href="#special-considerations">Special Considerations</a>
       <ul>
+        <li><a href="#224-to-225">2.2.4 to 2.2.5</a></li>
         <li><a href="#2014--2110--224">2.0.14 / 2.1.10 / 2.2.4</a></li>
         <li><a href="#220-to-221">2.2.0 to 2.2.1</a></li>
         <li><a href="#213-to-214">2.1.3 to 2.1.4</a></li>

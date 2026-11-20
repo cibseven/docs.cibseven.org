@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4366,6 +4511,89 @@ the form API and allows definition of event handers for participation in the for
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </span></span></code></pre></div>
+<h2 id="camformclient">camForm.client</h2>
+<p><code>camForm.client</code> is the REST client the form was loaded with. Its resources send the same requests as
+the <a href="/manual/latest/reference/rest/overview/">REST API</a>, for example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;form&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">cam-script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/form-script&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">taskService</span> <span class="o">=</span> <span class="nx">camForm</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;task&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">historyService</span> <span class="o">=</span> <span class="nx">camForm</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">camForm</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;form-loaded&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">taskService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">camForm</span><span class="p">.</span><span class="nx">taskId</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">historyService</span><span class="p">.</span><span class="nx">task</span><span class="p">({</span> <span class="nx">processInstanceId</span><span class="o">:</span> <span class="nx">task</span><span class="p">.</span><span class="nx">processInstanceId</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">tasks</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// the earlier tasks of this process instance
+</span></span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">camForm</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">taskService</span><span class="p">.</span><span class="nx">modifyVariables</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">id</span><span class="o">:</span> <span class="nx">camForm</span><span class="p">.</span><span class="nx">taskId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">modifications</span><span class="o">:</span> <span class="p">{</span> <span class="nx">reviewed</span><span class="o">:</span> <span class="p">{</span> <span class="nx">value</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;Boolean&#39;</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>In the CIB seven webclient, the client does not talk to the engine REST API directly. Its requests go to
+the webclient, which runs them with the permissions of the logged-in user. The webclient serves the
+following calls; any other call answers <code>404</code>:</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Methods</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>group</code></td>
+      <td><code>list</code>, <code>count</code>, <code>get</code></td>
+    </tr>
+    <tr>
+      <td><code>user</code></td>
+      <td><code>list</code>, <code>count</code>, <code>profile</code></td>
+    </tr>
+    <tr>
+      <td><code>task</code></td>
+      <td><code>get</code>, <code>form</code>, <code>deployedForm</code>, <code>formVariables</code>, <code>submitForm</code>, <code>identityLinks</code>, <code>identityLinksAdd</code>, <code>identityLinksDelete</code>, <code>claim</code>, <code>unclaim</code>, <code>delegate</code>, <code>comments</code>, <code>localVariables</code>, <code>modifyVariables</code>, <code>localVariable</code>, <code>deleteVariable</code></td>
+    </tr>
+    <tr>
+      <td><code>history</code></td>
+      <td><code>task</code>, <code>taskCount</code>, <code>processInstance</code>, <code>processInstanceCount</code>, <code>activityInstance</code>, <code>variableInstance</code>, <code>variableInstanceCount</code></td>
+    </tr>
+    <tr>
+      <td><code>process-definition</code></td>
+      <td><code>startForm</code>, <code>formVariables</code>, <code>submitForm</code></td>
+    </tr>
+    <tr>
+      <td><code>process-instance</code></td>
+      <td><code>setVariable</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>Things to keep in mind:</p>
+<ul>
+<li>The variable methods of the <code>task</code> resource (<code>localVariables</code>, <code>modifyVariables</code>, <code>localVariable</code>,
+<code>deleteVariable</code>) work on the variables of the task itself, as in the REST API. To set a process
+variable, use <code>setVariable</code> of the <code>process-instance</code> resource.</li>
+<li>Call <code>formVariables</code> of the <code>process-definition</code> resource with the definition <code>key</code>, or with its
+<code>id</code> together with <code>names</code>. With an <code>id</code> alone the call fails.</li>
+<li>To read <code>Json</code> variables as JSON text, pass <code>deserializeValues: false</code>, for example to
+<code>history.variableInstance</code>. Deserialized, a <code>Json</code> value comes back as the properties of the
+engine&rsquo;s JSON object instead of its content, as in the REST API.</li>
+<li>Administrative and batch operations, such as history cleanup, reports and asynchronous deletes, are
+deliberately not available to forms.</li>
+</ul>
+
+<div class="note bg-info docs-info">
+  <h3></h3>
+  <p>If your form needs a call that is not listed, please report it with its HTTP method and path.</p>
+</div>
+
+
 <h2 id="scope">$scope</h2>
 
 <div class="note bg-info docs-info">
@@ -4435,6 +4663,7 @@ While AngularJS remains available in the Camunda web applications, these applica
   <nav id="TableOfContents">
   <ul>
     <li><a href="#camform">camForm</a></li>
+    <li><a href="#camformclient">camForm.client</a></li>
     <li><a href="#scope">$scope</a></li>
     <li><a href="#inject">inject()</a></li>
   </ul>

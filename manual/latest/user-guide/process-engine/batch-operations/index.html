@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4361,6 +4506,7 @@
 <li><a href="#setting-retries-of-external-tasks">Setting retries of external tasks</a></li>
 <li><a href="#set-variables-to-process-instances">Set Variables to Process Instances</a></li>
 <li><a href="#correlate-messages-to-process-instances">Correlate Messages to Process Instances</a></li>
+<li><a href="#delete-deployments">Delete Deployments</a></li>
 <li><a href="#historic-process-instances">Set a Removal Time to Historic Process Instances</a></li>
 <li><a href="#historic-decision-instances">Set a Removal Time to Historic Decision Instances</a></li>
 <li><a href="#historic-batches">Set a Removal Time to Historic Batches</a></li>
@@ -4371,7 +4517,8 @@ understand the creation process better.</p>
 <p>Asynchronous operations can be performed based on a list of specific instances as well as on the result of a query providing a
 resulting list of instances. If both a list of instances and a query are provided, the resulting set of affected instances
 will consist of the union of those two subsets.</p>
-<p>All listed batch operations, except <a href="#historic-batches">Set a Removal Time to Historic Batches</a>, are deployment-aware.
+<p>All listed batch operations, except <a href="#historic-batches">Set a Removal Time to Historic Batches</a> and
+<a href="#delete-deployments">Delete Deployments</a>, are deployment-aware.
 In particular, this means that the seed job and execution jobs will receive a <code>deploymentId</code> so
 <a href="/manual/latest/user-guide/process-engine/the-job-executor/#job-execution-in-heterogeneous-clusters">deployment-aware job executors</a>
 can pick up those jobs of a batch that need to be executed on their nodes.
@@ -4476,6 +4623,97 @@ you can <a href="/manual/latest/reference/bpmn20/events/message-events/#explicit
 As a result, the execution of some of this batch&rsquo;s jobs may be delayed by other exclusive jobs that are related to the same process instance that the message should be correlated to.
 However, exclusive scheduling only happens when the jobs of this batch relate to exactly one process instance.
 This can be controlled by configuring the [invocationsPerBatchJob][] property.</p>
+</p>
+</div>
+
+
+<h3 id="delete-deployments">Delete Deployments</h3>
+<p>This batch operation deletes deployments asynchronously, for example old versions of your processes.</p>
+<p>You can either (1) select deployments using a <code>DeploymentQuery</code> or (2) pass a list of deployment ids directly.
+If you pass both, the batch deletes the deployments of both. Every deployment id you pass must exist when the
+batch is created, otherwise the request is rejected.</p>
+<p>Please see below how to call the Java API:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">DeploymentQuery</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="p">.</span><span class="na">createDeploymentQuery</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">deploymentNameLike</span><span class="p">(</span><span class="s">&#34;invoice%&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">Batch</span><span class="w"> </span><span class="n">batch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repositoryService</span><span class="p">.</span><span class="na">deleteDeploymentsAsync</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kc">null</span><span class="p">,</span><span class="w">   </span><span class="c1">// deployment ids, can be combined with the query</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">query</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kc">true</span><span class="p">,</span><span class="w">   </span><span class="c1">// cascade</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// skipCustomListeners</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kc">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// skipIoMappings</span><span class="w">
+</span></span></span></code></pre></div><p>The REST API offers the same operation as <a href="/manual/latest/reference/rest/specification/#tag/Deployment/operation/deleteDeploymentsAsyncOperation">Delete Deployments Async</a>
+(<code>POST /deployment/delete</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;deploymentQuery&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;nameLike&#34;</span><span class="p">:</span> <span class="s2">&#34;invoice%&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;cascade&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;skipCustomListeners&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;skipIoMappings&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>In the enterprise edition, Cockpit offers the operation as &ldquo;Delete deployments&rdquo; in the
+<a href="/manual/latest/webapps/cockpit/bpmn/batch/">batch operations</a>.</p>
+<p>The following parameters control the deletion:</p>
+<ul>
+<li><code>cascade</code>: Also delete the process instances of the deployments and their history. Without <code>cascade</code>, a
+deployment that still has running process instances is not deleted: its job fails and, when no retries are left,
+creates an incident.</li>
+<li><code>skipCustomListeners</code>: Skip custom execution listeners of the process instances that are deleted with <code>cascade</code>.</li>
+<li><code>skipIoMappings</code>: Skip the input/output mappings of the process instances that are deleted with <code>cascade</code>.</li>
+</ul>
+<p>To create the batch, a user needs the permission <strong>Create Batch Delete Deployments</strong> or <strong>Create</strong> on the
+<a href="/manual/latest/user-guide/process-engine/authorization-service/#additional-batch-permissions">batch resource</a>, and
+<strong>Delete</strong> on every selected deployment. A deployment query selects only the deployments that the user may see,
+that is, with <strong>Read</strong> on the deployment. With <a href="/manual/latest/user-guide/process-engine/multi-tenancy/">multi-tenancy</a>,
+the user must also have access to the tenant of every selected deployment, and a query selects only the
+deployments of the user&rsquo;s tenants. These permissions are checked once, when the batch is created; the jobs of the
+batch run without a user.</p>
+
+<h4 id="how-the-deployments-are-deleted">How the Deployments Are Deleted</h4>
+
+<div class="note bg-info docs-info">
+  <h3>Changed in 3.0.0</h3>
+  <p>The batch is available since <strong>CIB seven 2.2.2</strong>. Up to 2.2.4, it bound its jobs to the deployments it deletes and
+could stall with a deployment-aware job executor, which the Tomcat and WildFly distributions use by default: after
+the first deployment was deleted, or right away for deployments that were not registered on any node. A batch that
+stalled before the update stays stalled after it. Delete it and start a new batch for the deployments that are
+still there.</p>
+</div>
+
+<p>Deployments that contain versions of the same process, that is, process definitions with the same key and tenant,
+are deleted by one execution job: one deployment after another, the newest deployment first, each in its own
+transaction. Deleting the latest version of a process moves its start events, for example a start timer or a
+message start event, to the previous version. This order makes sure that the version that stays keeps its start
+events. If one deployment of the job cannot be deleted, the deployments deleted before it stay deleted, and a retry
+of the job continues with the rest.</p>
+<p>A deployment that contains several processes is deleted by the same job as the other versions of each of them.
+Deployments that share no process are deleted by separate jobs, which can run in parallel. So the batch has one
+execution job per group of deployments that share a process (<code>totalJobs</code>). The <a href="/manual/latest/user-guide/process-engine/batch/#configuration">invocationsPerBatchJob</a> property,
+also per batch type, does not apply to this batch.</p>
+<p>Unlike the other batch operations, this batch does not bind its seed job and execution jobs to a deployment. Every
+job executor picks them up, including a <a href="/manual/latest/user-guide/process-engine/the-job-executor/#job-execution-in-heterogeneous-clusters">deployment-aware</a>
+one, also when the deployments to delete are not registered on any node, for example deployments that were created
+through the REST API before a restart.</p>
+
+<div class="note bg-info docs-info">
+  <h3>Process applications in a heterogeneous cluster</h3>
+  <p>The jobs of this batch can run on any node. In a cluster where a process application is not deployed on every
+node, a job can run on a node without the application. With <code>cascade</code>, the custom listeners of the process
+instances to delete are then not available, and the job can fail. Use <code>skipCustomListeners</code> in such a cluster.</p>
+</div>
+
+
+<div class="note bg-info docs-info">
+  <h3>Deletions at the same time</h3>
+  <p><p>The batch deletes the versions of one process one after another. Since CIB seven 3.0.0, deletions that run at the
+same time outside of one batch, for example parallel calls of <code>RepositoryService#deleteDeployment</code>, are serialized
+as well: deleting a deployment or process definitions takes the
+<a href="/manual/latest/user-guide/process-engine/deployments/#deployments-in-a-clustered-scenario">deployment lock</a>,
+and a deletion waits until a concurrent deletion or deployment has committed.</p>
+<p>With the deployment lock disabled (<code>deploymentLockUsed</code> set to <code>false</code>), on H2 1.x, and up to CIB seven 2.2.x,
+such deletions can fail with an error, or leave a start timer or a message start event subscription on a deleted
+version. In the second case, the version that stays can not be started by that event. Deploying a new version of
+the process repairs it: the deployment removes the start events that point to deleted versions and creates them for
+the new version.</p>
 </p>
 </div>
 
@@ -4592,6 +4830,11 @@ We recommend using this on completed or canceled process instances.</p>
         <li><a href="#setting-retries-of-external-tasks">Setting Retries Of External Tasks</a></li>
         <li><a href="#set-variables-to-process-instances">Set Variables to Process Instances</a></li>
         <li><a href="#correlate-messages-to-process-instances">Correlate Messages to Process Instances</a></li>
+        <li><a href="#delete-deployments">Delete Deployments</a>
+          <ul>
+            <li><a href="#how-the-deployments-are-deleted">How the Deployments Are Deleted</a></li>
+          </ul>
+        </li>
         <li><a href="#set-a-removal-time">Set a Removal Time</a>
           <ul>
             <li><a href="#historic-process-instances">Historic Process Instances</a></li>

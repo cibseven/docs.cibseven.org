@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4435,6 +4580,11 @@
   </tbody>
 </table>
 <p>Each entry carries the <code>folderId</code> of the folder it is filed in, <strong>from 3.0.0</strong>.</p>
+<hr>
+
+<h3 id="get-unified-diagram-by-id">Get Unified Diagram by ID</h3>
+<pre tabindex="0"><code>GET /modeler/unified-diagrams/{id}
+</code></pre><p>Returns one diagram or form in the unified format: <code>id</code>, <code>name</code>, <code>type</code> (<code>bpmn-c7</code>, <code>dmn</code> or <code>form</code>), <code>processkey</code> (the process key, or the form id of a form), <code>formId</code>, <code>description</code>, <code>created</code>, <code>updated</code>, <code>updatedBy</code>, <code>version</code> and <code>folderId</code>. <code>404 Not Found</code> when there is none with this ID. In the enterprise edition, from 3.0.0, a model in a project the caller may not see is refused, see <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>.</p>
 <hr>
 
 <h3 id="get-diagram-by-id">Get Diagram by ID</h3>
@@ -5052,11 +5202,118 @@
 <p><strong>Response:</strong> <code>200 OK</code> — array of <code>{ &quot;memberType&quot;: &quot;USER&quot;, &quot;id&quot;: &quot;john&quot;, &quot;name&quot;: &quot;John Doe&quot; }</code>, at most ten.</p>
 <hr>
 
+<h2 id="element-templates">Element Templates</h2>
+<p>The element templates the modeler offers, see <a href="/manual/latest/webapps/modeler/user-guide/element-templates/">Element Templates</a>. <code>{id}</code> is the id of the stored template, not the <code>id</code> inside its JSON, which the request body calls <code>templateId</code>.</p>
+<p>The plain listing needs an authenticated user only, because the cockpit&rsquo;s diagram viewer loads it to draw template icons. Every other endpoint needs the modeler <code>ACCESS</code> permission like the rest of this page.</p>
+<p><strong>Request body of a template:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Send Email&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;templateId&#34;</span><span class="p">:</span> <span class="s2">&#34;com.example.send-email&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Sends an email through the mail connector&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;{ \&#34;id\&#34;: \&#34;com.example.send-email\&#34;, \&#34;name\&#34;: \&#34;Send Email\&#34;, ... }&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;active&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><code>content</code> is the template JSON as a string.</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /modeler/element-templates</code></td>
+      <td>All templates, active and inactive</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/{id}</code></td>
+      <td>One template. <code>404 Not Found</code> when there is none</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates</code></td>
+      <td>Creates a template from the request body</td>
+    </tr>
+    <tr>
+      <td><code>PUT /modeler/element-templates/{id}</code></td>
+      <td>Replaces a template with the request body</td>
+    </tr>
+    <tr>
+      <td><code>PATCH /modeler/element-templates/{id}</code></td>
+      <td>Changes the fields named in the body, a JSON map. <code>204 No Content</code> when nothing changed</td>
+    </tr>
+    <tr>
+      <td><code>DELETE /modeler/element-templates/{id}</code></td>
+      <td>Deletes a template</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/{id}/duplicate</code></td>
+      <td>Stores a copy of a template</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/bulk-delete</code></td>
+      <td>Deletes the templates whose ids the body lists. Answers <code>{ &quot;deleted&quot;: [...], &quot;failed&quot;: [...], &quot;totalRequested&quot;: 3, &quot;totalDeleted&quot;: 2 }</code></td>
+    </tr>
+    <tr>
+      <td><code>PATCH /modeler/element-templates/bulk-update-visibility</code></td>
+      <td>Activates or deactivates several templates: <code>{ &quot;templateIds&quot;: [...], &quot;active&quot;: false }</code>. <code>400 Bad Request</code> without both fields</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/search</code></td>
+      <td>Templates matching all parameters given: <code>name</code>, <code>creator</code>, <code>templateId</code> and <code>description</code> match in part, <code>active</code> exactly</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/filter</code></td>
+      <td>Templates filtered by <code>activeOnly</code> (default <code>true</code>) and <code>createdBy</code> (exact, ignoring case)</td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/validate</code></td>
+      <td>Checks a request body without storing it. Answers <code>{ &quot;valid&quot;: false, &quot;errors&quot;: [&quot;Template ID already exists&quot;] }</code></td>
+    </tr>
+    <tr>
+      <td><code>POST /modeler/element-templates/import</code></td>
+      <td>Stores the templates of an array of request bodies. Answers <code>{ &quot;imported&quot;: [...], &quot;failed&quot;: [...], &quot;totalRequested&quot;: 2, &quot;totalImported&quot;: 2 }</code>, where <code>failed</code> names the <code>templateId</code> of each one that was not stored</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/export</code></td>
+      <td>The templates whose ids <code>templateIds</code> lists, or all; only active ones with <code>activeOnly=true</code></td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/element-templates/statistics</code></td>
+      <td><code>{ &quot;total&quot;: 12, &quot;active&quot;: 10, &quot;inactive&quot;: 2, &quot;byCreator&quot;: { &quot;john&quot;: 4, &quot;System&quot;: 8 } }</code></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<h2 id="snapshots-enterprise-edition">Snapshots (Enterprise Edition)</h2>
+<p>The saved states of a diagram or form, see <a href="/manual/latest/webapps/modeler/user-guide/snapshots/">Snapshots &amp; Comparison</a>.</p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /modeler/process/history/{id}</code></td>
+      <td>The snapshots of a diagram, as <code>ProcessDiagramEntity</code> objects</td>
+    </tr>
+    <tr>
+      <td><code>GET /modeler/form/history/{id}</code></td>
+      <td>The snapshots of a form, as <code>FormEntity</code> objects. <strong>Available from 3.0.0</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p>Both list at most <code>cibseven.webclient.modeler.history.maxResults</code> snapshots. They need permission to see the model&rsquo;s project, and answer with an empty array when the model does not exist, so the history of a deleted model is not shown.</p>
+<hr>
+
 <h2 id="chat-enterprise-edition">Chat (Enterprise Edition)</h2>
 
 <div class="note bg-info docs-info">
   <h3>Enterprise Feature</h3>
-  <p>Chat endpoints are only available in the enterprise edition when <code>cibseven.webclient.modeler.enabled: true</code>.</p>
+  <p>Chat endpoints are only available in the enterprise edition when both <code>cibseven.webclient.modeler.enabled: true</code> and <code>cibseven.webclient.modeler.chat.enabled: true</code>.</p>
 </div>
 
 <p>Chat endpoints are mounted under a separate base path: <code>{basePath}/chat</code>.</p>
@@ -5255,6 +5512,99 @@
     </tr>
   </tbody>
 </table>
+<hr>
+
+<h3 id="edit-message">Edit Message</h3>
+<pre tabindex="0"><code>PUT /chat/{roomId}/{messageId}
+</code></pre><p>Replaces the text of a message. Only its author may edit it. The request body is the one of <a href="#send-message">Send Message</a>; only <code>content</code> is used, and it must not be blank.</p>
+<p><strong>Response:</strong> <code>200 OK</code> — The edited message object, with <code>editedAt</code> set. The other users of the room receive an <code>update</code> event.</p>
+<hr>
+
+<h3 id="delete-message">Delete Message</h3>
+<pre tabindex="0"><code>DELETE /chat/{roomId}/{messageId}
+</code></pre><p>Deletes a message. Only its author may delete it. The message is kept in the database marked as deleted, and no longer returned by <a href="#get-message-history">Get Message History</a>. The other users of the room receive a <code>delete</code> event.</p>
+<hr>
+
+<h3 id="leave-room">Leave Room</h3>
+<pre tabindex="0"><code>DELETE /chat/{roomId}/presence
+</code></pre><p>Removes the caller from the presence of the room at once, instead of when the last poll ages out. Used by the <code>longpolling</code> transport, which has no disconnect to notice; with the <code>websocket</code> transport it does nothing. <strong>Available from 3.0.0.</strong></p>
+<hr>
+
+<h2 id="bpmn-ai-agent-enterprise-edition">BPMN AI Agent (Enterprise Edition)</h2>
+
+<div class="note bg-info docs-info">
+  <h3>Enterprise Feature</h3>
+  <p>The agent endpoints exist only in the enterprise edition with <code>cibseven.webclient.modeler.ai.enabled: true</code>. See <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/">BPMN AI Agent</a>.</p>
+</div>
+
+<p>The agent endpoints are mounted under <code>{basePath}/agent</code>. They are the interface between the agent panels of the modeler and the server; they need an authenticated user and a valid license.</p>
+<p><strong>Base URL:</strong> <code>{basePath}/agent</code></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /agent/config</code></td>
+      <td>The <code>defaultModel</code> and the <code>models</code> configured under <code>cibseven.webclient.modeler.ai</code>, for the model selector. Provider settings and API keys are not part of the answer</td>
+    </tr>
+    <tr>
+      <td><code>POST /agent/chat/stream</code></td>
+      <td>Runs one request of the agent and streams its progress as server-sent events, see below</td>
+    </tr>
+    <tr>
+      <td><code>POST /agent/chat/cancel/{sessionId}</code></td>
+      <td>Stops the running request of a chat session. The model call under way still completes, the remaining steps are skipped, and the stream ends with a <code>cancelled</code> event. <code>204 No Content</code>, also when nothing runs</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="stream-a-chat-request">Stream a Chat Request</h3>
+<pre tabindex="0"><code>POST /agent/chat/stream?folderId={folderId}
+</code></pre><p>The caller must be allowed to change the models of the folder, see <a href="/manual/latest/webapps/modeler/user-guide/project-members/">Project Members</a>, and the engine must have its webclient tables, see <a href="/manual/latest/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>. The <code>folderId</code> parameter is <strong>available from 3.0.0</strong>.</p>
+<p><strong>Request Body (main fields):</strong></p>
+<table class="table-2col">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>message</code></td>
+      <td>What the user asked</td>
+    </tr>
+    <tr>
+      <td><code>sessionId</code></td>
+      <td>Chat session chosen by the client; also the ID to cancel the request with</td>
+    </tr>
+    <tr>
+      <td><code>model</code></td>
+      <td>The <code>value</code> of one of the configured models; the default model when absent</td>
+    </tr>
+    <tr>
+      <td><code>mode</code></td>
+      <td><code>ask</code>, <code>plan</code> or <code>edit</code></td>
+    </tr>
+    <tr>
+      <td><code>artifact</code></td>
+      <td><code>bpmn</code> (default) or <code>form</code>. <code>form</code> is <strong>available from 3.0.0</strong>, for the <a href="/manual/latest/webapps/modeler/user-guide/form-ai-chat/">Form AI Agent</a></td>
+    </tr>
+    <tr>
+      <td><code>currentBpmnXml</code> / <code>currentFormSchema</code></td>
+      <td>The diagram or the form schema as it is in the editor</td>
+    </tr>
+    <tr>
+      <td><code>files</code></td>
+      <td>Attachments, each with <code>name</code>, <code>mimeType</code> and the content as Base64 in <code>data</code></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Response:</strong> <code>200 OK</code>, <code>text/event-stream</code>. The events are <code>phase</code>, <code>delta</code>, <code>reasoning_delta</code>, <code>tool_call</code>, <code>usage</code>, and one closing event: <code>done</code> with the result (for example the changed XML), <code>error</code>, or <code>cancelled</code>. A model that is not configured is reported as an <code>error</code> event with the code <code>ModelNotAllowedException</code>, not as an HTTP error.</p>
 
     </div>
   </div>
@@ -5268,6 +5618,7 @@
       <ul>
         <li><a href="#list-diagrams">List Diagrams</a></li>
         <li><a href="#list-unified-diagrams">List Unified Diagrams</a></li>
+        <li><a href="#get-unified-diagram-by-id">Get Unified Diagram by ID</a></li>
         <li><a href="#get-diagram-by-id">Get Diagram by ID</a></li>
         <li><a href="#get-diagram-xml-by-id">Get Diagram XML by ID</a></li>
         <li><a href="#create-diagram-from-file-upload">Create Diagram from File Upload</a></li>
@@ -5334,12 +5685,22 @@
         <li><a href="#search-users-and-groups">Search Users and Groups</a></li>
       </ul>
     </li>
+    <li><a href="#element-templates">Element Templates</a></li>
+    <li><a href="#snapshots-enterprise-edition">Snapshots (Enterprise Edition)</a></li>
     <li><a href="#chat-enterprise-edition">Chat (Enterprise Edition)</a>
       <ul>
         <li><a href="#get-message-history">Get Message History</a></li>
         <li><a href="#send-message">Send Message</a></li>
         <li><a href="#get-room-presence">Get Room Presence</a></li>
         <li><a href="#long-poll-for-events">Long-Poll for Events</a></li>
+        <li><a href="#edit-message">Edit Message</a></li>
+        <li><a href="#delete-message">Delete Message</a></li>
+        <li><a href="#leave-room">Leave Room</a></li>
+      </ul>
+    </li>
+    <li><a href="#bpmn-ai-agent-enterprise-edition">BPMN AI Agent (Enterprise Edition)</a>
+      <ul>
+        <li><a href="#stream-a-chat-request">Stream a Chat Request</a></li>
       </ul>
     </li>
   </ul>

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4529,8 +4674,8 @@ See also <a href="/manual/latest/reference/bpmn20/subprocesses/call-activity/#pa
 <h4 id="job-acquisition-performance-optimization">Job Acquisition performance optimization</h4>
 <p>To optimize the acquisition of jobs that need to be executed immediately, the <code>DUEDATE_</code> column is not set (<code>null</code>) and a (positive) null check is added as a condition for acquisition.</p>
 <p>In case each job must have a <code>DUEDATE_</code> set, the optimization can be disabled. This can be done by setting the <code>ensureJobDueDateNotNull</code> <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#ensureJobDueDateNotNull">process engine configuration flag</a> to <code>true</code>.</p>
-<p>However, any jobs created with a <code>null</code> value for <code>DUEDATE_</code> before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the <strong>Set Due Date</strong> <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29">Java</a>
-/<a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST</a> or <strong>Set Retries</strong> <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/ManagementService.html#setJobRetries%28int%29">Java</a>
+<p>However, any jobs created with a <code>null</code> value for <code>DUEDATE_</code> before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the <strong>Set Due Date</strong> <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29">Java</a>
+/<a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobDuedate">REST</a> or <strong>Set Retries</strong> <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/ManagementService.html#setJobRetries%28int%29">Java</a>
 /<a href="/manual/latest/reference/rest/specification/#tag/Job/operation/setJobRetries">REST</a> APIs.</p>
 
 <h3 id="the-two-phases-of-job-acquisition">The Two Phases of Job Acquisition</h3>
@@ -4680,6 +4825,7 @@ Incidents and historic incidents related to the job can be requested via Java AP
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/properties&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/process-engine&gt;</span>
 </span></span></code></pre></div><p>The configuration follows the <a href="http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals">ISO_8601 standard for repeating time intervals</a>. In the example, <code>R5/PT5M</code> means that the maximum number of retries is 5 (<code>R5</code>) and the delay of retry is 5 minutes (<code>PT5M</code>).</p>
+<p>Since 3.0.0, a <code>camunda:failedJobRetryTimeCycle</code> on an external task also limits the attempts of the external task, see <a href="/manual/latest/user-guide/process-engine/external-tasks/#retry-time-cycle">Retry Time Cycle of external tasks</a>. The engine-wide <code>failedJobRetryTimeCycle</code> does not apply to external tasks; they have their own default, <code>externalTaskFailedJobRetryTimeCycle</code>.</p>
 <p>The CIB seven engine allows you to configure this setting for the following specific elements:</p>
 <ul>
 <li><a href="#use-a-custom-job-retry-configuration-for-activities">Activities (tasks, call activities, subprocesses)</a></li>

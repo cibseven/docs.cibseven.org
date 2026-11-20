@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4348,7 +4493,7 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>This document describes the installation of CIB seven and its components on a vanilla <a href="http://www.wildfly.org">WildFly Application Server</a> or JBoss EAP 7 / 8.</p>
+      <p>This document describes the installation of CIB seven and its components on a vanilla <a href="http://www.wildfly.org">WildFly Application Server</a> or JBoss EAP 8.1.</p>
 
 <div class="note bg-info docs-info">
   <h3>Reading this Guide</h3>
@@ -4364,8 +4509,8 @@
 
 <h3 id="setup">Setup</h3>
 <ul>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-wildfly/2.2.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-webapp-wildfly-2.2.0.war</code>.</li>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-jboss/2.2.0/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>cibseven-webapp-jboss-2.2.0.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-wildfly/3.0.0/">WildFly</a>, the name of the artifact is <code>cibseven-webapp-wildfly-3.0.0.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/webapp/cibseven-webapp-jboss/3.0.0/">JBoss EAP 8.1</a>, the name of the artifact is <code>cibseven-webapp-jboss-3.0.0.war</code>. Until CIB seven 2.x, this artifact was the variant for WildFly ≤26 and JBoss EAP 7.</li>
 </ul>
 
 <h4 id="copy-modules">Copy Modules</h4>
@@ -4452,12 +4597,7 @@ typically <code>bin</code>.</p>
 </span></span><span class="line"><span class="cl">            <span class="na">pool-name=</span><span class="s">&#34;ProcessEngine&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;connection-url&gt;</span>jdbc:h2:./camunda-h2-dbs/process-engine;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE<span class="nt">&lt;/connection-url&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;driver&gt;</span>h2<span class="nt">&lt;/driver&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;security</span> <span class="na">user-name=</span><span class="s">&#34;sa&#34;</span> <span class="na">password=</span><span class="s">&#34;sa&#34;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- for WildFly / JBoss EAP 8 --&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- for JBoss EAP 7
-</span></span></span><span class="line"><span class="cl"><span class="c">  &lt;security&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c">    &lt;user-name&gt;sa&lt;/user-name&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c">    &lt;password&gt;sa&lt;/password&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c">  &lt;/security&gt; --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;security</span> <span class="na">user-name=</span><span class="s">&#34;sa&#34;</span> <span class="na">password=</span><span class="s">&#34;sa&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/datasource&gt;</span>
 </span></span></code></pre></div><p>Using H2 as a database is ideal for development purposes but is not recommended for usage in a productive environment.
 These links point you to resources for other databases:</p>
@@ -4474,7 +4614,7 @@ These links point you to resources for other databases:</p>
 <ol>
 <li>Download the CIB seven web application that contains the web applications from our Maven Artifactory.
 <ul>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/webapp/cibseven-webclient-web/2.2.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-webclient-web-2.2.0-wildfly.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/webapp/cibseven-webclient-web/3.0.0/">WildFly and JBoss EAP 8.1</a>, the name of the artifact is <code>cibseven-webclient-web-3.0.0-wildfly.war</code>.</li>
 </ul>
 </li>
 <li>Optionally, you may change the context path to which the application will be deployed (default is <code>/webapp</code>).
@@ -4483,6 +4623,7 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 <li>Startup WildFly.</li>
 <li>Access CIB seven web application via <code>/webapp</code> or under the context path you configured.</li>
 </ol>
+<p>The webclient WAR uses the CIB seven modules installed in <a href="#setup">Setup</a> and the datasource <code>java:jboss/datasources/ProcessEngine</code>. To run the webclient on a WildFly / JBoss EAP without them, for example next to an application with an embedded process engine, see <a href="/manual/latest/update/minor/21-to-22/#webclient-on-wildfly-without-cib-seven-modules">Webclient on WildFly without CIB seven modules</a>.</p>
 
 <h4 id="cockpit-tasklist-and-admin">Cockpit, Tasklist, and Admin</h4>
 <p>The following steps are required to deploy legacy Camunda web application:</p>
@@ -4500,8 +4641,7 @@ Edit the file <code>WEB-INF/jboss-web.xml</code> in the war file and update the 
 <ol>
 <li>Download the REST API web application archive from our Maven Artifactory.
 <ul>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest-jakarta/2.2.0/">WildFly ≥27 / JBoss EAP 8</a>, the name of the artifact is <code>cibseven-engine-rest-jakarta-2.2.0-wildfly.war</code>.</li>
-<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/2.2.0/">WildFly ≤26 / JBoss EAP 7</a>, the name of the artifact is <code>cibseven-engine-rest-2.2.0-wildfly.war</code>.</li>
+<li>For <a href="https://artifacts.cibseven.org/service/rest/repository/browse/public/org/cibseven/bpm/cibseven-engine-rest/3.0.0/">WildFly and JBoss EAP 8.1</a>, the name of the artifact is <code>cibseven-engine-rest-3.0.0-wildfly.war</code>. The artifacts with the suffix <code>-jakarta</code> no longer exist since CIB seven 3.0.</li>
 </ul>
 </li>
 <li>Optionally, you may change the context path to which the REST API will be deployed (default is <code>/engine-rest</code>).
@@ -4545,14 +4685,10 @@ provided that you deployed the application in the context <code>/engine-rest</co
 <ul>
 <li><code>org/cibseven/spin/cibseven-spin-core</code></li>
 <li><code>org/cibseven/spin/cibseven-spin-dataformat-json-jackson</code></li>
+<li><code>org/cibseven/spin/cibseven-spin-dataformat-xml-dom</code></li>
 <li><code>org/cibseven/spin/cibseven-spin-dataformat-xml-dom-jakarta</code>
 <ul>
-<li><strong>Heads-up:</strong> add this module only for WildFly ≥27 / JBoss EAP 8.</li>
-</ul>
-</li>
-<li><code>org/cibseven/spin/cibseven-spin-dataformat-xml-dom</code>
-<ul>
-<li><strong>Heads-up:</strong> add this module only for WildFly ≤26 / JBoss EAP 7.</li>
+<li><strong>Heads-up:</strong> this module is only an alias for <code>cibseven-spin-dataformat-xml-dom</code>. It keeps deployments working that still name the 2.x module in a <code>jboss-deployment-structure.xml</code> or a <code>MANIFEST.MF</code>; change such references to <code>org.cibseven.spin.cibseven-spin-dataformat-xml-dom</code>.</li>
 </ul>
 </li>
 <li><code>org/cibseven/bpm/cibseven-engine-plugin-spin</code></li>
@@ -4625,12 +4761,23 @@ The Spin plugin also comes into play when JSON variables are set or read by the 
 <p>Add the following modules (if not existing) from the folder <code>$WILDFLY_DISTRIBUTION/modules/</code> to the folder <code>$WILDFLY_HOME/modules/</code>:</p>
 <ul>
 <li><code>org/graalvm/js/js</code></li>
+<li><code>org/graalvm/js/js-language</code></li>
 <li><code>org/graalvm/js/js-scriptengine</code></li>
+<li><code>org/graalvm/polyglot/polyglot</code></li>
 <li><code>org/graalvm/regex/regex</code></li>
+<li><code>org/graalvm/sdk/collections</code></li>
 <li><code>org/graalvm/sdk/graal-sdk</code></li>
+<li><code>org/graalvm/sdk/jniutils</code></li>
+<li><code>org/graalvm/sdk/nativeimage</code></li>
+<li><code>org/graalvm/sdk/word</code></li>
+<li><code>org/graalvm/shadowed/icu4j</code></li>
+<li><code>org/graalvm/shadowed/xz</code></li>
 <li><code>org/graalvm/truffle/truffle-api</code></li>
+<li><code>org/graalvm/truffle/truffle-compiler</code></li>
+<li><code>org/graalvm/truffle/truffle-runtime</code></li>
 <li><code>com/ibm/icu/icu4j</code></li>
 </ul>
+<p>The modules <code>org/graalvm/js/js</code> and <code>org/graalvm/sdk/graal-sdk</code> contain no jar. They only group the other modules.</p>
 
     </div>
   </div>

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4414,14 +4559,14 @@ default values. For task-oriented guidance, see <a href="/manual/latest/referenc
     <tr>
       <td><code>model</code></td>
       <td>String</td>
-      <td><code>…defaultModel</code> prop → <code>CIBSEVEN_CONNECT_AI_AGENT_DEFAULT_MODEL</code> env → <code>gpt-5.4-nano</code></td>
+      <td><code>…defaultModel</code> prop → <code>CIBSEVEN_CONNECT_AI_AGENT_DEFAULT_MODEL</code> env → <code>gpt-6-luna</code></td>
       <td>LLM model identifier.</td>
     </tr>
     <tr>
       <td><code>apiKey</code></td>
       <td>String</td>
-      <td><code>OPENAI_API_KEY</code> env</td>
-      <td>Provider API key.</td>
+      <td><code>OPENAI_API_KEY</code> env, only if <code>baseUrl</code> is empty or has the scheme, host and port of <code>OPENAI_BASE_URL</code> (default <code>https://api.openai.com/v1</code>)</td>
+      <td>Provider API key. A key set here is sent to <code>baseUrl</code>, whatever it is. See <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/#api-key-and-endpoint">API key and endpoint</a>.</td>
     </tr>
     <tr>
       <td><code>customHeaders</code></td>
@@ -4586,7 +4731,7 @@ default values. For task-oriented guidance, see <a href="/manual/latest/referenc
       <td><code>embeddingModelName</code></td>
       <td>String</td>
       <td>empty → local <code>AllMiniLmL6V2</code></td>
-      <td>Remote embedding model name (uses <code>apiKey</code>); empty → local model.</td>
+      <td>Remote embedding model name, always called at <code>https://api.openai.com/v1</code>; empty → local model. Uses <code>apiKey</code> only if <code>baseUrl</code> is OpenAI, else <code>OPENAI_API_KEY</code> only if <code>OPENAI_BASE_URL</code> is unset or OpenAI.</td>
     </tr>
   </tbody>
 </table>
@@ -4625,8 +4770,9 @@ default values. For task-oriented guidance, see <a href="/manual/latest/referenc
 
 <div class="note bg-info docs-info">
   <h3>Note</h3>
-  <p>The per-activity chat-log timeline is written to the process variable
-<code>cibseven-connect-ai-agent_&lt;activityId&gt;</code> automatically — it is <strong>not</strong> an output parameter.</p>
+  <p>The per-activity chat-log timeline is written to the process variables
+<code>cibseven-connect-ai-agent_&lt;activityId&gt;~&lt;eventSeq&gt;</code>, one per model call, automatically — it is <strong>not</strong>
+an output parameter. See <a href="/manual/latest/reference/connect/ai-agent-connector/audit-trail/">Audit Trail</a>.</p>
 </div>
 
 
@@ -4684,8 +4830,8 @@ pgvector store for later RAG retrieval. See <a href="/manual/latest/reference/co
     <tr>
       <td><code>apiKey</code></td>
       <td>String</td>
-      <td><code>OPENAI_API_KEY</code> env</td>
-      <td>API key for a remote embedding model.</td>
+      <td><code>OPENAI_API_KEY</code> env, only if <code>OPENAI_BASE_URL</code> is unset or OpenAI</td>
+      <td>OpenAI API key for a remote embedding model.</td>
     </tr>
     <tr>
       <td><code>embeddingDimension</code></td>
@@ -4767,7 +4913,7 @@ pgvector store for later RAG retrieval. See <a href="/manual/latest/reference/co
       <td><code>OPENAI_API_KEY</code></td>
       <td>env</td>
       <td>—</td>
-      <td>Fallback API key when <code>apiKey</code> is not set.</td>
+      <td>Fallback API key when <code>apiKey</code> is not set. Only sent to the endpoint of <code>OPENAI_BASE_URL</code> (or <code>https://api.openai.com/v1</code> if unset); remote embeddings get it only if that endpoint is OpenAI.</td>
     </tr>
     <tr>
       <td><code>OPENAI_BASE_URL</code></td>
@@ -4791,7 +4937,7 @@ pgvector store for later RAG retrieval. See <a href="/manual/latest/reference/co
       <td><code>cibseven.connect.ai-agent.redactContent</code></td>
       <td>system property</td>
       <td><code>false</code></td>
-      <td>When <code>true</code>, message/response content in the audit log is replaced by a SHA-256 hash + length.</td>
+      <td>When <code>true</code>, the content of request messages in the audit log (<code>messages[].content</code>) is replaced by a SHA-256 hash + length; the answer and the tool-call arguments are not.</td>
     </tr>
     <tr>
       <td><code>CIBSEVEN_CONNECT_AI_AGENT_REDACT_CONTENT</code></td>
@@ -4803,13 +4949,73 @@ pgvector store for later RAG retrieval. See <a href="/manual/latest/reference/co
       <td><code>cibseven.connect.ai-agent.chatLogVariable.enabled</code></td>
       <td>system property</td>
       <td><code>true</code></td>
-      <td>When <code>false</code>, the per-activity chat-log variable is not written (in-memory events still emitted to SLF4J / history).</td>
+      <td>When <code>false</code>, the per-activity chat-log variables are not written, and the events are kept nowhere else.</td>
     </tr>
     <tr>
       <td><code>CIBSEVEN_CONNECT_AI_AGENT_CHAT_LOG_VARIABLE_ENABLED</code></td>
       <td>env</td>
       <td><code>true</code></td>
       <td>Env fallback for the chat-log toggle.</td>
+    </tr>
+    <tr>
+      <td><code>cibseven.connect.ai-agent.chatMemoryVariable.enabled</code></td>
+      <td>system property</td>
+      <td><code>true</code></td>
+      <td>When <code>false</code>, chat memory is kept in a JVM-local map instead of process variables: lost on restart, not shared across nodes.</td>
+    </tr>
+    <tr>
+      <td><code>CIBSEVEN_CONNECT_AI_AGENT_CHAT_MEMORY_VARIABLE_ENABLED</code></td>
+      <td>env</td>
+      <td><code>true</code></td>
+      <td>Env fallback for the chat-memory store switch.</td>
+    </tr>
+    <tr>
+      <td><code>cibseven.connect.ai-agent.chatMemoryMaxPayloadBytes</code></td>
+      <td>system property</td>
+      <td><code>1048576</code></td>
+      <td>Largest conversation the default store writes; a larger one fails the task. <code>0</code> or less turns the check off.</td>
+    </tr>
+    <tr>
+      <td><code>CIBSEVEN_CONNECT_AI_AGENT_CHAT_MEMORY_MAX_PAYLOAD_BYTES</code></td>
+      <td>env</td>
+      <td><code>1048576</code></td>
+      <td>Env fallback for the conversation size limit.</td>
+    </tr>
+    <tr>
+      <td><code>cibseven.connect.cibseven-ai-agent.allowed-endpoints</code></td>
+      <td>system property</td>
+      <td>— (no restriction)</td>
+      <td>Endpoints the AI agent may contact. See <a href="/manual/latest/reference/connect/#allowed-endpoints">Allowed Endpoints</a>.</td>
+    </tr>
+    <tr>
+      <td><code>CIBSEVEN_CONNECT_CIBSEVEN_AI_AGENT_ALLOWED_ENDPOINTS</code></td>
+      <td>env</td>
+      <td>—</td>
+      <td>Env fallback for the agent&rsquo;s allowed endpoints.</td>
+    </tr>
+    <tr>
+      <td><code>cibseven.connect.cibseven-knowledge-ingestor.allowed-endpoints</code></td>
+      <td>system property</td>
+      <td>— (no restriction)</td>
+      <td>Endpoints the Knowledge Ingestor may contact.</td>
+    </tr>
+    <tr>
+      <td><code>CIBSEVEN_CONNECT_CIBSEVEN_KNOWLEDGE_INGESTOR_ALLOWED_ENDPOINTS</code></td>
+      <td>env</td>
+      <td>—</td>
+      <td>Env fallback for the Knowledge Ingestor&rsquo;s allowed endpoints.</td>
+    </tr>
+    <tr>
+      <td><code>cibseven.connect.allowed-endpoints</code></td>
+      <td>system property</td>
+      <td>— (no restriction)</td>
+      <td>Endpoints all connectors may contact, unless a connector has its own list.</td>
+    </tr>
+    <tr>
+      <td><code>CIBSEVEN_CONNECT_ALLOWED_ENDPOINTS</code></td>
+      <td>env</td>
+      <td>—</td>
+      <td>Env fallback for the global list.</td>
     </tr>
     <tr>
       <td><code>AI_AGENT_ENABLED</code></td>
@@ -4839,7 +5045,7 @@ values are treated as unset.</p>
   <tbody>
     <tr>
       <td>Model (built-in fallback)</td>
-      <td><code>gpt-5.4-nano</code></td>
+      <td><code>gpt-6-luna</code></td>
       <td><code>DEFAULT_MODEL</code></td>
     </tr>
     <tr>

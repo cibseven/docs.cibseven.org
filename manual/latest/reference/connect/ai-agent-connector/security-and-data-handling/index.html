@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4424,12 +4569,19 @@ you configure these.</p>
 <code>baseUrl</code></strong> — see <a href="/manual/latest/reference/connect/ai-agent-connector/rag/">RAG</a> and
 <a href="/manual/latest/reference/connect/ai-agent-connector/troubleshooting/">Known Limitations</a>.
 For air-gapped or sovereign deployments, use the <strong>local</strong> <code>AllMiniLmL6V2</code> model so no query or
-document text leaves your network. The chat model honours <code>baseUrl</code> normally.</p>
+document text leaves your network. The chat model honours <code>baseUrl</code> normally.
+Remote embeddings receive the server&rsquo;s <code>OPENAI_API_KEY</code> only if <code>OPENAI_BASE_URL</code> is not set or points to
+OpenAI as well, so another provider&rsquo;s key is not sent to OpenAI.</p>
 </div>
 
 <p>The transport is outbound <strong>HTTPS</strong> from the engine JVM to <code>baseUrl</code> (and to any MCP <code>url</code>). Operators
 must allow that egress (or route it through an approved proxy/gateway). See
 <a href="/manual/latest/reference/connect/ai-agent-connector/installation/">Installation</a>.</p>
+<p><code>baseUrl</code> and the MCP server URLs often come from process variables. To limit the endpoints the
+connector may contact, configure an allow-list of endpoints, e.g.
+<code>-Dcibseven.connect.cibseven-ai-agent.allowed-endpoints=https://api.openai.com,https://mcp.example.com</code>.
+The base URL, every MCP server, the pgvector host and the OpenAI embedding endpoint are checked before
+anything is sent. See <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/#allowed-endpoints">Allowed endpoints</a>.</p>
 
 <h2 id="what-is-stored-and-where">What is stored, and where</h2>
 <table>
@@ -4443,7 +4595,7 @@ must allow that egress (or route it through an approved proxy/gateway). See
   <tbody>
     <tr>
       <td>Chat-log audit timeline</td>
-      <td>engine DB, process variable <code>cibseven-connect-ai-agent_&lt;activityId&gt;</code></td>
+      <td>engine DB, process variables <code>cibseven-connect-ai-agent_&lt;activityId&gt;~&lt;eventSeq&gt;</code>, one per model call; after the process instance ends, only in the history (levels <code>audit</code>, <code>full</code>) until history cleanup</td>
       <td>messages, tools, tool side-effects, timings; can be redacted or disabled — see <a href="/manual/latest/reference/connect/ai-agent-connector/audit-trail/">Audit Trail</a></td>
     </tr>
     <tr>
@@ -4458,8 +4610,8 @@ must allow that egress (or route it through an approved proxy/gateway). See
     </tr>
     <tr>
       <td>Conversation history</td>
-      <td><strong>JVM memory</strong> (default store)</td>
-      <td>not persisted unless you swap the store — see <a href="/manual/latest/reference/connect/ai-agent-connector/chat-memory/">Chat Memory</a></td>
+      <td>engine DB, process variable <code>cibseven-connect-ai-agent-memory_&lt;memoryId&gt;</code> (default store); JVM memory only with <code>cibseven.connect.ai-agent.chatMemoryVariable.enabled=false</code></td>
+      <td>at history level <code>audit</code> or <code>full</code> also in the history; for an agentic ad hoc sub-process on the sub-process itself — see <a href="/manual/latest/reference/connect/ai-agent-connector/chat-memory/">Chat Memory</a></td>
     </tr>
     <tr>
       <td>Embeddings + text segments + metadata</td>
@@ -4471,11 +4623,17 @@ must allow that egress (or route it through an approved proxy/gateway). See
 
 <h2 id="secrets--credentials">Secrets &amp; credentials</h2>
 <ul>
-<li><strong>Do not hardcode secrets into element-template fields.</strong> Any value typed into an input parameter
-(<code>apiKey</code>, <code>pgPassword</code>, <code>customHeaders</code>) is <strong>persisted as a process variable and in history</strong>,
-and is visible in Cockpit and to anyone with variable access. Reference a securely-provided
-variable (<code>${apiKey}</code>) or, preferably, the <strong><code>OPENAI_API_KEY</code> environment variable</strong> at
-deployment level.</li>
+<li><strong>Keep secrets out of the BPMN XML and out of process variables.</strong> A value typed into a field
+(<code>apiKey</code>, <code>pgPassword</code>, <code>customHeaders</code>) is stored in the <strong>BPMN XML of the deployment</strong>; an
+expression such as
+<code>${apiKey}</code> reads a <strong>process variable</strong>, which is stored in the runtime tables and, with history
+level <code>audit</code> or <code>full</code> (CIB seven Run: <code>full</code>), in the <strong>history</strong>. Leave <strong>API key</strong> empty and set
+the <strong><code>OPENAI_API_KEY</code> environment variable</strong> of the engine&rsquo;s JVM: it is stored nowhere in the engine.
+The connector sends this key only to the endpoint configured in <code>OPENAI_BASE_URL</code> (default: the OpenAI
+API), so a <code>baseUrl</code> taken from a process variable does not receive it. See
+<a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/#api-key-and-endpoint">API key and endpoint</a>.
+HTTP headers, MCP server headers and the PostgreSQL password have no server-side setting yet: the field
+is the only place for them, and a value set there is stored as described above.</li>
 <li><strong>Secrets in <code>message</code>/<code>instruction</code> are recorded.</strong> The chat-log timeline stores <code>messages[]</code>
 content, so anything you put in the prompt is in the audit variable (unless redaction is on). Keep
 credentials out of prompts.</li>
@@ -4526,12 +4684,12 @@ data-in-transit to the model. Choose the provider/endpoint accordingly.</p>
 <p>The EU AI Act pushes organisations in banking, insurance, government, and other regulated sectors toward a common question: when AI is used inside a business process, can that use be <strong>traced, documented, and evidenced</strong> after the fact — which model ran, what parameters and prompts were used, and who reviewed or approved the result?</p>
 <p>The connector&rsquo;s audit machinery is built with that question in mind:</p>
 <ul>
-<li><strong>What ran</strong> — model, prompt, and parameters are captured in the per-activity chat-log variable. See <a href="/manual/latest/reference/connect/ai-agent-connector/audit-trail/">Audit Trail</a>.</li>
+<li><strong>What ran</strong> — model, prompt, and parameters are captured in the per-activity chat-log variables. See <a href="/manual/latest/reference/connect/ai-agent-connector/audit-trail/">Audit Trail</a>.</li>
 <li><strong>What it touched</strong> — tool calls (including <code>ProcessStarterTool</code> side-effects), MCP calls, and retrieved RAG chunks are recorded alongside the conversation. See
 <a href="/manual/latest/reference/connect/ai-agent-connector/tools/">Tools</a> and
 <a href="/manual/latest/reference/connect/ai-agent-connector/rag/">RAG</a>.</li>
 <li><strong>That it was AI</strong> — every answer is marked with the <code>aiMeta</code> provenance variable, so downstream steps and reviewers can distinguish AI-generated content from human input.</li>
-<li><strong>Who signed off</strong> — approval is a matter of process design: route the agent&rsquo;s output to a human task before it has consequential effect, and the engine&rsquo;s own history (task assignee, completion time, business key) provides the &ldquo;who reviewed it&rdquo; record alongside the chat-log.</li>
+<li><strong>Who signed off</strong> — approval is a matter of process design: route the agent&rsquo;s output to a human task before it has consequential effect, and the engine&rsquo;s own history (task assignee, completion time, business key) provides the &ldquo;who reviewed it&rdquo; record alongside the chat-log. Who completed a task, the engine records in the user operation log at history level <code>full</code>, or as the task&rsquo;s assignee if someone claimed the task before completing it.</li>
 </ul>
 <p>What the connector does <strong>not</strong> decide for you: your risk classification under the Act, retention periods, who is authorised to approve AI-assisted outcomes, and how case-level context (document origin, the process instance&rsquo;s business key, which staff handled which step) is tied together across a full process — those remain organisational and process-design decisions, not something a platform can supply out of the box.</p>
 
@@ -4540,7 +4698,9 @@ data-in-transit to the model. Choose the provider/endpoint accordingly.</p>
 <li><input disabled="" type="checkbox"> LLM endpoint and any MCP servers are approved for the data classification you&rsquo;ll send them.</li>
 <li><input disabled="" type="checkbox"> Embeddings: local model for sovereign data, or an approved remote endpoint.</li>
 <li><input disabled="" type="checkbox"> API keys via env / secured variables — <strong>not</strong> hardcoded in templates; not in prompts.</li>
-<li><input disabled="" type="checkbox"> Egress from the engine JVM to <code>baseUrl</code>/MCP URLs is allowed only where intended.</li>
+<li><input disabled="" type="checkbox"> Egress from the engine JVM to <code>baseUrl</code>/MCP URLs is allowed only where intended (network rules and
+the connector&rsquo;s <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/#allowed-endpoints">allowed endpoints</a>).</li>
+<li><input disabled="" type="checkbox"> <code>OPENAI_BASE_URL</code> names the endpoint that the server&rsquo;s <code>OPENAI_API_KEY</code> belongs to.</li>
 <li><input disabled="" type="checkbox"> Tool-enabled agents run under least-privilege identities; toolset minimised per task.</li>
 <li><input disabled="" type="checkbox"> Edit rights on process models / element templates are restricted (privileged config).</li>
 <li><input disabled="" type="checkbox"> Audit retention meets your risk tier (chat-log kept, or external sink configured); see

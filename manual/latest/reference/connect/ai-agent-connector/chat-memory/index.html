@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4408,29 +4553,53 @@ is satisfied, then continue.</li>
 refines its answer rather than starting over. See the <code>human-in-the-loop.bpmn</code> demo in
 <a href="/manual/latest/reference/connect/ai-agent-connector/examples/">Examples</a>.</p>
 
-<h2 id="the-memory-store-is-jvm-local">The memory store is JVM-local</h2>
+<h2 id="where-the-conversation-is-stored">Where the conversation is stored</h2>
+<p>By default each conversation is a process variable, <code>cibseven-connect-ai-agent-memory_&lt;memoryId&gt;</code>, stored with the
+process instance in the engine database. It survives an engine restart, and every node of a cluster sees it.</p>
+<p><strong>One conversation per process instance.</strong> A <code>memoryId</code> belongs to the process instance it was created in. A review
+loop inside one process keeps its conversation, also through embedded sub-processes. It starts over, without an
+error, when the agent sits in a called process (call activity), when the reply arrives as a new process instance
+(for example through a message start event), or when you pass the id to another process. To start a new
+conversation in the same process instance, give the next call a new id, for example by clearing the <code>memoryId</code>
+variable before the task; the old conversation stays until the instance ends.</p>
+<p><strong>It is saved with the task&rsquo;s work.</strong> When the task fails and is retried, the turn is not kept, and the retry calls
+the model again with the conversation as it was. After the process instance ends, the conversation stays in the
+history at history level <code>audit</code> or <code>full</code> until history cleanup removes it; at level <code>full</code>, every save is also
+kept as a history entry.</p>
+<p><strong>Parallel branches must not share an id.</strong> Branches that run at the same time with one <code>memoryId</code> save the same
+variable, so one of them fails because the other saved first (<code>OptimisticLockingException</code>), and its task is
+retried, which calls the model again. Give parallel instances an id each, for example <code>review-${loopCounter}</code>.
+Branches that share one conversation have to run one after another, for example as a sequential multi-instance.</p>
+<p><strong>Size.</strong> A conversation larger than <code>chatMemoryMaxPayloadBytes</code> (1 MiB by default, about a million characters)
+fails the task after the model has answered. Retrying the incident usually fails again and calls the model each
+time. Lower <code>chatMemoryMaxMessages</code>, or with RAG <code>maxRagResults</code>, or ask the administrator to raise the limit where
+the database allows more. A warning appears in the server log once a conversation reaches 80 % of the limit.</p>
+<p><strong>The id is part of a variable name</strong>, so a <code>memoryId</code> may have at most 222 ASCII characters.</p>
+<p><strong>In Cockpit</strong> you see three related variables: <code>cibseven-connect-ai-agent</code> marks that the agent ran,
+<code>cibseven-connect-ai-agent_&lt;activityId&gt;~&lt;number&gt;</code> is its chat log, and <code>cibseven-connect-ai-agent-memory_&lt;memoryId&gt;</code>
+the conversation. Do not change or delete them.</p>
+<p><strong>On an <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/">agentic ad hoc sub-process</a>,</strong> the sub-process sets
+<code>useChatMemory</code> and <code>memoryId</code> itself. Its agent keeps the conversation on the sub-process, where the sub-process&rsquo;s
+activities can neither read nor change it, and <strong>Chat memory max messages</strong> sets the window. By default each entry
+into the sub-process starts a new conversation; with <strong>Conversation</strong> = <em>Continue across entries</em> it goes on.</p>
 
 <div class="note bg-warning docs-warning">
-  <h3>Warning</h3>
-  <p><p>Chat memory is held in a JVM-wide store that defaults to an <strong>in-memory</strong> implementation. This has
-two consequences you must design around:</p>
-<ul>
-<li><strong>It does not survive an engine restart.</strong> Conversations in flight are lost when the JVM stops.</li>
-<li><strong>It is not shared across nodes.</strong> In an HA / clustered deployment, a resumed task that lands on a
-different node will not find the conversation, and <code>chatMemoryMaxMessages</code> is enforced per JVM.</li>
-</ul></p>
+  <h3>Not recommended: conversations in the server&#39;s memory</h3>
+  <p>With <code>cibseven.connect.ai-agent.chatMemoryVariable.enabled=false</code> (or the environment variable
+<code>CIBSEVEN_CONNECT_AI_AGENT_CHAT_MEMORY_VARIABLE_ENABLED=false</code>) the connector keeps conversations in the server&rsquo;s
+memory instead, and logs a warning when it first uses it. Conversations are then lost on an engine restart and not
+shared across nodes, and the conversation of an agentic sub-process&rsquo;s agent is no longer kept apart from its
+activities.</p>
 </div>
 
-<p>For single-node deployments and conversations that complete within one engine lifetime, the default
-is fine. For HA or durable conversations, the backing store can be replaced at application startup
-with a persistent implementation (database, Redis) via <code>AgentChatMemoryStore.setStore(...)</code>; a
-helper <code>AgentChatMemoryStore.clear(memoryId)</code> forgets a single conversation. See
-<a href="/manual/latest/reference/connect/ai-agent-connector/developer-guide/">Developer Guide</a> and <a href="/manual/latest/reference/connect/ai-agent-connector/troubleshooting/">Limitations</a>.</p>
+<p>Keeping one conversation across process instances needs a store of your own, installed on the server by a
+developer, see <a href="/manual/latest/reference/connect/ai-agent-connector/developer-guide/#replacing-the-chat-memory-store">Developer Guide</a>. Deleting a conversation at once also needs Java code,
+<code>AgentChatMemoryStore.clear(memoryId)</code> in a process step; otherwise it goes with the process instance.</p>
 
 <div class="note bg-info docs-info">
   <h3>Note</h3>
   <p>If you don&rsquo;t need conversation history, leave <code>useChatMemory</code> off — stateless invocations avoid the
-store entirely and sidestep the clustering caveat.</p>
+store entirely.</p>
 </div>
 
 
@@ -4444,7 +4613,7 @@ store entirely and sidestep the clustering caveat.</p>
   <ul>
     <li><a href="#enabling-memory">Enabling memory</a></li>
     <li><a href="#human-in-the-loop-pattern">Human-in-the-loop pattern</a></li>
-    <li><a href="#the-memory-store-is-jvm-local">The memory store is JVM-local</a></li>
+    <li><a href="#where-the-conversation-is-stored">Where the conversation is stored</a></li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">

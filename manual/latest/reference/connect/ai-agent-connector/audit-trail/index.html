@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4351,18 +4496,54 @@
       <p>Every AI Agent invocation is recorded automatically. This chapter describes the <strong>technical</strong>
 transparency features the connector ships — what is recorded, where, and how to tune or redact it.</p>
 
-<h2 id="the-per-activity-chat-log-variable">The per-activity chat-log variable</h2>
-<p>For each AI Agent service task the connector writes a process-scoped variable named:</p>
-<pre tabindex="0"><code>cibseven-connect-ai-agent_&lt;activityId&gt;
-</code></pre><p>It holds a JSON array of audit events for that activity. Key behaviors:</p>
+<h2 id="the-per-activity-chat-log-variables">The per-activity chat-log variables</h2>
+<p>For each activity that runs the connector, an AI Agent service task or an ad hoc sub-process driven by
+an agent, the connector writes process-scoped variables named:</p>
+<pre tabindex="0"><code>cibseven-connect-ai-agent_&lt;activityId&gt;~&lt;eventSeq&gt;
+</code></pre><p>There is one variable per model call, written once, when the model has answered (the <code>response</code>
+event); the <code>request</code> event and any retrieval before it belong to the same variable. <code>&lt;eventSeq&gt;</code> is
+the number of its first event, padded with zeros to ten digits, for example
+<code>cibseven-connect-ai-agent_reviewInvoice~0000000004</code>. Each variable holds a JSON array of audit events;
+read in the order of their names, the variables of an activity are its timeline. A task with tools calls the
+model several times in one run, once more after each round of tool results; the number counts events, not
+calls, so gaps between the numbers are normal. Key behaviors:</p>
 <ul>
-<li>Written on <strong>every</strong> LLM <code>request</code> / <code>response</code> / <code>error</code> event as the agent loop runs.</li>
-<li><strong>Accumulates</strong>: if the variable already exists when the task runs again within the same process
-instance, prior content is decoded and new events are appended to one timeline.</li>
-<li>It is <strong>not</strong> an output parameter — its serialized form regularly exceeds the <code>VARCHAR(4000)</code> limit
-of the engine&rsquo;s <code>TEXT_</code> column, so it&rsquo;s managed as its own variable rather than mapped output.</li>
+<li><strong>One timeline per activity</strong>: when the activity runs again within the same process instance, the
+numbering continues.</li>
+<li><strong>Written once</strong>: a variable is never rewritten, so what is stored, also in the history at level
+<code>full</code>, grows with the events.</li>
+<li><strong>Many variables</strong>: an activity has about as many chat-log variables as it made model calls, and
+all of them are loaded wherever all variables of a process instance are (a variables tab,
+<code>GET /process-instance/{id}/variables</code>).</li>
+<li>An activity id longer than 218 characters (fewer with characters outside ASCII) leaves no room for
+the number in a variable name: such an activity gets no chat log, and the connector logs a warning.</li>
+<li>It is <strong>not</strong> an output parameter: the chat log is too large for an ordinary string variable, so the
+connector keeps it in variables of its own.</li>
 <li>A companion flag variable <code>cibseven-connect-ai-agent</code> marks that the agent connector ran.</li>
+<li><strong>Failed calls are not kept.</strong> A model call that fails makes the task, or the agent&rsquo;s step, fail,
+and its entry is undone together with the rest of the task&rsquo;s work, so <code>error</code> events rarely appear in
+the log. A failed call shows in the incident, in the job log
+(history level <code>full</code>) and as an <code>LLM ERROR</code> line in the application log. Requests that the HTTP
+client repeats by itself do not show either: the log shows one call even if it was sent twice.</li>
+<li><strong>Retention.</strong> While the process instance runs, the chat log is process variables. After it ends,
+it exists only in the history, at history level <code>audit</code> or <code>full</code>, and history cleanup removes it
+after the <code>historyTimeToLive</code> of the process definition. At level <code>activity</code> or <code>none</code> nothing of
+it is left after the end. To keep the record for six months after the end, use history level <code>audit</code> or
+<code>full</code> and set the process&rsquo;s history time to live (<strong>History cleanup</strong> → <strong>Time to live</strong> in the Modeler)
+to at least <code>P180D</code>.</li>
 </ul>
+
+<div class="note bg-info docs-info">
+  <h3>Reading the chat log</h3>
+  <p>Earlier versions kept the chat log of an activity in one variable, <code>cibseven-connect-ai-agent_&lt;activityId&gt;</code>,
+rewritten on every event. A process instance that runs across the upgrade keeps that variable and
+continues in numbered variables after it. A reader, such as an audit export or a viewer, puts the chat
+log of an activity together from all variables whose names start with <code>cibseven-connect-ai-agent_</code>: the
+activity id is the part before the last <code>~</code>, the variable without a number comes first, then the
+numbered ones in the order of their names. A reader that does not know the numbers shows every model
+call as an activity of its own, so update such readers together with the connector.</p>
+</div>
+
 
 <h2 id="whats-recorded">What&rsquo;s recorded</h2>
 <p>Each event is a structured record (schema version <code>1</code>). Fields seen on events include:</p>
@@ -4373,11 +4554,12 @@ of the engine&rsquo;s <code>TEXT_</code> column, so it&rsquo;s managed as its ow
 <li><strong>Process correlation:</strong> <code>processInstanceId</code>, <code>processDefinitionId</code>, <code>processDefinitionKey</code>,
 <code>executionId</code>, <code>activityId</code> (and <code>businessKey</code> / <code>tenantId</code> when present).</li>
 <li><strong>Caller identity:</strong> <code>userId</code>, <code>userIdSource</code>, <code>groupIds</code>.</li>
-<li><strong>Content:</strong> <code>messages[]</code> (role + content) on requests.</li>
+<li><strong>Content:</strong> <code>messages[]</code> (role + content) on requests, and the model&rsquo;s <code>answer</code> on responses.</li>
 <li><strong>Tools:</strong> <code>tools[]</code> (available tool names), <code>toolProvenance{}</code> (per tool: <code>kind</code> <code>local</code>/<code>mcp</code>,
 and for MCP the <code>server</code>, <code>url</code>, <code>originalToolName</code>), and <code>toolCalls[]</code> (the calls the model made,
 with <code>id</code>, <code>name</code>, <code>arguments</code>) on responses.</li>
-<li><strong>Outcome:</strong> <code>durationMs</code>; on errors, the error class and a short stack (up to 5 frames).</li>
+<li><strong>Outcome:</strong> <code>durationMs</code>; on errors, the error class and a short stack (up to 5 frames). Such events are
+rare: a failed call is usually undone together with the task&rsquo;s work (see above).</li>
 <li><strong>Tool side-effects:</strong> when <code>ProcessStarterTool</code> starts a process, a record with the resulting
 <code>processInstanceId</code>, <code>state</code>, and the principal it <code>executedAs</code> is stitched onto the timeline.</li>
 </ul>
@@ -4389,7 +4571,7 @@ with <code>id</code>, <code>name</code>, <code>arguments</code>) on responses.</
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;eventSeq&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-05-24T13:19:26.110397928Z&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;provider&#34;</span><span class="p">:</span> <span class="s2">&#34;OPEN_AI&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;model&#34;</span><span class="p">:</span> <span class="s2">&#34;gpt-5.4-nano&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;model&#34;</span><span class="p">:</span> <span class="s2">&#34;gpt-6-luna&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;endpoint&#34;</span><span class="p">:</span> <span class="s2">&#34;https://api.openai.com/v1&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;processDefinitionKey&#34;</span><span class="p">:</span> <span class="s2">&#34;agent-with-tool-usage&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;activityId&#34;</span><span class="p">:</span> <span class="s2">&#34;Activity_agentic_process_management&#34;</span><span class="p">,</span>
@@ -4414,8 +4596,8 @@ from human-authored ones. Leave the output field unset to skip it. See
 <a href="/manual/latest/reference/connect/ai-agent-connector/configuring-the-agent/">Configuring the Agent</a>.</p>
 
 <h2 id="content-redaction">Content redaction</h2>
-<p>For GDPR-conservative deployments, message/response <strong>content</strong> can be replaced with a SHA-256 hash
-plus the original character length (the rest of the event — identity, model, tools, timings — is
+<p>For GDPR-conservative deployments, the <strong>content of request messages</strong> can be replaced with a SHA-256
+hash plus the original character length (the rest of the event — identity, model, tools, timings — is
 preserved):</p>
 <table>
   <thead>
@@ -4438,26 +4620,31 @@ preserved):</p>
     </tr>
   </tbody>
 </table>
-<p>When enabled, each <code>messages[].content</code> becomes a <code>{hash, length, redacted}</code> marker. This trades
-webclient readability for confidentiality. Resolution is <strong>property → env → default false</strong>.</p>
+<p>When enabled, each <code>messages[].content</code> becomes a <code>{hash, length, redacted}</code> marker: a fingerprint from which the
+text cannot be read back. Redaction is a server setting, not a field per task, and it covers only these
+messages. Plain text stays in the model&rsquo;s answers (<code>answer</code>) and tool-call arguments (<code>toolCalls[].arguments</code>)
+in the log, in your output variable, in the conversation kept by chat memory and in the variables your tools
+write. This trades webclient readability for confidentiality. Resolution is <strong>property → env → default false</strong>.</p>
 
-<h2 id="turning-the-chat-log-variable-off">Turning the chat-log variable off</h2>
-<p>The DB write can be suppressed at two scopes (the in-memory timeline is still built and still emitted
-to SLF4J / the <code>HistoryEventHandler</code> chain, so external audit sinks keep working — only the engine DB
-write is skipped):</p>
+<h2 id="turning-the-chat-log-variables-off">Turning the chat-log variables off</h2>
+<p>The DB write can be suppressed at two scopes. The events are then kept nowhere: the connector writes
+them neither to the application log nor to the engine&rsquo;s history (<code>HistoryEventHandler</code>); at log level DEBUG it
+logs only the text of the messages, without the other fields:</p>
 <ul>
 <li><strong>Per activity</strong> — the <strong>Persist chat-log audit variable</strong> field (<code>persistChatLog</code>), tri-state:
 empty = use global default, <code>${true}</code> = force on, <code>${false}</code> = force off (overrides the global).</li>
 <li><strong>Deployment-wide</strong> — <code>cibseven.connect.ai-agent.chatLogVariable.enabled</code> (system property) or
 <code>CIBSEVEN_CONNECT_AI_AGENT_CHAT_LOG_VARIABLE_ENABLED</code> (env), default <code>true</code>. The connector logs the
-resolved value once at startup (WARN when disabled, since it&rsquo;s a compliance-relevant deviation).</li>
+resolved value once, at the first call of an agent that has no <code>persistChatLog</code> of its own, not at
+startup (WARN when disabled, since it&rsquo;s a compliance-relevant deviation).</li>
 </ul>
 
 <div class="note bg-warning docs-warning">
   <h3>EU AI Act Warning</h3>
   <p>Disabling the variable removes the in-engine traceability used to satisfy Art. 12 (record-keeping)
-and Art. 26(6) (≥ 6-month retention). If you disable it, you must route the audit events to an
-external sink and document that sink as the official record.</p>
+and Art. 26(6) (≥ 6-month retention). If you disable it, keep the record outside the engine by
+other means and document that record as the official one: the connector has no output of its own for
+the events yet.</p>
 </div>
 
 
@@ -4490,11 +4677,11 @@ use this chapter for the knobs that implement them.</p>
   <h3>On this Page:</h3>
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#the-per-activity-chat-log-variable">The per-activity chat-log variable</a></li>
+    <li><a href="#the-per-activity-chat-log-variables">The per-activity chat-log variables</a></li>
     <li><a href="#whats-recorded">What&rsquo;s recorded</a></li>
     <li><a href="#marking-ai-generated-output-aimeta">Marking AI-generated output (<code>aiMeta</code>)</a></li>
     <li><a href="#content-redaction">Content redaction</a></li>
-    <li><a href="#turning-the-chat-log-variable-off">Turning the chat-log variable off</a></li>
+    <li><a href="#turning-the-chat-log-variables-off">Turning the chat-log variables off</a></li>
     <li><a href="#transparency-to-the-end-user">Transparency to the end user</a></li>
     <li><a href="#the-eu-ai-act-compliance-guide">The EU AI Act compliance guide</a></li>
   </ul>

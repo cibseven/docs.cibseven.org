@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4362,46 +4507,45 @@ In the versions before CIB seven 2.2.0, a license key was stored on the file sys
 <p>The license key is stored in the database and read from it only under two conditions:</p>
 <ul>
 <li>the engine is version <code>2.2.0</code> or later;</li>
-<li>the engine uses the same JWT secret as the webclient (<code>cibseven.webclient.authentication.jwtSecret</code>). In CIB seven Run, this is the case by default. If the webclient and the engine run separately, set this secret for the engine through the JVM system property <code>cibseven.webclient.authentication.jwtSecret</code>, the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code> or the file <code>cibseven-webclient.properties</code> on its classpath. For an additional engine (<a href="/manual/latest/webapps/configuration-options/core-configuration/#multi-engine-support">multi-engine</a>), the condition is the same: this engine&rsquo;s own <code>jwtSecret</code> does not help if it differs from <code>cibseven.webclient.authentication.jwtSecret</code>.</li>
+<li>the engine uses the same JWT secret as the webclient (<code>cibseven.webclient.authentication.jwtSecret</code>). In CIB seven Run, this is the case by default. If the webclient and the engine run separately, set this secret for the engine through the JVM system property <code>cibseven.webclient.authentication.jwtSecret</code>, the environment variable <code>CIBSEVEN_WEBCLIENT_AUTHENTICATION_JWTSECRET</code> or the file <code>cibseven-webclient.properties</code> on its classpath. For an additional engine (<a href="/manual/latest/webapps/configuration-options/core-configuration/#multi-engine-support">multi-engine</a>) with its own <code>jwtSecret</code>: starting with <code>3.0.0</code>, the webclient stores and reads the key with this engine&rsquo;s own secret. Up to <code>2.2.x</code>, the condition is the same as for the other engines: this engine&rsquo;s own <code>jwtSecret</code> does not help if it differs from <code>cibseven.webclient.authentication.jwtSecret</code>; keep the license file with the webclient.</li>
 </ul>
 <p>If the condition is not met:</p>
 <ul>
 <li>the webclient uses only the license file; if there is no file, licensed features show <strong>&ldquo;License Required&rdquo;</strong>;</li>
-<li>a key entered on the license page in the Admin webapp is not stored, although no error is shown;</li>
+<li>a key entered on the license page in the Admin webapp is not stored; starting with <code>3.0.0</code>, the license page says why (the engine is older than <code>2.2.0</code>, or the JWT secret is missing or differs); up to <code>2.2.x</code>, no error is shown;</li>
 <li>a key already stored in the database is not read.</li>
 </ul>
 <p>Change the secret on the webclient and the engine at the same time: the stored key stays valid.</p>
-<p>With the <a href="/manual/latest/update/minor/21-to-22/#direct-provider">Direct Provider</a>, the key is stored and read without a JWT secret.</p>
+<p>With the <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/">Direct Provider</a>, the key is stored and read without a JWT secret.</p>
 
 <h2 id="license-key-pickup-methods">License Key Pickup Methods</h2>
 
 <h3 id="through-the-admin-webapp-ui">Through the Admin Webapp UI</h3>
-<p>Any environment setup that uses the enterprise CIB seven Admin webapp, can use the provided License key page to
-enter a valid license key. Please see the dedicated <a href="/manual/latest/webapps/admin/system-management/#cibseven-license-key">Admin webapp</a>
-docs section for more details.</p>
+<p>Any setup that uses the enterprise CIB seven Admin webapp can enter a valid license key on its license key page.
+See the <a href="/manual/latest/webapps/admin/system-management/#cibseven-license-key">Admin webapp</a> section for details.</p>
 
-<h3 id="through-the-home-directory">Through the Home Directory</h3>
-<p>Another possibility is to put a file with the license key on the path <code>${user.home}/.cibseven/cibseven-license.txt</code>.
-This is another method that can be applied in any environment setup. The license key will be
-automatically loaded in the database table unless a valid license key is already present.</p>
-
-<h3 id="through-the-configuration-file">Through the configuration file</h3>
-<p>License keys could be stored in a file specified by an optional application property <code>cibseven.webclient.license.file.path</code> in your <code>cibseven-webclient.yaml</code></p>
-
-<h3 id="with-the-cib-seven-spring-boot-starter--cib-seven-run">With the CIB seven Spring Boot Starter &amp; CIB seven Run</h3>
-<p>CIB seven Run, and other Spring Boot applications that use the CIB seven Spring Boot Starter, can be provided with license  keys in two additional ways:</p>
+<h3 id="through-a-license-file">Through a License File</h3>
+<p>The webclient can also read the license key from a file:</p>
 <ul>
-<li>provide a URL to a license file via a custom application property <code>cibseven.webclient.license.file.path</code> in your <code>application.yaml</code>.</li>
-<li>provide the license key in a file called <code>cibseven-license.txt</code> and put it into <code>${user.home}/.cibseven/</code> directory.</li>
+<li>By default, it reads the file <code>${user.home}/.cibseven/cibseven-license.txt</code>.</li>
+<li>If the property <code>cibseven.webclient.license.file.path</code> is set, it reads the file at this path instead. The property takes a file path, not a URL. Set it in the <code>application.yaml</code> of CIB seven Run or your Spring Boot application, or in <code>cibseven-webclient.yaml</code> if the webclient is deployed as a web application, for example on Tomcat.</li>
 </ul>
-<p><strong>Note:</strong> For these two ways to be available, the CIB seven Run EE edition must be used, or the Spring Boot
-application must use the EE version of the starter, with <code>-ee</code> suffix.</p>
+<p><strong>Note:</strong> The license file is read only by the EE edition: use CIB seven Run EE, or the EE version of the starter, with the <code>-ee</code> suffix, in your Spring Boot application.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm.springboot<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>cibseven-bpm-spring-boot-starter-webapp<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>${project-version}-ee<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
 </span></span></code></pre></div>
+<h4 id="when-the-key-from-the-file-is-saved-in-the-database">When the Key from the File Is Saved in the Database</h4>
+<p>The webclient reads the file whenever the engine returns no license key it can use: when the database holds no key, when the stored key cannot be decrypted because the JWT secret of the webclient and the engine differ (see <a href="#storing-the-license-key-in-the-database">Storing the License Key in the Database</a>), or with an engine older than <code>2.2.0</code>. If the engine returns a key, the file is ignored, even if the stored key has expired; to replace a stored key, enter the new key in the Admin webapp.</p>
+<p>A valid key from the file is saved in the database when a user who is allowed to set the license opens the webclient:</p>
+<ul>
+<li>with authorization enabled: a user with the permission <code>SET</code> or <code>ALL</code> on the <code>System</code> resource, for example an administrator;</li>
+<li>with authorization disabled: any user.</li>
+</ul>
+<p>Until then, the webclient reads the key from the file, so the licensed features are already available. The key is saved only if the conditions in <a href="#storing-the-license-key-in-the-database">Storing the License Key in the Database</a> are met; otherwise the webclient keeps reading it from the file.</p>
+
 <h2 id="authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</h2>
 <p>Many <a href="/manual/latest/webapps/enterprise-features/">enterprise features</a> are loaded by the browser as separate, license-gated JavaScript chunks — among them <a href="/manual/latest/webapps/cockpit/bpmn/dashboard/#process-instance-search">process instance search</a>, the audit log and user operations, <a href="/manual/latest/webapps/cockpit/bpmn/process-instance-restart/">process restart</a> and <a href="/manual/latest/webapps/cockpit/bpmn/process-modification/">modification</a>, <a href="/manual/latest/webapps/cockpit/bpmn/batch/">batch operations</a>, <a href="/manual/latest/webapps/cockpit/tasks-dashboard/#search-tasks">human task search</a>, <a href="/manual/latest/webapps/cockpit/dmn/dashboard/#decision-instance-search">decision instance search</a>, <a href="/manual/latest/webapps/cockpit/reporting/">reports</a>, <a href="/manual/latest/webapps/cockpit/cleanup/">cleanup</a> and the engine metrics charts. Every request for one of these chunks is checked against the license on the server, and refused with <code>403</code> if no valid license can be resolved.</p>
 <p>To let that check identify the user, the webclient registers a service worker that attaches the current user&rsquo;s auth token to each chunk request as an <code>Authorization</code> header — a dynamic <code>import()</code> issued by the browser cannot carry a custom header on its own, which is why the service worker exists at all.</p>
@@ -4458,9 +4602,11 @@ license key in the correct format.</p>
     <li><a href="#license-key-pickup-methods">License Key Pickup Methods</a>
       <ul>
         <li><a href="#through-the-admin-webapp-ui">Through the Admin Webapp UI</a></li>
-        <li><a href="#through-the-home-directory">Through the Home Directory</a></li>
-        <li><a href="#through-the-configuration-file">Through the configuration file</a></li>
-        <li><a href="#with-the-cib-seven-spring-boot-starter--cib-seven-run">With the CIB seven Spring Boot Starter &amp; CIB seven Run</a></li>
+        <li><a href="#through-a-license-file">Through a License File</a>
+          <ul>
+            <li><a href="#when-the-key-from-the-file-is-saved-in-the-database">When the Key from the File Is Saved in the Database</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#authenticating-licensed-frontend-chunks">Authenticating Licensed Frontend Chunks</a>

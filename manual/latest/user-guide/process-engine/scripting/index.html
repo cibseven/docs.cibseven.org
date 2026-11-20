@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4405,6 +4550,18 @@ scripts.</p>
   </tr>
 </table>
 
+<div class="note bg-info docs-info">
+  <h3>Restricting scripts</h3>
+  <p><p>Operators can restrict the script languages that process definitions may use with the
+<a href="/manual/latest/user-guide/process-engine/securing-custom-code/#allow-list-for-task-types-and-script-languages">allow list for task types and script languages</a>.</p>
+<p>JUEL scripts (<code>juel</code>) are also checked against the
+<a href="/manual/latest/user-guide/process-engine/securing-custom-code/#deny-list-for-expressions-and-scripts">deny list for expressions and scripts</a>,
+and a <a href="/manual/latest/user-guide/process-engine/securing-custom-code/#customized-expression-managers-in-juel-scripts">customized expression manager</a>
+applies to them as well.</p>
+</p>
+</div>
+
+
 <h2 id="use-script-tasks">Use Script Tasks</h2>
 <p>With a BPMN 2.0 script task you can add a script to your BPM process (for more information see the
 <a href="/manual/latest/reference/bpmn20/tasks/script-task/">BPMN 2.0 reference</a>.</p>
@@ -4640,6 +4797,8 @@ Specifies whether host language resources like classes and their methods are acc
 Specifies whether external resources can be loaded from file system or not.</li>
 <li><a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#enableScriptEngineNashornCompatibility">enableScriptEngineNashornCompatibility</a> -
 Specifies whether Nashorn compatibility mode is enabled or not.</li>
+<li><a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#javaScriptNumberNarrowing">javaScriptNumberNarrowing</a> -
+Specifies whether a JavaScript script returns a number from a Java <code>long</code> in the int range to Java as <code>Integer</code>, as in CIB seven 2.2.</li>
 </ul>
 
 <h3 id="system-properties">System properties</h3>
@@ -4694,10 +4853,13 @@ instance with Nashorn Compatibility Mode enabled:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">allowHostClassLookup</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// enable Nashorn Compatibility Mode</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">allowExperimentalOptions</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&#34;js.nashorn-compat&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;true&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&#34;js.nashorn-compat&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;true&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// use ECMAScript 2022, not ECMAScript 5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&#34;js.ecmascript-version&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;2022&#34;</span><span class="p">));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div>
+</span></span></span></code></pre></div><p>In GraalVM JavaScript 25, the Nashorn Compatibility Mode alone accepts ECMAScript 5 only, so <code>let</code>, <code>const</code> and arrow functions fail. The example therefore also sets the ECMAScript version to 2022, as the process engine does with <code>enableScriptEngineNashornCompatibility</code>.</p>
+
 <h2 id="reference-process-application-provided-classes">Reference Process Application Provided Classes</h2>
 <p>The script can reference to process application provided classes by importing them like in the following groovy script example.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">my.process.application.CustomClass</span><span class="w">
@@ -4714,11 +4876,11 @@ JRuby where you have to access the variable as a ruby global variable (prepend w
 i.e., <code>$sum</code>)</p>
 <p>There are also special variables:</p>
 <ol>
-<li><code>execution</code>, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
+<li><code>execution</code>, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
 ).</li>
-<li><code>task</code>, which is available if the script is executed in a task scope (e.g., a task listener) (<a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
+<li><code>task</code>, which is available if the script is executed in a task scope (e.g., a task listener) (<a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
 ).</li>
-<li><code>connector</code>, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a camunda:connector) (<a href="/javadoc/cibseven/2.2-ee/org/cibseven/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>
+<li><code>connector</code>, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a camunda:connector) (<a href="/javadoc/cibseven/3.0/org/cibseven/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>
 ).</li>
 </ol>
 <p>These variables correspond to the <code>DelegateExecution</code>, <code>DelegateTask</code> or resp. <code>ConnectorVariableScope</code>
@@ -4737,9 +4899,9 @@ interface which means that it can be used to get and set variables or access pro
 </span></span></span></code></pre></div>
 <h2 id="accessing-process-engine-services-using-scripts">Accessing Process Engine Services using Scripts</h2>
 <p>CIB seven&rsquo;s Java API provides access to CIB seven&rsquo;s process engine services; these services can be accessed using Scripts:</p>
-<p><a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
+<p><a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
  \</p>
-<a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/package-summary.html">Public Java API of CIB seven Engine</a>
+<a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/package-summary.html">Public Java API of CIB seven Engine</a>
 
 <p>Example of creating a BPMN Message that correlates with the message key &ldquo;work&rdquo;:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">execution</span><span class="p">.</span><span class="nx">getProcessEngineServices</span><span class="p">().</span><span class="nx">getRuntimeService</span><span class="p">().</span><span class="nx">createMessageCorrelation</span><span class="p">(</span><span class="s2">&#34;work&#34;</span><span class="p">).</span><span class="nx">correlateWithResult</span><span class="p">();</span>
@@ -4829,6 +4991,10 @@ Set this value to <code>nashorn</code> to configure the process engine to use th
 Note that if no script engine related to that value can be found, the process engine does not look for a fallback and throws an exception.</p>
 <p>Consult the <a href="https://www.graalvm.org/reference-manual/js/ScriptEngine/">official GraalVM JavaScript Guide</a> for questions around that script engine.
 It also contains a guide on <a href="https://www.graalvm.org/reference-manual/js/NashornMigrationGuide/">Migration from Nashorn</a>.</p>
+<p>GraalVM JavaScript 25 returns a number from a Java <code>long</code> to Java as <code>Long</code>, and the result of arithmetic with it as <code>Double</code>.
+By default, if <code>configureScriptEngineHostAccess</code> is enabled, the process engine returns such a number in the int range as <code>Integer</code>, as in CIB seven 2.2, but not the result of arithmetic.
+The process engine property <a href="/manual/latest/reference/deployment-descriptors/tags/process-engine/#javaScriptNumberNarrowing">javaScriptNumberNarrowing</a> controls this.
+See <a href="/manual/latest/update/minor/22-to-30/#number-types-in-javascript-scripts">Number types in JavaScript scripts</a> for the details and for how to keep a number type that does not depend on the version.</p>
 
     </div>
   </div>

@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4364,7 +4509,7 @@
 <p>Once the event has reached the History Event Handler, it can be processed and stored in some kind of datastore. The default implementation writes events to the History Database so that they can be queried using the History Service.</p>
 <p>Exchanging the History Event Handler with a custom implementation allows users to plug in a custom History Backend. To do so, two main steps are required:</p>
 <ul>
-<li>Provide a custom implementation of the <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/impl/history/handler/HistoryEventHandler.html">HistoryEventHandler</a>
+<li>Provide a custom implementation of the <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/impl/history/handler/HistoryEventHandler.html">HistoryEventHandler</a>
  interface.</li>
 <li>Wire the custom implementation in the process engine configuration.</li>
 </ul>
@@ -4411,7 +4556,7 @@ then has to be added to the process engine configuration, either by configuratio
 </span></span></span></code></pre></div><p>If the history level is enabled, the method</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">boolean</span><span class="w"> </span><span class="nf">isHistoryEventProduced</span><span class="p">(</span><span class="n">HistoryEventType</span><span class="w"> </span><span class="n">eventType</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">entity</span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p>is called for every history event to determine if the event should be saved to the history. The event types used in the
-engine can be found in <code>org.cibseven.bpm.engine.impl.history.event.HistoryEventTypes</code> (see <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/impl/history/handler/HistoryEventHandler.html">Javadocs</a>
+engine can be found in <code>org.cibseven.bpm.engine.impl.history.event.HistoryEventTypes</code> (see <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/impl/history/handler/HistoryEventHandler.html">Javadocs</a>
 ).</p>
 <p>The second argument is the entity for which the event is triggered, e.g., a process instance, activity
 instance or variable instance. If the <code>entity</code> is null the engine tests if the history level in general
@@ -4440,6 +4585,16 @@ the removal time is not available.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div>
+<h4 id="external-task-fetched-log-and-custom-history-level">External task fetched log and custom history level</h4>
+<p>Since 3.0.0, the engine writes a <code>fetched</code> entry to the historic external task log every time a worker locks an external task (see <a href="/manual/latest/user-guide/process-engine/external-tasks/#history-of-fetches">History of fetches</a>). The event type is <code>HistoryEventTypes.EXTERNAL_TASK_FETCH</code>. A custom history level writes these entries only if it accepts this event type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isHistoryEventProduced</span><span class="p">(</span><span class="n">HistoryEventType</span><span class="w"> </span><span class="n">eventType</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">entity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">eventType</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">HistoryEventTypes</span><span class="p">.</span><span class="na">EXTERNAL_TASK_FETCH</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// return false to leave out the &#39;fetched&#39; entries</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>A custom history level that checks the event types one by one and does not know <code>EXTERNAL_TASK_FETCH</code> therefore writes no <code>fetched</code> entries. A custom <code>HistoryEventProducer</code> that does not extend <code>DefaultHistoryEventProducer</code> gets the default implementation of <code>createHistoricExternalTaskLogFetchedEvt</code>, which returns <code>null</code>, so no entry is written either.</p>
+
     </div>
   </div>
 </div>
@@ -4455,6 +4610,7 @@ the removal time is not available.</p>
           <ul>
             <li><a href="#removal-time-inheritance">Removal time inheritance</a></li>
             <li><a href="#user-operation-logs-and-custom-history-level">User operation logs and custom history level</a></li>
+            <li><a href="#external-task-fetched-log-and-custom-history-level">External task fetched log and custom history level</a></li>
           </ul>
         </li>
       </ul>

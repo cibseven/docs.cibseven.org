@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4434,17 +4579,17 @@ Ingestor, see the <a href="/manual/latest/reference/connect/ai-agent-connector/c
     <tr>
       <td><strong>Model</strong></td>
       <td><code>model</code></td>
-      <td><code>model</code> → system property <code>cibseven.connect.ai-agent.defaultModel</code> → env <code>CIBSEVEN_CONNECT_AI_AGENT_DEFAULT_MODEL</code> → built-in <code>gpt-5.4-nano</code></td>
+      <td><code>model</code> → system property <code>cibseven.connect.ai-agent.defaultModel</code> → env <code>CIBSEVEN_CONNECT_AI_AGENT_DEFAULT_MODEL</code> → built-in <code>gpt-6-luna</code></td>
     </tr>
     <tr>
       <td><strong>API key</strong></td>
       <td><code>apiKey</code></td>
-      <td><code>apiKey</code> → env <code>OPENAI_API_KEY</code></td>
+      <td><code>apiKey</code> → env <code>OPENAI_API_KEY</code>, only for the server&rsquo;s endpoint (see <a href="#api-key-and-endpoint">API key and endpoint</a>)</td>
     </tr>
     <tr>
       <td><strong>HTTP headers</strong></td>
       <td><code>customHeaders</code></td>
-      <td>JSON object of header → value, e.g. <code>{&quot;Authorization&quot;: &quot;Bearer sk-...&quot;}</code></td>
+      <td>JSON object of header → value, e.g. <code>{&quot;X-Request-Source&quot;: &quot;cibseven&quot;}</code></td>
     </tr>
   </tbody>
 </table>
@@ -4458,32 +4603,72 @@ provider actually serves.</p>
 </div>
 
 
+<h3 id="api-key-and-endpoint">API key and endpoint</h3>
+<p>The API key from the server&rsquo;s <code>OPENAI_API_KEY</code> environment variable belongs to the endpoint the operator
+configured: <code>OPENAI_BASE_URL</code>, or <code>https://api.openai.com/v1</code> if <code>OPENAI_BASE_URL</code> is not set.
+The connector sends it only</p>
+<ul>
+<li>when the model does not set <strong>Base URL</strong>, or</li>
+<li>when <strong>Base URL</strong> has the same scheme, host and port as that endpoint.</li>
+</ul>
+<p>A <strong>Base URL</strong> taken from a process variable therefore cannot receive the server&rsquo;s key. For any other
+endpoint, the request is sent without an API key and the connector logs a warning naming the endpoint
+(scheme, host and port only); the provider typically rejects the request with HTTP 401.
+To use another provider that needs a key, set <code>OPENAI_BASE_URL</code> to its endpoint (see the recipes below),
+or define <strong>API key</strong> in the model. An API key defined in the model is sent to the model&rsquo;s endpoint,
+whatever it is. Endpoints that need no key, such as a local Ollama, are not affected.</p>
+<p>For remote embedding models in the agent and in the
+<a href="/manual/latest/reference/connect/ai-agent-connector/configuration-reference/#knowledge-ingestor-connector">Knowledge Ingestor</a>,
+see the note on data residency below.</p>
+
+<h3 id="allowed-endpoints">Allowed endpoints</h3>
+<p>Operators can restrict the endpoints the agent may contact with the JVM system property
+<code>cibseven.connect.cibseven-ai-agent.allowed-endpoints</code> (environment variable
+<code>CIBSEVEN_CONNECT_CIBSEVEN_AI_AGENT_ALLOWED_ENDPOINTS</code>) or the global <code>cibseven.connect.allowed-endpoints</code>.
+The base URL, every MCP server, the pgvector host and, for remote embeddings, the OpenAI embedding endpoint
+are checked before anything is sent. List all of them, for example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">&#34;-Dcibseven.connect.cibseven-ai-agent.allowed-endpoints=https://api.openai.com,https://mcp.example.com,postgresql://db.example.com:5432&#34;</span>
+</span></span></code></pre></div><p>The Knowledge Ingestor (<code>cibseven-knowledge-ingestor</code>) checks its pgvector host and embedding endpoint the same way.
+A refused endpoint fails the task with a <code>ConnectorEndpointNotAllowedException</code>. For the syntax and all
+settings, see <a href="/manual/latest/reference/connect/#allowed-endpoints">Allowed Endpoints</a>.</p>
+
 <h3 id="provider-recipes">Provider recipes</h3>
 <p>The same task works against any OpenAI-compatible endpoint — only <code>baseUrl</code>, <code>model</code>, and the
 authentication differ. Use a current model ID from your provider&rsquo;s catalogue in place of the
 placeholders below.</p>
-<p><strong>OpenAI (default)</strong> — omit <code>baseUrl</code>; set <code>apiKey</code> (or the <code>OPENAI_API_KEY</code> env var).</p>
+<p><strong>OpenAI (default)</strong> — omit <code>baseUrl</code>; set the key in the server&rsquo;s <code>OPENAI_API_KEY</code> env var.</p>
 <pre tabindex="0"><code>model:   &lt;an OpenAI chat model&gt;
-apiKey:  ${apiKey}
-</code></pre><p><strong>Azure OpenAI</strong> — point <code>baseUrl</code> at your Azure deployment endpoint and pass the Azure key. Many
+</code></pre><p><strong>Azure OpenAI</strong> — on the server, set <code>OPENAI_BASE_URL</code> to your Azure deployment endpoint
+(<code>https://&lt;resource&gt;.openai.azure.com/openai/v1</code>) and <code>OPENAI_API_KEY</code> to the Azure key. Many
 Azure setups expect the key in a header; use <code>customHeaders</code> if your gateway requires it.</p>
-<pre tabindex="0"><code>baseUrl: https://&lt;resource&gt;.openai.azure.com/openai/v1
-model:   &lt;your Azure deployment name&gt;
-apiKey:  ${azureKey}
-</code></pre><p><strong>OpenRouter</strong> — prefix the model with its provider; OpenRouter aggregates many vendors.</p>
-<pre tabindex="0"><code>baseUrl: https://openrouter.ai/api/v1
-model:   &lt;vendor&gt;/&lt;model&gt;     # e.g. openai/&lt;model&gt;, anthropic/&lt;model&gt;
-apiKey:  ${openrouterKey}
-</code></pre><p><strong>Ollama (local / self-hosted)</strong> — no API key needed for a local server.</p>
+<pre tabindex="0"><code>model:   &lt;your Azure deployment name&gt;
+</code></pre><p><strong>OpenRouter</strong> — on the server, set <code>OPENAI_BASE_URL</code> to <code>https://openrouter.ai/api/v1</code> and
+<code>OPENAI_API_KEY</code> to the OpenRouter key; prefix the model with its provider.</p>
+<pre tabindex="0"><code>model:   &lt;vendor&gt;/&lt;model&gt;     # e.g. openai/&lt;model&gt;, anthropic/&lt;model&gt;
+</code></pre><p><strong>Anthropic (Claude)</strong> — Anthropic&rsquo;s OpenAI-compatible endpoint, with an API key from the Claude Console.
+Leave <strong>Reasoning effort</strong> and <strong>Reasoning summary</strong> empty. Anthropic describes this endpoint as meant for
+trying out and comparing models rather than for long-term production use.</p>
+<pre tabindex="0"><code>baseUrl: https://api.anthropic.com/v1
+model:   &lt;a Claude model&gt;
+apiKey:  ${anthropicKey}
+</code></pre><p>The key is always an API key of the provider&rsquo;s developer platform. A chat subscription, such as ChatGPT,
+Claude.ai or Claude Code, is not an API key and cannot be used here.</p>
+<p><strong>Ollama (local / self-hosted)</strong> — no API key needed for a local server.</p>
 <pre tabindex="0"><code>baseUrl: http://localhost:11434/v1
 model:   &lt;a model you&#39;ve pulled into Ollama&gt;
 </code></pre>
 <div class="note bg-info docs-info">
   <h3>Data Residency Note</h3>
-  <p><code>baseUrl</code> governs the <strong>chat</strong> model. In this release it does <strong>not</strong> govern a <em>remote</em> embedding
+  <p><p><code>baseUrl</code> governs the <strong>chat</strong> model. In this release it does <strong>not</strong> govern a <em>remote</em> embedding
 model used for RAG — a remote <code>embeddingModelName</code> currently always calls the public OpenAI endpoint.
-If you must keep embeddings on a private/sovereign endpoint, use the local default embedding model.
+If you must keep embeddings on a private/sovereign endpoint, use the local default embedding model.</p>
+<p>Remote embeddings receive <code>OPENAI_API_KEY</code> only if <code>OPENAI_BASE_URL</code> is not set or points to OpenAI as
+well, so another provider&rsquo;s key is not sent to OpenAI. An <strong>API key</strong> defined in the model belongs to
+its <strong>Base URL</strong> and is only used for remote embeddings if that base URL is OpenAI as well. With another
+provider configured, leave <code>embeddingModelName</code> empty to use the local embedding model. The Knowledge
+Ingestor sends its own <strong>API key</strong> field to OpenAI, since it has no chat endpoint.
 See <a href="/manual/latest/reference/connect/ai-agent-connector/rag/">RAG</a> and <a href="/manual/latest/reference/connect/ai-agent-connector/troubleshooting/">Limitations</a>.</p>
+</p>
 </div>
 
 
@@ -4603,6 +4788,8 @@ variable automatically. See <a href="/manual/latest/reference/connect/ai-agent-c
     <li><a href="#core-inputs">Core inputs</a></li>
     <li><a href="#llm-provider-endpoint-model-authentication">LLM provider (endpoint, model, authentication)</a>
       <ul>
+        <li><a href="#api-key-and-endpoint">API key and endpoint</a></li>
+        <li><a href="#allowed-endpoints">Allowed endpoints</a></li>
         <li><a href="#provider-recipes">Provider recipes</a></li>
       </ul>
     </li>

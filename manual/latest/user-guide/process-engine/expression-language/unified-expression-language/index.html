@@ -100,7 +100,7 @@
       
     
 
-    <span class="number">2.2-ee</span>
+    <span class="number">3.0</span>
 </div>
 
 <br />
@@ -170,6 +170,14 @@
   <li>
     
       <a href="/manual/latest/introduction/third-party-libraries/cibseven-bpm-platform-license-book/" >CIB seven License Book</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/introduction/third-party-libraries/sbom/" >Software Bill of Materials</a>
     
   </li>
 
@@ -248,6 +256,25 @@
   <li>
     
       <a href="/manual/latest/user-guide/process-engine/process-instance-restart/" >Process Instance Restart</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/user-guide/process-engine/agentic-ad-hoc-subprocess/" >Agentic Ad Hoc Sub-Process</a>
+    
+  </li>
+
+        
+      </ul>
     
   </li>
 
@@ -1781,6 +1808,14 @@
   <li>
     
       <a href="/manual/latest/reference/bpmn20/subprocesses/transaction-subprocess/" >Transaction Subprocess</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/reference/bpmn20/subprocesses/ad-hoc-subprocess/" >Ad Hoc Sub-Process</a>
     
   </li>
 
@@ -3418,6 +3453,14 @@
           
   <li>
     
+      <a href="/manual/latest/webapps/modeler/user-guide/template-management/" >Template Management</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/webapps/modeler/user-guide/bpmn-ai-chat/" >BPMN AI Agent</a>
     
   </li>
@@ -3435,6 +3478,14 @@
   <li>
     
       <a href="/manual/latest/webapps/modeler/user-guide/chat/" >Real-time Chat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/modeler/user-guide/autosave/" >Autosave</a>
     
   </li>
 
@@ -3516,6 +3567,14 @@
   <li>
     
       <a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/" >Single Sign-On (OAuth2/OIDC)</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/" >Direct Provider</a>
     
   </li>
 
@@ -3641,6 +3700,33 @@
           
   <li>
     
+      <a href="/manual/latest/update/minor/22-to-30/" >2.2 to 3.0</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/tomcat/" >Tomcat</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/update/minor/22-to-30/jboss/" >WildFly / JBoss EAP</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/update/minor/21-to-22/" >2.1 to 2.2</a>
       <ul>
         
@@ -3735,8 +3821,51 @@
           
   <li>
     
+      <a href="/manual/latest/release-notes/3.0.x/" >Release Notes 3.0.x</a>
+      <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ee/" >3.0.0 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-3.0.0-ce/" >3.0.0 CE</a>
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+        
+          
+  <li>
+    
       <a href="/manual/latest/release-notes/2.2.x/" >Release Notes 2.2.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ee/" >2.2.5 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.2.5-ce-plus/" >2.2.5 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -3844,6 +3973,22 @@
     
       <a href="/manual/latest/release-notes/2.1.x/" >Release Notes 2.1.x</a>
       <ul>
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ee/" >2.1.11 EE</a>
+    
+  </li>
+
+        
+          
+  <li>
+    
+      <a href="/manual/latest/release-notes/release-notes-2.1.11-ce-plus/" >2.1.11 CE&#43;</a>
+    
+  </li>
+
         
           
   <li>
@@ -4420,6 +4565,13 @@ usage of EL.</p>
   </tr>
 </table>
 
+<div class="note bg-info docs-info">
+  <h3>Restricted access</h3>
+  <p>Expressions are checked against a deny list that blocks reflection and access to engine internals, for example <code>getClass()</code> or <code>lang:import</code>.
+See <a href="/manual/latest/user-guide/process-engine/securing-custom-code/#deny-list-for-expressions-and-scripts">Deny List for Expressions and Scripts</a>.</p>
+</div>
+
+
 <h2 id="usage-of-expression-language">Usage of Expression Language</h2>
 
 <h3 id="delegation-code">Delegation Code</h3>
@@ -4508,7 +4660,7 @@ a bean.</p>
 elements which can be provided with a JUEL expression. The expression is evaluated on <code>ExternalTaskService#complete</code> and
 <code>ExternalTaskService#handleFailure</code>. If the expression evaluates to <code>true</code>, a BPMN error is thrown which can be caught by an
 <a href="/manual/latest/reference/bpmn20/events/error-events/#error-boundary-event">Error Boundary Event</a>.</p>
-<p>In the scope of an External Task, expressions have access to the <a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a>
+<p>In the scope of an External Task, expressions have access to the <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a>
  object via the key <code>externalTask</code> which provides getter methods for <code>errorMessage</code>, <code>errorDetails</code>, <code>workerId</code>, <code>retries</code> and more.</p>
 <p><strong>Examples:</strong></p>
 <p>How to access the External Task object:</p>
@@ -4555,7 +4707,7 @@ evaluating expressions:</p>
   <tbody>
     <tr>
       <td><code>execution</code></td>
-      <td><code><a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
+      <td><code><a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>
 </code></td>
       <td>
         Available in a BPMN execution context like a service task, execution listener or sequence
@@ -4564,19 +4716,19 @@ evaluating expressions:</p>
     </tr>
     <tr>
       <td><code>task</code></td>
-      <td><code><a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
+      <td><code><a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>
 </code></td>
       <td>Available in a task context like a task listener.</td>
     </tr>
     <tr>
       <td><code>externalTask</code></td>
-      <td><code><a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a>
+      <td><code><a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a>
 </code></td>
       <td>Available during an external task context activity (e.g. in <a href="/manual/latest/reference/bpmn20/custom-extensions/extension-elements/#erroreventdefinition">camunda:errorEventDefinition</a> expressions).</td>
     </tr>
     <tr>
       <td><code>caseExecution</code></td>
-      <td><code><a href="/javadoc/cibseven/2.2-ee/org/cibseven/bpm/engine/delegate/DelegateCaseExecution.html">DelegateCaseExecution</a>
+      <td><code><a href="/javadoc/cibseven/3.0/org/cibseven/bpm/engine/delegate/DelegateCaseExecution.html">DelegateCaseExecution</a>
 </code></td>
       <td>Available in a CMMN execution context.</td>
     </tr>
