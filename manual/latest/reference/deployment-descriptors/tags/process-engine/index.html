@@ -4708,7 +4708,7 @@
   <tr>
     <td><code>authorizationEnabled</code></td>
     <td>Boolean</td>
-    <td>Activates <a href="/manual/latest/user-guide/process-engine/authorization-service/#enable-authorization-checks ">authorization checks</a>.</td>
+    <td>Activates <a href="/manual/latest/user-guide/process-engine/authorization-service/#enable-authorization-checks">authorization checks</a>.</td>
   </tr>
   <tr id="authGroupFilterThreshold">
     <td><code>authGroupFilterThreshold</code></td>
@@ -4833,22 +4833,35 @@
       </p>
     </td>
   </tr>
-  <tr>
+  <tr id="webclientExtensionsEnabled">
+    <td><code>webclientExtensionsEnabled</code></td>
+    <td>Boolean</td>
+    <td>
+        Whether the process engine creates, drops and checks the tables of the webclient extensions: the
+        <a href="/manual/latest/webapps/modeler/installation/database-schema/">modeler</a> (<code>MOD_*</code>),
+        the modeler chat (<code>CHAT_*</code>) and the notifications (<code>NOTIF_*</code>), see property <code>databaseSchemaUpdate</code>.
+        When the engine reports that these tables are missing, the webclient keeps the modeler, the chat and the notifications off.
+        The Tomcat and WildFly distributions and CIB seven Run set it to <code>true</code>. Available since 3.0.0; it replaces
+        <code>modelerEnabled</code>. See
+        <a href="/manual/latest/webapps/modeler/configuration/enable-disable/#engine-switch-available-from-300">Engine Switch</a>.
+      <p>
+        <strong>Default value:</strong> <code>false</code>
+      </p>
+      <p>
+        <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).
+      </p>
+    </td>
+  </tr>
+  <tr id="modelerEnabled">
     <td><code>modelerEnabled</code></td>
     <td>Boolean</td>
     <td>
-        When set to <code>false</code>, the automated schema maintenance (creating and dropping tables,
-        see property <code>databaseSchemaUpdate</code>) does not cover the tables of the webclient's
-        <a href="/manual/latest/webapps/modeler/installation/database-schema/">modeler</a>
-        (the <code>MOD_*</code> tables and the modeler chat's <code>CHAT_*</code> tables).
+        Deprecated since 3.0.0: an alias of <a href="#webclientExtensionsEnabled"><code>webclientExtensionsEnabled</code></a>,
+        so a configuration that names <code>modelerEnabled</code> keeps working. Up to 2.2, it decided whether the automated schema
+        maintenance covers the tables of the webclient's modeler (the <code>MOD_*</code> tables and the modeler chat's <code>CHAT_*</code> tables),
+        with the default <code>true</code>.
       <p>
-        <strong>From 3.0.0</strong> this property is a deprecated alias of <code>webclientExtensionsEnabled</code>,
-        which also covers the notification tables (<code>NOTIF_*</code>) and defaults to <code>false</code>. A
-        configuration naming <code>modelerEnabled</code> keeps working. See
-        <a href="/manual/latest/webapps/modeler/configuration/enable-disable/">Enable / Disable</a>.
-      </p>
-      <p>
-        <strong>Default value:</strong> <code>true</code>
+        <strong>Default value:</strong> <code>false</code> (as <code>webclientExtensionsEnabled</code>; <code>true</code> up to 2.2)
       </p>
       <p>
         <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).
@@ -4907,6 +4920,29 @@
       <p>
         <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).
       </p>
+    </td>
+  </tr>
+  <tr id="enableFilterExpressionWhitelist">
+    <td><code>enableFilterExpressionWhitelist</code></td>
+    <td>Boolean</td>
+    <td>
+        If set to <code>true</code>, JUEL expressions in task filter criteria and ad-hoc task queries (e.g. <code>assigneeExpression</code>)
+        are restricted to a <a href="/manual/latest/user-guide/process-engine/securing-custom-code/#task-filter-expression-whitelist">whitelist</a>; other expressions are rejected with HTTP 400.
+        <code>false</code> restores the previous behavior (not recommended). Default value is <code>true</code> (since 2.0.14, 2.1.10 and 2.2.4).
+      <p>
+        <strong>Values:</strong> <code>true</code>, <code>false</code> (Boolean).
+      </p>
+    </td>
+  </tr>
+  <tr id="allowedFilterExpressions">
+    <td><code>allowedFilterExpressions</code></td>
+    <td>String</td>
+    <td>
+        Semicolon-separated list of the expressions the <a href="/manual/latest/user-guide/process-engine/securing-custom-code/#task-filter-expression-whitelist">task filter expression whitelist</a> allows.
+        It replaces the default list, so include the defaults you still need. Numbers in brackets act as wildcards:
+        <code>${dateTime().minusMonths()}</code> also allows <code>minusMonths(2)</code>. Tomcat (<code>bpm-platform.xml</code>)
+        resolves <code>${…}</code> as a placeholder; WildFly (<code>standalone.xml</code>) needs <code>$${…}</code>.
+        Default: not set, the default list applies.
     </td>
   </tr>
   <tr id="deniedExpressionAccess">
@@ -5342,7 +5378,7 @@
     <td><code>skipHistoryOptimisticLockingExceptions</code></td>
     <td>Boolean</td>
     <td>
-        Controls if the engine will throw <a href="/manual/latest/user-guide/process-engine/transactions-in-processes/#optimistic-locking-in-camunda">OptimisticLockingException</a>s on UPDATE or DELETE operations for historical data or not.
+        Controls if the engine will throw <a href="/manual/latest/user-guide/process-engine/transactions-in-processes/#optimistic-locking-in-cib-seven">OptimisticLockingException</a>s on UPDATE or DELETE operations for historical data or not.
       <p>
         To preserve the previous behavior (≤ 7.9), the flag must be set to <code>false</code>.
       </p>
@@ -5448,7 +5484,7 @@
       </p>
     </td>
   </tr>
-  <tr>
+  <tr id="deploymentLockUsed">
     <td><code>deploymentLockUsed</code></td>
     <td>Boolean</td>
     <td>

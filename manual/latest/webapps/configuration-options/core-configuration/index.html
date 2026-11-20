@@ -4553,6 +4553,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
 
 <h3 id="all-core-configuration-options">All Core Configuration Options</h3>
 <p>The table below lists the core webclient options with short descriptions. The properties that set the paths under which the webclient is deployed in CIB seven Run or a Spring Boot application are described in <a href="/manual/latest/user-guide/cibseven-run/#cib-seven-webclient-properties">CIB seven webclient properties</a>.</p>
+<p>Since 3.0.0, the webclient ships no <code>application.yaml</code> of its own: the defaults below are defined in its code. It reads <code>cibseven-webclient.properties</code> and <code>cibseven-webclient.yaml</code> from the classpath in every setup (standalone, in CIB seven Run and embedded in a Spring Boot application), no <code>spring.config.import</code> is needed. These files rank just above the defaults: the configuration files of the application, environment variables and system properties override them, and the YAML file overrides the properties file.</p>
 <table class="table desc-table">
   <tr>
       <th>Prefix</th>
@@ -4562,7 +4563,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
   <tr>
       <td>cibseven.webclient</td>
       <td>.enabled</td>
-      <td>Specifies whether CIB seven web application (CIB seven webclient) REST API is enabled. <br />Default value: true</td>
+      <td>Whether the webclient is active. When <code>false</code>, none of its beans and REST endpoints are created, and <code>cibseven-webclient.properties</code> / <code>cibseven-webclient.yaml</code> are not read. <br />Default value: true</td>
   </tr>
   <tr>
       <td rowspan="4">cibseven.webclient.api</td>
@@ -4631,7 +4632,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
       <td>Ids of plugins to skip, for instance one that breaks the page; the other plugins still load. Takes a restart. See <a href="/manual/latest/webapps/plugins/#switching-off-one-plugin">Switching off one plugin</a>. <br />Default value: empty</td>
   </tr>  
   <tr>
-      <td rowspan="12">cibseven.webclient</td>
+      <td rowspan="8">cibseven.webclient</td>
       <td>.bpm.provider</td>
       <td>BPM provider implementation class. <code>org.cibseven.webapp.providers.SevenProvider</code> calls the engine REST API; <code>org.cibseven.webapp.providers.SevenDirectProvider</code> (<code>SevenDirectProviderEE</code> in the Enterprise Edition) calls an engine running in the same application, without <code>engineRest.url</code>, see <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/">Direct Provider</a> and <a href="/manual/latest/introduction/architecture/#webclient-and-process-engine-deployment-models">Webclient and Process Engine Deployment Models</a>. <br />Default value: org.cibseven.webapp.providers.SevenProvider</td>
   </tr>
@@ -4639,21 +4640,9 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
       <td>.historyLevel</td>
       <td><b>Not used</b> with engine-rest 2.2.0 and later: the engine reports its own history level, and this property is ignored. Only engine-rest before 2.2.0 uses it, as the history level assumed for the engine. <br />Possible values: audit/full/activity/none <br />Default value: audit</td>
   </tr>
-  <tr>
-      <td>.cockpit.url</td>
-      <td>Old cockpit access path. <br />Example: /camunda/app/cockpit/default</td>
-  </tr>
-  <tr>
-      <td>.datasource.fileValue.enabled</td>
-      <td>Enable/disable file value handling. <br />Possible values: true/false</td>
-  </tr>
-  <tr>
-      <td>.fetchInstances</td>
-      <td>Whether to fetch process instances. <br />Possible values: true/false</td>
-  </tr>
-  <tr>
-      <td>.fetchIncidents</td>
-      <td>Whether to fetch incidents. <br />Possible values: true/false</td>
+  <tr id="tr-cibseven-webclient-persistence">
+      <td>.persistence.properties</td>
+      <td>Additional Hibernate properties of the webclient's own persistence unit, the one holding the modeler tables, for example <code>hibernate.default_schema</code>. They apply to this unit only, unlike <code>spring.jpa.*</code>, and override its defaults <code>hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</code> (table names exactly as in the engine scripts) and <code>hibernate.hbm2ddl.auto=none</code> (the engine creates the tables). <code>spring.jpa.hibernate.ddl-auto</code> and <code>spring.jpa.hibernate.naming.*</code> of the application do not apply to this unit. <br />Default value: empty</td>
   </tr>
   <tr>
       <td>.services.basePath</td>
@@ -4663,13 +4652,9 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
       <td>.theme</td>
       <td>UI theme based on Bootstrap, currently only cib theme is supported. <br />Example: cib</td>
   </tr>
-  <tr>
-      <td>.token.secret</td>
-      <td>Secret for external token validation</td>
-  </tr>
-  <tr>
-      <td>.token.deny.external.ip</td>
-      <td>Deny external IP token user creation. <br />Possible values: true/false</td>
+  <tr id="tr-cibseven-webclient-startprocess">
+      <td>.startProcess.defaultFormEnabled</td>
+      <td>Show a default start form with a business key and process variables when a process definition has no start form of its own. When <code>false</code>, such a process starts at once. <br />Default value: false</td>
   </tr>
   <tr>
       <td>.user.provider</td>
@@ -4709,7 +4694,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
       <td>Whether to follow LDAP referrals. <br />Example: follow</td>
   </tr>
   <tr id="tr-cibseven-webclient-sso">
-      <td rowspan="14"><a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/">cibseven.webclient.sso</a></td>
+      <td rowspan="16"><a href="/manual/latest/webapps/configuration-options/core-configuration/single-sign-on/">cibseven.webclient.sso</a></td>
       <td>.endpoints.token</td>
       <td>OAuth2 token endpoint</td>
   </tr>
@@ -4728,6 +4713,14 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
   <tr>
       <td>.endpoints.introspection</td>
       <td>OAuth2 introspection endpoint</td>
+  </tr>
+  <tr id="tr-cibseven-webclient-sso-revocation">
+      <td>.endpoints.revocation</td>
+      <td>Token revocation endpoint (RFC 7009). On logout, the webclient revokes the OAuth2 tokens there. When empty, tokens are not revoked on logout. <br />Default value: empty</td>
+  </tr>
+  <tr>
+      <td>.endpoints.endSession</td>
+      <td>OIDC RP-initiated logout (<code>end_session_endpoint</code>). On logout, the webclient also ends the session at the identity provider. Register <code>&lt;app url&gt;/</code> as a valid post-logout redirect URI there. When empty, the session at the identity provider is left untouched. <br />Default value: empty</td>
   </tr>
   <tr>
       <td>.clientId</td>
@@ -4837,18 +4830,9 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
       <td>Whether to automatically follow HTTP redirects (status codes 3xx). <br />Default value: true</td>
   </tr>
   <tr>
-      <td rowspan="2">cibseven.webclient.custom.spring.jackson</td>
+      <td>cibseven.webclient.custom.spring.jackson</td>
       <td>.parser.max-size</td>
       <td>Maximum length in characters of a single JSON string the webclient will parse. <br />Default value: 20000000</td>
-  </tr>
-  <tr>
-      <td>.serialization.write-dates-as-timestamps</td>
-      <td>Switches webclient REST responses to the Unix epoch date format. Provided as a temporary migration aid starting from 2.2.2 for consumers that relied on the format used in 2.2.1. <br />Default value: false</td>
-  </tr>
-  <tr>
-      <td>spring</td>
-      <td>.config.import</td>
-      <td>List of optional config files to import if available. <br />Example:<br />- optional:classpath:cibseven-webclient.properties<br />- optional:classpath:cibseven-webclient.yaml</td>
   </tr>
   <tr>
       <td rowspan="5">springdoc</td>

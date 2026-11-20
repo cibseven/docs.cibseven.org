@@ -4517,15 +4517,8 @@ For example, tags like <code>3.0.0</code> or <code>latest</code> without explici
 </span></span></code></pre></div><p>or following command to use explicit version 3.0.0:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run-3.0.0
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run-3.0.0
-</span></span></code></pre></div>
-<h3 id="start-cib-seven-run4-using-docker">Start CIB seven (Run4) using Docker</h3>
-<p>To start <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> based on Spring Boot 4, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run4-latest
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run4-latest
-</span></span></code></pre></div><p>or following command to use explicit version 3.0.0:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:run4-3.0.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:run4-3.0.0
-</span></span></code></pre></div>
+</span></span></code></pre></div><p>Since CIB seven 3.0.0, the <code>run</code> image is based on Spring Boot 4. The separate <code>run4</code> image of CIB seven 2.2 no longer exists.</p>
+
 <h3 id="start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</h3>
 <p>To start CIB seven Wildfly version, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-latest
@@ -4534,6 +4527,19 @@ For example, tags like <code>3.0.0</code> or <code>latest</code> without explici
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:wildfly-3.0.0
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:wildfly-3.0.0
 </span></span></code></pre></div>
+<h3 id="java-versions">Java versions</h3>
+<p>Since CIB seven 3.0.0, the images are built for Java 21 and Java 25. Java 21 is the default and keeps the tags above. The Java 25 images carry the prefix <code>java25-</code> in front of the whole tag, for example <code>java25-tomcat-latest</code>, <code>java25-run-3.0.0</code> or <code>java25-latest</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull cibseven/cibseven:java25-tomcat-3.0.0
+</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 cibseven/cibseven:java25-tomcat-3.0.0
+</span></span></code></pre></div><p>The Community+ and Enterprise images use the same prefix.</p>
+
+<h3 id="environment-variables">Environment variables</h3>
+<p>The images are configured with environment variables, see the <a href="https://github.com/cibseven/cibseven-docker/#cib-seven-docker-image-configuration">documentation on GitHub</a>, for example the database connection (<code>DB_*</code>) and the OpenTelemetry agent (<code>OTEL_*</code>). Since CIB seven 3.0.0:</p>
+<ul>
+<li><code>WEBCLIENT_EXTENSIONS_ENABLED</code>: overrides the process engine property <a href="/manual/3.0/webapps/modeler/configuration/enable-disable/"><code>webclientExtensionsEnabled</code></a> of the distribution in the <code>tomcat</code>, <code>wildfly</code> and <code>run</code> images. Unset by default, so the engine creates the tables of the modeler, the chat and the notifications as the distribution configures it. Set it to <code>false</code> to leave these tables out of the database.</li>
+<li><code>MCP_ENABLED</code>: <code>true</code> switches on the <a href="/manual/3.0/user-guide/mcp-restapi/">REST API MCP plugin</a> in the <code>run</code> image; unset by default. It works together with <code>AI_AGENT_ENABLED</code> (default <code>true</code>): if either is <code>true</code>, the AI Agent Connector, agentic ad hoc sub processes and the MCP plugin are all on. To switch them off, set <code>AI_AGENT_ENABLED=false</code> and leave <code>MCP_ENABLED</code> unset or <code>false</code>. See <a href="/manual/3.0/user-guide/cibseven-run/#ai-agent-connector-and-rest-api-mcp">AI Agent connector and REST API MCP</a>.</li>
+</ul>
+
 <h2 id="community-plus-edition">Community Plus Edition</h2>
 
 <div class="note bg-info docs-info">
@@ -4552,9 +4558,6 @@ For example, tags like <code>3.0.0</code> or <code>latest</code> without explici
 </span></span></code></pre></div><p>To start <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ce-plus/cibseven:run-3.0.0
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ce-plus/cibseven:run-3.0.0
-</span></span></code></pre></div><p>To start <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> based on Spring Boot 4, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ce-plus/cibseven:run4-3.0.0
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ce-plus/cibseven:run4-3.0.0
 </span></span></code></pre></div><p>To start CIB seven Wildfly, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ce-plus/cibseven:wildfly-3.0.0
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ce-plus/cibseven:wildfly-3.0.0
@@ -4578,9 +4581,6 @@ For example, tags like <code>3.0.0</code> or <code>latest</code> without explici
 </span></span></code></pre></div><p>To start <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:run-3.0.0-ee
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:run-3.0.0-ee
-</span></span></code></pre></div><p>To start <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> based on Spring Boot 4, execute the following commands:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:run4-3.0.0-ee
-</span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:run4-3.0.0-ee
 </span></span></code></pre></div><p>To start CIB seven Wildfly version, execute the following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull artifacts.cibseven.org/docker-ee/cibseven:wildfly-3.0.0-ee
 </span></span><span class="line"><span class="cl">docker run -d --name cibseven -p 8080:8080 artifacts.cibseven.org/docker-ee/cibseven:wildfly-3.0.0-ee
@@ -4599,8 +4599,9 @@ For example, tags like <code>3.0.0</code> or <code>latest</code> without explici
       <ul>
         <li><a href="#start-cib-seven-tomcat-using-docker">Start CIB seven (Tomcat) using Docker</a></li>
         <li><a href="#start-cib-seven-run-using-docker">Start CIB seven (Run) using Docker</a></li>
-        <li><a href="#start-cib-seven-run4-using-docker">Start CIB seven (Run4) using Docker</a></li>
         <li><a href="#start-cib-seven-wildfly-using-docker">Start CIB seven (Wildfly) using Docker</a></li>
+        <li><a href="#java-versions">Java versions</a></li>
+        <li><a href="#environment-variables">Environment variables</a></li>
       </ul>
     </li>
     <li><a href="#community-plus-edition">Community Plus Edition</a></li>
