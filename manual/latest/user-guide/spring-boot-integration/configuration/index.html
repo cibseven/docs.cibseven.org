@@ -5321,45 +5321,32 @@ can only be overridden with their exposed identifier.</p>
 <a href="/manual/latest/user-guide/spring-boot-integration/configuration/#session-cookie">camunda.bpm.webapp.session-cookie</a> in the <code>application.yaml</code>.</p>
 
 <h2 id="configuring-spin-dataformats">Configuring Spin DataFormats</h2>
-<p>The CIB seven Spring Boot Starter auto-configures the Spin Jackson Json DataFormat when the
-<code>cibseven-spin-dataformat-json-jackson</code> dependency is detected on the classpath. To include a
-<code>DataFormatConfigurator</code> for the desired Jackson Java 8 module, the appropriate dependency needs
-to be included on the classpath as well. Note that <code>cibseven-engine-plugin-spin</code>
-needs to be included as a dependency as well for the auto-configurators to work.</p>
-<p>Auto-configuration is currently supported for the following <a href="https://github.com/FasterXML/jackson-modules-java8">Jackson Java 8 modules</a>:</p>
-<ol>
-<li>Parameter names (<code>jackson-module-parameter-names</code>)</li>
-<li>Java 8 Date/time (<code>jackson-datatype-jdk8</code>)</li>
-<li>Java 8 Datatypes (<code>jackson-datatype-jsr310</code>)</li>
-</ol>
+<p>The CIB seven Spring Boot Starter auto-configures the Spin Jackson JSON DataFormat when the
+<code>cibseven-spin-dataformat-json-jackson</code> dependency is detected on the classpath. Note that <code>cibseven-engine-plugin-spin</code>
+needs to be included as a dependency as well for the auto-configuration to work:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-plugin-spin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;groupId&gt;</span>org.cibseven.spin<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;artifactId&gt;</span>cibseven-spin-dataformat-json-jackson<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
+</span></span></code></pre></div><p>Since CIB seven 3.0, Spin uses Jackson 3, which supports Java 8 date/time types (<code>java.time</code>) and <code>Optional</code> out of the box. You do not need the Jackson Java 8 modules (<code>jackson-datatype-jsr310</code>, <code>jackson-datatype-jdk8</code>, <code>jackson-module-parameter-names</code>). The starter turns on parameter names for constructors, as the parameter names module did with Jackson 2.</p>
+<p>The Jackson 2 Java 8 modules are only registered with the deprecated Jackson 2 variant of Spin (<code>cibseven-spin-dataformat-json-jackson2</code>), when the module is on the classpath. See <a href="/manual/latest/update/minor/22-to-30/#jackson-3">Jackson 3</a> in the update guide.</p>
 
 <div class="note bg-warning docs-warning">
   <h3>Heads Up!</h3>
-  <p>The Spin Jackson Json DataFormat auto-configuration is disabled when using
+  <p>The Spin Jackson JSON DataFormat auto-configuration is disabled when using
 <code>cibseven-spin-dataformat-all</code> as a dependency. The <code>cibseven-spin-dataformat-all</code> artifact shades the
-Jackson libraries, which breaks compatibility with the regular Jackson modules. If usage of
+Jackson libraries. If usage of
 <code>cibseven-spin-dataformat-all</code> is necessary, please use the standard method for
 <a href="/manual/latest/reference/spin/extending-spin/#custom-dataformats">Spin Custom DataFormat configuration</a>.</p>
 </div>
 
-<p>For example, to provide support for Java 8 Date/time types in Spin, the following dependencies, with their
-appropriate version tags, will need to be added in the Spring Boot Application&rsquo;s
-<code>pom.xml</code> file:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&lt;groupId&gt;</span>org.cibseven.bpm<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&lt;artifactId&gt;</span>cibseven-engine-plugin-spin<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&lt;groupId&gt;</span>org.cibseven.spin<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&lt;artifactId&gt;</span>cibseven-spin-dataformat-json-jackson<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.datatype<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&lt;artifactId&gt;</span>jackson-datatype-jdk8<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
-</span></span></code></pre></div><p>Spring Boot also provides some nice configuration properties, to further
+<p>Spring Boot also provides some nice configuration properties, to further
 configure the Jackson <code>ObjectMapper</code>. They can be found <a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-customize-the-jackson-objectmapper">here</a>.</p>
 <p>To provide additional configurations, the following actions need to be performed:</p>
 <ol>

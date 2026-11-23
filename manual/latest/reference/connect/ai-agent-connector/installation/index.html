@@ -4504,7 +4504,7 @@ goal is <strong>non-invasiveness</strong>: if the overlay is absent, the engine 
 as before and loads <strong>no</strong> AI dependencies. So enabling/disabling is, in every distribution, about
 whether the overlay is on the classpath — not about a code change.</p>
 
-<h2 id="run--run4">run / run4</h2>
+<h2 id="run">run</h2>
 <p>The overlay lives in <code>configuration/userlib-ai/</code> (separate from the always-loaded
 <code>configuration/userlib/</code>). The start script adds it to the Spring Boot loader path <strong>only when AI is
 enabled</strong>. The logic in <code>run.sh</code> / <code>run.bat</code>:</p>
@@ -4606,7 +4606,7 @@ Ingestor</strong> appear in the template picker automatically. Operators can dro
   </thead>
   <tbody>
     <tr>
-      <td>run / run4</td>
+      <td>run</td>
       <td><code>configuration/userlib-ai/</code></td>
       <td>on (dev) / <strong>off (<code>--production</code>)</strong></td>
       <td><code>--production</code> without <code>--ai</code>, or <code>AI_AGENT_ENABLED=false</code></td>
@@ -4658,7 +4658,7 @@ Full data-flow detail is in
   <nav id="TableOfContents">
   <ul>
     <li><a href="#delivery-model">Delivery model</a></li>
-    <li><a href="#run--run4">run / run4</a></li>
+    <li><a href="#run">run</a></li>
     <li><a href="#tomcat">Tomcat</a></li>
     <li><a href="#wildfly">WildFly</a></li>
     <li><a href="#setting-the-default-model">Setting the default model</a></li>

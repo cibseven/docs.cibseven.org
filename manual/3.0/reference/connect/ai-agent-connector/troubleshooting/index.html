@@ -4498,7 +4498,7 @@ the classpath, the LLM endpoint/credentials are wrong, or the RAG/tool configura
 
 <h2 id="the-template-doesnt-appear--connector-not-found">The template doesn&rsquo;t appear / &ldquo;connector not found&rdquo;</h2>
 <ul>
-<li><strong>The overlay isn&rsquo;t enabled.</strong> Confirm AI is on for your distribution: run/run4 print
+<li><strong>The overlay isn&rsquo;t enabled.</strong> Confirm AI is on for your distribution: run prints
 <code>AI Agent connector enabled</code> at startup (and it&rsquo;s <strong>off under <code>--production</code></strong> unless <code>--ai</code> /
 <code>AI_AGENT_ENABLED=true</code>); Tomcat needs <code>lib-ai/</code> on <code>common.loader</code>; WildFly needs the module dir +
 import present. See <a href="/manual/3.0/reference/connect/ai-agent-connector/installation/">Installation</a>.</li>
