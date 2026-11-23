@@ -4499,6 +4499,7 @@
 <li>For administrators and developers: <a href="#webclient-database-tables-are-now-optional">Webclient database tables are now optional</a></li>
 <li>For administrators: <a href="#new-database-indexes">New database indexes</a></li>
 <li>For administrators: <a href="#stalled-delete-deployments-batches">Stalled &ldquo;Delete deployments&rdquo; batches</a></li>
+<li>For administrators and developers: <a href="#external-tasks-retry-time-cycle-and-fetch-history">External tasks: retry time cycle and fetch history</a></li>
 <li>For administrators and developers: <a href="#java-17-is-required">Java 17 is required</a></li>
 <li>For administrators and developers: <a href="#java-25-and-graaljs-25">Java 25 and GraalJS 25</a></li>
 <li>For developers: <a href="#spring-boot-4-and-spring-framework-7-are-required">Spring Boot 4 and Spring Framework 7 are required</a></li>
@@ -4681,10 +4682,27 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>Start a new &ldquo;Delete deployments&rdquo; batch for the deployments that are still there, with the same deployment query or with their ids. Do not pass the ids of deployments that the old batch already deleted: the request is rejected if a deployment does not exist.</li>
 </ol>
 
+<h2 id="external-tasks-retry-time-cycle-and-fetch-history">External tasks: retry time cycle and fetch history</h2>
+<p>Two changes affect external tasks. <code>camunda:failedJobRetryTimeCycle</code> now also applies to external tasks: every fetch consumes one attempt, and an incident is raised when the last attempt is fetched. The new process engine property <a href="/manual/3.0/reference/deployment-descriptors/tags/process-engine/#externalTaskFailedJobRetryTimeCycle"><code>externalTaskFailedJobRetryTimeCycle</code></a> sets a default cycle for external tasks that do not model their own. In addition, with history level <code>FULL</code>, every fetch writes an entry with the state <code>fetched</code> to <code>ACT_HI_EXT_TASK_LOG</code>.</p>
+
+<h3 id="user-impact-3">User impact</h3>
+<ul>
+<li>External tasks that have <code>camunda:failedJobRetryTimeCycle</code> get a limited number of attempts. This includes many existing models: the modeler shows the retry time cycle field once <code>camunda:asyncBefore</code> or <code>camunda:asyncAfter</code> is enabled, and up to 2.2 such a cycle applied only to the asynchronous continuation job. After the update, these external tasks raise a <code>failedExternalTask</code> incident when their attempts are used up. Without a cycle, nothing changes.</li>
+<li>A worker that reports a failure with <code>task.getRetries() - 1</code>, as recommended without a cycle, uses up two attempts per failure when a cycle is set, because the fetch already counted one.</li>
+<li>With history level <code>FULL</code>, <code>ACT_HI_EXT_TASK_LOG</code> grows faster, and custom queries on this table see the new state.</li>
+</ul>
+
+<h3 id="migration-steps-3">Migration steps</h3>
+<ul>
+<li>Check your models for <code>camunda:failedJobRetryTimeCycle</code> on external tasks. Remove the cycle where the external task must not be limited, or make sure that the number of attempts fits. See <a href="/manual/3.0/user-guide/process-engine/external-tasks/#retry-time-cycle">Retry Time Cycle</a>.</li>
+<li>With a cycle, let workers report <code>task.getRetries()</code> in <code>#handleFailure</code>.</li>
+<li>Check the history time to live of your processes, so the history cleanup removes the <code>fetched</code> entries, and adapt custom queries on <code>ACT_HI_EXT_TASK_LOG</code>. See <a href="/manual/3.0/user-guide/process-engine/external-tasks/#history-of-fetches">History of Fetches</a>.</li>
+</ul>
+
 <h2 id="java-17-is-required">Java 17 is required</h2>
 <p>CIB seven 2.2 ended the support for Java 11 runtimes. With 3.0, all CIB seven artifacts are compiled for Java 17 (class file version 61). They no longer load on a Java 11 runtime.</p>
 
-<h3 id="user-impact-3">User impact</h3>
+<h3 id="user-impact-4">User impact</h3>
 <p>This affects every component that still runs on Java 11, also outside the application server:</p>
 <ul>
 <li>applications with an embedded process engine,</li>
@@ -4693,14 +4711,14 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>applications that use the BPMN, CMMN or DMN model API, Spin or Connect on their own.</li>
 </ul>
 
-<h3 id="migration-steps-3">Migration steps</h3>
+<h3 id="migration-steps-4">Migration steps</h3>
 <p>Update the Java runtime of all these components to Java 17, 21 or 25 before you update to CIB seven <code>3.0.0</code>. Applications that compile against CIB seven need a JDK 17 or later and must not set <code>--release</code> (or <code>source</code>/<code>target</code>) below 17.</p>
 
 <h2 id="java-25-and-graaljs-25">Java 25 and GraalJS 25</h2>
 <p>CIB seven 3.0 supports Java 17, 21 and 25 and is tested on all three versions. The artifacts are compiled for Java 17 (see <a href="#java-17-is-required">Java 17 is required</a>), so the same artifacts run on each of them.</p>
 <p>CIB seven 3.0 also updates GraalVM JavaScript (GraalJS), the JavaScript engine of the pre-packaged distributions, from 21.3 to <code>25.0.1</code>. The 21.3 line does not run on Java 25, so supporting Java 25 required this upgrade; the new version ships for every installation, not only for those that move to Java 25.</p>
 
-<h3 id="user-impact-4">User impact</h3>
+<h3 id="user-impact-5">User impact</h3>
 <ul>
 <li>GraalJS 25 consists of more artifacts than GraalJS 21.3. <code>org.graalvm.js:js</code> is now a POM without a jar. It brings the language (<code>org.graalvm.js:js-language</code>) and the Truffle runtime (<code>org.graalvm.truffle:truffle-runtime</code>). The polyglot API (<code>org.graalvm.polyglot</code>) moved from <code>org.graalvm.sdk:graal-sdk</code> to <code>org.graalvm.polyglot:polyglot</code>. The Tomcat and WildFly distributions and CIB seven Run contain the new artifacts. CIB seven does not add GraalJS to an embedded process engine: if you use JavaScript there, your application brings GraalJS itself.</li>
 <li>An in-place update of a Tomcat or WildFly installation must not replace only the files that are already there: <code>graal-sdk</code> and <code>js</code> no longer exist as jars and several artifacts are new, so a partial replacement leaves an incomplete runtime — a chain of <code>NoClassDefFoundError</code> the first time a script runs, or a <code>ModuleLoadError</code> while WildFly boots. Follow the <a href="/manual/3.0/update/minor/22-to-30/tomcat/">Tomcat</a> and <a href="/manual/3.0/update/minor/22-to-30/jboss/">WildFly / JBoss EAP</a> pages.</li>
@@ -4711,7 +4729,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>In script tasks, listeners, input and output mappings, conditions and DMN expressions, GraalJS 25 changes the <a href="#number-types-in-javascript-scripts">number types</a> a script hands to Java and the <a href="#script-error-messages">script error messages</a>.</li>
 </ul>
 
-<h3 id="migration-steps-4">Migration steps</h3>
+<h3 id="migration-steps-5">Migration steps</h3>
 <ul>
 <li>
 <p>If your application embeds the process engine and brings GraalJS itself, update GraalJS to <code>25.0.1</code>, the version CIB seven 3.0 is tested with, and declare <code>org.graalvm.js:js</code> with <code>&lt;type&gt;pom&lt;/type&gt;</code>:</p>
@@ -4827,13 +4845,13 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <h2 id="spring-boot-4-and-spring-framework-7-are-required">Spring Boot 4 and Spring Framework 7 are required</h2>
 <p>The Spring Boot starters (<code>cibseven-bpm-spring-boot-starter*</code>), CIB seven Run (<code>cibseven-bpm-run*</code>) and the Spring integration (<code>cibseven-engine-spring</code>) now use Spring Boot 4.1 and Spring Framework 7. Spring Boot 3 and Spring Framework 6 are no longer supported.</p>
 
-<h3 id="user-impact-5">User impact</h3>
+<h3 id="user-impact-6">User impact</h3>
 <ul>
 <li>In CIB seven 2.2, the artifacts without suffix used Spring Boot 3 and Spring Framework 6. The variants for Spring Boot 4 and Spring Framework 7 had their own names: the starters with the suffix <code>-4</code> (for example <code>cibseven-bpm-spring-boot-starter-4</code>), <code>cibseven-bpm-run4*</code> and <code>cibseven-engine-spring-7</code>.</li>
 <li>In CIB seven 3.0, the artifacts without suffix use Spring Boot 4.1 and Spring Framework 7. The former <code>-4</code>, <code>run4</code> and <code>-7</code> artifacts still exist as relocation POMs that point to the artifacts without suffix. Builds that use them keep working, and Maven prints a relocation warning.</li>
 </ul>
 
-<h3 id="migration-steps-5">Migration steps</h3>
+<h3 id="migration-steps-6">Migration steps</h3>
 <ul>
 <li>If your application still runs on Spring Boot 3, update it to Spring Boot 4.1 first. Follow the migration guides of Spring Boot 4.0 and Spring Framework 7.0.</li>
 <li>Replace the artifact IDs with the suffix <code>-4</code>, <code>run4</code> or <code>-7</code> with the artifact IDs without suffix, for example <code>cibseven-bpm-spring-boot-starter-4</code> with <code>cibseven-bpm-spring-boot-starter</code>.</li>
@@ -4842,16 +4860,16 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <h2 id="quarkus-333-extension-update">Quarkus 3.33 extension update</h2>
 <p>The CIB seven engine Quarkus Extension has been updated from Quarkus 3.27 to Quarkus <code>3.33.3</code>, the current LTS. For what the Quarkus release itself brings, check the <a href="https://quarkus.io/blog/quarkus-3-33-released/">Quarkus 3.33 LTS release blog post</a>.</p>
 
-<h3 id="user-impact-6">User impact</h3>
+<h3 id="user-impact-7">User impact</h3>
 <p>This change affects applications that use the Quarkus Extension. They have to run on the same Quarkus version. The update also fixes a job executor problem of 2.2: a CDI bean with <code>@ConfigProperty</code> that was created while a job ran failed with <code>SRCFG00015: No configuration is available for this class loader</code>, and the job ended in an incident.</p>
 
-<h3 id="migration-steps-6">Migration steps</h3>
+<h3 id="migration-steps-7">Migration steps</h3>
 <p>Set the Quarkus version of your application to <code>3.33.x</code>, for example the property <code>quarkus.platform.version</code> in your <code>pom.xml</code>. See <a href="/manual/3.0/user-guide/quarkus-integration/version-compatibility/">Quarkus Version Compatibility</a>.</p>
 
 <h2 id="java-ee-variants-and-tomcat-9-wildfly-26-and-wildfly-28-distributions-removed">Java EE variants and Tomcat 9, WildFly 26 and WildFly 28 distributions removed</h2>
 <p>CIB seven 2.2 still built several modules in two variants: one for Java EE (<code>javax.*</code>) without suffix, and one for Jakarta EE with the suffix <code>-jakarta</code>. CIB seven 3.0 is built for Jakarta EE only, so each of these modules exists only once, under the name without suffix. The distributions for the Java EE servers Apache Tomcat 9 and WildFly 26, and the distribution for WildFly 28, were removed.</p>
 
-<h3 id="user-impact-7">User impact</h3>
+<h3 id="user-impact-8">User impact</h3>
 <p>The following artifacts no longer exist. There are no relocation POMs, so a build that still uses them fails because the artifact cannot be resolved:</p>
 <table class="table-2col">
   <thead>
@@ -4892,7 +4910,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
   </tbody>
 </table>
 
-<h3 id="migration-steps-7">Migration steps</h3>
+<h3 id="migration-steps-8">Migration steps</h3>
 <ul>
 <li>Replace the artifact IDs in the table with the names without suffix. The group IDs stay the same.</li>
 <li>If you run CIB seven on Tomcat 9, WildFly 26 or WildFly 28, move to a supported server first, for example Tomcat 11 or WildFly 42. See <a href="/manual/3.0/introduction/supported-environments/">Supported Environments</a>.</li>
@@ -4901,7 +4919,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <h2 id="junit-4-and-junit-3-test-support-removed">JUnit 4 and JUnit 3 test support removed</h2>
 <p>CIB seven 3.0 supports process and decision tests with JUnit 5 (JUnit Jupiter) only.</p>
 
-<h3 id="user-impact-8">User impact</h3>
+<h3 id="user-impact-9">User impact</h3>
 <ul>
 <li><code>org.cibseven.bpm.engine.test.ProcessEngineRule</code> is no longer a JUnit 4 rule. It is a JUnit 5 extension now (<code>BeforeEachCallback</code>, <code>AfterEachCallback</code>). A JUnit 4 test with <code>@Rule public ProcessEngineRule ...</code> no longer works.</li>
 <li><code>org.cibseven.bpm.dmn.engine.test.DmnEngineRule</code> is no longer a JUnit 4 rule either. It creates the DMN engine in its constructor and provides it through <code>getDmnEngine()</code>.</li>
@@ -4909,7 +4927,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>The Spring Boot test starter (<code>cibseven-bpm-spring-boot-starter-test</code>) no longer brings <code>junit-vintage-engine</code>. JUnit 4 tests in your Spring Boot project therefore no longer run, unless you add the Vintage engine yourself, and even then the CIB seven test helpers above do not work in them.</li>
 </ul>
 
-<h3 id="migration-steps-8">Migration steps</h3>
+<h3 id="migration-steps-9">Migration steps</h3>
 <ul>
 <li>
 <p>Write your process tests with JUnit 5. Use the <code>ProcessEngineExtension</code> from <code>org.cibseven.bpm:cibseven-bpm-junit5</code> (<code>org.cibseven.bpm.engine.test.junit5.ProcessEngineExtension</code>), either with <code>@ExtendWith(ProcessEngineExtension.class)</code> or as a field with <code>@RegisterExtension</code>.</p>
@@ -4938,7 +4956,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <p>CIB seven 3.0 is built against the Jakarta EE 11 APIs: Jakarta Expression Language 6.0, Jakarta Servlet 6.1 and Jakarta Contexts and Dependency Injection (CDI) 4.1. The pre-packaged Tomcat 11 and WildFly distributions already provide these APIs.</p>
 <p>CIB seven only uses APIs that are also present in Jakarta EE 10. The released modules therefore remain compatible with Jakarta EE 10 servers at the API level. Apache Tomcat 10.1 is covered by the integration tests of the web applications. JBoss EAP 8.1 is not yet tested in the continuous integration.</p>
 
-<h3 id="migration-steps-9">Migration steps</h3>
+<h3 id="migration-steps-10">Migration steps</h3>
 <p>No action is required for the pre-packaged distributions.</p>
 <p>If your build imports the Jakarta EE BOM (<code>jakarta.platform:jakarta.jakartaee-bom</code>) or depends on <code>jakarta.platform:jakarta.jakartaee-api</code> next to CIB seven, use version <code>11.0.0</code> to compile against the same API level as CIB seven.</p>
 <p>Note that <code>jakarta.platform:jakarta.jakartaee-api:11.0.0</code> no longer contains the API classes itself. It only depends on the individual API artifacts. If your build excludes one of them, for example <code>jakarta.ws.rs:jakarta.ws.rs-api</code>, declare that API explicitly.</p>
@@ -4946,7 +4964,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <h2 id="jakarta-expression-language-60">Jakarta Expression Language 6.0</h2>
 <p>The process engine, the DMN engine and the JUEL implementation are now compiled against Jakarta Expression Language (EL) 6.0.</p>
 
-<h3 id="user-impact-9">User impact</h3>
+<h3 id="user-impact-10">User impact</h3>
 <ul>
 <li>The expressions in your BPMN, CMMN and DMN models do not change. The process engine evaluates them with the JUEL implementation that is part of CIB seven (<code>org.cibseven.bpm.impl.juel</code>). The DMN engine uses the same implementation for expressions in the language <code>juel</code>. The supported syntax stays the same.</li>
 <li>Method calls in expressions behave as in 2.2 on every runtime: with an embedded process engine, on Tomcat, WildFly and JBoss EAP, in CIB seven Run and in Spring Boot. In 2.2, <code>cibseven-juel</code> contained its own copy of the EL 4.0 API. In 3.0, the EL API comes from the runtime. CIB seven therefore selects and invokes the methods itself, with the rules of the EL API that 2.2 used (<code>org.cibseven.bpm.impl.juel.JuelBeanELResolver</code>), and JUEL converts the arguments. Overloaded and varargs methods are selected as in 2.2, an array passed to a varargs parameter is passed as it is, and <code>null</code> passed to a <code>Long</code>, <code>Boolean</code> or <code>BigDecimal</code> parameter becomes <code>0</code>, <code>false</code> or <code>0</code>.</li>
@@ -4962,7 +4980,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>As in 2.2, when the arguments of the selected method are converted, the resolvers in the resolver chain that implement <code>ELResolver#convertToType</code> come first, then JUEL. These resolvers do not take part in the selection of the method.</li>
 </ul>
 
-<h3 id="migration-steps-10">Migration steps</h3>
+<h3 id="migration-steps-11">Migration steps</h3>
 <ul>
 <li>If a subclass of <code>ExpressionFactoryImpl</code> overrides <code>coerceToType</code>, change the method to <code>public &lt;T&gt; T coerceToType(Object obj, Class&lt;T&gt; targetType)</code>.</li>
 <li>Replace the imports of <code>org.cibseven.bpm.impl.juel.jakarta.el</code> with <code>jakarta.el</code> and adapt your EL classes to the signatures of EL 6.0. This includes process applications that override <code>getElResolver()</code>, <code>getBeanElResolver()</code> or <code>initProcessApplicationElResolver()</code>.</li>
@@ -4984,7 +5002,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li><code>org.cibseven.bpm.impl.juel.SimpleResolver</code></li>
 </ul>
 
-<h3 id="user-impact-10">User impact</h3>
+<h3 id="user-impact-11">User impact</h3>
 <p>Custom code no longer compiles in the following cases, in a subclass of one of these classes or of <code>jakarta.el.ELResolver</code>:</p>
 <ul>
 <li>it overrides <code>getFeatureDescriptors</code> with <code>@Override</code>;</li>
@@ -4994,7 +5012,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <p>Typical cases are a custom <code>ExpressionManager</code> with its own resolvers, an ELResolver that restricts what expressions may access, an ELResolver that makes the beans of another framework available in expressions, and test mocks.</p>
 <p>Resolvers compiled against CIB seven 2.2 reference the package <code>org.cibseven.bpm.impl.juel.jakarta.el</code>, which no longer exists in 3.0 (see <a href="#jakarta-expression-language-60">Jakarta Expression Language 6.0</a>). They fail to load and must be recompiled against <code>jakarta.el</code>. The compiler then reports every place that needs a change.</p>
 
-<h3 id="migration-steps-11">Migration steps</h3>
+<h3 id="migration-steps-12">Migration steps</h3>
 <p>Remove the <code>getFeatureDescriptors</code> method, the references to <code>ELResolver.TYPE</code> and <code>ELResolver.RESOLVABLE_AT_DESIGN_TIME</code>, and the imports of <code>java.beans.FeatureDescriptor</code> from your resolvers. The process engine never called this method, so removing it does not change the behavior of expressions.</p>
 
 <h2 id="jakarta-restful-web-services-40">Jakarta RESTful Web Services 4.0</h2>
@@ -5005,7 +5023,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>the Spring Boot starter and CIB seven Run: Jersey 4.0, which comes with Spring Boot 4.</li>
 </ul>
 
-<h3 id="user-impact-11">User impact</h3>
+<h3 id="user-impact-12">User impact</h3>
 <ul>
 <li>
 <p>If you deploy the REST API in your own application and bundle a JAX-RS implementation, use a JAX-RS 4.0 implementation, for example Jersey 4.0 or RESTEasy 7.0.</p>
@@ -5030,7 +5048,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 </li>
 </ul>
 
-<h3 id="migration-steps-12">Migration steps</h3>
+<h3 id="migration-steps-13">Migration steps</h3>
 <ul>
 <li>Replace <code>Link.JaxbLink</code> and <code>Link.JaxbAdapter</code> with your own JAXB types.</li>
 <li>Replace <code>@ManagedBean</code> on JAX-RS resources and providers with a CDI scope annotation, for example <code>@RequestScoped</code> or <code>@ApplicationScoped</code>.</li>
@@ -5041,14 +5059,14 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <h2 id="jakarta-activation-and-mime-types-of-file-variables">Jakarta Activation and MIME types of file variables</h2>
 <p><code>Variables.fileValue(File)</code> sets the MIME type of a file variable from the file name. In 2.2, <code>cibseven-commons-typed-values</code> contained a relocated copy of the JavaBeans Activation Framework 1.2 for this. In 3.0, it uses <code>jakarta.activation.MimetypesFileTypeMap</code> from Jakarta Activation 2.1. This API has no implementation of its own: without one, every file gets the MIME type <code>application/octet-stream</code>.</p>
 
-<h3 id="user-impact-12">User impact</h3>
+<h3 id="user-impact-13">User impact</h3>
 <ul>
 <li><code>cibseven-commons-typed-values</code> brings Eclipse Angus Activation (<code>org.eclipse.angus:angus-activation</code>) as a runtime dependency. An embedded process engine and the External Task Client therefore detect the same MIME types as in 2.2, for example <code>text/plain</code> for <code>.txt</code> and <code>image/png</code> for <code>.png</code>. File types that 2.2 did not know either, for example <code>.pdf</code>, <code>.json</code> or Office files, stay <code>application/octet-stream</code>.</li>
 <li>The pre-packaged Tomcat distribution has two new jars in <code>lib/</code>: the Jakarta Activation API (<code>jakarta.activation-api</code>) and Angus (<code>angus-activation</code>).</li>
 <li>On WildFly and JBoss EAP, the modules <code>org.cibseven.commons.cibseven-commons-typed-values</code> and <code>org.cibseven.bpm.cibseven-engine</code> depend on the server module <code>org.eclipse.angus.activation</code>, with <code>services=&quot;import&quot;</code>.</li>
 </ul>
 
-<h3 id="migration-steps-13">Migration steps</h3>
+<h3 id="migration-steps-14">Migration steps</h3>
 <ul>
 <li>If your application embeds the process engine or uses the External Task Client and excludes transitive dependencies of CIB seven, keep <code>org.eclipse.angus:angus-activation</code>, or provide another Jakarta Activation 2.1 implementation.</li>
 <li>If you installed CIB seven into Tomcat manually, also copy <code>jakarta.activation-api</code> and <code>angus-activation</code> from <code>$TOMCAT_DISTRIBUTION/lib/</code> to <code>$TOMCAT_HOME/lib/</code>.</li>
@@ -5071,7 +5089,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <p>Jackson 3 keeps the annotations of <code>com.fasterxml.jackson.annotation</code>, for example <code>@JsonProperty</code>, <code>@JsonIgnore</code>, <code>@JsonFormat</code> and <code>@JsonTypeInfo</code>. Its own databind annotations moved to <code>tools.jackson.databind.annotation</code>. The default mappers of Spin and of the External Task Client use the Jackson 2 defaults of Jackson 3 and the nesting depth limit of Jackson 2, so variables written by CIB seven 2.x are usually read and written unchanged. The exceptions are listed below.</p>
 <p>The deprecated artifacts <code>cibseven-spin-dataformat-json-jackson2</code>, <code>cibseven-spin-dataformat-all-jackson2</code> and <code>cibseven-external-task-client-jackson2</code> contain the Jackson 2 code of CIB seven 2.x, with the same packages and class names. They are a way out for applications that cannot move to Jackson 3 yet, and they will be removed in CIB seven 3.1.0. Never put a <code>-jackson2</code> artifact and its counterpart without suffix on one class path.</p>
 
-<h3 id="user-impact-13">User impact</h3>
+<h3 id="user-impact-14">User impact</h3>
 <ul>
 <li><strong>Jackson types in the public API.</strong> These methods now use the Jackson 3 types <code>tools.jackson.databind.ObjectMapper</code>, <code>JsonMapper</code> and <code>JavaType</code>:
 <ul>
@@ -5091,7 +5109,7 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li><strong>Reading writes back.</strong> When the process engine reads an object variable, it writes the variable back at the end of the command if Spin serializes the value to a different text. This was the same in 2.x. A plain <code>GET .../variables</code> of the REST API or opening the variables of a process instance in the web client is enough. So the first read after the update stores the new form of a changed value, and a later downgrade to 2.2 does not bring the old value back.</li>
 </ul>
 
-<h3 id="migration-steps-14">Migration steps</h3>
+<h3 id="migration-steps-15">Migration steps</h3>
 
 <h4 id="before-the-update">Before the update</h4>
 <ul>
@@ -5126,6 +5144,22 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 <li>
 <p>If your application injects a Jackson 2 <code>com.fasterxml.jackson.databind.ObjectMapper</code>, add <code>org.springframework.boot:spring-boot-jackson2</code> to its dependencies.</p>
 </li>
+<li>
+<p>Stay on Jackson 3.1. CIB seven 3.0.x is built and tested with Spring Boot 4.1 and Jackson 3.1 (3.0.0: Jackson 3.1.7). Update Spring Boot and Jackson only to patch releases of these minor versions. With Jackson 3.2, for example, the REST API loses the resource type when it creates a filter (<code>Unable to create filter with invalid resource type 'null'</code>). This affects applications that embed the REST API and get a newer Jackson, for example through <code>jackson-bom</code> 3.2 or a Spring Boot version newer than 4.1. <code>cibseven-bom</code> does not manage Jackson, so the version comes from Spring Boot; CIB seven Run and the Tomcat and WildFly distributions ship Jackson 3.1 and are not affected. See <a href="/manual/3.0/user-guide/spring-boot-integration/version-compatibility/">Spring Boot Version Compatibility</a>. To keep Jackson on 3.1:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- with spring-boot-starter-parent --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;jackson-bom.version&gt;</span>3.1.7<span class="nt">&lt;/jackson-bom.version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- or in dependencyManagement, before the other BOMs --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>tools.jackson<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;artifactId&gt;</span>jackson-bom<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>3.1.7<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div></li>
 </ul>
 
 <h4 id="data-format-configurators">Data format configurators</h4>
@@ -5263,7 +5297,7 @@ lombok.jacksonized.jacksonVersion += 3
 <h2 id="software-bill-of-materials">Software Bill of Materials</h2>
 <p>CIB seven 3.0 publishes a CycloneDX Software Bill of Materials (SBOM) for the whole project, for each distribution and for each Docker image.</p>
 
-<h3 id="user-impact-14">User impact</h3>
+<h3 id="user-impact-15">User impact</h3>
 <p>No user impact is expected, and no migration step is needed. The SBOMs are additional artifacts; nothing in the distributions or the images changes because of them. See <a href="/manual/3.0/introduction/third-party-libraries/sbom/">Software Bill of Materials</a>.</p>
 
 <h2 id="permissions-for-task-and-process-instance-attachments">Permissions for task and process instance attachments</h2>
@@ -5425,16 +5459,22 @@ To allow a single default again, remove it, for example <code>deniedExpressionAc
         <li><a href="#migration-steps-2">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#java-17-is-required">Java 17 is required</a>
+    <li><a href="#external-tasks-retry-time-cycle-and-fetch-history">External tasks: retry time cycle and fetch history</a>
       <ul>
         <li><a href="#user-impact-3">User impact</a></li>
         <li><a href="#migration-steps-3">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#java-25-and-graaljs-25">Java 25 and GraalJS 25</a>
+    <li><a href="#java-17-is-required">Java 17 is required</a>
       <ul>
         <li><a href="#user-impact-4">User impact</a></li>
         <li><a href="#migration-steps-4">Migration steps</a></li>
+      </ul>
+    </li>
+    <li><a href="#java-25-and-graaljs-25">Java 25 and GraalJS 25</a>
+      <ul>
+        <li><a href="#user-impact-5">User impact</a></li>
+        <li><a href="#migration-steps-5">Migration steps</a></li>
         <li><a href="#number-types-in-javascript-scripts">Number types in JavaScript scripts</a>
           <ul>
             <li><a href="#the-property-javascriptnumbernarrowing">The property javaScriptNumberNarrowing</a></li>
@@ -5445,62 +5485,62 @@ To allow a single default again, remove it, for example <code>deniedExpressionAc
     </li>
     <li><a href="#spring-boot-4-and-spring-framework-7-are-required">Spring Boot 4 and Spring Framework 7 are required</a>
       <ul>
-        <li><a href="#user-impact-5">User impact</a></li>
-        <li><a href="#migration-steps-5">Migration steps</a></li>
-      </ul>
-    </li>
-    <li><a href="#quarkus-333-extension-update">Quarkus 3.33 extension update</a>
-      <ul>
         <li><a href="#user-impact-6">User impact</a></li>
         <li><a href="#migration-steps-6">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#java-ee-variants-and-tomcat-9-wildfly-26-and-wildfly-28-distributions-removed">Java EE variants and Tomcat 9, WildFly 26 and WildFly 28 distributions removed</a>
+    <li><a href="#quarkus-333-extension-update">Quarkus 3.33 extension update</a>
       <ul>
         <li><a href="#user-impact-7">User impact</a></li>
         <li><a href="#migration-steps-7">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#junit-4-and-junit-3-test-support-removed">JUnit 4 and JUnit 3 test support removed</a>
+    <li><a href="#java-ee-variants-and-tomcat-9-wildfly-26-and-wildfly-28-distributions-removed">Java EE variants and Tomcat 9, WildFly 26 and WildFly 28 distributions removed</a>
       <ul>
         <li><a href="#user-impact-8">User impact</a></li>
         <li><a href="#migration-steps-8">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#jakarta-ee-11">Jakarta EE 11</a>
+    <li><a href="#junit-4-and-junit-3-test-support-removed">JUnit 4 and JUnit 3 test support removed</a>
       <ul>
+        <li><a href="#user-impact-9">User impact</a></li>
         <li><a href="#migration-steps-9">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#jakarta-expression-language-60">Jakarta Expression Language 6.0</a>
+    <li><a href="#jakarta-ee-11">Jakarta EE 11</a>
       <ul>
-        <li><a href="#user-impact-9">User impact</a></li>
         <li><a href="#migration-steps-10">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#elresolvergetfeaturedescriptors-removed">ELResolver#getFeatureDescriptors removed</a>
+    <li><a href="#jakarta-expression-language-60">Jakarta Expression Language 6.0</a>
       <ul>
         <li><a href="#user-impact-10">User impact</a></li>
         <li><a href="#migration-steps-11">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#jakarta-restful-web-services-40">Jakarta RESTful Web Services 4.0</a>
+    <li><a href="#elresolvergetfeaturedescriptors-removed">ELResolver#getFeatureDescriptors removed</a>
       <ul>
         <li><a href="#user-impact-11">User impact</a></li>
         <li><a href="#migration-steps-12">Migration steps</a></li>
       </ul>
     </li>
-    <li><a href="#jakarta-activation-and-mime-types-of-file-variables">Jakarta Activation and MIME types of file variables</a>
+    <li><a href="#jakarta-restful-web-services-40">Jakarta RESTful Web Services 4.0</a>
       <ul>
         <li><a href="#user-impact-12">User impact</a></li>
         <li><a href="#migration-steps-13">Migration steps</a></li>
       </ul>
     </li>
+    <li><a href="#jakarta-activation-and-mime-types-of-file-variables">Jakarta Activation and MIME types of file variables</a>
+      <ul>
+        <li><a href="#user-impact-13">User impact</a></li>
+        <li><a href="#migration-steps-14">Migration steps</a></li>
+      </ul>
+    </li>
     <li><a href="#spin-and-annotations-in-the-tomcat-distribution-and-cib-seven-run">Spin and annotations in the Tomcat distribution and CIB seven Run</a></li>
     <li><a href="#jackson-3">Jackson 3</a>
       <ul>
-        <li><a href="#user-impact-13">User impact</a></li>
-        <li><a href="#migration-steps-14">Migration steps</a>
+        <li><a href="#user-impact-14">User impact</a></li>
+        <li><a href="#migration-steps-15">Migration steps</a>
           <ul>
             <li><a href="#before-the-update">Before the update</a></li>
             <li><a href="#spring-boot-applications">Spring Boot applications</a></li>
@@ -5518,7 +5558,7 @@ To allow a single default again, remove it, for example <code>deniedExpressionAc
     <li><a href="#osgi-package-imports">OSGi package imports</a></li>
     <li><a href="#software-bill-of-materials">Software Bill of Materials</a>
       <ul>
-        <li><a href="#user-impact-14">User impact</a></li>
+        <li><a href="#user-impact-15">User impact</a></li>
       </ul>
     </li>
     <li><a href="#permissions-for-task-and-process-instance-attachments">Permissions for task and process instance attachments</a>
@@ -5589,7 +5629,7 @@ To allow a single default again, remove it, for example <code>deniedExpressionAc
 
   
 
-  <script type="text/javascript" src="/manual/3.0/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+  <script type="text/javascript" src="/manual/3.0/js/docs.35d2a8abac6820e986f8d1f3d2449c2e299a6a8151ddfa8faec3966145ecca9b.js" integrity="sha256-NdKoq6xoIOmG&#43;NHz0kScLimaaoFR3fqPrsOWYUXsyps="></script>
 </body>
 </html>
 

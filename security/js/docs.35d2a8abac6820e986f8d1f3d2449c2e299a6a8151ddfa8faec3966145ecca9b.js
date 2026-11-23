@@ -35568,6 +35568,12 @@ lightbox.appendChild(lightboxContent);
 lightbox.addEventListener('click', function () {
   lightbox.classList.remove('open');
 });
+// close the opened image with the ESC key, too
+document.addEventListener('keydown', function (evt) {
+  if ((evt.key === 'Escape' || evt.key === 'Esc' || evt.keyCode === 27) && lightbox.classList.contains('open')) {
+    lightbox.classList.remove('open');
+  }
+});
 lightboxContent.appendChild(lightboxImg);
 
 

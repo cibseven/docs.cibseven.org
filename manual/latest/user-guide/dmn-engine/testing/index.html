@@ -4493,13 +4493,18 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>To easily test DMN decisions in a JUnit test, the DMN engine provides a
-JUnit Rule. The <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/dmn/engine/test/DmnEngineRule.html">DmnEngineRule</a>
- creates a new default DMN engine. The DMN engine can be used in test cases to parse and evaluate decisions.</p>
+      <p>To easily test DMN decisions in a JUnit test, the DMN engine provides the
+<a href="/javadoc/cibseven/3.0/org/cibseven/bpm/dmn/engine/test/DmnEngineRule.html">DmnEngineRule</a>
+. It creates a new default DMN engine in its constructor. The DMN engine can be used in test cases to parse and evaluate decisions.</p>
+
+<div class="note bg-info docs-info">
+  <h3>JUnit 5 since CIB seven 3.0</h3>
+  <p>Since CIB seven 3.0, <code>DmnEngineRule</code> is no longer a JUnit 4 rule: declare it as a plain field, without <code>@Rule</code>, in a JUnit 5 test (<code>org.junit.jupiter.api.Test</code>). See <a href="/manual/latest/update/minor/22-to-30/#junit-4-and-junit-3-test-support-removed">JUnit 4 and JUnit 3 test support removed</a>.</p>
+</div>
+
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DecisionTest</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Rule</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">DmnEngineRule</span><span class="w"> </span><span class="n">dmnEngineRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DmnEngineRule</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">DmnEngineRule</span><span class="w"> </span><span class="n">dmnEngineRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DmnEngineRule</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Test</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4521,10 +4526,9 @@ JUnit Rule. The <a href="/javadoc/cibseven/3.0/org/cibseven/bpm/dmn/engine/test/
 this to the DMN engine rule.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DecisionTest</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Rule</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">DmnEngineRule</span><span class="w"> </span><span class="n">dmnEngineRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DmnEngineRule</span><span class="p">(</span><span class="n">createCustomConfiguration</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">DmnEngineRule</span><span class="w"> </span><span class="n">dmnEngineRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DmnEngineRule</span><span class="p">(</span><span class="n">createCustomConfiguration</span><span class="p">());</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">DmnEngineConfiguration</span><span class="w"> </span><span class="nf">createCustomConfiguration</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">static</span><span class="w"> </span><span class="n">DmnEngineConfiguration</span><span class="w"> </span><span class="nf">createCustomConfiguration</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// create and return custom configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">...;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
@@ -4580,7 +4584,7 @@ This allows you to use common <code>List</code> or <code>Map</code> asserts.</p>
 
   
 
-  <script type="text/javascript" src="/manual/latest/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+  <script type="text/javascript" src="/manual/latest/js/docs.35d2a8abac6820e986f8d1f3d2449c2e299a6a8151ddfa8faec3966145ecca9b.js" integrity="sha256-NdKoq6xoIOmG&#43;NHz0kScLimaaoFR3fqPrsOWYUXsyps="></script>
 </body>
 </html>
 

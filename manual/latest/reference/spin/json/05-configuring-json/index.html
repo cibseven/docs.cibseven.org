@@ -4493,8 +4493,25 @@
     </div>
 
     <div class="col-xs-12 content-text">
-      <p>Spin can be configured to change JSON parsing, writing and mapping settings, for example to tolerate documents that are not strictly compliant to the standard. Spin uses <a href="http://wiki.fasterxml.com/JacksonHome">Jackson</a> to handle JSON. The JSON data format therefore uses an instance of <code>com.fasterxml.jackson.databind.ObjectMapper</code> that can be configured using Spin&rsquo;s <a href="/manual/latest/reference/spin/extending-spin/#configuring-data-formats">configuration mechanism</a>.</p>
-<p>The data format class to register a configurator for is <code>org.cibseven.spin.impl.json.jackson.format.JacksonJsonDataFormat</code>. An instance of this class provides a setter for an <code>ObjectMapper</code> that can be used to replace the default object mapper. This logic goes into a configurator class that implements the interface <code>org.cibseven.spin.spi.DataFormatConfigurator</code>. Please refer to the <a href="https://fasterxml.github.io/jackson-databind/javadoc/2.4/">Jackson&rsquo;s documentation</a> on what configuration options are available.</p>
+      <p>Spin can be configured to change JSON parsing, writing and mapping settings, for example to tolerate documents that are not strictly compliant to the standard. Spin uses <a href="https://github.com/FasterXML/jackson">Jackson</a> to handle JSON. Since CIB seven 3.0, this is Jackson 3: the JSON data format uses an instance of <code>tools.jackson.databind.ObjectMapper</code> that can be configured using Spin&rsquo;s <a href="/manual/latest/reference/spin/extending-spin/#configuring-data-formats">configuration mechanism</a>.</p>
+<p>The data format class to register a configurator for is <code>org.cibseven.spin.impl.json.jackson.format.JacksonJsonDataFormat</code>. An instance of this class provides a getter and a setter for its <code>ObjectMapper</code>. This logic goes into a configurator class that implements the interface <code>org.cibseven.spin.spi.DataFormatConfigurator</code>.</p>
+<p>Jackson 3 mappers are immutable. Build a new mapper from the current one and set it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AcmeJsonConfigurator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">DataFormatConfigurator</span><span class="o">&lt;</span><span class="n">JacksonJsonDataFormat</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;</span><span class="n">JacksonJsonDataFormat</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getDataFormatClass</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">JacksonJsonDataFormat</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">JacksonJsonDataFormat</span><span class="w"> </span><span class="n">dataFormat</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dataFormat</span><span class="p">.</span><span class="na">setObjectMapper</span><span class="p">(</span><span class="n">dataFormat</span><span class="p">.</span><span class="na">getObjectMapper</span><span class="p">().</span><span class="na">rebuild</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">addModule</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">AcmeModule</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>Start from <code>getObjectMapper().rebuild()</code>, not from a new <code>JsonMapper</code>: the default mapper carries the settings that keep the JSON written by CIB seven 2.x readable. You do not need <code>JavaTimeModule</code> or <code>Jdk8Module</code>: Jackson 3 supports <code>java.time</code> and <code>Optional</code> itself. Refer to the <a href="https://github.com/FasterXML/jackson-databind">Jackson documentation</a> for the available configuration options.</p>
+<p>A configurator that was compiled against CIB seven 2.x and Jackson 2 fails with <code>NoSuchMethodError</code>, see <a href="/manual/latest/update/minor/22-to-30/#jackson-3">Jackson 3</a> in the update guide.</p>
 
     </div>
   </div>
@@ -4534,7 +4551,7 @@
 
   
 
-  <script type="text/javascript" src="/manual/latest/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+  <script type="text/javascript" src="/manual/latest/js/docs.35d2a8abac6820e986f8d1f3d2449c2e299a6a8151ddfa8faec3966145ecca9b.js" integrity="sha256-NdKoq6xoIOmG&#43;NHz0kScLimaaoFR3fqPrsOWYUXsyps="></script>
 </body>
 </html>
 

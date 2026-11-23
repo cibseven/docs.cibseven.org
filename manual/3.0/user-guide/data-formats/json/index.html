@@ -4618,6 +4618,17 @@ Consult the <a href="/manual/3.0/user-guide/security/#variable-values-from-untru
 </div>
 
 
+<h3 id="lists-and-maps-with-values-of-different-types">Lists and maps with values of different types</h3>
+<p>With <code>defaultSerializationFormat</code> set to <code>application/json</code>, Spin&rsquo;s type detectors name the element type of a list, map or set after its <strong>first</strong> element. If the elements have different types, the stored type fits only the first one. When the variable is read, it either cannot be deserialized (<code>Cannot deserialize object in variable</code>), or the values come back as strings, for example <code>true</code> as <code>&quot;true&quot;</code> and <code>5</code> as <code>&quot;5&quot;</code>. The list detector is always active; the map and set detectors are optional. Nested collections are affected the same way, and the External Task Client has type detectors of its own that behave alike. This is not new in CIB seven 3.0: CIB seven 2.x and Camunda 7 behave the same.</p>
+<p>One unreadable variable breaks more than its own reads: reading all variables of the process instance or the task fails too, and so do the form variables of a task, which the webclient loads.</p>
+<p>With JSON as the default format, do not store lists or maps with values of different types as plain Java collections. Use one of these instead:</p>
+<ul>
+<li>a <a href="#native-json-variable-value">Spin JSON value</a> (<code>SpinValues.jsonValue(...)</code>) or a class of your own,</li>
+<li>separate variables,</li>
+<li>a <a href="/manual/3.0/user-guide/process-engine/variables/#transient-variables">transient variable</a>, if the value is not needed after the transaction,</li>
+<li>Java serialization for this variable: <code>serializationDataFormat(Variables.SerializationDataFormats.JAVA)</code>.</li>
+</ul>
+
     </div>
   </div>
 </div>
@@ -4629,7 +4640,11 @@ Consult the <a href="/manual/3.0/user-guide/security/#variable-values-from-untru
     <li><a href="#expression-language-integration">Expression Language Integration</a></li>
     <li><a href="#scripting-integration">Scripting Integration</a></li>
     <li><a href="#native-json-variable-value">Native JSON Variable Value</a></li>
-    <li><a href="#serializing-process-variables">Serializing Process Variables</a></li>
+    <li><a href="#serializing-process-variables">Serializing Process Variables</a>
+      <ul>
+        <li><a href="#lists-and-maps-with-values-of-different-types">Lists and maps with values of different types</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   <div class="docs-banner" style="display:none">
@@ -4663,7 +4678,7 @@ Consult the <a href="/manual/3.0/user-guide/security/#variable-values-from-untru
 
   
 
-  <script type="text/javascript" src="/manual/3.0/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+  <script type="text/javascript" src="/manual/3.0/js/docs.35d2a8abac6820e986f8d1f3d2449c2e299a6a8151ddfa8faec3966145ecca9b.js" integrity="sha256-NdKoq6xoIOmG&#43;NHz0kScLimaaoFR3fqPrsOWYUXsyps="></script>
 </body>
 </html>
 

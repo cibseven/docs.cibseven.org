@@ -4548,6 +4548,15 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
 <p>For a complete, runnable setup, see the <a href="https://github.com/cibseven/cibseven-multi-engine-example">CIB seven multi-engine example</a> on GitHub: one webclient and two engines in separate containers, each engine with its own JWT secret, started with Docker Compose.</p>
 <p>In the Enterprise Edition, starting with <code>3.0.0</code>, the license key is stored in the database of an additional engine with this engine&rsquo;s own <code>jwtSecret</code>. Up to <code>2.2.x</code>, it is stored there only if this engine uses the same secret as <code>cibseven.webclient.authentication.jwtSecret</code>; if the engine has its own <code>jwtSecret</code>, keep the license file with the webclient. See <a href="/manual/latest/user-guide/license-use/#storing-the-license-key-in-the-database">Storing the License Key in the Database</a>.</p>
 
+<h3 id="connection-pool-to-the-engine">Connection pool to the engine</h3>
+<p>Since CIB seven 3.0.0, the <code>cibseven.webclient.rest</code> settings apply to all requests of the webclient to the engine REST API, <code>GET</code> requests included. Up to 2.2, <code>GET</code> requests bypassed the pool and its timeouts.</p>
+<ul>
+<li>All requests of the webclient to one engine share one pool. <code>maxConnPerRoute</code> (default 100) is the maximum number of parallel requests to one engine, <code>maxConnTotal</code> (default 200) to all engines together.</li>
+<li>When all connections are in use, a request waits up to <code>connectionRequestTimeout</code> (default 180 seconds) for a free connection and then fails.</li>
+<li>With many concurrent users per engine, raise <code>maxConnPerRoute</code> and <code>maxConnTotal</code>.</li>
+</ul>
+<p>See the <code>cibseven.webclient.rest</code> rows in <a href="#all-core-configuration-options">All Core Configuration Options</a>.</p>
+
 <h3 id="direct-provider">Direct Provider</h3>
 <p>By default, the webclient calls the engine over the engine REST API. When the webclient and the engine run in the same application, for example in CIB seven Run, the webclient can call the engine directly instead and needs no <code>engineRest.url</code>, see <a href="/manual/latest/webapps/configuration-options/core-configuration/direct-provider/">Direct Provider</a>.</p>
 
@@ -4869,6 +4878,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
         <li><a href="#authentication">Authentication</a></li>
         <li><a href="#ldap">LDAP</a></li>
         <li><a href="#multi-engine-support">Multi-engine support</a></li>
+        <li><a href="#connection-pool-to-the-engine">Connection pool to the engine</a></li>
         <li><a href="#direct-provider">Direct Provider</a></li>
         <li><a href="#all-core-configuration-options">All Core Configuration Options</a></li>
       </ul>
@@ -4906,7 +4916,7 @@ Additional engines can be optionally specified via the <code>additionalEngineRes
 
   
 
-  <script type="text/javascript" src="/manual/latest/js/docs.39f584f7385fbb9e5e3c39b5e3aa08ef6edc341004893361450d669a3dab2ffd.js" integrity="sha256-OfWE9zhfu55ePDm146oI727cNBAEiTNhRQ1mmj2rL/0="></script>
+  <script type="text/javascript" src="/manual/latest/js/docs.35d2a8abac6820e986f8d1f3d2449c2e299a6a8151ddfa8faec3966145ecca9b.js" integrity="sha256-NdKoq6xoIOmG&#43;NHz0kScLimaaoFR3fqPrsOWYUXsyps="></script>
 </body>
 </html>
 
