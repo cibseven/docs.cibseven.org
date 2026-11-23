@@ -5159,7 +5159,21 @@ The update from <code>2.2</code> to <code>3.0</code> ships <strong>two</strong> 
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div></li>
+</span></span></code></pre></div><p>Only if an application cannot avoid Jackson 3.2: register your own <code>ContextResolver&lt;ObjectMapper&gt;</code> in the JAX-RS application of the REST API, in place of <code>JacksonConfigurator</code>. Build its mapper from <code>JacksonConfigurator.configureObjectMapper().rebuild()</code> and enable <code>MapperFeature.EXTERNAL_TYPE_ID_ALWAYS_VISIBLE</code>, which exists since Jackson 3.2. CIB seven has not tested this workaround; it was reported to work with Jackson 3.2.4.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Provider</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nd">@Produces</span><span class="p">({</span><span class="s">&#34;application/json&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;application/hal+json&#34;</span><span class="p">})</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AcmeJacksonConfigurator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ContextResolver</span><span class="o">&lt;</span><span class="n">ObjectMapper</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="n">mapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JacksonConfigurator</span><span class="p">.</span><span class="na">configureObjectMapper</span><span class="p">().</span><span class="na">rebuild</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">enable</span><span class="p">(</span><span class="n">MapperFeature</span><span class="p">.</span><span class="na">EXTERNAL_TYPE_ID_ALWAYS_VISIBLE</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="nf">getContext</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div></li>
 </ul>
 
 <h4 id="data-format-configurators">Data format configurators</h4>

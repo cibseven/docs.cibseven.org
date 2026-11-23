@@ -4654,7 +4654,7 @@ it may be implemented separately and must happen before the Camunda API to set t
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">create</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="n">execution</span><span class="p">.</span><span class="na">setVariable</span><span class="p">(</span><span class="s">&#34;someVariable&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">customerDataValue</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><p>On top of that, the process engine configuration has an option <code>defaultSerializationFormat</code> that is used when no specific format is requested. This option defaults to <code>application/x-java-serialized-object</code>.</p>
+</span></span></span></code></pre></div><p>On top of that, the process engine configuration has an option <code>defaultSerializationFormat</code> that is used when no specific format is requested. This option defaults to <code>application/x-java-serialized-object</code>. If you set it to <code>application/json</code>, do not store lists or maps with values of different types as plain Java collections, see <a href="/manual/latest/user-guide/data-formats/json/#lists-and-maps-with-values-of-different-types">Lists and maps with values of different types</a>.</p>
 
 <div class="note bg-info docs-info">
   <h3>Using Custom Objects in Task Forms</h3>
