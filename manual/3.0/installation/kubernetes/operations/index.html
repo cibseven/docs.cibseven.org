@@ -4647,8 +4647,8 @@
       <td>WildFly needs a memory limit of at least 2Gi, or smaller heap settings in <code>JAVA_OPTS</code> (<code>configmaps.env</code>).</td>
     </tr>
     <tr>
-      <td>run4: startup fails on a fresh database</td>
-      <td>The initial administrator in <code>application.camunda.bpm.admin-user</code> is missing or invalid (ID with letters and digits only, password policy), or the tables do not exist while <code>schema-update</code> is <code>&quot;false&quot;</code>, see <a href="/manual/3.0/installation/kubernetes/configuration/#run4">Database</a>.</td>
+      <td>run: startup fails on a fresh database</td>
+      <td>The initial administrator in <code>application.camunda.bpm.admin-user</code> is missing or invalid (ID with letters and digits only, password policy), or the tables do not exist while <code>schema-update</code> is <code>&quot;false&quot;</code>, see <a href="/manual/3.0/installation/kubernetes/configuration/#run">Database</a>.</td>
     </tr>
     <tr>
       <td>Webclient does not start</td>
@@ -4658,7 +4658,7 @@
 </table>
 
 <h3 id="requests-to-the-rest-api-return-401">Requests to the REST API Return 401</h3>
-<p>With <code>composite</code> authentication (run4 default; WildFly with the production profile), <code>/engine-rest</code> requires credentials:</p>
+<p>With <code>composite</code> authentication (run default; WildFly with the production profile), <code>/engine-rest</code> requires credentials:</p>
 <ul>
 <li>Send HTTP Basic credentials of an engine user (<code>curl -u &lt;user&gt;:&lt;password&gt; …</code>). The <code>Context-User-ID</code> header alone is not accepted.</li>
 <li>Wrong passwords lock the user for a few seconds (login throttling); wait before you try again.</li>

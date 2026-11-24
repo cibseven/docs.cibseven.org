@@ -4501,7 +4501,7 @@
 
 <p>The Helm chart <code>cibseven-ee</code> installs CIB seven Enterprise Edition on Kubernetes and OpenShift. It deploys one of two distributions of the <a href="/manual/3.0/installation/docker/#enterprise-edition">Enterprise Edition Docker images</a>:</p>
 <ul>
-<li><code>run4</code>: <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> based on Spring Boot 4,</li>
+<li><code>run</code>: <a href="/manual/3.0/user-guide/cibseven-run/">CIB seven Run</a> based on Spring Boot 4,</li>
 <li><code>wildfly</code>: CIB seven on the WildFly application server.</li>
 </ul>
 <p>Both contain the process engine, the REST API and the CIB seven webclient. This guide describes chart version <code>0.0.2</code>, which deploys CIB seven <code>2.2.4-ee</code> by default.</p>
@@ -4578,7 +4578,7 @@
   <tbody>
     <tr>
       <td><code>values-example.yaml</code></td>
-      <td>General starting point (run4): registry, image pull secret, JWT secret, Ingress with TLS, initial administrator, PostgreSQL database.</td>
+      <td>General starting point (run): registry, image pull secret, JWT secret, Ingress with TLS, initial administrator, PostgreSQL database.</td>
     </tr>
     <tr>
       <td><code>values-example-wildfly.yaml</code></td>
@@ -4593,7 +4593,7 @@
 <p><code>helm show values cibseven-ee/cibseven-ee --version 0.0.2</code> prints all values with their descriptions, <code>helm show readme</code> the chart README.</p>
 
 <h3 id="create-the-image-pull-secret">Create the Image Pull Secret</h3>
-<p>The images are published as <code>artifacts.cibseven.org/docker-ee/cibseven:&lt;distribution&gt;-&lt;version&gt;-ee</code>, for example <code>run4-2.2.4-ee</code> or <code>wildfly-2.2.4-ee</code>. Kubernetes needs your credentials to pull them. Create an image pull secret in the namespace of the release:</p>
+<p>The images are published as <code>artifacts.cibseven.org/docker-ee/cibseven:&lt;distribution&gt;-&lt;version&gt;-ee</code>, for example <code>run-2.2.4-ee</code> or <code>wildfly-2.2.4-ee</code>. Kubernetes needs your credentials to pull them. Create an image pull secret in the namespace of the release:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">kubectl create namespace cibseven
 </span></span><span class="line"><span class="cl">kubectl create secret docker-registry cibseven-registry -n cibseven <span class="se">\
 </span></span></span><span class="line"><span class="cl">  --docker-server<span class="o">=</span>artifacts.cibseven.org <span class="se">\
@@ -4625,7 +4625,7 @@
 <p>Create <code>my-values.yaml</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">image</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">artifacts.cibseven.org/docker-ee</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">distribution</span><span class="p">:</span><span class="w"> </span><span class="l">run4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">distribution</span><span class="p">:</span><span class="w"> </span><span class="l">run</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cibseven-registry</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -4683,7 +4683,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># wait for the database before WildFly starts</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">WAIT_FOR</span><span class="p">:</span><span class="w"> </span><span class="l">postgres.example.svc:5432</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="c"># WildFly needs more memory and ephemeral storage than run4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># WildFly needs more memory and ephemeral storage than run</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">resources</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">limits</span><span class="p">:</span><span class="w">
@@ -4693,7 +4693,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">500m</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">1Gi</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="l">1Gi</span><span class="w">
-</span></span></span></code></pre></div><p>Install the chart in the same way as for run4. WildFly takes about half a minute to start, longer with small CPU requests. The engine creates the tables in the empty database on the first start.</p>
+</span></span></span></code></pre></div><p>Install the chart in the same way as for run. WildFly takes about half a minute to start, longer with small CPU requests. The engine creates the tables in the empty database on the first start.</p>
 <p>The WildFly distribution starts without any user. Create the first administrator once through the port forwarding:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">kubectl -n cibseven port-forward svc/cibseven-cibseven-ee 8080:8080
 </span></span></code></pre></div><p>Open <code>http://localhost:8080/camunda/app/admin/default/setup/</code> and create the user. The password policy is active, so the password needs at least 10 characters with lower case, upper case, digit and special character. Then log in at <code>http://localhost:8080/webapp/</code>.</p>
@@ -4709,12 +4709,12 @@
 </span></span></code></pre></div><p>Then enter your license key in the webclient, see <a href="/manual/3.0/installation/kubernetes/configuration/#license-key">License Key</a>.</p>
 
 <h2 id="choose-the-distribution">Choose the Distribution</h2>
-<p>Select the distribution with <code>image.distribution</code>. The chart supports <code>run4</code> and <code>wildfly</code>.</p>
+<p>Select the distribution with <code>image.distribution</code>. The chart supports <code>run</code> and <code>wildfly</code>.</p>
 <table>
   <thead>
     <tr>
       <th></th>
-      <th><code>run4</code></th>
+      <th><code>run</code></th>
       <th><code>wildfly</code></th>
     </tr>
   </thead>

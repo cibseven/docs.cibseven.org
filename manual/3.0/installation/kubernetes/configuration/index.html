@@ -4525,7 +4525,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">maximumPoolSize</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">minimumIdle</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
 </span></span></span></code></pre></div><p>Other database types (<code>mysql</code>, <code>oracle</code>, <code>mssql</code>, <code>db2</code>) follow the same pattern: set <code>application.camunda.bpm.database.type</code> and point <code>application.spring.datasource.*</code> at the matching JDBC driver and connection string. See <a href="/manual/3.0/user-guide/cibseven-run/#connect-to-a-database">Connect to a Database</a> for the requirements.</p>
-<p><strong>JDBC drivers:</strong> the run4 and the WildFly images contain the drivers for PostgreSQL, MySQL and H2. Drivers for Oracle, Microsoft SQL Server and DB2 are not included. For run4, put the driver JAR into <code>/camunda/configuration/userlib</code>, for example with your own image based on the CIB seven image (<code>COPY ojdbc11.jar /camunda/configuration/userlib/</code>).</p>
+<p><strong>JDBC drivers:</strong> the run and the WildFly images contain the drivers for PostgreSQL, MySQL and H2. Drivers for Oracle, Microsoft SQL Server and DB2 are not included. For run, put the driver JAR into <code>/camunda/configuration/userlib</code>, for example with your own image based on the CIB seven image (<code>COPY ojdbc11.jar /camunda/configuration/userlib/</code>).</p>
 <p>For an evaluation, H2 can be used as a file-based database. The chart does not mount a persistent volume, so the data does not survive a new pod. Do not use H2 in production.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">application</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">camunda</span><span class="p">:</span><span class="w">
@@ -4580,7 +4580,7 @@
 <li><code>id</code>: letters and digits only, for example <code>cibsevenadmin</code>, not <code>cibseven-admin</code>.</li>
 <li><code>password</code>: at least 10 characters, with a lowercase letter, an uppercase letter, a digit and a special character. It must not contain the user ID, the first name or the last name, see <a href="/manual/3.0/user-guide/process-engine/password-policy/">Password Policy</a>.</li>
 </ul>
-<p><strong>Example application (run4):</strong> the run4 image deploys the example process application <code>invoice</code> and creates its demo users <code>demo</code>, <code>john</code>, <code>mary</code> and <code>peter</code> unless you switch it off. Do this for every installation other than a first evaluation:</p>
+<p><strong>Example application (run):</strong> the run image deploys the example process application <code>invoice</code> and creates its demo users <code>demo</code>, <code>john</code>, <code>mary</code> and <code>peter</code> unless you switch it off. Do this for every installation other than a first evaluation:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">application</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">camunda</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">bpm</span><span class="p">:</span><span class="w">
@@ -4636,11 +4636,11 @@
       <td><code>externalEnv.DB_PASSWORD.secretKeyRef</code></td>
     </tr>
     <tr>
-      <td>Database password (run4)</td>
+      <td>Database password (run)</td>
       <td><code>externalEnv.SPRING_DATASOURCE_PASSWORD.secretKeyRef</code></td>
     </tr>
     <tr>
-      <td>Password of the initial administrator (run4)</td>
+      <td>Password of the initial administrator (run)</td>
       <td><code>externalEnv.CAMUNDA_BPM_ADMINUSER_PASSWORD.secretKeyRef</code></td>
     </tr>
     <tr>
@@ -4669,7 +4669,7 @@
     </tr>
   </tbody>
 </table>
-<p><code>externalEnv</code> adds environment variables that are read from existing Secrets or ConfigMaps (<code>secretKeyRef</code>, <code>configMapKeyRef</code>). For run4, Spring Boot maps environment variables to properties, so <code>SPRING_DATASOURCE_PASSWORD</code> sets <code>spring.datasource.password</code> and <code>CAMUNDA_BPM_ADMINUSER_PASSWORD</code> sets <code>camunda.bpm.admin-user.password</code>. Environment variables take precedence over the values in <code>application.*</code>, which you leave empty:</p>
+<p><code>externalEnv</code> adds environment variables that are read from existing Secrets or ConfigMaps (<code>secretKeyRef</code>, <code>configMapKeyRef</code>). For run, Spring Boot maps environment variables to properties, so <code>SPRING_DATASOURCE_PASSWORD</code> sets <code>spring.datasource.password</code> and <code>CAMUNDA_BPM_ADMINUSER_PASSWORD</code> sets <code>camunda.bpm.admin-user.password</code>. Environment variables take precedence over the values in <code>application.*</code>, which you leave empty:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">application</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">camunda</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">bpm</span><span class="p">:</span><span class="w">
@@ -4759,7 +4759,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">customAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
 </span></span></span></code></pre></div><p>The paths of the Ingress depend on the distribution:</p>
 <ul>
-<li><strong>run4:</strong> <code>/</code>. The REST API under <code>/engine-rest</code> requires authentication (<code>application.camunda.bpm.run.auth.enabled: true</code>, <code>authentication: composite</code>).</li>
+<li><strong>run:</strong> <code>/</code>. The REST API under <code>/engine-rest</code> requires authentication (<code>application.camunda.bpm.run.auth.enabled: true</code>, <code>authentication: composite</code>).</li>
 <li><strong>WildFly:</strong> only <code>/webapp</code>. Keep it that way: browser users only need the webclient. Expose <code>/engine-rest</code> and the applications under <code>/camunda</code> only to internal clients.</li>
 </ul>
 <p>To change the paths or the target port, override <code>ingress.hosts</code>. It is a list, so repeat the host:</p>
@@ -4875,7 +4875,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;keystore password&gt;&#34;</span><span class="w">
 </span></span></span></code></pre></div></li>
 </ul>
-<p>The chart configures TLS in the pod for the WildFly distribution. For run4, terminate TLS at the Ingress or Route.</p>
+<p>The chart configures TLS in the pod for the WildFly distribution. For run, terminate TLS at the Ingress or Route.</p>
 
 <h3 id="additional-ca-certificates">Additional CA Certificates</h3>
 <p>To trust additional CAs in the application, for example the CA of an LDAPS server or of another HTTPS service, provide them in PEM format in a Secret. The file may contain several certificates.</p>
@@ -4970,7 +4970,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">1Gi</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="l">1Gi</span><span class="w">
 </span></span></span></code></pre></div><ul>
-<li><code>values-example.yaml</code> contains a starting point for run4 (requests 500m CPU, 1Gi memory, limits 2 CPU, 2Gi memory). Observe your installation and adjust the values.</li>
+<li><code>values-example.yaml</code> contains a starting point for run (requests 500m CPU, 1Gi memory, limits 2 CPU, 2Gi memory). Observe your installation and adjust the values.</li>
 <li>WildFly starts with <code>-Xms512m -Xmx1024m</code> plus up to 1024m Metaspace. Give the pod a memory limit of at least 2Gi, or set <code>JAVA_OPTS</code> in <code>configmaps.env</code>, and 1 to 2Gi ephemeral storage for the exploded deployments.</li>
 <li>The startup, readiness and liveness probes check <code>/webapp/</code> on port <code>http</code>. The startup probe allows 30 attempts every 10 seconds. If the startup takes longer, for example with small CPU requests, increase <code>probes.startupProbe.failureThreshold</code>.</li>
 </ul>
@@ -5004,7 +5004,7 @@
     <tr>
       <td><code>global.logging.jsonFormat</code></td>
       <td><code>true</code></td>
-      <td>run4: log to the console in JSON format for log aggregation.</td>
+      <td>run: log to the console in JSON format for log aggregation.</td>
     </tr>
     <tr>
       <td><code>global.otel.metricsExporter</code></td>
@@ -5037,7 +5037,7 @@
       <td>Additional environment variables.</td>
     </tr>
     <tr>
-      <td><code>application.*</code> (run4)</td>
+      <td><code>application.*</code> (run)</td>
       <td></td>
       <td>Any further property of CIB seven Run, see <a href="/manual/3.0/user-guide/cibseven-run/#configure-cib-seven-run">Configure CIB seven Run</a>, for example the user provider of the webclient (<code>application.cibseven.webclient.user.provider</code>).</td>
     </tr>
